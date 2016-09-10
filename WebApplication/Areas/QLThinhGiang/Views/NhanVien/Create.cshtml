@@ -1,0 +1,50 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model HRM.QLThinhGiang.Models.NhanVien
+@{
+    ViewBag.Title = "Create";
+    var db = new HRMDB_Entities();
+    var maNV = db.SqlQuery("select top 1 MaNV from NhanVien order by id desc");
+}
+@Html.BeginDiv()
+
+<h2>Thêm hồ sơ nhân viên</h2>
+<br />
+@using (Html.BeginForm("CreateS", "NhanVien")) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>NhanVien</legend>
+        <div>Mã nhân viên hiện tại là @maNV.Rows[0][0]</div>
+
+        <div class="editor-label">
+            @Html.LabelForVN(model => model.MaHS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaHS)
+            @Html.ValidationMessageFor(model => model.MaHS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelForVN(model => model.MaNV)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaNV)
+            @Html.ValidationMessageFor(model => model.MaNV)
+        </div>
+
+        <div class="editor-label">
+            <label for="">Họ và tên</label>
+        </div>
+        <div class="editor-field">
+            <input id="HoVaTen" name="HoVaTen" />
+        </div>
+
+        <p>
+            <input type="submit" value="Thêm mới" />
+            <a title="Close" class="close" href="">Hủy</a>
+        </p>
+    </fieldset>
+}
+
+@Html.EndDiv()

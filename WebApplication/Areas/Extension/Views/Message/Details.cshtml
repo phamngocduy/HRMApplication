@@ -1,0 +1,11 @@
+﻿@model HRM.Extension.Databases.Models.Message
+<pre>@Html.Raw(Model.Content)</pre>
+@using (Html.BeginForm("Unread", "Message", new { id = Model.id }, FormMethod.Post, new { style = "display:inline" }))
+{
+    <input type="submit" value="Unread" />
+}
+@using (Html.BeginForm("Delete", "Message", new { id = Model.id }, FormMethod.Post, new { style = "display:inline" }))
+{
+    <input type="submit" value="Delete" />
+}
+<a title="Close" class="close" href="">X</a>

@@ -1,0 +1,43 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLDanhMuc.Models
+@model IEnumerable<HRM.Databases.Models.dmDonVi>
+
+<p>
+    <a class="dialog" href="DonVi/Create" title="Thêm">Thêm đơn vị</a>
+</p>
+<table id="listDonVi">
+<thead>
+    <tr>
+        <th></th>
+        <th>Mã</th>
+        <th>Tên đơn vị</th>
+        <th>Trực thuộc</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.stt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.maDonVi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenDonVi)
+        </td>
+        <td>
+            @item.tenDonViChuQuan()
+        </td>
+        <td align="right">
+            <a class="dopost" href="DonVi/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a class="dialog" href="DonVi/Edit?id=@item.id" title="Sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    @Html.dataTables("listDonVi")
+</script>

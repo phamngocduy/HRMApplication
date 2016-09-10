@@ -1,0 +1,5 @@
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.QLGVThinhGiang.dll
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.QLGVThinhGiang.pdb
+C:\Workspace\HRMApplication\WebApplication\Areas\QLGVThinhGiang\obj\Debug\HRM.QLGVThinhGiang.csprojResolveAssemblyReference.cache
+C:\Workspace\HRMApplication\WebApplication\Areas\QLGVThinhGiang\obj\Debug\HRM.QLGVThinhGiang.dll
+C:\Workspace\HRMApplication\WebApplication\Areas\QLGVThinhGiang\obj\Debug\HRM.QLGVThinhGiang.pdb

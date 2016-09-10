@@ -1,0 +1,50 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "TTKyLuatTruoc";
+    var NV_id = ViewBag.NV_id as int?;
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvTTKyLuatTruoc where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("NV_id", NV_id.HasValue ? NV_id.Value : dr["NV_id"])
+<dl id="@rand" class="dl-horizontal">
+    <dt>Số QĐ</dt>
+    <dd>@Html.Editor(dr, dt.Columns["SoQuyetDinh"])</dd>
+    <dt>Ngày</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgayQuyetDinh"])</dd>
+    <dt>Cấp QĐ</dt>
+    <dd>@Html.Editor(dr, dt.Columns["CapQuyetDinh"])</dd>
+    <dt>Nơi cấp</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NoiCapQuyetDinh"])</dd>
+    <dt>Lý do</dt>
+    <dd>@Html.Editor(dr, dt.Columns["LyDoKyLuat"])</dd>
+    <dt>Ghi chú</dt>
+    <dd>@Html.Editor(dr, dt.Columns["GhiChu"])</dd>
+    <dt></dt>
+    <dd>@Html.Editor(dr, dt.Columns["TrangThai"])
+        <label for="TrangThai" style="display:inline">Hiển thị</label></dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text");
+</script>

@@ -1,0 +1,106 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@{
+    ViewBag.Title = "List";
+    var db = ViewBag.db as HRMDBEntities;
+    var query = from ngd in db.nvNganhGiangDay
+                join nv in db.NhanViens.All on ngd.NV_id equals nv.id
+                join nganh in db.dmNganhGiangDay on ngd.NganhGiangDay equals nganh.id
+                join syll in db.nvSoYeuLyLich on nv.id equals syll.NV_id
+                join lv in db.nvQTLamViec on nv.qtlvCongTac_id equals lv.id
+                join dv in db.dmDonVi on lv.DonVi_id equals dv.id
+                join khoa in db.dmDonVi on ngd.KhoaGiangDay equals khoa.id
+                where !nv.ngayNghiViec.HasValue
+                select new { maNV = nv.MaNV, HoTen = syll.HoVaTen,
+                    maDonVi = dv.maDonVi, tenDonVi = dv.tenDonVi, NV_id = nv.id,
+                    maNganhGiangDay = nganh.maNganhGiangDay, tenNganhGiangDay = nganh.tenNganhGiangDay,
+                    maKhoaGiangDay = khoa.maDonVi, tenKhoaGiangDay = khoa.tenDonVi, laChinh = (ngd.id.Equals(nv.nvNganhGiangDay_id.Value) ? "1" : "0") };
+    var model = from ngd in query group ngd by ngd.maNV;
+    var random = new Random();
+    var rand1 = random.Next();
+    var rand2 = random.Next();
+    var noNganhGiangDayChinh = db.SqlQuery(@"select dsNhanVien.id, nvSoYeuLyLich.HoVaTen, dsNhanVien.tenDonVi from dsNhanVien
+        left join nvSoYeuLyLich on nvSoYeuLyLich.NV_id = dsNhanVien.id
+        where dsNhanVien.nvNganhGiangDay_id is null and
+        exists (select * from nvNganhGiangDay where nvNganhGiangDay.NV_id = dsNhanVien.id)");
+}
+
+<p class="ui-state-highlight">
+    Quản lý ngành giảng dạy của giảng viên
+    <span style="float:right">
+        <b>@Html.Editor4A("~/TKBaoCao/NganhGiangDay/EditP", "Thêm mới", rand1.ToString())</b>
+    </span>
+    <div id="@rand1"></div>
+</p>
+
+<a id="noNganhGiangDayChinh" href="#" onclick="$('#@rand2').dialog({width:'auto'})"></a>
+<div id="@rand2" style="display:none">
+@if (noNganhGiangDayChinh.Rows.Count > 0)
+{
+    <table>
+        <thead>
+            <th>Họ tên</th>
+            <th>Đơn vị</th>
+        </thead>
+        <tbody>
+        @foreach (DataRow row in noNganhGiangDayChinh.Rows)
+        {
+            <tr>
+                <td>@Html.ActionLink(row["HoVaTen"] as string, "Index", new { NV_id = row["id"] })</td>
+                <td>@row["tenDonVi"]</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+</div>
+
+<table id="qlNganhGiangDay">
+    <thead>
+        <tr>
+            <th>Mã NV</th>
+            <th>Họ và tên</th>
+            <th>Đơn vị</th>
+            <th>Ngành giảng dạy</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var g in model)
+    {
+        var nv = g.First();
+        <tr>
+            <td>@nv.maNV</td>
+            <td>@Html.ActionLink(nv.HoTen, "Index", new { NV_id = nv.NV_id })</td>
+            <td><mark><abbr title="@nv.tenDonVi">@nv.maDonVi</abbr></mark></td>
+            <td>
+                @*String.Join(", ", g.ToList().Select(n => n.tenNganhGiangDay))*@
+            @foreach (var n in g)
+            {
+                <span title="@n.maNganhGiangDay" style="font-weight:@(n.laChinh.Equals("1") ? "bold" : "normal")">@n.tenNganhGiangDay
+                <mark><abbr title="@n.tenKhoaGiangDay">@n.maKhoaGiangDay</abbr></mark>&nbsp;</span>
+            }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#qlNganhGiangDay").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+        });
+    });
+</script>
+@if (noNganhGiangDayChinh.Rows.Count > 0)
+{
+    <script>
+        $(function () {
+            $("#noNganhGiangDayChinh").text("Có @noNganhGiangDayChinh.Rows.Count giảng viên chưa chọn ngành/khoa giảng dạy chính!").addClass("ui-state-error");
+        });
+    </script>
+}

@@ -1,0 +1,110 @@
+INFO 08:25:12 – TinhCong/Summary
+INFO 08:27:13 – TinhCong/Summary
+INFO 08:27:36 – TinhCong/Details&NV_id=165
+INFO 09:55:39 – TinhCong/Details&NV_id=16
+INFO 09:55:51 – TinhCong/Details&NV_id=16
+INFO 10:01:01 – TinhCong/Details&NV_id=40
+INFO 10:07:15 – TinhCong/Details&NV_id=698
+INFO 10:29:26 – Home/Index
+INFO 10:29:28 – Login/Index
+INFO 10:29:41 – Login/Index
+INFO 10:29:41 – Home/Index
+INFO 10:29:44 – TinhCong/Index
+INFO 10:29:50 – TinhCong/Index
+INFO 10:30:19 – TinhCong/Compare
+INFO 10:30:32 – TinhCong/Summary
+INFO 10:31:46 – TinhCong/Summary
+INFO 10:41:54 – TinhCong/Summary
+INFO 11:03:53 – TinhCong/Details&NV_id=422
+INFO 11:04:29 – TinhCong/Details&NV_id=107
+ERROR11:04:29 – Column 'H' does not belong to table .
+/controller=TinhCong/action=Details
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at ASP.TinhDiem.<>c__DisplayClass28.<dHieuQuaCongViec>b__27(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 132
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.HelperPage.WriteTo(TextWriter writer, HelperResult value)
+   at ASP.TinhCong.<>c__DisplayClass41.<Details>b__18(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 410
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at CallSite.Target(Closure , CallSite , _Page_Views_TinhCong_Details_cshtml , Object )
+   at ASP._Page_Views_TinhCong_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Details.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:04:59 – TinhCong/Details&NV_id=107
+INFO 11:06:27 – TinhCong/Summary
+INFO 11:07:53 – TinhCong/Summary
+INFO 11:09:09 – TinhCong/Summary
+INFO 11:10:28 – TinhCong/Summary
+INFO 11:11:46 – TinhCong/Summary
+INFO 11:12:47 – TinhCong/Summary
+INFO 12:55:54 – TinhCong/Summary
+INFO 01:08:58 – TinhCong/Details&NV_id=186
+INFO 01:26:33 – TinhCong/Details&NV_id=107
+INFO 01:26:56 – TinhCong/Summary
+INFO 01:30:47 – TinhCong/Summary
+INFO 01:52:30 – TinhCong/Summary
+INFO 02:06:41 – TinhCong/Summary
+INFO 02:38:34 – TinhCong/Index
+INFO 03:05:48 – TinhCong/Details&NV_id=24
+INFO 03:25:42 – TinhCong/Details&NV_id=47
+INFO 03:28:31 – TinhCong/Details&NV_id=16
+INFO 03:28:35 – TinhCong/Details&NV_id=47
+INFO 03:30:12 – TinhCong/Details&NV_id=666
+INFO 03:31:02 – TinhCong/Details&NV_id=667
+INFO 03:43:09 – TinhCong/Details&NV_id=667
+INFO 03:43:21 – TinhCong/Details&NV_id=666
+INFO 03:46:30 – TinhCong/Details&NV_id=666
+INFO 04:03:33 – TinhCong/Summary
+INFO 04:09:04 – TinhCong/Details&NV_id=40
+INFO 04:16:11 – TinhCong/Details&NV_id=770
+INFO 04:17:04 – TinhCong/Details&NV_id=129
+INFO 04:48:58 – TinhCong/Details&NV_id=40
+INFO 04:58:42 – TinhCong/Compare
+INFO 04:58:59 – TinhCong/Compare
+INFO 04:59:17 – TinhCong/Summary
+INFO 04:59:49 – TinhCong/Compare
+INFO 05:00:25 – TinhCong/Compare
+INFO 05:33:03 – TinhCong/Summary
+INFO 05:33:48 – TinhCong/Details&NV_id=34
+INFO 05:37:16 – TinhCong/Details&NV_id=34
+INFO 05:38:46 – TinhCong/Details&NV_id=34
+INFO 05:39:29 – TinhCong/Details&NV_id=16
+INFO 05:40:46 – TinhCong/Summary
+INFO 05:41:27 – TinhCong/Details&NV_id=34
+INFO 05:42:23 – TinhCong/Details&NV_id=34
+INFO 05:42:29 – TinhCong/Details&NV_id=34
+INFO 05:42:53 – TinhCong/Details&NV_id=34
+INFO 05:43:14 – TinhCong/Details&NV_id=34
+INFO 05:49:04 – TinhCong/Summary
+INFO 05:50:53 – TinhCong/Summary
+INFO 05:51:56 – TinhCong/Summary
+INFO 05:55:37 – TinhCong/Summary
+INFO 05:57:53 – TinhCong/Summary
+INFO 06:13:06 – TinhCong/Details&NV_id=172
+INFO 06:13:56 – TinhCong/Details&NV_id=165
+INFO 06:19:42 – TinhCong/Details&NV_id=504
+INFO 06:32:19 – TinhCong/Index
+INFO 06:34:29 – TinhCong/Index
+INFO 06:41:47 – TinhCong/Details&NV_id=406
+INFO 06:42:36 – TinhCong/Details&NV_id=211
+INFO 06:45:15 – TinhCong/Details&NV_id=6
+INFO 06:45:32 – TinhCong/Details&NV_id=8
+INFO 06:46:05 – TinhCong/Index

@@ -1,0 +1,606 @@
+﻿@model IEnumerable<HRM.QLBHXH.Models.v_nvbhDanhSachDieuChinhTangGiam1>
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Danh sách điều chỉnh tăng giảm";
+
+    string ngayBD = ViewBag.NgayBD;
+    string ngayKT = ViewBag.NgayKT;
+    string Dot = ViewBag.Dot;
+    var moinhat = ViewBag.moinhat;
+    var idloaitg = ViewBag.idloaitg;
+    int idmoi = ViewBag.idmoi;
+}
+<h2>Danh sách điều chỉnh tăng giảm</h2>
+@Html.StatusMessage(TempData["Message"])
+<font size="3" color="#0099CC"><b><u>Có @moinhat loại @idloaitg mới thêm vào danh sách tăng giảm</u></b></font>
+
+<div>
+    <a style="text-align: right" title="Trở lại danh sách NV BHXH" onclick="location.href='@Url.Action("index2", "NhanVienBHXH")'">
+        <span class="ui-icon     
+ui-icon-arrowreturnthick-1-w " style="display: inline-block" /></a>Đợt của tháng:<input  name="From" title="Từ ngày" id="txt1" value=@Dot />
+    <input type="button" value="Lọc" id="Loc" />
+    <input type="button" value="Xác nhận" id="qt" />
+    <input type="button" value="Thêm nhân viên vào danh sách" id="ThemNhanVien" />
+     <a href="~/Forms/HRM1/BHXH_D02TS.aspx" target="_blank" title="Mẫu A01-TS"><span
+        class="ui-icon ui-icon-script" style="display: inline-block" /></a>
+@*    <input type="button" value="D02TS" onclick="location.href='@Url.Action("D02TS", "DanhSachDieuChinhTangGiam")'" />*@
+    <a style="text-align: right" title="Đóng" class='CloseButton'><span class="ui-icon ui-icon-closethick"
+        style="display: inline-block" /></a>
+</div>
+@*Tao ra các thẻ*@
+<div id="edit">
+</div>
+<div id="tabs">
+</div>
+<div id="delete">
+</div>
+<div id="confirm">
+</div>
+<div id="nvQT">
+</div>
+<table id="DSDCTG">
+    <thead>
+        <tr>
+            <th style="text-align: center" nowrap rowspan="2">
+                moinhat
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Loại ĐC
+            </th>
+            @* <th style="text-align:center" nowrap rowspan="2">Loại</th>*@
+            <th style="text-align: center" nowrap rowspan="2">
+                Họ tên
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Loại TG
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Mã số
+                <br />
+                BHXH
+            </th>
+            @* <th style="text-align:center" nowrap rowspan="2">Ngày phát<br />sinh</th>*@
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap rowspan="2">
+                CV
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="5">
+                Mức đóng cũ&nbsp;
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="5">
+                Mức đóng mới&nbsp;
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Từ tháng năm
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Đến tháng năm
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                TL(%)
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Ghi chú
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                XN
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                KTT
+            </th>
+            <th rowspan="2">
+            </th>
+        </tr>
+        <tr>
+            <th style="text-align: center" nowrap>
+                Tiền lương
+            </th>
+            <th style="text-align: center" nowrap>
+                P.C CV
+            </th>
+            <th style="text-align: center" nowrap>
+                P.C TN VK(%)
+            </th>
+            <th style="text-align: center" nowrap>
+                P.C TN nghề(%)
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap>
+                P.C Khác
+            </th>
+            <th style="text-align: center" nowrap>
+                Tiền lương
+            </th>
+            <th style="text-align: center" nowrap>
+                P.C CV
+            </th>
+            <th style="text-align: center" nowrap>
+                P.C TN VK(%)
+            </th>
+            <th style="text-align: center" nowrap>
+                P.C TN nghề(%)
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap>
+                P.C Khác
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.MoiNhat)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.LoaiDieuChinh)
+                </td>
+                @*        <td style="text-align: left" nowrap>
+            @Html.DisplayFor(modelItem => item.dmLoaiTangGiam.Ma)
+        </td>*@
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.HoVaTen)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.idLoaiTangGiam)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.SoBHXH)
+                </td>
+                @* <td style="text-align: left" nowrap>*@ @*    @item.NgayPhatSinh.ToShortDateString()*@
+                @*@Html.DisplayFor(modelItem => item.NgayPhatSinh.GetValueOrDefault().ToShortDateString())*@
+                @* </td>*@
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.ChucVuCongViec)
+                </td>
+                <td style="text-align: right" nowrap>
+                    @String.Format("{0:#,##0}", item.TienLuongMDC)
+                    @* @Html.DisplayFor(modelItem => item.TienLuongMDC)*@
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCChucVuMDC)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCThamNienVuotKhungMDC)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCThamNienNgheMDC)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCKhacMDC)
+                </td>
+                <td style="text-align: right" nowrap>
+                    @String.Format("{0:#,##0}", item.TienLuongMDM)
+                    @*@Html.DisplayFor(modelItem => item.TienLuongMDM)*@
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCChucVuMDM)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCThamNienVuotKhungMDM)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCThamNienNgheMDM)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.PCKhacMDM)
+                </td>
+                <td style="text-align: left" nowrap>
+                 @item.TuThangNam.ToString("MM/yyyy")
+  
+                </td>
+                <td style="text-align: left" nowrap>
+                    @if (@item.DenThangNam != null)
+                    {
+                                 @item.DenThangNam.Value.ToString("MM/yyyy")
+                    }
+
+                </td>
+                <td style="text-align: center" nowrap>
+                    @Html.DisplayFor(modelItem => item.TyLeDong)%
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+
+                    <td style="text-align: center">
+                    @if (item.XacNhan == true)
+                    {
+                
+                        <span>x</span>
+                    }
+                    else
+                    {
+                        <span></span>
+                    }
+                </td>
+
+                <td style="text-align: center">
+                    @if (item.KhongTraThe == true)
+                    {
+                
+                        <span>x</span>
+                    }
+                    else
+                    {
+                        <span></span>
+                    }
+                </td>
+            
+                <td style="text-align: left" nowrap>
+                    <a  title="Sửa" data-val1="@item.id"  class='button1'><span class="ui-icon ui-icon-pencil"
+                        style="display: inline-block" /></a>
+                        <a title="Xóa" data-val1="@item.id" class='button2'><span class="ui-icon ui-icon-trash" style="display: inline-block"/></a>
+                    @if (item.XacNhan != true)
+                    {  
+                        <a title="Xác nhận" data-val1="@item.id"  class='button3'><span class="ui-icon ui-icon-circle-arrow-s"
+                            style="display: inline-block" /></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <script type="text/javascript" language="javascript" src="/hrm/Scripts/datatables/dataTables.fixedColumns.js"></script>
+@*//<script src="/Scripts/datatables/FixedColumns.js"></script>*@
+@*<script src="/Content/datatables/DataTableFixedHeader.js"></script>*@
+    <script type="text/javascript" language="javascript" src="/hrm/Scripts/datatables/DataTableFixedHeader.js"></script>
+<script>
+
+
+    // script cho filter
+    $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+
+    // script cho create
+    $(".CloseButton").hide();
+
+    $.get("../DanhSachDieuChinhTangGiam/Create").success(function (data) {
+        $('#tabs').html(data);
+    });
+            $.get("../DanhSachDieuChinhTangGiam/QuaTrinhTatCa").success(function (data) {
+        $('#nvQT').html(data);});
+//              $.get("../DanhSachDieuChinhTangGiam/delete").success(function (data) {
+//        $('#delete').html(data);});
+//                   $.get("../DanhSachDieuChinhTangGiam/edit?id=1").success(function (data) {
+//        $('#edit').html(data);});
+
+      
+
+   
+    // add tab cho các tab thêm, edit, delete
+    $("#tabs").tabs();
+    $("#edit").tabs();
+    $("#delete").tabs();
+    $("#confirm").tabs();
+    $("#nvQT").tabs();
+
+
+      $("#qt").click(function () {
+        $("#nvQT").slideToggle("medium");
+        $(".CloseButton").show();
+        var $t1 = $('#edit');
+        var $t2 = $('#delete');
+        var $t3 = $('#confirm');
+            var $t4 = $('#tabs');
+       
+        //dong cac tab con lai dang open
+        if ($t1.is(':visible')) {
+            $t1.slideUp();
+            // Other stuff to do on slideUp
+        }
+        if ($t2.is(':visible')) {
+            $t2.slideUp();
+            // Other stuff to do on slideUp
+        }
+        if ($t3.is(':visible')) {
+            $t3.slideUp();
+            // Other stuff to do on slideUp
+        }
+           if ($t4.is(':visible')) {
+            $t4.slideUp();
+            // Other stuff to do on slideUp
+        }
+            $.get("../DanhSachDieuChinhTangGiam/QuaTrinhTatCa").success(function (data) {
+        $('#nvQT').html(data);
+    });
+    });
+
+
+
+
+    ///script nhấn thêm nhân viên 
+    $("#ThemNhanVien").click(function () {
+        $("#tabs").slideToggle("medium");
+        $(".CloseButton").show();
+        var $t1 = $('#edit');
+        var $t2 = $('#delete');
+        var $t3 = $('#confirm');
+         var $t4 = $('#nvQT');
+
+        //dong cac tab con lai dang open
+        if ($t1.is(':visible')) {
+            $t1.slideUp();
+            // Other stuff to do on slideUp
+        }
+        if ($t2.is(':visible')) {
+            $t2.slideUp();
+            // Other stuff to do on slideUp
+        }
+        if ($t3.is(':visible')) {
+            $t3.slideUp();
+            // Other stuff to do on slideUp
+        }
+         if ($t4.is(':visible')) {
+            $t4.slideUp();
+            // Other stuff to do on slideUp
+        }
+    });
+
+
+    // script cho CloseButton
+    $(function () {
+        $('.CloseButton').click(function () {
+            $(".CloseButton").hide();
+            $("#edit").slideUp("medium");
+            $("#tabs").slideUp("medium");
+            $("#delete").slideUp("medium");
+            $("#confirm").slideUp("medium");
+             $("#nvQT").slideUp("medium");
+
+        });
+    });
+
+    /// Script cho edit
+    $(function () {
+        $('.button1').click(function () {
+            var Val1 = $(this).attr("data-val1");
+            var $t1 = $('#tabs');
+            var $t2 = $('#delete');
+            var $t3 = $('#confirm');
+             var $t4 = $('#nvQT');
+
+            if ($t1.is(':visible')) {
+                $t1.slideUp();
+                // Other stuff to do on slideUp
+            }
+            if ($t2.is(':visible')) {
+                $t2.slideUp();
+                // Other stuff to do on slideUp
+            }
+            if ($t3.is(':visible')) {
+                 $t3.slideUp();
+            // Other stuff to do on slideUp
+            }
+               if ($t4.is(':visible')) {
+                 $t4.slideUp();
+            // Other stuff to do on slideUp
+            }
+             //get trang edit len tab
+            $.get("../DanhSachDieuChinhTangGiam/edit?id=" + Val1).success(function (data) {
+                $('#edit').html(data);
+                $("#edit").slideDown("medium");
+            });
+            $(".CloseButton").show();
+
+            //back to top of the page
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+           
+        });
+    });
+
+    // Script xu li nut delete
+    $(function () {
+        $('.button2').click(function () {
+            var Val1 = $(this).attr("data-val1");
+            //goi delete view len tab
+            $.get("../DanhSachDieuChinhTangGiam/delete?id=" + Val1).success(function (data) {
+                $('#delete').html(data);
+                $("#delete").slideDown("medium");
+            });
+            //hien ra nut close
+            $(".CloseButton").show();
+            //dong cac tab con lai dang open
+            var $t1 = $('#tabs');
+            var $t2 = $('#edit');
+            var $t3 = $('#confirm');
+             var $t4 = $('#nvQT');
+            if ($t1.is(':visible')) {
+                $t1.slideUp();
+                // Other stuff to do on slideUp
+            }
+            if ($t2.is(':visible')) {
+                $t2.slideUp();
+                // Other stuff to do on slideUp
+            }
+            if ($t3.is(':visible')) {
+                 $t3.slideUp();
+            // Other stuff to do on slideUp
+            }
+                if ($t4.is(':visible')) {
+                 $t4.slideUp();
+            // Other stuff to do on slideUp
+            }
+
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+
+        });
+    });
+
+     // Script xu li nut Xac nhan
+    $(function () {
+        $('.button3').click(function () {
+            var Val1 = $(this).attr("data-val1");
+            //goi delete view len tab
+            $.get("../DanhSachDieuChinhTangGiam/Quatrinh?id="+ Val1).success(function (data) {
+                $('#confirm').html(data);
+                $("#confirm").slideDown("medium");
+            });
+            //hien ra nut close
+            $(".CloseButton").show();
+            //dong cac tab con lai dang open
+            var $t1 = $('#tabs');
+            var $t2 = $('#edit');
+            var $t3 = $('#delete');
+              var $t4 = $('#nvQT');
+            if ($t1.is(':visible')) {
+                $t1.slideUp();
+                // Other stuff to do on slideUp
+            }
+            if ($t2.is(':visible')) {
+                $t2.slideUp();
+                // Other stuff to do on slideUp
+            }
+            if ($t3.is(':visible')) {
+                $t3.slideUp();
+            // Other stuff to do on slideUp
+            }
+              if ($t4.is(':visible')) {
+                $t4.slideUp();
+            // Other stuff to do on slideUp
+            }
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+
+        });
+    });
+
+
+
+    // Script cho bảng
+    $(document).ready(function () {
+        var oTable = $('#DSDCTG').dataTable({
+         "aoColumns": [{"bVisible": false },null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null ], 
+            "bJQueryUI": true,
+            "sScrollY": "100%",
+            "sScrollX": "100%" ,
+       "bSort": false
+//       ,'iDisplayLength': 100
+
+                      ,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+
+                if (aData[0] == @idmoi) {
+                    $(nRow).css('background-color', '#FFFFCC');
+                      $(nRow).css(  'border', '1px solid #999');
+                }
+            }
+
+
+
+
+        });
+        new $.fn.dataTable.FixedColumns(oTable, {
+            "iLeftColumns": 3,
+            "iRightColumns": 1
+        })
+
+   
+    });
+
+    $("#ThemNhanVien").click(function () {
+        $("#panel").slideToggle("fast");
+    });
+
+
+
+ 
+   var ngay= $("#txt1").datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true
+        ,
+        dateFormat: 'MM yy',
+      
+                 onClose: function(dateText, inst) {
+      var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+      $(this).val($.datepicker.formatDate('mm/yy', new Date(year, month, 1)));
+ 
+    }
+
+});
+
+
+$("#txt1").focus(function () {
+  $(".ui-datepicker-calendar").hide();
+  $("#ui-datepicker-div").position({
+    my: "center top",
+    at: "center bottom",
+    of: $(this)
+  });
+});
+
+     
+
+       $(function () {
+        $("#Loc").click(function () {
+    //    alert('12121');
+          var txtVal = $("#txt1").val();
+            
+            window.location = "@Url.Action("Index2", "DanhSachDieuChinhTangGiam")" +"?BD=" + txtVal;
+
+       
+        });
+        });
+
+    // remove bg
+    $("#txt1").css("background-color", "transparent").css("border", "0").css("border-bottom", "1px dotted");
+    $("#txt2").css("background-color", "transparent").css("border", "0").css("border-bottom", "1px dotted");
+
+</script>
+<style type="text/css">
+    #panel
+    {
+        text-align: left;
+    }
+    
+    
+    #tabs
+    {
+        text-align: left;
+    }
+    
+    #tabs, #edit, #delete, #confirm, #nvQT
+    {
+        display: none;
+    }
+    input#txt1
+    {
+        width: 100px;
+    }
+    input#txt2
+    {
+        width: 100px;
+    }
+    form
+    {
+        width: auto;
+    }
+    input
+    {
+        width: auto;
+        font-weight: bold;
+    }
+    span
+    {
+        display: inline-block;
+        white-space: nowrap;
+    }
+    label
+    {
+        display: inline;
+        color: gray;
+        font-size: 1.1em;
+    }
+    .dataTables_wrapper tbody tr:hover {
+    background-color: #FFFF00!important;
+    cursor: pointer;
+    * cursor: hand;
+    
+}
+
+.DataTables_sort_icon { display:none;}
+</style>
+@*.dataTables_wrapper { font-size: 10px }
+.dataTables_wrapper { height: 10px; }*@

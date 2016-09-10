@@ -1,0 +1,56 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Edit";
+    var action = "CTDoanThe";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from dsCTDoanThe where NV_id=@p0", Model);
+}
+
+<table id="ctDoanTheTruoc" class="table table-hover table-bordered" style="margin:0">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTTNhanSu/"+action+"/EditP?NV_id=" + Model)
+        </th>
+        <th style="text-align:center" colspan=2>Thời gian</th>
+        <th>Tên tổ chức</th>
+        <th>Chức vụ</th>
+        <th>Ghi chú</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            @Html.Editor4U("~/QLTTNhanSu/"+action+"/EditP?id=" + dr["id"])
+            @Html.Editor4D("~/QLTTNhanSu/"+action+"/DeleteS?id=" + dr["id"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayBatDau"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayKetThuc"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["DonVi"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["tenChucVuDoanThe"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["GhiChu"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#ctDoanTheTruoc").find("th,td").attr("nowrap", true);
+    });
+</script>

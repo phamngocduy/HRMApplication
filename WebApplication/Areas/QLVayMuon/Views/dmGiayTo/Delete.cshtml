@@ -1,0 +1,26 @@
+﻿@model HRM.QLVayMuon.Models.dmGiayTo
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+}
+<h3>
+    Bạn có chắc muốn xoá Giấy tờ vay mượn này?</h3>
+<fieldset>
+    <legend>dmGiayTo</legend>
+    <div class="display-label">
+        @Html.VN("Tên giấy tờ:")
+        <b>@Html.DisplayFor(model => model.TenGiayTo)</b>
+    </div>
+    <div class="display-label">
+        @*Html.VN("Thuộc mục đích:")
+        <b>@Html.DisplayFor(model => model.MucDichSuDung.TenMucDich)</b>*@
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Xoá" />
+        |
+        @Html.ActionLink("Trở về màn hình Danh sách Giấy tờ", "Index")
+    </p>
+}

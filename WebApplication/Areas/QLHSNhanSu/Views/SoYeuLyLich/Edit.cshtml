@@ -1,0 +1,331 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Edit";
+    var action = "SoYeuLyLich";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from dsSoYeuLyLich where NV_id=@p0", Model);
+    while (dt.Rows.Count == 0)
+    {
+        db.SqlQuery("insert into nvSoYeuLyLich(NV_id) values(@p0)", Model);
+        dt = db.SqlQuery("select * from dsSoYeuLyLich where NV_id=@p0", Model);
+    }
+    var dr = dt.Rows[0];
+    
+    var GioiTinh = "GioiTinh_id";
+    var DanToc = "DanToc_id";
+    var TonGiao = "TonGiao_id";
+    var QuocTich = "QuocTich_id";
+    var NgachVienChuc = "NgachVienChuc_id";
+    var BacLuong = "BacLuong_id";
+    var GioiTinh_id = dr != null ? dr[GioiTinh] as int? : null;
+    var DanToc_id = dr != null ? dr[DanToc] as int? : null;
+    var TonGiao_id = dr != null ? dr[TonGiao] as int? : null;
+    var QuocTich_id = dr != null ? dr[QuocTich] as int? : null;
+    var NgachVienChuc_id = dr != null ? dr[NgachVienChuc] as int? : null;
+    var BacLuong_id = dr != null ? dr[BacLuong] as string : null;
+    var NhomNgach_id = NgachVienChuc_id.HasValue ? db.dmNgachVienChuc.Find(NgachVienChuc_id).nhomNgachVienChuc : 0;
+    
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm("Update", action))
+{
+    var count = 1;
+    @Html.Hidden("id", dr["id"])
+    @Html.Hidden("nid", dr["id"])
+<div id="@rand" style="overflow-x:auto">
+    <label>Mã hồ sơ:</label>
+    @Html.Editor(dr, dt.Columns["MaHS"])
+    <label>Mã nhân viên:</label>
+    @Html.Editor(dr, dt.Columns["MaNV"])
+    <br />
+    <label>@(count++)) Họ và tên khai sinh:</label>
+    @Html.Editor(dr, dt.Columns["HoVaTen"])
+    <label>@(count++)) Tên gọi khác:</label>
+    @Html.Editor(dr, dt.Columns["TenGoiKhac"])
+    <br />
+    <label>@(count++)) Giới tính:</label>
+    @Html.DropDownList(GioiTinh, new SelectList(db.dmGioiTinh, "id", "tenGioiTinh", GioiTinh_id), String.Empty)
+    <label>@(count++)) Sinh ngày:</label>
+    @Html.Editor(dr, dt.Columns["NgaySinh"])
+    <br />
+    <label>@(count++)) Nơi sinh:</label>
+    <span id="NoiSinh_id" style="@(dr["NoiSinhKhac"] is DBNull ? null : "display:none")">
+    @{  ViewBag.TinhThanh_id = dr[ViewBag.TinhThanh = "NoiSinh_TinhThanh_id"];
+        ViewBag.QuanHuyen_id = dr[ViewBag.QuanHuyen = "NoiSinh_QuanHuyen_id"];
+        ViewBag.PhuongXa_id = dr[ViewBag.PhuongXa = "NoiSinh_PhuongXa_id"]; }
+        <span id="DiaPhuong">@Html.Partial("DiaPhuong")</span>
+    </span>
+    <span id="NoiSinhKhac" style="@(dr["NoiSinhKhac"] is DBNull ? "display:none" : null)">
+        @Html.Editor(dr, dt.Columns["NoiSinhKhac"])
+    </span>
+    @Html.CheckBox("ChonNoiSinhKhac", !(dr["NoiSinhKhac"] is DBNull), new { id = "ChonNoiSinhKhac" })<label>Khác</label>
+    <br />
+    <label>@(count++)) Quê quán:</label>
+    <span id="QueQuan_id" style="@(dr["QueQuanKhac"] is DBNull ? null : "display:none")">
+    @{  ViewBag.TinhThanh_id = dr[ViewBag.TinhThanh = "QueQuan_TinhThanh_id"];
+        ViewBag.QuanHuyen_id = dr[ViewBag.QuanHuyen = "QueQuan_QuanHuyen_id"];
+        ViewBag.PhuongXa_id = dr[ViewBag.PhuongXa = "QueQuan_PhuongXa_id"]; }
+        <span id="DiaPhuong">@Html.Partial("DiaPhuong")</span>
+    </span>
+    <span id="QueQuanKhac" style="@(dr["QueQuanKhac"] is DBNull ? "display:none" : null)">
+        @Html.Editor(dr, dt.Columns["QueQuanKhac"])
+    </span>
+    @Html.CheckBox("ChonQueQuanKhac", !(dr["QueQuanKhac"] is DBNull), new { id = "ChonQueQuanKhac" })<label>Khác</label>
+    <br />
+    <label>@(count++)) Dân tộc:</label>
+    @Html.DropDownList(DanToc, new SelectList(db.dmDanToc, "id", "tenDanToc", DanToc_id), String.Empty)
+    <label>@(count++)) Tôn giáo:</label>
+    @Html.DropDownList(TonGiao, new SelectList(db.dmTonGiao, "id", "tenTonGiao", TonGiao_id), String.Empty)
+    <br />
+    <label>@(count++)) Quốc tịch:</label>
+    @Html.DropDownList(QuocTich, new SelectList(db.dmQuocGia, "id", "tenQuocGia", QuocTich_id), String.Empty)
+    <br />
+    <label>@(count++)) Số chứng minh nhân dân:</label>
+    @{ ViewBag.Column = dt.Columns["ChungMinhNhanDan_id"]; }
+    @Html.Partial("TheDinhDanh", dr[ViewData["Column"] as DataColumn])
+    <br />
+    <label>@(count++)) Nơi đăng ký hộ khẩu thường trú:</label>
+    @{ ViewBag.Column = dt.Columns["HoKhauThuongTru_id"]; }
+    @Html.Partial("DiaChiNha", dr[ViewData["Column"] as DataColumn])
+    <br />
+    <label>@(count++)) Nơi ở hiện nay:</label>
+    @{ ViewBag.Column = dt.Columns["NoiOHienNay_id"]; }
+    @Html.Partial("DiaChiNha", dr[ViewData["Column"] as DataColumn])
+    <br />
+    <label>@(count++)) Nghề nghiệp khi được tuyển dụng:</label>
+    @Html.Editor(dr, dt.Columns["NgheNghiep"])
+    <br />
+    <label>@(count++)) Ngày tuyển dụng:</label>
+    @Html.Editor(dr, dt.Columns["NgayTuyenDung"])
+    <label>Cơ quan tuyển dụng:</label>
+    @Html.Editor(dr, dt.Columns["CoQuanTuyenDung"])
+    <br />
+    <label>@(count++)) Chức danh/chức vụ hiện tại:</label>
+    <span><b>@dr["tenChucDanhChuyenMon"]</b></span>
+    <br />
+    <label>@(count++)) Công việc chính được giao:</label>
+    @Html.Editor(dr, dt.Columns["CongViecDuocGiao"])
+    <br />
+    <label>@(count++)) Ngạch công chức/viên chức:</label>
+    @Html.DropDownList(NgachVienChuc, new SelectList(db.dmNgachVienChuc, "id", "tenNgachVienChuc", NgachVienChuc_id), String.Empty)
+    <label>Mã ngạch:</label>
+    @Html.Editor(dr, dt.Columns["MaNgachVienChuc"])
+    <br />
+    <label>Bậc lương:</label>
+    @Html.DropDownList(BacLuong, new SelectList(db.dmBangLuong.Where(bl => bl.idNhomNgach == NhomNgach_id).OrderBy(bl => bl.bacLuong), "bacLuong", "bacLuong", BacLuong_id), String.Empty)
+    <label>hệ số:</label>
+    @Html.Editor(dr, dt.Columns["HeSoLuong"])
+    <label>Ngày hưởng:</label>
+    @Html.Editor(dr, dt.Columns["NgayHuongLuong"])
+    <br />
+    <label>Phụ cấp chức vụ:</label>
+    @Html.Editor(dr, dt.Columns["PhuCapChucVu"])
+    <label>Phụ cấp khác:</label>
+    @Html.Editor(dr, dt.Columns["PhuCapKhac"])
+@{
+    var sub = 1;
+    var HocVi = "HocVi_id";
+    var HocHam = "HocHam_id";
+    var TrinhDoPhoThong = "TrinhDoHocVan_id";
+    var TrinhDoLyLuan = "LyLuanChinhTri_id";
+    var TrinhDoNgoaiNgu = "TrinhDoNgoaiNgu_id";
+    var TrinhDoTinHoc = "TrinhDoTinHoc_id";
+    var QuanHamCaoNhat = "QuanHamCaoNhat_id";
+    var DanhHieuCaoNhat = "DanhHieuCaoNhat_id";
+    var LaThuongBinhHang = "LaThuongBinhHang_id";
+    var GiaDinhChinhSach = "GiaDinhChinhSach_id";
+    var ChucDanhGiangVien = "ChucDanhGiangVien_id";
+}
+    <br />
+    <label>@(count).@(sub++)-Trình độ giáo dục phổ thông:</label>
+    @Html.DropDownList(TrinhDoPhoThong, new SelectList(db.dmTrinhDoHocVan, "id", "tenTrinhDoHocVan", dr[TrinhDoPhoThong]), String.Empty)
+    <br />
+    <label>@(count).@(sub++)-Trình độ chuyên môn cao nhất:</label>
+    <span><b>@dr["tenTrinhDo"]</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <label>Học vị:</label>
+    <span><b>@dr["tenHocVi"]</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>Chức danh giảng viên:</label>
+    <span><b>@dr["tenChucDanhGiangVien"]</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <label>Học hàm:</label>
+    <span><b>@dr["tenHocHam"]</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <br />
+    <label>@(count).@(sub++)-Lý luận chính trị:</label>
+    @Html.DropDownList(TrinhDoLyLuan, new SelectList(db.dmTrinhDoChinhTri, "id", "tenTrinhDoChinhTri", dr[TrinhDoLyLuan]), String.Empty)
+    <br />
+    <label>@(count).@(sub++)-Ngoại ngữ:</label>
+    @Html.DropDownList(TrinhDoNgoaiNgu, new SelectList(db.dmTrinhDoNgoaiNgu, "id", "tenTrinhDoNgoaiNgu", dr[TrinhDoNgoaiNgu]), String.Empty)
+    @Html.Editor(dr, dt.Columns["TrinhDoNgoaiNgu"])
+    <br />
+    <label>@(count++).@(sub++)-Tin học:</label>
+    @Html.DropDownList(TrinhDoTinHoc, new SelectList(db.dmTrinhDoTinHoc, "id", "tenTrinhDoTinHoc", dr[TrinhDoTinHoc]), String.Empty)
+    @Html.Editor(dr, dt.Columns["TrinhDoTinHoc"])
+    <br />
+    <label>@(count++)) Ngày vào Đảng cộng sản Việt Nam:</label>
+    @Html.Editor(dr, dt.Columns["NgayVaoDang"])
+    <label>Ngày chính thức:</label>
+    @Html.Editor(dr, dt.Columns["NgayVaoDangChinhThuc"])
+    <br />
+    <label>@(count++)) Tham gia tổ chức chính trị-xã hội:</label>
+    @Html.Editor(dr, dt.Columns["HoatDongDoanHoi"])
+    <br />
+    <label>@(count++)) Ngày nhập ngũ:</label>
+    @Html.Editor(dr, dt.Columns["NgayNhapNgu"])
+    <label>Ngày xuất ngũ:</label>
+    @Html.Editor(dr, dt.Columns["NgayXuatNgu"])
+    <label>Quân hàm cao nhất:</label>
+    @Html.DropDownList(QuanHamCaoNhat, new SelectList(db.dmQuanHamQuanDoi, "id", "tenQuanHamQuanDoi", dr[QuanHamCaoNhat]), String.Empty)
+    <br />
+    <label>@(count++)) Danh hiệu được phong tặng cao nhất:</label>
+    @Html.DropDownList(DanhHieuCaoNhat, new SelectList(db.dmDanhHieuPhongTang, "id", "tenDanhHieuPhongTang", dr[DanhHieuCaoNhat]), String.Empty)
+    <br />
+    <label>@(count++)) Tình trạng sức khỏe:</label>
+    @Html.Editor(dr, dt.Columns["TinhTrangSucKhoe"])
+    <label>Chiều cao:</label>
+    @Html.Editor(dr, dt.Columns["ChieuCao"])<span>(cm)</span>
+    <label>Cân nặng:</label>
+    @Html.Editor(dr, dt.Columns["CanNang"])<span>(kg)</span>
+    <br />
+    <label>@(count++)) Là thương binh hạng:</label>
+    @Html.DropDownList(LaThuongBinhHang, new SelectList(db.dmHangThuongBinh, "id", "tenHangThuongBinh", dr[LaThuongBinhHang]), String.Empty)
+    <label>Là con gia đình chính sách:</label>
+    @Html.DropDownList(GiaDinhChinhSach, new SelectList(db.dmGiaDinhChinhSach, "id", "tenGiaDinhChinhSach", dr[GiaDinhChinhSach]), String.Empty)
+    <br />
+    <label>@(count++)) Số sổ bảo hiểm xã hội:</label>
+    @Html.Editor(dr, dt.Columns["ssBaoHiemXaHoi"])
+    <label>Mã số thuế:</label>
+    @Html.Editor(dr, dt.Columns["MaST"])
+    <br />
+    @Html.Editor(dr, dt.Columns["DaNghiHuu"])
+    <label>Đã nghỉ hưu</label>
+    <br />
+    <label>Ngày nghỉ việc:</label>
+    @Html.Editor(dr, dt.Columns["ngayNghiViec"])
+    <label>Số QĐ nghỉ việc (hay số TB không ký HĐLĐ):</label>
+    @Html.Editor(dr, dt.Columns["qtlvSoQDNghiViec"])
+    
+    <p style="text-align:center">
+        <input type="submit" value="Cập nhật" />
+        @Html.ActionLink("QUÁ TRÌNH HỌC TẬP", "Details/"+Model, "HSNhanSu", new { Tab = "QTHocTap" }, new { id = "Next" })
+    </p>
+</div>
+}    
+    
+<div id="TheDinhDanh" style="padding:0">
+<h3 style="margin:0">Giấy tờ tùy thân</h3>
+<div style="padding:0">
+@Html.Action("IndexP", "TheDinhDanh", new { NV_id = Model })
+</div>
+</div>
+
+<style>
+input { width: auto; font-weight: bold }
+span { display: inline-block; white-space: nowrap }
+label { display: inline; color: gray; font-size: 1.1em }
+</style>
+
+<script>
+    $(function () {
+        var form = $("#@rand");
+        form.find("select").not(".readonly").combobox().change(function() {
+            var that = $(this);
+            setTimeout(function () { that.next().find("input").focus().trigger("input"); }, 0);
+        });
+        form.find(".custom-combobox-input").prop("type", "text")
+        .removeClass("ui-state-default").removeClass("ui-widget-content").removeClass("ui-corner-left");
+        form.find(".custom-combobox-toggle").removeClass("ui-state-default");
+        form.find("input[type=text]").on("input", function () {
+            $(this).attr("size", Math.max($(this).val().length, 10));
+        }).each(function () {
+            $(this).attr("size", Math.max($(this).val().length, 10));
+        });
+        form.find(".custom-combobox-input,.ui-button-text,.readonly").css("margin", "5px 0 6px 0");
+        form.find("input[type=text],input[type=number],.custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+
+        form.find("[type=date]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        }).prop("type", "text").attr("size", 10);
+
+        form.find("#DiaPhuong").each(function () {
+            var span = $(this);
+            var PhuongXa = span.find("[id$=PhuongXa_id]").combobox();
+            var QuanHuyen = span.find("[id$=QuanHuyen_id]").combobox();
+            var TinhThanh = span.find("[id$=TinhThanh_id]").combobox();
+            TinhThanh.change(function () {
+                //setTimeout(function () { TinhThanh.next().find("input").focus().trigger("input"); }, 0);
+                var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/QuanHuyen/List?idTinhThanh=";
+                QuanHuyen.trigger("connect", [link + $(this).val(), PhuongXa.empty()]);
+            });
+            QuanHuyen.change(function () {
+                //setTimeout(function () { QuanHuyen.next().find("input").focus().trigger("input"); }, 0);
+                var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/PhuongXa/List?idQuanHuyen=";
+                PhuongXa.trigger("connect", link + $(this).val());
+            });
+            //PhuongXa.change(function () { setTimeout(function () { PhuongXa.next().find("input").focus().trigger("input"); }, 0); });
+        });
+
+        form.find("#NgachVienChuc_id").combobox().change(function () {
+            var that = $(this);
+            var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/BangLuong/maNgach?idNgach=";
+            $.ajax(link + that.val()).done(function (data) {
+                form.find("#MaNgachVienChuc").val(data).trigger("input");
+                link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/BangLuong/idNhomNgach?idNgach=";
+                $.ajax(link + that.val()).done(function (data) {
+                    idNhomNgach = data;
+                    link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/BangLuong/dsBacLuong?idNhomNgach=";
+                    form.find("#BacLuong_id").combobox().trigger("connect", link + data);
+                    form.find("#HeSoLuong").val("");
+                });
+            });
+            //setTimeout(function () { that.next().find("input").focus().trigger("input"); }, 0);
+        });
+        var idNhomNgach = @NhomNgach_id;
+        form.find("#BacLuong_id").combobox().change(function () {
+            var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/BangLuong/HeSoLuong";
+            $.ajax(link + "?idNhomNgach=" + idNhomNgach + "&bacLuong=" + $(this).val())
+             .done(function (data) {
+                form.find("#HeSoLuong").val(data).trigger("input");
+            });
+        });
+        $("#ChieuCao,#CanNang").css("width", "50");
+
+        $("#TheDinhDanh").accordion({
+            active: @TempData["Nat"],
+            collapsible: true,
+            heightStyle: "content"
+        });
+        $("#Next").button();
+
+        form.find("input#ChonNoiSinhKhac").change(function() {
+            if (this.checked) {
+                form.find("span#NoiSinh_id").hide();
+                form.find("span#NoiSinhKhac").show();
+            } else {
+                form.find("span#NoiSinh_id").show();
+                form.find("span#NoiSinhKhac").hide();
+            }
+        });
+        form.find("input#ChonQueQuanKhac").change(function() {
+            if (this.checked) {
+                form.find("span#QueQuan_id").hide();
+                form.find("span#QueQuanKhac").show();
+            } else {
+                form.find("span#QueQuan_id").show();
+                form.find("span#QueQuanKhac").hide();
+            }
+        });
+        form.find("select#HocVi_id").combobox().change(function() {
+            var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/HocVi/tenTrinhDo";
+            $.ajax(link + "?idHocVi=" + $(this).val())
+             .done(function (data) {
+                form.find("#TrinhDoChuyenMonCaoNhat").find("b").text(data);
+            });
+        });
+    });
+</script>

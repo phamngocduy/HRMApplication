@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@*
+<strong>
+@Html.ActionLink("Theo dõi học tập", "Index", "nvQTHocTap", null, new { target = "_blank" })
+@Html.ActionLink("Theo dõi tập sự", "Index", "QLTapSu", null, new { target = "_blank" })
+@Html.ActionLink("Theo dõi thử việc", "Index", "QLThuViec", null, new { target = "_blank" })
+</strong>
+*@
+@Html.Action("IndexP", "NhanVien", new { NV_id = 0 })

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C035C45-06D6-4322-8E73-4B4DC21A57F3}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRM.Extension</RootNamespace>
+    <AssemblyName>HRM.Extension</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="ExtensionAreaRegistration.cs" />
+    <Compile Include="Models\ChungChi.cs" />
+    <Compile Include="Models\DiaPhuong.cs" />
+    <Compile Include="Models\dsDiaChiNha.cs" />
+    <Compile Include="Models\dsNhanVien.cs" />
+    <Compile Include="Models\dsQHGiaDinh.cs" />
+    <Compile Include="Models\dsSoYeuLyLich.cs" />
+    <Compile Include="Models\dsTheDinhDanh.cs" />
+    <Compile Include="Models\gvDuLieuGioGiang.cs" />
+    <Compile Include="Models\hrmTTNS0Context.cs" />
+    <Compile Include="Models\Mapping\ChungChiMap.cs" />
+    <Compile Include="Models\Mapping\DiaPhuongMap.cs" />
+    <Compile Include="Models\Mapping\dsDiaChiNhaMap.cs" />
+    <Compile Include="Models\Mapping\dsNhanVienMap.cs" />
+    <Compile Include="Models\Mapping\dsQHGiaDinhMap.cs" />
+    <Compile Include="Models\Mapping\dsSoYeuLyLichMap.cs" />
+    <Compile Include="Models\Mapping\dsTheDinhDanhMap.cs" />
+    <Compile Include="Models\Mapping\gvDuLieuGioGiangMap.cs" />
+    <Compile Include="Models\Mapping\MessageMap.cs" />
+    <Compile Include="Models\Mapping\NhanVienMap.cs" />
+    <Compile Include="Models\Mapping\nvBangCapMap.cs" />
+    <Compile Include="Models\Mapping\nvDiaChiNhaMap.cs" />
+    <Compile Include="Models\Mapping\nvQHGiaDinhMap.cs" />
+    <Compile Include="Models\Mapping\nvSoYeuLyLichMap.cs" />
+    <Compile Include="Models\Mapping\nvTheDinhDanhMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\nvBangCap.cs" />
+    <Compile Include="Models\nvDiaChiNha.cs" />
+    <Compile Include="Models\nvQHGiaDinh.cs" />
+    <Compile Include="Models\nvSoYeuLyLich.cs" />
+    <Compile Include="Models\nvTheDinhDanh.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ExtensionServices.cs" />
+    <Compile Include="Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Shared\Extension.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QLDanhMuc.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Message\Details.cshtml" />
+    <Content Include="Views\Message\Compose.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\HRMDatabase0\HRM.Database0.csproj">
+      <Project>{031B469B-D44B-443B-82B5-5FDC2007DA74}</Project>
+      <Name>HRM.Database0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HRMDatabase\HRM.Database.csproj">
+      <Project>{296709F4-3808-449B-8E36-4112D2D257F6}</Project>
+      <Name>HRM.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HRMLibraries\HRM.Libraries.csproj">
+      <Project>{FC3A6018-C728-4404-8F25-F11DA5AC897C}</Project>
+      <Name>HRM.Libraries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HRMServices\HRM.Services.csproj">
+      <Project>{F2E53305-292E-44BD-B334-006DCA6B7307}</Project>
+      <Name>HRM.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50936</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>rmdir /q/s $(ProjectDir)\Bin</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

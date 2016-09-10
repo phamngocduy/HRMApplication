@@ -1,0 +1,46 @@
+﻿@model HRM.QLBHXH.Models.dmLoaiTangGiam
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa loại tăng giảm</h2>
+
+<h3>Bạn có chắc chắn xóa?</h3>
+<fieldset>
+    <legend>dmLoaiTangGiam</legend>
+
+    <div class="display-label">
+         Mã
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ma)
+    </div>
+
+    <div class="display-label">
+         Loại tăng giảm
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoaiTangGiam)
+    </div>
+
+    <div class="display-label">
+         Ghu chú
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.STT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.STT)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

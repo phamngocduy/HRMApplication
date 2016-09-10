@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<b style="font-size:larger;margin-left:35%">
+    Chọn trường cần xuất excel
+</b>
+<p>
+    @Html.ActionLink("Quay lại","Index","TuyenDung")
+</p>
+<hr />
+@using (Html.BeginForm("XuatExcel", "ChonTruongXuatExcel"))
+{
+    TempData["tdXuatExcel"] = ViewBag.tdXuatExcel;
+    <p>
+        <input type="checkbox" id="XuatTatCa" name="XuatTatCa" onclick="validate()" title="Chọn trường cần xuất"/> Xuất tất cả
+        <input type="checkbox" id="DiaChiLienLac" name="DiaChiLienLac" title="Chọn trường cần xuất" style="margin-left:280px"/> Địa chỉ liên lạc
+        
+    </p>
+    <p>
+        <input type="checkbox" id="HoTenUngVien" name="HoTenUngVien" title="Chọn trường cần xuất"/> Họ và tên ứng viên
+        <input type="checkbox" id="BangCap" name="BangCap" title="Chọn trường cần xuất" style="margin-left:230px"/> Bằng cấp
+    </p>
+    <p>
+        <input type="checkbox" id="GioiTinh" name="GioiTinh" title="Chọn trường cần xuất"/> Giới tính
+        <input type="checkbox" id="VtUngTuyen" name="ViTriUngTuyen" title="Chọn trường cần xuất" style="margin-left:295px"/> Vị trí ứng tuyển
+    </p>
+    <p>
+        <input type="checkbox" id="NgaySinh" name="NgaySinh" title="Chọn trường cần xuất"/> Ngày sinh
+        <input type="checkbox" id="DonViUngTuyen" name="DonViUngTuyen" title="Chọn trường cần xuất" style="margin-left:287px"/> Đơn vị ứng tuyển
+    </p>
+    <p>
+        <input type="checkbox" id="NoiSinh" name="NoiSinh" title="Chọn trường cần xuất"/> Nơi sinh
+        <input type="checkbox" id="KinhNghiemLamViec" name="KinhNghiemLamViec" title="Chọn trường cần xuất" style="margin-left:298px"/> Kinh nghiệm làm việc
+    </p>
+    <p>
+        <input type="checkbox" id="SoTheDinhDanh" name="SoTheDinhDanh" title="Chọn trường cần xuất" /> Số thẻ định danh
+        <input type="checkbox" id="KetQuaTuyenDung" name="KetQuaTuyenDung" title="Chọn trường cần xuất" style="margin-left:243px"/> Kết quả tuyển dụng
+    </p>
+    <p>
+        <input type="checkbox" id="DienThoai" name="DienThoai" title="Chọn trường cần xuất" /> Điện thoại
+        <input type="checkbox" id="NhanXet" name="NhanXet" title="Chọn trường cần xuất" style="margin-left:285px"/> Nhận xét
+    </p>
+    <p>
+        <input type="checkbox" id="Email" name="Email" title="Chọn trường cần xuất" /> Email
+        
+    </p>  
+    <hr />
+    <p style="margin-left:380px">
+        <input id="btnXuat" type="submit" value="Xuất excel"/>
+    </p>
+}
+<script type=text/javascript>
+    function validate() {
+        if (XuatTatCa.checked == 1) {
+            HoTenUngVien.checked = true
+            GioiTinh.checked = true
+            NgaySinh.checked = true
+            NoiSinh.checked = true
+            SoTheDinhDanh.checked = true
+            DienThoai.checked = true
+            Email.checked = true
+            DiaChiLienLac.checked = true
+            BangCap.checked = true
+            VtUngTuyen.checked = true
+            DonViUngTuyen.checked = true
+            KinhNghiemLamViec.checked = true
+            KetQuaTuyenDung.checked = true
+            NhanXet.checked = true
+        } else {
+            HoTenUngVien.checked = false
+            GioiTinh.checked = false
+            NgaySinh.checked = false
+            NoiSinh.checked = false
+            SoTheDinhDanh.checked = false
+            DienThoai.checked = false
+            Email.checked = false
+            DiaChiLienLac.checked = false
+            BangCap.checked = false
+            VtUngTuyen.checked = false
+            DonViUngTuyen.checked = false
+            KinhNghiemLamViec.checked = false
+            KetQuaTuyenDung.checked = false
+            NhanXet.checked = false
+        }
+    }
+</script>

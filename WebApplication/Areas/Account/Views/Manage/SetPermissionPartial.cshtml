@@ -1,0 +1,109 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Webpages.Models.Trirand
+@model HRM.Accounts.Models.SetPermissionModel
+
+@if ("SetPermission".Equals(ViewContext.RouteData.Values["Action"])) {
+    @Html.StatusMessage(ViewData["Message"])
+    @Html.LocationAnchor("tabsEditUserPermission")
+}
+
+@using (Html.BeginForm("SetPermission", "Manage", FormMethod.Post, new { id = "setPermissionForm" })) {
+@Html.ValidationMessage("SetPermission")
+<table align="center">
+    <tr>
+        <td>
+            <table id="listRoles"></table>
+            <div id="listRolesPager"></div>
+        </td>
+        <td valign="top">
+            @Html.Hidden("gridId")
+            @Html.Hidden("gridIds", ViewData["GridIds"])
+            @Html.HiddenFor(m => m.UserId)
+            @Html.HiddenFor(m => m.Permissions)
+            <div><mark id="userName">@ViewBag.UserName</mark></div>
+            <input id="setPermission" type="submit" value="Set permissions" disabled />
+        </td>
+    </tr>
+</table>
+}
+
+@{
+    var listRoles = new Grid()
+    {
+        Caption = "List of all Roles",
+        Columns = new Column[] {
+        new Column("Id") { Name="RoleId", Sortable=false, Hidden=true },
+        new Column("Role name") { Name="RoleName", Align=Alignment.Left, Width=200, Sortable=true }},
+        Width = 300,
+        Height = "100%",
+        Pager = "listRolesPager",
+        MultiSelect = true,
+        onSelectRow = "onSelectRow1Roles",
+        loadComplete = "loadComplete1Roles",
+        navGrid = new Navigator("listRolesPager")
+    };
+}
+
+<script>
+var UserId = 0;
+var Permissions = "";
+var ListRoles = $("#listRoles");
+var BtnSetPermission = $("#setPermission");
+var FrmSetPermission = $("#setPermissionForm");
+
+var TxtGridId = FrmSetPermission.find("#gridId");
+var TxtGridIds = FrmSetPermission.find("#gridIds");
+var TxtUserId = FrmSetPermission.find("#UserId");
+var TxtUserName = FrmSetPermission.find("#userName");
+var TxtPermissions = FrmSetPermission.find("#Permissions");
+
+function onSelectRow1Roles(row) {
+    var rows = ListRoles.getGridParam("selarrrow");
+    if (rows.length) {
+        rows = rows.toString().split(',');
+        for (id = 0; id < rows.length; id++)
+            if (rows[id] == 1) {
+                rows = [1];
+                ListRoles.resetSelection();
+                ListRoles.setSelection(1, false);
+            }
+        Permissions = "";
+        for (id = 0; id < rows.length; id++)
+            Permissions += ListRoles.getRowData(rows[id])["RoleId"] + " ";
+    } else Permissions = "";
+    TxtPermissions.val(Permissions);
+    TxtGridIds.val(ListRoles.getGridParam("selarrrow"));
+    BtnSetPermission.button("option", "disabled", false||UserId<2);
+}
+var gridIds = "@ViewData["GridIds"]";
+function loadComplete1Roles() {
+    if (gridIds) {
+        gridIds = gridIds.toString().split(",");
+        for (id=0; id<gridIds.length; id++)
+            ListRoles.setSelection(gridIds[id], false);
+        gridIds = undefined;
+    }
+    BtnSetPermission.button("option", "disabled", true);
+}
+function setPermissions(gridId, userId, userName, permissions) {
+    UserId = userId;
+    ListRoles.resetSelection();
+    if (userId == 1)
+        ListRoles.block({ message: "Cannot edit the first Admin." });
+    else ListRoles.unblock();
+    if (permissions) {
+        permissions = permissions.toString().split(" ");
+        var count = ListRoles.getGridParam("records");
+        for (id = 1; id <= count; id++)
+            for (i = 0; i < permissions.length; i++)
+                if (ListRoles.getRowData(id)["RoleId"] == permissions[i])
+                    ListRoles.setSelection(id, false);
+    }
+    TxtGridId.val(gridId);
+    TxtUserId.val(userId);
+    TxtUserName.text(userName);
+    if (BtnSetPermission.data("ui-button"))
+        BtnSetPermission.button("option", "disabled", true);
+}
+</script>
+@Html.jqGrid("listRoles", listRoles, HttpRuntime.AppDomainAppVirtualPath + "/Manage/ListPermissions")

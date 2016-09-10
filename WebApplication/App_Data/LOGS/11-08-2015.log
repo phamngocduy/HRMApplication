@@ -1,0 +1,65 @@
+INFO 02:26:37 – Home/Index
+INFO 02:26:39 – Login/Index
+INFO 02:26:49 – Login/Index
+INFO 02:26:49 – Home/Index
+INFO 02:27:03 – TinhCong/CongThuc2
+INFO 02:28:12 – TinhCong/CongThuc2
+INFO 02:29:00 – TinhCong/CongThuc2
+INFO 02:32:42 – TinhCong/Details&NV_id=706
+INFO 02:33:11 – TinhCong/Details&NV_id=668
+INFO 02:34:07 – TinhCong/Details&NV_id=55
+INFO 02:34:26 – TinhCong/Details&NV_id=197
+INFO 02:35:58 – TinhCong/Details&NV_id=85
+INFO 02:38:30 – TinhCong/Details&NV_id=668
+INFO 02:44:27 – TinhCong/CongThuc2
+INFO 02:52:30 – TinhCong/Details&NV_id=60
+INFO 02:52:54 – TinhCong/Details&NV_id=16
+INFO 02:54:21 – TinhCong/CongThuc2
+INFO 02:55:06 – TinhCong/CongThuc2
+INFO 02:58:13 – TinhCong/CongThuc2
+ERROR02:58:14 – String reference not set to an instance of a String.
+Parameter name: s
+/controller=TinhCong/action=CongThuc2
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at ASP._Page_Views_TinhCong_CongThuc2_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\CongThuc2.cshtml:line 37
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:00:17 – TinhCong/CongThuc2
+INFO 03:00:25 – TinhCong/Details&NV_id=60
+INFO 03:03:40 – TinhCong/Details&NV_id=60
+INFO 03:04:20 – TinhCong/Details&NV_id=60
+INFO 03:04:28 – TinhCong/Details&NV_id=60
+INFO 03:04:40 – TinhCong/Details&NV_id=60
+INFO 03:05:45 – Home/Index
+INFO 03:05:46 – Login/Index
+INFO 03:06:14 – Login/Index
+INFO 03:06:15 – Home/Index
+INFO 03:06:18 – TinhCong/Details&NV_id=60
+INFO 03:08:26 – TinhCong/Details&NV_id=60
+INFO 03:08:52 – TinhCong/CongThuc2
+INFO 03:10:17 – TinhCong/Details&NV_id=47
+INFO 03:10:45 – TinhCong/Details&NV_id=47
+INFO 03:16:20 – TinhCong/CongThuc2
+INFO 03:20:34 – TinhCong/CongThuc2
+INFO 03:22:27 – TinhCong/Details&NV_id=466
+INFO 03:23:14 – TinhCong/Details&NV_id=47
+INFO 03:23:37 – TinhCong/Details&NV_id=422
+INFO 03:29:15 – TinhCong/Index

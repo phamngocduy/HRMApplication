@@ -1,0 +1,96 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model HRMDBEntities
+@{
+    var ngayTK = DateTime.Parse(Request.Form["NgayTK"] ?? DateTime.Now.ToShortDateString());
+    ViewBag.Title = "Nganh";
+    var table = Model.SqlQuery(String.Format(@"
+    declare @moc date = '{0}-{1}-{2}'
+    select nv.id, nv.MaNV, syll.HoVaTen, dmDonVi.maDonVi, dmDonVi.tenDonVi,
+    nganh.id idNganhGiangDay, nganh.maNganhGiangDay, nganh.tenNganhGiangDay,
+    khoa.id idKhoaGiangDay, khoa.maDonVi maKhoaGiangDay, khoa.tenDonVi tenKhoaGiangDay
+    from NhanVien nv
+    left join (
+        select nvQTLamViec.*, row_number() over (partition by NV_id order by ThoiGianBatDau desc) stt from nvQTLamViec
+        where ThoiGianBatDau <= @moc and (ThoiGianKetThuc > @moc or ThoiGianKetThuc is null)) lv on lv.NV_id = nv.id
+    left join nvSoYeuLyLich syll on syll.NV_id = nv.id
+    right join nvNganhGiangDay ngd on ngd.NV_id = nv.id
+    left join dmNganhGiangDay nganh on ngd.NganhGiangDay = nganh.id
+    left join dmDonVi khoa on ngd.KhoaGiangDay = khoa.id
+    left join dmDonVi on lv.DonVi_id = dmDonVi.id
+    where (nv.ngayNghiViec is null or nv.ngayNghiViec > @moc)
+    and isnull(lv.stt, 1) = 1 and ngd.ThoiGianBatDau <= @moc
+    and (ngd.ThoiGianKetThuc is null or ngd.ThoiGianKetThuc > @moc)",
+    ngayTK.Year, ngayTK.Month, ngayTK.Day));
+    var GVs = table.Rows.ToArray();
+    ViewBag.Random = new Random();
+    var rand = (ViewBag.Random as Random).Next();
+}
+@helper Mark(IEnumerable<DataRow> DS, string title) {
+    var rand = (ViewBag.Random as Random).Next();
+    if (DS.Count() > 0) {
+        title = "Giảng viên " + title;
+        <mark title="@String.Join(", ", DS.Select(r => r["HoVaTen"] as string).ToArray())">
+            <a href="#" onclick="$('#@rand').dialog({title:'@title',width:'auto'})">@DS.Count()</a>
+        </mark>
+        <div id="@rand" style="display:none">
+            <table>
+                <thead>
+                    <th>Họ tên</th>
+                    <th>Đơn vị</th>
+                </thead>
+                <tbody>
+                @foreach (var row in DS)
+                {
+                    <tr>
+                        <td>@row["HoVaTen"]</td>
+                        <td>@row["tenDonVi"]</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    } else { <span>0</span> }
+}
+
+@using (Html.BeginForm())
+{
+    <h2 style="display:inline">
+        Theo từng Ngành
+    </h2>
+    <input id="@rand" type="date" name="NgayTK" value="@ngayTK" />
+    <input type="submit" value="Thống kê" />
+}
+
+<table id="TK" border="1">
+    <thead>
+        <tr>
+            <th>Ngành giảng dạy</th>
+            <th>Số lượng giảng viên</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var nganh in Model.dmNganhGiangDay.OrderBy(n => n.stt))
+    {
+        var Nganhs = GVs.Where(r => r["idNganhGiangDay"].Equals(nganh.id));
+        <tr>
+            <td>@nganh.tenNganhGiangDay</td>
+            <td align="center">@Mark(Nganhs, nganh.tenNganhGiangDay)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<style>
+    table#TK td { border: 1px solid !important; padding: 0; }
+</style>
+<script>
+    $(function () {
+        $("#@rand").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        }).prop("type", "text").css("width", "80px");
+    });
+</script>

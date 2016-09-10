@@ -1,0 +1,236 @@
+﻿@using System.Data
+@using System.Collections;
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+
+@functions {
+    static int val(DateTime dt) { return dt.Month + dt.Year * 100; }
+    static int val(DateTime? dt) { return dt.HasValue ? val(dt.Value) : int.MaxValue; }
+    static int val(int month, int year) { return month + year * 100; }
+    static object isNull(object val, object def) { return val is DBNull ? def : val; }
+    static string ToShortDateString(object dt) { return dt is DateTime ? ((DateTime)dt).ToShortDateString() : "nay"; }
+}
+
+@helper dThamNien(double diem, int NV_id, int date) {
+    var dTN = Shared.GET(NV_id, "TN");
+    var dLV = Shared.GET(NV_id, "LV");
+    dLV[date] = diem;
+    var cach = "";
+    if (val(1, 1995) <= date && date <= val(12, 1999)) {
+        diem *= 1.2;
+        cach = "1995 - 2000: 1.2";
+    }
+    if (val(1, 2000) <= date && date <= val(12, 2005)) {
+        diem *= 1.15;
+        cach = "2001 - 2005: 1.15";
+    }
+    if (val(1, 2006) <= date && date <= val(12, 2010)) {
+        diem *= 1.1;
+        cach = "2006 - 2010: 1.1";
+    }
+    if (val(1, 2011) <= date && date <= val(12, 2015)) {
+        diem *= 1.0;
+        cach = "2011 - 2015: 1";
+    }
+    dTN[date] = diem;
+    <span title="@cach">@Math.Round(diem, 2)</span>
+}
+
+@helper dBoNhiem(List<List<Tuple<DataRow, double>>> BNs, List<DataRow> LVs, int NV_id, int date) {
+    var dBN = Shared.GET(NV_id, "BN");
+    var dKN = Shared.GET(NV_id, "KN");
+    var tenLV = new HashSet<DataRow>();
+    var tenKN = new HashSet<DataRow>();
+    var diemBN = 0.0; var diemKN = 0.0;
+    var cachBN = ""; var cachKN = new HashSet<string>();
+    for (int i=0; i<BNs.Count; i++) {
+        var bns = BNs[i].Where(bn => !bn.Item1["kiemNhiem"].ToString().StartsWith("KN"))
+            .Where(bn => !bn.Item1["maChucVu"].Equals("CT") && !bn.Item1["maChucVu"].Equals("PCT") && !bn.Item1["maChucVu"].Equals("UV")).ToList();
+        if (bns.Count() > 0)
+        {
+            bns.ForEach(bn => tenLV.Add(bn.Item1));
+            var result = hsViTri.TinhDiem(bns.Select(bn => bn.Item1["maChucVu"].ToString()));
+            diemBN += result.Item1; cachBN = result.Item2;
+        }
+        else if (LVs[i] != null) { // khong co bo nhiem
+            var lv = LVs[i]["maChucVu"] as string;
+            var result = hsViTri.TinhDiem(new string[] { lv });
+            diemBN += result.Item1; cachBN = result.Item2;
+            if (lv == "GV") {
+                diemBN += 1.2;
+                cachBN = "Giảng viên: 1.2";
+            }
+            else if (lv == "GV2") {
+                diemBN += 1.8;
+                cachBN = "Giảng viên: 1.8";
+            }
+            else if (lv == "NV") {
+                diemBN += 1.1;
+                cachBN = "Nhân viên: 1.1";
+            }
+            else if (lv == "NVPV") {
+                diemBN += 1;
+                cachBN = "Nhân viên phục vụ, bảo vệ (phòng Phục vụ học đường 1 và 2, trung tâm Hỗ trợ sinh viên): 1";
+            }
+            tenLV.Add(LVs[i]);
+        }
+        foreach (var kn in BNs[i].Where(bn => bn.Item1["kiemNhiem"].Equals("KN-PT2")))
+        {
+            diemKN += 1 * kn.Item2;
+            cachKN.Add("Kiêm nhiệm phụ trách đơn vị khác, điểm cộng thêm: 1");
+            tenKN.Add(kn.Item1);
+        }
+        foreach (var kn in BNs[i].Where(bn => bn.Item1["kiemNhiem"].Equals("KN-PT")))
+        {
+            diemKN += 0.5 * kn.Item2;
+            cachKN.Add("Kiêm nhiệm phụ trách đơn vị khác, điểm cộng thêm: 0.5");
+            tenKN.Add(kn.Item1);
+        }
+        foreach (var kn in BNs[i].Where(bn => bn.Item1["kiemNhiem"].Equals("KN-TBM")))
+        {
+            diemKN += 0.1 * kn.Item2;
+            cachKN.Add("Kiêm nhiệm Trưởng bộ môn, điểm cộng thêm: 0.1");
+            tenKN.Add(kn.Item1);
+        }
+        foreach (var kn in BNs[i].Where(bn => bn.Item1["maChucVu"].Equals("KN")))
+        {
+            diemKN += 0.2 * kn.Item2;
+            cachKN.Add("Kiêm nhiệm công tác đơn vị khác, điểm cộng thêm: 0.2");
+            tenKN.Add(kn.Item1);
+        }
+    }
+    diemBN = diemBN / BNs.Count;
+    dBN[date] = diemBN;
+    diemKN = diemKN / BNs.Count;
+    dKN[date] = diemKN;
+    var dsLV = String.Join("\n", tenLV.Select(lv => String.Format("{0}: {1} từ {2} đến {3}", lv["tenDonVi"], isNull(lv["tenChucVu"], lv["maChucVu"]), ToShortDateString(lv["ngayBatDau"]), ToShortDateString(lv["ngayKetThuc"]))));
+    var dsKN = String.Join("\n", tenKN.Select(lv => String.Format("{0}: {1} từ {2} đến {3}", lv["tenDonVi"], isNull(lv["tenChucVu"], lv["maChucVu"]), ToShortDateString(lv["ngayBatDau"]), ToShortDateString(lv["ngayKetThuc"]))));
+    <td><mark title="@dsLV">@String.Join(";", tenLV.Select(lv => lv["maChucVu"]))</mark></td>
+    <td><mark title="@String.Join("\n", cachBN)">@Math.Round(diemBN, 2)</mark></td>
+    <td><mark title="@dsKN">@String.Join(";", tenKN.Select(kn => kn["maChucVu"]))</mark></td>
+    <td><mark title="@String.Join("\n", cachKN)">@Math.Round(diemKN, 2)</mark></td>
+}
+
+@helper dHocHamHocVi(List<Tuple<DataRow, double>> HHs,
+                    List<Tuple<DataRow, double>> BCs,
+                    List<Tuple<DataRow, double>> CDs, int NV_id, int date)
+{
+    var dHHHV = Shared.GET(NV_id, "HHHV");
+    HHs = HHs.OrderByDescending(hh => hh.Item1["doUuTien"]).ToList();
+    BCs = BCs.OrderByDescending(bc => bc.Item1["doUuTien"]).ToList();
+    CDs = CDs.OrderByDescending(cd => cd.Item1["doUuTien"]).ToList();
+    var HH = HHs.Select(hh => hh.Item1["maHocHam"].ToString());
+    var TD = BCs.Select(bc => bc.Item1["trinhDo"].ToString());
+    var CD = CDs.Select(cd => cd.Item1["maChucDanhGiangVien"].ToString());
+    var hH = HH.FirstOrDefault();
+    var tD = TD.FirstOrDefault();
+    var cD = CD.FirstOrDefault();
+    var result = hsHHHV.TinhDiem(hH, tD, cD, TD);
+    dHHHV[date] = result.Item1;
+    <mark title="@result.Item2">@result.Item1</mark>
+}
+
+@helper dHieuQuaCongViec(IEnumerable<DataRow> tbH, List<Tuple<DataRow, double>> HQs, DataRow H, int NV_id, int date)
+{
+    var dH = Shared.GET(NV_id, "H");
+    var hq = HQs.FirstOrDefault(); // single
+    if (hq != null)
+    {
+        dH[date] = (double)hq.Item1["H"];
+    }
+    else
+    {
+        if (H != null)
+        {
+            dH[date] = (double)H["H"];
+        }
+    }
+    //return;
+    if (date <= val(8, 2005))
+    {
+        var h = tbH.FirstOrDefault();
+        if (h != null)
+        {
+            var _h = double.Parse(h["H"].ToString());
+            dH[date] = _h > 0 ? _h : 1.0;
+        }
+        else
+        {
+            dH[date] = 1.0;
+        }
+    }
+}
+
+@helper dDoanThe(List<Tuple<DataRow, double>> DTs, int NV_id, int date)
+{
+    var dDT = Shared.GET(NV_id, "DT");
+    var dts = DTs.Select(dt => dt.Item1["KyHieu"].ToString()).ToList();
+    var diem = 0.0;
+    //var names = new string[] { "BTĐU1", "PBTĐU1", "CNUBKTĐ1", "ĐUV1", "UVUBKTĐ1", "BTĐU2", "PBTĐU2", "ĐUV2", "BTCB1", "PBTCB1", "CUV1", "BTCB2", "PBTCB2", "CUV2", "CTCĐ1", "PCTCĐ1", "CNUBKTCĐ1", "UVBCHCĐ1", "UVUBKTCĐ1", "TTCĐ1", "TPCĐ2", "CTCĐ2", "PCTCĐ2", "UVBCHCĐ2", "BTĐT1", "PBTĐT1", "UVĐT1", "BTĐT2", "PBTĐT2", "UVĐT2", "CTHSV2", "PCTHSV2", "UVHSV2" };
+    //var values = new double[] { 0.5, 0.45, 0.45, 0.4, 0.3, 0.25, 0.23, 0.2, 0.3, 0.25, 0.2, 0.3, 0.25, 0.2, 0.5, 0.45, 0.45, 0.4, 0.3, 0.3, 0.2, 0.3, 0.25, 0.2, 0.4, 0.35, 0.3, 0.2, 0.18, 0.15, 0.2, 0.18, 0.15 };
+    var names = new string[] { "BTĐU1","PBTĐU1","CNUBKTĐ1","ĐUV1","UVUBKTĐ1","BTĐU2","PBTĐU2","ĐUV2","BTCB1","PBTCB1","CUV1","BTCB2","PBTCB2","CUV2","CTCĐ1","PCTCĐ1","CNUBKTCĐ1","UVBCHCĐ1","UVUBKTCĐ1","TTCĐ1","TPCĐ2","CTCĐ2","PCTCĐ2","UVBCHCĐ2","BTĐT1","PBTĐT1","UVĐT1","BTĐT2","PBTĐT2","UVĐT2","CTHSV2","PCTHSV2","UVHSV2" };
+    var values = new double[] { 0.5,0.45,0.45,0.4,0.3,0.5,0.45,0.4,0.4,0.35,0.3,0.4,0.35,0.3,0.45,0.4,0.4,0.35,0.3,0.3,0.2,0.45,0.4,0.35,0.4,0.35,0.3,0.4,0.35,0.3,0.4,0.35,0.3 };
+    for (int i = 0; i < names.Length; i++)
+    {
+        if (dts.Contains(names[i]))
+        {
+            diem = values[i];
+            break;
+        }
+    }
+    dDT[date] = diem;
+    if (diem > 0) {
+        <mark title="@diem">Đ</mark>
+    }
+}
+
+@helper dTongDiem(int NV_id, int date, string exp = "(VT*HHHV)+KN") {
+    var dTong = Shared.GET(NV_id, "T");
+    var dLV = Shared.GET(NV_id, "LV");
+    var dTN = Shared.GET(NV_id, "TN");
+    var dBN = Shared.GET(NV_id, "BN");
+    var dKN = Shared.GET(NV_id, "KN");
+    var dHHHV = Shared.GET(NV_id, "HHHV");
+    var dH = Shared.GET(NV_id, "H");
+    var dDT = Shared.GET(NV_id, "DT");
+    var lv = double.Parse((dLV[date] ?? "0").ToString());
+    var tn = double.Parse((dTN[date] ?? "0").ToString());
+    var bn = double.Parse((dBN[date] ?? "0").ToString());
+    var kn = double.Parse((dKN[date] ?? "0").ToString());
+    var hhhv = double.Parse((dHHHV[date] ?? "0").ToString());
+    var h = double.Parse((dH[date] ?? "1").ToString());
+    var dt = double.Parse((dDT[date] ?? "0").ToString());
+    exp = exp.Replace("TN", tn.ToString());
+    exp = exp.Replace("VT", bn.ToString());
+    exp = exp.Replace("HHHV", hhhv.ToString());
+    exp = exp.Replace("H", h.ToString());
+    exp = exp.Replace("KN", kn.ToString());
+    exp = exp.Replace("DT", dt.ToString());
+    var tong = double.Parse(new NCalc.Expression(exp).Evaluate().ToString()) * lv;
+    dTong[date] = tong;
+    <span title="@String.Format("TN:{0}\nVT:{1}\nKN:{2}\nHHHV:{3}\nH:{4}\nDT:{5}\nHS:{6}", tn, bn, kn, hhhv, h, dt, lv)">
+        @Math.Round(tong, 2)
+    </span>
+}
+@functions {
+    public static double tinhDiem(int NV_id, string congThuc) {
+        for (int year = 1995; year <= 2015; year++) {
+            for (int month = 1; month <= 12; month++) {
+                dTongDiem(NV_id, val(month, year), congThuc).ToHtmlString();
+            }
+        }
+        var sum = 0.0;
+        foreach (double val in Shared.GET(NV_id, "T").Values) {
+            sum += val;
+        }
+        return sum;
+    }
+}
+@helper _TongDiem(int NV_id, dynamic ViewBag) {
+    var sum = 0.0;
+    foreach (double val in Shared.GET(NV_id, "T").Values) {
+        sum += val;
+    }
+    @Math.Round(sum, 2)
+}

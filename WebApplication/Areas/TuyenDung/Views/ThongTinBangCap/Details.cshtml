@@ -1,0 +1,151 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdBangCap
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+    var db = new HRM.Databases.Models.HRMDBEntities();
+    var TrinhDo_id = new SelectList(db.dmHocVi.OrderBy(tt => tt.tenHocVi), "id", "tenHocVi", db.dmHocVi);
+    var ChuyenNganh_id = new SelectList(db.dmChuyenNganh.OrderBy(tt => tt.tenChuyenNganh), "id", "TenChuyenNganh", db.dmChuyenNganh);
+    var XepLoai_id = new SelectList(db.dmXepLoaiTotNghiep.OrderBy(tt => tt.tenXepLoaiTotNghiep), "id", "tenXepLoaiTotNghiep", db.dmXepLoaiTotNghiep);
+    var NamTotNghiep = new List<string>();
+    for (int n = DateTime.Today.Year; n >= 1950; n--)
+    {
+        NamTotNghiep.Add(n.ToString());
+    }
+    var selectlistNamTotNghiep = new SelectList(NamTotNghiep);
+}
+
+@using (Html.BeginForm(new { tab = "ThongTinBangCap", nat = "Edit", id = ViewBag.UngVien_id}))
+{
+    @Html.ValidationSummary(true)
+    <table id = "BangCapTable">
+        <thead>
+            <tr>
+                <th style="text-align:center" nowarp>
+                Trình độ
+                </th>
+                <th style="text-align:center" nowrap>
+                Chuyên ngành
+                </th>
+                <th style="text-align:center" nowrap>
+                Nơi đào tạo
+                </th>
+                <th style="text-align:center" nowrap>
+                Năm tốt<br />nghiệp
+                </th>
+                <th style="text-align:center" nowrap>
+                Xếp loại
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>@*
+            @{var Distinct = new HashSet<int>();}
+            @{var tempt = db.tdBangCap.ToList();
+              var tdbangcap = tempt.Where(bc => bc.UngVien_id == ViewBag.UngVien_id);}
+            @foreach (var item in tdbangcap)
+            {
+                if (!Distinct.Add(item.id)) { continue; }   
+                using (Html.BeginForm("Edit", "ThongTinBangCap"))
+                {
+                    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+                    @Html.Hidden("id", item.id)
+                    var qttdPrefix = "" + item.id;
+                    if (tdbangcap.Count() == 0) { continue; }
+                <tr id = "@item.id">
+                    <input type="hidden" name="UngVien_id" value="@ViewBag.UngVien_id" />
+                    <td>
+                    <span id = "View"> 
+                    @Html.DisplayFor(modelItem => item.dmHocVi.tenHocVi)
+                    </span>
+                    <span id = "Edit">
+                    @Html.DropDownListFor(model => item.TrinhDo_id, TrinhDo_id, String.Empty)
+                    </span>
+                    </td>
+                    <td>
+                    <span id = "View">
+                    @Html.DisplayFor(modelItem => item.dmChuyenNganh.TenChuyenNganh)
+                    </span>
+                    <span id = "Edit">
+                    @Html.DropDownListFor(model => model.ChuyenNganh_id, ChuyenNganh_id, String.Empty, new { style = "width:auto; max-width:250px" })
+                    </span>
+                    </td>
+                    <td>
+                    <span id = "View">
+                    @Html.DisplayFor(modelItem => item.NoiDaoTao)
+                    </span>
+                    <span id = "Edit">
+                    @Html.EditorFor(modelItem => item.NoiDaoTao)
+                    </span>
+                    </td>
+                    <td>
+                    <span id = "View">
+                    @Html.DisplayFor(modelItem => item.NamTotNghiep)
+                    </span>
+                    <span id = "Edit">
+                    @Html.DropDownListFor(model => model.NamTotNghiep, selectlistNamTotNghiep, String.Empty, new { style = "width:auto" })
+                    </span>
+                    </td>
+                    <td>
+                    <span id ="View">
+                    @Html.DisplayFor(modelItem => item.dmXepLoaiTotNghiep.TenLoaiTotNghiep)
+                    </span>
+                    <span id ="Edit">
+                    @Html.DropDownListFor(model => model.XepLoai_id, XepLoai_id, String.Empty, new { style = "width:auto;" })
+                    </span> 
+                    </td>
+                    <td style="text-align:justify" >
+                        <input type="submit" style="position:absolute;left:-9999px" />
+                        <a title="Sửa" id="Edit"><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+                        <a title="Lưu" id="Save" hidden><span class = "ui-icon ui-icon-disk"  style="display:inline-block"></span></a>    
+                    </td>
+                </tr>
+                }
+            }*@
+        </tbody> 
+</table>
+<br />
+<div style="margin-left:460px">
+<a href="@Url.Action("Create", "TuyenDung", new { tab = "ThongTinChung", nat = "Edit", UV_id = ViewBag.UngVien_id })"><input id="btnLuu" type="button"  value="Thông tin chung"/></a>  
+<a href="@Url.Action("Create", "TuyenDung", new { tab = "ThongTinLienHe", nat = "Edit", UV_id = ViewBag.UngVien_id })"><input id="btnLuu" type="button"  value="Thông tin liên hệ"/></a>  
+</div>
+}
+
+<script>
+    $().ready(function () {
+        var table$ = $("#BangCapTable");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default").css("background", "#87CEFA");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+        table$.find("span[id=Edit]").prop("hidden", true);
+        table$.find("input[type=datetime]").css("width", "100px").css("height", "25px")
+              .css("border", "0").css("border-bottom", "1px dotted")
+              .datepicker({ changeMonth: true, changeYear: true })
+              .css("font-size", "1.1em").css("margin", "0").css("padding", "0");
+        table$.find("a[id=Edit]").on("click", function () {
+            var row = $(this).parents("tr");
+            do {
+                row.find("span[id=View]").prop("hidden", true);
+                row.find("span[id=Edit]").prop("hidden", false);
+                row = row.next("tr");
+            } while (row.length > 0)
+            $(this).prop("hidden", true).next("a").prop("hidden", false);
+            return false;
+        });
+        table$.find("a[id=Save]").on("click", function () {
+            $(this).parents("tr").prev("input").prev("form").submit();
+            return false;
+        });
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+        $("body").unblock()
+    });
+</script>
+<style>
+    td { padding: 0 0 0 0 }
+    input { margin: 0 0 0 0; width: auto; }
+</style>

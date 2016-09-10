@@ -1,0 +1,68 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Databases.Models.QuaTrinhHoc
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>QuaTrinhHoc</legend>
+
+        @Html.HiddenFor(model=>model.NV_id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BacHoc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BacHoc)
+            @Html.ValidationMessageFor(model => model.BacHoc)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TruongHoc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TruongHoc)
+            @Html.ValidationMessageFor(model => model.TruongHoc)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NamBatDau)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NamBatDau)
+            @Html.ValidationMessageFor(model => model.NamBatDau)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NamKetThuc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NamKetThuc)
+            @Html.ValidationMessageFor(model => model.NamKetThuc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GhiChu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

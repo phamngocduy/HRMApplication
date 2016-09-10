@@ -1,0 +1,38 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "GiuBacLuong";
+    var HSL_id = ViewBag.HSL_id as int?;
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvGiuBacLuong where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+
+    var LoaiThayDoi = "LoaiThayDoi_id";
+    var LoaiThayDoi_id = dr != null ? dr[LoaiThayDoi] as int? : null;
+    
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("HSL_id", HSL_id.HasValue ? HSL_id.Value : dr["HSL_id"])
+<dl id="@rand" class="dl-horizontal">
+    <dt>Loại thay đổi</dt>
+    <dd>
+        @Html.DropDownList(LoaiThayDoi, new SelectList(db.dmLoaiBaoLuuHSL, "id", "tenLoaiBaoLuuHSL", LoaiThayDoi_id), String.Empty)
+    </dd>
+    <dt>Số quyết định</dt>
+    <dd>@Html.Editor(dr, dt.Columns["SoQuyetDinh"])</dd>
+    <dt>Số tháng thay đổi</dt>
+    <dd>@Html.Editor(dr, dt.Columns["SoThangThayDoi"])</dd>
+    <dt>Lý do thay đổi</dt>
+    <dd>@Html.Editor(dr, dt.Columns["LyDoThayDoi"])</dd>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}

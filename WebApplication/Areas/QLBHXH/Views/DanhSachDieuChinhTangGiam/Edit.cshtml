@@ -1,0 +1,362 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.QLBHXH.Models.nvbhDanhSachDieuChinhTangGiam
+
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.TyLeDong = ViewBag.TyLeDong;
+}
+
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>nvbhDanhSachDieuChinhTangGiam</legend>
+                @Html.HiddenFor(model => model.TGBHTN) 
+                @Html.HiddenFor(model => model.TienLuong) 
+                @Html.HiddenFor(model => model.HSL) 
+                @Html.HiddenFor(model => model.MoiNhat) 
+        <span>
+        1) Loại điều chỉnh(<font color="red"><b>*</b></font>):
+        @Html.DropDownList("idLoaiDieu", String.Empty)
+         @Html.HiddenFor(model => model.idLoaiDieuChinh, new {@id="loaidc" })
+        @Html.ValidationMessageFor(model => model.idLoaiDieuChinh)
+    <span id="clickme1">
+      <font color="red"><b>Loại:(*)</b></font>
+        @Html.DropDownList("idLoaiTang")
+     
+        @Html.ValidationMessageFor(model => model.idLoaiTangGiam)
+        </span>
+          @Html.HiddenFor(model => model.idLoaiTangGiam, new { @id = "loaitg" })
+        2) Ngày phát sinh(<font color="red"><b>*</b></font>):
+        @Html.EditorFor(model => model.NgayPhatSinh, new { @Value = DateTime.Now })
+        @Html.ValidationMessageFor(model => model.NgayPhatSinh)
+        </span>
+        <br /> 
+            @Html.HiddenFor(model => model.idnvbhNhanVienBHXH, new { @Value = 1 })
+       <span>            
+        3) Họ và tên(<font color="red"><b>*</b></font>):
+        @Html.DropDownList("NVID", String.Empty)
+        @Html.HiddenFor(model => model.NV_id)
+
+        4) Cấp bậc/ Chức vụ(<font color="red"><b>*</b></font>):
+        @Html.EditorFor(model => model.ChucVuCongViec)
+        @Html.ValidationMessageFor(model => model.ChucVuCongViec)
+        </span>
+        <br /> 
+        <b> 5) Mức đóng cũ</b>
+        <br />
+
+        <span>            
+        5.1) Tiền lương:
+        @Html.HiddenFor(model => model.TienLuongMDC)
+        @Html.ValidationMessageFor(model => model.TienLuongMDC)
+        <input id="Tien3" value="@String.Format("{0:#,##0}", Model.TienLuongMDC )">
+        </span>
+        <br /> 
+
+        <span>            
+        5.2) Phụ cấp chức vụ: 
+        @Html.EditorFor(model => model.PCChucVuMDC)
+        @Html.ValidationMessageFor(model => model.PCChucVuMDC)
+        
+
+       5.3) Phụ cấp thâm niên vượt khung(%):
+        @Html.EditorFor(model => model.PCThamNienVuotKhungMDC)
+        @Html.ValidationMessageFor(model => model.PCThamNienVuotKhungMDC)
+        </span>
+        <br /> 
+
+        <span>            
+       5.4) Phụ cấp thâm niên nghề(%):
+        @Html.EditorFor(model => model.PCThamNienNgheMDC)
+        @Html.ValidationMessageFor(model => model.PCThamNienNgheMDC)
+
+        5.5) Phụ cấp Khác:
+        @Html.EditorFor(model => model.PCKhacMDC)
+        @Html.ValidationMessageFor(model => model.PCKhacMDC)
+        </span>
+        <br /> 
+
+        <b>6) Mức đóng mới</b>
+        <br />
+
+        <span>            
+       6.1) Tiền lương: 
+        @Html.HiddenFor(model => model.TienLuongMDM)
+        @Html.ValidationMessageFor(model => model.TienLuongMDM)
+        <input id="Tien4"  value="@String.Format("{0:#,##0}", Model.TienLuongMDM )">
+        </span>
+        <br /> 
+
+        <span>            
+       6.2) Phụ cấp chức vụ: 
+        @Html.EditorFor(model => model.PCChucVuMDM)
+        @Html.ValidationMessageFor(model => model.PCChucVuMDM)
+
+        6.3) Phụ cấp thâm niên vượt khung(%): 
+        @Html.EditorFor(model => model.PCThamNienVuotKhungMDM)
+        @Html.ValidationMessageFor(model => model.PCThamNienVuotKhungMDM)
+        </span>
+        <br /> 
+
+        <span>            
+        6.4) Phụ cấp thâm niên nghề(%):
+        @Html.EditorFor(model => model.PCThamNienNgheMDM)
+        @Html.ValidationMessageFor(model => model.PCThamNienNgheMDM)
+
+       6.5) Phụ cấp Khác: 
+        @Html.EditorFor(model => model.PCKhacMDM)
+        @Html.ValidationMessageFor(model => model.PCKhacMDM)
+        </span>
+   
+        <br />
+        <span>            
+        7) Từ tháng năm(<font color="red"><b>*</b></font>):
+        @Html.EditorFor(model => model.TuThangNam)
+        @Html.ValidationMessageFor(model => model.TuThangNam)
+
+       8) Đến tháng năm: 
+        @Html.EditorFor(model => model.DenThangNam)
+        @Html.ValidationMessageFor(model => model.DenThangNam)
+        </span>
+        <br /> 
+
+        <span>            
+        9) Tỷ lệ đóng(%):
+        @Html.EditorFor(model => model.TyLeDong)
+        @Html.ValidationMessageFor(model => model.TyLeDong)
+            
+        @Html.VN("Không trả thẻ: ")
+        @Html.EditorFor(model => model.KhongTraThe)
+        @Html.ValidationMessageFor(model => model.KhongTraThe)
+
+        @Html.VN("Xác nhận: ")
+        @Html.EditorFor(model => model.XacNhan)
+        @Html.ValidationMessageFor(model => model.XacNhan)
+        </span>
+        <br /> 
+
+        <span>            
+        @Html.VN("Ghi chú: ")
+        @Html.EditorFor(model => model.GhiChu)
+        @Html.ValidationMessageFor(model => model.GhiChu)
+        </span>
+        <br /> 
+        <p>
+            <input type="submit" value="Lưu"  onclick="return check();"/>
+        </p>
+    </fieldset>
+}
+
+<Script>
+//    $("#idLoaiDieuChinh").combobox();
+    //    $("#idLoaiTangGiam").combobox();
+
+    var dc = $("[id$=idLoaiDieu]").combobox();
+    var tg = $("[id$=idLoaiTang").combobox();
+    $("#clickme1").hide();
+    if (dc.val() == 1 || dc.val() == 2) {
+            $("#clickme1").show();
+            }
+//    $("[id$=loaitg").val($("[id$=idLoaiTang").val());
+
+    dc.change(function () {
+        var dcval = $(this).val();
+        $("[id$=loaidc").val(dcval);
+        $("[id$=loaitg").val("");
+        if ($(this).val() == 1 || $(this).val() == 2) {
+            $("#clickme1").show();
+
+            tg.trigger("connect", "~/QLBHXH/DanhSachDieuChinhTangGiam/TG?id=" + $(this).val());
+           
+        } else {
+            $("#clickme1").hide();
+         }
+    });
+ 
+    tg.change(function () {
+        var tgval = $(this).val();
+        $("[id$=loaitg").val(tgval);
+   
+    });
+
+ 
+
+
+  var nvbh=  $("#NVID").combobox();
+
+    $("#NgayPhatSinh").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#TuThangNam").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#DenThangNam").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    // remove text bg
+    $("input[type=text],input[type=datetime],input[type=number]").css("background-color", "transparent");
+    $("input[type=text],input[type=datetime],input[type=number]").css("border", "0").css("border-bottom", "1px dotted");
+    $("#Tien3").css("border", "0").css("border-bottom", "1px dotted").css("background-color", "transparent");
+    $("#Tien4").css("border", "0").css("border-bottom", "1px dotted").css("background-color", "transparent");
+
+    // remove Combobox bg
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(".custom-combobox-input").on("input", function () {
+        $(this).attr("size", $(this).val().length + 4);
+    });
+    // set auto size
+    setInterval(function () {
+        $(".custom-combobox-input").each(function () {
+            $(this).attr("size", $(this).val().length + 4);
+        });
+    }, 1000);
+    $("input[type=text]").on("input", function () {
+        $(this).attr("size", $(this).val().length + 1);
+    }).each(function () {
+        $(this).attr("size", $(this).val().length + 1);
+    });
+    $("input[type=datetime]").css("width", "90px");
+
+    // set size for tex editor
+
+    $("#PCChucVuMDC").css("width", "100");
+    $("#PCThamNienVuotKhungMDC").css("width", "100");
+    $("#PCThamNienNgheMDC").css("width", "100");
+    $("#PCKhacMDC").css("width", "100");
+
+    $("#PCChucVuMDM").css("width", "100");
+    $("#PCThamNienVuotKhungMDM").css("width", "100");
+    $("#PCThamNienNgheMDM").css("width", "100");
+    $("#PCKhacMDM").css("width", "100");
+
+    $(".custom-combobox-input").css("background-color", "transparent").css("margin", "5px 0 6px 0");
+    $("input[type=text],input[type=datetime],input[type=number],.custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+    //-------------------------------------Tien 1----------------------------------------------   
+    $('#Tien3').keyup(function (event) {
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        });
+    });
+
+    $("#Tien3").keyup(function () {
+
+        //Clear the hidden field
+        $("#TienLuongMDC").val("");
+
+        //Create char array from phone number field
+        var charArray = $(this).val().split("");
+
+        var phoneNumber = "";
+
+        //Iterate over each character in the char array
+        //and determine if it is a number
+        $.each(charArray, function (index, value) {
+            if (!isNaN(value) && value != " ") {
+                phoneNumber = phoneNumber + value;
+            }
+        });
+        //Set hidden field
+        $("#TienLuongMDC").val(phoneNumber);
+    });
+
+
+
+    //----------------------------- Tien 2 ------------------------------------------------------------- 
+    $('#Tien4').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        });
+    });
+    $("#Tien4").keyup(function () {
+
+        //Clear the hidden field
+        $("#TienLuongMDM").val("");
+
+        //Create char array from phone number field
+        var charArray = $(this).val().split("");
+
+        var phoneNumber = "";
+
+        //Iterate over each character in the char array
+        //and determine if it is a number
+        $.each(charArray, function (index, value) {
+            if (!isNaN(value) && value != " ") {
+                phoneNumber = phoneNumber + value;
+            }
+        });
+        //Set hidden field
+        $("#TienLuongMDM").val(phoneNumber);
+    });
+
+    nvbh.change(function () {
+
+
+        var stringValue = $(this).val();
+
+        $("[id$=NV_id]").val(stringValue);
+ 
+
+    });
+
+
+    //thong bao loi neu cac truong bi nill
+    function check() {
+
+
+        if (document.getElementById('loaidc').value == "") {
+            alert("Loại điều chỉnh không được bỏ trống!");
+
+            return false;
+        }
+        if (document.getElementById('NgayPhatSinh').value == "") {
+            alert("Ngày phát sinh không được bỏ trống!");
+
+            return false;
+        }
+        if (document.getElementById('NVID').value == "") {
+            alert("Họ và tên không được bỏ trống!");
+
+            return false;
+        }
+
+        if (document.getElementById('TuThangNam').value == "") {
+            alert("Từ tháng năm không được bỏ trống!");
+
+            return false;
+        }
+
+
+    }
+
+</Script>
+@*  input { width: auto; font-weight: bold }*@
+<style>
+    form { width: auto }
+  
+    span { display: inline-block; white-space: nowrap }
+    label { display: inline; color: gray; font-size: 1.1em }
+</style>
+

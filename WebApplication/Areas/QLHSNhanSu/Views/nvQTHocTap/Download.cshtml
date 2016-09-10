@@ -1,0 +1,214 @@
+﻿@using System.Text
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model IEnumerable<nvQTHocTap>
+@{
+    var excel = new StringBuilder();
+    using (var writer=new ExcelWriter(excel))
+    {
+        writer.WriteStartDocument();
+        writer.WriteStartWorksheet("Sheet1");
+        writer.WriteStartRow();
+        writer.WriteExcelUnstyledCell("Mã NV");
+        writer.WriteExcelUnstyledCell("Họ");
+        writer.WriteExcelUnstyledCell("Tên");
+        writer.WriteExcelUnstyledCell("Họ và tên");
+        writer.WriteExcelUnstyledCell("Đơn vị");
+        writer.WriteExcelUnstyledCell("Văn bằng");
+        writer.WriteExcelUnstyledCell("Nhóm ngành");
+        writer.WriteExcelUnstyledCell("Chuyên ngành");
+        writer.WriteExcelUnstyledCell("Tên trường");
+        writer.WriteExcelUnstyledCell("Nơi học");
+        writer.WriteExcelUnstyledCell("NN");
+        writer.WriteExcelUnstyledCell("Loại hình đào tạo");
+        writer.WriteExcelUnstyledCell("Số QĐ");
+        writer.WriteExcelUnstyledCell("Ngày cấp QĐ");
+        writer.WriteExcelUnstyledCell("Cam kết");
+        writer.WriteExcelUnstyledCell("Chế độ");
+        writer.WriteExcelUnstyledCell("Thời gian bắt đầu");
+        writer.WriteExcelUnstyledCell("Kết thúc dự kiến");
+        writer.WriteExcelUnstyledCell("Kết thúc chính thức");
+        writer.WriteExcelUnstyledCell("Xếp loại tốt nghiệp");
+        writer.WriteExcelUnstyledCell("Học phí");
+        writer.WriteExcelUnstyledCell("Chi phí khác");
+        writer.WriteExcelUnstyledCell("Nhà trường hỗ trợ");
+        writer.WriteExcelUnstyledCell("Thưởng hoàn thành");
+        writer.WriteExcelUnstyledCell("Điều chỉnh lương");
+        writer.WriteExcelUnstyledCell("Hiện trạng");
+        writer.WriteExcelUnstyledCell("Ghi chú");
+        writer.WriteEndRow();
+        var D = new Func<Nullable<DateTime>, object>(d => d.HasValue ? (object)d.Value : null);
+        foreach(var item in Model){
+            writer.WriteStartRow();
+            writer.WriteExcelAutoStyledCell(item.NhanVien.MaNV);
+            var HoTen = item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen.Trim();
+            var Ten = HoTen.Trim().Split(' ').Last().Trim();
+            writer.WriteExcelAutoStyledCell(HoTen.Substring(0, HoTen.LastIndexOf(Ten)));
+            writer.WriteExcelAutoStyledCell(Ten);
+            writer.WriteExcelAutoStyledCell(item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen.Trim());
+            writer.WriteExcelAutoStyledCell(item.dmDonVi.tenDonVi);
+            if(item.LoaiBangCap_id.HasValue){
+            writer.WriteExcelAutoStyledCell(item.dmLoaiBangCap.tenLoaiBangCap);
+            }
+            else{
+                writer.WriteExcelAutoStyledCell("");
+            }
+             if(item.ChuyenNganh_id.HasValue){
+            writer.WriteExcelAutoStyledCell(item.dmChuyenNganh.tenChuyenNganh);
+             }
+             else
+             {
+                 writer.WriteExcelAutoStyledCell("");
+             }
+            if(item.ChuyenNganh !=null){
+            writer.WriteExcelAutoStyledCell(item.ChuyenNganh);
+            }
+            else
+            {
+                writer.WriteExcelAutoStyledCell("");
+            }
+              if(item.TenTruong !=null){
+            writer.WriteExcelAutoStyledCell(item.TenTruong);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+            if (item.QuocGia_id.HasValue != null)
+            {
+                writer.WriteExcelAutoStyledCell(item.dmQuocGia.tenQuocGia);
+            }
+            else
+            {
+                writer.WriteExcelAutoStyledCell("");
+            }
+              if(item.NoiHoc_id !=null){
+            writer.WriteExcelAutoStyledCell(item.dmNoiHoc.tenNoiHoc);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.LoaiHinhDaoTao_id.HasValue){
+            writer.WriteExcelAutoStyledCell(item.dmLoaiHinhDaoTao.tenLoaiHinhDaoTao);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.SoQuyetDinh !=null){
+            writer.WriteExcelAutoStyledCell(item.SoQuyetDinh);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.NgayCapQuyetDinh !=null){
+            writer.WriteExcelAutoStyledCell(item.NgayCapQuyetDinh);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.CamKet !=null){
+            writer.WriteExcelAutoStyledCell(item.CamKet);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.CheDo_id.HasValue){
+            writer.WriteExcelAutoStyledCell(item.dmCheDoHoc.tenCheDoHoc);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.BatDau !=null){
+            writer.WriteExcelAutoStyledCell(item.BatDau.Value.ToShortDateString());
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.KetThucDuKien !=null){
+            writer.WriteExcelAutoStyledCell(item.KetThucDuKien.Value.ToShortDateString());
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.KetThucChinhThuc !=null){
+            writer.WriteExcelAutoStyledCell(item.KetThucChinhThuc.Value.ToShortDateString());
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.XepLoaiTotNghiep_id.HasValue){
+            writer.WriteExcelAutoStyledCell(item.dmXepLoaiTotNghiep.tenXepLoaiTotNghiep);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.HocPhi !=null){
+            writer.WriteExcelAutoStyledCell(item.HocPhi);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.KinhPhiKhac !=null){
+            writer.WriteExcelAutoStyledCell(item.KinhPhiKhac);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.KinhPhiHoTro !=null){
+            writer.WriteExcelAutoStyledCell(item.KinhPhiHoTro);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.ThuongHoanThanh !=null){
+            writer.WriteExcelAutoStyledCell(item.ThuongHoanThanh);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+            if(item.DieuChinhLuong==true)
+            {
+                writer.WriteExcelAutoStyledCell("x");
+            }
+            else{
+                writer.WriteExcelAutoStyledCell("");
+            }
+              if(item.HienTrang_id.HasValue){
+            writer.WriteExcelAutoStyledCell(item.dmHienTrangDiHoc.tenHienTrangDiHoc);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+              if(item.GhiChu !=null){
+            writer.WriteExcelAutoStyledCell(item.GhiChu);
+              }
+              else
+              {
+                  writer.WriteExcelAutoStyledCell("");
+              }
+            writer.WriteEndRow();
+    }
+    writer.WriteEndWorksheet();
+    writer.WriteEndDocument();
+    }
+
+    Response.AddHeader("content-disposition", "attachment; filename=Book1.xls");
+    Response.ContentType = "application/ms-excel";
+    Response.Write(excel.ToString());
+    Response.End();
+    }

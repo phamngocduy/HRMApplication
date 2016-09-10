@@ -1,0 +1,57 @@
+﻿@model HRM.Databases.Models.DanhHieu
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DanhHieu</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NhanVien.MaNV)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NhanVien.MaNV)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dmDanhHieu.tenDanhHieu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dmDanhHieu.tenDanhHieu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayDatDanhHieu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayDatDanhHieu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SoQDCongNhan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SoQDCongNhan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NoiCap)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoiCap)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

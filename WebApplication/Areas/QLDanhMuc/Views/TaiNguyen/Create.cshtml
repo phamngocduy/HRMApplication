@@ -1,0 +1,39 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLDanhMuc.Models
+@model HRM.Databases.Models.TaiNguyen
+@{
+    ViewBag.Title = "Create";
+}
+@Html.BeginDiv()
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "TaiNguyen", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.idTaiNguyen)
+
+    <p><span class="ui-icon ui-icon-home" style="display:inline-block" ></span>@Model.getFolder()</p>
+
+    @Html.LabelForVN(model => model.tenTaiNguyen)
+    @Html.EditorFor(model => model.tenTaiNguyen)
+    @Html.ValidationMessageFor(model => model.tenTaiNguyen)
+
+    @Html.HiddenFor(model => model.laThuMuc)
+    if (Model.laThuMuc == false)
+    {
+        @Html.LabelForVN(model => model.tepDinhKem)
+        @Html.TextBoxFor(model => model.tepDinhKem, new { type = "file" })
+        @Html.ValidationMessageFor(model => model.tepDinhKem)
+    }
+
+<p>
+    <input type="submit" value="Create" />
+</p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { parent = Model.idTaiNguyen })
+</div>
+
+@Html.EndDiv()

@@ -1,0 +1,60 @@
+﻿@model HRM.QLBHXH.Models.dmLaiSuatTruyThu
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa lãi suất truy thu</h2>
+
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+<fieldset>
+    <legend>dmLaiSuatTruyThu</legend>
+
+    <div class="display-label">
+         Ngày áp dụng
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayApDung)
+    </div>
+
+    <div class="display-label">
+        Ngày kết thúc
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayKetThuc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BHYT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BHYT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BHTN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BHTN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.STT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.STT)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

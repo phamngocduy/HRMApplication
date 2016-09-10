@@ -1,0 +1,66 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@{
+    ViewBag.Title = "Lương khoán";
+    var db = ViewBag.db as HRMDBEntities;
+    var model = from lk in db.nvLuongKhoan
+                join nv in db.NhanViens.All on lk.NV_id equals nv.id
+                join ll in db.nvSoYeuLyLich on nv.id equals ll.NV_id
+                join lv in db.nvQTLamViec on nv.qtlvCongTac_id equals lv.id
+                join dv in db.dmDonVi on lv.DonVi_id equals dv.id
+                where !nv.ngayNghiViec.HasValue
+                select new { maNV = nv.MaNV, HoTen = ll.HoVaTen, NV_id = nv.id,
+                    maDonVi = dv.maDonVi, tenDonVi = dv.tenDonVi, Luong = lk };
+    var random = new Random().Next();
+}
+
+<p class="ui-state-highlight">
+    Danh sách CB/GV/NV nhận lương khoán
+    <span style="float:right">
+        <b>@Html.Editor4A("~/QLTinhLuong/LuongKhoan/EditP", "Thêm mới", random.ToString())</b>
+    </span>
+    <div id="@random"></div>
+</p>
+
+<table id="qlLuongKhoan">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Mã NV</th>
+            <th>Họ và tên</th>
+            <th>Đơn vị</th>
+            <th>Mức lương</th>
+            <th>Thời gian</th>
+            <th>Ghi chú</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var nv in model)
+    {
+        <tr>
+            <td>
+                @Html.Editor4U("~/QLTinhLuong/LuongKhoan/EditP?id=" + nv.Luong.id)
+                @Html.Editor4D("~/QLTinhLuong/LuongKhoan/DeleteS?id=" + nv.Luong.id)
+            </td>
+            <td>@nv.maNV</td>
+            <td>@nv.HoTen</td>
+            <td><mark><abbr title="@nv.tenDonVi">@nv.maDonVi</abbr></mark></td>
+            <td>@nv.Luong.SoTien</td>
+            <td>@nv.Luong.BatDau.ToShortDateString() ~ @nv.Luong.KetThuc.ToShortDateString()</td>
+            <td>@nv.Luong.GhiChu</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#qlLuongKhoan").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+        });
+    });
+</script>

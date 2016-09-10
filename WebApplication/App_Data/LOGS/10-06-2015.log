@@ -1,0 +1,92 @@
+INFO 02:29:01 – Home/Index
+INFO 02:29:02 – Login/Index
+INFO 02:29:50 – Login/Index
+INFO 02:29:51 – Home/Index
+INFO 02:42:48 – Home/Index
+INFO 02:45:09 – Home/Index
+INFO 02:45:33 – Home/Index
+INFO 02:45:47 – Home/Index
+INFO 02:47:33 – Home/Index
+INFO 03:05:43 – Home/Index
+INFO 03:06:48 – Home/Index
+INFO 03:55:23 – Home/Index
+INFO 04:02:31 – Home/Index
+INFO 04:07:36 – Home/Index
+INFO 04:07:57 – Manage/Index
+INFO 04:08:09 – DanhMuc/List
+INFO 04:08:21 – DanhMuc/Index
+INFO 04:09:00 – HSNhanSu/Index
+INFO 04:09:02 – NhanVien/IndexP
+INFO 10:22:41 – Home/Index
+INFO 10:34:49 – HSNhanSu/Menu
+INFO 10:35:58 – HSNhanSu/Menu
+INFO 10:36:24 – HSNhanSu/Menu
+INFO 10:37:15 – HSNhanSu/Menu
+INFO 10:39:39 – HSNhanSu/Menu
+INFO 10:46:46 – HSNhanSu/Menu
+INFO 10:47:36 – HSNhanSu/Menu
+INFO 10:47:41 – HSNhanSu/Menu
+INFO 10:47:46 – HSNhanSu/Index
+INFO 10:47:46 – NhanVien/IndexP
+INFO 10:48:47 – HSNhanSu/Index
+INFO 10:48:49 – NhanVien/IndexP
+INFO 10:48:58 – nvQTHocTap/Index
+INFO 10:49:15 – HSNhanSu/Menu
+INFO 10:49:43 – Home/Index
+INFO 10:49:49 – HSNhanSu/Menu
+INFO 10:56:30 – HSNhanSu/Index
+INFO 10:56:30 – NhanVien/IndexP
+INFO 10:58:14 – HSNhanSu/Menu
+INFO 10:58:55 – HSNhanSu/Menu
+INFO 10:59:05 – HSNhanSu/Menu
+INFO 10:59:40 – HSNhanSu/Menu
+INFO 11:01:02 – HSNhanSu/Menu
+INFO 11:02:25 – HSNhanSu/Menu
+INFO 11:02:45 – HSNhanSu/Menu
+INFO 11:02:54 – nvQTHocTap/Index
+INFO 11:02:57 – QLTapSu/Index
+INFO 11:02:58 – QLThuViec/Index
+INFO 11:04:44 – HSNhanSu/Menu
+INFO 11:05:32 – ChungChi/Index
+ERROR11:05:32 – The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.PartialViewResult Index(Int32)' in 'HRM.QLTTNhanSu.Controllers.ChungChiController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+/controller=ChungChi/action=Index
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:05:47 – nvQTHocTap/qtChungChi
+INFO 11:06:25 – HSNhanSu/Menu
+INFO 11:06:28 – nvQTHocTap/qtChungChi
+INFO 11:09:00 – HSNhanSu/Menu
+INFO 11:09:03 – HSNhanSu/Index
+INFO 11:09:05 – NhanVien/IndexP
+INFO 11:09:24 – HSNhanSu/Menu
+INFO 11:10:20 – ThongKe/Index
+INFO 11:21:55 – ThongKe/Index
+INFO 11:24:25 – ThongKe/Index
+INFO 11:25:17 – ThongKe/Index
+INFO 11:25:38 – ThongKe/NVDV
+INFO 11:25:40 – ThongKe/CTDT
+INFO 11:25:44 – ThongKe/Bieu51
+INFO 11:25:45 – ThongKe/TheoKhoa
+INFO 11:25:46 – ThongKe/TheoNganh
+INFO 11:25:48 – ThongKe/Bieu52
+INFO 11:25:49 – DuLieuGioGiang/Index
+INFO 11:25:50 – NganhGiangDay/List

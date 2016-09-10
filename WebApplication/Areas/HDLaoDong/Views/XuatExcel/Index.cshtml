@@ -1,0 +1,109 @@
+﻿@model IEnumerable<HRM.Databases_HDLaoDong.Models.hdChiTietHDLD>
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@{
+    ViewBag.Title = "Index";
+    TempData["listXuatExcel"] = Model;
+}
+
+<p>
+<b style="font-size:larger;margin-left:35%">
+    Chọn trường cần xuất excel
+</b>
+</p>
+<p>@Html.ActionLink("Quay lại", "Index", "HDNguoiLaoDong")</p>
+@using (Html.BeginForm("Export", "XuatExcel"))
+{
+    <p>
+    <input type="checkbox" id="XuatTatCa" name="XuatTatCa" onclick="validate()" title="Chọn trường cần xuất"/> Xuất tất cả
+    </p>
+    <p>
+    <input type="checkbox" id="HoVaTen" name="HoVaTen" title="Chọn trường cần xuất"/> Họ và tên
+    <span style="margin-left:300px"></span><input type="checkbox" id="NgayHTKy" name="NgayHTKy" title="Chọn trường cần xuất"/> Ngày HT ký
+    </p>
+    <p>
+    <input type="checkbox" id="DonVi" name="DonVi" title="Chọn trường cần xuất"/> Đơn vị
+    <span style="margin-left:320px"></span><input type="checkbox" id="NgayLuu" name="NgayLuu" title="Chọn trường cần xuất"/> Ngày lưu
+    </p>
+    <p>
+    <input type="checkbox" id="ChucDanhCM" name="ChucDanhCM" title="Chọn trường cần xuất"/> Chức danh CM
+    <span style="margin-left:269px"></span><input type="checkbox" id="NgayTra" name="NgayTra" title="Chọn trường cần xuất"/> Ngày trả 
+    </p>
+    <p>
+    <input type="checkbox" id="SoHD" name="SoHD" title="Chọn trường cần xuất"/> Số HĐ
+    <span style="margin-left:322px"></span><input type="checkbox" id="LuongCoBan" name="LuongCoBan"  title="Chọn trường cần xuất"/> Lương cơ bản
+    </p>
+    <p>
+    <input type="checkbox" id="LoaiHD" name="LoaiHD"  title="Chọn trường cần xuất"/> Loại HĐ
+    <span style="margin-left:313px"></span><input type="checkbox" id="HeSoLuong" name="HeSoLuong" title="Chọn trường cần xuất"/> Hệ số lương
+    </p>
+    <p>
+    <input type="checkbox" id="ThoiHanHD" name="ThoiHanHD"  title="Chọn trường cần xuất"/> Thời hạn HĐ
+    <span style="margin-left:286px"></span><input type="checkbox" id="Bac" name="Bac"  title="Chọn trường cần xuất"/> Bậc
+    </p>
+    <p>
+    <input type="checkbox" id="NgayHieuLuc" name="NgayHieuLuc" title="Chọn trường cần xuất"/> Ngày hiệu lực
+    <span style="margin-left:281px"></span><input type="checkbox" id="Ngach" name="Ngach" title="Chọn trường cần xuất"/> Ngạch
+    </p>
+    <p>
+    <input type="checkbox" id="NgayHetHieuLuc" name="NgayHetHieuLuc" title="Chọn trường cần xuất"/> Ngày hết hiệu lực
+    <span style="margin-left:258px"></span><input type="checkbox" id="Nhom" name="Nhom" title="Chọn trường cần xuất"/> Nhóm 
+    </p>
+    <p>
+    <input type="checkbox" id="NgayNLDKy" name="NgayNLDKy" title="Chọn trường cần xuất"/> Ngày NLĐ ký
+    <span style="margin-left:285px"></span><input type="checkbox" id="BangLuong" name="BangLuong" title="Chọn trường cần xuất"/> Bảng lương
+    </p>
+    <p>
+    <input type="checkbox" id="NgayTrinh" name="NgayTrinh" title="Chọn trường cần xuất"/> Ngày trình
+    </p>
+
+    <p style="margin-left:85%">
+        <input id="Button1" type="submit" value="Xuất excel" />
+    </p>
+}
+<script type=text/javascript>
+    function validate() {
+        if (XuatTatCa.checked == 1) {
+            HoVaTen.checked = true
+            DonVi.checked = true
+            ChucDanhCM.checked = true
+            SoHD.checked = true
+            LoaiHD.checked = true
+            ThoiHanHD.checked = true
+            NgayHieuLuc.checked = true
+            NgayHetHieuLuc.checked = true
+            NgayNLDKy.checked = true
+            NgayTrinh.checked = true
+            NgayHTKy.checked = true
+            NgayLuu.checked = true
+            NgayTra.checked = true
+            LuongCoBan.checked = true
+            HeSoLuong.checked = true
+            Bac.checked = true
+            Ngach.checked = true
+            Nhom.checked = true
+            BangLuong.checked = true
+            
+        } else {
+            HoVaTen.checked = false
+            DonVi.checked = false
+            ChucDanhCM.checked = false
+            SoHD.checked = false
+            LoaiHD.checked = false
+            ThoiHanHD.checked = false
+            NgayHieuLuc.checked = false
+            NgayHetHieuLuc.checked = false
+            NgayNLDKy.checked = false
+            NgayTrinh.checked = false
+            NgayHTKy.checked = false
+            NgayLuu.checked = false
+            NgayTra.checked = false
+            LuongCoBan.checked = false
+            HeSoLuong.checked = false
+            Bac.checked = false
+            Ngach.checked = false
+            Nhom.checked = false
+            BangLuong.checked = false
+        }
+    }
+</script>

@@ -1,0 +1,124 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Databases.Models.TapHuan
+@{
+    var db = ViewBag.DB as HRM.Databases.Models.HRMDBEntities;
+    } 
+
+<h3 class="ignore">Tập huấn nội bộ</h3>
+<div style="overflow:auto;">
+<table id="TapHuan">
+<tr>
+    <th nowrap>&nbsp;Nội dung</th>
+    <th colspan=2 style="text-align:center">Thời gian</th>     
+    <th nowrap>&nbsp;Kinh phí</th>
+    <th nowrap>&nbsp;Ghi chú</th>
+    <th></th>
+    <th></th>
+</tr>
+
+@foreach (var item in db.TapHuan)
+    {
+    var prefix = "item" + item.GetHashCode();
+<tr>
+@using (Html.BeginForm("Update", "TapHuan"))
+{
+    @Html.Hidden("Prefix", prefix)
+    @Html.Hidden("TH_id", item.id)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+//<td>
+  //  @Html.DropDownListFor(model => item.LoaiCongTac_id, new SelectList(db.dmLoaiCongTac, "id", "tenLoaiCongTac", item.LoaiCongTac_id), String.Empty)<br />
+   // @Html.ValidationMessageFor(model => item.LoaiCongTac_id)
+//</td>
+<td>
+    @Html.EditorFor(model => item.NoiDung)<br />
+    @Html.ValidationMessageFor(model => item.NoiDung)
+</td>
+<td>
+    @Html.EditorFor(model => item.BatDau)<br />
+    @Html.ValidationMessageFor(model => item.BatDau)
+</td>
+<td>
+    @Html.EditorFor(model => item.KetThuc)<br />
+    @Html.ValidationMessageFor(model => item.KetThuc)
+</td>
+<td>
+    @Html.EditorFor(model => item.KinhPhi)<br />
+    @Html.ValidationMessageFor(model => item.KinhPhi)
+</td>
+<td>
+    @Html.EditorFor(model => item.GhiChu)<br />
+    @Html.ValidationMessageFor(model => item.GhiChu)
+</td>
+  <td nowrap>
+  @*  //<input type="submit" style="position:absolute;left:-9999px" />
+    //<a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    //<a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+    //<a title="Xóa" href="~/QLTTNhanSu/TapHuan/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa @item.NoiDung vào ngày @item.BatDau?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a> 
+    *@
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+}
+<tr>
+@using (Html.BeginForm("Update" , "TapHuan"))
+{
+    var prefix ="model" + Model.GetHashCode();
+    @Html.Hidden("Prefix", prefix)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+    @Html.HiddenFor(model => model.id)
+   // <td>
+  //  @Html.DropDownListFor(model => model.LoaiCongTac_id, new SelectList(db.dmLoaiCongTac, "id", "tenLoaiCongTac"), String.Empty)<br />
+  //  @Html.ValidationMessageFor(model => model.LoaiCongTac_id)
+//</td>
+<td>
+    @Html.EditorFor(model => model.NoiDung)<br />
+    @Html.ValidationMessageFor(model => model.NoiDung)
+</td>
+<td>
+    @Html.EditorFor(model => model.BatDau)<br />
+    @Html.ValidationMessageFor(model => model.BatDau)
+</td>
+<td>
+    @Html.EditorFor(model => model.KetThuc)<br />
+    @Html.ValidationMessageFor(model => model.KetThuc)
+</td>
+<td>
+    @Html.EditorFor(model => model.KinhPhi)<br />
+    @Html.ValidationMessageFor(model => model.KinhPhi)
+</td>
+<td>
+    @Html.EditorFor(model => model.GhiChu)<br />
+    @Html.ValidationMessageFor(model => model.GhiChu)
+</td>
+  @*  //<td nowrap>
+    //<input type="submit" style="position:absolute;left:-9999px" />
+    //<a title="Thêm, Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+</td>
+    *@
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+</table>
+</div>
+
+<style>
+td { padding: 0 2px 0 0 }
+input { margin: 0 0 0 0 }
+</style>
+
+<script>
+    $(function () {
+        var $table = $("#TapHuan");
+        $table.find("[id^=item]").prop("disabled", true);
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $table.find("input,select").css("border", "0").css("border-bottom", "1px dotted");
+        $table.find("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).css("width", "auto")
+                   .attr("size", $(this).val().length + 1);
+        });
+
+    });
+</script>

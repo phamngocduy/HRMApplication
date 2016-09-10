@@ -1,0 +1,304 @@
+﻿@model HRM.Databases_HDLaoDong.Models.hdChiTietHDLD
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Create_HDCoHuu";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    int DSNLDCanTaoHD_id = ViewBag.DSNLDCanTaoHD_id;
+    var dsNLD = db.hdCanTaoHDLD.Where(ct => ct.id == DSNLDCanTaoHD_id).First();
+    var DonVi_id = new SelectList(db0.dmDonVi.OrderBy(tt => tt.tenDonVi), "id", "tenDonVi", dsNLD.Donvi_id);
+    var ChucDanh_id = new SelectList(db0.dmChucDanhChuyenMon.OrderBy(tt => tt.tenChucDanhChuyenMon), "id", "tenChucDanhChuyenMon", dsNLD.VitriCT_id);
+    var ChucVu_id = new SelectList(db0.dmChucVu.OrderBy(tt => tt.tenChucVu), "id", "tenChucVu");
+    var ThoiGioLV_id = new SelectList(db.dmThoiGioLamViec.OrderBy(tg => tg.tenThoiGioLamViec), "id", "tenThoiGioLamViec");
+    var ThoiHanHDCH_id = new SelectList(db.dmThoiHanHD.Where(th => th.loaiHopDong == "Hợp đồng cơ hữu").OrderBy(th => th.tenThoiHanHD), "id", "tenThoiHanHD");
+    TempData["DSNLDCanTaoHD"] = dsNLD;
+    var NLD = new List<string>();
+    NLD.Add(dsNLD.Hoten);
+    var listNLD = new SelectList(NLD);
+    
+    
+    var Nhom_id = new SelectList(db0.dmNhomNgachVienChuc.OrderBy(nn => nn.maNhomNgachVienChuc), "id", "maNhomNgachVienChuc");
+    var Ngach_id = new SelectList(db0.dmNgachVienChuc.OrderBy(n => n.tenNgachVienChuc), "id", "tenNgachVienChuc");
+    var Bac_id = new SelectList(db0.dmBangLuong.OrderBy(nn => nn.bacLuong), "id", "bacLuong");
+    var HSLuong_id = new SelectList(db0.dmBangLuong.OrderBy(nn => nn.hesoLuong), "id", "hesoLuong");
+    var BangLuongList = new List<string>();
+    BangLuongList.Add("Bảng 3");
+    BangLuongList.Add("Bảng 4");
+    var Bangluong_id = new SelectList(BangLuongList);
+    var cauhinh = db.hdCauHinh.FirstOrDefault();
+    var MucLuongToiThieu = "";
+    string[] ttData = cauhinh.Mucluongchinh.Split(".".ToArray());
+    for (int i = 0; i < ttData.Count(); i++)
+    {
+        MucLuongToiThieu += ttData[i];
+    }
+    var MLTTChung = "";
+    string[] lttnnqdData1 = cauhinh.MLTTChung1.Split(".".ToArray());
+    string[] lttnnqdData2 = cauhinh.MLTTChung2.Split(".".ToArray());
+    string MNV = dsNLD.MaNV;
+    int NV_id = db0.NhanVien.Where(nv => nv.MaNV == MNV).FirstOrDefault().id;
+    var nvBangCap = db0.nvBangCap.Where(bc => bc.NV_id == NV_id).FirstOrDefault();
+    if (nvBangCap.LoaiBangCap_id == 5)
+    {
+        for (int i = 0; i < lttnnqdData1.Count(); i++)
+        {
+            MLTTChung += lttnnqdData1[i];
+        }
+    }
+    else
+    {
+        for (int i = 0; i < lttnnqdData2.Count(); i++)
+        {
+            MLTTChung += lttnnqdData2[i];
+        }
+    }
+}
+
+<b style="margin-left: 35%; font-size: large">Thêm mới hợp đồng cơ hữu</b>
+@using (Html.BeginForm("Create_HDCoHuu", "ThemMoiHD", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.mauHopDong)
+    @Html.Hidden("DSNLDCanTaoHD_id", DSNLDCanTaoHD_id)
+<div style="">
+@Html.StatusMessage(TempData["Message_CreateHDCoHuu"])
+    <p>
+    @Html.ActionLink("Quay lại", "Index", "DSNLDCanTaoHD")
+    </p>
+    <p>
+            Họ tên NLĐ<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+            <span style="margin-left: 9px"></span>@Html.DropDownListFor(model => model.HotenNLD, listNLD, new { id = "HoTenNLD", })
+            <input type="hidden" name="Gioitinh_id" value="@dsNLD.GioiTinh_id" />
+            <input type="hidden" name="Quoctich_id" value="@dsNLD.Quoctich_id" />
+            <input type="hidden" name="Ngaysinh" value="@dsNLD.Ngaysinh" />
+            <input type="hidden" name="Noisinh" value="@dsNLD.Noisinh" />
+            <input type="hidden" name="Nghenghiep_id" value="@dsNLD.Nghenghiep_id" />
+            <input type="hidden" name="Diachithuongtru" value="@dsNLD.Diachithuongtru" />
+            <input type="hidden" name="soCMND" value="@dsNLD.soCMND" />
+            <input type="hidden" name="cmndNgaycap" value="@dsNLD.cmndNgaycap" />
+            <input type="hidden" name="cmndNoicap" value="@dsNLD.cmndNoicap" />
+            <span style="margin-left: 28px">Đơn vị<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left: 53px"></span>
+            @Html.DropDownListFor(model => model.Donvi_id, DonVi_id, new { id = "DonVi", })
+        </p>
+        <p>
+            Số HĐ<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left: 43px"></span>
+            @Html.TextBoxFor(model => model.SoHD, new { style = "width:250px" })
+            <input type="hidden" name="LoaiHD" value="Hợp đồng cơ hữu" />
+            <span style="margin-left: 26px"></span>Thời hạn HĐ<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left: 17px"></span>
+            @Html.DropDownListFor(model => model.ThoihanHD_id, ThoiHanHDCH_id, String.Empty, new { id = "ThoiHanHDCH" })
+        </p>
+        <p>
+
+            Ngày hiệu lực<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+            @Html.TextBoxFor(model => model.NgayHL, new { style = "width:250px", id = "NgayHieuLuc", onChange = "monthchange()" })
+            <span style="margin-left: 26px">Ngày hết hiệu lực
+            @Html.TextBoxFor(model => model.NgayhetHL, new { style = "width:175px", id = "NgayHetHieuLuc", name = "NgayhetHL", disabled = "true" })
+            <input type="hidden" name="NgayhetHL" id = "NgayHetHieuLucHid"/>
+        </p>
+        <p>
+            <span>Chức danh CM<span style="margin-left: 5px"></span>
+            @Html.DropDownListFor(model => model.Chucdanh_id, ChucDanh_id, String.Empty, new { id = "ChucDanhCM" })
+            </span><span style="margin-left: 26px">Chức vụ<span style="margin-left: 56px">
+            @Html.DropDownListFor(model => model.Chucvu_id, ChucVu_id, String.Empty, new { id = "ChucVu" })
+        </p>
+        <p>
+            CV trưởng ĐV<span style="margin-left:10px"></span>
+            @Html.TextBoxFor(model => model.ChucvutruongDV, new { style = "width:250px"})
+        </p>
+        <p>
+            Công việc phải làm
+        </p>
+        @Html.TextAreaFor(model => model.Congviec, new { style = "width: 802px; height: 50px" })
+    <p>
+        Thời giờ LV<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        @Html.DropDownListFor(model => model.ThoigioLV_id, ThoiGioLV_id, null, new { id = "ThoiGioLV" })<span style="margin-left: 5px"></span> 
+        <span style="margin-left: 0px"></span> Mức lương chính<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        <input id="MLC" name="Mucluongchinh" class="money" style="width:160px" type="text" /> VNĐ 
+        <span style="margin-left: 5px"></span>Có tham gia BHXH
+        @Html.CheckBoxFor(model => model.BHXH, new { style = "width:13px;height:13px" })
+    </p>
+    
+    <p>
+        Hệ số<span style="margin-left: 6px"></span> 
+        <span>@Html.DropDownListFor(model => model.HSLuong_id, HSLuong_id,String.Empty, new { style = "width:95px" })</span>
+        <span style="margin-left: 10px"></span> Bậc
+            <span>@Html.DropDownListFor(model => model.Bac_id, Bac_id, String.Empty, new { style = "width:95px" })</span>
+            <span style="margin-left: 10px"></span> Ngạch
+                <span>@Html.DropDownListFor(model => model.Ngach_id, Ngach_id, String.Empty, new { style = "width:95px" })</span>
+                <span style="margin-left: 10px"></span> Nhóm
+                    <span>@Html.DropDownListFor(model => model.Nhom_id, Nhom_id, String.Empty, new { style = "width:95px" })</span>
+                    <span style="margin-left: 10px"></span> Bảng lương
+        @Html.DropDownListFor(model => model.Bangluong_id, Bangluong_id, String.Empty, new { style = "width:120px" })
+    </p>
+    <p>
+    <span data-tip ="Người lao động ký">NLĐ ký</span>@Html.TextBoxFor(model => model.QT_NgayNLDky, new { id = "NLDKy", style = "width:95px" })
+    <span style="margin-left: 5px"><span data-tip ="Trình hợp đồng">Trình HĐ</span>@Html.TextBoxFor(model => model.QT_NgayTrinhHT, new { id = "TrinhHD", style = "width:95px" })
+    <span style="margin-left: 5px"><span data-tip ="Hiệu trưởng ký">HT ký</span>@Html.TextBoxFor(model => model.QT_NgayHTky, new { id = "HTKy", style = "width:95px" })
+    <span style="margin-left: 5px"><span data-tip ="Lưu hồ sơ">Lưu HS</span>@Html.TextBoxFor(model => model.QT_NgayLuuHS, new { id = "LuuHS", style = "width:95px" })
+    <span style="margin-left: 5px"><span data-tip ="Trả hồ sơ người lao động">Trả HS</span>@Html.TextBoxFor(model => model.QT_NgayTraNLD, new { id = "TraHS", style = "width:120px" })
+    </p>
+    <p>
+        Ghi chú
+    </p>
+     @Html.TextAreaFor(model => model.Ghichu, new { style = "width: 802px; height: 70px" })
+</div>
+<p style="margin-left: 75%">
+    <input id="btnInLuu" name = "PrintAndSave" type="submit" value="In&Lưu" style="width: 80px"/>
+    <input id="btnLuu" name = "Save" type="submit" value="Lưu" style="width: 80px"/
+</p>
+}
+
+<script>
+    var BangLuong = $("#Bangluong_id").combobox();
+    var Nhom = $("#Nhom_id").combobox();
+    var Ngach = $("#Ngach_id").combobox();
+    var Bac = $("#Bac_id").combobox();
+    var HSLuong = $("#HSLuong_id").combobox();
+    $("#Nhom_id").combobox().parent().find("input.ui-autocomplete-input").css("width", "100px");
+    $("#Bangluong_id").combobox().parent().find("input.ui-autocomplete-input").css("width", "110px");
+    $("#Ngach_id").combobox().parent().find("input.ui-autocomplete-input").css("width", "154px");
+    $("#Bac_id").combobox().parent().find("input.ui-autocomplete-input").css("width", "50px");
+    $("#HSLuong_id").combobox().parent().find("input.ui-autocomplete-input").css("width", "50px");
+    BangLuong.change(function () {
+        var Nhomlink = "~/HDLaoDong/dmBangLuong/List_Nhom?BangLuong=" + $(this).val();
+        Nhom.trigger("connect", [Nhomlink, function () {
+            Nhom.trigger("change");
+        } ]);
+    });
+    Nhom.change(function () {
+        var Ngachlink = "~/HDLaoDong/dmBangLuong/List_Ngach?idNhomNgach=" + $(this).val();
+        var Baclink = "~/HDLaoDong/dmBangLuong/List_Bac?idNhomNgach=" + $(this).val();
+        Ngach.trigger("connect", [Ngachlink, function () {
+            Ngach.trigger("change");
+        } ]);
+        Bac.trigger("connect", [Baclink, function () {
+            Bac.trigger("change");
+        } ]);
+    });
+    Bac.change(function () {
+        HSLuong.trigger("connect", "~/HDLaoDong/dmBangLuong/List_HSLuong?idBac=" + $(this).val());
+    });
+
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+
+    $("#MLC").live("click", function () {
+        if ($(this).val().length > 0) return;
+        var HSL_id = document.getElementById('HSLuong_id').selectedIndex;
+        var HSL_val = document.getElementById('HSLuong_id').options[HSL_id].text;
+        var HSL_int = parseFloat(HSL_val);
+        var data = HSL_val.split(',');
+        var HSL_tempt = data[0] + '.' + data[1];
+        if(data[1] == undefined){
+            HSL_tempt = data[0];
+        }
+        HSL_int = parseFloat(HSL_tempt);;
+        var MLTT = parseInt(@MucLuongToiThieu);
+        var LNNQD = parseInt(@MLTTChung);
+        var P = HSL_int*MLTT;
+        if(P <= LNNQD){
+            P = LNNQD;
+        }
+        document.getElementById('MLC').value = P;
+    });
+
+</script>
+<script>
+    $("#LoaiHopDong").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px");
+    $("#ThoiGioLV").combobox().parent().find("input.ui-autocomplete-input").css("width", "235px");
+    $("#ThoiHanHDCH").combobox().parent().find("input.ui-autocomplete-input").css("width", "175px");
+    $("#ThoiHanHopDong").combobox().parent().find("input.ui-autocomplete-input").css("width", "180px");
+    $("#HoTenNLD").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#ChucVu").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px");
+    $("#DonVi").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px");
+    $("#DaKy").combobox().parent().find("input.ui-autocomplete-input").css("width", "auto");
+    $("#ChucDanhCM").combobox().parent().find("input.ui-autocomplete-input").css("width", "252px");
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(function () {
+        $("[id=NgayKy]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+        $("[id=NgayHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=NgayHetHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=NLDKy]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=TrinhHD]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=HTKy]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=LuuHS]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=TraHS]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+
+<script src="@Href("~/Scripts/jquery.mask.min.js")" type="text/javascript"></script>
+<script>
+    $('.money').mask('0.000.000.000', { reverse: true });
+</script>
+<script>
+    document.getElementById("MLC").onblur = function () {
+        this.value = parseFloat(this.value.replace(/\./g, ""))
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        //document.getElementById("MLC").value = this.value.replace(/,/g, "")
+
+    }
+</script>
+<script>
+    function monthchange() {
+        var index = document.getElementById('ThoiHanHDCH').selectedIndex;
+        var m = parseInt(document.getElementById('ThoiHanHDCH').options[index].text);
+        if (m > 0) {
+            var d1Value = document.getElementById('NgayHieuLuc').value;
+            var data = d1Value.split('/');
+            var dd = parseInt(data[0], 10);
+            var mm = parseInt(data[1], 10);
+            var yyyy = parseInt(data[2], 10);
+            var date = new Date(yyyy, mm - 1, dd);
+            date = new Date(date.setMonth(date.getMonth() + parseInt(m)));
+            document.getElementById('NgayHetHieuLuc').value = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + (date.getFullYear());
+            document.getElementById('NgayHetHieuLucHid').value = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + (date.getFullYear());
+        } else {
+            document.getElementById('NgayHetHieuLuc').disabled = false;
+        }
+    }
+    function addDate() {
+        date = new Date();
+    }
+</script>

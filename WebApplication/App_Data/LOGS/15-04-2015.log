@@ -1,0 +1,282 @@
+INFO 03:11:09 – Home/Index
+INFO 03:11:10 – Login/Index
+INFO 03:11:20 – Login/Index
+INFO 03:11:20 – Home/Index
+INFO 03:11:25 – TuyenDung/Index
+INFO 03:16:43 – TuyenDung/Create&UV_id=-1
+INFO 03:16:43 – ThongTinChung/Create&UV_id=-1
+INFO 03:17:02 – ThongTinChung/Create&UV_id=-1&GioiTinh_id=1&TinhThanh_id=&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:17:03 – TuyenDung/Create&UV_id=378
+INFO 03:17:03 – ThongTinBangCap/Create&UV_id=378
+INFO 03:17:07 – TuyenDung/Create&UV_id=378
+INFO 03:17:08 – ThongTinLienHe/Create&UV_id=378
+INFO 03:17:17 – ThongTinLienHe/Create&UngVien_id=378&id=955&DTDiDong1=&DTDiDong2=&hkPhuongXa_id=&hkQuanHuyen_id=&hkTinhThanh_id=&llPhuongXa_id=&llQuanHuyen_id=&llTinhThanh_id=
+INFO 03:17:17 – TuyenDung/Create&UV_id=378
+INFO 03:17:17 – ThongTinUngTuyen/Create&UV_id=378
+INFO 03:17:32 – ThongTinUngTuyen/Create&UngVien_id=378&id=365&ViTriUngTuyen_id=32&DonViUngTuyen_id=4
+INFO 03:17:32 – TuyenDung/Index
+INFO 03:17:43 – KiemTraHS/Edit
+INFO 03:17:49 – KiemTraHS/Edit&Id=895&UngVien_id=378
+INFO 03:17:49 – TuyenDung/Index
+INFO 03:18:03 – KiemTraHS/Edit
+INFO 03:18:14 – KiemTraHS/Edit&Id=895&UngVien_id=378
+INFO 03:18:14 – TuyenDung/Index
+INFO 03:19:26 – TuyenDung/UpdateKQTuyenDung&id=378
+INFO 03:19:26 – TuyenDung/Index
+INFO 03:19:32 – Home/Index
+INFO 03:19:39 – HSNhanSu/Index
+INFO 03:19:40 – NhanVien/IndexP
+INFO 03:19:44 – QLThuViec/Index
+INFO 03:23:46 – TuyenDung/Create&UV_id=-1
+INFO 03:23:46 – ThongTinChung/Create&UV_id=-1
+INFO 03:25:14 – TuyenDung/Details
+INFO 03:25:15 – ThongTinChung/Edit
+INFO 03:25:16 – TuyenDung/Details
+INFO 03:25:16 – ThongTinUngTuyen/Edit
+INFO 03:29:07 – TuyenDung/Index
+INFO 03:29:30 – TuyenDung/UpdateKQTuyenDung&id=374
+INFO 03:29:33 – TuyenDung/Index
+INFO 03:29:38 – QLThuViec/Index
+INFO 03:29:50 – QLThuViec/EditOKP&id=28
+INFO 03:30:19 – QLThuViec/EditP&id=28
+INFO 03:30:31 – QLThuViec/EditNOP&id=28
+INFO 03:30:36 – QLThuViec/EditOKP&id=28
+INFO 03:37:28 – QLThuViec/UpdateS&id=28
+INFO 03:37:28 – QLThuViec/Index
+INFO 03:37:34 – QLThuViec/EditOKP&id=28
+INFO 03:51:18 – HSNhanSu/Index
+INFO 03:51:21 – NhanVien/IndexP
+INFO 03:51:27 – NhanVien/CreateP
+INFO 03:53:34 – QLThuViec/Index
+INFO 03:56:11 – QLThuViec/EditOKP&id=28
+INFO 03:56:17 – QLThuViec/UpdateS&id=28
+INFO 03:56:17 – QLThuViec/Index
+INFO 03:56:27 – QLThuViec/EditNOP&id=28
+INFO 03:57:16 – QLThuViec/UpdateS&id=28
+INFO 03:57:18 – QLThuViec/Index
+INFO 03:57:33 – QLThuViec/EditNOP&id=28
+INFO 03:57:37 – QLThuViec/UpdateS&id=28
+INFO 03:57:37 – QLThuViec/Index
+INFO 03:57:49 – HSNhanSu/Index
+INFO 03:57:51 – NhanVien/IndexP
+INFO 03:59:02 – Home/Index
+INFO 03:59:04 – Login/Index
+INFO 03:59:07 – HSNhanSu/Index
+INFO 03:59:15 – Login/Index
+INFO 03:59:15 – Home/Index
+INFO 03:59:17 – HSNhanSu/Index
+INFO 03:59:19 – NhanVien/IndexP
+INFO 03:59:33 – QLThuViec/EditOKP&id=28
+INFO 03:59:39 – QLThuViec/UpdateS&id=28
+INFO 04:03:53 – QLThuViec/Index
+INFO 04:04:22 – QLThuViec/Index
+INFO 04:04:25 – QLThuViec/EditOKP&id=28
+INFO 04:04:31 – QLThuViec/UpdateS&id=28
+INFO 04:04:35 – QLThuViec/UpdateS&id=28
+INFO 04:04:35 – QLThuViec/Index
+INFO 04:04:38 – HSNhanSu/Index
+INFO 04:04:38 – NhanVien/IndexP
+INFO 04:07:21 – QLThuViec/EditOKP&id=28
+INFO 04:09:03 – QLThuViec/EditOKP&id=28
+INFO 04:09:28 – QLThuViec/EditOKP&id=28
+INFO 04:09:43 – NhanVien/CreateP
+INFO 04:11:00 – NhanVien/CreateP
+ERROR04:11:01 – Object reference not set to an instance of an object.
+/controller=NhanVien/action=CreateP
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in C:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 19
+   at ASP._Page_Areas_QLHSNhanSu_Views_NhanVien_Create_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\NhanVien\Create.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 04:11:49 – NhanVien/CreateP
+INFO 04:11:57 – NhanVien/CreateP
+INFO 04:12:07 – NhanVien/CreateP
+INFO 04:12:11 – NhanVien/CreateP
+INFO 09:42:04 – Home/Index
+INFO 09:42:05 – Login/Index
+ERROR09:43:03 – Exception has been thrown by the target of an invocation.
+/df639b63-85ce-4aa0-a4b1-7db4640d55bf=System.Web.Mvc.DictionaryValueProvider`1[System.Object]/partial=True/controller=Login/action=Index
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at HRM.Accounts.Filters.InitializeMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Workspace\HRMApplication\WebApplication\Areas\Account\Filters\InitializeMembership.cs:line 22
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+ERROR09:43:03 – Exception has been thrown by the target of an invocation.
+/controller=Home/action=Index
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at HRM.Accounts.Filters.InitializeMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Workspace\HRMApplication\WebApplication\Areas\Account\Filters\InitializeMembership.cs:line 22
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeAction(ControllerContext controllerContext, String actionName, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__17(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Controller.BeginExecuteCore(AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Controller.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__2(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.<>c__DisplayClass7.<BeginProcessRequest>b__6()
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerWrapper.Wrap[TResult](Func`1 func)
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, Object routeValues)
+   at ASP._Page_Views_Home_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\Home\Index.cshtml:line 12
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:09:15 – Home/Index
+INFO 10:09:15 – Login/Index
+INFO 10:10:05 – Login/Index
+INFO 10:10:05 – Home/Index
+INFO 10:10:10 – TuyenDung/Index
+INFO 10:10:15 – HSNhanSu/Index
+INFO 10:10:17 – NhanVien/IndexP
+INFO 10:10:22 – HSNhanSu/Index
+INFO 10:10:22 – NhanVien/IndexP
+INFO 10:10:27 – TuyenDung/Index
+INFO 10:34:48 – TuyenDung/Index
+INFO 10:39:37 – TuyenDung/Index
+INFO 10:39:49 – TuyenDung/UpdateKQTuyenDung&id=365
+INFO 10:39:52 – TuyenDung/Index
+INFO 10:40:26 – Home/Index
+INFO 10:40:28 – Login/Index
+INFO 10:40:44 – Login/Index
+INFO 10:40:44 – Home/Index
+INFO 10:40:48 – TuyenDung/Index
+INFO 10:41:08 – TuyenDung/UpdateKQTuyenDung&id=364
+INFO 10:41:57 – TuyenDung/Index
+INFO 10:44:57 – Home/Index
+INFO 10:45:02 – DanhMuc/List
+INFO 10:45:09 – DanhMuc/Index
+INFO 10:45:27 – DanhMuc/Index
+INFO 10:45:41 – DanhMuc/Index
+INFO 10:45:43 – DanhMuc/Index
+INFO 10:45:45 – DanhMuc/Index
+INFO 10:45:45 – DonVi/Index
+INFO 10:46:56 – Home/Index
+INFO 11:34:16 – Home/Index
+INFO 11:34:18 – Login/Index
+INFO 11:34:31 – Login/Index
+INFO 11:34:31 – Home/Index
+INFO 11:34:35 – DanhMuc/List
+INFO 11:34:41 – DanhMuc/Index
+INFO 11:34:41 – DonVi/Index
+INFO 11:38:15 – DanhMuc/Index
+INFO 11:38:15 – ChucDanhChuyenMon/Index
+INFO 11:39:08 – DanhMuc/Index
+INFO 11:39:08 – ChucDanhChuyenMon/Index
+INFO 11:39:41 – ChucDanhChuyenMon/Edit&id=27
+ERROR11:39:41 – The model item passed into the dictionary is of type 'System.Data.Entity.DynamicProxies.dmChucDanhChuyenMon_C1A1ECFB95511F7BEC6535555C79F20A21B0360BB490B704DE6F0D4F81A41931', but this dictionary requires a model item of type 'HRM.Databases.Models.dmDonVi'.
+/controller=ChucDanhChuyenMon/action=Edit
+   at System.Web.Mvc.ViewDataDictionary`1.SetModel(Object value)
+   at System.Web.Mvc.ViewDataDictionary..ctor(ViewDataDictionary dictionary)
+   at System.Web.Mvc.WebViewPage`1.SetViewData(ViewDataDictionary viewData)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:43:03 – DanhMuc/Index
+INFO 11:43:03 – ChucDanhChuyenMon/Index
+INFO 11:43:10 – ChucDanhChuyenMon/Edit&id=13
+INFO 11:45:39 – ChucDanhChuyenMon/Edit&id=8
+INFO 11:48:33 – ChucDanhChuyenMon/Edit&id=11
+INFO 11:48:58 – ChucDanhChuyenMon/Edit&id=11
+INFO 11:49:14 – ChucDanhChuyenMon/Edit&id=11
+INFO 11:49:58 – ChucDanhChuyenMon/Edit&id=7
+INFO 11:50:47 – ChucDanhChuyenMon/Edit&id=9
+INFO 11:51:08 – ChucDanhChuyenMon/Edit&id=8
+INFO 11:51:26 – ChucDanhChuyenMon/Edit&id=27
+INFO 11:51:37 – DanhMuc/Index
+INFO 11:51:37 – ChucDanhChuyenMon/Index
+INFO 11:51:44 – ChucDanhChuyenMon/Edit&id=27
+INFO 11:51:57 – DanhMuc/Index
+INFO 11:51:57 – ChucDanhChuyenMon/Index
+INFO 11:52:05 – ChucDanhChuyenMon/Edit&id=27
+INFO 11:52:26 – ChucDanhChuyenMon/Edit&id=27&id=27&idChucDanh=2
+INFO 11:52:30 – ChucDanhChuyenMon/Edit&id=27
+INFO 11:52:34 – DanhMuc/Index
+INFO 11:52:34 – ChucDanhChuyenMon/Index
+INFO 11:52:47 – ChucDanhChuyenMon/Edit&id=27

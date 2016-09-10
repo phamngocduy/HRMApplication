@@ -1,0 +1,65 @@
+﻿@model IEnumerable<HRM.QLBHXH.Models.dmLoaiTangGiam>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh mục loại tăng giảm</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table id="LoaiTangGiam">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STT)
+        </th>
+        <th>
+            Mã
+        </th>
+        <th>
+            Loại tăng giảm
+        </th>
+        <th>
+            Ghi chú
+        </th>
+
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.STT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiTangGiam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+
+        <td align="right" nowrap>        
+            <a class="dialog" href="dmLoaiTangGiam/Edit?id=@item.id" title="Chỉnh sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+             <a class="dialog" href="dmLoaiTangGiam/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a> 
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#LoaiTangGiam").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+  </script>

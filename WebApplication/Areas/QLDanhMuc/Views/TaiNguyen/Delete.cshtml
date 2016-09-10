@@ -1,0 +1,49 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLDanhMuc.Models
+@model HRM.Databases.Models.TaiNguyen
+@{
+    ViewBag.Title = "Delete";
+}
+@helper Traversal(TaiNguyen mode1) {
+    if (mode1.laThuMuc)
+    {
+        <p><span class="ui-icon ui-icon-folder-open" style="display:inline-block"></span>@mode1.getFolder()</p>
+    }
+    else
+    {
+        <p><span class="ui-icon ui-icon-document" style="display:inline-block"></span>@mode1.getFolder()/@mode1.tenTaiNguyen - @mode1.tepDinhKem</p>
+    }
+    foreach (var tn in mode1.getChildren())
+    {
+        if (tn.laThuMuc)
+        {
+            @Traversal(tn)
+        }
+    }
+    foreach (var tn in mode1.getChildren())
+    {
+        if (!tn.laThuMuc)
+        {
+            @Traversal(tn)
+        }
+    }
+}
+@Html.BeginDiv()
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Traversal(Model)
+    
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index", new { parent = Model.idTaiNguyen })
+    </p>
+}
+
+@Html.EndDiv()

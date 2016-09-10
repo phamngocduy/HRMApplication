@@ -1,0 +1,32 @@
+﻿@using HRM.Services
+@model HRM.Extension.Databases.Models.Message
+@{
+    var id = Environment.TickCount;
+    var users = Webpages.getUsernames();
+    users = users.Select(u => String.Format("'{0}'", u)).ToArray();
+}
+@using (Html.BeginForm("Send", "Message"))
+{
+    @Html.Hidden("Date", DateTime.Now)
+    <dl id="@id" class="dl-horizontal">
+        <dt>Ngày</dt>
+        <dd>@DateTime.Now.ToShortDateString()</dd>
+        <dt>Đến</dt>
+        <dd>@Html.TextBoxFor(model => model.Users)
+            <span>(*: tất cả)</span>
+        </dd>
+        <dt>Nội dung</dt>
+        <dd>@Html.TextAreaFor(model => model.Content)</dd>
+        <dt></dt>
+        <dd>
+            <input type="submit" value="Send" />
+            <a title="Close" class="close" href="">X</a>
+        </dd>
+    </dl>
+}
+
+<script>
+    $(function () {
+        $("#@id").find("#Users").multicomplete(['*', @Html.Raw(String.Join(",", users))]);
+    });
+</script>

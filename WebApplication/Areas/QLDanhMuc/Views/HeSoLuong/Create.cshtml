@@ -1,0 +1,58 @@
+﻿@*@model HRM.Databases.Models.dmHeSoLuong
+
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmHeSoLuong</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.maHeSoLuong, "Mã HSLương")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.maHeSoLuong)
+            @Html.ValidationMessageFor(model => model.maHeSoLuong)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idNhomNgach, "Nhóm Ngạch")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idNhomNgach", String.Empty)
+            @Html.ValidationMessageFor(model => model.idNhomNgach)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idBacLuong, "Bậc Lương")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idBacLuong", String.Empty)
+            @Html.ValidationMessageFor(model => model.idBacLuong)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HeSoLuong, "HSLương")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HeSoLuong)
+            @Html.ValidationMessageFor(model => model.HeSoLuong)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.stt, "STT")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.stt)
+            @Html.ValidationMessageFor(model => model.stt)
+        </div>
+
+        <p>
+            <input class="dialog" type="submit" value="Thêm" />
+        </p>
+    </fieldset>
+}
+
+
+*@

@@ -1,0 +1,22 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Accounts.Models.ChangeUserNameModel
+
+<h3>Đổi tên đăng nhập</h3>
+
+@using (Html.BeginForm("ChangeUserName", "Manage")) {
+@Html.ValidationInfo()
+<fieldset>
+    <legend>Change UserName Form</legend>
+    <ol>
+        <li>
+            @Html.LabelFor(m => m.UserName, "Tên đăng nhập")
+            @Html.TextBoxFor(m => m.UserName)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.Password, "Nhập mật khẩu")
+            @Html.PasswordFor(m => m.Password)
+        </li>
+    </ol>
+    <input type="submit" value="Đổi tên" />
+</fieldset>
+}

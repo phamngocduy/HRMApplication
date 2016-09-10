@@ -1,0 +1,210 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@model int
+@{
+    ViewBag.Title = "Details";
+    var db = ViewBag.DB as HRMDBEntities;
+    var NhanVien = db.NhanViens.All.Find(Model);
+    if (ViewBag.Tab == null) { ViewBag.Tab = "SoYeuLyLich"; }
+    var accordion = ViewBag.Nat == "Truoc" ? 0 : 1;
+    TempData["Tab"] = ViewBag.Tab; TempData["Nat"] = accordion;
+}
+<span class="ui-state-highlight">
+    @NhanVien.MaNV
+    - @((NhanVien.nvSoYeuLyLiches.SingleOrDefault() ?? new nvSoYeuLyLich()).HoVaTen)
+    - @((NhanVien.nvQTLamViec != null ? (NhanVien.nvQTLamViec.DonVi != null ? NhanVien.nvQTLamViec.DonVi.tenDonVi : null) : null))
+</span>
+<div id="HSNhanSu">
+    <ul style="padding:0">
+        <li style="margin:0"><a href="#SoYeuLyLich">Lý lịch</a></li>
+        <li style="margin:0"><a href="#TTLienHe">Liên hệ</a></li>
+        <li style="margin:0"><a href="#QHGiaDinh">Gia đình</a></li>
+        <li style="margin:0"><a href="#QTHocTap">Học tập</a></li>
+        <li style="margin:0"><a href="#QTLamViec">Làm việc</a></li>
+        <li style="margin:0"><a href="#CTDoanThe">Đoàn thể</a></li>
+        <li style="margin:0"><a href="#TTKhenThuong">Khen Thưởng</a></li>
+        <li style="margin:0"><a href="#TTKyLuat">Kỷ Luật</a></li>
+        <li style="margin:0"><a href="#SoTayCT">Sổ tay</a></li>
+        
+    </ul>
+    <div id="SoYeuLyLich" style="padding:0;overflow-x:scroll">
+        @if (ViewBag.Tab == "SoYeuLyLich")
+        {
+            ViewBag.Alt = "SƠ LƯỢC LÝ LỊCH";
+            @Html.Action("EditP", "SoYeuLyLich", new { NV_id = Model })
+        }
+    </div>
+    <div id="TTLienHe">
+        @if (ViewBag.Tab == "TTLienHe")
+        {
+            ViewBag.Alt = "THÔNG TIN LIÊN HỆ";
+            @Html.Action("EditP", "TTLienHe", new { id = Model })
+        }
+    </div>
+    <div id="QHGiaDinh" style="padding:0;overflow-x:scroll">
+        @if (ViewBag.tab == "QHGiaDinh")
+        {
+            ViewBag.Alt = "QUAN HỆ GIA ĐÌNH";
+            @Html.Action("IndexP", "QHGiaDinh", new { NV_id = Model })
+            <div style="text-align:center"><p><b>
+                @Html.ActionLink("THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ, XÃ HỘI", "Details/" + Model, "HSNhanSu", new { Tab = "CTDoanThe" }, new { id = "Prev", style = "float:left" })
+                @Html.ActionLink("KHEN THƯỞNG", "Details/" + Model, "HSNhanSu", new { Tab = "TTKhenThuong" }, new { id = "Next", style = "float:right" })
+            </b></p></div>
+        }
+    </div>
+    <div id="QTHocTap">
+        @if (ViewBag.tab == "QTHocTap")
+        {
+            ViewBag.Alt = "QUÁ TRÌNH HỌC TẬP";
+            @Html.Action("Index", "nvBangCap", new { id = Model })
+            @Html.Action("Index", "ChungChi", new { id = Model })  
+           
+            <div style="text-align:center"><p><b>
+                @Html.ActionLink("SƠ LƯỢC LÝ LỊCH", "Details/" + Model, "HSNhanSu", new { Tab = "SoYeuLyLich" }, new { id = "Prev", style = "float:left" })
+                @Html.ActionLink("QUÁ TRÌNH LÀM VIỆC", "Details/" + Model, "HSNhanSu", new { Tab = "QTLamViec" }, new { id = "Next", style = "float:right" })
+            </b></p></div>
+        }
+    </div>
+    <div id="QTLamViec" style="padding: 0">
+        @if (ViewBag.tab == "QTLamViec")
+        {
+            ViewBag.Alt = "QUÁ TRÌNH LÀM VIỆC";
+            <h3 style="margin: 0">Trước khi về trường</h3>
+            <div style="padding: 0">
+                @Html.Action("IndexP", "QTLamViecTruoc", new { NV_id = Model })
+            </div>
+            <h3 style="margin: 0">Từ khi về trường</h3>
+            <div style="padding: 0">
+                @Html.Action("IndexP", "QTLamViec", new { NV_id = Model })
+                <br />
+                @Html.Action("IndexP", "QTKiemNhiem", new { NV_id = Model })
+            </div>
+            <h3 class="ignore"></h3>
+            <div class="ignore" style="text-align:center"><p><b>
+                @Html.ActionLink("QUÁ TRÌNH HỌC TẬP", "Details/" + Model, "HSNhanSu", new { Tab = "QTHocTap" }, new { id = "Prev", style = "float:left" })
+                @Html.ActionLink("THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ, XÃ HỘI", "Details/" + Model, "HSNhanSu", new { Tab = "CTDoanThe" }, new { id = "Next", style = "float:right" })
+            </b></p></div>
+        }
+    </div>
+    <div id="CTDoanThe" style="padding: 0">
+    @if (ViewBag.tab == "CTDoanThe")
+    {
+        ViewBag.Alt = "CHÍNH TRỊ, XÃ HỘI";
+        <h3 style="margin: 0">Trước khi về trường</h3>
+        <div style="padding: 0">
+            @Html.Action("IndexP", "CTDoanTheTruoc", new { NV_id = Model })
+        </div>
+        <h3 style="margin: 0">Từ khi về trường</h3>
+        <div style="padding: 0">
+            @Html.Action("IndexP", "CTDoanThe", new { NV_id = Model })
+        </div>
+        <h3 class="ignore"></h3>
+        <div class="ignore" style="text-align:center"><p><b>
+            @Html.ActionLink("QUÁ TRÌNH LÀM VIỆC", "Details/" + Model, "HSNhanSu", new { Tab = "QTLamViec" }, new { id = "Prev", style = "float:left" })
+            @Html.ActionLink("QUAN HỆ GIA ĐÌNH", "Details/" + Model, "HSNhanSu", new { Tab = "QHGiaDinh" }, new { id = "Next", style = "float:right" })
+        </b></p></div>
+    }
+    </div>
+    <div id="TTKhenThuong" style="padding: 0">
+        @if (ViewBag.tab == "TTKhenThuong")
+        {
+            ViewBag.Alt = "KHEN THƯỞNG";
+            <h3 style="margin: 0">Trước khi về trường</h3>
+            <div style="padding:0">
+                @Html.Action("IndexP", "TTKhenThuongTruoc", new { NV_id = Model })
+            </div>
+            <h3 style="margin: 0">Từ khi về trường</h3>
+            <div style="padding:0">
+                @Html.Action("IndexP", "TTKhenThuong", new { NV_id = Model })
+            </div>
+            <h3 class="ignore">
+            </h3>
+            <div class="ignore" style="text-align: center">
+                <p>
+                    <b>
+                        @Html.ActionLink("QUAN HỆ GIA ĐÌNH", "Details/" + Model, "HSNhanSu", new { Tab = "QHGiaDinh" }, new { id = "Prev", style = "float:left" })
+                        @Html.ActionLink("KỶ LUẬT", "Details/" + Model, "HSNhanSu", new { Tab = "TTKyLuat" }, new { id = "Next", style = "float:right" })
+                    </b>
+                </p>
+            </div>
+        }
+    </div>
+    <div id="TTKyLuat" style="padding: 0">
+    @if (ViewBag.tab == "TTKyLuat")
+    {
+        ViewBag.Alt = "KỶ LUẬT";
+        <h3 style="margin: 0">Trước khi về trường</h3>
+        <div style="padding: 0">
+            @Html.Action("IndexP", "TTKyLuatTruoc", new { NV_id = Model })
+        </div>
+        <h3 style="margin: 0">Từ khi về trường</h3>
+        <div style="padding: 0">
+            @Html.Action("IndexP", "TTKyLuat", new { NV_id = Model })
+        </div>
+        <h3 class="ignore"></h3>
+        <div class="ignore" style="text-align:center"><p><b>
+             
+            @Html.ActionLink("KHEN THƯỞNG", "Details/" + Model, "HSNhanSu", new { Tab = "TTKhenThuong" }, new { id = "Prev", style = "float:left" })
+            @Html.ActionLink("SỔ TAY CÔNG TÁC", "Details/" + Model, "HSNhanSu", new { Tab = "SoTayCT" }, new { id = "Next", style = "float:right" })
+        </b></p></div>
+    }
+    </div>
+    <div id="SoTayCT" style="padding:0">
+        @if (ViewBag.tab == "SoTayCT")
+        {
+            ViewBag.Alt = "SỔ TAY CÔNG TÁC";
+            <div style="padding: 0">
+                @Html.Action("Index", "nvTapHuan", new { id = Model })
+            </div>
+            <div style="padding:0;overflow-x:scroll">
+                @Html.Action("Index", "nvCTNganHan", new { id = Model })
+            </div>
+        }
+    </div>
+</div>
+</div>
+<style>
+    .ui-tabs .ui-tabs-nav li a
+    {
+        padding: .5em .5em;
+    }
+</style>
+<script>
+    $(function () {
+        $("#QTLamViec").accordion({
+            header: "h3:not(.ignore)",
+            active: @accordion,
+            collapsible: true,
+            heightStyle: "content"
+        });
+         $("#TTKhenThuong").accordion({
+            header: "h3:not(.ignore)",
+            active: @accordion,
+            collapsible: true,
+            heightStyle: "content"
+        });
+         $("#TTKyLuat").accordion({
+            header: "h3:not(.ignore)",
+            active: @accordion,
+            collapsible: true,
+            heightStyle: "content"
+        });
+         $("#CTDoanThe").accordion({
+            header: "h3:not(.ignore)",
+            active: @accordion,
+            collapsible: true,
+            heightStyle: "content"
+        });
+        $("#HSNhanSu").tabs({
+            active: $("#HSNhanSu div").index($("#@ViewBag.Tab")),
+            activate: function (event, ui) {
+                $("body").block();
+                location.href = location.protocol + "//" + location.host + document.location.pathname + "?tab=" + ui.newTab.children("a").attr("href").replace("#", "")
+            }
+        }).tabs();
+        $("#Prev,#Next").button();
+        $("a[href=#@ViewBag.Tab]").text("@MvcHtmlString.Create(ViewBag.Alt)")
+            .css("padding-left", "0").css("padding-right", "0");
+    });
+</script>

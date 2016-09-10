@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "TKBaoCao";
+}
+
+<h2>Thống kê, Báo cáo</h2>
+<h3>
+    <ul>
+        <li>
+            @Html.ActionLink("Quản lý ngành giảng dạy", "List", "NganhGiangDay")
+        </li>
+        <li>
+            @Html.ActionLink("Quản lý dữ liệu giờ giảng", "Index", "DuLieuGioGiang", new { area = "QLThinhGiang" }, null)
+        </li>
+        <li>
+            <span>Thống kê theo đơn vị</span>
+            <ul>
+                <li>
+                    @Html.ActionLink("Biểu 5.1", "Bieu51")
+                    @Html.ActionLink("Biểu 5.2", "Bieu52")
+                    @Html.ActionLink("Theo khoa", "TheoKhoa")
+                    @Html.ActionLink("Theo ngành", "TheoNganh")
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>Thống kê theo giờ giảng</span>
+            <ul>
+                <li>
+                    @Html.ActionLink("Tổng hợp giờ giảng các khoa đào tạo", "CTDT")
+                </li>
+                <li>
+                    @Html.ActionLink("Thống kê giờ giảng toàn trường", "NVDV")
+                </li>
+            </ul>
+        </li>
+        <li>
+            @Html.ActionLink("Thống kê công đóng góp", "Index", "TinhCong")
+        </li>
+    </ul>
+</h3>

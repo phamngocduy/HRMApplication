@@ -1,0 +1,41 @@
+﻿@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.Databases.Models.dmPhuongXa>
+@*<p>    
+    <a class ="dialog" href="PhuongXa/create" title="Thêm">Thêm @Html.VN("PhuongXa")</a>
+</p>*@
+<table id="phuongxa">
+<thead>
+    <tr>
+        <th>STT</th>
+        <th>Mã</th>
+        <th>Tên @Html.VN("PhuongXa")</th>
+        <th>Tên @Html.VN("QuanHuyen")</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.stt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.maPhuongXa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenPhuongXa)
+        </td>
+        <td>
+            <span data-tip="@item.dmQuanHuyen.dmTinhThanh.tenTinhThanh">@item.dmQuanHuyen.tenQuanHuyen</span>
+        </td>
+        <td align="right" nowrap>
+            <a class="dopost" href="PhuongXa/Delete?id=@item.id" title="Xóa @Html.VN("PhuongXa")"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a class="dialog" href="PhuongXa/Edit?id=@item.id" title="Sửa @Html.VN("PhuongXa")"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    @Html.dataTables("phuongxa")
+</script>

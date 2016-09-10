@@ -1,0 +1,193 @@
+﻿@model HRM.QLBHXH.Models.dmMucLuongToiThieuVung
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>
+    Chỉnh sửa</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmMucLuongToiThieuVung</legend>
+        @Html.HiddenFor(model => model.id)
+         <b> Ngày bắt đầu</b>
+            @Html.TextBoxFor(model => model.NgayBatDau, new { style = "width: 100px", @id = "NgayBatDau1" })
+            @Html.ValidationMessageFor(model => model.NgayBatDau)
+      
+       
+           <b>Ngày kết thúc</b>
+            @Html.TextBoxFor(model => model.NgayKetThuc, new { style = "width: 100px", @id = "NgayKetThuc1" })
+            @Html.ValidationMessageFor(model => model.NgayKetThuc)
+      
+        
+        <div class="editor-label">
+              <b>Mức lương tối thiểu vùng (VNĐ)  </b>
+        <input id="MucLuongTTV1"  value= @String.Format("{0:#,##0}", Model.MucLuong) />
+        </div>
+
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.MucLuong, new { @id = "MucLuong1" })
+            @Html.ValidationMessageFor(model => model.MucLuong)
+        </div>
+
+                   <div class="editor-label">
+            <b>Mức lương tối thiểu vùng tc(VNĐ)  </b>
+ 
+        @if (Model.MucLuongCaoHonTrungCap != null)
+        {
+           <input id="MucLuongTTV_CaoHonTC1" value=@String.Format("{0:#,##0}", Model.MucLuongCaoHonTrungCap) />}
+        else
+        { <input id="MucLuongTTV_CaoHonTC1" value="") />}
+          </div>
+            <div class="editor-field">
+            @Html.HiddenFor(model => model.MucLuongCaoHonTrungCap, new { @id = "MucLuongCaoHonTrungCap1" })
+            @Html.ValidationMessageFor(model => model.MucLuong)
+        </div>
+    
+    
+       
+        <div class="editor-label">
+           <b> Thuộc vùng</b> 
+     
+            @Html.EditorFor(model => model.ThuocVung)
+            @Html.ValidationMessageFor(model => model.ThuocVung)
+        </div>
+        <div class="editor-label">
+            <b> Đang áp dụng</b> 
+      
+            @Html.EditorFor(model => model.TrangThai)
+            @Html.ValidationMessageFor(model => model.TrangThai)
+        </div>
+        <div class="editor-label">
+           <b> Ghi chú</b> 
+       
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+        <p>
+            <input type="submit" value="Lưu" />
+        </p>
+    </fieldset>
+}
+
+<script>
+$("#NgayBatDau1").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+    $("#NgayKetThuc1").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+
+//tu them dau phay vao so
+$('#MucLuongTTV1').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    ;
+  });
+
+
+
+
+});
+$('#MucLuongTTV_CaoHonTC1').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    ;
+  });
+});
+
+
+    $("#MucLuongTTV1").keyup(function () {
+
+            //Clear the hidden field
+            $("#MucLuong1").val("");
+
+            //Create char array from phone number field
+            var charArray = $(this).val().split("");
+
+            var phoneNumber = "";
+
+            //Iterate over each character in the char array
+            //and determine if it is a number
+            $.each(charArray, function (index, value) {
+                if (!isNaN(value) && value != " ") {
+                    phoneNumber = phoneNumber + value;
+                }
+            });
+
+            //Set hidden field
+            $("#MucLuong1").val(phoneNumber);
+  $("#MucLuongCaoHonTrungCap1").val(parseInt(phoneNumber)+parseInt(Math.round(phoneNumber*0.07)));
+        //tu them dau phay vao so
+
+
+    
+         var value =parseInt(phoneNumber)+parseInt(Math.round(phoneNumber*0.07)) // i.e. some decimal number
+
+var num2 = value.toString().split('.');
+var thousands = num2[0].split('').reverse().join('').match(/.{1,3}/g).join('.');
+var decimals = (num2[1]) ? '.'+num2[1] : '';
+
+var answer =  thousands.split('').reverse().join('')+decimals;  
+           
+                $("#MucLuongTTV_CaoHonTC1").val(answer);
+
+
+             
+
+            
+        });
+
+        
+    $("#MucLuongTTV_CaoHonTC1").keyup(function () {
+
+            //Clear the hidden field
+            $("#MucLuongCaoHonTrungCap1").val("");
+//             $("#MucLuongTTV_CaoHonTC").val("");
+            
+
+            //Create char array from phone number field
+            var charArray = $(this).val().split("");
+
+            var phoneNumber1 = "";
+
+            //Iterate over each character in the char array
+            //and determine if it is a number
+            $.each(charArray, function (index, value) {
+                if (!isNaN(value) && value != " ") {
+                    phoneNumber1 = phoneNumber1 + value;
+                }
+            });
+
+            //Set hidden field
+           
+        $("#MucLuongCaoHonTrungCap1").val(phoneNumber1);
+
+
+            
+        });
+
+
+
+</script>

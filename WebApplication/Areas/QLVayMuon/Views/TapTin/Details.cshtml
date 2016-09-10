@@ -1,0 +1,43 @@
+﻿@model HRM.QLVayMuon.Models.TapTin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TapTin</legend>
+    @*
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Upload.tenThuMuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Upload.tenThuMuc)
+    </div>
+    *@
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tenThuMuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tenThuMuc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tepDinhKem)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tepDinhKem)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.laThuMuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.laThuMuc)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

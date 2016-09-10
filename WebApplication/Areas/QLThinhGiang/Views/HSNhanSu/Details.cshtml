@@ -1,0 +1,87 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model int
+@{
+    ViewBag.Title = "Details";
+    var db = ViewBag.DB as HRMDB_Entities;
+    var NhanVien = db.NhanVien.Find(Model);
+    if (ViewBag.Tab == null) { ViewBag.Tab = "SoYeuLyLich"; }
+    var accordion = ViewBag.Nat == "Truoc" ? 0 : 1;
+    TempData["Tab"] = ViewBag.Tab; TempData["Nat"] = accordion;
+}
+<span class="ui-state-highlight">
+    @NhanVien.MaNV
+    - <b>@((NhanVien.nvSoYeuLyLiches.SingleOrDefault() ?? new nvSoYeuLyLich()).HoVaTen)</b>
+</span>
+<div id="QLThinhGiang">
+    <ul style="padding:0">
+        <li style="margin:0"><a href="#SoYeuLyLich">Lý lịch</a></li>
+        <li style="margin:0"><a href="#TTLienHe">Liên hệ</a></li>
+        <li style="margin:0"><a href="#QHGiaDinh">Gia đình</a></li>
+        <li style="margin:0"><a href="#QTHocTap">Bằng cấp</a></li>
+        <li style="margin:0"><a href="#QTLamViec">Làm việc</a></li>        
+    </ul>
+    <div id="SoYeuLyLich" style="padding:0;overflow-x:scroll">
+        @if (ViewBag.Tab == "SoYeuLyLich")
+        {
+            ViewBag.Alt = "SƠ LƯỢC LÝ LỊCH";
+            @Html.Action("EditP", "SoYeuLyLich", new { NV_id = Model })
+        }
+    </div>
+    <div id="TTLienHe">
+        @if (ViewBag.Tab == "TTLienHe")
+        {
+            ViewBag.Alt = "THÔNG TIN LIÊN HỆ";
+            @Html.Action("EditP", "TTLienHe", new { id = Model })
+        }
+    </div>
+    <div id="QHGiaDinh" style="padding:0;overflow-x:scroll">
+        @if (ViewBag.tab == "QHGiaDinh")
+        {
+            ViewBag.Alt = "QUAN HỆ GIA ĐÌNH";
+            @Html.Action("IndexP", "QHGiaDinh", new { NV_id = Model })
+        }
+    </div>
+    <div id="QTHocTap">
+        @if (ViewBag.tab == "QTHocTap")
+        {
+            ViewBag.Alt = "BẰNG CẤP, CHỨNG CHỈ";
+            @Html.Action("Index", "nvBangCap", new { id = Model })
+            @Html.Action("Index", "ChungChi", new { id = Model })  
+        }
+    </div>
+    <div id="QTLamViec" style="padding: 0">
+        @if (ViewBag.tab == "QTLamViec")
+        {
+            ViewBag.Alt = "ĐƠN VỊ CÔNG TÁC";
+            @Html.Action("EditP", "QTLamViec", new { id = Model })
+        }
+    </div>
+</div>
+</div>
+<style>
+    .ui-tabs .ui-tabs-nav li a
+    {
+        padding: .5em .5em;
+    }
+</style>
+<script>
+    $(function () {
+        $("#QTLamViec").accordion({
+            header: "h3:not(.ignore)",
+            active: @accordion,
+            collapsible: true,
+            heightStyle: "content"
+        });
+        $("#QLThinhGiang").tabs({
+            active: $("#QLThinhGiang div").index($("#@ViewBag.Tab")),
+            activate: function (event, ui) {
+                $("body").block();
+                location.href = location.protocol + "//" + location.host + document.location.pathname + "?tab=" + ui.newTab.children("a").attr("href").replace("#", "")
+            }
+        }).tabs();
+        $("#Prev,#Next").button();
+        $("a[href=#@ViewBag.Tab]").text("@MvcHtmlString.Create(ViewBag.Alt)")
+            .css("padding-left", "0").css("padding-right", "0");
+    });
+</script>

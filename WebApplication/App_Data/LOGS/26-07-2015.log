@@ -1,0 +1,103 @@
+INFO 10:05:45 – Home/Index
+INFO 10:05:45 – Home/Index
+INFO 10:05:47 – Login/Index
+INFO 10:05:47 – Login/Index
+INFO 10:05:57 – Login/Index
+INFO 10:05:57 – Home/Index
+INFO 10:06:06 – TinhCong/Index
+INFO 10:06:14 – TinhCong/TuDien
+INFO 10:07:30 – TinhCong/TuDien
+INFO 10:08:10 – TinhCong/TuDien
+INFO 10:09:05 – Home/Index
+INFO 10:09:05 – Login/Index
+INFO 10:09:16 – Login/Index
+INFO 10:09:16 – Home/Index
+INFO 10:09:29 – TinhCong/TuDien
+INFO 10:10:02 – TinhCong/TuDien
+ERROR10:10:02 – Incorrect syntax near 'van'.
+/controller=TinhCong/action=TuDien
+/name=name/value=Chánh van phòng HÐQT1/pk=751
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at HRM.Webpages.Helpers.DataTableExt.SqlExecute(Database db, String query, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 151
+   at HRM.Webpages.Helpers.DataTableExt.SqlExecute(HRMDBEntities db, String query, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 135
+   at HRM.Webpages.Controllers.TinhCongController.TuDien(Int32 pk, String value) in C:\Workspace\HRMApplication\WebApplication\Controllers\TinhCongController.cs:line 64
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:10:33 – Home/Index
+INFO 10:10:36 – TinhCong/TuDien
+ERROR10:10:52 – Incorrect syntax near 'van'.
+/controller=TinhCong/action=TuDien
+/name=name/value=Chánh van phòng HÐQT1/pk=751
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at HRM.Webpages.Helpers.DataTableExt.SqlExecute(Database db, String query, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 151
+   at HRM.Webpages.Helpers.DataTableExt.SqlExecute(HRMDBEntities db, String query, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 135
+   at HRM.Webpages.Controllers.TinhCongController.TuDien(Int32 pk, String value) in C:\Workspace\HRMApplication\WebApplication\Controllers\TinhCongController.cs:line 64
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:11:41 – TinhCong/TuDien
+INFO 10:11:50 – TinhCong/TuDien
+INFO 10:11:52 – TinhCong/TuDien
+INFO 10:11:59 – TinhCong/TuDien
+INFO 10:12:02 – TinhCong/TuDien
+INFO 10:12:04 – TinhCong/TuDien
+INFO 10:12:05 – TinhCong/TuDien
+INFO 10:12:21 – TinhCong/TuDien
+INFO 10:12:24 – TinhCong/TuDien
+INFO 10:12:56 – TinhCong/TuDien
+INFO 10:28:50 – TinhCong/TuDien
+INFO 10:29:50 – TinhCong/TuDien
+INFO 10:31:51 – TinhCong/TuDien
+INFO 10:32:33 – TinhCong/TuDien
+INFO 10:32:46 – TinhCong/TuDien
+INFO 11:02:46 – TinhCong/CongThuc
+INFO 11:03:06 – TinhCong/TuDien
+INFO 11:03:17 – TinhCong/Details&NV_id=47
+INFO 11:03:33 – TinhCong/TuDien
+INFO 11:07:18 – TinhCong/Details&NV_id=47
+INFO 01:13:41 – TinhCong/Details&NV_id=286
+INFO 01:19:00 – TinhCong/Details&NV_id=111
+INFO 01:21:22 – TinhCong/Details&NV_id=111
+INFO 01:22:05 – TinhCong/Details&NV_id=54
+INFO 01:23:49 – TinhCong/Details&NV_id=54

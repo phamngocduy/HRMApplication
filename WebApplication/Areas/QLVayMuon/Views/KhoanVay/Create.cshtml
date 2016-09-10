@@ -1,0 +1,251 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLVayMuon.Models
+@model HRM.QLVayMuon.Models.KhoanVay
+
+
+@{
+    HRMDB1Entities db = new HRMDB1Entities();
+    int NV_id = ViewBag.NV_id;
+    int mdsd=(int)ViewBag.mdsd;
+ }
+@Html.BeginDiv()
+
+ <p><b>Khoản vay của:
+    @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).MaNV -
+    @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).HoVaTen -
+    @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).DonVi</b>
+</p>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+
+    
+<fieldset>
+        <legend>KhoanVay</legend>
+            @Html.HiddenFor(model => model.idNhanVienVayMuon, new { @Value = @NV_id})
+        <div class="editor-label">
+            @Html.VN("Mục đích sử dụng")
+        </div>
+        <div id="Combobox">
+            @Html.DropDownListFor(model => model.idMucDichSuDung,new SelectList(db.dmMucDichSuDung, "id", "tenmucdich"),mdsd)
+            @Html.ValidationMessageFor(model => model.idMucDichSuDung)
+        </div>
+
+        <div class="editor-label">
+            @Html.VN("Số chứng từ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoChungTu)
+            @Html.ValidationMessageFor(model => model.SoChungTu)
+        </div>
+
+        <div class="editor-label">
+            @Html.VN("Ngày chứng từ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NgayChungTu)
+            @Html.ValidationMessageFor(model => model.NgayChungTu)
+        </div>
+
+        <div class="editor-label">
+            @Html.VN("Diễn giải")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DienGiai)
+            @Html.ValidationMessageFor(model => model.DienGiai)
+        </div>
+
+        <div class="editor-label">
+            @Html.VN("Định mức")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DinhMuc) 
+            @Html.ValidationMessageFor(model => model.DinhMuc)
+        </div>
+
+        <div class="editor-label">
+            @Html.VN("Số tiền vay")
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.SoTienVay)
+            @Html.ValidationMessageFor(model => model.SoTienVay)
+        </div>
+
+         <input id="Vay"  value="" />
+
+        <div class="editor-label">
+            @Html.VN("Số tháng")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoThang)
+            @Html.ValidationMessageFor(model => model.SoThang)
+        </div>
+
+@*        <div class="editor-label">
+            @Html.VN("Số ngày")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoNgay)
+            @Html.ValidationMessageFor(model => model.SoNgay)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.VN("Trả từ tháng")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TraTuThang)
+            @Html.ValidationMessageFor(model => model.TraTuThang)
+        </div>
+
+        <div class="editor-label">
+            @Html.VN("Trả đến tháng")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TraDenThang)
+            @Html.ValidationMessageFor(model => model.TraDenThang)
+        </div>
+
+        <p>
+            <input type="submit" value="Tạo" onclick="return check();"/>
+        </p>
+    </fieldset>
+}
+
+
+
+@*
+    <input id="txtHiddenPhoneNumber" name="PhoneNumber" type="hidden" value="" /> *@
+
+<div>
+    @Html.ActionLink("Trở về danh sách khoản vay", "Index", new { NV_id = NV_id })
+</div>
+@Html.EndDiv()
+
+<script>
+    $("#NgayChungTu").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+    $("#TraTuThang").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+    $("#TraDenThang").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+   
+    $("#idMucDichSuDung").combobox();
+
+
+
+
+//tu them dau phay vao so
+$('#Vay').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    ;
+  });
+
+
+
+
+});
+
+
+
+    $("#Vay").keyup(function () {
+
+            //Clear the hidden field
+            $("#SoTienVay").val("");
+
+            //Create char array from phone number field
+            var charArray = $(this).val().split("");
+
+            var phoneNumber = "";
+
+            //Iterate over each character in the char array
+            //and determine if it is a number
+            $.each(charArray, function (index, value) {
+                if (!isNaN(value) && value != " ") {
+                    phoneNumber = phoneNumber + value;
+                }
+            });
+
+            //Set hidden field
+            $("#SoTienVay").val(phoneNumber);
+        });
+
+
+        var tratu = $("[id$=TraTuThang");
+                var tratu1 = $("[id$=SoThang");
+        tratu.change(function () {
+        var str = $(tratu).val();
+         var str1 = $(tratu1).val();
+         ngay1=parseInt(str1)
+
+var res = str.split("/");
+ka1 = res[0]
+ka2 = res[1]
+ka3 = res[2]
+
+
+
+ngay=parseInt(ka1)
+thang=parseInt(ka2)+ngay1-1
+nam=parseInt(ka3)
+
+
+if(thang>12){ thang=thang-12; nam=nam+1;}
+if(thang>24){ thang=thang-24; nam=nam+2;}
+if(thang>36){ thang=thang-36; nam=nam+3;}
+
+
+ii=ngaythangnam=ngay+"/"+thang+"/"+nam
+ $("[id$=TraDenThang]").val(ii);
+        });
+
+
+
+     function check()
+            {
+                if (document.getElementById('Vay').value==""
+                 || document.getElementById('Vay').value==undefined)
+                {
+                    alert ("Vui lòng nhập số tiền vay");
+                    return false;
+                }
+
+          
+
+                return true;
+            }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

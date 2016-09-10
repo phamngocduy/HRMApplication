@@ -1,0 +1,43 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "QLThuViec";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvQLThuViec where id=@p0", Model.Value);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+    var maNV = db.SqlQuery("select top 1 MaNV from NhanVien order by id desc");
+    var rand = new Random().Next();
+}
+
+<p class="ui-state-highlight">Đã hoàn thành thử việc</p>
+
+@using (Html.BeginForm("UpdateS", action))
+{
+    @Html.Hidden("id", Model)
+<dl id="@rand" class="dl-horizontal">
+    <dt></dt>
+    <dd>Mã nhân viên hiện tại là @maNV.Rows[0][0]</dd>
+    <dt>Mã nhân viên</dt>
+    <dd>@Html.Editor(dr, dt.Columns["MaNV"])</dd>
+    <dt>Thời gian kết thúc</dt>
+    <dd>@Html.Editor(dr, dt.Columns["ThoiGianKetThuc"])</dd>
+    <dt>Ghi chú</dt>
+    <dd>@Html.Editor(dr, dt.Columns["GhiChu"])</dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text");
+</script>

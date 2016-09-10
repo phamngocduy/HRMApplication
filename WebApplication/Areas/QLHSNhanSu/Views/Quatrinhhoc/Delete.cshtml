@@ -1,0 +1,58 @@
+﻿@model HRM.Databases.Models.QuaTrinhHoc
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>QuaTrinhHoc</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NV_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NV_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BacHoc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BacHoc)
+    </div>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.TruongHoc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TruongHoc)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NamBatDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NamBatDau)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NamKetThuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NamKetThuc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

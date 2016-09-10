@@ -1,0 +1,326 @@
+﻿@model HRM.QLBHXH.Models.nvbhNhanVienBHXH
+@using HRM.QLBHXH.Models
+@{
+    ViewBag.Title = "Chỉnh sửa";
+    var db = new HRMDB1Entities();
+    var db1 = new HRM.Databases.Models.HRMDBEntities();
+    int idnv = ViewBag.idnv;
+
+    var tnbhxh = ViewBag.tnbhxh;
+
+    var ttbhxh = ViewBag.ttbhxh;
+    var tnbhtn = ViewBag.tnbhtn ;
+    var ttbhtn = ViewBag.ttbhtn ;
+}
+
+
+<h2>
+    Chỉnh sửa thông tin BHXH của
+    @*db.nvbhNhanVienBHXH.First(k => k.id == idnv).HoVaTen*@
+</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.NV_id)
+    @Html.HiddenFor(model => model.TGBHXHBHYT)
+    @Html.HiddenFor(model => model.TGBHTN)
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.MANV)
+  //  @Html.HiddenFor(model => model.SoBHXH)
+    @Html.HiddenFor(model => model.CMND)
+    @Html.HiddenFor(model => model.HoVaTen)
+
+
+
+    @Html.HiddenFor(model => model.NgaySinh)
+    <b>1) Mã NV</b> 
+    @Html.TextBoxFor(model => model.MANV, new { style = "width: 100px", disabled = "disabled", @class = "text" })
+    @Html.ValidationMessageFor(model => model.MANV)
+    <b>2) Đơn vị</b> 
+    
+
+    @Html.DropDownListFor(model => model.Donvi_id, new SelectList(db1.dmDonVi, "id", "tendonvi"), "-- Chọn Đơn Vị --", new { @id = "dsDonViEdit", @class = "text" })
+
+    @Html.ValidationMessageFor(model => model.DonVi)
+    @Html.HiddenFor(model => model.DonVi)
+        
+    <br />
+    //so nam tg BHXH 
+       <div  style="background:#FFFFCC">  
+ <a ><b>  3) Thời gian tham gia BHXH</b></a> 
+ @*    <br />
+    <b>TG tham gia BHXH trước khi về trường - </b>
+    <b>Số năm: </b> 
+    @Html.TextBoxFor(model => model.SoNamThamGiaBHXHTruocVeTruong, new { style = "width: 100px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.SoNamThamGiaBHXHTruocVeTruong)
+    <b>Số Tháng: </b> 
+    @Html.TextBoxFor(model => model.SoThangThamGiaBHXHTruocVeTruong, new { style = "width: 100px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.SoThangThamGiaBHXHTruocVeTruong)
+    <font color="red">(Chỉ nhập số)</font>*@
+    <br />
+    <b>TG tham gia BHXH tại trường</b> 
+    @Html.TextBoxFor(model => model.ThoiGianThamGiaBHXHTaiTruong, "{0:dd/MM/yyyy}", new { style = "width: 100px; height: 9px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.ThoiGianThamGiaBHXHTaiTruong)
+       
+          <br />
+      Tổng TG tham gia BHXH trước khi về trường :<b><font color="red"> @Html.TextBoxFor(model => model.SoNamThamGiaBHXHTruocVeTruong, new { style = "width: 20px; height: 9px",  @class = "text" }) năm, @Html.TextBoxFor(model => model.SoThangThamGiaBHXHTruocVeTruong, new { style = "width: 20px; height: 9px", @class = "text" }) tháng </font></b>
+   
+
+       <br />
+Tổng thời gian tham gia BHXH tại trường:  <b><font color="red"> @tnbhxh năm, @ttbhxh tháng</font></b>
+   <br />
+      Tổng thời gian tham gia BHXH:<b><font color="red"> @Html.DisplayFor(model => model.SoNamThamGiaBHXH) năm, @Html.DisplayFor(model => model.SoThangThamGiaBHXH) tháng </font></b>
+   
+  </div>
+    <br />
+    //so nam tg BHXH 
+     <div style="background:#FFFFCC"> 
+ <a ><b> 4)Thời gian tham gia BHTN</b></a> 
+@*        <br />
+    <b>TG tham gia BHTN trước khi về trường - </b>
+    <b>Số năm: </b> 
+    @Html.TextBoxFor(model => model.SoNamThamGiaBHTNTruocVeTruong, new { style = "width: 100px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.SoNamThamGiaBHTNTruocVeTruong)
+    <b>Số Tháng: </b> 
+    @Html.TextBoxFor(model => model.SoThangThamGiaBHTNTruocVeTruong, new { style = "width: 100px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.SoThangThamGiaBHTNTruocVeTruong)*@
+@*    <font color="red">(Chỉ nhập số)</font>*@
+   
+    <br />
+    <b>TG tham gia BHTN tại trường</b> 
+    @Html.TextBoxFor(model => model.ThoiGianThamGiaBHTNTaiTruong, "{0:dd/MM/yyyy}", new { style = "width: 100px; height: 9px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.ThoiGianThamGiaBHTNTaiTruong)
+         <br />
+      Tổng TG tham gia BHTN trước khi về trường :<b><font color="red"> @Html.TextBoxFor(model => model.SoNamThamGiaBHTNTruocVeTruong, new { style = "width: 20px; height: 9px", @class = "text" }) năm, @Html.TextBoxFor(model => model.SoThangThamGiaBHTNTruocVeTruong, new { style = "width: 20px; height: 9px", @class = "text" }) tháng </font></b>
+   
+      <br />
+    Tổng thời gian tham gia BHTN tại trường:  <b><font color="red"> @tnbhtn năm, @ttbhtn tháng</font></b>
+       <br />
+      Tổng thời gian tham gia BHTN:<b><font color="red"> @Html.DisplayFor(model => model.SoNamThamGiaBHTNT) năm, @Html.DisplayFor(model => model.SoThangThamGiaBHTN) tháng </font></b>
+    
+    <br />
+    
+        </div>
+        <br />
+   
+    <b>5) Số BHXH</b> 
+    @Html.TextBoxFor(model => model.SoBHXH, new { style = "width: 100px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.SoBHXH)
+    <b>6) Số KCB</b> 
+    @Html.TextBoxFor(model => model.SoKCB, new { style = "width: 100px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.SoKCB)
+    <b>7) Chức danh</b> 
+    @Html.TextBoxFor(model => model.ChucDanh, new { style = "width: 200px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.ChucDanh)
+ 
+    <br />
+    <b>8) Hệ số lương</b>
+      
+    @Html.TextBoxFor(model => model.HeSoLuong, new { style = "width: 100px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.HeSoLuong)
+    <font color="red">(Chỉ nhập số)</font>
+ 
+
+    <b>9) Địa chỉ TT</b> 
+    @Html.TextBoxFor(model => model.DiaChiTT, new { style = "width: 300px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.DiaChiTT)
+
+    <br />
+    <b>10) Nơi KCB</b> 
+   @* @Html.DropDownList("dmkcb", String.Empty)*@
+ @Html.DropDownListFor(model => model.iddmNoiKCB, new SelectList(db.dmNoiKCB, "id", "tenbv"), "-- Chọn nơi KCB --", new { @id = "noiKCB", @class = "text" })
+    @Html.ValidationMessageFor(model => model.DiaChiTT)
+ 
+    <br />
+    
+    <b>11) Ghi chú</b> 
+    @Html.TextBoxFor(model => model.GhiChu, new { style = "width: 500px", @class = "text" })
+    @Html.ValidationMessageFor(model => model.GhiChu)
+       
+    <br />
+    <input type="submit" value="Lưu" />
+    
+}
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+<script>
+//  $(function () {
+//      $('.Closebhxh').click(function () { $("#tgbhxh").slideToggle("medium"); });
+//  });
+//  $(function () {
+//      $('.Closebhtn').click(function () { $("#tgbhtn").slideToggle("medium"); });
+//  });
+
+
+    //tu them dau phay vao so
+    $('#SoNamThamGiaBHXH').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, "")
+    ;
+        });
+    });
+
+    $('#HeSoLuong').keyup(function (event) {
+
+        // skip for arrow keys
+//        if (event.which >= 37 && event.which <= 40) {
+//            event.preventDefault();
+//        }
+
+        $(this).val(function (index, value) {
+            return value
+      .replace(",", ".")
+//      .replace(/\B(?=(\d{3})+(?!\d))/g, "")
+//    ;
+     });
+    });
+
+
+    $('#SoNamThamGiaBHXHTruocVeTruong').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, "")
+    ;
+        });
+    });
+
+    $('#SoThangThamGiaBHXHTruocVeTruong').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, "")
+    ;
+        });
+    });
+
+
+    $('#SoNamThamGiaBHTNTruocVeTruong').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, "")
+    ;
+        });
+    });
+
+    $('#SoThangThamGiaBHTNTruocVeTruong').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, "")
+    ;
+        });
+    });
+
+
+
+
+
+    var dv = $("[id$=dsDonViEdit]").combobox();
+    var kcb = $("[id$=dmkcb]").combobox();
+
+
+
+    dv.change(function () {
+
+        var DV = $("#dsDonViEdit option:selected").text();
+
+        $("[id$=DonVi]").val(DV);
+    });
+
+
+    //DATETIME PICKER
+
+    $("#ThoiGianThamGiaBHTNTaiTruong").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#ThoiGianThamGiaBHTN").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#ThoiGianThamGiaBHXH").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+
+    $("#ThoiGianThamGiaBHXHTaiTruong").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#ThoiGianBatDauNghiTS").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+
+    $("#ThoiGianKetThucNghiTS").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#ThoiGianBatDauBHXH").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $(".text").removeClass("ui-state-default");
+    $(".text").removeClass("ui-widget-content");
+    $(".text").removeClass("ui-corner-left");
+    $(".text").removeClass("ui-state-default");
+    $(".text").css("background-color", "transparent");
+    $(".text").css("border", "0").css("border-bottom", "1px dotted");
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(".custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+    $(".custom-combobox-input").css("background-color", "transparent").css("margin", "5px 0 6px 0");
+ 
+ 
+</script>
+<style type="text/css">
+  
+    #tgbhxh, #tgbhtn
+    {
+        display: none;
+    }
+    </style>

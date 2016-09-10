@@ -1,0 +1,169 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@{
+    bool NKL = false, ALL = false, check;
+    if (Boolean.TryParse(Request["NKL"], out check)) { NKL = check; }
+    if (Boolean.TryParse(Request["ALL"], out check)) { ALL = check; }
+    ViewBag.Title = "Index";
+    var name = "dsHeSoLuong";
+    var db = ViewBag.db as HRMDBEntities;
+    var query = @"select *, nv.id idNV,
+    nv.HoVaTen _HoVaTen, nv.maDonVi _maDonVi, nv.tenDonVi _tenDonVi from " + name +
+    @" as tm right join dsNhanVien nv on tm.nv_id=nv.id left join dmngachvienchuc n on tm.ngach_id=n.id where nv.ngaynghiviec is null {0} FILTER
+    and nv.id not in (select NV_id from nvLuongKhoan) order by ThoiGianDenHan";
+    query = String.Format(query, "and {0} exists (select * from dsQTLamNghiViec lv where lv.id=nv.qtlvCongTac_id and lv.N_NgayBatDau is not null and lv.N_NgayKetThuc is null and lv.khongHuongLuong=1)");
+    query = String.Format(query, NKL ? "" : "not");
+    DataTable dt = null;
+    var noHSL = 0;
+
+    var Fr = new Nullable<DateTime>();
+    var To = new Nullable<DateTime>();
+    DateTime date;
+    if (DateTime.TryParse(Request["From"], out date)) { Fr = date; }
+    if (DateTime.TryParse(Request["To"], out date)) { To = date; }
+    if (Fr.HasValue || To.HasValue) {
+        query = query.Replace("FILTER", "and @p0<=ThoiGianDenHan and ThoiGianDenHan<=@p1");
+        dt = db.SqlQuery(query, Fr.HasValue ? Fr.Value : new DateTime(1753, 1, 1), To.HasValue ? To.Value : new DateTime(9999, 12, 31));
+    } else {
+        query = query.Replace("FILTER", "");
+        dt = db.SqlQuery(query);
+    }
+}
+
+<p class="ui-state-highlight">
+    Danh sách HSL CB/GV/NV trường ĐHDL Văn Lang
+    <span style="float:right">@Html.CheckBox("NKL", NKL) Lọc nghỉ không lương</span>
+</p>
+<span id="noHSL"></span>
+<span style="display:none">@Html.CheckBox("ALL", ALL) Hiển thị tất cả</span>
+
+@using (Html.BeginForm("Index", "HeSoLuong", FormMethod.Get, new { id = "Filter" }))
+{
+    @Html.Hidden("NV_id", 0)
+    <span>Ngày đến hạn từ</span>
+    @Html.TextBox("From", Fr)
+    <span>đến</span>
+    @Html.TextBox("To", To)
+    <input type="submit" value="Hiển thị" />
+}
+
+@using (Html.BeginForm("Upgrade", "HeSoLuong", FormMethod.Post, new { target = "_blank" }))
+{
+<input type="submit" value="Nâng bậc lương..." style="margin-bottom:-30px" />
+<table id="dsHeSoLuong">
+<thead class="ui-widget-header">
+    <tr>
+        <th title="Select ALL">@Html.CheckBox("ALL", false)</th>
+        <th>Họ tên</th>
+        <th>Đơn vị</th>
+        <th width=50>Chức danh</th>
+        <th width=100>Ngạch viên chức</th>
+        <th>Bậc</th>
+        <th>Bắt đầu</th>
+        <th>Đến hạn</th>
+        <th>HSL</th>
+    </tr>
+</thead>
+<tbody class="ui-widget-content">
+@foreach (DataRow dr in dt.Rows)
+{
+    var prefix = dr["id"] is DBNull ? "_" : "";
+    if (dr["id"] is DBNull) { if (!ALL) { noHSL++; continue; } }
+    <tr>
+        <td>
+            @Html.Hidden("HSL_id", null)
+            @Html.CheckBox("SEL", false, new { HSL_id = dr["id"] })
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns[prefix + "HoVaTen"])
+        </td>
+        <td>
+            <mark data-tip="@Html.Display(dr, dt.Columns[prefix + "tenDonVi"])">@Html.Display(dr, dt.Columns[prefix + "maDonVi"])</mark>
+        </td>
+        <td>
+            <mark data-tip="@Html.Display(dr, dt.Columns["tenChucDanh"])">@Html.Display(dr, dt.Columns["maChucDanh"])</mark>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["TenNgachVienChuc"])            
+        </td>
+        <td align=center>
+            @Html.Display(dr, dt.Columns["BacLuong"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayBatDau"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["ThoiGianDenHan"])
+        </td>
+        <td class="@(dr["HeSoLuong"] is DBNull ? "ui-state-error" : null)">
+            @if (dr["HeSoLuong"] is DBNull)
+            {
+                noHSL++;
+                <a href="~/QLTinhLuong/HeSoLuong/Details?NV_id=@dr["idNV"]" style="padding:0;text-decoration:blink" target="_blank">
+                    <span title="Details" class="ui-icon ui-icon-grip-dotted-horizontal" style="display:inline-block"></span>
+                </a>
+            }
+            else
+            {
+                if (Convert.ToDecimal(dr["HeSoLuong"]).ToString().Length > 1)
+                {
+                @Html.ActionLink(Convert.ToDecimal(dr["HeSoLuong"]).ToString("#.##"), "Details", "HeSoLuong", new { NV_id = dr["NV_id"] }, new { target = "_blank" })
+                }
+                else
+                {
+                     @Html.ActionLink(Convert.ToDecimal(dr["HeSoLuong"]).ToString("#.00"), "Details", "HeSoLuong", new { NV_id = dr["NV_id"] }, new { target = "_blank" })
+                }
+            }
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+}
+
+<script>
+    $(function () {
+        $("#NKL").change(function () {
+            location = "@Html.Raw(Url.Action("Index", new { ALL = ALL, NKL = !NKL }))";
+        });
+        $("#ALL").change(function () {
+            location = "@Html.Raw(Url.Action("Index", new { ALL = !ALL, NKL = NKL }))";
+        });
+        $("#dsHeSoLuong").find("#ALL").change(function () {
+            $("#dsHeSoLuong").find("[id=SEL]").prop("checked", this.checked).trigger("change");
+        });
+        $("#dsHeSoLuong").find("[id=SEL]").change(function () {
+            if (this.checked) $(this).prev().val($(this).attr("HSL-id"));
+            else $(this).prev().val("");
+        });
+        $("#dsHeSoLuong").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aoColumns": [
+                { bSortable: false },
+                null, null, null, null, null, null,
+                { "sType": "date-vn" },
+                { bSortable: false }
+            ],
+            "aaSorting": [[5, "asc"]],
+            //"aLengthMenu": [[-1], ["All"]],
+            iDisplayStart: 0, iDisplayLength: 1000,
+            "sDom": '<"H"Tfr>t<"F"ip>',
+            "oTableTools": {
+                "sSwfPath": "/hrm/Content/copy_csv_xls.swf",
+                "aButtons": ["xls", "print"]
+            }
+        }).find("th,td").attr("nowrap", true);
+        $("#Filter").find("input[type=text]").css("width", "80px")
+                    .datepicker({ changeMonth: true, changeYear: true });
+    });
+</script>
+@if (noHSL > 0)
+{
+<script>
+    $(function () {
+        $("#noHSL").text("Có @noHSL nhân viên chưa có hệ số lương!").addClass("ui-state-error").next().show();
+    });
+</script>
+}

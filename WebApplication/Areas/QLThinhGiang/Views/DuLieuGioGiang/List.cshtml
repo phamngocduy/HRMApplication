@@ -1,0 +1,35 @@
+﻿@using System.Data
+@using HRM.QLThinhGiang.Models
+@{
+    ViewBag.Title = "List";
+    var db = new HRMDB_Entities();
+    var table = db.SqlQuery("select * from gvDuLieuGioGiang");
+}
+
+<h2>Dữ liệu giờ giảng</h2>
+
+<table id="DuLieuGioGiang">
+    <thead>
+        <tr>
+        @foreach (DataColumn col in table.Columns)
+        {
+            <th>@col.ColumnName</th>
+        }
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (DataRow row in table.Rows)
+    {
+        <tr>
+        @foreach (DataColumn col in table.Columns)
+        {
+            <td>@row[col]</td>
+        }
+        </tr>
+    }
+    </tbody>
+</table>
+
+<style>
+    table#DuLieuGioGiang th, td { border: 1px solid !important; padding: 0; }
+</style>

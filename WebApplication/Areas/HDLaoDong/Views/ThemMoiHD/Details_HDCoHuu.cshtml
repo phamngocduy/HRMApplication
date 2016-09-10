@@ -1,0 +1,516 @@
+﻿@model HRM.Databases_HDLaoDong.Models.hdChiTietHDLD
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Details_HDCoHuu";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var DonVi_id = new SelectList(db0.dmDonVi.OrderBy(tt => tt.tenDonVi), "id", "tenDonVi", Model.Donvi_id);
+    var ChucDanh_id = new SelectList(db0.dmChucDanhChuyenMon.OrderBy(tt => tt.tenChucDanhChuyenMon), "id", "tenChucDanhChuyenMon", Model.Chucdanh_id);
+    var ChucVu_id = new SelectList(db0.dmChucVu.OrderBy(tt => tt.tenChucVu), "id", "tenChucVu");
+    var ThoiGioLV_id = new SelectList(db.dmThoiGioLamViec.OrderBy(tg => tg.tenThoiGioLamViec), "id", "tenThoiGioLamViec", Model.ThoigioLV_id);
+    var ThoiHanHDCH_id = new SelectList(db.dmThoiHanHD.Where(th => th.loaiHopDong == "Hợp đồng cơ hữu").OrderBy(th => th.tenThoiHanHD), "id", "tenThoiHanHD", Model.ThoihanHD_id);
+    string tenThoiHanHDCH = null;
+    string tenDonVi = null;
+    string tenChucDanh = null;
+    string tenChucVu = null;
+    string tenThoiGioLV = null;
+    try{
+        tenDonVi = db0.dmDonVi.Where(dv => dv.id == Model.Donvi_id).FirstOrDefault().tenDonVi;
+        tenChucDanh = db0.dmChucDanhChuyenMon.Where(dv => dv.id == Model.Chucdanh_id).FirstOrDefault().tenChucDanhChuyenMon;
+        //tenChucVu = db0.dmDonVi.Where(dv => dv.id == Model.Donvi_id).FirstOrDefault().tenDonVi;
+        tenThoiHanHDCH = db.dmThoiHanHD.Where(th => th.id == Model.ThoihanHD_id).FirstOrDefault().tenThoiHanHD;
+        tenThoiGioLV = db.dmThoiGioLamViec.Where(th => th.id == Model.ThoigioLV_id).FirstOrDefault().tenThoiGioLamViec;
+    }catch{
+    }
+    
+    var NLD = new List<string>();
+    NLD.Add(Model.HotenNLD);
+    var listNLD = new SelectList(NLD);
+    // in hd
+    var cauHinh = db.hdCauHinh.FirstOrDefault();
+    string TruongDH = cauHinh.Coquan;
+    string SoHD = Model.SoHD;
+    string LoaiHD = Model.LoaiHD;
+    string ThoiHanHD = "";
+    int ThoiHanHD_id = Model.ThoihanHD_id;
+    ThoiHanHD = db.dmThoiHanHD.Where(th => th.id == ThoiHanHD_id).FirstOrDefault().tenThoiHanHD;
+    string nsdldOng_Ba = "Bà";
+    int? nsdldGT_id = cauHinh.Gioitinh_id;
+    string nsdlenGioiTinh = db0.dmGioiTinh.Where(gt => gt.id == nsdldGT_id).FirstOrDefault().tenGioiTinh;
+    if (nsdlenGioiTinh == "Nam")
+    {
+        nsdldOng_Ba = "Ông";
+    }
+    string nsdldHoTen = cauHinh.HotenNSDLD;
+    int QG_id = cauHinh.Quoctich_id;
+    string nsdldQuocTich = db0.dmQuocGia.Where(qg => qg.id == QG_id).FirstOrDefault().tenQuocGia;
+    int CV_id = cauHinh.Chucvu_id;
+    string ChucVu = "";
+    try
+    {
+        ChucVu = db0.dmChucVu.Where(cv => cv.id == CV_id).FirstOrDefault().tenChucVu;
+    }
+    catch
+    {
+    }
+    string DiaChi = cauHinh.Diachi;
+    string DienThoai = cauHinh.SDT;
+    string nldOng_Ba = "Bà";
+    int? nldGT_id = Model.Gioitinh_id;
+    string nldtenGioiTinh = db0.dmGioiTinh.Where(gt => gt.id == nldGT_id).FirstOrDefault().tenGioiTinh;
+    if (nldtenGioiTinh == "Nam")
+    {
+        nldOng_Ba = "Ông";
+    }
+    string nldHoTen = Model.HotenNLD;
+    string nldNgaySinh = "";
+    try
+    {
+        nldNgaySinh = Model.Ngaysinh.Value.ToShortDateString();
+    }
+    catch
+    {
+    }
+    string nldNoiSinh = Model.Noisinh;
+    int? NgheNghiep_id = Model.Nghenghiep_id;
+    string nldNgheNghiep = "";
+    try
+    {
+        nldNgheNghiep = db0.dmNgheNghiep.Where(nn => nn.id == NgheNghiep_id).FirstOrDefault().tenNgheNghiep;
+    }
+    catch { }
+    string nldDiaChiThuongTru = Model.Diachithuongtru;
+    string nldSoCMND = Model.soCMND;
+    string nldcmndNoiCap = "";
+    int? cmndNoiCap_id = Model.cmndNoicap;
+    try
+    {
+        nldcmndNoiCap = db0.dmTinhThanh.Where(tt => tt.id == cmndNoiCap_id).FirstOrDefault().tenTinhThanh;
+    }
+    catch { }
+    string nldcmncNgayCap = "";
+    try
+    {
+        nldcmncNgayCap = Model.cmndNgaycap.Value.ToShortDateString();
+    }
+    catch { }
+    string nldQuocTich = "Việt Nam";
+    int? DV_id = Model.Donvi_id;
+    string DonVi = db0.dmDonVi.Where(dv => dv.id == DV_id).FirstOrDefault().tenDonVi;
+    int? CDCM_id = Model.Chucdanh_id;
+    string ChucDanhCM = db0.dmChucDanhChuyenMon.Where(cd => cd.id == CDCM_id).FirstOrDefault().tenChucDanhChuyenMon;
+    int TGLV_id = Model.ThoigioLV_id;
+    string ThoiGioLamViec = db.dmThoiGioLamViec.Where(tg => tg.id == TGLV_id).FirstOrDefault().tenThoiGioLamViec;
+    string MucLuong = Model.Mucluongchinh;
+    string DiaDiemLamViec = cauHinh.DiadiemLV;
+    int tuNgay = Model.NgayHL.Day;
+    int tuThang = Model.NgayHL.Month;
+    int tuNam = Model.NgayHL.Year;
+    int? denNgay = null;
+    try
+    {
+        denNgay = Model.NgayhetHL.Value.Day;
+    }
+    catch
+    {
+
+    }
+    int? denThang = null;
+    try
+    {
+        denThang = Model.NgayhetHL.Value.Month;
+    }
+    catch
+    {
+    }
+    int? denNam = null;
+    try
+    {
+        denNam = Model.NgayhetHL.Value.Year;
+    }
+    catch
+    {
+    }
+    string nldChucVu = "";
+    int? nldCV_id = Model.Chucvu_id;
+    try
+    {
+        nldChucVu = db0.dmChucVu.Where(dv => dv.id == nldCV_id).FirstOrDefault().tenChucVu;
+    }
+    catch
+    {
+    }
+    double? HeSo = null;
+    var Bac = "";
+    var Ngach = "";
+    var Nhom = "";
+    var MaNhom = "";
+    var BangLuong = Model.Bangluong_id;
+
+    int? HSLuong_id = Model.HSLuong_id;
+    int? Ngach_id = Model.Ngach_id;
+    int? Nhom_id = Model.Nhom_id;
+    try
+    {
+        HeSo = db0.dmBangLuong.Where(bl => bl.id == HSLuong_id).FirstOrDefault().hesoLuong;
+    }
+    catch
+    {
+    }
+    try
+    {
+        Bac = db0.dmBangLuong.Where(bl => bl.id == HSLuong_id).FirstOrDefault().bacLuong;
+    }
+    catch
+    {
+    }
+    try
+    {
+        Ngach = db0.dmNgachVienChuc.Where(bl => bl.id == Ngach_id).FirstOrDefault().tenNgachVienChuc;
+    }
+    catch
+    {
+    }
+    try
+    {
+        Nhom = db0.dmNhomNgachVienChuc.Where(bl => bl.id == Nhom_id).FirstOrDefault().tenNhomNgachVienChuc;
+        MaNhom = db0.dmNhomNgachVienChuc.Where(bl => bl.id == Nhom_id).FirstOrDefault().maNhomNgachVienChuc;
+    }
+    catch
+    {
+    }
+    TempData["Details"] = "Details_HDCoHuu";
+}
+<b style="margin-left: 35%; font-size: large">Thông tin hợp đồng cơ hữu</b>
+<div style="">
+    @Html.StatusMessage(TempData["Message_EditHDCoHuu"])
+    <p>
+        @Html.ActionLink("Quay lại", "Index", "HDNguoiLaoDong")
+    </p>
+    <p>
+    Họ tên NLĐ<span style="margin-left: 20px"></span>
+    @*@Html.DropDownListFor(model => model.HotenNLD, listNLD, new { id = "HoTenNLD", })*@
+    @Html.TextBoxFor(model => model.HotenNLD, new { style = "width:250px", disabled = "true" })
+    <span style="margin-left: 30px">Đơn vị<span style="margin-left: 67px">
+    @*@Html.DropDownListFor(model => model.Donvi_id, DonVi_id, new { id = "DonVi", })*@
+    @Html.TextBoxFor(model => model.DonVi/*tenDonVi*/, new { style = "width:295px", disabled = "true" })
+    </p>
+    <p>
+        Số HĐ<span style="margin-left: 53px"></span>
+        @Html.TextBoxFor(model => model.SoHD, new { style = "width:250px", disabled = "true" })
+        <input type="hidden" name="LoaiHD" value="Hợp đồng cơ hữu" />
+        <span style="margin-left: 30px"></span>Thời hạn HĐ<span style="margin-left: 29px"></span>
+        @*@Html.DropDownListFor(model => model.ThoihanHD_id, ThoiHanHDCH_id, String.Empty, new { id = "ThoiHanHDCH" })*@
+        @Html.TextBoxFor(model => model.ThoiHanHD/*tenThoiHanHDCH*/, new { style = "width:175px", disabled = "true" })
+    </p>
+    <p>
+        Ngày hiệu lực<span style="margin-left: 9px"></span>
+        @Html.TextBox("NgayHieuLuc",Model.NgayHL.ToShortDateString(), new { style = "width:250px", id = "NgayHieuLuc", onChange = "monthchange()", disabled = "true" })
+        <span style="margin-left: 30px">Ngày hết hiệu lực
+        @try
+        {
+        @Html.TextBox("NgayHetHL", Model.NgayhetHL.Value.ToShortDateString(), new { style = "width:175px", id = "NgayHetHieuLuc", name = "NgayhetHL", disabled = "true" })
+        }
+        catch
+        {
+            @Html.TextBox("NgayHetHL",null, new { style = "width:175px", id = "NgayHetHieuLuc", name = "NgayhetHL", disabled = "true" })
+        }
+        <input type="hidden" name="NgayhetHL" id = "NgayHetHieuLucHid"/>
+    </p>
+    <p>
+        Chức danh CM<span style="margin-left: 0px"></span>
+        @*@Html.DropDownListFor(model => model.Chucdanh_id, ChucDanh_id, String.Empty, new { id = "ChucDanhCM" })*@
+        @Html.TextBoxFor(model => model.Chucdanh_id/*tenChucDanh*/, new { style = "width:250px", disabled = "true" })
+        <span style="margin-left: 28px">Chức vụ<span style="margin-left: 59px">
+        @*@Html.DropDownListFor(model => model.Chucvu_id, ChucVu_id, String.Empty, new { id = "ChucVu" })*@
+        @Html.TextBoxFor(model => model.ChucVu/*tenChucVu*/, new { style = "width:295px", disabled = "true" })
+    </p>
+    <p>
+        CV trưởng ĐV<span style="margin-left: 5px"></span>
+        @Html.TextBoxFor(model => model.ChucvutruongDV, new { style = "width:250px", disabled = "true" })
+    </p>
+    <p>
+        Công việc phải làm
+    </p>
+    @Html.TextAreaFor(model => model.Congviec, new { style = "width: 802px; height: 50px", disabled = "true" })
+    <p>
+    Thời giờ LV
+    @*@Html.DropDownListFor(model => model.ThoigioLV_id, ThoiGioLV_id, null, new { id = "ThoiGioLV" })<span style="margin-left: 15px"></span> *@
+    @Html.TextBoxFor(model => model.ThoiGioLV/*tenThoiGioLV*/, new { style = "width:235px", disabled = "true" })
+    Mức lương chính
+    <input id="money" name="Mucluongchinh" class="money" value = "@Model.Mucluongchinh" disabled = "true" style="width:160px" type="text" /> VNĐ 
+    <span style="margin-left: 15px"></span>Có tham gia BHXH
+    @Html.CheckBoxFor(model => model.BHXH, new { style = "width:13px;height:13px", disabled = "true" })
+    </p>
+    
+    <p>
+        Hệ số<span style="margin-left: 6px"></span> 
+        @Html.TextBox("HeSo",Model.HSLuong/*HeSo*/, new { style = "width:50px", disabled = "true" })
+        <span style="margin-left: 10px">Bậc
+            @Html.TextBox("Bac", Model.Bac/*Bac*/, new { style = "width:50px", disabled = "true" })
+            <span style="margin-left: 10px">Ngạch
+                <span data-tip = "@Ngach">@Html.TextBox("Ngach", Model.Ngach/*Ngach*/, new { style = "width:150px", disabled = "true" })</span>
+                <span style="margin-left: 10px">Nhóm
+                     <span data-tip = "@Nhom">@Html.TextBox("Nhom", Model.Nhom/*MaNhom*/, new { style = "width:100px", disabled = "true" })</span>
+                    <span style="margin-left: 10px">Bảng lương
+        @Html.TextBox("BangLuong", BangLuong, new { style = "width:120px", disabled = "true" })
+    </p>
+    <p>
+    <span data-tip ="Người lao động ký">NLĐ ký</span>@try
+                                                     {@Html.TextBox("NLDKy", Model.QT_NgayNLDky.Value.ToShortDateString(), new { id = "NLDKy", style = "width:95px", disabled = "true" })}
+                                                     catch
+                                                     {@Html.TextBox("NLDKy", Model.QT_NLDky, new { id = "NLDKy", style = "width:95px", disabled = "true" }) }
+    <span style="margin-left: 5px"><span data-tip ="Trình hợp đồng">Trình HĐ</span>@try
+                                                                                   {@Html.TextBox("TrinhHD", Model.QT_NgayTrinhHT.Value.ToShortDateString(), new { id = "TrinhHD", style = "width:95px", disabled = "true" })}
+                                                                                   catch
+                                                                                   {@Html.TextBox("TrinhHD", Model.QT_TrinhHT, new { id = "TrinhHD", style = "width:95px", disabled = "true" }) }
+    <span style="margin-left: 5px"><span data-tip ="Hiệu trưởng ký">HT ký</span>@try
+                                                                                {@Html.TextBox("HTKy", Model.QT_NgayHTky.Value.ToShortDateString(), new { id = "HTKy", style = "width:95px", disabled = "true" })}
+                                                                                catch
+                                                                                {@Html.TextBox("HTKy", Model.QT_HTky, new { id = "HTKy", style = "width:95px", disabled = "true" }) }
+    <span style="margin-left: 5px"><span data-tip ="Lưu hồ sơ">Lưu HS</span>@try
+                                                                            {@Html.TextBox("LuuHS", Model.QT_NgayLuuHS.Value.ToShortDateString(), new { id = "LuuHS", style = "width:95px", disabled = "true" })}
+                                                                            catch
+                                                                            {@Html.TextBox("LuuHS", Model.QT_LuuHS, new { id = "LuuHS", style = "width:95px", disabled = "true" }) }
+    <span style="margin-left: 5px"><span data-tip ="Trả hồ sơ người lao động">Trả HS</span>@try
+                                                                                           {@Html.TextBox("TraHS", Model.QT_NgayTraNLD.Value.ToShortDateString(), new { id = "TraHS", style = "width:120px", disabled = "true" })}
+                                                                                           catch
+                                                                                           {@Html.TextBox("TraHS", Model.QT_TraNLD, new { id = "TraHS", style = "width:120px", disabled = "true" }) }
+    </p>
+    <p>
+        Ghi chú
+    </p>
+     @Html.TextAreaFor(model => model.Ghichu, new { style = "width: 802px; height: 70px", disabled = "true" })
+    <a href="@Url.Action("View_MauHopDong", new { id = Model.id, Back = "Details_HDCoHuu" })" style="float:left;color:blue">Mẫu hợp đồng</a>
+@if (!String.IsNullOrEmpty(Model.banHopDong)) {
+    <a href="@Url.Action("View_BanHopDong", new { id = Model.id, Back = "Details_HDCoHuu" })" style="float:left;color:blue">Hợp đồng đã lưu</a>
+} else {
+    <a style="float:left;color:orange">Chưa in hợp đồng</a>
+}
+    <p style="margin-left: 75%">
+    @*<input id="btnIn" type="button" value="In" style="width: 80px"/>*@
+    <a href="@Url.Action("Details_DHCH", "CreateWordHD", new { id = Model.id, Back = "Details_HDCoHuu" })"><input id="btnInn" type="button"  value="In" style="width: 80px"/></a>
+    <a href="@Url.Action("Edit_HDCoHuu", "ThemMoiHD", new { id = Model.id })"><input id="btnSua" type="button"  value="Sửa" style="width: 80px"/></a>
+    </p>
+</div>
+<div style="">
+    <p>
+        @Html.ActionLink("Thêm mới PLHĐ số 2", "Create_PLHDSo2", "ThemMoiPLHD", new { HD_id = Model.id }, null)
+        @Html.ActionLink("Đính kèm PLHĐ số 1", "Attach_PLHDSo1", "ThemMoiPLHD", new { HD_id = Model.id }, null)
+        @Html.ActionLink("Đính kèm PLHĐ số 2", "Attach_PLHDSo2", "ThemMoiPLHD", new { HD_id = Model.id }, null)
+    </p>
+@{ 
+    var dsFilePLSo1 = db.hdPhuLucHD12LuuFile.Where(pl => pl.LoaiPL == "PLSo1" && pl.HD_id == Model.id).ToList();
+    var dsFilePLSo2 = db.hdPhuLucHD12LuuFile.Where(pl => pl.LoaiPL == "PLSo2" && pl.HD_id == Model.id).ToList();
+}
+<table id="PLHD12">
+<thead>
+<tr>
+    <th style="text-align:center; width:405px">
+    PLHĐ số 1
+    </th>
+    <th style="text-align:center; width:405px">
+    PLHĐ số 2
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td  style="text-align:center">
+        <table id = "PLHD12">
+            <thead>
+            <tr>
+                <th>Stt</th>
+                <th style="text-align:center">Ngày lập PLHĐ</th>
+                <th style="text-align:center;width:200px">Tên PLHĐ</th>
+                <th style="text-align:center">File đính kèm</th>
+            </tr>
+            </thead>
+            <tbody>
+            @{int count1 = 0;}
+            @foreach (var item in dsFilePLSo1)
+            {
+                count1 = count1 + 1;
+            <tr>
+                <td style="text-align:center">
+                @count1 
+                </td>
+                <td style="text-align:center">
+                @item.NgaylapPL.ToShortDateString()
+                </td>
+                <td style="text-align:center">
+                @Html.DisplayFor(model => item.TenPL) 
+                </td>
+                <td style="text-align:center">
+                @Html.ActionLink("Tải xuống", "GetFile", "ThemMoiPLHD", new { id = item.id }, null) 
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </td>
+    <td  style="text-align:center">
+        <table id = "PLHD2">
+            <thead>
+            <tr>
+                <th>Stt</th>
+                <th style="text-align:center">Ngày lập PLHĐ</th>
+                <th style="text-align:center;width:200px">Tên PLHĐ</th>
+                <th style="text-align:center">File đính kèm</th>
+            </tr>
+            </thead>
+            <tbody>
+            @{int count2 = 0;}
+            @foreach (var item in dsFilePLSo2)
+            {
+                count2 = count2 + 1;
+            <tr>
+                <td style="text-align:center">
+                @count2 
+                </td>
+                <td style="text-align:center">
+                @item.NgaylapPL.ToShortDateString() 
+                </td>
+                <td style="text-align:center">
+                @Html.DisplayFor(model => item.TenPL) 
+                </td>
+                <td style="text-align:center">
+                @Html.ActionLink("Tải xuống", "GetFile", "ThemMoiPLHD", new { id = item.id }, null) 
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </td>
+</tr>
+</tbody>
+</table>
+</div>
+<script>
+
+    $("#ThoiGioLV").combobox().parent().find("input.ui-autocomplete-input").css("width", "235px");
+    $("#ThoiHanHDCH").combobox().parent().find("input.ui-autocomplete-input").css("width", "175px");
+    $("#HoTenNLD").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#ChucVu").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px");
+    $("#DonVi").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px");
+    $("#ChucDanhCM").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+
+    $("#ThoiGioLVEdit").combobox().parent().find("input.ui-autocomplete-input").css("width", "200px").attr('disabled', 'disabled');
+    $("#ThoiHanHDTVEdit").combobox().parent().find("input.ui-autocomplete-input").css("width", "175px").attr('disabled', 'disabled');
+    $("#HoTenNLDEdit").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px").attr('disabled', 'disabled');
+    $("#ChucVuEdit").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px").attr('disabled', 'disabled');
+    $("#DonViEdit").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px").attr('disabled', 'disabled');
+    $("#ChucDanhCMEdit").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px").attr('disabled', 'disabled');
+
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(function () {
+        $("[id=NgayKy]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+        $("[id=NgayHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=NgayHetHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=NLDKy]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=TrinhHD]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=HTKy]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=LuuHS]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=TraHS]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+
+    });
+</script>
+<style>
+td { padding: 0 0 0 0 }
+input { margin: 0 0 0 0; width: auto; }
+</style>
+
+<script>
+    $().ready(function () {
+        var table$ = $("#PLHD12");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+    });
+    $().ready(function () {
+        var table$ = $("#PLHD1");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+    });
+    $().ready(function () {
+        var table$ = $("#PLHD2");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+    });
+</script>
+<script src="/Scripts/jquery.mask.min.js" type="text/javascript"></script>
+<script>
+    $('.money').mask('0.000.000.000', { reverse: true });
+</script>
+<script>
+    function monthchange() {
+        var index = document.getElementById('ThoiHanHDCH').selectedIndex;
+        var m = parseInt(document.getElementById('ThoiHanHDCH').options[index].text);
+        if (m > 0) {
+            var d1Value = document.getElementById('NgayHieuLuc').value;
+            var data = d1Value.split('/');
+            var dd = parseInt(data[0], 10);
+            var mm = parseInt(data[1], 10);
+            var yyyy = parseInt(data[2], 10);
+            var date = new Date(yyyy, mm - 1, dd);
+            date = new Date(date.setMonth(date.getMonth() + parseInt(m)));
+            document.getElementById('NgayHetHieuLuc').value = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + (date.getFullYear());
+            document.getElementById('NgayHetHieuLucHid').value = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + (date.getFullYear());
+        } else {
+            document.getElementById('NgayHetHieuLuc').disabled = false;
+        }
+    }
+    function addDate() {
+        date = new Date();
+    }
+</script>

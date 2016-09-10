@@ -1,0 +1,367 @@
+﻿@using HRM.Webpages.Helpers;
+@using HRM.Databases.Models;
+@using HRM.QLTTNhanSu.Models;
+@{
+    ViewBag.Title = "Theo dõi tập sự";
+    var db = new HRMDBEntities();
+    var All = Request["All"] == "on";
+    var From = new Nullable<DateTime>();
+    var To = new Nullable<DateTime>();
+    DateTime date;
+    if (DateTime.TryParse(Request["From"], out date))
+    { From = date; }
+    if (DateTime.TryParse(Request["To"], out date))
+    { To = date; }
+    var Download = Request["Download"] == "OK";
+    var Database = new List<nvQTLamViec>();
+}
+
+<div style="margin-top:-20px;left:0;position:absolute">
+@Html.StatusMessage(TempData["Message"])
+@{
+    var error = db.nvQLTapSu.Where(ts => !ts.ThoiGianDenHan.HasValue);
+    if (error.Count() > 0)
+    {
+        <p class="message-error">Có @error.Count() trường hợp chưa có thời gian đến hạn!</p>
+    }
+}
+@using (Html.BeginForm("Index", "nvQLTapSu", FormMethod.Get, new { id = "Filter" }))
+{
+    <input type="datetime" name="From" title="Từ ngày" value="@From" />
+    <input type="datetime" name="To" title="Đến ngày" value="@To" />
+    <input type="checkbox" name="All" @(All ? "checked" : "")><span>Tất cả</span></input>
+    <input type="submit" value="Filter" />
+    <a href="~/QLTTNhanSu/nvQLTapSu?From=@Request["From"]&To=@Request["To"]&All=@Request["All"]&Download=OK" title="Download"><img src="~/images/excel.gif" /></a>
+    <span>&nbsp;Tìm kiếm</span><input id="TimKiem" type="text" />
+}
+<table id="nvQLTapSu" class="tableWithFloatingHeader">
+<thead><tr>
+    <th nowrap>Họ và tên</th>
+    <th nowrap>Đơn vị</th>
+    <th style="text-align:center" nowrap>Thời gian<br />tuyển dụng</th>
+    <th style="text-align:center" nowrap>Chức danh<br />chuyên môn</th>
+    <th style="text-align:center" nowrap>Thời gian<br />bắt đầu</th>
+    <th style="text-align:center" nowrap>Thời gian<br />đến hạn</th>
+    <th style="text-align:center" nowrap>Thời gian<br />kết thúc</th>
+    <th style="text-align:center" nowrap data-tip="Tháng làm việc">T</th>
+    <th style="text-align:center" nowrap>Ngày<br />thông báo</th>
+    <th style="text-align:center" nowrap>Ngày nhận<br />hồ sơ</th>
+    <th style="text-align:center" nowrap>Ngày lập<br />tờ trình</th>
+    <th title="Bồi dưỡng nghiệp vụ sư phạm" nowrap>BDNVSP</th>
+    <th title="Lý luận dạy học đại học" nowrap>LLDHĐH</th>
+    <th nowrap></th>
+</tr></thead>
+<tbody>
+@{ var Distinct = new HashSet<int>(); }
+@foreach (var nv in db.nvQLTapSu.OrderBy(ts => ts.CongTac.ThoiGianKetThuc.HasValue ? new Nullable<DateTime>(DateTime.MaxValue) : ts.ThoiGianDenHan).Select(ts => ts.CongTac.NhanVien))
+{
+    if (!Distinct.Add(nv.id)) { continue; }
+    var cts = db.nvQTLamViec.Where(ct => ct.NV_id == nv.id).OrderBy(ct => ct.ThoiGianBatDau)
+                .Where(ct => ct.nvQLTapSus.Count > 0) // have managed TapSu
+                .Where(ct => !ct.ThoiGianKetThuc.HasValue || All)
+                .Where(ct => ct.nvQLTapSus.FirstOrDefault().ThoiGianDenHan >= From || !From.HasValue)
+                .Where(ct => ct.nvQLTapSus.FirstOrDefault().ThoiGianDenHan <= To || !To.HasValue);
+    if (cts.Count() == 0) { continue; }
+    else { Database.AddRange(cts); }
+    using (Html.BeginForm("Update", "nvQLTapSu", new { From = From.HasValue ? From.Value.ToShortDateString() : "", To = To.HasValue ? To.Value.ToShortDateString() : "", All = All ? "on" : "" }))
+    {
+        ViewData.TemplateInfo.HtmlFieldPrefix = null;
+    @Html.Hidden("NV_id", nv.id)
+        var nvPrefix = "" + nv.id;
+        var first = true;
+        foreach (var ct in cts)
+        {
+            var ctPrefix = nvPrefix + "." + ct.id;
+<tr id="@nv.id">
+    @{ ViewData.TemplateInfo.HtmlFieldPrefix = null; }
+    @Html.Hidden("CT_id", ct.id)
+    @if (first)
+    {
+    <td rowspan=@cts.Count() nowrap>
+        @Html.ActionLink(nv.nvSoYeuLyLiches.Single().HoVaTen, "Details", "HSNhanSu", new { id = nv.id, tab = "QTCongTac" }, null)
+    </td>
+    }
+    <td nowrap>
+        @if (ct.DonVi != null)
+        {
+            <mark data-tip="@ct.DonVi.tenDonVi">@ct.DonVi.maDonVi</mark>
+        }
+    </td>
+    @if (first)
+    {
+    <td rowspan=@cts.Count() nowrap>
+        @if (nv.nvSoYeuLyLiches.Single().NgayTuyenDung.HasValue)
+        {
+            @nv.nvSoYeuLyLiches.Single().NgayTuyenDung.Value.ToShortDateString()
+        }
+    </td>
+    }
+    <td nowrap>
+        @if (ct.ChucDanhChuyenMon != null)
+        {
+            @ct.ChucDanhChuyenMon.tenChucDanhChuyenMon
+        }
+    </td>
+    <td nowrap>
+        <span id="ThoiGianBatDau">
+        //if (ct.ThoiGianBatDau.HasValue)
+        {
+            @ct.ThoiGianBatDau.ToShortDateString()
+        }
+        </span>
+    </td>
+    <td nowrap @(ct.nvQLTapSus.Single().ThoiGianDenHan.HasValue ? "" : "style=background:yellow")>
+<span id="View">
+        @if (ct.nvQLTapSus.Single().ThoiGianDenHan.HasValue)
+        {
+            @ct.nvQLTapSus.Single().ThoiGianDenHan.Value.ToShortDateString()
+        }
+</span>
+<span id="Edit">
+        @{ ViewData.TemplateInfo.HtmlFieldPrefix = ctPrefix; }
+        @Html.EditorFor(model => ct.nvQLTapSus.Single().ThoiGianDenHan)
+        @Html.ValidationMessageFor(model => ct.nvQLTapSus.Single().ThoiGianDenHan)
+</span>
+    </td>
+    <td nowrap>
+        @if (ct.ThoiGianKetThuc.HasValue)
+        {
+            @ct.ThoiGianKetThuc.Value.ToShortDateString()
+        }
+    </td>
+    <td>
+        <mark><sup data-tip="@TinhThamNien.Ti1nh(ct.ThoiGianBatDau, ct.ThoiGianKetThuc)">@(ct.ThoiGianKetThuc.HasValue ? (int)((ct.ThoiGianKetThuc.Value - ct.ThoiGianBatDau).Days / (365.25 / 12) + 0.5) : (int)((DateTime.Now - ct.ThoiGianBatDau).Days / (365.25 / 12) + 0.5))</sup></mark>
+    </td>
+    <td nowrap>
+<span id="View">
+        @if (ct.nvQLTapSus.Single().NgayThongBao.HasValue)
+        {
+            @ct.nvQLTapSus.Single().NgayThongBao.Value.ToShortDateString()
+        }
+</span>
+<span id="Edit">
+        @{ ViewData.TemplateInfo.HtmlFieldPrefix = ctPrefix; }
+        @Html.EditorFor(model => ct.nvQLTapSus.Single().NgayThongBao)
+        @Html.ValidationMessageFor(model => ct.nvQLTapSus.Single().NgayThongBao)
+</span>
+    </td>
+    <td nowrap>
+<span id="View">
+        @if (ct.nvQLTapSus.Single().NgayNhanHoSo.HasValue)
+        {
+            @ct.nvQLTapSus.Single().NgayNhanHoSo.Value.ToShortDateString()
+        }
+</span>
+<span id="Edit">
+        @{ ViewData.TemplateInfo.HtmlFieldPrefix = ctPrefix; }
+        @Html.EditorFor(model => ct.nvQLTapSus.Single().NgayNhanHoSo)
+        @Html.ValidationMessageFor(model => ct.nvQLTapSus.Single().NgayNhanHoSo)
+</span>
+    </td>
+    <td nowrap>
+<span id="View">
+        @if (ct.nvQLTapSus.First().NgayLapToTrinh.HasValue)
+        {
+            @ct.nvQLTapSus.First().NgayLapToTrinh.Value.ToShortDateString()
+        }
+</span>
+<span id="Edit">
+        @{ ViewData.TemplateInfo.HtmlFieldPrefix = ctPrefix; }
+        @Html.EditorFor(model => ct.nvQLTapSus.Single().NgayLapToTrinh)
+        @Html.ValidationMessageFor(model => ct.nvQLTapSus.Single().NgayLapToTrinh)
+</span>
+    </td>
+    @if (first)
+    {
+    <td align=center rowspan=@cts.Count() nowrap>
+    @if (nv.ChungChis.Where(cc => cc.dmLoaichungchi.maLoaiChungChi == "NV").Count() > 0)
+    {
+        @Html.ActionLink("X", "Details", "HSNhanSu", new { id = nv.id, tab = "QTCongHocTap" }, null)
+    }
+    </td>
+    <td align=center rowspan=@cts.Count() nowrap>
+    @if (nv.ChungChis.Where(cc => cc.dmLoaichungchi.maLoaiChungChi == "LL").Count() > 0)
+    {
+        @Html.ActionLink("X", "Details", "HSNhanSu", new { id = nv.id, tab = "QTCongHocTap" }, null)
+    }
+    </td>
+    <td rowspan=@cts.Count()>
+        <input type="submit" style="position:absolute;left:-9999px" />
+        <a title="Sửa" id="Edit"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        <a title="Lưu" id="Save" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+    </td>
+    }
+</tr>
+    first = false;
+        }
+    }
+}
+</tbody>
+</table>
+</div>
+
+@if (Download)
+{
+    @Html.Partial("Download", Database)
+}
+
+<style>
+td { padding: 0 }
+.ui-state-hover { font-weight: normal !important }
+</style>
+
+<script src="~/Scripts/datatables/DataTableFixedHeader.js"></script>
+
+<script>
+    $().ready(function () {
+        $("body").block();
+        var table$ = $("#nvQLTapSu");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+        table$.find("tr").hover(function () {
+            $(this).children("td").addClass("ui-state-hover");
+        }, function () {
+            $(this).children("td").removeClass("ui-state-hover");
+        });
+        table$.find("tr").click(function () {
+            $(this).children("td").toggleClass("ui-state-highlight");
+        });
+        table$.find("tr[id=@TempData["NV_id"]]").children("td").toggleClass("ui-state-highlight");
+        $("#TimKiem").on("input", function () {
+            var search = $(this).val();
+            search = unVietnamese(search).toLowerCase();
+            var rows = table$.find("tr[id^=]");
+            for (var i = 0; i < rows.length; i++) {
+                var row = $(rows[i]);
+                var col = $(row.find("td")[0]);
+                var datarow = col.text();
+                datarow = unVietnamese(datarow).toLowerCase();
+                var display = datarow.indexOf(search) == -1 ? "none" : "table-row";
+                for (var j = col.attr("rowspan"); j > 0; j--, i++) {
+                    row = $(rows[i]);
+                    row.css("display", display);
+                } i--;
+            }
+        });
+        table$.find("span[id=Edit]").prop("hidden", true);
+        table$.find("input[type=datetime]").css("width", "80px")
+              .css("border", "0").css("border-bottom", "1px dotted")
+              .datepicker({ changeMonth: true, changeYear: true })
+              .css("font-size", "1.1em").css("margin", "0").css("padding", "0");
+        table$.find("a[id=Edit]").on("click", function () {
+            var row = $(this).parents("tr");
+            do {
+                row.find("span[id=View]").prop("hidden", true);
+                row.find("span[id=Edit]").prop("hidden", false);
+                row = row.next("tr");
+            } while (row.length > 0)
+            $(this).prop("hidden", true).next("a").prop("hidden", false);
+            return false;
+        });
+        table$.find("a[id=Save]").on("click", function () {
+            $("body").block();
+            $(this).parents("tr").prev("input").prev("form").submit();
+            return false;
+        });
+        if ("@TempData["NV_id"]".length > 0)
+            $("html, body").animate({
+                scrollTop: $("tr[id=@TempData["NV_id"]]").offset().top - 100
+            }, 2000);
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+        //$("table.tableWithFloatingHeader").stickyTableHeaders();
+
+        var header = new FixedHeader(document.getElementById("nvQLTapSu"));
+        //header.fnGetSettings().aoCache[0].sType = "fixedFooter";
+        //header._fnUpdatePositions();
+
+        $("body").unblock(); $("footer").hide();
+
+        
+        var nDiv = document.createElement("input");
+        nDiv.style.position = "absolute";
+		nDiv.style.top = "0px";
+		nDiv.style.left = "0px";
+        nDiv.style.width = "80px";
+        nDiv.style.margin = "0";
+        nDiv.style.padding = "0";
+        nDiv.className = "Utility";
+        document.body.appendChild(nDiv);
+        var oDiv = undefined;
+        $(nDiv).hide().on("click", function() {
+            if ($(this).val() == "Số tháng")
+                $(this).val("");
+        }).on("input", function() {
+            var mons = parseInt($(this).val());
+            if (mons > 0) {
+                var data = $.trim($(this).prop("base")).split('/');
+                var dd = parseInt(data[0], 10);
+                var mm = parseInt(data[1], 10);
+                var yyyy = parseInt(data[2], 10);
+                var date = new Date(yyyy, mm - 1, dd);
+                date = new Date(date.setMonth(date.getMonth() + mons));
+                oDiv.val(date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear());
+            }
+        }).on("focusout", function() { $(this).hide(); });
+        $("input[name$=ThoiGianDenHan]").on("focusin", function() {
+            oDiv = $(this);
+            $(".Utility").css("top", $(this).offset().top);
+            $(".Utility").css("left", $(this).offset().left-$(".Utility").width());
+            $(".Utility").prop("base", $(this).parents("tr").find("#ThoiGianBatDau").text());
+            $(".Utility").val("Số tháng").show();
+        });
+    });/*
+    function UpdateTableHeaders() {
+        $("div.divTableWithFloatingHeader").each(function() {
+            var originalHeaderRow = $(".tableFloatingHeaderOriginal", this);
+            var floatingHeaderRow = $(".tableFloatingHeader", this);
+            var offset = $(this).offset();
+            var scrollTop = $(window).scrollTop();
+            if ((scrollTop > offset.top) && (scrollTop < offset.top + $(this).height())) {
+                floatingHeaderRow.css("visibility", "visible");
+                floatingHeaderRow.css("top", Math.min(scrollTop - offset.top, $(this).height() - floatingHeaderRow.height()) + "px");
+
+                var totalWidth = 0;
+                // Copy cell widths from original header
+                $("th", floatingHeaderRow).each(function(index) {
+                    var cellWidth = $("th", originalHeaderRow).eq(index).css('width');
+                    cellWidth = parseInt(cellWidth.replace("px", "")) + 3;
+                    totalWidth += cellWidth;
+                    $(this).css('width', "" + cellWidth + "px");
+                });
+
+                // Copy row width from whole table
+                floatingHeaderRow.css("width", totalWidth + "px");//(this).css("width");
+            }
+            else {
+                floatingHeaderRow.css("visibility", "hidden");
+                floatingHeaderRow.css("top", "0px");
+            }
+        });
+    }
+    $(document).ready(function() {
+        $("table.tableWithFloatingHeader").each(function() {
+            $(this).wrap("<div class=\"divTableWithFloatingHeader\" style=\"position:relative;overflow-y:auto\"></div>");
+
+            var originalHeaderRow = $("tr:first", this)
+            originalHeaderRow.before(originalHeaderRow.clone());
+            var clonedHeaderRow = $("tr:first", this)
+
+            clonedHeaderRow.addClass("tableFloatingHeader");
+            clonedHeaderRow.css("position", "absolute");
+            clonedHeaderRow.css("top", "0px");
+            clonedHeaderRow.css("left", $(this).css("margin-left"));
+            clonedHeaderRow.css("visibility", "hidden");
+            clonedHeaderRow.css("z-index", "1000");
+
+            originalHeaderRow.addClass("tableFloatingHeaderOriginal");
+        });
+        UpdateTableHeaders();
+        $(window).scroll(UpdateTableHeaders);
+        $(window).resize(UpdateTableHeaders);
+    });*/
+</script>

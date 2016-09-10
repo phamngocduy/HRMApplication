@@ -1,0 +1,56 @@
+﻿@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.Databases.Models.QuaTrinhCongTac_Truoc>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="QTCT">
+<thead>
+    <tr>
+        <th>@Html.VN("MaNV")</th>
+        <th>@Html.VN("DonViCongTac")</th>
+        <th>@Html.VN("ChucVu")</th>
+        <th>@Html.VN("ChucDanh")</th>
+        <th>@Html.VN("ThoiGianBatDau")</th>
+        <th>@Html.VN("ThoiGianKetThuc")</th>
+        <th>@Html.VN("GhiChu")</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhanVien.MaNV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonViCongTac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChucVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChucDanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianBatDau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianKetThuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $("#QTCT").dataTable();
+    });
+</script>

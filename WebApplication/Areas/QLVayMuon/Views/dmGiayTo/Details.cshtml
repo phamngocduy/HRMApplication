@@ -1,0 +1,43 @@
+﻿@model HRM.QLVayMuon.Models.dmGiayTo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>dmGiayTo</legend>
+    @*
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MucDichSuDung.MaMucDich)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MucDichSuDung.MaMucDich)
+    </div>
+    *@
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MaGiayTo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaGiayTo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenGiayTo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenGiayTo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.stt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.stt)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

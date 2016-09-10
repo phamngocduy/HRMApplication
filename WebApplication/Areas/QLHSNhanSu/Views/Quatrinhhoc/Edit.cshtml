@@ -1,0 +1,75 @@
+﻿@model HRM.Databases.Models.QuaTrinhHoc
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>QuaTrinhHoc</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NV_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NV_id)
+            @Html.ValidationMessageFor(model => model.NV_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BacHoc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BacHoc)
+            @Html.ValidationMessageFor(model => model.BacHoc)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TruongHoc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TruongHoc)
+            @Html.ValidationMessageFor(model => model.TruongHoc)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NamBatDau)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NamBatDau)
+            @Html.ValidationMessageFor(model => model.NamBatDau)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NamKetThuc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NamKetThuc)
+            @Html.ValidationMessageFor(model => model.NamKetThuc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GhiChu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

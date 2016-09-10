@@ -1,0 +1,41 @@
+﻿@model HRM.QLVayMuon.Models.dmGiayTo
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>
+    Chỉnh sửa</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmGiayTo</legend>
+        @Html.HiddenFor(model => model.id)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TenGiayTo, "Tên giấy tờ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TenGiayTo)
+            @Html.ValidationMessageFor(model => model.TenGiayTo)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idMucDichSuDung, "Thuộc mục đích")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idMucDichSuDung", String.Empty)
+            @Html.ValidationMessageFor(model => model.idMucDichSuDung)
+        </div>
+        <p>
+            <input type="submit" value="Lưu" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Trở về màn hình Danh sách Giấy tờ", "Index")
+</div>
+<script>
+
+    $("#idMucDichSuDung").css("width", "310");
+    $("#idMucDichSuDung").css("height", "30")
+
+</script>

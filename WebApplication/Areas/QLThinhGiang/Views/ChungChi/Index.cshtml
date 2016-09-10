@@ -1,0 +1,135 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.QLThinhGiang.Models.ChungChi
+@{
+    var db = ViewBag.DB as HRM.QLThinhGiang.Models.HRMDB_Entities;
+    var d0 = new HRM.Databases.Models.HRMDB0Entities();
+   @* var ChungChi = db.NhanViens.All.Find(Model.NV_id).ChungChis.ToList();*@
+    var ChungChi = db.NhanVien.Find(Model.NV_id).ChungChis.Where(n => n.SauKhiVeTruong != true).ToList();
+    var ChungChiSau = db.NhanVien.Find(Model.NV_id).ChungChis.Where(n => n.SauKhiVeTruong == true).ToList();
+}
+
+<h3 class="ignore">Chứng Chỉ</h3>
+<div style="overflow:auto;">
+<table id="ChungChi">
+<tr>
+
+    <th nowrap>&nbsp;Tên chứng chỉ</th>
+    <th nowrap>&nbsp;Điểm/Xếp loại</th>
+    <th nowrap>&nbsp;Ngày cấp</th>
+    <th nowrap>&nbsp;Nơi cấp</th>      
+    <th nowrap>&nbsp;Hiệu lực</th>
+    <th nowrap>&nbsp;Ghi chú</th>
+</tr>
+<tbody>
+<tr>
+<td colspan=15 nowrap>
+</tr>
+@foreach (var item in ChungChi)
+{
+    var prefix = "item" + item.GetHashCode();
+<tr>
+@using (Html.BeginForm("Update", "ChungChi"))
+{
+
+    @Html.Hidden("Prefix", prefix)
+    @Html.Hidden("CC_id", item.id)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+  
+<td>
+    @Html.DropDownListFor(model => item.LoaiChungChi_id, new SelectList(d0.dmLoaiChungChi, "id", "tenLoaiChungChi", item.LoaiChungChi_id), String.Empty)<br />
+    @Html.ValidationMessageFor(model => item.LoaiChungChi_id)
+</td>
+<td>
+    @Html.EditorFor(model => item.Capdo)<br />
+    @Html.ValidationMessageFor(model => item.Capdo)
+</td>
+<td>
+    @Html.EditorFor(model => item.NgayCap)<br />
+    @Html.ValidationMessageFor(model => item.NgayCap)
+</td>
+<td>
+    @Html.EditorFor(model => item.NoiCap)<br />
+    @Html.ValidationMessageFor(model => item.NoiCap)
+</td>
+<td>
+    @Html.EditorFor(model => item.HieuLuc)<br />
+    @Html.ValidationMessageFor(model => item.HieuLuc)
+</td>
+<td>
+    @Html.EditorFor(model => item.GhiChu)<br />
+    @Html.ValidationMessageFor(model => item.GhiChu)
+</td>
+<td nowrap>
+    <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+    <a title="Xóa" href="~/QLThinhGiang/ChungChi/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa @item.LoaiChungChi_id @item.Capdo cấp ngày @item.NgayCap?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+}
+<tr>
+@using (Html.BeginForm("Update" , "ChungChi"))
+{
+    var prefix ="model" + Model.GetHashCode();
+    @Html.Hidden("Prefix", prefix)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+    @Html.HiddenFor(model => model.NV_id)
+        Model.SauKhiVeTruong = false;
+    @Html.HiddenFor(model => model.SauKhiVeTruong)
+
+<td>
+    @Html.DropDownListFor(model => model.LoaiChungChi_id, new SelectList(d0.dmLoaiChungChi, "id", "tenLoaiChungChi", Model.LoaiChungChi_id), String.Empty)<br />
+    @Html.ValidationMessageFor(model => model.LoaiChungChi_id)
+</td>
+<td>
+    @Html.EditorFor(model => model.Capdo)<br />
+    @Html.ValidationMessageFor(model => model.Capdo)
+</td>
+<td>
+    @Html.EditorFor(model => model.NgayCap)<br />
+    @Html.ValidationMessageFor(model => model.NgayCap)
+</td>
+<td>
+    @Html.EditorFor(model => model.NoiCap)<br />
+    @Html.ValidationMessageFor(model => model.NoiCap)
+</td>
+<td>
+    @Html.EditorFor(model => model.HieuLuc)<br />
+    @Html.ValidationMessageFor(model => model.HieuLuc)
+</td>
+<td>
+    @Html.EditorFor(model => model.GhiChu)<br />
+    @Html.ValidationMessageFor(model => model.GhiChu)
+</td>
+<td nowrap>
+    <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Thêm, Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+</td>
+        ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+
+</table>
+</div>
+</tbody>
+<style>
+td { padding: 0 2px 0 0 }
+input { margin: 0 0 0 0 }
+</style>
+
+<script>
+    $(function () {
+        var $table = $("#ChungChi");
+        $table.find("[id^=item]").prop("disabled", true);
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $table.find("input,select").css("border", "0").css("border-bottom", "1px dotted");
+        $table.find("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).css("width", "auto")
+                   .attr("size", $(this).val().length + 1);
+        });
+       
+    });
+</script>

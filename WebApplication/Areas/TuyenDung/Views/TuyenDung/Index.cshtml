@@ -1,0 +1,754 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Libraries.Helpers
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Index";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var hoten = Convert.ToString(Request["hoten"]);
+    var trinhdo = Convert.ToString(Request["trinhdo"]);
+    var vitriungtuyen = Convert.ToString(Request["vitriungtuyen"]);
+    var donviungtuyen = Convert.ToString(Request["donviungtuyen"]);
+    var kiemtrahs = Convert.ToString(Request["kiemtrahs"]);
+    var kqtuyendung = Convert.ToString(Request["kqtuyendung"]);
+    var ngaynhanhstu = new Nullable<DateTime>();
+    var ngaynhanhsden = new Nullable<DateTime>();
+    DateTime date;
+    if(DateTime.TryParse(Request["ngaynhanhstu"], out date))
+    {
+        ngaynhanhstu = date;
+    }
+    DateTime date1;
+    if (DateTime.TryParse(Request["ngaynhanhsden"], out date1))
+    {
+        ngaynhanhsden = date1;
+    }
+    var kqTuyenDung = new List<string> { "Trúng tuyển", "Không trúng tuyển" };
+    var selectlistKQTuyenDung = new SelectList(kqTuyenDung);
+    var XemTheoNam = new List<string> ();
+    XemTheoNam.Add("Năm hiện tại");
+    XemTheoNam.Add("Tất cả");
+    for (int n = DateTime.Today.Year - 1 ;n >= 1995 ;n-- )
+    {
+        XemTheoNam.Add(n.ToString());
+    }
+    
+    string XemNamValue = "";
+    try{
+        XemNamValue = TempData["XemNam"].ToString();
+    }catch{} 
+    
+    var selectlistXemTheoNam = new SelectList(XemTheoNam, TempData["XemNam"]);
+}
+
+@{  var tdTTUngCuViens = db.tdTTUngCuVien.Include("tdBangCaps").Include("tdKetQuaTuyenDungs").Include("tdKiemTraHS").Include("tdNoiSinhs").Include("tdQuaTrinhTuyenDungs").Include("tdTheDinhDanhs").Include("tdThongTinLienHes").Include("tdThongTinUngTuyens").Include("tdXemVaXepLichHens");
+    var XemNam = tdTTUngCuViens.Where(uv => uv.tdThongTinUngTuyens.FirstOrDefault().NgayNhanHS.Value.Year == DateTime.Today.Year && !uv.KetQuaTuyenDung.HasValue).ToList();
+    if (XemNamValue != "Năm hiện tại" && TempData["XemNam"] != null)
+    {
+        try{
+            int namxem = int.Parse(TempData["XemNam"].ToString());
+            XemNam = tdTTUngCuViens.Where(uv => uv.tdThongTinUngTuyens.FirstOrDefault().NgayNhanHS.Value.Year == namxem).ToList();
+        }catch
+        {
+            XemNam = tdTTUngCuViens.ToList();
+        }
+    }
+    var hotenFilt = XemNam.Where(ht => ht.HoVaTen.Contains(hoten));
+    int? HocVi_id;
+    var trinhdoFilt = hotenFilt;
+    if (trinhdo == null || trinhdo == "")
+    {
+        HocVi_id = null;
+    }else{
+        HocVi_id = db0.dmHocVi.Where(hv => hv.tenHocVi.Contains(trinhdo)).FirstOrDefault().id;
+        trinhdoFilt = hotenFilt.Where(ct => ct.tdBangCaps.FirstOrDefault().TrinhDo_id == HocVi_id);
+    }
+    
+    int? ChucDanhChuyenMon_id = null;
+    var vitriFilt = trinhdoFilt;
+    if(vitriungtuyen == "" || vitriungtuyen == null){
+        ChucDanhChuyenMon_id = null;
+    }else{
+        ChucDanhChuyenMon_id = db0.dmChucDanhChuyenMon.Where(cm => cm.tenChucDanhChuyenMon.Contains(vitriungtuyen)).FirstOrDefault().id;
+        vitriFilt = trinhdoFilt.Where(ct => ct.tdThongTinUngTuyens.FirstOrDefault().ViTriUngTuyen_id == ChucDanhChuyenMon_id);
+    }
+    int? DonVi_id = null;
+    var donviFilt = vitriFilt;
+    if (donviungtuyen == "" || donviungtuyen == null)
+    {
+        DonVi_id = null;
+    }else{
+        DonVi_id = db0.dmDonVi.Where(dv => dv.tenDonVi.Contains(donviungtuyen)).FirstOrDefault().id;
+        donviFilt = vitriFilt.Where(ct => ct.tdThongTinUngTuyens.FirstOrDefault().DonViUngTuyen_id == DonVi_id);
+    }
+    
+    var ngaynhanFilt = donviFilt;
+    var kiemtraFilt = ngaynhanFilt;
+    var kqtuyendungFilt = kiemtraFilt;
+    if (kiemtrahs == "Đủ")
+    {
+        kiemtraFilt = donviFilt.Where(kt => kt.tdKiemTraHS.FirstOrDefault().DonXinViec == true && kt.tdKiemTraHS.FirstOrDefault().SoYeuLyLich == true && kt.tdKiemTraHS.FirstOrDefault().TheDinhDanh == true && kt.tdKiemTraHS.FirstOrDefault().SoHoKhau == true && kt.tdKiemTraHS.FirstOrDefault().GiayKhamSucKhoe == true && kt.tdKiemTraHS.FirstOrDefault().BangCapBangDiem == true && kt.tdKiemTraHS.FirstOrDefault().Hinh == true && kt.tdKiemTraHS.FirstOrDefault().GiayToKhac == true);
+        kqtuyendungFilt = kiemtraFilt;
+    }
+    else if (kiemtrahs == "Thiếu")
+    {
+        kiemtraFilt = donviFilt.Where(kt => kt.tdKiemTraHS.FirstOrDefault().DonXinViec == false || kt.tdKiemTraHS.FirstOrDefault().SoYeuLyLich == false || kt.tdKiemTraHS.FirstOrDefault().TheDinhDanh == false || kt.tdKiemTraHS.FirstOrDefault().SoHoKhau == false || kt.tdKiemTraHS.FirstOrDefault().GiayKhamSucKhoe == false || kt.tdKiemTraHS.FirstOrDefault().BangCapBangDiem == false || kt.tdKiemTraHS.FirstOrDefault().Hinh == false || kt.tdKiemTraHS.FirstOrDefault().GiayToKhac == false);
+        kqtuyendungFilt = kiemtraFilt;
+    }
+    if (ngaynhanhstu != null || ngaynhanhsden!=null)
+    {
+        ngaynhanFilt = donviFilt.Where(nn => nn.tdThongTinUngTuyens.FirstOrDefault().NgayNhanHS >= ngaynhanhstu || !ngaynhanhstu.HasValue).Where(nn => nn.tdThongTinUngTuyens.FirstOrDefault().NgayNhanHS <= ngaynhanhsden || !ngaynhanhsden.HasValue);
+        kqtuyendungFilt = ngaynhanFilt; 
+        if (kiemtrahs == "Đủ")
+        {
+            kiemtraFilt = ngaynhanFilt.Where(kt => kt.tdKiemTraHS.FirstOrDefault().DonXinViec == true && kt.tdKiemTraHS.FirstOrDefault().SoYeuLyLich == true && kt.tdKiemTraHS.FirstOrDefault().TheDinhDanh == true && kt.tdKiemTraHS.FirstOrDefault().SoHoKhau == true && kt.tdKiemTraHS.FirstOrDefault().GiayKhamSucKhoe == true && kt.tdKiemTraHS.FirstOrDefault().BangCapBangDiem == true && kt.tdKiemTraHS.FirstOrDefault().Hinh == true && kt.tdKiemTraHS.FirstOrDefault().GiayToKhac == true);
+            kqtuyendungFilt = kiemtraFilt;
+        }
+        else if (kiemtrahs == "Thiếu")
+        {
+            kiemtraFilt = ngaynhanFilt.Where(kt => kt.tdKiemTraHS.FirstOrDefault().DonXinViec == false || kt.tdKiemTraHS.FirstOrDefault().SoYeuLyLich == false || kt.tdKiemTraHS.FirstOrDefault().TheDinhDanh == false || kt.tdKiemTraHS.FirstOrDefault().SoHoKhau == false || kt.tdKiemTraHS.FirstOrDefault().GiayKhamSucKhoe == false || kt.tdKiemTraHS.FirstOrDefault().BangCapBangDiem == false || kt.tdKiemTraHS.FirstOrDefault().Hinh == false || kt.tdKiemTraHS.FirstOrDefault().GiayToKhac == false);
+            kqtuyendungFilt = kiemtraFilt;
+        }      
+    }
+    
+    if(kqtuyendung == "True")
+    {
+        kqtuyendungFilt = kiemtraFilt.Where(kq => kq.KetQuaTuyenDung == true);
+    }else if(kqtuyendung == "False"){
+        kqtuyendungFilt = kiemtraFilt.Where(kq => kq.KetQuaTuyenDung == false);
+    }
+
+    var cts = kqtuyendungFilt;
+    if (hoten == null && trinhdo == null && vitriungtuyen == null && donviungtuyen == null && ngaynhanhstu == null && ngaynhanhsden == null)
+    {
+        cts = XemNam;
+    }
+}
+@{var XuatExcel = new List<tdXuatExcel> { };
+  foreach (var item in cts)
+  {
+      var tmp = new tdXuatExcel();
+      tmp.HoTenUngVien = item.HoVaTen;
+      var tenGioiTinh = db0.dmGioiTinh.Where(gt => gt.id == item.GioiTinh_id).FirstOrDefault().tenGioiTinh;
+      tmp.GioiTinh = tenGioiTinh;
+      tmp.NgaySinh = item.NgaySinh.ToShortDateString();
+      
+      if (item.tdNoiSinhs.SingleOrDefault().TinhThanh_id != null){
+          int? TinhThanh_id = item.tdNoiSinhs.SingleOrDefault().TinhThanh_id;
+          var tenTinhThanh = db0.dmTinhThanh.Where(tt => tt.id == TinhThanh_id).FirstOrDefault().tenTinhThanh;
+          tmp.NoiSinh = tenTinhThanh;
+      }
+      tmp.SoTheDinhDanh = item.tdTheDinhDanhs.FirstOrDefault().SoThe;
+      tmp.Email = item.tdThongTinLienHes.SingleOrDefault() != null ? item.tdThongTinLienHes.SingleOrDefault().Email : null;
+      tmp.DienThoai = item.tdThongTinLienHes.SingleOrDefault() != null ? item.tdThongTinLienHes.SingleOrDefault().DTDiDong1 : null;
+      if (item.tdThongTinLienHes.SingleOrDefault() != null)
+      {
+          if (item.tdThongTinLienHes.SingleOrDefault().tdDiaChiLienLacs.SingleOrDefault() != null && item.tdThongTinLienHes.SingleOrDefault().tdDiaChiLienLacs.SingleOrDefault().llTenDuong != null)
+          {
+              string px;
+              try{
+                  px = db0.dmPhuongXa.Where(pxx => pxx.id == item.tdThongTinLienHes.SingleOrDefault().tdDiaChiLienLacs.SingleOrDefault().llPhuongXa_id).FirstOrDefault().tenPhuongXa;
+              }catch{
+                  px = "";
+              }
+              string qh;
+              try
+              {
+                  qh = db0.dmQuanHuyen.Where(qhh => qhh.id == item.tdThongTinLienHes.SingleOrDefault().tdDiaChiLienLacs.SingleOrDefault().llQuanHuyen_id).FirstOrDefault().tenQuanHuyen;
+              }
+              catch
+              {
+                  qh = "";
+              }
+              string tt;
+              try
+              {
+                  tt = db0.dmTinhThanh.Where(ttt => ttt.id == item.tdThongTinLienHes.SingleOrDefault().tdDiaChiLienLacs.SingleOrDefault().llTinhThanh_id).FirstOrDefault().tenTinhThanh;
+              }
+              catch
+              {
+                  tt = "";
+              }
+              tmp.DiaChiLienLac = item.tdThongTinLienHes.SingleOrDefault().tdDiaChiLienLacs.SingleOrDefault().llTenDuong + "," + px + "," + qh + "," + tt;
+          }
+
+      }
+      var xuatexcelbangcap = new List<string>();
+      foreach(var im in item.tdBangCaps){
+          string xuatexceltrinhdo;
+          try{
+              xuatexceltrinhdo = db0.dmHocVi.Where(hv => hv.id == im.TrinhDo_id).FirstOrDefault().tenHocVi;
+          }catch{
+              xuatexceltrinhdo = " ";
+          }
+          string xuatexcelchuyennganh;
+          try
+          {
+              xuatexcelchuyennganh = db0.dmChuyenNganh.Where(cn => cn.id == im.ChuyenNganh_id).FirstOrDefault().tenChuyenNganh;
+          }
+          catch
+          {
+              xuatexcelchuyennganh = " ";
+          }
+          string xuatexcelxeploai;
+          try
+          {
+              xuatexcelxeploai = db0.dmXepLoaiTotNghiep.Where(tn => tn.id == im.XepLoai_id).FirstOrDefault().tenXepLoaiTotNghiep;
+          }
+          catch
+          {
+              xuatexcelxeploai = " ";
+          }
+          string str = xuatexceltrinhdo + "," + xuatexcelchuyennganh + "," + im.NoiDaoTao + "," + im.NamTotNghiep + "," + xuatexcelxeploai;
+          xuatexcelbangcap.Add(str);
+      }
+      tmp.BangCap = xuatexcelbangcap;
+      if (item.tdThongTinUngTuyens.SingleOrDefault() != null){
+          int? DonViUngTuyen_id = item.tdThongTinUngTuyens.FirstOrDefault().DonViUngTuyen_id;
+          try{
+          tmp.DonViUngTuyen = db0.dmDonVi.Where(dvv => dvv.id == DonViUngTuyen_id).FirstOrDefault().tenDonVi;
+          }catch{
+          }
+      }
+      if (item.tdThongTinUngTuyens.SingleOrDefault() != null){
+          int? ViTriUngTuyen_id = item.tdThongTinUngTuyens.SingleOrDefault().ViTriUngTuyen_id;
+          try{
+          tmp.ViTriUngTuyen = db0.dmChucDanhChuyenMon.Where(cm => cm.id == ViTriUngTuyen_id).FirstOrDefault().tenChucDanhChuyenMon;
+          }catch{
+          }
+      }
+      tmp.KinhNghiemLamViec = item.tdThongTinUngTuyens.SingleOrDefault() != null ? item.tdThongTinUngTuyens.SingleOrDefault().KinhNghiemLamViec : null;
+      tmp.KetQuaTuyenDung = item.KetQuaTuyenDung.HasValue ? item.KetQuaTuyenDung.Value ? "Trúng tuyển" : "Không trúng tuyển" : "Chưa có kết quả";
+      tmp.NhanXet = item.tdThongTinUngTuyens.SingleOrDefault() != null ? item.tdThongTinUngTuyens.SingleOrDefault().GhiChu : null;
+      XuatExcel.Add(tmp);
+  }
+  TempData["tdXuatExcel"] = XuatExcel;
+}
+@*{  // trinh do list filter
+    var e = new List<string>();
+    foreach (var im in cts)
+    {
+        try{
+            if (e.Count == 0)
+            {
+                bool ktht = false;
+                foreach(var imm in im.tdBangCaps){
+                    if(imm.SetDefault == true){
+                        var tenHocVi = db0.dmHocVi.Where(hv => hv.id == imm.TrinhDo_id).FirstOrDefault().tenHocVi;
+                        e.Add(tenHocVi);
+                        ktht = true;
+                    }
+                }
+                if(ktht==false){
+                    int? TrinhDo_id = im.tdBangCaps.First().TrinhDo_id;
+                    var tenHocVi = db0.dmHocVi.Where(hv => hv.id == TrinhDo_id).FirstOrDefault().tenHocVi;
+                    e.Add(tenHocVi);
+                }
+            }
+            else
+            {
+                bool ktht = false;
+                bool kt = false;
+                foreach(var imm in im.tdBangCaps){
+                    for (int j = 0; j < e.Count; j++)
+                    {
+                        var tenHocVi = db0.dmHocVi.Where(hv => hv.id == imm.TrinhDo_id).FirstOrDefault().tenHocVi;
+                        if (e[j] == tenHocVi)
+                        {
+                            kt = true;
+                        }
+                    }
+                    if (imm.SetDefault == true && kt == false)
+                    {
+                        var tenHocVi = db0.dmHocVi.Where(hv => hv.id == imm.TrinhDo_id).FirstOrDefault().tenHocVi;
+                        e.Add(tenHocVi);
+                        ktht = true;
+                    }
+                }
+                for (int j = 0; j < e.Count; j++)
+                {
+                    int? TrinhDo_id = im.tdBangCaps.First().TrinhDo_id;
+                    var tenHocVi = db0.dmHocVi.Where(hv => hv.id == TrinhDo_id).FirstOrDefault().tenHocVi;
+                    if (e[j] == tenHocVi)
+                    {
+                        kt = true;
+                    }
+                }
+                if (kt == false && ktht == false)
+                {
+                    int? TrinhDo_id = im.tdBangCaps.First().TrinhDo_id;
+                    var tenHocVi = db0.dmHocVi.Where(hv => hv.id == TrinhDo_id).FirstOrDefault().tenHocVi;
+                    e.Add(tenHocVi);
+                }
+            }
+        }catch{
+        }
+    }
+    var listFiltTrinhDo = new SelectList(e, trinhdo);
+    // list vi tri ung tuyen filter
+    var vtut = new List<string>();
+    foreach (var im in cts)
+    {
+        bool kt = false;
+        if (vtut.Count == 0)
+        {
+            int? ViTriUngTuyen_id = im.tdThongTinUngTuyens.FirstOrDefault().ViTriUngTuyen_id;
+            var tenChucNangChuyenMon = db0.dmChucDanhChuyenMon.Where(cm => cm.id == ViTriUngTuyen_id).FirstOrDefault().tenChucDanhChuyenMon;
+            vtut.Add(tenChucNangChuyenMon);
+        }
+        else
+        {
+            for (int j = 0; j < vtut.Count; j++)
+            {
+                int? ViTriUngTuyen_id = im.tdThongTinUngTuyens.FirstOrDefault().ViTriUngTuyen_id;
+                try{
+                    var tenChucDanhChuyenMon = db0.dmChucDanhChuyenMon.Where(cm => cm.id == ViTriUngTuyen_id).FirstOrDefault().tenChucDanhChuyenMon;
+                    if (vtut[j] == tenChucDanhChuyenMon)
+                    {
+                        kt = true;
+                    }
+                }catch{
+                }
+            }
+            if (kt == false)
+            {
+                int? ViTriUngTuyen_id = im.tdThongTinUngTuyens.FirstOrDefault().ViTriUngTuyen_id;
+                try{
+                var tenChucNangChuyenMon = db0.dmChucDanhChuyenMon.Where(cm => cm.id == ViTriUngTuyen_id).FirstOrDefault().tenChucDanhChuyenMon;
+                vtut.Add(tenChucNangChuyenMon);
+                }catch{
+                }
+            }
+        }
+    }
+    var listFiltVTUngTuyen = new SelectList(vtut, vitriungtuyen);
+    // list don vi ung tuyen filter
+    var dvut = new List<string>();
+    foreach(var im in cts){
+        bool kt = false;
+        if(dvut.Count == 0){
+            int? DonViUngTuyen_id = im.tdThongTinUngTuyens.FirstOrDefault().DonViUngTuyen_id;
+            var tenDonVi = db0.dmDonVi.Where(dv => dv.id == DonViUngTuyen_id).FirstOrDefault().tenDonVi;
+            dvut.Add(tenDonVi);
+        }else{
+            for(int j =0;j<dvut.Count;j++){
+                int? DonViUngTuyen_id = im.tdThongTinUngTuyens.FirstOrDefault().DonViUngTuyen_id;
+                var tenDonVi = "";
+                try{
+                tenDonVi = db0.dmDonVi.Where(dv => dv.id == DonViUngTuyen_id).FirstOrDefault().tenDonVi;
+                }
+                catch{
+                  //  var tenDonVi = "";
+                }
+                if (dvut[j] == tenDonVi)
+                {
+                    kt = true;
+                }
+            }
+            if(kt == false){
+                int? DonViUngTuyen_id = im.tdThongTinUngTuyens.FirstOrDefault().DonViUngTuyen_id;
+                var tenDonVi = (db0.dmDonVi.Where(dv => dv.id == DonViUngTuyen_id).FirstOrDefault() ?? new dmDonVi()).tenDonVi;
+                dvut.Add(tenDonVi);
+            }
+        }
+    }
+    var listFiltDVUngTuyen = new SelectList(dvut.Where(s => !String.IsNullOrEmpty(s)), donviungtuyen);
+    
+}*@
+<div style="padding: 0; width:1000px;">
+    <div style="margin-left:55%">
+        <a href="@Url.Action("Index", "ImportTuFileExcel")"><input id="bntNhapDuLieu" type="button" value="Nhập dữ liệu"/></a>
+        <a  href="@Url.Action("Index", "ChonTruongXuatExcel")"><input id="btnXuatExcel" type="button" value="Xuất excel"/></a>
+    </div>
+    <div style="">
+    @Html.StatusMessage(TempData["Message"])
+    <p>
+        @Html.ActionLink("Thêm mới ứng cử viên", "Create", new { UV_id = -1 })
+        @Html.ActionLink("Quản lý lịch hẹn", "Index", "QLLichHen")
+    </p>
+    <table id="TuyenDung" class="tableWithFloatingHeader">
+    <thead>
+        <tr>
+            <th style="text-align:center;width:30px">
+                Stt
+            </th>
+            <th style="text-align:center;width:100px">
+                Họ và tên</br>ứng viên
+            </th>
+            <th style="text-align:center;width:100px">
+                Trình độ
+            </th>
+            <th style="text-align:center;width:120px">
+                Vị trí ứng</br>tuyển
+            </th>
+            <th style="text-align:center;width:120px">
+                Đơn vị ứng</br>tuyển
+            </th>
+            <th style="text-align:center;width:80px">
+                Ngày nhận</br>hồ sơ
+            </th>
+            <th style="text-align:center;width:50px" data-tip="Kiểm tra hồ sơ">
+                KTHS
+            </th>
+            <th style="text-align:center;width:80px" data-tip="Kết quả tuyển dụng">
+                KQTD
+            <th style="text-align:center;width:80px">
+                Ghi chú
+            </th>
+            <th style="text-align:center;width:30px" ></th>
+        </tr>
+        <tr>
+        @using (Html.BeginForm("Index", "TuyenDung", FormMethod.Get, new { id = "Filter" }))
+        {
+            <th style="text-align:center">
+
+            </th>
+            <th style="text-align:center">
+                <input name="hoten" type="text" value="@hoten" style="width:auto;min-width:100px;height:8px;font-size:small"/>
+            </th>
+            <th style="text-align:center" >
+                @*<input name="trinhdo" type="text" value="@trinhdo" style="width:auto;min-width:80px;height:8px;font-size:small"/>*@
+                @*Html.DropDownList("trinhdo", listFiltTrinhDo,String.Empty, new { name = "trinhdo", style = "min-width:100px"})*@
+            </th>
+            <th style="text-align:center" >
+                @*<input name="vitriungtuyen" type="text" value="@vitriungtuyen" style="width:auto;min-width:80px;height:8px;font-size:small"/>*@
+                @*Html.DropDownList("vitriungtuyen", listFiltVTUngTuyen, String.Empty, new { name = "vitriungtuyen", style = "min-width:100px;max-width:150px" })*@
+            </th>
+            <th style="text-align:center" >
+                @*<input name="donviungtuyen" type="text" value="@donviungtuyen" style="width:auto;min-width:150px;height:8px;font-size:small"/>*@
+                @*Html.DropDownList("donviungtuyen", listFiltDVUngTuyen, String.Empty, new { name = "donviungtuyen", style = "min-width:100px;max-width:150px"})*@
+            </th>
+            <th style="text-align:center" >
+                <input id="NgayNhanHoSotu" name="ngaynhanhstu" type="text" value="@ngaynhanhstu" style="width:70px;height:8px;font-size:small"/>
+                <input id="NgayNhanHoSoden" name="ngaynhanhsden" type="text" value="@ngaynhanhsden" style="width:70px;height:8px;font-size:small"/>
+            </th>
+            <th style="text-align:center" >
+                <select id="KiemTraHoSo" name="kiemtrahs" style="width:auto">
+                @if(kiemtrahs == "Đủ")
+                {
+                    <option></option>
+                    <option selected="selected">
+                    Đủ
+                    </option>
+                    <option>
+                    Thiếu
+                    </option>  
+                }
+                else if(kiemtrahs == "Thiếu")
+                {
+                    <option></option>
+                    <option>
+                    Đủ  
+                    </option>
+                    <option selected="selected">
+                    Thiếu
+                    </option>
+                }else
+                {
+                    <option></option>
+                    <option>
+                    Đủ
+                    </option>
+                    <option>
+                    Thiếu
+                    </option>
+                }
+                </select>
+            </th>
+            <th style="text-align:center">
+                <select id="KetQuaTuyenDung" name="kqtuyendung" style="width:100px;">
+                @if (kqtuyendung == "True")
+                {
+                    <option value=""></option>
+                    <option value="True" selected="selected">
+                    Trúng tuyển  
+                    </option>
+                    <option value="False">
+                    Không trúng tuyển
+                    </option>   
+                }
+                else if (kqtuyendung == "False")
+                {
+                    <option value=""></option>
+                    <option value="True">
+                    Trúng tuyển  
+                    </option>
+                    <option value="False" selected="selected">
+                    Không trúng tuyển
+                    </option>
+                }
+                else
+                {
+                    <option value=""></option>
+                    <option value="True">
+                    Trúng tuyển  
+                    </option>
+                    <option value="False">
+                    Không trúng tuyển
+                    </option>
+                }
+                </select>
+            </th>
+            <th style="text-align:center" nowrap></th>
+            <th style="text-align:center" nowrap>
+                <a title="Lọc" style="width:40px" id="Filter" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-search" style="display:inline-block"></span></a>
+                <a title="Hủy lọc" style="width:40px" href="~/TuyenDung/TuyenDung/Index"><span class="ui-icon ui-icon-cancel" style="display:inline-block"></span></a>
+            </th>
+        }
+        </tr>
+    </thead>
+    <tbody>
+    @{int i = 0;}
+    @{var Distinct = new HashSet<int>();}
+    @foreach (var item in cts)
+    {
+        if (!Distinct.Add(item.id)) { continue; }
+        using (Html.BeginForm("UpdateKQTuyenDung", "TuyenDung"))
+        {
+            ViewData.TemplateInfo.HtmlFieldPrefix = null;
+            @Html.Hidden("id", item.id)
+            var tdPrefix = "" + item.id;
+            if (cts.Count() == 0) { continue; }
+    <tr>
+        <td style="text-align:center">
+            @{++i;}
+            @i
+        </td>
+        <td style="text-align:left"  class="">
+            @if (item.HoVaTen != null)
+            {
+                @Html.ActionLink(item.HoVaTen, "Details", "TuyenDung", new {item.id }, null)
+            }
+        </td>
+        <td style="text-align:left"  class="">
+           @{var tdbangcap = item.tdBangCaps.Where(bc => bc.SetDefault == true);}
+           @if(item.tdBangCaps.FirstOrDefault() != null){
+               if(tdbangcap.Count() == 0){
+                   int? TrinhDo_id = item.tdBangCaps.FirstOrDefault().TrinhDo_id;
+                   var tenHocVi = db0.dmHocVi.Where(hv => hv.id == TrinhDo_id).FirstOrDefaultNull().tenHocVi;
+                    @Html.Raw(tenHocVi)
+               }
+               else
+               {
+                   int? TrinhDo_id = item.tdBangCaps.FirstOrDefault().TrinhDo_id;
+                   var tenHocVi = db0.dmHocVi.Where(hv => hv.id == TrinhDo_id).FirstOrDefault().tenHocVi;
+                   @Html.Raw(tenHocVi) 
+               }
+           }
+        </td>
+        <td style="text-align:left"  class="">
+            @if (item.tdThongTinUngTuyens.SingleOrDefault() != null)
+            {
+                int? ViTriUngTuyen_id = item.tdThongTinUngTuyens.Single().ViTriUngTuyen_id;
+                var tenChucDanhChuyenMon = (db0.dmChucDanhChuyenMon.Where(cm => cm.id == ViTriUngTuyen_id).FirstOrDefault() ?? new dmChucDanhChuyenMon()).tenChucDanhChuyenMon;
+                @Html.Raw(tenChucDanhChuyenMon);
+            
+            }
+        </td>
+        <td style="text-align:left" class="">
+            @if (item.tdThongTinUngTuyens.SingleOrDefault() != null)
+            {
+                int? DonViUngTuyen_id = item.tdThongTinUngTuyens.Single().DonViUngTuyen_id;
+                var tenDonVi = (db0.dmDonVi.Where(dv => dv.id == DonViUngTuyen_id).FirstOrDefault() ?? new dmDonVi()).tenDonVi;
+                @Html.Raw(tenDonVi)
+            }
+        </td>
+        <td style="text-align:center"  class="">
+            @if (item.tdThongTinUngTuyens.SingleOrDefault().NgayNhanHS != null)
+            {
+                @item.tdThongTinUngTuyens.Single().NgayNhanHS.Value.ToShortDateString()
+            }
+        </td>
+        <td style="text-align:center"  class="">
+        @try
+        {
+            if (item.tdKiemTraHS.Single().id != null)
+            {
+                if (item.tdKiemTraHS.Single().DonXinViec == true  && item.tdKiemTraHS.Single().Hinh == true && item.tdKiemTraHS.Single().BangCapBangDiem == true && item.tdKiemTraHS.Single().GiayKhamSucKhoe == true && item.tdKiemTraHS.Single().SoYeuLyLich == true && item.tdKiemTraHS.Single().SoHoKhau == true && item.tdKiemTraHS.Single().TheDinhDanh == true)
+                {
+                    @Html.ActionLink("Đủ", "Edit", "KiemTraHS", new { id = item.id }, null)
+                }
+                else
+                {
+                    @Html.ActionLink("Thiếu", "Edit", "KiemTraHS", new { id = item.id }, null)
+               
+                }
+            }
+        }
+        catch
+        {
+        }
+        </td>
+        <td style="text-align:center"  class="">
+            <span id="View">
+            @if (item.KetQuaTuyenDung != null)
+            {
+                @*@Html.ActionLink(item.KetQuaTuyenDung, "Index", "QuaTrinhTuyenDung", new { UngVien_id = item.id})*@
+                @Html.DisplayFor(modeItem => item.KetQuaTuyenDung)
+            }
+            </span>
+            <span id ="Edit">
+                @Html.DropDownListFor(modeItem => item.KetQuaTuyenDung, selectlistKQTuyenDung, String.Empty)
+            </span>
+        </td>
+        <td style="text-align:left" wrap class="">
+            @if (item.tdThongTinUngTuyens.SingleOrDefault() != null)
+            {
+                @Html.DisplayFor(modelItem => item.tdThongTinUngTuyens.Single().GhiChu)
+            }
+        </td>
+        <td style="text-align:center" nowrap class="">
+            <input type="submit" style="position:absolute;left:-9999px" />
+            <a onclick = "return DeleteBlog(@item.id)" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a title="Cập nhật kết quả tuyển dụng" id="Edit"><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+            <a title="Lưu" id="Save" hidden><span class = "ui-icon ui-icon-disk"  style="display:inline-block"></span></a>     
+        </td>
+    </tr>
+        }
+    }
+    </tbody>
+    </table>
+    </br>Xem năm 
+    <span onchange = "change()">
+    @Html.DropDownList("cbxXemNam", selectlistXemTheoNam, new { id="cbxXemNam"})
+    </span>
+    </div>
+</div>
+<style>
+td { padding: 0 0 0 0 }
+input { margin: 0 0 0 0; width: auto; }
+</style>
+<script src="~/Scripts/datatables/DataTableFixedHeader.js"></script>
+<script>
+    $().ready(function () {
+        var table$ = $("#TuyenDung");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+        table$.css("width", "1010px");
+        table$.find("span[id=Edit]").prop("hidden", true);
+        table$.find("input[type=datetime]").css("width", "100px").css("height", "25px")
+              .css("border", "0").css("border-bottom", "1px dotted")
+              .datepicker({ changeMonth: true, changeYear: true })
+              .css("font-size", "1.1em").css("margin", "0").css("padding", "0");
+        table$.find("a[id=Edit]").on("click", function () {
+            var row = $(this).parents("tr");
+            do {
+                row.find("span[id=View]").prop("hidden", true);
+                row.find("span[id=Edit]").prop("hidden", false);
+                row = row.next("tr");
+            } while (row.length > 0)
+            $(this).prop("hidden", true).next("a").prop("hidden", false);
+            return false;
+        });
+        table$.find("a[id=Save]").on("click", function () {
+            $("body").block();
+            $(this).parents("tr").prev("input").prev("form").submit();
+            return false;
+        });
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+
+        var header = new FixedHeader(document.getElementById("TuyenDung"));
+
+        $("body").unblock()
+        $("input[type=text],input[type=datetime],input[type=number],.custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+
+        var nDiv = document.createElement("input");
+        nDiv.style.position = "absolute";
+        nDiv.style.top = "0px";
+        nDiv.style.left = "0px";
+        nDiv.style.width = "80px";
+        nDiv.style.margin = "0";
+        nDiv.style.padding = "0";
+        nDiv.className = "Utility";
+        document.body.appendChild(nDiv);
+        var oDiv = undefined;
+        $(nDiv).hide().on("click", function () {
+            if ($(this).val() == "Số ngày")
+                $(this).val("");
+        }).on("input", function () {
+            var days = parseInt($(this).val());
+            if (days > 0) {
+                var data = $.trim($(this).prop("base")).split('/');
+                var dd = parseInt(data[0], 10);
+                var mm = parseInt(data[1], 10);
+                var yyyy = parseInt(data[2], 10);
+                var date = new Date(yyyy, mm - 1, dd);
+                date = new Date(date.setDate(date.getDate() + days));
+                oDiv.val(date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear());
+            }
+        }).on("focusout", function () { $(this).hide(); });
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+        $("#Filter").find("input[type=text]")
+    });
+</script>
+
+<script>
+    function DeleteBlog(id) {
+        if (confirm("Bạn có muốn xóa không?")) {
+            $.ajax({
+                type: "POST",
+                url: "Delete?id=" + id,
+                success: function () {
+                    location.reload();
+                }
+            });
+        }
+        return false;
+    }
+</script>
+<script>
+    $(function () {
+        $("[id=NgayNhanHoSotu]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+    });
+    $(function () {
+        $("[id=NgayNhanHoSoden]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+<script>
+    function change() {
+        var elem = document.getElementById("cbxXemNam"),
+        selectedNode = elem.options[elem.selectedIndex];
+        $.ajax({
+                url: "XemTheoNam?value=" + selectedNode.value,
+                success: function(){
+                    location.reload();
+                }
+        });
+    }
+</script>
+
+<script>
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(".custom-combobox-input").on("input", function () {
+        $(this).attr("size", $(this).val().length + 3);
+    });
+    setInterval(function () {
+        $(".custom-combobox-input").each(function () {
+            $(this).attr("size", $(this).val().length + 4);
+        });
+    }, 1000);
+    $("input[type=text]").on("input", function () {
+        $(this).attr("size", $(this).val().length + 1);
+    }).each(function () {
+        $(this).attr("size", $(this).val().length + 1);
+    });
+</script>

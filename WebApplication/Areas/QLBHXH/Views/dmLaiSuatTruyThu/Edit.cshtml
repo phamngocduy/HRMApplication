@@ -1,0 +1,86 @@
+﻿@model HRM.QLBHXH.Models.dmLaiSuatTruyThu
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Sửa lãi suất truy thu</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmLaiSuatTruyThu</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            Ngày áp dụng
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NgayApDung)
+            @Html.ValidationMessageFor(model => model.NgayApDung, "NgayApDung")
+        </div>
+
+        <div class="editor-label">
+            Ngày kết thúc
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NgayKetThuc)
+            @Html.ValidationMessageFor(model => model.NgayKetThuc, "NgayKetThuc")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BHXH)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BHXH)
+            @Html.ValidationMessageFor(model => model.BHXH)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BHYT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BHYT)
+            @Html.ValidationMessageFor(model => model.BHYT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BHTN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BHTN)
+            @Html.ValidationMessageFor(model => model.BHTN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STT)
+            @Html.ValidationMessageFor(model => model.STT)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    $("#NgayApDung").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+        $("#NgayKetThuc").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+</script>

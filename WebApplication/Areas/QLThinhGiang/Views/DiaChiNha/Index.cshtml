@@ -1,0 +1,46 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model int
+@{
+    var action = "DiaChiNha";
+    var db = ViewBag.db as HRMDB_Entities;
+    var dt = db.SqlQuery("select * from dsDiaChiNha where NV_id=@p0", Model);
+}
+
+<table class="table table-hover">
+<thead>
+    <tr>
+        <th></th>
+        <th>
+            @Html.Editor4C("~/QLThinhGiang/"+action+"/EditP?NV_id=" + Model)
+        </th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            @Html.Display(dr, dt.Columns["DiaChi"])
+            @if (!String.IsNullOrEmpty(dr["tenPhuongXa"] as string))
+            {
+                @String.Format(", {0}", dr["tenPhuongXa"])
+            }
+            @if (!String.IsNullOrEmpty(dr["tenQuanHuyen"] as string))
+            {
+                @String.Format(", {0}", dr["tenQuanHuyen"])
+            }
+            @if (!String.IsNullOrEmpty(dr["tenTinhThanh"] as string))
+            {
+                @String.Format(", {0}", dr["tenTinhThanh"])
+            }
+        </td>
+        <td>
+            @Html.Editor4U("~/QLThinhGiang/"+action+"/EditP?id=" + dr["id"])
+            @Html.Editor4D("~/QLThinhGiang/"+action+"/DeleteS?id=" + dr["id"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>

@@ -1,0 +1,136 @@
+﻿@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.Databases_HDLaoDong.Models.dmThoiGioLamViec>
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@{
+    ViewBag.Title = "Index_dmThoiGioLamViec";
+    var db = new HRMDB2Entities();
+    int? id_tglv = null; 
+}
+
+<b style="margin-left:35%;font-size:large">Danh mục thời giờ làm việc</b>
+    <p>@Html.StatusMessage(TempData["Message_DanhMuc"])</p>
+    <p>
+    @Html.ActionLink("Quay lại", "Create", "CauHinhHeThong")
+    @Html.ActionLink("Thêm mới", "", new { }, new { @class = "lnkEdit" }) 
+    </p>
+    <table id ="dmThoiHanHD">
+    <thead>
+        <tr>
+            <th style="text-align:center; width:15px" nowrap>
+                STT
+            </th>
+            <th style="text-align:center" nowrap>
+                Thời giờ làm việc
+            </th>
+            <th style="width:5px"></th>
+        </tr>
+    </thead>
+    <tbody>
+    @{int stt = 0;}
+    @foreach (var item in Model)
+    {
+        stt = stt +1;
+    <tr>
+    <td style="text-align:center" nowrap>
+        @stt
+    </td>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.tenThoiGioLamViec)
+    </td>
+    <td style="text-align:center" >
+        <input type="submit" style="position:absolute;left:-9999px" />
+        <a title="Sửa" onclick = "return TGLV_edit('@item.id','@item.tenThoiGioLamViec')" ><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+<div id="dialog-edit" style="display: none">
+    @using (Html.BeginForm("Edit_dmThoiGioLamViec", "DanhMuc", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>dmThoiHanHD</legend>
+            <p>
+                <input id = "TGLVid_hid" name = "id" type = "hidden"/>
+                Thời giờ LV
+                <input id="tenThoiGioLamViec_edit"  name = "tenThoiGioLamViec" type="text" style = "width:270px"/>
+            </p>
+            <p>
+                <input class="dialog" type="submit" value="Lưu" style = "width:80px"/>
+            </p>
+        </fieldset>
+    }
+</div>
+<div id="dialog-create" style="display: none">
+    @using (Html.BeginForm("Create_dmThoiGioLamViec", "DanhMuc", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>dmThoiHanHD</legend>
+            <p>
+                Thời giờ LV
+                <input id="tenThoiGioLamViec_create" name = "tenThoiGioLamViec" type="text" style = "width:270px"/>
+            </p>
+            <p>
+                <input class="dialog" type="submit" value="Lưu" style = "width:80px"/>
+            </p>
+        </fieldset>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#dmThoiHanHD").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+
+</script>
+
+<script>
+    $("#dialog-create").dialog({
+        title: '',
+        autoOpen: false,
+        resizable: false,
+        width: 400,
+        show: { effect: 'drop', direction: "up" },
+        modal: true,
+        draggable: true,
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close").show();
+        }
+    });
+    $("#dialog-edit").dialog({
+        title: '',
+        autoOpen: false,
+        resizable: false,
+        width: 400,
+        show: { effect: 'drop', direction: "up" },
+        modal: true,
+        draggable: true,
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close").show();
+        }
+    });
+
+    $(".lnkEdit").live("click", function (e) {
+        // e.preventDefault(); use this or return false
+        url = $(this).attr('href');
+        $(".ui-dialog-title").html("Thêm mới");
+        $("#dialog-create").dialog('open');
+        return false;
+    });
+    function TGLV_edit(id,tenThoiGioLamViec) {
+        url = $(this).attr('href');
+        $(".ui-dialog-title").html("Chỉnh sửa");
+        $("#dialog-edit").dialog('open');
+        document.getElementById('TGLVid_hid').value = id;
+        document.getElementById('tenThoiGioLamViec_edit').value = tenThoiGioLamViec;
+        return false;
+    }
+</script>
+

@@ -1,0 +1,200 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Databases.Models.nvCTNganHan
+@{
+    var db = ViewBag.DB as HRM.Databases.Models.HRMDBEntities;
+    var nvCTNganHan = db.NhanViens.All.Find(Model.NV_id).nvCTNganHans.OrderBy(ct => ct.CongTac.ThoiGianBatDau ?? DateTime.MaxValue).ToList();
+}
+
+<h3 class="ignore">Công tác, Tập huấn ngoài trường</h3>
+<table id="nvCTNganHan">
+<tr>
+    <th></th>
+    <th nowrap>&nbsp;Nội dung</th>
+    <th nowrap>&nbsp;Địa điểm</th>
+    <th title="Nước ngoài">&nbsp;NN</th>
+    <th colspan=2 style="text-align:center">Thời gian</th>
+    <th nowrap>&nbsp;Số QĐ</th>
+    <th nowrap>&nbsp;Kinh phí</th>
+    <th nowrap>&nbsp;Ghi chú</th>
+</tr>
+@*foreach (var item in nvCTNganHan)
+{
+    var prefix = "item" + item.GetHashCode();
+<tr>
+@using (Html.BeginForm("Update", "nvCTNganHan"))
+{
+    @Html.Hidden("Prefix", prefix)
+    @Html.Hidden("CT_id", item.id)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+<td>
+    @Html.DropDownListFor(model => item.LoaiCT_id, new SelectList(db.dmLoaiCongTac.OrderBy(dm => dm.stt), "id", "tenLoaiCongTac", item.LoaiCT_id), String.Empty)<br />
+    @Html.ValidationMessageFor(model => item.LoaiCT_id)
+</td>
+<td>
+    @Html.EditorFor(model => item.NoiDung)<br />
+    @Html.ValidationMessageFor(model => item.NoiDung)
+</td>
+<td>
+    @Html.EditorFor(model => item.DiaDiem)<br />
+    @Html.ValidationMessageFor(model => item.DiaDiem)
+</td>
+<td align=center>
+    <input name="NuocNgoai" id="@prefix" type="checkbox" @(item.NuocNgoai?"checked":"")>
+    @Html.HiddenFor(model => item.NuocNgoai)
+    @Html.ValidationMessageFor(model => item.NuocNgoai)
+</td>
+<td>
+    @Html.EditorFor(model => item.ThoiGianBatDau)<br />
+    @Html.ValidationMessageFor(model => item.ThoiGianBatDau)
+</td>
+<td>
+    @Html.EditorFor(model => item.ThoiGianKetThuc)<br />
+    @Html.ValidationMessageFor(model => item.ThoiGianKetThuc)
+</td>
+<td>
+    @Html.EditorFor(model => item.SoQuyetDinh)<br />
+    @Html.ValidationMessageFor(model => item.SoQuyetDinh)
+</td>
+<td>
+    @Html.EditorFor(model => item.NgayCapQuyetDinh)<br />
+    @Html.ValidationMessageFor(model => item.NgayCapQuyetDinh)
+</td>
+<td>
+    @Html.TextBoxFor(model => item.KinhPhiHoTro)<br />
+    @Html.ValidationMessageFor(model => item.KinhPhiHoTro)
+</td>
+<td>
+    @Html.EditorFor(model => item.GhiChu)<br />
+    @Html.ValidationMessageFor(model => item.GhiChu)
+</td>
+<td nowrap>
+    <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+    <a title="Xóa" href="~/QLTTNhanSu/nvCTNganHan/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa @item.LoaiCongTac.tenLoaiCongTac @item.NoiDung tại @item.DiaDiem?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+}
+<tr>
+@using (Html.BeginForm("Update", "nvCTNganHan"))
+{
+    var prefix = "model" + Model.GetHashCode();
+    @Html.Hidden("Prefix", prefix)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+    @Html.HiddenFor(model => model.NV_id)
+<td>
+    @Html.DropDownListFor(model => model.LoaiCT_id, new SelectList(db.dmLoaiCongTac.OrderBy(dm => dm.stt), "id", "tenLoaiCongTac", null), String.Empty)<br />
+    @Html.ValidationMessageFor(model => model.LoaiCT_id)
+</td>
+<td>
+    @Html.EditorFor(model => model.NoiDung)<br />
+    @Html.ValidationMessageFor(model => model.NoiDung)
+</td>
+<td>
+    @Html.EditorFor(model => model.DiaDiem)<br />
+    @Html.ValidationMessageFor(model => model.DiaDiem)
+</td>
+<td align=center>
+    <input name="NuocNgoai" type="checkbox">
+    @Html.HiddenFor(model => model.NuocNgoai)
+    @Html.ValidationMessageFor(model => model.NuocNgoai)
+</td>
+<td>
+    @Html.EditorFor(model => model.ThoiGianBatDau)<br />
+    @Html.ValidationMessageFor(model => model.ThoiGianBatDau)
+</td>
+<td>
+    @Html.EditorFor(model => model.ThoiGianKetThuc)<br />
+    @Html.ValidationMessageFor(model => model.ThoiGianKetThuc)
+</td>
+<td>
+    @Html.EditorFor(model => model.SoQuyetDinh)<br />
+    @Html.ValidationMessageFor(model => model.SoQuyetDinh)
+</td>
+<td>
+    @Html.EditorFor(model => model.NgayCapQuyetDinh)<br />
+    @Html.ValidationMessageFor(model => model.NgayCapQuyetDinh)
+</td>
+<td>
+    @Html.TextBoxFor(model => model.KinhPhiHoTro)<br />
+    @Html.ValidationMessageFor(model => model.KinhPhiHoTro)
+</td>
+<td>
+    @Html.EditorFor(model => model.GhiChu)<br />
+    @Html.ValidationMessageFor(model => model.GhiChu)
+</td>
+<td nowrap>
+    <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Thêm, Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>*@
+@foreach (var item in nvCTNganHan)
+{
+<tr>
+<td>
+    <mark data-tip="@item.CongTac.LoaiCongTac.tenLoaiCongTac">@item.CongTac.LoaiCongTac.maLoaiCongTac</mark>
+</td>
+<td nowrap>
+    @item.CongTac.NoiDung
+</td>
+<td nowrap>
+    @item.CongTac.DiaDiem
+</td>
+<td align=center>
+    <input type="checkbox" @(item.CongTac.NuocNgoai ? "checked" : "") disabled>
+</td>
+<td>
+    @if (item.CongTac.ThoiGianBatDau.HasValue)
+    {
+        <span title="Bắt đầu">@item.CongTac.ThoiGianBatDau.Value.ToShortDateString()</span>
+    }
+</td>
+<td>
+    @if (item.CongTac.ThoiGianKetThuc.HasValue)
+    {
+        <span title="Kết thúc">-@item.CongTac.ThoiGianKetThuc.Value.ToShortDateString()</span>
+    }
+</td>
+<td nowrap>
+    <mark data-tip="@item.CongTac.NgayCapQuyetDinh">@item.CongTac.SoQuyetDinh</mark>
+</td>
+<td>
+    @if (item.CongTac.KinhPhiHoTro.HasValue)
+    {
+        @item.CongTac.KinhPhiHoTro.Value.ToString("#,##0")
+    }
+</td>
+<td>
+    @item.CongTac.GhiChu
+</td>
+</tr>
+}
+</table>
+
+<style>
+td { padding: 0 2px 0 0 }
+input { margin: 0 0 0 0 }
+</style>
+@*
+<script>
+    $(function () {
+        var $table = $("#nvCTNganHan");
+        $table.find("[id^=item]").prop("disabled", true);
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $table.find("input,select").css("border", "0").css("border-bottom", "1px dotted");
+        $table.find("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).css("width", "auto")
+                   .attr("size", $(this).val().length + 1);
+        });
+        $table.find("[name=NuocNgoai]").change(function () {
+            $(this).next().val(this.checked);
+        });
+    });
+</script>
+*@

@@ -1,0 +1,468 @@
+﻿@model HRM.QLBHXH.Models.dmTyLeDongBHXH
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>
+    Chỉnh sửa</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmTyLeDongBHXH</legend>
+        @Html.HiddenFor(model => model.id)
+       <b>Ngày áp dụng</b>
+    
+            @Html.TextBoxFor(model => model.NgayApDung,  "{0: dd/MM/yyyy}",new { style = "width: 100px", @id = "NgayBatDau1" })
+            @Html.ValidationMessageFor(model => model.NgayApDung)
+     
+       <b>Ngày kết thúc</b>
+      
+            @Html.TextBoxFor(model => model.NgayKetThuc, "{0: dd/MM/yyyy}", new { style = "width: 100px", @id = "NgayKetThuc1" })
+            @Html.ValidationMessageFor(model => model.NgayKetThuc)
+    
+        <table id="dmtyle1">
+            <thead>
+                <tr>
+                    <th style="text-align: left; border-right: 1.5px solid gray;" >
+                    </th>
+                    <th style="text-align: left; border-right: 1.5px solid gray;" >
+                        Tỷ lệ đóng BHXH (%)
+                    </th>
+                    <th style="text-align: left; border-right: 1.5px solid gray;" >
+                        Tỷ lệ đóng BHYT (%)
+                    </th>
+                    <th style="text-align: left" >
+                        Tỷ lệ đóng BHTN (%)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td nowrap class="size" style="text-align: left">
+                        Người SDLĐ
+                    </td>
+                    <td >
+                      
+                        <input  style="width: 80px" id="tex1" class = "text" value= "@Model.DoanhNghiepBHXH" />
+                        @Html.HiddenFor(model => model.DoanhNghiepBHXH, new { @id = "dnbhxh" })
+                        @Html.ValidationMessageFor(model => model.DoanhNghiepBHXH)
+                    </td>
+                    <td >
+                        <input  style="width: 80px" id="tex2" class = "text"  value= "@Model.DoanhNghiepBHYT" />
+                        @Html.HiddenFor(model => model.DoanhNghiepBHYT, new { @id = "dnbhyt" })
+                        @Html.ValidationMessageFor(model => model.DoanhNghiepBHYT)
+                    </td>
+                    <td >
+                        <input  style="width: 80px" id="tex3" class = "text"  value= "@Model.DoanhNghiepBHTN" />
+                        @Html.HiddenFor(model => model.DoanhNghiepBHTN, new { @id = "dnbhtn" })
+                        @Html.ValidationMessageFor(model => model.DoanhNghiepBHTN)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Người lao động
+                    </td>
+                    <td >
+                        <input id="tex4"style="width: 80px" class = "text"  value= "@Model.NguoiLDBHXH"/>
+                        @Html.HiddenFor(model => model.NguoiLDBHXH, new { @id = "nldbhxh" })
+                        @Html.ValidationMessageFor(model => model.NguoiLDBHXH)
+                    </td>
+                    <td >
+                        <input id="tex5" style="width: 80px" class = "text"  value= "@Model.NguoiLDBHYT" />
+                        @Html.HiddenFor(model => model.NguoiLDBHYT, new { @id = "nldbhyt" })
+                        @Html.ValidationMessageFor(model => model.NguoiLDBHYT)
+                    </td>
+                    <td >
+                        <input id="tex6" style="width: 80px" class = "text"  value= "@Model.NguoiLDBHTN" />
+                        @Html.HiddenFor(model => model.NguoiLDBHTN, new { @id = "nldbhtn" })
+                        @Html.ValidationMessageFor(model => model.NguoiLDBHTN)
+                    </td>
+                </tr>
+                <tr>
+                    <td nowrap class="size" style="text-align: left">
+                        Tổng cộng
+                    </td>
+                    <td >
+                        <span id="sum1">@Html.TextBoxFor(model => model.TongBHXH, new { @class = "text", @readonly = "readonly" })</span>
+                    </td>
+                    <td >
+                        <span id="sum2">@Html.TextBoxFor(model => model.TongBHYT, new { @class = "text", @readonly = "readonly" })</span>
+                    </td>
+                    <td >
+                        <span id="sum3">@Html.TextBoxFor(model => model.TongBHTN, new { @class = "text", @readonly = "readonly" })</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <b>
+            Tổng tỷ lệ đóng bảo hiểm
+        </b>
+        <td nowrap class="size" style="text-align: left">
+            <span id="sum4">@Html.TextBoxFor(model => model.TongCong, new { @class = "text", @readonly = "readonly" })</span>
+        </td>
+        <div class="editor-label">
+          <b>Đang áp dụng<b>
+            @Html.EditorFor(model => model.TrangThai, new { @id = "tthai" })
+            @Html.ValidationMessageFor(model => model.TrangThai)
+        </div>
+        <p>
+            <input type="submit" value="Lưu" />
+        </p>
+    </fieldset>
+}
+
+<script>
+  $(".text").removeClass("ui-state-default");
+    $(".text").removeClass("ui-widget-content");
+    $(".text").removeClass("ui-corner-left");
+    $(".text").removeClass("ui-state-default");
+    $(".text").css("background-color", "transparent");
+    $(".text").css("border", "0").css("border-bottom", "1px dotted");
+
+    $(".txt").css("background-color", "transparent");
+    $(".txt").css("border", "0").css("border-bottom", "1px dotted");
+
+
+    //                $(".txt1").removeClass("ui-state-default");
+    //        $(".txt").removeClass("ui-widget-content");
+    //        $(".txt").removeClass("ui-corner-left");
+    //    $(".txt").removeClass("ui-state-default");
+    $(".txt1").css("background-color", "transparent");
+    $(".txt1").css("border", "0").css("border-bottom", "1px dotted");
+
+
+    $(".txt2").css("background-color", "transparent");
+    $(".txt2").css("border", "0").css("border-bottom", "1px dotted");
+
+    $(".txt3").css("background-color", "transparent");
+    $(".txt3").css("border", "0").css("border-bottom", "1px dotted");
+    $(".txt4").css("background-color", "transparent");
+    $(".txt4").css("border", "0").css("border-bottom", "1px dotted");
+
+    $(".txt5").css("background-color", "transparent");
+    $(".txt5").css("border", "0").css("border-bottom", "1px dotted");
+
+ $('#dmtyle1').dataTable({
+   "bJQueryUI" : true,
+           
+           "bFilter": false,"bInfo": false
+         ,
+             "bPaginate": false,
+             "bSortable": false
+
+        });
+
+
+$("#NgayBatDau1").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+    $("#NgayKetThuc1").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+
+    // Tong BHXH
+
+$(document).ready(function(){
+ 
+        //iterate through each textboxes and add keyup
+        //handler to trigger sum event
+        $("#tex1").each(function() {
+ 
+            $(this).keyup(function(){
+            var charArray = $(this).val();
+            $("#dnbhxh").val(charArray);
+            calculateSum();
+            });
+        });
+
+         $("#tex4").each(function() {
+ 
+            $(this).keyup(function(){
+            var charArray1 = $(this).val();
+            $("#nldbhxh").val(charArray1);
+            calculateSum();
+            });
+        });
+    });
+ 
+    function calculateSum() {
+ 
+        var sum = 0;
+        //iterate through each textboxes and add the values
+        $("#tex1").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sum += parseFloat(this.value);
+            }
+ 
+        });
+
+        $("#tex4").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sum += parseFloat(this.value);
+            }
+ 
+        });
+        //.toFixed() method will roundoff the final sum to 2 decimal places
+       
+         $("[id$=TongBHXH]").val(sum);
+    }
+ // Tong BHYT
+ $(document).ready(function(){
+ 
+
+
+
+        //iterate through each textboxes and add keyup
+        //handler to trigger sum event
+        $("#tex2").each(function() {
+ 
+            $(this).keyup(function(){
+            var charArray = $(this).val();
+            $("#dnbhyt").val(charArray);
+            calculateSum1();
+            });
+        });
+
+         $("#tex5").each(function() {
+ 
+            $(this).keyup(function(){
+            var charArray1 = $(this).val();
+            $("#nldbhyt").val(charArray1);
+            calculateSum1();
+               
+            });
+        });
+ 
+    });
+ 
+    function calculateSum1() {
+ 
+        var sum1 = 0;
+        //iterate through each textboxes and add the values
+        $("#tex2").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sum1 += parseFloat(this.value);
+            }
+ 
+        });
+
+        $("#tex5").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sum1 += parseFloat(this.value);
+            }
+ 
+        });
+        //.toFixed() method will roundoff the final sum to 2 decimal places
+       
+         $("[id$=TongBHYT]").val(sum1);
+    }
+
+// Tong BHTN
+
+$(document).ready(function(){
+
+        //iterate through each textboxes and add keyup
+        //handler to trigger sum event
+        $("#tex3").each(function() {
+ 
+            $(this).keyup(function(){
+            var charArray = $(this).val();
+            $("#dnbhtn").val(charArray);
+            calculateSum2();
+            });
+        });
+
+         $("#tex6").each(function() {
+ 
+            $(this).keyup(function(){
+            var charArray1 = $(this).val();
+            $("#nldbhtn").val(charArray1);
+            calculateSum2();
+               
+            });
+        });
+ 
+    });
+ 
+    function calculateSum2() {
+ 
+        var sum2 = 0;
+        //iterate through each textboxes and add the values
+        $("#tex3").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sum2 += parseFloat(this.value);
+            }
+ 
+        });
+
+        $("#tex6").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sum2 += parseFloat(this.value);
+            }
+ 
+        });
+        //.toFixed() method will roundoff the final sum to 2 decimal places
+       
+         $("[id$=TongBHTN]").val(sum2);
+    }
+
+// Tong ty le dong BH
+$(document).ready(function(){
+ 
+        //iterate through each textboxes and add keyup
+        //handler to trigger sum event
+        $("#tex1").each(function() {
+ 
+            $(this).keyup(function(){
+                calculateSumT();
+            });
+        });
+ $("#tex2").each(function() {
+ 
+            $(this).keyup(function(){
+                calculateSumT();
+            });
+        });
+    
+ $("#tex3").each(function() {
+ 
+            $(this).keyup(function(){
+                calculateSumT();
+            });
+        });
+        $("#tex4").each(function() {
+ 
+            $(this).keyup(function(){
+                calculateSumT();
+            });
+        });
+        $("#tex5").each(function() {
+ 
+            $(this).keyup(function(){
+                calculateSumT();
+            });
+        });
+        $("#tex6").each(function() {
+ 
+            $(this).keyup(function(){
+                calculateSumT();
+            });
+        });
+    });
+    function calculateSumT() {
+ 
+        var sumT = 0;
+        //iterate through each textboxes and add the values
+        $("#tex1").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sumT += parseFloat(this.value);
+            }
+ 
+        });
+        $("#tex2").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sumT += parseFloat(this.value);
+            }
+ 
+        });
+
+        $("#tex3").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sumT += parseFloat(this.value);
+            }
+ 
+        });
+        $("#tex4").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sumT += parseFloat(this.value);
+            }
+ 
+        });
+         $("#tex5").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sumT += parseFloat(this.value);
+            }
+ 
+        });
+         $("#tex6").each(function() {
+ 
+            //add only if the value is number
+            if(!isNaN(this.value) && this.value.length!=0) {
+                sumT += parseFloat(this.value);
+            }
+ 
+        });
+        //.toFixed() method will roundoff the final sum to 2 decimal places
+//        $("#sum4").html(sumT.toFixed(2));
+        $("[id$=TongCong]").val(sumT);
+    }
+
+
+
+
+
+//    function dangapdung() {
+
+
+//        if (document.getElementById('TrangThai').value ==true) {
+//            alert("Hệ thống sẽ thêm số lượng lớn tăng mức đóng vào danh sách Tăng giảm");
+
+//            return false;
+//        }
+//          return true;
+
+//    }
+
+
+</script>
+<style>
+    .size .custom-combobox-input
+    {
+        width: 80px;
+    }
+    
+    input#TongCong
+    {
+        width: 80px;
+    }
+    input#TongBHXH
+    {
+        width: 80px;
+    }
+    input#TongBHYT
+    {
+        width: 80px;
+    }
+    input#TongBHTN
+    {
+        width: 80px;
+    }
+        .DataTables_sort_icon { display:none;}
+</style>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<HRM.Databases.Models.DanhHieu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NhanVien.MaNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dmDanhHieu.tenDanhHieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDatDanhHieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoQDCongNhan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiCap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhanVien.MaNV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dmDanhHieu.tenDanhHieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDatDanhHieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoQDCongNhan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiCap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

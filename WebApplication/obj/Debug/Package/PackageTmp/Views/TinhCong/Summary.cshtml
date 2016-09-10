@@ -1,0 +1,97 @@
+﻿@using System.Data
+@using System.Collections;
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@{
+    ViewBag.Title = "Summary";
+    var db = new HRMDBEntities();
+    var table = TinhCong.dsNhanVien(db);
+    var count = 0;
+    ViewBag.NVs = db.SqlQuery(@"
+select * from NhanVien
+left join nvSoYeuLyLich on nvSoYeuLyLich.NV_id = NhanVien.id").Rows.ToArray();
+    ViewBag.LVs = db.SqlQuery(@"
+select * from nvQTLamViec
+left join dmDonVi on nvQTLamViec.DonVi_id = dmDonVi.id
+left join dmChucDanh on nvQTLamViec.ChucDanh_id = dmChucDanh.id").Rows.ToArray();
+    ViewBag.BNs = db.SqlQuery(@"
+select * from bcChucVu").Rows.ToArray();
+    ViewBag.HHs = db.SqlQuery(@"
+select * from nvHocHam
+left join dmHocHam on nvHocHam.HocHam_id = dmHocHam.id").Rows.ToArray();
+    ViewBag.BCs = db.SqlQuery(@"
+select * from bcBangCap
+left join dmTrinhDo on trinhDo_id = dmTrinhDo.id").Rows.ToArray();
+    ViewBag.CDs = db.SqlQuery(@"
+select * from nvChucDanhGiangVien
+left join dmChucDanhGiangVien on nvChucDanhGiangVien.ChucDanh_id = dmChucDanhGiangVien.id").Rows.ToArray();
+    ViewBag.HQs = db.SqlQuery(@"
+select * from bcHQCV").Rows.ToArray();
+    ViewBag.DTs = db.SqlQuery(@"
+select * from bcDoanThe").Rows.ToArray();
+    ViewBag.tbH = db.SqlQuery(@"
+select nv_id, AVG(H) H from bcHQCV
+where tuNgay > '2005-8-31'
+group by NV_id").Rows.ToArray();
+    ViewBag.ALL = 0; Shared.Clear();
+}
+
+<h2>Danh sách CB/GV/NV trường ĐH Văn Lang</h2>
+
+<table id="Summary">
+<thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Họ và tên</th>
+        <th>Đơn vị</th>
+        <th>Tổng</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var row in table.Rows.ToArray())
+{
+    var S = new Func<string, string>(s => String.IsNullOrEmpty(s) ? "_" : s);
+    <tr>
+        <td>@(++count)</td>
+        <td>@row["MaNV"]</td>
+        <td><mark title="@row["MaNV"]">@Html.ActionLink(S(row["HoVaTen"].ToString().ToUpper()), "Details", new { NV_id = row["id"], HoVaTen = S(row["HoVaTen"].ToString()), DonVi = S(row["tenDonVi"].ToString()) })</mark></td>
+        <td><mark title="@row["maDonVi"]">@row["tenDonVi"]</mark></td>
+        @{
+            Html.Raw(TinhCong.Details((int)row["id"], ViewBag));
+            <td>@TinhDiem._TongDiem((int)row["id"], ViewBag)</td>
+        }
+        <td>
+        @{
+            foreach (var tb in ViewBag.TB)
+            {
+                <span>@tb</span>
+            }
+        }
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<h4>Tổng: @ViewBag.ALL</h4>
+
+<script>
+    $(function () {
+        $("table#Summary").dataTable({
+            aLengthMenu: [
+                [25, 50, 100, 200, -1],
+                [25, 50, 100, 200, "All"]
+            ],
+            iDisplayLength: -1,
+            "sDom": '<"H"Tfr>t<"F"ip>',
+            "oTableTools": {
+                "sSwfPath": "/hrm/Content/copy_csv_xls.swf",
+                "aButtons": ["xls", "print"]
+            },
+            "aoColumns": [null, null, null, null, { "sType": "numeric" }, null]
+        });
+    });
+</script>

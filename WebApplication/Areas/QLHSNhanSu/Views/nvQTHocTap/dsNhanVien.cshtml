@@ -1,0 +1,59 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLTTNhanSu.Models
+@model IEnumerable<HRM.Databases.Models.NhanVien>
+
+<p>
+    @Html.ActionLink("Thêm "+@Html.VN("NhanVien"), "Create")
+    @Html.ActionLink("Theo dõi tập sự", "Index", "nvQLCongTac")
+</p>
+<table id="NhanVien">
+<thead>
+    <tr>
+        <th>@Html.VN("MaNV")</th>
+        <th>@Html.VN("HoVaTen")</th>
+        <th>@Html.VN("DonVi")</th>
+        <td></td>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNV)
+        </td>
+        <td>
+            @if (item.nvSoYeuLyLiches.SingleOrDefault() != null)
+            {
+                @Html.DisplayFor(modelItem => item.nvSoYeuLyLiches.Single().HoVaTen)
+            }
+        </td>
+        <td>
+            @foreach (var dv in item.getDonVisCongTac())
+            {
+                if (dv != null)
+                {
+                    @Html.ActionLink(dv.tenDonVi, "Details", "HSNhanSu", new { id = item.id, tab = "QTCongTac" }, null)<br />
+                }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Xem QTHT", "canhan", "nvQTHocTap", new { id = item.id }, null)
+        </td>
+        <td>
+            @Html.ActionLink("Thêm QTHT", "Create", "nvQTHocTap", new { id = item.id }, null)
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $("#NhanVien").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+</script>

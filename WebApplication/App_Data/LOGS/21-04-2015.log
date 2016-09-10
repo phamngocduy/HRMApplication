@@ -1,0 +1,73 @@
+INFO 01:11:47 – Home/Index
+INFO 01:11:48 – Login/Index
+INFO 01:11:57 – Login/Index
+INFO 01:11:57 – Home/Index
+INFO 01:11:59 – HDNguoiLaoDong/Index
+ERROR01:12:05 – An error occurred while executing the command definition. See the inner exception for details.
+/controller=HDNguoiLaoDong/action=Index
+   at System.Data.EntityClient.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Objects.ObjectQuery`1.System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__1[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at ASP._Page_Areas_HDLaoDong_Views_HDNguoiLaoDong_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\HDNguoiLaoDong\Index.cshtml:line 147
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:18:50 – HDNguoiLaoDong/Index
+INFO 01:19:32 – HSNhanSu/Index
+INFO 01:19:34 – NhanVien/IndexP
+INFO 01:19:38 – QLTapSu/Index
+INFO 01:19:43 – QLTapSu/Index
+INFO 01:19:46 – QLTapSu/Index
+INFO 01:19:49 – QLTapSu/Index
+INFO 01:19:50 – QLTapSu/Index
+INFO 01:19:51 – QLTapSu/Index
+INFO 01:33:02 – HSNhanSu/Details
+INFO 01:33:05 – QLTapSu/Index
+INFO 01:33:09 – QTLamViecTruoc/IndexP
+INFO 01:33:10 – QTLamViec/IndexP
+INFO 01:33:16 – QLTapSu/CreateS&CT_id=178
+INFO 01:33:18 – HSNhanSu/Details
+INFO 01:33:18 – QTLamViecTruoc/IndexP
+INFO 01:33:18 – QTLamViec/IndexP
+INFO 01:33:20 – QLTapSu/Index
+INFO 01:33:43 – QLTapSu/DeleteS&id=344
+INFO 01:33:43 – QLTapSu/Index
+INFO 01:33:45 – HSNhanSu/Details
+INFO 01:33:45 – QTLamViecTruoc/IndexP
+INFO 01:33:46 – QTLamViec/IndexP
+INFO 01:34:51 – HDNguoiLaoDong/Index
+INFO 01:35:23 – QTKyHDTungNguoi/Index&NLD_id=277
+INFO 01:35:27 – ThemMoiHD/Details_HDThuViec
+INFO 01:35:42 – CreateWordHD/Details_TV
+INFO 03:04:14 – HDNguoiLaoDong/Index
+INFO 03:04:46 – HDNguoiLaoDong/Index
+INFO 03:05:24 – ThemMoiHD/Details_HDThuViec
+INFO 03:05:46 – ThemMoiPLHD/GetFile
+INFO 03:23:22 – ThemMoiHD/Edit_HDThuViec
+INFO 03:25:09 – ThemMoiHD/Details_HDThuViec
+INFO 03:25:14 – ThemMoiHD/Details_HDThuViec
+INFO 03:32:40 – CreateWordHD/Details_TV
+INFO 04:16:27 – CreateWordHD/Details_TV

@@ -1,0 +1,44 @@
+﻿@model HRM.QLVayMuon.Models.TapTin
+@using HRM.QLVayMuon.Models
+@using HRM.QLVayMuon.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+    var db = new HRMDB1Entities();
+    var idtt = (int)ViewBag.idtt;
+    var tenthumuc = db.TapTin.First(k => k.id == idtt).tenThuMuc;
+    var idkhoanvay = db.KhoanVay.First(k => k.SoChungTu == tenthumuc).id;
+   
+}
+@Html.BeginDiv()
+<h3>Bạn có muốn xóa?</h3>
+<fieldset>
+    <legend>TapTin</legend>
+    <div> <b>Tên khoản vay</b> </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tenThuMuc)
+    </div>
+
+
+      <div> <b>Tên giấy tờ</b> </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tengiayto)
+    </div>
+
+     <div> <b>Tập tin đính kèm</b> </div>
+    <div class="display-label">
+         @Html.DisplayFor(model => model.tepDinhKem)
+    </div>
+       
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xóa " /> |
+       <a href="/QLVayMuon/KhoanVay/details?id=@idkhoanvay">Trở lại bổ sung hồ sơ</a>
+    </p>
+    
+
+     
+    
+}
+@Html.EndDiv()

@@ -1,0 +1,13 @@
+﻿@model int
+@{
+    var rand = new Random().Next();
+}
+
+<div id="@rand">
+@Html.Action("EditP", "GiuBacLuong", new { HSL_id = Model })
+</div>
+
+<script>
+    $("#@rand").find("form").attr("action", "@HttpRuntime.AppDomainAppVirtualPath/QLTinhLuong/QLHoSoHSL/BaoLuuS")
+               .find("input[type=submit]").val("Bảo lưu");
+</script>

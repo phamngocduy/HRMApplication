@@ -1,0 +1,77 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdTTUngCuVien
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+    var db = new HRM.Databases.Models.HRMDBEntities();
+    var TinhThanh_id = new SelectList(db.dmTinhThanh.OrderBy(tt => tt.tenTinhThanh), "id", "tenTinhThanh", db.dmTinhThanh);
+    var DanToc_id = new SelectList(db.dmDanToc.OrderBy(tt => tt.tenDanToc), "id", "tenDanToc", db.dmDanToc);
+    var TonGiao_id = new SelectList(db.dmTonGiao.OrderBy(tt => tt.tenTonGiao), "id", "tenTonGiao", db.dmTonGiao);
+    var QuocTich_id = new SelectList(db.dmQuocGia.OrderBy(tt => tt.tenQuocGia), "id", "tenQuocGia", db.dmQuocGia);
+    var GioiTinh_id = new SelectList(db.dmGioiTinh.OrderBy(tt => tt.tenGioiTinh), "id", "tenGioiTinh", db.dmGioiTinh);
+    //var LoaiTheDinhDanh_id = new SelectList(db.tdLoaiTheDinhDanh.OrderBy(td => td.LoaiTheDinhDanh), "id", "LoaiTheDinhDanh", db.tdLoaiTheDinhDanh);
+}
+    <p>
+        @Html.Raw("Họ và tên")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        @Html.TextBoxFor(model => model.HoVaTen, new { style = "width:440px" })
+        @Html.ValidationMessageFor(model => model.HoVaTen, "Vui lòng điền họ tên ứng viên.")
+
+   
+        @Html.Raw("Giới tính")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        <span style="margin-left:8px"></span>
+        @Html.DropDownListFor(model => model.GioiTinh_id, GioiTinh_id, String.Empty, new { style = "width:100px", id = "GioiTinh" })
+    </p>
+    <p>
+        @Html.Raw("Ngày sinh")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        @Html.TextBoxFor(model => model.NgaySinh, new { style = "width:100px;", id = "NgaySinh" })
+        @Html.Raw("Nơi sinh")
+        <span style="margin-left:7px"></span>
+        @Html.DropDownListFor(model => model.tdNoiSinhs.SingleOrDefault().TinhThanh_id, TinhThanh_id, String.Empty, new { style = "width:180px" , id = "NoiSinh"})
+        @Html.ValidationMessageFor(model => model.tdNoiSinhs.SingleOrDefault().TinhThanh_id)
+        @Html.DropDownListFor(model => model.tdNoiSinhs.SingleOrDefault().QuocGia_id, QuocTich_id, new { style = "width:215px" , id = "QuocGia"})
+        @Html.ValidationMessageFor(model => model.tdNoiSinhs.SingleOrDefault().QuocGia_id)
+    </p>
+    <hr />
+    <p>
+        @Html.Raw("Thẻ định danh")
+        <span style="margin-left:0px"></span>
+        @*Html.DropDownListFor(model => model.tdTheDinhDanhs.SingleOrDefault().LoaiThe_id, LoaiTheDinhDanh_id, new { style = "width:89px", id = "LoaiThe" })*@
+        @Html.ValidationMessageFor(model => model.tdTheDinhDanhs.SingleOrDefault().LoaiThe_id)
+        @Html.Raw("Số thẻ")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        @Html.TextBoxFor(model => model.tdTheDinhDanhs.SingleOrDefault().SoThe, new { style = "width:122px" })
+        @Html.Raw("Nơi cấp")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        <span style="margin-left:36px"></span>
+        @Html.DropDownListFor(model => model.tdTheDinhDanhs.SingleOrDefault().NoiCap_id, TinhThanh_id, String.Empty, new { style = "width:280px;", id = "NoiCap" })
+    </p>
+    <p>
+        @Html.Raw("Ngày cấp")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        <span style="margin-left:14px"></span>
+        @Html.TextBoxFor(model => model.tdTheDinhDanhs.SingleOrDefault().NgayCap, new { style = " width:288px", id = "NgayCap" })
+        @Html.Raw("Ngày hết hạn")
+        <span style="margin-left:16px"></span>
+        @Html.TextBoxFor(model => model.tdTheDinhDanhs.SingleOrDefault().NgayHetHan, new { style = " width:200px", id = "NgayHetHan" })
+        @Html.ValidationMessageFor(model => model.tdTheDinhDanhs.SingleOrDefault().NgayHetHan)
+    </p>
+    <p>
+        @Html.Raw("Dân tộc")
+        <span style="margin-left:40px"></span>
+        @Html.DropDownListFor(model => model.DanToc_id, DanToc_id, String.Empty, new { style = "width:auto;", id = "DanToc" })
+        @Html.ValidationMessageFor(model => model.DanToc_id)
+        @Html.Raw("Tôn giáo")
+        <span style="margin-left:0px"></span>
+        @Html.DropDownListFor(model => model.TonGiao_id, TonGiao_id, String.Empty, new { style = "width:auto;", id = "TonGiao" })
+        @Html.ValidationMessageFor(model => model.TonGiao_id)
+        @Html.Raw("Quốc tịch")
+        <span style="margin-left:15px"></span>
+        @Html.DropDownListFor(model => model.QuocTich_id, QuocTich_id, String.Empty, new { style = "width:290px", id = "QuocTich" })
+    </p>
+    <p>
+        @Html.Raw("TT hôn nhân")
+        <span style="margin-left:11px"></span>
+        @Html.TextBoxFor(model => model.TTHonNhan, new { style = " width:680px" })
+        @Html.ValidationMessageFor(model => model.TTHonNhan)
+    </p>
+<a href="@Url.Action("Details", "TuyenDung", new { tab = "ThongTinChung", nat = "Edit", id = ViewBag.UngVien_id})" style="margin-left:670px">
+<input id="Sua" type="button" value="Sửa" style="width:80px"/>
+</a>

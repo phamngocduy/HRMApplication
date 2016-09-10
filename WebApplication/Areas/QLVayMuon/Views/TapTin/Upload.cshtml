@@ -1,0 +1,31 @@
+﻿@using HRM.QLVayMuon.Models
+@model HRM.QLVayMuon.Models.TapTin
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+@using (Html.BeginForm("Upload", "TapTin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.idTapTin)
+    @Html.HiddenFor(model => model.tenThuMuc)
+    @Html.HiddenFor(model => model.laThuMuc)
+    @*
+    <p>@Model.getFolder()</p>
+    *@
+    @Html.LabelFor(model => model.tepDinhKem)
+    @Html.TextBoxFor(model => model.tepDinhKem, new { type = "file" })
+    @Html.ValidationMessageFor(model => model.tepDinhKem)
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

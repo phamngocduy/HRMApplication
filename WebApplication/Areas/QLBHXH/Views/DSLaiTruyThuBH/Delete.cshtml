@@ -1,0 +1,36 @@
+﻿@model HRM.QLBHXH.Models.nvbhLaiTruyThuBH
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3>Bạn có muốn xoá thông tin?</h3>
+<fieldset>
+    <legend>nvbhLaiTruyThuBH</legend>
+
+    @Html.VN("Họ và tên: ")
+        <b>@Html.DisplayFor(model => model.nvbhNhanVienBHXH.HoVaTen)</b>
+        <br />
+        @Html.VN("Mã nhân viên: ")
+        <b>@Html.DisplayFor(model => model.nvbhNhanVienBHXH.MANV)</b>
+        <br />
+        @Html.VN("Số sổ BHXH: ")
+        <b>@Html.DisplayFor(model => model.nvbhNhanVienBHXH.SoBHXH)</b>
+        <br />
+        <b>Truy thu</b>
+        <br />
+        @Html.VN("Từ tháng năm: ")
+        <b>@Html.DisplayFor(model => model.TuThangNam)</b>
+        <br />
+        @Html.VN("Đến tháng năm: ")
+        <b>@Html.DisplayFor(model => model.DenThangNam)</b>
+        
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xoá" /> |
+       
+    </p>
+}

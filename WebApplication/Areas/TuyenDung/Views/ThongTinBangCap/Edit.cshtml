@@ -1,0 +1,219 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdBangCap
+@using System.Data.Objects;
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@using HRM.Webpages.Helpers
+@using HRM.Libraries.Helpers
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var TrinhDo_id = new SelectList(db0.dmHocVi.OrderBy(tt => tt.tenHocVi), "id", "tenHocVi", db0.dmHocVi);
+    var ChuyenNganh_id = new SelectList(db0.dmChuyenNganh.OrderBy(tt => tt.tenChuyenNganh), "id", "tenChuyenNganh", db0.dmChuyenNganh);
+    var XepLoai_id = new SelectList(db0.dmXepLoaiTotNghiep.OrderBy(tt => tt.tenXepLoaiTotNghiep), "id", "tenXepLoaiTotNghiep", db0.dmXepLoaiTotNghiep);
+    var NamTotNghiep = new List<string>();
+    for (int n = DateTime.Today.Year; n >= 1950; n--)
+    {
+        NamTotNghiep.Add(n.ToString());
+    }
+    var selectlistNamTotNghiep = new SelectList("");
+    try{
+        selectlistNamTotNghiep = new SelectList(NamTotNghiep,db.tdBangCap.FirstOrDefault().NamTotNghiep);
+    }catch{
+        selectlistNamTotNghiep = new SelectList(NamTotNghiep);
+    }
+}
+
+<table id="QLLichHen">
+    <thead>
+        <tr>
+            <th style="text-align: center" nowarp>
+                Trình độ
+            </th>
+            <th style="text-align: center" nowrap>
+                Chuyên ngành
+            </th>
+            <th style="text-align: center" nowrap>
+                Nơi đào tạo
+            </th>
+            <th style="text-align: center" nowrap>
+                Năm tốt<br />
+                nghiệp
+            </th>
+            <th style="text-align: center" nowrap>
+                Xếp loại
+            </th>
+            <th style="text-align: center" nowrap data-tip="Lựa chọn hiển thị">
+                LCHT
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var tempt = db.tdBangCap.ToList();
+          var tdbangcap = tempt.Where(bc => bc.UngVien_id == ViewBag.UngVien_id);}
+        @foreach (var item in tdbangcap)
+        {
+            using (Html.BeginForm("Edit", "ThongTinBangCap"))
+            {
+                ViewData.TemplateInfo.HtmlFieldPrefix = null;
+            @Html.Hidden("id", item.id)
+            <tr id="@item.id">
+                <input type="hidden" name="UngVien_id" value="@ViewBag.UngVien_id" />
+                <td>
+                    <span id="View">
+                        @{var hocVi = db0.dmHocVi.Where(hv => hv.id == item.TrinhDo_id).FirstOrDefault();}
+                        @Html.Raw((hocVi ?? new dmHocVi()).tenHocVi)
+                    </span><span id="Edit">
+                    @try{
+                        @Html.DropDownListFor(modelItem => item.TrinhDo_id, new SelectList(db0.dmHocVi.OrderBy(tt => tt.tenHocVi), "id", "tenHocVi", item.TrinhDo_id), String.Empty)
+                        }catch{
+                        @Html.DropDownListFor(modelItem => item.TrinhDo_id,TrinhDo_id, String.Empty)   
+                        }
+                    </span>
+                </td>
+                <td>
+                    <span id="View">
+                        @{var chuyenNganh = db0.dmChuyenNganh.Where(cn => cn.id == item.ChuyenNganh_id).FirstOrDefault();}
+                        @Html.Raw((chuyenNganh ?? new dmChuyenNganh()).tenChuyenNganh)
+                    </span><span id="Edit">
+                        @try{
+                        @Html.DropDownListFor(modelItem => item.ChuyenNganh_id, new SelectList(db0.dmChuyenNganh.OrderBy(tt => tt.tenChuyenNganh), "id", "TenChuyenNganh", item.ChuyenNganh_id), String.Empty, new { style = "width:auto; max-width:220px" })    
+                        }
+                        catch
+                        {
+                        @Html.DropDownListFor(modelItem => item.ChuyenNganh_id, ChuyenNganh_id, String.Empty, new { style = "width:auto; max-width:220px" })
+                        }
+                    </span>
+                </td>
+                <td>
+                    <span id="View">
+                        @Html.DisplayFor(modelItem => item.NoiDaoTao)
+                    </span><span id="Edit">
+                        @Html.TextBoxFor(model => model.NoiDaoTao, new { style = "width:170px" })
+                    </span>
+                </td>
+                <td style="text-align: center">
+                    <span id="View">
+                        @Html.DisplayFor(modelItem => item.NamTotNghiep)
+                    </span><span id="Edit">
+                        @Html.DropDownListFor(modelItem => item.NamTotNghiep, selectlistNamTotNghiep, String.Empty, new { style = "width:auto" })
+                    </span>
+                </td>
+                <td style="text-align: center">
+                    <span id="View">
+                        @{var xepLoaiTotNghiep = db0.dmXepLoaiTotNghiep.Where(tt => tt.id == item.XepLoai_id).FirstOrDefault();}
+                        @Html.Raw((xepLoaiTotNghiep ?? new dmXepLoaiTotNghiep()).tenXepLoaiTotNghiep)
+                    </span><span id="Edit">
+                        @try{
+                            @Html.DropDownListFor(modelItem => item.XepLoai_id, new SelectList(db0.dmXepLoaiTotNghiep.OrderBy(tt => tt.tenXepLoaiTotNghiep), "id", "tenXepLoaiTotNghiep", item.XepLoai_id), String.Empty, new { style = "width:auto;" })
+                        }
+                        catch
+                        {
+                            @Html.DropDownListFor(modelItem => item.XepLoai_id, XepLoai_id, String.Empty, new { style = "width:auto;" })
+                        }
+                    </span>
+                </td>
+                <td style="text-align: center">
+                <span id = "View">
+                    @Html.DisplayFor(modelItem => item.SetDefault)
+                </span>
+                <span  id = "Edit">
+                    @Html.CheckBoxFor(modelItem => item.SetDefault)
+                </span>
+                </td>
+                <td style="text-align: center">
+                    <input type="submit" style="position: absolute; left: -9999px" />
+                    <a title="Sửa" id="Edit"><span class="ui-icon ui-icon-pencil" style="display: inline-block">
+                    </span></a><a title="Lưu" id="Save" hidden><span class="ui-icon ui-icon-disk" style="display: inline-block">
+                    </span></a>
+                </td>
+            </tr>
+            }
+        }
+        @using (Html.BeginForm("Edit", "ThongTinBangCap", new { tab = "ThongTinBangCap", nat = "Edit", id = ViewBag.UngVien_id }))
+        {
+            ViewData.TemplateInfo.HtmlFieldPrefix = null;
+            @Html.Hidden("id", null)
+            <tr>
+                <input type="hidden" name="UngVien_id" value="@ViewBag.UngVien_id" />
+                <td>
+                    @Html.DropDownListFor(model => model.TrinhDo_id, TrinhDo_id, String.Empty)
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.ChuyenNganh_id, ChuyenNganh_id, String.Empty, new { style = "width:auto; max-width:220px" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.NoiDaoTao, new { style = "width:170px" })
+                </td>
+                <td style="text-align: center">
+                    @Html.DropDownListFor(model => model.NamTotNghiep, selectlistNamTotNghiep, String.Empty, new { style = "width:auto" })
+                </td>
+                <td style="text-align: center">
+                    @Html.DropDownListFor(model => model.XepLoai_id, XepLoai_id, String.Empty, new { style = "width:auto;" })
+                </td>
+                <td style="text-align: center">
+                    @Html.CheckBoxFor(model => model.SetDefault)
+                </td>
+                <td style="text-align: justify">
+                    <input type="submit" style="position: absolute; left: -9999px" />
+                    <a title="Thêm mới" id="Save"><span class="ui-icon ui-icon-circle-plus" style="display: inline-block">
+                    </span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div style="margin-left:460px">
+<a href="@Url.Action("Details", "TuyenDung", new { tab = "ThongTinChung", nat = "Edit", id = ViewBag.UngVien_id })"><input id="btnPre" type="button"  value="Thông tin chung"/></a>  
+<a href="@Url.Action("Details", "TuyenDung", new { tab = "ThongTinLienHe", nat = "Edit", id = ViewBag.UngVien_id })"><input id="btnNex" type="button"  value="Thông tin liên hệ"/></a>  
+</div>
+<style>
+    td{
+        padding: 0 0 0 0;
+    }input{
+        margin: 0 0 0 0;
+        width: auto;
+    }
+</style>
+<script>
+    $().ready(function () {
+        //        $("body").block();
+        var table$ = $("#QLLichHen");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+
+        table$.find("span[id=Edit]").prop("hidden", true);
+        table$.find("input[type=datetime]").css("width", "100px").css("height", "25px")
+              .css("border", "0").css("border-bottom", "1px dotted")
+              .datepicker({ changeMonth: true, changeYear: true })
+              .css("font-size", "1.1em").css("margin", "0").css("padding", "0");
+        table$.find("a[id=Edit]").on("click", function () {
+            var row = $(this).parents("tr");
+            do {
+                row.find("span[id=View]").prop("hidden", true);
+                row.find("span[id=Edit]").prop("hidden", false);
+                row = row.next("tr");
+            } while (row.length > 0)
+            $(this).prop("hidden", true).next("a").prop("hidden", false);
+            return false;
+        });
+        table$.find("a[id=Save]").on("click", function () {
+            //$("body").block();
+            $(this).parents("tr").prev("input").prev("form").submit();
+            //$(this).find('form').submit();
+            return false;
+        });
+
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+
+    });
+</script>

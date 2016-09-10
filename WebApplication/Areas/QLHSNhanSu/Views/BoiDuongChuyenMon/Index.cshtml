@@ -1,0 +1,167 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Databases.Models.BoiDuongChuyenMon
+@{
+    var db = ViewBag.DB as HRM.Databases.Models.HRMDBEntities;
+    var BoiDuongChuyenMon = db.NhanViens.All.Find(Model.NV_id).BoiDuongChuyenMons.ToList();
+}
+@Html.StatusMessage(TempData["Message"])
+@Html.ValidationSummary(TempData["ModelState"])
+
+<h3 class="ignore"> Bồi dưỡng chuyên môn, nghiệp vụ</h3>
+<div style="overflow-x:scroll"><table id="BoiDuongChuyenMon">
+<tr>
+    
+   @* <th>@Html.VN("DonVi")</th> *@
+    <th>@Html.VN("TenTruong")</th>
+    <th>@Html.VN("QuocGia")</th>
+    <th>@Html.VN("NoiHoc")</th>
+    <th>@Html.VN("BatDau")</th>
+    <th>@Html.VN("HoanThanh")</th>
+    <th>@Html.VN("SoQD")</th>
+    <th>@Html.VN("NgayCapQD")</th>
+    <th>@Html.VN("KinhPhi")</th>
+    <th>@Html.VN("GhiChu")</th>
+    <th></th>
+</tr>
+@foreach (var item in BoiDuongChuyenMon)
+{
+    var prefix = "item" + item.GetHashCode();
+<tr>
+
+@using (Html.BeginForm("Update", "BoiDuongChuyenMon"))
+{
+    @Html.Hidden("Prefix", prefix)
+    @Html.Hidden("BD_id", item.id)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+  
+//<td>
+  // @Html.DropDownListFor(model => item.DonVi_id, new SelectList(db.dmDonVi, "id", "dmDonVi", item.DonVi_id))<br />
+   // @Html.ValidationMessageFor(model => item.DonVi_id)
+//</td>
+<td>
+    @Html.EditorFor(model => item.TenTruong)<br />
+    @Html.ValidationMessageFor(model => item.TenTruong)
+</td>
+<td>
+    @Html.DropDownListFor(model => item.QuocGia_id, new SelectList(db.dmQuocGia, "id", "QuocGia", item.QuocGia_id))<br />
+    @Html.ValidationMessageFor(model => item.QuocGia_id)
+</td>
+<td>
+    @Html.DropDownListFor(model => item.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "NoiHoc", item.NoiHoc_id))<br />
+    @Html.ValidationMessageFor(model => item.NoiHoc_id)
+</td>
+<td>
+    @Html.EditorFor(model => item.BatDau)<br />
+    @Html.ValidationMessageFor(model => item.BatDau)
+</td>
+<td>
+    @Html.EditorFor(model => item.HoanThanh)<br />
+    @Html.ValidationMessageFor(model => item.HoanThanh)
+</td>
+<td>
+    @Html.EditorFor(model => item.SoQD)<br />
+    @Html.ValidationMessageFor(model => item.SoQD)
+</td>
+    <td>
+    @Html.EditorFor(model => item.NgayCapQD)<br />
+    @Html.ValidationMessageFor(model => item.NgayCapQD)
+</td>
+    <td>
+    @Html.EditorFor(model => item.KinhPhi)<br />
+    @Html.ValidationMessageFor(model => item.KinhPhi)
+</td>
+    <td>
+    @Html.EditorFor(model => item.GhiChu)<br />
+    @Html.ValidationMessageFor(model => item.GhiChu)
+</td>
+    <td nowrap>
+    <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+   @* <a title="Xóa" href="~/QLTTNhanSu/BoiDuongChuyenMon/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa thông tin bồi dưỡng chuyên môn của NV?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>*@
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+}
+<tr>
+@using (Html.BeginForm("Update", "nvQuanHeGiaDinh"))
+{
+    var prefix = "model" + Model.GetHashCode();
+    @Html.Hidden("Prefix", prefix)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+    @Html.HiddenFor(model => model.NV_id)
+    @Html.HiddenFor(model => model.DonVi_id)
+
+    //<td>
+    //  @Html.DropDownListFor(model => Model.DonVi_id, new SelectList(db.dmDonVi, "id", "tenDonVi", Model.DonVi_id))<br />
+    //  @Html.ValidationMessageFor(model => Model.DonVi_id)
+    ///td> 
+<td>
+    @Html.EditorFor(model => Model.TenTruong)<br />
+    @Html.ValidationMessageFor(model => Model.TenTruong)
+</td>
+<td>
+    @Html.DropDownListFor(model => Model.QuocGia_id, new SelectList(db.dmQuocGia, "id", "tenQuocGia", Model.QuocGia_id))<br />
+    @Html.ValidationMessageFor(model => Model.QuocGia_id)
+</td>
+<td>
+    @Html.DropDownListFor(model => Model.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "TenNoiHoc", Model.NoiHoc_id))<br />
+    @Html.ValidationMessageFor(model => Model.NoiHoc_id)
+</td>
+<td>
+    @Html.EditorFor(model => Model.BatDau)<br />
+    @Html.ValidationMessageFor(model => Model.BatDau)
+</td>
+<td>
+    @Html.EditorFor(model => Model.HoanThanh)<br />
+    @Html.ValidationMessageFor(model => Model.HoanThanh)
+</td>
+<td>
+    @Html.EditorFor(model => Model.SoQD)<br />
+    @Html.ValidationMessageFor(model => Model.SoQD)
+</td>
+    <td>
+    @Html.EditorFor(model => Model.NgayCapQD)<br />
+    @Html.ValidationMessageFor(model => Model.NgayCapQD)
+</td>
+    <td>
+    @Html.EditorFor(model => Model.KinhPhi)<br />
+    @Html.ValidationMessageFor(model => Model.KinhPhi)
+</td>
+    <td>
+    @Html.EditorFor(model => Model.GhiChu)<br />
+    @Html.ValidationMessageFor(model => Model.GhiChu)
+</td>
+<td>
+   @* <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Thêm, Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+    *@
+    <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+    @*<a title="Xóa" href="~/QLTTNhanSu/BoiDuongChuyenMon/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa thông tin bồi dưỡng chuyên môn của NV?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+    *@
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+</table></div>
+<style>
+td { padding: 0 0 0 0 }
+input { margin: 0 0 0 0; width: auto; }
+</style>
+
+<script>
+    $(function () {
+        var $table = $("#BoiDuongChuyenMon");
+        $table.find("[id^=item]").prop("disabled", true);     
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $("[id$=DonVi_id],[id=cn1],[id$=TenTruong],[id$=QuocGia_id],[id$=NoiHoc_id],[id$=BatDau],[id$=HoanThanh],[id$=SoQD],[id$=NgayCapQD],[id$=KinhPhi],[id$=GhiChu]").css("width","90px");
+       $table.find("input[type=text],input[type=datetime]").css("border", "0").css("border-bottom", "1px dotted");
+        //$table.find("input[type=text]").on("input", function () {
+          //  $(this).attr("size", $(this).val().length);
+        //}).each(function () {
+          //  $(this).attr("size", $(this).val().length);
+        });
+    });
+</script>

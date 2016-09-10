@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jqueryval")
+        @{
+            var theme = Request.Cookies["Theme"] == null ? "redmond" : Request.Cookies["Theme"].Value.Trim();
+            Response.Cookies.Add(new HttpCookie("Theme", theme) { Expires = DateTime.Now.AddDays(7), Domain = Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port) });
+        }
+        @Styles.Render("~/Content/themes/" + theme)
+        @Styles.Render("~/Content/jqsuite/css")
+        @Styles.Render("~/Content/datatables/css")
+        @Scripts.Render("~/bundles/jqsuite")
+        @Scripts.Render("~/bundles/datatables")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Styles.Render("~/Content/bootstrap")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+              @*<div class="float-left">
+                    <p class="site-title"><a href="~/Home/Index">your logo here</a></p>
+                </div>*@
+                <div class="float-right" style="margin-bottom:-30px">
+                  @*<section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>*@
+                    <nav><table style="margin:0"><tr><td nowrap style="padding:0 10px">
+                        <ul id="menu">
+                        @if (ViewContext.RouteData.DataTokens["area"] != null) {
+                            @Html.Partial(ViewContext.RouteData.DataTokens["area"].ToString())
+                        } else {
+                            <li><a href="~/QLTTNhanSu/HSNhanSu">HS Nhân sự</a></li>
+                            <li><a href="~/QLDanhMuc/DanhMuc">Danh mục</a></li>
+                            <li><a href="~/QLTinhLuong/HeSoLuong">Hệ số lương</a></li>
+                            <li><a href="~/Home/ThongKe">Thống kê</a></li>
+                            <li><a href="~/Home/NhapXuat">Nhập/Xuất</a></li>
+                        }
+                        </ul></td><td nowrap style="padding:0">
+                        @Html.Partial("_LoginPartial")
+                    </td></tr></table></nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    @Html.Action("Partial", "Message", new { area = "Extension" })
+                </div>
+            </div>
+        </footer>
+
+        @RenderSection("scripts", required: false)
+        <style>
+            .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+            { font-family: 'Segoe UI', Verdana, Helvetica, Sans-Serif; }
+        </style>
+        <script>
+            $().ready(function () {
+                $("button, input:submit, input:button").button();
+                /*$("thead").each(function () {
+                    $(this).addClass("ui-widget-header");
+                });
+                $("tbody").each(function () {
+                    $(this).addClass("ui-widget-content");
+                });*/
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Baocao";
+}
+<div>
+    @Html.ActionLink("Trở về danh sách nhân viên vay mượn", "Index")
+</div>
+<h2 align =center><font >Báo Cáo Vay Mượn</font></h2>
+<div >
+<button style="font:  13px Arial" onclick="tonghopvay();" >Tổng hợp vay</button>
+<button style="font:  13px Arial" onclick="congnocuoiki();" >Công nợ cuối kì</button>
+<button style="font:  13px Arial" onclick="Chitietvay();" >Chi tiết vay</button>
+<button style="font:  13px Arial" onclick="theomucdich();" >Chi tiết theo mục đích - định mức</button>
+<button style="font:  13px Arial" onclick="theonam();" >Chi tiết vay theo năm</button>
+</div>
+<br />
+
+<iframe id="myReport" width="800px" height="400px">
+
+</iframe>
+
+ <script type="text/javascript">
+     function tonghopvay() {
+         document.getElementById("myReport").src = "../../Forms/HRM1/BcTonghopvay.aspx"
+         $("[id$=Mes]").val("Báo cáo tổng hợp vay");
+     }
+     function congnocuoiki() {
+         document.getElementById("myReport").src = "../../Forms/HRM1/BCcongnocuoiki.aspx"
+         $("[id$=Mes]").val("Báo cáo công nợ cuối kì");
+     }
+     //    //Báo Cáo Chi Tiết Vay
+     function Chitietvay() {
+         document.getElementById("myReport").src = "../../Forms/HRM1/BCChitietvaytheongay.aspx"
+         $("[id$=Mes]").val("Báo cáo chi tiết vay");
+     }
+
+     function theomucdich() {
+         document.getElementById("myReport").src = "../../Forms/HRM1/BCtheoMucDich.aspx"
+         $("[id$=Mes]").val("Báo cáo chi tiết Vay Theo Mục Đích - Định Mức");
+     }
+
+     function theonam() {
+         document.getElementById("myReport").src = "../../Forms/HRM1/BCChiTietTheoNam.aspx"
+         $("[id$=Mes]").val("Báo cáo chi Tiết Vay Theo Năm");
+     }
+ </script>

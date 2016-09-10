@@ -1,0 +1,15 @@
+D:\HRM_N\HRMApplication\WebApplication\bin\HRM.QLDanhMuc.dll
+D:\HRM_N\HRMApplication\WebApplication\bin\HRM.QLDanhMuc.pdb
+D:\HRM_N\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.csprojResolveAssemblyReference.cache
+D:\HRM_N\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.dll
+D:\HRM_N\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.pdb
+D:\HRMApplication\WebApplication\bin\HRM.QLDanhMuc.dll
+D:\HRMApplication\WebApplication\bin\HRM.QLDanhMuc.pdb
+D:\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.csprojResolveAssemblyReference.cache
+D:\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.dll
+D:\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.pdb
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.QLDanhMuc.dll
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.QLDanhMuc.pdb
+C:\Workspace\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.csprojResolveAssemblyReference.cache
+C:\Workspace\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.dll
+C:\Workspace\HRMApplication\WebApplication\Areas\QLDanhMuc\obj\Debug\HRM.QLDanhMuc.pdb

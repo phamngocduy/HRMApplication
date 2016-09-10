@@ -1,0 +1,104 @@
+﻿@model IEnumerable<HRM.QLVayMuon.Models.KhoanVay>
+@using HRM.Webpages.Helpers
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.ActionLink("Trở về Import hoàn vay","Index")
+<h4>Danh sách khoản vay hiện hành(chưa trả xong)</h4>
+
+
+<table id = "KhoanVay">
+<thead>
+    <tr>
+        <th>
+            @Html.VN("Mã NV")
+        </th>
+        <th>
+            @Html.VN("Họ và Tên")
+        </th>
+        <th>
+            @Html.VN("ID khoản vay")
+        </th>
+        <th>
+            @Html.VN("Số chứng từ")
+        </th>
+        <th>
+            @Html.VN("Ngày chứng từ")
+        </th>
+        <th>
+            @Html.VN("Diễn giải")
+        </th>
+        <th>
+            @Html.VN("Mục đích")
+        </th>
+        <th>
+            @Html.VN("Định mức")
+        </th>
+        <th>
+            @Html.VN("Số tiền vay")
+        </th>
+        
+    </tr>
+   </thead>
+   <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhanVienVayMuon.MaNV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhanVienVayMuon.HoVaTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoChungTu)
+        </td>
+        <td>
+            @item.NgayChungTu.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienGiai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dmMucDichSuDung.TenMucDich)
+        </td>
+        <td>
+                @if (item.DinhMuc == true)
+                {
+                    <span>
+                    Định mức
+                    </span>
+                }
+                else
+                {
+                    <span>
+                    Ngoài Định mức
+                    </span>
+                }
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoTienVay)
+        </td>
+
+    </tr>
+}
+</tbody>
+</table>
+
+
+<script>
+    $(document).ready(function () {
+        $("#KhoanVay").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+
+
+</script>

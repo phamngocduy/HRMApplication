@@ -1,0 +1,62 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "QLTapSu";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from dsQLTapSu where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm("UpdateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("ThoiGianBatDau", ((DateTime)dr["ThoiGianBatDau"]).ToShortDateString())
+<dl id="@rand" class="dl-horizontal">
+@if (dr["ThoiGianDenHan"] is DBNull)
+{
+    <dt>Số tháng tập sự</dt>
+    <dd>@Html.TextBox("SoThang", 0, new { type = "number" })</dd>
+}
+else
+{
+    <dt>Thời gian đến hạn</dt>
+    <dd>@Html.Editor(dr, dt.Columns["ThoiGianDenHan"])</dd>
+}
+    <dt></dt>
+    <dd>
+        <table>
+            <tr>
+                <td>
+                    Ngày thông báo
+                    @Html.Editor(dr, dt.Columns["NgayThongBao"])
+                </td>
+                <td>
+                    Ngày nhận hồ sơ
+                    @Html.Editor(dr, dt.Columns["NgayNhanHoSo"])
+                </td>
+                <td>
+                    Ngày lập tờ trình
+                    @Html.Editor(dr, dt.Columns["NgayLapToTrinh"])
+                </td>
+            </tr>
+        </table>
+    </dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text").css("width", "90px");
+</script>

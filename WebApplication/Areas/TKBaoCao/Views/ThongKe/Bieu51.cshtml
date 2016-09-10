@@ -1,0 +1,242 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@model HRMDBEntities
+@{
+    var ngayTK = DateTime.Parse(Request.Form["NgayTK"] ?? DateTime.Now.ToShortDateString());
+    ViewBag.Title = "Bieu51";
+    var table = Model.SqlQuery(String.Format(@"
+    declare @moc date = '{0}-{1}-{2}'
+    select ll.*, isnull(year(@moc)-year(ll.NgaySinh),100) Tuoi,
+    dmChucDanh.maChucDanh, dmGioiTinh.maGioiTinh,
+    dmDanToc.tenDanToc, dmDanToc.laThieuSo,
+    dmHocHam.maHocHam, dmTrinhDo.maTrinhDo,
+    dmDonVi.maDonVi, dmDonVi.tenDonVi
+    from fnNhanVien(@moc) fn
+    left join nvSoYeuLyLich ll on ll.NV_id = fn.idNhanVien
+    left join nvBangCap bc on fn.idBangCap = bc.id
+    left join nvQTLamViec lv on fn.idLamViec = lv.id
+    left join nvHocHam hh on fn.idHocHam = hh.id
+    left join nvChucDanhGiangVien cd on fn.idChucDanhGiangVien = cd.id
+    left join dmChucDanh on lv.ChucDanh_id = dmChucDanh.id
+    left join dmGioiTinh on ll.GioiTinh_id = dmGioiTinh.id
+    left join dmDanToc on ll.DanToc_id = dmDanToc.id
+    left join dmHocHam on hh.HocHam_id = dmHocHam.id
+    left join dmLoaiBangCap on bc.LoaiBangCap_id = dmLoaiBangCap.id
+    left join dmTrinhDo on dmLoaiBangCap.idTrinhDo = dmTrinhDo.id
+    left join dmDonVi on lv.DonVi_id = dmDonVi.id",
+    ngayTK.Year, ngayTK.Month, ngayTK.Day));
+    string maChucDanh = "maChucDanh", CBQL = "CBQL", GV = "GV", NV = "NV", NVPV = "NVPV", Tuoi = "Tuoi";
+    var CBQLs = table.Rows.ToArray().Where(r => r[maChucDanh].Equals(CBQL));
+    var NVs = table.Rows.ToArray().Where(r => r[maChucDanh].Equals(NV));
+    var NVPVs = table.Rows.ToArray().Where(r => r[maChucDanh].Equals(NVPV));
+    var GVs = table.Rows.ToArray().Where(r => r[maChucDanh].Equals(GV));
+    var GV_30 = GVs.Where(r => (int)r[Tuoi] <= 30);
+    var GV_31_35 = GVs.Where(r => 31 <= (int)r[Tuoi] && (int)r[Tuoi] <= 35);
+    var GV_36_40 = GVs.Where(r => 36 <= (int)r[Tuoi] && (int)r[Tuoi] <= 40);
+    var GV_41_45 = GVs.Where(r => 41 <= (int)r[Tuoi] && (int)r[Tuoi] <= 45);
+    var GV_46_50 = GVs.Where(r => 46 <= (int)r[Tuoi] && (int)r[Tuoi] <= 50);
+    var GV_51_55 = GVs.Where(r => 51 <= (int)r[Tuoi] && (int)r[Tuoi] <= 55);
+    var GV_56_60 = GVs.Where(r => 56 <= (int)r[Tuoi] && (int)r[Tuoi] <= 60);
+    var GV_60 = GVs.Where(r => (int)r[Tuoi] > 60);
+    ViewBag.Random = new Random();
+    var rand = (ViewBag.Random as Random).Next();
+}
+@helper Mark(IEnumerable<DataRow> DS) {
+    var rand = (ViewBag.Random as Random).Next();
+    if (DS.Count() > 0) {
+        <mark title="@String.Join(", ", DS.Select(r => r["HoVaTen"] as string).ToArray())">
+            <a href="#" onclick="$('#@rand').dialog({width:'auto'})">@DS.Count()</a>
+        </mark>
+        <div id="@rand" style="display:none">
+            <table>
+                <thead>
+                    <th>Họ tên</th>
+                    <th>Đơn vị</th>
+                </thead>
+                <tbody>
+                @foreach (var row in DS)
+                {
+                    <tr>
+                        <td>@row["HoVaTen"]</td>
+                        <td>@row["tenDonVi"]</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    } else { <span>0</span> }
+}
+@helper ThongKe(IEnumerable<DataRow> DS)
+    {
+    string maGioiTinh = "maGioiTinh", NU = "NỮ",
+        dtThieuSo = "laThieuSo",
+        maHocHam = "maHocHam", GS = "GS", PGS = "PGS",
+        maTrinhDo = "maTrinhDo", TS = "TS", TSKH = "TSKH", THS = "ThS", CK = "CK", DH = "ĐH", CD = "CĐ";
+    var DS_N = DS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_DTIN = DS.Where(r => r[dtThieuSo].Equals(true));
+    var DS_DTIN_N = DS_DTIN.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_GS = DS.Where(r => r[maHocHam].Equals(GS));
+    var DS_GS_N = DS_GS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_PGS = DS.Where(r => r[maHocHam].Equals(PGS));
+    var DS_PGS_N = DS_PGS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_TS = DS.Where(r => r[maTrinhDo].Equals(TS) || r[maTrinhDo].Equals(TSKH));
+    var DS_TS_N = DS_TS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_THS = DS.Where(r => r[maTrinhDo].Equals(THS));
+    var DS_THS_N = DS_THS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_CK = DS.Where(r => r[maTrinhDo].Equals(CK));
+    var DS_CK_N = DS_CK.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_DH = DS.Where(r => r[maTrinhDo].Equals(DH));
+    var DS_DH_N = DS_DH.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_CD = DS.Where(r => r[maTrinhDo].Equals(CD));
+    var DS_CD_N = DS_CD.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_KHAC = DS.Where(r => !r[maTrinhDo].Equals(TS) && !r[maTrinhDo].Equals(TSKH) && !r[maTrinhDo].Equals(THS) && !r[maTrinhDo].Equals(CK) && !r[maTrinhDo].Equals(DH) && !r[maTrinhDo].Equals(CD));
+    var DS_KHAC_N = DS_KHAC.Where(r => r[maGioiTinh].Equals(NU));
+    <td>@Mark(DS)</td>
+    <td>@Mark(DS_N)</td>
+    <td>@Mark(DS_DTIN)</td>
+    <td>@Mark(DS_DTIN_N)</td>
+    <td>@Mark(DS_GS)</td>
+    <td>@Mark(DS_GS_N)</td>
+    <td>@Mark(DS_PGS)</td>
+    <td>@Mark(DS_PGS_N)</td>
+    <td>@Mark(DS_TS)</td>
+    <td>@Mark(DS_TS_N)</td>
+    <td>@Mark(DS_THS)</td>
+    <td>@Mark(DS_THS_N)</td>
+    <td>@Mark(DS_CK)</td>
+    <td>@Mark(DS_CK_N)</td>
+    <td>@Mark(DS_DH)</td>
+    <td>@Mark(DS_DH_N)</td>
+    <td>@Mark(DS_CD)</td>
+    <td>@Mark(DS_CD_N)</td>
+    <td>@Mark(DS_KHAC)</td>
+    <td>@Mark(DS_KHAC_N)</td>
+}
+
+@using (Html.BeginForm())
+{
+    <h2 style="display:inline">
+        Biểu 5.1
+    </h2>
+    <input id="@rand" type="date" name="NgayTK" value="@ngayTK" />
+    <input type="submit" value="Thống kê" />
+}
+
+<table id="TK" border="1">
+    <tr>
+        <td rowspan=3></td>
+        <td rowspan=3>Tổng<br />số</td>
+        <td colspan=7>Trong đó</td>
+        <td colspan=12>Chia theo trình độ đào tạo</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Nữ</td>
+        <td colspan=2>Dân tộc ít người</td>
+        <td rowspan=2>Giáo<br />sư</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Phó<br />giáo<br />sư</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>TSKH<br />và Tiến<br />sĩ</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Thạc<br />sĩ</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>CK<br />Y cấp<br />I, II</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Đại<br />học</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Cao<br />đẳng</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Khác</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+    </tr>
+    <tr>
+        <td>Tổng<br />số</td>
+        <td>Tr.đó:<br />Nữ</td>
+    </tr>
+    <tr>
+        <td>A</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+        <td>19</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>1- Cán bộ quản lý</td>
+        @ThongKe(CBQLs)
+    </tr>
+    <tr>
+        <td>2- Cán bộ hành chính, nghiệp vụ, phục vụ (không bao gồm giảng viên)</td>
+        @ThongKe(NVs)
+    </tr>
+    <tr>
+        <td>3- Nhân viên phục vụ</td>
+        @ThongKe(NVPVs)
+    </tr>
+    <tr>
+        <td>1- Cơ hữu</td>
+        @ThongKe(GVs)
+    </tr>
+    <tr>
+        <td>Dưới 30 tuổi</td>
+        @ThongKe(GV_30)
+    </tr>
+    <tr>
+        <td>Từ 31 đến 35</td>
+        @ThongKe(GV_31_35)
+    </tr>
+    <tr>
+        <td>Từ 36 đến 40</td>
+        @ThongKe(GV_36_40)
+    </tr>
+    <tr>
+        <td>Từ 41 đến 45</td>
+        @ThongKe(GV_41_45)
+    </tr>
+    <tr>
+        <td>Từ 46 đến 50</td>
+        @ThongKe(GV_46_50)
+    </tr>
+    <tr>
+        <td>Từ 51 đến 55</td>
+        @ThongKe(GV_51_55)
+    </tr>
+    <tr>
+        <td>Từ 56 đến 60</td>
+        @ThongKe(GV_56_60)
+    </tr>
+    <tr>
+        <td>Trên 60 tuổi</td>
+        @ThongKe(GV_60)
+    </tr>
+</table>
+
+<style>
+    table#TK td { border: 1px solid !important; padding: 0; }
+</style>
+<script>
+    $(function () {
+        $("#@rand").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        }).prop("type", "text").css("width", "80px");
+    });
+</script>

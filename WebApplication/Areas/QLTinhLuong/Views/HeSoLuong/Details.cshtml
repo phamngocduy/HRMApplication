@@ -1,0 +1,140 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Details";
+    var HeSoLuong = "HeSoLuong";
+    var GiuBacLuong = "GiuBacLuong";
+    var db = ViewBag.db as HRMDBEntities;
+    var nv = db.NhanViens.All.Find(Model);
+    var dt = db.SqlQuery("select * from dsDienBienLuong where NV_id=@p0 order by NgayBatDau desc", Model);
+    var hash = new HashSet<object>();
+    var rand = new Random().Next();
+    string tmp = "";
+}
+
+<p class="ui-state-highlight">
+    Diễn biến hệ số lương @nv.nvSoYeuLyLiches.Single().HoVaTen
+    @(nv.nvQTLamViec != null && nv.nvQTLamViec.DonVi != null ? "- " + nv.nvQTLamViec.DonVi.tenDonVi : null)
+</p>
+
+<table id="@rand" class="table table-bordered table-hover">
+<thead class="ui-widget-header">
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTinhLuong/"+HeSoLuong+"/EditP?NV_id=" + Model)
+        </th>
+        <th>Giai đoạn</th>
+        <th>Nhóm</th>
+        <th>Ngạch</th>
+        <th>Bậc</th>
+        <th><mark data-tip="Hệ số lương">HSL</mark></th>
+        <th title="Số quyết định">QĐ</th>
+        <th>Lý do</th>
+        <th>Ghi chú</th>
+    </tr>
+</thead>
+<tbody class="ui-widget-content">
+@foreach (DataRow dr in dt.Rows)
+{
+    if (dr["HeSoLuong"].ToString().Trim().Length == 1)
+    {
+        tmp = dr["HeSoLuong"].ToString().Trim() + ".00";
+    }
+    else
+    {
+        tmp = dr["HeSoLuong"].ToString();
+    }
+    if (hash.Add(dr["id"]))
+    {
+        <tr style="@(dr["HienTai"].ToString().Equals("1") ? "background:lightblue" : null)">
+            <td>
+                <button class="select" style="width:16px"></button>
+                <ul style="z-index:1000">
+                    <li>@Html.Link4U("~/QLTinhLuong/"+HeSoLuong+"/EditP?id="+dr["id"], "Edit")</li>
+                    <li>@Html.Link4S("~/QLTinhLuong/"+HeSoLuong+"/CurrentS?HSL_id="+dr["id"], "Là hiện tại")</li>
+                    <li>@Html.Link4U("~/QLTinhLuong/"+GiuBacLuong+"/EditP?HSL_id="+dr["id"], "Điều chỉnh TG giữ bậc")</li>
+                </ul>
+            </td>
+            <td>
+                @Html.Display(dr, dt.Columns["NgayBatDau"])
+                <span>-</span><br />
+            @if (dr["NgayKetThuc"] is DBNull) {
+                <span>(</span>
+                @Html.Display(dr, dt.Columns["KetThucDuKien"])
+                <span>)</span>
+            } else {
+                @Html.Display(dr, dt.Columns["NgayKetThuc"])
+            }
+
+            </td>
+            <td>
+                <mark data-tip="@Html.Display(dr, dt.Columns["tenNhomNgachVienChuc"])">@Html.Display(dr, dt.Columns["maNhomNgachVienChuc"])</mark>
+            </td>
+            <td>
+                @Html.Display(dr, dt.Columns["tenNgachVienChuc"])
+            </td>
+            <td>
+                @Html.Display(dr, dt.Columns["BacLuong"])
+            </td>
+            <td>
+               @tmp
+            </td>
+            <td>
+                @Html.Display(dr, dt.Columns["SoQuyetDinh"])
+            </td>
+            <td>
+                @Html.Display(dr, dt.Columns["LyDoThayDoi"])
+            </td>
+            <td>
+                @Html.Display(dr, dt.Columns["GhiChu"])
+            </td>
+        </tr>
+    }
+    if (!(dr["G_id"] is DBNull))
+    {
+        <tr style="background:lightgray;font-style:italic">
+            <td>
+                @Html.Editor4U("~/QLTinhLuong/"+GiuBacLuong+"/EditP?id=" + dr["G_id"])
+            </td>
+            <td>
+                <span>SQĐ:</span>
+                @Html.Display(dr, dt.Columns["G_SoQuyetDinh"])
+            </td>
+            <td colspan=3>
+                @Html.Display(dr, dt.Columns["G_tenLoaiThayDoi"])
+            </td>
+            <td colspan=2>
+            @{
+                var thang = (int)dr["G_SoThangThayDoi"];
+                <span>@(thang < 0 ? "Giảm" : "Tăng")</span>
+                <span>@Math.Abs(thang) tháng</span>
+            }
+            </td>
+            <td colspan=2>
+                @Html.Display(dr, dt.Columns["G_LyDoThayDoi"])
+            </td>
+        </tr>
+    }
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#@rand").find("th").attr("nowrap", true);
+        $("#@rand").find(".select").button({
+            text: false,
+            icons: { primary: "ui-icon-circle-triangle-s" }
+        }).click(function () {
+            var menu = $(this).next().show().position({
+                my: "left top",
+                at: "left bottom",
+                of: this
+            });
+            $(document).one("click", function () { menu.hide(); });
+            return false;
+        }).next().hide().menu();
+    });
+</script>

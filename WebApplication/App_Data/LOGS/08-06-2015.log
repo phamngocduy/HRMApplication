@@ -1,0 +1,1528 @@
+INFO 12:00:56 – DuLieuGioGiang/Upload
+ERROR12:00:56 – Could not load file or assembly 'System.Transactions' or one of its dependencies. The system cannot find the file specified. (C:\Workspace\HRMApplication\WebApplication\areas\qlthinhgiang\web.config line 28)
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Configuration.CompilationSection.LoadAssemblyHelper(String assemblyName, Boolean starDirective)
+   at System.Web.Configuration.CompilationSection.LoadAssembly(AssemblyInfo ai)
+   at System.Web.Compilation.BuildManager.GetReferencedAssemblies(CompilationSection compConfig)
+   at System.Web.Compilation.WebDirectoryBatchCompiler..ctor(VirtualDirectory vdir)
+   at System.Web.Compilation.BuildManager.BatchCompileWebDirectoryInternal(VirtualDirectory vdir, Boolean ignoreErrors)
+   at System.Web.Compilation.BuildManager.BatchCompileWebDirectory(VirtualDirectory vdir, VirtualPath virtualDir, Boolean ignoreErrors)
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:01:41 – DuLieuGioGiang/Upload
+DEBUG12:01:43 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpAABD.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:01:43 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpAABD.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:01:48 – SELECT * FROM [Dulieu$];
+INFO 12:02:20 – DuLieuGioGiang/Upload
+DEBUG12:02:22 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp41ED.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:02:22 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp41ED.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+ERROR12:02:44 – An error occurred while getting provider information from the database. This can be caused by Entity Framework using an incorrect connection string. Check the inner exceptions for details and ensure that the connection string is correct.
+/controller=DuLieuGioGiang/action=Upload
+   at System.Data.Entity.ModelConfiguration.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   at System.Data.Entity.ModelConfiguration.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.GetEnumerator()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Collections.Generic.IEnumerable<TResult>.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at ASP._Page_Areas_QLThinhGiang_Views_DuLieuGioGiang_Upload_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml:line 28
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:04:39 – DuLieuGioGiang/Upload
+ERROR12:04:41 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(33): error CS1061: 'HRM.Databases.Models.HRMDBEntities' does not contain a definition for 'Close' and no extension method 'Close' accepting a first argument of type 'HRM.Databases.Models.HRMDBEntities' could be found (are you missing a using directive or an assembly reference?)
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:04:53 – DuLieuGioGiang/Upload
+DEBUG12:04:54 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp936F.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:04:54 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp936F.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:04:57 – SELECT * FROM [Dulieu$];
+INFO 12:05:18 – DuLieuGioGiang/Upload
+DEBUG12:05:18 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpF41E.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:05:18 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpF41E.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:05:19 – SELECT * FROM [Dulieu$];
+INFO 12:06:12 – DuLieuGioGiang/Upload
+DEBUG12:06:13 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpC896.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:06:13 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpC896.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:06:13 – SELECT * FROM [Dulieu$];
+INFO 12:10:35 – DuLieuGioGiang/Upload
+ERROR12:10:36 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(284): error CS0136: A local variable named 'HoVaTen' cannot be declared in this scope because it would give a different meaning to 'HoVaTen', which is already used in a 'parent or current' scope to denote something else
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:11:04 – DuLieuGioGiang/Upload
+ERROR12:11:05 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(293): error CS0103: The name 'EntityState' does not exist in the current context
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:11:31 – DuLieuGioGiang/Upload
+DEBUG12:11:32 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpA622.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:11:32 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpA622.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:11:32 – SELECT * FROM [Dulieu$];
+INFO 12:13:29 – DuLieuGioGiang/Upload
+DEBUG12:13:29 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp7219.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:13:29 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp7219.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:13:30 – SELECT * FROM [Dulieu$];
+INFO 09:39:16 – Home/Index
+INFO 09:39:26 – HSNhanSu/Index
+INFO 09:39:27 – NhanVien/IndexP
+INFO 09:39:32 – NhanVien/CreateP
+INFO 09:39:37 – NhanVien/CreateP
+INFO 09:39:45 – NhanVien/CreateP
+INFO 09:39:47 – NhanVien/CreateP
+INFO 09:43:31 – HSNhanSu/Index
+INFO 09:43:31 – NhanVien/IndexP
+INFO 09:43:47 – NhanVien/CreateP
+INFO 09:47:16 – NhanVien/CreateP
+INFO 09:47:27 – NhanVien/CreateS
+INFO 09:47:28 – HSNhanSu/Index
+INFO 09:47:28 – NhanVien/IndexP
+INFO 09:52:15 – NhanVien/CreateP
+INFO 09:55:04 – NhanVien/CreateS
+INFO 09:55:29 – NhanVien/CreateS
+ERROR09:55:30 – LINQ to Entities does not recognize the method 'System.String get_Item(System.String)' method, and this method cannot be translated into a store expression.
+/controller=NhanVien/action=CreateS
+/MaHS=/MaNV=TG1/HoVaTen=Tr?n Th? Liên
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.EqualsTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.UnarySequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Objects.ObjectQuery`1.System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.Single[TSource](IQueryable`1 source)
+   at HRM.QLThinhGiang.Controllers.NhanVienController.CreateS(String HoVaTen) in C:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Controllers\NhanVienController.cs:line 30
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 09:56:16 – Home/Index
+INFO 09:56:18 – Login/Index
+INFO 09:56:38 – Login/Index
+INFO 09:56:38 – Home/Index
+INFO 09:56:49 – NhanVien/CreateP
+INFO 09:57:07 – NhanVien/CreateS
+ERROR09:58:01 – LINQ to Entities does not recognize the method 'System.String get_Item(System.String)' method, and this method cannot be translated into a store expression.
+/controller=NhanVien/action=CreateS
+/MaHS=/MaNV=TG2/HoVaTen=Tr?n Th? Liên
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.EqualsTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.UnarySequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Objects.ObjectQuery`1.System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.Single[TSource](IQueryable`1 source)
+   at HRM.QLThinhGiang.Controllers.NhanVienController.CreateS(String HoVaTen) in C:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Controllers\NhanVienController.cs:line 30
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 09:58:41 – Home/Index
+INFO 09:58:48 – NhanVien/CreateP
+INFO 10:00:08 – Home/Index
+INFO 10:00:18 – NhanVien/CreateP
+INFO 10:00:28 – NhanVien/CreateS
+INFO 10:00:40 – HSNhanSu/Index
+INFO 10:00:42 – NhanVien/IndexP
+INFO 10:00:46 – NhanVien/CreateP
+INFO 10:01:17 – NhanVien/CreateP
+INFO 10:01:29 – NhanVien/CreateS
+INFO 10:01:30 – HSNhanSu/Index
+INFO 10:01:32 – NhanVien/IndexP
+INFO 10:02:45 – NhanVien/CreateP
+INFO 10:02:53 – NhanVien/CreateS
+INFO 10:02:53 – HSNhanSu/Index
+INFO 10:02:55 – NhanVien/IndexP
+INFO 10:04:02 – NhanVien/CreateP
+INFO 10:04:11 – NhanVien/CreateS
+INFO 10:04:12 – HSNhanSu/Index
+INFO 10:04:14 – NhanVien/IndexP
+INFO 10:06:18 – NhanVien/CreateP
+INFO 10:06:27 – NhanVien/CreateS
+INFO 10:06:28 – HSNhanSu/Index
+INFO 10:06:30 – NhanVien/IndexP
+INFO 10:07:02 – Home/Index
+INFO 10:07:09 – NhanVien/CreateP
+INFO 10:07:16 – NhanVien/CreateS
+INFO 10:10:33 – HSNhanSu/Index
+INFO 10:10:34 – NhanVien/IndexP
+INFO 10:11:41 – NhanVien/CreateP
+INFO 10:11:50 – NhanVien/CreateS
+INFO 10:11:51 – HSNhanSu/Index
+INFO 10:11:53 – NhanVien/IndexP
+INFO 10:12:52 – HSNhanSu/Index
+INFO 10:12:52 – NhanVien/IndexP
+INFO 10:15:45 – NhanVien/CreateP
+INFO 10:15:55 – NhanVien/CreateS
+INFO 10:15:56 – HSNhanSu/Index
+INFO 10:15:58 – NhanVien/IndexP
+INFO 10:16:10 – DuLieuGioGiang/Upload
+DEBUG10:16:11 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp391D.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:16:11 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp391D.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:16:11 – SELECT * FROM [Dulieu$];
+INFO 10:16:48 – HSNhanSu/Details
+INFO 10:16:49 – SoYeuLyLich/EditP
+INFO 10:16:53 – TheDinhDanh/IndexP
+INFO 10:16:57 – HSNhanSu/Details
+INFO 10:16:57 – nvBangCap/Index
+INFO 10:16:58 – ChungChi/Index
+INFO 10:17:05 – HSNhanSu/Details
+ERROR10:17:05 – Execution of the child request failed. Please examine the InnerException for more information.
+/controller=HSNhanSu/action=Details/id=685
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerWrapper.Wrap[TResult](Func`1 func)
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, Object routeValues)
+   at ASP._Page_Areas_QLThinhGiang_Views_HSNhanSu_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\HSNhanSu\Details.cshtml:line 68
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:20:44 – Home/Index
+INFO 10:20:50 – HSNhanSu/Index
+INFO 10:20:52 – NhanVien/IndexP
+INFO 10:20:58 – NhanVien/CreateP
+INFO 10:21:16 – NhanVien/CreateS
+INFO 10:21:20 – HSNhanSu/Index
+INFO 10:21:20 – NhanVien/IndexP
+INFO 10:27:43 – HSNhanSu/Details
+ERROR10:27:47 – Execution of the child request failed. Please examine the InnerException for more information.
+/controller=HSNhanSu/action=Details/id=685
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerWrapper.Wrap[TResult](Func`1 func)
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, Object routeValues)
+   at ASP._Page_Areas_QLThinhGiang_Views_HSNhanSu_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\HSNhanSu\Details.cshtml:line 68
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:29:27 – HSNhanSu/Details
+INFO 10:29:28 – QTLamViec/EditP
+ERROR10:29:29 – The partial view 'Edit' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLThinhGiang/Views/QTLamViec/Edit.aspx
+~/Areas/QLThinhGiang/Views/QTLamViec/Edit.ascx
+~/Areas/QLThinhGiang/Views/Shared/Edit.aspx
+~/Areas/QLThinhGiang/Views/Shared/Edit.ascx
+~/Views/QTLamViec/Edit.aspx
+~/Views/QTLamViec/Edit.ascx
+~/Views/Shared/Edit.aspx
+~/Views/Shared/Edit.ascx
+~/Areas/QLThinhGiang/Views/QTLamViec/Edit.cshtml
+~/Areas/QLThinhGiang/Views/QTLamViec/Edit.vbhtml
+~/Areas/QLThinhGiang/Views/Shared/Edit.cshtml
+~/Areas/QLThinhGiang/Views/Shared/Edit.vbhtml
+~/Views/QTLamViec/Edit.cshtml
+~/Views/QTLamViec/Edit.vbhtml
+~/Views/Shared/Edit.cshtml
+~/Views/Shared/Edit.vbhtml
+/id=685/controller=QTLamViec/action=EditP/670b3d7e-6cc8-4c87-a6ac-bce342852718=System.Web.Mvc.DictionaryValueProvider`1[System.Object]
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ERROR10:29:29 – Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'.
+/controller=HSNhanSu/action=Details/id=685
+   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, Object routeValues)
+   at ASP._Page_Areas_QLThinhGiang_Views_HSNhanSu_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\HSNhanSu\Details.cshtml:line 66
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:30:34 – HSNhanSu/Details
+INFO 10:30:36 – QTLamViec/EditP
+INFO 10:30:58 – TTLienHe/Update&id=685&DonVi_id=1
+INFO 10:30:59 – HSNhanSu/Details
+INFO 10:30:59 – QTLamViec/EditP
+INFO 10:31:02 – TTLienHe/Update&id=685&DonVi_id=
+INFO 10:31:02 – HSNhanSu/Details
+INFO 10:31:02 – QTLamViec/EditP
+INFO 10:31:17 – HSNhanSu/Details
+INFO 10:31:17 – nvBangCap/Index
+INFO 10:31:18 – ChungChi/Index
+INFO 10:31:48 – HSNhanSu/Details
+INFO 10:31:50 – QHGiaDinh/IndexP
+INFO 10:31:53 – HSNhanSu/Details
+INFO 10:31:53 – nvBangCap/Index
+INFO 10:31:53 – ChungChi/Index
+INFO 10:31:55 – HSNhanSu/Details
+INFO 10:31:55 – TTLienHe/EditP
+INFO 10:31:56 – DiaChiNha/IndexP
+INFO 10:31:59 – HSNhanSu/Details
+INFO 10:31:59 – SoYeuLyLich/EditP
+INFO 10:32:00 – TheDinhDanh/IndexP
+INFO 10:32:03 – HSNhanSu/Details
+INFO 10:32:03 – QHGiaDinh/IndexP
+INFO 10:32:05 – HSNhanSu/Details
+INFO 10:32:05 – nvBangCap/Index
+INFO 10:32:05 – ChungChi/Index
+INFO 10:32:12 – HSNhanSu/Details
+INFO 10:32:12 – QTLamViec/EditP
+INFO 10:34:32 – HSNhanSu/Details
+INFO 10:34:32 – QTLamViec/EditP
+INFO 10:34:45 – DuLieuGioGiang/Upload
+DEBUG10:34:46 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp3BF9.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:34:46 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp3BF9.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:34:46 – SELECT * FROM [Dulieu$];
+INFO 10:35:16 – TTLienHe/Update&id=685&DonVi_id=1
+INFO 10:35:16 – HSNhanSu/Details
+INFO 10:35:16 – QTLamViec/EditP
+INFO 10:35:19 – DuLieuGioGiang/Upload
+DEBUG10:35:19 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpBDBD.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:35:19 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpBDBD.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:35:19 – SELECT * FROM [Dulieu$];
+INFO 10:35:32 – HSNhanSu/Index
+INFO 10:35:33 – NhanVien/IndexP
+INFO 10:35:39 – HSNhanSu/Details
+INFO 10:35:39 – SoYeuLyLich/EditP
+INFO 10:35:39 – TheDinhDanh/IndexP
+INFO 10:35:41 – HSNhanSu/Details
+INFO 10:35:41 – SoYeuLyLich/EditP
+INFO 10:35:41 – TheDinhDanh/IndexP
+INFO 10:35:42 – HSNhanSu/Details
+INFO 10:35:42 – SoYeuLyLich/EditP
+INFO 10:35:45 – TheDinhDanh/IndexP
+INFO 10:35:45 – HSNhanSu/Details
+INFO 10:35:45 – SoYeuLyLich/EditP
+INFO 10:35:45 – TheDinhDanh/IndexP
+INFO 10:35:46 – HSNhanSu/Details
+INFO 10:35:46 – SoYeuLyLich/EditP
+INFO 10:35:46 – TheDinhDanh/IndexP
+INFO 10:35:48 – SoYeuLyLich/Update&id=88&nid=660&GioiTinh_id=&NoiSinh_TinhThanh_id=&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=&HoKhauThuongTru_id=&NoiOHienNay_id=&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=&HocVi_id=&HocHam_id=&LyLuanChinhTri_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 10:35:48 – HSNhanSu/Details
+INFO 10:35:48 – SoYeuLyLich/EditP
+INFO 10:35:49 – TheDinhDanh/IndexP
+INFO 10:35:51 – HSNhanSu/Index
+INFO 10:35:51 – NhanVien/IndexP
+INFO 10:35:53 – DuLieuGioGiang/Upload
+DEBUG10:35:53 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp4250.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:35:53 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp4250.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:35:53 – SELECT * FROM [Dulieu$];
+INFO 10:36:02 – SoYeuLyLich/Update&id=147&nid=661&GioiTinh_id=&NoiSinh_TinhThanh_id=&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=&HoKhauThuongTru_id=&NoiOHienNay_id=&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=&HocVi_id=&HocHam_id=&LyLuanChinhTri_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 10:36:02 – HSNhanSu/Details
+INFO 10:36:03 – SoYeuLyLich/EditP
+INFO 10:36:03 – TheDinhDanh/IndexP
+INFO 10:36:06 – DuLieuGioGiang/Upload
+DEBUG10:36:06 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp743E.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:36:06 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp743E.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:36:06 – SELECT * FROM [Dulieu$];
+INFO 10:36:14 – SoYeuLyLich/Update&id=176&nid=662&GioiTinh_id=&NoiSinh_TinhThanh_id=&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=&HoKhauThuongTru_id=&NoiOHienNay_id=&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=&HocVi_id=&HocHam_id=&LyLuanChinhTri_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 10:36:14 – HSNhanSu/Details
+INFO 10:36:14 – SoYeuLyLich/EditP
+INFO 10:36:14 – TheDinhDanh/IndexP
+INFO 10:36:17 – DuLieuGioGiang/Upload
+DEBUG10:36:17 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpA002.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:36:17 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpA002.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:36:17 – SELECT * FROM [Dulieu$];
+INFO 10:40:53 – DuLieuGioGiang/Upload
+ERROR10:40:56 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(90): error CS0029: Cannot implicitly convert type 'string' to 'int'
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:42:30 – DuLieuGioGiang/Upload
+DEBUG10:42:32 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp5800.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:42:32 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp5800.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:42:32 – SELECT * FROM [Dulieu$];
+INFO 10:50:26 – DuLieuGioGiang/Upload
+ERROR10:50:27 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(261): error CS1061: 'HRM.Databases.Models.NhanVien' does not contain a definition for 'NV_id' and no extension method 'NV_id' accepting a first argument of type 'HRM.Databases.Models.NhanVien' could be found (are you missing a using directive or an assembly reference?)
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:50:50 – DuLieuGioGiang/Upload
+DEBUG10:50:51 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpF662.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:50:51 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpF662.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:50:51 – SELECT * FROM [Dulieu$];
+INFO 10:51:02 – DuLieuGioGiang/Upload
+DEBUG10:51:03 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp268B.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:51:03 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp268B.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:51:03 – SELECT * FROM [Dulieu$];
+INFO 10:52:13 – DuLieuGioGiang/Upload
+DEBUG10:52:14 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp3BF4.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:52:14 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp3BF4.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:52:14 – SELECT * FROM [Dulieu$];
+INFO 10:52:33 – HSNhanSu/Details
+INFO 10:52:34 – SoYeuLyLich/EditP
+INFO 10:52:39 – TheDinhDanh/IndexP
+INFO 10:52:42 – HSNhanSu/Details
+INFO 10:52:42 – QTLamViec/EditP
+INFO 10:52:49 – TTLienHe/Update&id=685&DonVi_id=1
+INFO 10:52:49 – HSNhanSu/Details
+INFO 10:52:49 – QTLamViec/EditP
+INFO 10:52:56 – TTLienHe/Update&id=685&DonVi_id=2
+INFO 10:52:56 – HSNhanSu/Details
+INFO 10:52:56 – QTLamViec/EditP
+INFO 10:52:59 – DuLieuGioGiang/Upload
+DEBUG10:52:59 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpEB11.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:52:59 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpEB11.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:52:59 – SELECT * FROM [Dulieu$];
+INFO 10:53:12 – DuLieuGioGiang/Upload
+DEBUG10:53:12 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp1C92.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:53:12 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp1C92.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:53:12 – SELECT * FROM [Dulieu$];
+INFO 10:54:04 – DuLieuGioGiang/Upload
+DEBUG10:54:05 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpEBAB.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG10:54:05 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpEBAB.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:54:05 – SELECT * FROM [Dulieu$];
+INFO 11:04:04 – DuLieuGioGiang/Upload
+DEBUG11:04:04 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp1204.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:04:04 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp1204.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:04:04 – SELECT * FROM [Dulieu$];
+INFO 11:05:01 – DuLieuGioGiang/Upload
+DEBUG11:05:02 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpF2D0.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:05:02 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpF2D0.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:05:02 – SELECT * FROM [Dulieu$];
+INFO 11:05:34 – DuLieuGioGiang/Upload
+DEBUG11:05:34 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp7129.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:05:34 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp7129.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:05:34 – SELECT * FROM [Dulieu$];
+INFO 11:06:18 – DuLieuGioGiang/Upload
+DEBUG11:06:19 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp1F4C.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:06:19 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp1F4C.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:06:19 – SELECT * FROM [Dulieu$];
+INFO 11:11:28 – DuLieuGioGiang/Upload
+DEBUG11:11:29 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDA5C.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:11:29 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDA5C.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:11:29 – SELECT * FROM [Dulieu$];
+INFO 11:11:34 – DuLieuGioGiang/Upload
+DEBUG11:11:34 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpED87.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:11:34 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpED87.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:11:34 – SELECT * FROM [Dulieu$];
+INFO 11:21:54 – DuLieuGioGiang/Upload
+DEBUG11:21:56 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp6A6D.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:21:56 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp6A6D.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:21:56 – SELECT * FROM [Dulieu$];
+INFO 11:22:08 – DuLieuGioGiang/Upload
+DEBUG11:22:10 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpA3BE.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:22:10 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpA3BE.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:22:10 – SELECT * FROM [Dulieu$];
+INFO 11:24:35 – DuLieuGioGiang/Upload
+DEBUG11:24:35 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDB21.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:24:36 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDB21.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:24:36 – SELECT * FROM [Dulieu$];
+INFO 11:25:09 – Home/Index
+INFO 11:25:15 – DuLieuGioGiang/Upload
+DEBUG11:25:18 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp80A9.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:25:18 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp80A9.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:25:18 – SELECT * FROM [Dulieu$];
+INFO 11:29:41 – DuLieuGioGiang/Upload
+DEBUG11:29:44 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp9095.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:29:44 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp9095.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:29:44 – SELECT * FROM [Dulieu$];
+INFO 11:33:51 – DuLieuGioGiang/Upload
+ERROR11:33:52 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(288): error CS1061: 'System.Collections.Generic.List<int>' does not contain a definition for 'Sigle' and no extension method 'Sigle' accepting a first argument of type 'System.Collections.Generic.List<int>' could be found (are you missing a using directive or an assembly reference?)
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:34:09 – DuLieuGioGiang/Upload
+DEBUG11:34:10 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp9DB2.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:34:10 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp9DB2.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:34:10 – SELECT * FROM [Dulieu$];
+INFO 11:34:26 – Home/Index
+INFO 11:34:37 – DuLieuGioGiang/Upload
+DEBUG11:34:38 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpAD4.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:34:38 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpAD4.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:34:38 – SELECT * FROM [Dulieu$];
+INFO 11:36:18 – Home/Index
+INFO 11:36:21 – DuLieuGioGiang/Upload
+DEBUG11:36:21 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpA0F6.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:36:22 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpA0F6.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:36:22 – SELECT * FROM [Dulieu$];
+INFO 11:37:35 – DuLieuGioGiang/Upload
+DEBUG11:37:35 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpBFF4.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:37:35 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpBFF4.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:37:35 – SELECT * FROM [Dulieu$];
+INFO 11:38:01 – DuLieuGioGiang/Upload
+DEBUG11:38:01 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp26BD.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:38:01 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp26BD.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:38:01 – SELECT * FROM [Dulieu$];
+INFO 11:39:58 – Home/Index
+INFO 11:39:58 – Login/Index
+INFO 11:40:11 – Login/Index
+INFO 11:40:11 – Home/Index
+INFO 11:40:15 – DuLieuGioGiang/Upload
+DEBUG11:40:15 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp31C3.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:40:15 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp31C3.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:40:15 – SELECT * FROM [Dulieu$];
+INFO 11:41:06 – DuLieuGioGiang/Upload
+DEBUG11:41:06 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpF7D3.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:41:06 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpF7D3.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:41:06 – SELECT * FROM [Dulieu$];
+INFO 11:42:25 – DuLieuGioGiang/Upload
+DEBUG11:42:25 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp2BD0.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:42:25 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp2BD0.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:42:25 – SELECT * FROM [Dulieu$];
+INFO 11:43:29 – DuLieuGioGiang/Upload
+DEBUG11:43:29 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp2767.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG11:43:29 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp2767.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG11:43:29 – SELECT * FROM [Dulieu$];
+INFO 12:25:01 – Home/Index
+INFO 12:25:08 – DuLieuGioGiang/Upload
+DEBUG12:25:08 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp4894.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:25:08 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp4894.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:25:08 – SELECT * FROM [Dulieu$];
+INFO 12:26:29 – DuLieuGioGiang/Upload
+DEBUG12:26:30 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp877D.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:26:30 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp877D.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:26:30 – SELECT * FROM [Dulieu$];
+INFO 12:26:52 – DuLieuGioGiang/Upload
+DEBUG12:26:52 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDE3A.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:26:52 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDE3A.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:26:52 – SELECT * FROM [Dulieu$];
+INFO 12:27:11 – DuLieuGioGiang/Upload
+DEBUG12:27:11 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp28E0.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:27:11 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp28E0.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:27:11 – SELECT * FROM [Dulieu$];
+INFO 12:27:31 – DuLieuGioGiang/Upload
+DEBUG12:27:31 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp775F.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:27:31 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp775F.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:27:31 – SELECT * FROM [Dulieu$];
+INFO 12:27:49 – DuLieuGioGiang/Upload
+DEBUG12:27:49 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpBD33.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:27:49 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpBD33.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:27:49 – SELECT * FROM [Dulieu$];
+INFO 12:28:06 – DuLieuGioGiang/Upload
+DEBUG12:28:06 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpFEB1.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:28:06 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpFEB1.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:28:06 – SELECT * FROM [Dulieu$];
+INFO 12:28:24 – DuLieuGioGiang/Upload
+DEBUG12:28:24 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp45AE.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:28:24 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp45AE.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:28:24 – SELECT * FROM [Dulieu$];
+INFO 12:28:34 – DuLieuGioGiang/Upload
+DEBUG12:28:34 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp6E07.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:28:34 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp6E07.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:28:34 – SELECT * FROM [Dulieu$];
+INFO 12:28:52 – DuLieuGioGiang/Upload
+DEBUG12:28:52 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpB1C8.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:28:52 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpB1C8.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:28:52 – SELECT * FROM [Dulieu$];
+INFO 12:29:00 – DuLieuGioGiang/Upload
+DEBUG12:29:00 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpD232.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:29:00 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpD232.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:29:00 – SELECT * FROM [Dulieu$];
+INFO 12:29:58 – Home/Index
+INFO 12:30:00 – DuLieuGioGiang/Upload
+DEBUG12:30:00 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpBE77.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:30:00 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpBE77.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:30:00 – SELECT * FROM [Dulieu$];
+INFO 12:32:25 – DuLieuGioGiang/Upload
+DEBUG12:32:25 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpF29E.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:32:25 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpF29E.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:32:25 – SELECT * FROM [Dulieu$];
+INFO 12:33:52 – DuLieuGioGiang/Upload
+DEBUG12:33:52 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp48E8.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:33:52 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp48E8.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:33:52 – SELECT * FROM [Dulieu$];
+INFO 12:34:12 – DuLieuGioGiang/Upload
+DEBUG12:34:12 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp9767.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:34:12 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp9767.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:34:13 – SELECT * FROM [Dulieu$];
+INFO 12:34:47 – DuLieuGioGiang/Upload
+DEBUG12:34:47 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp1DAF.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:34:47 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp1DAF.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:34:47 – SELECT * FROM [Dulieu$];
+INFO 12:35:22 – DuLieuGioGiang/Upload
+DEBUG12:35:22 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpA8BA.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:35:22 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpA8BA.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:35:23 – SELECT * FROM [Dulieu$];
+INFO 12:35:43 – DuLieuGioGiang/Upload
+DEBUG12:35:43 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpF777.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None
+DEBUG12:35:43 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpF777.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:35:43 – SELECT * FROM [Dulieu$];
+INFO 12:44:09 – DuLieuGioGiang/Upload
+ERROR12:44:11 – (0): error CS1705: Assembly 'LinqToExcel, Version=1.10.1.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f' uses 'log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a' which has a higher version than referenced assembly 'log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a'
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:47:09 – DuLieuGioGiang/Upload
+DEBUG12:47:14 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp85EC.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG12:47:14 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp85EC.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:47:15 – SELECT * FROM [Dulieu$];
+INFO 12:49:24 – DuLieuGioGiang/Upload
+DEBUG12:49:24 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp8046.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG12:49:24 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp8046.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:49:24 – SELECT * FROM [Dulieu$];
+INFO 12:50:48 – DuLieuGioGiang/Upload
+DEBUG12:50:48 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpC79C.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG12:50:48 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpC79C.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:50:48 – SELECT * FROM [Dulieu$];
+INFO 12:51:32 – DuLieuGioGiang/Upload
+DEBUG12:51:33 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp787E.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG12:51:33 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp787E.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:51:33 – SELECT * FROM [Dulieu$];
+INFO 12:52:35 – DuLieuGioGiang/Upload
+DEBUG12:52:36 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp6EC6.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG12:52:36 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp6EC6.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:52:36 – SELECT * FROM [Dulieu$];
+INFO 12:53:19 – Home/Index
+INFO 12:53:26 – DuLieuGioGiang/Upload
+DEBUG12:53:27 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp35D0.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG12:53:27 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp35D0.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG12:53:27 – SELECT * FROM [Dulieu$];
+INFO 01:00:32 – DuLieuGioGiang/Upload
+DEBUG01:00:33 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpB3BE.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:00:33 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpB3BE.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:00:33 – SELECT * FROM [Dulieu$];
+INFO 01:00:49 – DuLieuGioGiang/Upload
+DEBUG01:00:50 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpF8C7.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:00:50 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpF8C7.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:00:50 – SELECT * FROM [Dulieu$];
+INFO 01:05:15 – DuLieuGioGiang/Upload
+DEBUG01:05:16 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp73C.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:05:16 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp73C.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:05:16 – SELECT * FROM [Dulieu$];
+INFO 01:05:54 – DuLieuGioGiang/Upload
+DEBUG01:05:55 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp9F76.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:05:55 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp9F76.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:05:55 – SELECT * FROM [Dulieu$];
+INFO 01:10:56 – DuLieuGioGiang/Upload
+DEBUG01:10:57 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp3B46.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:10:57 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp3B46.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:10:57 – SELECT * FROM [Dulieu$];
+INFO 01:11:10 – DuLieuGioGiang/Upload
+DEBUG01:11:11 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp7216.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:11:11 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp7216.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:11:11 – SELECT * FROM [Dulieu$];
+INFO 01:11:32 – DuLieuGioGiang/Upload
+DEBUG01:11:35 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpCE70.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:11:35 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpCE70.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:11:35 – SELECT * FROM [Dulieu$];
+INFO 01:14:18 – DuLieuGioGiang/Upload
+DEBUG01:14:18 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp4D4C.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:14:18 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp4D4C.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:14:18 – SELECT * FROM [Dulieu$];
+INFO 01:14:26 – DuLieuGioGiang/Upload
+DEBUG01:14:27 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp6E61.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:14:27 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp6E61.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:14:27 – SELECT * FROM [Dulieu$];
+INFO 01:14:34 – DuLieuGioGiang/Upload
+ERROR01:14:34 – Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+/controller=DuLieuGioGiang/action=Upload
+   at System.Collections.ArrayList.get_Item(Int32 index)
+   at System.Collections.Specialized.NameObjectCollectionBase.BaseGet(Int32 index)
+   at System.Web.HttpFileCollection.Get(Int32 index)
+   at System.Web.HttpFileCollectionWrapper.get_Item(Int32 index)
+   at ASP._Page_Areas_QLThinhGiang_Views_DuLieuGioGiang_Upload_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml:line 11
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:15:55 – DuLieuGioGiang/Upload
+DEBUG01:15:56 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpCBA2.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:15:56 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpCBA2.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+ERROR01:15:56 – External table is not in the expected format.
+/controller=DuLieuGioGiang/action=Upload
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at LinqToExcel.Query.ExcelUtilities.GetWorksheetNames(ExcelQueryArgs args)
+   at LinqToExcel.Query.ExcelQueryExecutor.GetWorksheetName()
+   at LinqToExcel.Query.ExcelQueryExecutor..ctor(ExcelQueryArgs args)
+   at LinqToExcel.Query.ExcelQueryable`1..ctor(ExcelQueryArgs args)
+   at LinqToExcel.ExcelQueryFactory.Worksheet(Int32 worksheetIndex)
+   at ASP._Page_Areas_QLThinhGiang_Views_DuLieuGioGiang_Upload_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml:line 13
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:16:08 – DuLieuGioGiang/Index
+INFO 01:16:14 – DuLieuGioGiang/Upload
+DEBUG01:16:14 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp1176.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:16:14 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp1176.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:16:14 – SELECT * FROM [Dulieu$];
+INFO 01:16:31 – DuLieuGioGiang/Confirm
+ERROR01:16:31 – The view 'Confirm' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.aspx
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.ascx
+~/Areas/QLThinhGiang/Views/Shared/Confirm.aspx
+~/Areas/QLThinhGiang/Views/Shared/Confirm.ascx
+~/Views/DuLieuGioGiang/Confirm.aspx
+~/Views/DuLieuGioGiang/Confirm.ascx
+~/Views/Shared/Confirm.aspx
+~/Views/Shared/Confirm.ascx
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.cshtml
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.vbhtml
+~/Areas/QLThinhGiang/Views/Shared/Confirm.cshtml
+~/Areas/QLThinhGiang/Views/Shared/Confirm.vbhtml
+~/Views/DuLieuGioGiang/Confirm.cshtml
+~/Views/DuLieuGioGiang/Confirm.vbhtml
+~/Views/Shared/Confirm.cshtml
+~/Views/Shared/Confirm.vbhtml
+/controller=DuLieuGioGiang/action=Confirm
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:18:41 – DuLieuGioGiang/Upload
+ERROR01:18:42 – The SaveAs method is configured to require a rooted path, and the path '' is not rooted.
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.HttpPostedFile.SaveAs(String filename)
+   at System.Web.HttpPostedFileWrapper.SaveAs(String filename)
+   at ASP._Page_Areas_QLThinhGiang_Views_DuLieuGioGiang_Upload_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml:line 14
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:19:00 – DuLieuGioGiang/Upload
+DEBUG01:19:01 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp9DEF.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:19:01 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp9DEF.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+ERROR01:19:01 – External table is not in the expected format.
+/controller=DuLieuGioGiang/action=Upload
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at LinqToExcel.Query.ExcelUtilities.GetWorksheetNames(ExcelQueryArgs args)
+   at LinqToExcel.Query.ExcelQueryExecutor.GetWorksheetName()
+   at LinqToExcel.Query.ExcelQueryExecutor..ctor(ExcelQueryArgs args)
+   at LinqToExcel.Query.ExcelQueryable`1..ctor(ExcelQueryArgs args)
+   at LinqToExcel.ExcelQueryFactory.Worksheet(Int32 worksheetIndex)
+   at ASP._Page_Areas_QLThinhGiang_Views_DuLieuGioGiang_Upload_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml:line 17
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:19:13 – DuLieuGioGiang/Upload
+DEBUG01:19:13 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpCBD6.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:19:13 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpCBD6.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:19:13 – SELECT * FROM [Dulieu$];
+INFO 01:19:17 – DuLieuGioGiang/Upload
+DEBUG01:19:17 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:19:17 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:19:17 – SELECT * FROM [Dulieu$];
+INFO 01:19:29 – DuLieuGioGiang/Confirm
+ERROR01:19:29 – The view 'Confirm' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.aspx
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.ascx
+~/Areas/QLThinhGiang/Views/Shared/Confirm.aspx
+~/Areas/QLThinhGiang/Views/Shared/Confirm.ascx
+~/Views/DuLieuGioGiang/Confirm.aspx
+~/Views/DuLieuGioGiang/Confirm.ascx
+~/Views/Shared/Confirm.aspx
+~/Views/Shared/Confirm.ascx
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.cshtml
+~/Areas/QLThinhGiang/Views/DuLieuGioGiang/Confirm.vbhtml
+~/Areas/QLThinhGiang/Views/Shared/Confirm.cshtml
+~/Areas/QLThinhGiang/Views/Shared/Confirm.vbhtml
+~/Views/DuLieuGioGiang/Confirm.cshtml
+~/Views/DuLieuGioGiang/Confirm.vbhtml
+~/Views/Shared/Confirm.cshtml
+~/Views/Shared/Confirm.vbhtml
+/controller=DuLieuGioGiang/action=Confirm
+/excelFileName=C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:19:44 – DuLieuGioGiang/Confirm
+DEBUG01:19:46 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:19:46 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:19:46 – SELECT * FROM [Dulieu$];
+INFO 01:23:55 – DuLieuGioGiang/Confirm
+ERROR01:23:57 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(44): error CS1061: 'object' does not contain a definition for 'ToLower' and no extension method 'ToLower' accepting a first argument of type 'object' could be found (are you missing a using directive or an assembly reference?)
+/controller=DuLieuGioGiang/action=Confirm
+/excelFileName=C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:24:19 – DuLieuGioGiang/Confirm
+ERROR01:24:20 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(392): error CS1501: No overload for method 'ActionLink' takes 1 arguments
+/controller=DuLieuGioGiang/action=Confirm
+/excelFileName=C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:25:43 – DuLieuGioGiang/Confirm
+DEBUG01:25:44 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:25:44 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDCCF.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:25:44 – SELECT * FROM [Dulieu$];
+INFO 01:25:50 – DuLieuGioGiang/Index
+INFO 01:29:19 – DuLieuGioGiang/Upload
+ERROR01:29:21 – c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\DuLieuGioGiang\Upload.cshtml(345): error CS1955: Non-invocable member 'System.DateTime.Now' cannot be used like a method.
+/controller=DuLieuGioGiang/action=Upload
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:29:29 – DuLieuGioGiang/Upload
+DEBUG01:29:30 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp368D.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:29:30 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp368D.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:29:30 – SELECT * FROM [Dulieu$];
+INFO 01:29:34 – DuLieuGioGiang/Confirm
+DEBUG01:29:34 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmp368D.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG01:29:34 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmp368D.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG01:29:34 – SELECT * FROM [Dulieu$];
+INFO 01:29:39 – DuLieuGioGiang/Index
+INFO 01:29:43 – DuLieuGioGiang/List
+INFO 01:30:33 – Home/Index
+INFO 01:30:36 – ThongKe/Index
+INFO 01:30:44 – ThongKe/TheoNganh
+INFO 01:33:25 – ThongKe/Index
+INFO 01:33:57 – ThongKe/Index
+INFO 01:34:01 – HSNhanSu/Index
+INFO 01:34:03 – NhanVien/IndexP
+INFO 01:34:38 – ThongKe/Index
+INFO 01:34:42 – DuLieuGioGiang/Index
+INFO 01:34:47 – DuLieuGioGiang/List
+INFO 01:37:02 – DuLieuGioGiang/Index
+INFO 01:44:31 – DuLieuGioGiang/Index
+INFO 10:09:59 – Home/Index
+INFO 10:10:00 – Login/Index
+INFO 10:10:10 – Login/Index
+INFO 10:10:10 – Home/Index
+INFO 10:10:15 – ThongKe/Index
+INFO 10:13:56 – ThongKe/Index
+INFO 10:14:07 – ThongKe/CTDT
+INFO 10:16:20 – Home/Index
+INFO 10:16:24 – ThongKe/Index
+INFO 10:16:29 – DuLieuGioGiang/Index
+INFO 10:16:40 – DuLieuGioGiang/Upload
+DEBUG10:16:40 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDAF5.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG10:16:40 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDAF5.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:16:41 – SELECT * FROM [Dulieu$];
+INFO 10:16:50 – DuLieuGioGiang/Confirm
+DEBUG10:16:50 – ExcelQueryArgs = FileName: 'C:\Users\duy\AppData\Local\Temp\tmpDAF5.tmp'; WorksheetName: ''; WorksheetIndex: 0; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+DEBUG10:16:50 – Connection String: Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\duy\AppData\Local\Temp\tmpDAF5.tmp;Extended Properties="Excel 8.0;HDR=YES;IMEX=1"
+DEBUG10:16:50 – SELECT * FROM [Dulieu$];
+INFO 10:16:53 – DuLieuGioGiang/Index
+INFO 10:34:05 – ThongKe/CTDT
+ERROR10:34:06 – Object reference not set to an instance of an object.
+/controller=ThongKe/action=CTDT
+   at ASP._Page_Areas_TKBaoCao_Views_ThongKe_CTDT_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\TKBaoCao\Views\ThongKe\CTDT.cshtml:line 12
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:34:35 – ThongKe/CTDT
+INFO 10:36:15 – ThongKe/CTDT
+INFO 10:36:52 – ThongKe/CTDT
+INFO 10:38:46 – ThongKe/CTDT
+INFO 10:39:10 – ThongKe/CTDT
+INFO 10:40:01 – ThongKe/CTDT
+INFO 10:40:44 – ThongKe/CTDT
+INFO 10:41:15 – ThongKe/CTDT
+INFO 10:41:35 – ThongKe/CTDT
+INFO 10:41:48 – ThongKe/CTDT
+INFO 10:42:08 – ThongKe/CTDT
+INFO 10:42:53 – ThongKe/CTDT
+INFO 10:43:36 – ThongKe/CTDT
+INFO 11:02:37 – ThongKe/CTDT
+ERROR11:02:39 – c:\Workspace\HRMApplication\WebApplication\Areas\TKBaoCao\Views\ThongKe\CTDT.cshtml(95): error CS1501: No overload for method 'ThongKe' takes 3 arguments
+/controller=ThongKe/action=CTDT
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:03:46 – ThongKe/CTDT
+ERROR11:03:47 – c:\Workspace\HRMApplication\WebApplication\Areas\TKBaoCao\Views\ThongKe\CTDT.cshtml(97): error CS1502: The best overloaded method match for 'ASP._Page_Areas_TKBaoCao_Views_ThongKe_CTDT_cshtml.ThongKe(int, HRM.Databases.Models.dmDonVi, System.Collections.Generic.List<HRM.QLThinhGiang.Models.gvDuLieuGioGiang>, System.Collections.Generic.List<HRM.QLThinhGiang.Models.gvDuLieuGioGiang>)' has some invalid arguments
+/controller=ThongKe/action=CTDT
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:04:28 – ThongKe/CTDT
+INFO 11:05:57 – ThongKe/CTDT
+INFO 11:06:27 – ThongKe/CTDT
+INFO 11:06:37 – ThongKe/CTDT
+INFO 11:06:48 – ThongKe/CTDT
+INFO 11:13:54 – ThongKe/CTDT
+INFO 11:14:16 – ThongKe/CTDT
+INFO 11:16:01 – ThongKe/CTDT
+INFO 11:17:34 – ThongKe/CTDT
+INFO 11:17:50 – ThongKe/CTDT
+INFO 11:17:53 – ThongKe/CTDT
+INFO 11:17:56 – ThongKe/CTDT
+INFO 11:19:29 – ThongKe/CTDT
+INFO 11:21:04 – ThongKe/NVDV
+INFO 11:27:07 – ThongKe/NVDV
+INFO 11:31:25 – ThongKe/NVDV
+INFO 11:33:47 – ThongKe/NVDV
+INFO 11:34:36 – ThongKe/NVDV
+INFO 11:34:39 – ThongKe/NVDV
+INFO 11:37:25 – ThongKe/NVDV

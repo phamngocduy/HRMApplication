@@ -1,0 +1,71 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdKiemTraH
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Edit";
+}
+<b style="font-size:larger;margin-left:45%">
+    Kiểm tra hồ sơ
+    
+</b>
+<p>
+  @Model.tdTTUngCuVien.HoVaTen
+</p>
+<p>
+    @Html.ActionLink("Quay lại", "Index","TuyenDung")
+</p>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+   
+    <fieldset>
+        <p>
+            <input type="hidden" name="Id" value="@ViewBag.Id" />
+            @Html.ValidationMessageFor(model => model.id)
+        </p>
+        <p>
+            <input type="hidden" name="UngVien_id" value="@ViewBag.UngVien_id" />
+            @Html.ValidationMessageFor(model => model.UngVien_id)
+        </p>
+        <p style="margin-left:10%">
+            @{ var donxinviec = Model.DonXinViec.HasValue ? Model.DonXinViec.Value : false;}
+            @Html.CheckBoxFor(model => donxinviec, new { title = "Chọn những hồ sơ đã có"}) Đơn ứng tuyển
+        </p>
+        <p style="margin-left:10%">
+            @{ var soyeulylich = Model.SoYeuLyLich.HasValue ? Model.SoYeuLyLich.Value : false;}
+            @Html.CheckBoxFor(model => soyeulylich, new { title = "Chọn những hồ sơ đã có"}) Sơ yếu lý lịch
+        </p>
+        <p style="margin-left:10%">
+            @{ var thedinhdanh = Model.TheDinhDanh.HasValue ? Model.TheDinhDanh.Value : false;}
+            @Html.CheckBoxFor(model => thedinhdanh, new { title = "Chọn những hồ sơ đã có"}) Giấy tờ tùy thân (Bản copy)
+        </p>
+        <p style="margin-left:10%">
+            @{ var sohokhau = Model.SoHoKhau.HasValue ? Model.SoHoKhau.Value : false;}
+            @Html.CheckBoxFor(model => sohokhau, new { title = "Chọn những hồ sơ đã có"}) Sổ hộ khẩu(bản copy)
+        </p>
+        <p style="margin-left:10%">
+            @{ var giaykhamsuckhoe = Model.GiayKhamSucKhoe.HasValue ? Model.GiayKhamSucKhoe.Value : false;}
+            @Html.CheckBoxFor(model => giaykhamsuckhoe, new { title = "Chọn những hồ sơ đã có"}) Giấy khám sức khỏe
+        </p>
+        <p style="margin-left:10%">
+            @{ var bangcapbangdiem = Model.BangCapBangDiem.HasValue ? Model.BangCapBangDiem.Value : false;}
+            @Html.CheckBoxFor(model => bangcapbangdiem, new { title = "Chọn những hồ sơ đã có"}) Bằng cấp và Bảng điểm
+        </p>
+        <p style="margin-left:10%">
+            @{ var hinh = Model.Hinh.HasValue ? Model.Hinh.Value : false;}
+            @Html.CheckBoxFor(model => hinh, new { title = "Chọn những hồ sơ đã có"}) 4 tấm hinh 3x4
+        </p>
+        <p style="margin-left:10%">
+            @{ var giaytokhac = Model.GiayToKhac.HasValue ? Model.GiayToKhac.Value : false;}
+            @*Html.CheckBoxFor(model => giaytokhac, new { title = "Chọn những hồ sơ đã có"})*@Giấy tờ khác
+        </p>
+        <p style="margin-left:10%">
+            @Html.TextAreaFor(model => model.GiayToKhac_Note, new { style = "width:500px; height:100px"})
+        </p>
+        <p style="margin-left:10%">
+            <input type="submit" value="Lưu" style="margin-left:62%"/>
+        </p>
+    </fieldset>
+}
+

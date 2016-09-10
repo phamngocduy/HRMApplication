@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Nhập/Xuất";
+}
+
+<div id="NhapXuat">
+@using (Html.BeginForm("Import", "QLTTNhanSu/nvTTThongKe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>Khoa/Ngành giảng dạy</label>
+    <input type="file" name="File" />
+    <input type="submit" value="Nhập" />
+    <strong><a href="~/QLTTNhanSu/nvTTThongKe/Export">Xuất</a></strong>
+}
+@using (Html.BeginForm("LyLichKhoaHoc", "Extension/DownloadList"))
+{
+    <input type="submit" value="Danh sách cập nhật Lý lịch khoa học" />
+}
+</div>

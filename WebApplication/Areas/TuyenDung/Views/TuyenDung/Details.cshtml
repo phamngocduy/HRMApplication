@@ -1,0 +1,73 @@
+﻿@using HRM.Libraries.Helpers
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Details";
+    if (ViewBag.Tab == null) { ViewBag.Tab = "ThongTinChung"; }
+    var db = new HRMDB2Entities();
+    int TD_id = int.Parse(ViewBag.UngVien_id.ToString());
+    var tenUngVien = db.tdTTUngCuVien.Where(ut => ut.id == TD_id).FirstOrDefault().HoVaTen;
+}
+
+<b style="font-size:larger;margin-left:40%">
+
+</b>
+<p style="font-size:medium"><b>@tenUngVien</b></p>
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+    @Html.ActionLink("Quá trình tuyển dụng", "Index", "QuaTrinhTuyenDung", new { UV_id = ViewBag.UngVien_id },null)
+</div>
+<div id="TuyenDung" >
+    <ul style="padding:0">
+        <li style="margin:0"><a href="#ThongTinChung">Thông tin chung</a></li>
+        <li style="margin:0"><a href="#ThongTinBangCap">Thông tin bằng cấp</a></li>
+        <li style="margin:0"><a href="#ThongTinLienHe">Thông tin liên hệ</a></li>
+        <li style="margin:0"><a href="#ThongTinUngTuyen">Thông tin ứng tuyển</a></li>
+        <li style="margin:0"><a href="#ThongTinPhongVan">Lịch phỏng vấn</a></li>
+    </ul>
+    <div id="ThongTinChung" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinChung")
+        {
+            @Html.Action("Edit", "ThongTinChung", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+    <div id="ThongTinBangCap" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinBangCap")
+        {
+            @Html.Action("Edit", "ThongTinBangCap", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+    <div id="ThongTinLienHe" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinLienHe")
+        {
+            @Html.Action("Edit", "ThongTinLienHe", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+    <div id="ThongTinUngTuyen" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinUngTuyen")
+        {
+            @Html.Action("Edit", "ThongTinUngTuyen", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+     <div id="ThongTinPhongVan" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinPhongVan")
+        {
+             @*   @Html.Action("Edit", "ThongTinLienHe", new { UV_id = ViewBag.UngVien_id })*@
+            @Html.Action("Index1", "QLLichHen", new { ungvienid = ViewBag.UngVien_id })
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#TuyenDung").tabs({
+            active: $("#TuyenDung div").index($("#@ViewBag.Tab")),
+            activate: function (event, ui) {
+                $("body").block();
+                location.href = location.protocol + "//" + location.host + document.location.pathname + "?tab=" + ui.newTab.children("a").attr("href").replace("#", "")
+            }
+        }).tabs();
+
+    });
+</script>
+

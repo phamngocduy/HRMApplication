@@ -1,0 +1,78 @@
+﻿@model HRM.QLBHXH.Models.nvbhDanhSachDieuChinhTangGiam
+@using HRM.QLBHXH.Models
+@{
+    ViewBag.Title = "Delete";
+    var db = new HRMDB1Entities();
+    var tenvn = ViewBag.tennv;
+    var Manv = ViewBag.Manv;
+}
+
+
+<h3>Thêm vào quá trình BHXH của 
+  @Html.Display("tennv", String.Empty) -@Html.Display("Manv", String.Empty) ?</h3>
+
+
+
+
+ 
+@using (Html.BeginForm())
+{
+       
+        
+         @Html.HiddenFor(model => model.idLoaiTangGiam)
+         
+         @Html.HiddenFor(model => model.idLoaiDieuChinh)
+         
+         @Html.HiddenFor(model => model.idnvbhNhanVienBHXH)
+         
+         @Html.HiddenFor(model => model.NgayPhatSinh)
+         
+         @Html.HiddenFor(model => model.ChucVuCongViec)
+         
+         @Html.HiddenFor(model => model.TienLuongMDC)
+         
+         @Html.HiddenFor(model => model.PCChucVuMDC)
+         
+         @Html.HiddenFor(model => model.PCThamNienVuotKhungMDC)
+         
+         @Html.HiddenFor(model => model.PCThamNienNgheMDC)
+         
+         @Html.HiddenFor(model => model.PCKhacMDC)
+         
+         @Html.HiddenFor(model => model.TienLuongMDM)
+         
+         @Html.HiddenFor(model => model.PCChucVuMDM)
+         
+         @Html.HiddenFor(model => model.PCThamNienVuotKhungMDM)
+         
+         @Html.HiddenFor(model => model.PCThamNienNgheMDM)
+
+    
+    
+    
+     @Html.HiddenFor(model => model.PCKhacMDM)
+         
+         @Html.HiddenFor(model => model.TuThangNam)
+         
+         @Html.HiddenFor(model => model.DenThangNam)
+         
+         @Html.HiddenFor(model => model.TyLeDong)
+         
+         @Html.HiddenFor(model => model.KhongTraThe)
+         
+         @Html.HiddenFor(model => model.GhiChu)
+        
+    
+         @Html.HiddenFor(model => model.CVCu)
+         
+         @Html.HiddenFor(model => model.CVMoi)
+         
+         @Html.HiddenFor(model => model.TGBHTN)
+         
+         @Html.HiddenFor(model => model.DonVi_id)
+          @Html.HiddenFor(model => model.NV_id)
+  
+    <p>
+        <input type="submit" value="Đồng ý" /> 
+    </p>
+}

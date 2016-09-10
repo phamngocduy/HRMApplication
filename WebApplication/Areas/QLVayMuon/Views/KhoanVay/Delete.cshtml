@@ -1,0 +1,90 @@
+﻿@model HRM.QLVayMuon.Models.KhoanVay
+@using HRM.QLVayMuon.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+    var db = new HRMDB1Entities();
+
+    var KV_id = (int)ViewBag.KV_id;
+}
+
+@Html.BeginDiv()
+<h3>Bạn có chắc chắn muốn xóa khoản vay này?</h3>
+<fieldset>
+    <legend>KhoanVay</legend>
+    
+    <div class="display-label">
+         @Html.VN("Mã nhân viên:")
+         <b>@Html.DisplayFor(model => model.NhanVienVayMuon.MaNV)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Họ và tên:")
+         <b>@Html.DisplayFor(model => model.NhanVienVayMuon.HoVaTen)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Đơn vị:")
+          <b>@Html.DisplayFor(model => model.NhanVienVayMuon.DonVi)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Số chứng từ:")
+         <b>@Html.DisplayFor(model => model.SoChungTu)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Ngày chứng từ:")
+         <b>@Model.NgayChungTu.ToShortDateString()</b>
+    </div>
+      <div class="display-label">
+         @Html.VN("Mục đích sử dụng:")
+         <b>@Html.DisplayFor(model => model.dmMucDichSuDung.TenMucDich)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Diễn giải:")
+         <b>@Html.DisplayFor(model => model.DienGiai)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Định mức:")
+         @if (Model.DinhMuc == true)
+         {
+             <b>@Html.VN("Định mức")</b>
+         }
+         else
+         {
+             <b>@Html.VN("Ngoài định mức")</b>
+         }
+    </div> 
+    <div class="display-label">
+         @Html.VN("Số tiền vay:")
+             <b>@String.Format("{0:#,##0}", Model.SoTienVay)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Số tháng:")
+         <b>@Html.DisplayFor(model => model.SoThang)</b>
+    </div>
+@*    <div class="display-label">
+         @Html.VN("Số ngày:")
+         <b>@Html.DisplayFor(model => model.SoNgay)</b>
+    </div>*@
+    <div class="display-label">
+         @Html.VN("Trả từ tháng:")
+         <b>@Model.TraTuThang.GetValueOrDefault().ToShortDateString()</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Trả đến tháng:")
+         <b>@Model.TraDenThang.GetValueOrDefault().ToShortDateString()</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Đã trả xong:")
+         <b>@Html.DisplayFor(model => model.DatraXong)</b>
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Xóa" /> 
+    </p>
+    <p>
+        @Html.ActionLink("Trở về danh sách hoàn vay", "Index", new { NV_id = db.KhoanVay.FirstOrDefault(k => k.id == KV_id).idNhanVienVayMuon })
+    </p>
+}
+
+@Html.EndDiv()

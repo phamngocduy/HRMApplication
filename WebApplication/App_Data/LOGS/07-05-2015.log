@@ -1,0 +1,49 @@
+INFO 09:49:56 – Home/Index
+INFO 09:49:59 – Login/Index
+INFO 09:50:16 – Login/Index
+INFO 09:50:16 – Home/Index
+INFO 09:50:18 – Manage/Index
+INFO 09:50:28 – HSNhanSu/Index
+INFO 09:50:30 – NhanVien/IndexP
+INFO 10:32:18 – Home/Index
+INFO 10:32:22 – HSNhanSu/Index
+ERROR10:32:24 – Sequence contains no elements
+/controller=HSNhanSu/action=Index
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.Single[TSource](IQueryable`1 source, Expression`1 predicate)
+   at HRM.Accounts.Filters.AuthorizeFilter.OnActionExecuting(ActionExecutingContext filterContext) in C:\Workspace\HRMApplication\WebApplication\Areas\Account\Filters\AuthorizeFilter.cs:line 35
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+INFO 10:33:04 – HSNhanSu/Index
+INFO 10:33:04 – NhanVien/IndexP
+INFO 10:33:11 – QLThuViec/Index
+INFO 10:33:14 – QLTapSu/Index
+INFO 10:33:16 – HSNhanSu/Index
+INFO 10:33:16 – NhanVien/IndexP
+INFO 10:33:18 – Home/Index
+INFO 10:33:23 – TuyenDung/Index
+INFO 10:33:35 – NhanVienVayMuon/Index
+INFO 10:36:15 – NhanVienBHXH/Index2
+INFO 10:36:20 – NhanVienBHXH/Create
+INFO 10:36:24 – TuyenDung/Index
+INFO 10:36:24 – NhanVienBHXH/delete&id=1
+INFO 10:36:27 – NhanVienBHXH/edit&id=1
+INFO 10:36:28 – HeSoLuong/Index
+INFO 10:36:52 – HeSoLuong/Index
+INFO 10:36:56 – QLHoSoHSL/Index
+INFO 10:37:02 – HeSoLuong/Index
+INFO 10:37:06 – Home/Index
+INFO 10:37:08 – HSNhanSu/Index
+INFO 10:37:08 – NhanVien/IndexP

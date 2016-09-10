@@ -1,0 +1,150 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases_HDLaoDong.Models
+@model IEnumerable<dmLoaiHopDong>
+@{
+    ViewBag.Title = "Index_dmLoaiHopDong";
+    var db = new HRMDB2Entities();
+    int? id_lhd = null;
+}
+
+<b style="margin-left:35%;font-size:large">Danh mục loại hợp đồng</b>
+    <p>@Html.StatusMessage(TempData["Message_DanhMuc"])</p>
+    <p>
+    @Html.ActionLink("Quay lại", "Create", "CauHinhHeThong")
+    @Html.ActionLink("Thêm mới", "", new { }, new { @class = "lnkEdit" }) 
+    </p>
+    <table id ="dmLoaiHopDong">
+    <thead>
+        <tr>
+            <th style="text-align:center; width:15px" nowrap>
+                STT
+            </th>
+            <th style="text-align:center" nowrap>
+                Mã
+            </th>
+            <th style="text-align:center" nowrap>
+                Loại hợp đồng
+            </th>
+            <th style="width:5px"></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.stt)
+    </td>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.maLoaiHD)
+    </td>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.tenLoaiHD)
+    </td>
+    <td style="text-align:center" nowrap>
+        <input type="submit" style="position:absolute;left:-9999px" />
+        <a title="Xóa" onclick="return prompt('Xác nhận xóa loại hợp đồng! (yes)') == 'yes'" href="@Url.Action("Delete_dmLoaiHopDong", "DanhMuc", new { id = item.id })"><span class="ui-icon ui-icon-trash" style="display:inline-block"></span></a>
+        <a title="Sửa" onclick = "return LHD_edit('@item.id','@item.stt','@item.maLoaiHD','@item.tenLoaiHD')" ><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+<div id="dialog-edit" style="display: none">
+    @using (Html.BeginForm("Edit_dmLoaiHopDong", "DanhMuc", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>dmLoaiHopDong</legend>
+            <p>
+                <input id = "LHDid_hid"  name = "id" type = "hidden"/>
+                <label>STT</label>
+                <input id="stt_edit"  name = "stt" type="number" style = "width:270px"/>
+                <label>Mã</label>
+                <input id="maLoaiHD_edit"  name = "maLoaiHD" type="text" style = "width:270px"/>
+                <label>Tên loại hợp đồng</label>
+                <input id="tenLoaiHD_edit"  name = "tenLoaiHD" type="text" style = "width:270px"/>
+            </p>
+            <p>
+                <input class="dialog" type="submit" value="Lưu" style = "width:80px"/>
+            </p>
+        </fieldset>
+    }
+</div>
+<div id="dialog-create" style="display: none">
+    @using (Html.BeginForm("Create_dmLoaiHopDong", "DanhMuc", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>dmLoaiHopDong</legend>
+            <p>
+                <label>STT</label>
+                <input id="stt_create" name = "stt" type="number" style = "width:270px"/>
+                <label>Mã</label>
+                <input id="maLoaiHD_create" name = "maLoaiHD" type="text" style = "width:270px"/>
+                <label>Thời giờ LV</label>
+                <input id="tenLoaiHD_create" name = "tenLoaiHD" type="text" style = "width:270px"/>
+            </p>
+            <p>
+                <input class="dialog" type="submit" value="Lưu" style = "width:80px"/>
+            </p>
+        </fieldset>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#dmLoaiHopDong").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+
+</script>
+
+<script>
+    $("#dialog-create").dialog({
+        title: '',
+        autoOpen: false,
+        resizable: false,
+        width: 400,
+        show: { effect: 'drop', direction: "up" },
+        modal: true,
+        draggable: true,
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close").show();
+        }
+    });
+    $("#dialog-edit").dialog({
+        title: '',
+        autoOpen: false,
+        resizable: false,
+        width: 400,
+        show: { effect: 'drop', direction: "up" },
+        modal: true,
+        draggable: true,
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close").show();
+        }
+    });
+
+    $(".lnkEdit").live("click", function (e) {
+        // e.preventDefault(); use this or return false
+        url = $(this).attr('href');
+        $(".ui-dialog-title").html("Thêm mới");
+        $("#dialog-create").dialog('open');
+        return false;
+    });
+    function LHD_edit(id,stt,maLoaiHD,tenLoaiHD) {
+        url = $(this).attr('href');
+        $(".ui-dialog-title").html("Chỉnh sửa");
+        $("#dialog-edit").dialog('open');
+        document.getElementById('LHDid_hid').value = id;
+        document.getElementById('stt_edit').value = stt;
+        document.getElementById('maLoaiHD_edit').value = maLoaiHD;
+        document.getElementById('tenLoaiHD_edit').value = tenLoaiHD;
+        return false;
+    }
+</script>
+

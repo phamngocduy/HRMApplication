@@ -1,0 +1,51 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdThongTinUngTuyen
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+<p>@*
+    @Html.Raw("Vị trí ứng tuyển")
+    <span style="margin-left:22px"></span>
+    <input id="ViTriUngTuyen" type="text" style="width:200px" readonly value = "@Html.DisplayFor(model => model.ViTriUngTuyen)"/>
+    @Html.Raw("Số năm kinh nghiệm")
+    <span style="margin-left:34px"></span>
+    <input id="ViTriUngTuyen" type="text" style="width:160px" readonly value = "@Html.DisplayFor(model => model.SoNamKinhNghiem)"/>
+    năm*@
+</p>
+<p>
+    @Html.Raw("Đơn vị ứng tuyển")
+    <span style="margin-left:10px"></span>
+    <select id="DonVi" style="width:210px" disabled>
+        <option>
+        @*Html.DisplayFor(model => model.dmDonVi.tenDonVi)*@
+        </option>
+    </select>
+    @Html.Raw("Mức lương đề nghị")
+    <span style="margin-left:45px"></span>
+    @Html.TextBoxFor(model => model.MucLuongYeuCau, new { @readonly = true, style = "width:160px", Value = String.Format("{0:0,0}", Model.MucLuongYeuCau) })
+    vnđ
+</p>
+<p>
+    @Html.Raw("Ngày nhận hồ sơ")
+    <span style="margin-left:9px"></span>
+    <input id="NgayNhanHoSo" type="text" style="width:200px" readonly value=@Html.DisplayFor(model => model.NgayNhanHS)>
+    @Html.Raw("Ngày bắt đầu làm việc")
+    <span style="margin-left:22px"></span>
+    <input id="NgayBatDauLamViec" type="text" style="width:200px" readonly value=@Html.DisplayFor(model => model.NgayBatDauLamViec)>
+</p>
+<p>
+    @Html.Raw("Nguồn tuyển dụng")
+    <input id="NguonTuyenDung" type="text" style="width:200px" readonly value="@Html.DisplayFor(model => model.NguonTuyenDung)"/>
+    
+</p>
+<p>
+    @Html.Raw("Ghi chú")
+</p>
+<textarea id="GhiChu" style="width:720px;height:80px" readonly>@Html.DisplayFor(model => model.GhiChu)</textarea>
+<p style="margin-left:650px">
+    <a href="@Url.Action("Details", "TuyenDung", new { tab = "ThongTinUngTuyen", nat = "Edit", id = ViewBag.UngVien_id})">
+    <input id="Sua" type="button" value="Sửa" style="width:80px"  />
+    </a>
+</p>

@@ -1,0 +1,327 @@
+﻿@*
+@model IEnumerable<HRM.QLBHXH.Models.nvbhNhanVienBHXH>
+@{
+    ViewBag.Title = "BHXH";
+}
+<input type="button" value="Tạo mới NV BHXH" onclick="location.href='@Url.Action("Create")'" />
+<input type="button" value="Danh mục" id="flip"" />
+<input type="button" value="ĐC tăng giảm" onclick="location.href='@Url.Action("index", "DanhSachDieuChinhTangGiam")'" />
+<div id="panel">
+    @Html.ActionLink("Mức lương tối thiểu chung", "DanhMuc")
+    @Html.ActionLink("Mức lương tối thiểu vùng", "DanhMuc")
+    @Html.ActionLink("Tỷ lệ đóng bảo hiểm", "DanhMuc")
+</div>
+<div id="ChiTiet">
+</div>
+
+
+<table id="NVBHXH">
+    <thead>
+  
+
+
+        <tr>
+            <th style="text-align:center" nowrap>
+                Mã NV
+            </th>
+            <th style="text-align:center" nowrap>
+                Họ và tên
+            </th>
+            <th style="text-align:center" nowrap>
+                Đơn vị
+            </th>
+            <th style="text-align:center" nowrap>
+                Số sổ BHXH
+            </th>
+            <th style="text-align:center" nowrap>
+                Số phiếu KCB
+            </th>
+            <th style="text-align:center" nowrap>
+                Ngày sinh
+            </th>
+            <th style="text-align:center" nowrap>
+                Nữ
+            </th>
+            <th style="text-align:center" nowrap>
+                CMND
+            </th>
+            <th style="text-align:center" nowrap>
+                Chức danh nghề nghiệp
+            </th>
+            <th style="text-align:center" nowrap>
+                Địa chỉ thường trú
+            </th>
+            <th style="text-align:center" nowrap>
+                Nơi đăng kí KCB
+            </th>
+            <th style="text-align:center" nowrap>
+                HS lương
+            </th>
+            <th style="text-align:center" nowrap>
+                ML đóng BHXH, BHYT
+            </th>
+            <th style="text-align:center" nowrap>
+                ML đóng BHTN
+            </th>
+            <th style="text-align:center" nowrap>
+                Tổng tiền nộp BHXH, BHYT
+            </th>
+            <th style="text-align:center" nowrap>
+                Tổng tiền nộp BHTN
+            </th>
+            <th style="text-align:center" nowrap>
+                TG tham gia BHXH
+            </th>
+            <th style="text-align:center" nowrap>
+                TG tham gia BHTN
+            </th>
+            <th style="text-align:center" nowrap>
+                TG băt đầu nghỉ TS
+            </th>
+            <th style="text-align:center" nowrap>
+                TG kết thúc nghỉ TS
+            </th>
+            <th style="text-align:center" nowrap>
+                Ghi chú
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.MANV)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.HoVaTen)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.DonVi)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.SoBHXH)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.SoKCB)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @if (item.Nu == true)
+                    {
+                        <span>
+                            @Html.CheckBox("check1", true)
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            @Html.CheckBox("check1", false)
+                        </span>
+                    }
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.CMND)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.ChucDanh)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.DiaChiTT)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.dmNoiKCB.TenBenhVien)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.HeSoLuong)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.MucLuongDongBHXHVaBHYT)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.MucLuongDongBHTN)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.TongSoTienNopBHXHVaBHYT)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.TongSoTienNopBHTN)
+                </td>
+                <td style="text-align:left" nowrap>
+                    @item.ThoiGianThamGiaBHXH.GetValueOrDefault().ToShortDateString()
+                </td>
+                <td style="text-align:left" nowrap>
+                    @item.ThoiGianThamGiaBHTN.GetValueOrDefault().ToShortDateString()
+                </td>
+                <td style="text-align:left" nowrap>
+                    @item.ThoiGianBatDauNghiTS.GetValueOrDefault().ToShortDateString()
+                </td>
+                <td style="text-align:left" nowrap>
+                    @item.ThoiGianKetThucNghiTS.GetValueOrDefault().ToShortDateString()
+                </td>
+                <td style="text-align:left" nowrap>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td>
+                    <a href="NhanVienBHXH/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash"
+                        style="display: inline-block" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="tabs"></div>
+
+
+
+
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script src="/Content/datatables/DataTableFixedHeader.js"></script>
+<script>
+
+
+    $.get("../NhanVienBHXH/Create").success(function (data) {
+        $('#tabs').html(data);
+    });
+
+
+    $(document).ready(function () {
+        var oTable = $('#NVBHXH').dataTable({
+            "bJQueryUI": true,
+            "sScrollY": "100%",
+            "sScrollX": "100%"
+
+
+        });
+        //        new FixedHeader(oTable, { "bottom": true });
+
+        new $.fn.dataTable.FixedColumns(oTable, {
+            "iLeftColumns": 2,
+            "iRightColumns": 1
+        });
+
+
+    });
+
+
+
+
+    $("#flip").click(function () {
+        $("#panel").slideToggle("fast");
+    });
+
+
+
+
+
+
+
+</script>
+<style type="text/css">
+    #panel
+    {
+        text-align: left;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
+    }
+    #panel
+    {
+        display: none;
+    }
+</style>
+*@
+style="-webkit-transform: translate(0%, 0%) translateZ(0px); cursor: pointer; -webkit-transition: 500ms ease; transition: 500ms ease;"
+<!-- Apply blue theme as default for all tiles, but use the tiles class to allow the theme to be swapped -->
+<div class="tiles blue tile-group four-wide" >
+    <!-- Sliding Tile that shows 100% of the back tile every 3 seconds -->
+    <div class="live-tile" data-speed="750" data-delay="3000" data-bounce="true">
+        <span class="tile-title">slide tile</span>
+        <div><img src="http://localhost:59714/Scripts/MetroJs/images/all-new-htc-one-m8-wallpaper-6.jpg" /></div>
+        <div> KHÔNG ĐƯỢC XÓA HOẶC ĐẶT LẠI TÊN TRONG CÁC SHEET TẠI FILE NÀY, NẾU KHÔNG CÓ DỮ LIỆU THÌ KHÔNG CẦN NHẬP!</div>
+            </div>
+    <!-- Red Flip Tile that flips every 4 seconds -->
+    <div class="red live-tile" data-mode="flip" data-delay="4000">            
+        <div>
+            <img src="http://localhost:59714/Scripts/MetroJs/images/1554526_10152069233959007_331941023901514954_n.jpg" alt="3" />
+         
+            <span class="tile-title">flip tile front</span>
+        </div>
+        <div>
+            <img src="http://localhost:59714/Scripts/MetroJs/images/all-new-htc-one-m8-wallpaper-6.jpg" alt="4"  />
+         
+            <span class="tile-title">flip tile back</span>
+        </div>
+    </div>
+    <!-- Carousel Tile that slides 4 tile faces every 2.5 seconds -->
+    <div class="live-tile" data-mode="carousel" data-direction="horizontal" data-delay="2500">
+        <div>
+            <img src="http://localhost:59714/Scripts/MetroJs/images/1979213_10152135107863999_905420545_o.jpg"  alt="1"/>
+           
+           
+            <span class="tile-title">carousel slide 1</span>
+        </div>
+        <div>
+            <img class="full" src="/images/sample/2t.gif" alt="2" />
+            <span class="tile-title accent">carousel slide 2</span>
+        </div>
+        <div>
+            <img class="full" src="/images/sample/3tw.gif" alt="3" />
+            <span class="tile-title">carousel slide 3</span>
+        </div>
+        <div>
+            <img class="full" src="/images/sample/4t.gif" alt="4" />
+            <span class="tile-title accent">carousel slide 4</span>
+        </div>
+    </div>
+    <!-- Mango Flip List that triggers every 3 seconds -->
+    <div class="list-tile mango">
+        <span class="tile-title">flip list</span>
+        <ul class="flip-list fourTiles" data-mode="flip-list" data-delay="2000">
+            <li>
+            
+                <div><img src="http://localhost:59714/Scripts/MetroJs/images/all-new-htc-one-m8-wallpaper-6.jpg" alt="1" /></div>
+                <div>keroro</div>
+            </li>
+            <li>
+                <div><img src="http://localhost:59714/Scripts/MetroJs/images/all-new-htc-one-m8-wallpaper-6.jpg" alt="2" /></div>
+                <div>nghia</div>
+            </li>
+            <li>
+                <div><img src="http://localhost:59714/Scripts/MetroJs/images/all-new-htc-one-m8-wallpaper-6.jpg" alt="3" /></div>
+                <div>le</div>
+            </li>
+            <li data-direction="horizontal">
+                <div><img src="http://localhost:59714/Scripts/MetroJs/images/all-new-htc-one-m8-wallpaper-6.jpg" alt="4" /></div>
+                <div>sims team</div>
+            </li>
+        </ul>
+    </div>
+    <!-- Green Static Tile -->
+    <div class="live-tile accent green exclude">
+        <span class="tile-title">static tile</span>
+        <p>Static tiles can take advantage of theming too!</p>
+    </div>
+</div>
+
+
+
+
+
+<!-- Activate live tiles -->
+<script type="text/javascript">
+    // apply regular slide universally unless .exclude class is applied 
+    // NOTE: The default options for each liveTile are being pulled from the 'data-' attributes
+    $(".live-tile, .flip-list").not(".exclude").liveTile().click(function () {
+        
+
+         window.location = "@Url.Action("Index2", "NhanVienBHXH")" ;
+    }); ;
+ 
+
+</script>
+<script src="http://localhost:59714/Scripts/MetroJs/MetroJs.min.js" type="text/javascript"></script>
+<script src="http://localhost:59714/Scripts/MetroJs/MetroJs.js" type="text/javascript"></script>

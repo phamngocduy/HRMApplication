@@ -1,0 +1,740 @@
+﻿@model IEnumerable<HRM.Databases_HDLaoDong.Models.hdNLD>
+@using HRM.Webpages.Helpers
+@using HRM.Databases_HDLaoDong.Models;
+@using HRM.Databases.Models;
+
+@{
+    ViewBag.Title = "Index";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+
+    var HoVaTen = Convert.ToString(Request["HoVaTen"]);
+    var DonVi = Convert.ToString(Request["DonVi"]);
+    var LoaiHD = Convert.ToString(Request["LoaiHD"]);
+    var ThoiHanHD = Convert.ToString(Request["ThoiHanHD"]);
+    var NLDKy = Convert.ToString(Request["NLDKy"]);
+    var TrinhHT = Convert.ToString(Request["TrinhHT"]);
+    var HTKy = Convert.ToString(Request["HTKy"]);
+    var Luu = Convert.ToString(Request["Luu"]);
+    var Tra = Convert.ToString(Request["Tra"]);
+    var HDLDCuoi = Convert.ToString(Request["HDLDCuoi"]);
+    var HDHetHan = Convert.ToString(Request["HDHetHan"]);
+    var HDSapHetHan = Convert.ToString(Request["HDSapHetHan"]);
+
+    var NHLTuNgay = new Nullable<DateTime>();
+    DateTime date;
+    if (DateTime.TryParse(Request["NHLTuNgay"], out date))
+    {
+        NHLTuNgay = date;
+    }
+    var NHLDenNgay = new Nullable<DateTime>();
+    DateTime date1;
+    if (DateTime.TryParse(Request["NHLDenNgay"], out date1))
+    {
+        NHLDenNgay = date1;
+    }
+    var NHHLTuNgay = new Nullable<DateTime>();
+    DateTime date2;
+    if (DateTime.TryParse(Request["NHHLTuNgay"], out date2))
+    {
+        NHHLTuNgay = date2;
+    }
+    var NHHLDenNgay = new Nullable<DateTime>();
+    DateTime date3;
+    if (DateTime.TryParse(Request["NHHLDenNgay"], out date3))
+    {
+        NHHLDenNgay = date3;
+    }
+    
+    var dsHoTen = new List<String>();
+    foreach (var item in db.hdNLD.Where(ld => ld.hidden == false))
+    {
+        if (dsHoTen.Count() <= 0)
+        {
+            dsHoTen.Add(item.hdChiTietHDLDs.LastOrDefault().HotenNLD);
+        }
+        else{
+            bool kt = false;
+            for (int i = 0; i < dsHoTen.Count();i++)
+            {
+                if(item.hdChiTietHDLDs.LastOrDefault().HotenNLD == dsHoTen[i]){
+                    kt = true;
+                }
+            }
+            if(kt == false){
+                dsHoTen.Add(item.hdChiTietHDLDs.LastOrDefault().HotenNLD);
+            }
+        }
+        
+    }
+    var HoTen_id = new SelectList(dsHoTen,HoVaTen);
+
+    var DonVi_id = new SelectList(db0.dmDonVi.OrderBy(tt => tt.tenDonVi), "id", "tenDonVi", DonVi);
+
+    var dsLoaiHD = new List<String>();
+    dsLoaiHD.Add("Hợp đồng cơ hữu");
+    dsLoaiHD.Add("Thử việc");
+    dsLoaiHD.Add("Hợp đồng dài hạn");
+    var LoaiHD_id = new SelectList(dsLoaiHD,LoaiHD);
+
+    var dsNLDKy = new List<String>();
+    dsNLDKy.Add("Đã ký");
+    dsNLDKy.Add("Chưa ký");
+    var NLDKy_id = new SelectList(dsNLDKy,NLDKy);
+
+    var dsTrinhHT = new List<String>();
+    dsTrinhHT.Add("Đã trình");
+    dsTrinhHT.Add("Chưa trình");
+    var TrinhHT_id = new SelectList(dsTrinhHT,TrinhHT);
+
+    var dsHTKy = new List<String>();
+    dsHTKy.Add("Đã ký");
+    dsHTKy.Add("Chưa ký");
+    var HTKy_id = new SelectList(dsHTKy,HTKy);
+
+    var dsLuu = new List<String>();
+    dsLuu.Add("Đã lưu");
+    dsLuu.Add("Chưa lưu");
+    var Luu_id = new SelectList(dsLuu,Luu);
+
+    var dsTra = new List<String>();
+    dsTra.Add("Đã trả");
+    dsTra.Add("Chưa trả");
+    var Tra_id = new SelectList(dsTra,Tra);
+}
+@{
+    var TemptHDCuoi = new List<hdChiTietHDLD>();
+    foreach (var item in db.hdNLD.Where(ld =>ld.hidden == false))
+    {
+        TemptHDCuoi.Add(item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault());
+    }
+    var FiltedHDCuoi = db.hdChiTietHDLD.ToList();
+    if (HDLDCuoi == "on")
+    {
+        FiltedHDCuoi = TemptHDCuoi;
+    }
+
+    var FiltedHDQuaHanChuaXuLy = TemptHDCuoi.Where(hd => hd.hdNLD1.hidden == false);
+    if(HDHetHan == "on")
+    {
+        FiltedHDQuaHanChuaXuLy = FiltedHDQuaHanChuaXuLy.Where(ct => ct.NgayhetHL < DateTime.Today);
+    }
+
+    var FiltedHDSapHetHan = TemptHDCuoi.Where(hd => hd.hdNLD1.hidden == false);
+    if(HDSapHetHan == "on")
+    {
+        var hdchitiethdlds = new List<hdChiTietHDLD>();
+        foreach (var item in FiltedHDSapHetHan)
+        {
+            if (item.NgayhetHL != null)
+            {
+                System.TimeSpan diffDate = (DateTime)item.NgayhetHL - DateTime.Today;
+                if ((diffDate.Days <= db.hdCauHinh.FirstOrDefault().NgayHDTV && item.LoaiHD == "Thử việc") || (diffDate.Days <= db.hdCauHinh.FirstOrDefault().NgayHDCT && item.LoaiHD == "Hợp đồng dài hạn") || (diffDate.Days <= db.hdCauHinh.FirstOrDefault().NgayHDCT && item.LoaiHD == "Hợp đồng cơ hữu"))
+                {
+                    hdchitiethdlds.Add(item);
+                }
+            }
+        }
+        FiltedHDSapHetHan = hdchitiethdlds;
+    }
+
+    var tem = db.hdChiTietHDLD.ToList();
+    var FiltedHoVaTen = tem.Where(hd => hd.hdNLD1.hidden == false);
+    if (HDLDCuoi == "on") { FiltedHoVaTen = FiltedHDCuoi; }
+    if (HDHetHan == "on") { FiltedHoVaTen = FiltedHDQuaHanChuaXuLy; }
+    if (HDSapHetHan == "on") { FiltedHoVaTen = FiltedHDSapHetHan; }
+    if(HoVaTen != "")
+    {
+        FiltedHoVaTen = FiltedHoVaTen.Where(ct => ct.HotenNLD == HoVaTen);
+    }
+    int? intDonVi = null;
+    try{
+        intDonVi = int.Parse(DonVi);
+    }catch{
+    }
+    var FiltedDonVi = FiltedHoVaTen;
+    if (intDonVi != null)
+    {
+        FiltedDonVi = FiltedHoVaTen.Where(ct => ct.Donvi_id == intDonVi);
+    }
+    var FiltedLoaiHD = FiltedDonVi;
+    if(LoaiHD!=""){
+        FiltedLoaiHD = FiltedDonVi.Where(ct => ct.LoaiHD == LoaiHD);
+    }
+    var FiltedThoiHanHD = FiltedLoaiHD;
+    var FiltedNHL = FiltedThoiHanHD;
+    if(NHLTuNgay !=null){
+        FiltedNHL = FiltedThoiHanHD.Where(ct => ct.NgayHL >= NHLTuNgay && ct.NgayHL <= NHLDenNgay);
+    }
+    var FiltedNHHL = FiltedNHL;
+    if(NHHLTuNgay!=null){
+        FiltedNHHL = FiltedNHL.Where(ct => ct.NgayhetHL >= NHHLTuNgay && ct.NgayhetHL <= NHHLDenNgay); 
+    }
+    var FiltedNLDKy = FiltedNHHL;
+    if(NLDKy == "Đã ký"){
+        FiltedNLDKy = FiltedNHHL.Where(ct => ct.QT_NgayNLDky != null || (ct.QT_NLDky != null && ct.QT_NLDky != ""));
+    }else if(NLDKy == "Chưa ký"){
+        FiltedNLDKy = FiltedNHHL.Where(ct => ct.QT_NgayNLDky == null && (ct.QT_NLDky == null || ct.QT_NLDky == ""));
+    }
+    var FiltedTrinhHT = FiltedNLDKy;
+    if (TrinhHT == "Đã trình")
+    {
+        FiltedTrinhHT = FiltedNLDKy.Where(ct => ct.QT_NgayTrinhHT != null || (ct.QT_TrinhHT != null && ct.QT_TrinhHT != ""));
+    }
+    else if (NLDKy == "Chưa trình")
+    {
+        FiltedTrinhHT = FiltedNLDKy.Where(ct => ct.QT_NgayTrinhHT == null && (ct.QT_TrinhHT == null || ct.QT_TrinhHT == ""));
+    }
+    var FiltedHTKy = FiltedTrinhHT;
+    if (HTKy == "Đã ký")
+    {
+        FiltedHTKy = FiltedTrinhHT.Where(ct => ct.QT_NgayHTky != null || (ct.QT_HTky != null && ct.QT_HTky != ""));
+    }
+    else if (HTKy == "Chưa ký")
+    {
+        FiltedHTKy = FiltedTrinhHT.Where(ct => ct.QT_NgayHTky == null && (ct.QT_HTky == null && ct.QT_HTky == ""));
+    }
+    var FiltedLuu = FiltedHTKy;
+    if (Luu == "Đã lưu")
+    {
+        FiltedLuu = FiltedHTKy.Where(ct => ct.QT_NgayLuuHS != null || (ct.QT_LuuHS != null && ct.QT_LuuHS != ""));
+    }
+    else if (Luu == "Chưa lưu")
+    {
+        FiltedLuu = FiltedHTKy.Where(ct => ct.QT_NgayLuuHS == null && (ct.QT_LuuHS == null || ct.QT_LuuHS == ""));
+    }
+    var FiltedTra = FiltedLuu;
+    if (Tra == "Đã trả")
+    {
+        FiltedTra = FiltedLuu.Where(ct => ct.QT_NgayTraNLD != null || (ct.QT_TraNLD != null && ct.QT_TraNLD != ""));
+    }
+    else if (Tra == "Chưa trả")
+    {
+        FiltedTra = FiltedLuu.Where(ct => ct.QT_NgayTraNLD == null && (ct.QT_TraNLD == null || ct.QT_TraNLD == ""));
+    }
+    var cts = FiltedTra;
+}
+
+<div id="BaoCao" style="padding: 0; width:100%;font-size:medium">
+<p><b style="margin-left: 45%; font-size: large">Báo cáo</b></p>
+@Html.ActionLink("Quay lại", "Index", "HDNguoiLaoDong")
+    <h3 style="margin: 0">
+        <b style="font-size:medium">Điều kiện lọc báo cáo</b></h3>
+    <div style="padding: 0">
+        @using (Html.BeginForm("Index", "BaoCao", new { id = "Filter", }))
+        {
+        <p>
+        Họ và tên<span style="margin-left:20px"></span>
+        @Html.DropDownList("HoVaTen", HoTen_id,String.Empty, new { id = "HoVaTen", name = "HoVaTen"})
+        </p>
+        <p>
+        Đơn vị<span style="margin-left:40px"></span>
+        @Html.DropDownList("DonVi", DonVi_id,String.Empty, new { id = "DonVi", name = "DonVi"})
+        </p>
+        <p>
+        Loại HĐ<span style="margin-left:32px"></span>
+        @Html.DropDownList("LoaiHD", LoaiHD_id,String.Empty, new { id = "LoaiHD", name = "LoaiHD"})
+        </p>
+        <p>
+        Thời hạn HĐ
+        <select id="ThoiHanHD">
+            <option></option>
+            <option>30 ngày</option>
+        </select>
+        </p>
+        <p>
+        Ngày hiệu lực
+        <span style="margin-left:36px"></span>Từ ngày
+        @{var NHLTu = "";
+          var NHLDen = "";
+          try{
+              NHLTu = NHLTuNgay.Value.ToShortDateString();
+          }catch{}
+          try
+          {
+              NHLDen = NHLDenNgay.Value.ToShortDateString();
+          }
+          catch { }
+            }
+        <input id="NHLTuNgay" name = "NHLTuNgay" value = "@NHLTu" type="text" />
+        <span style="margin-left:10px"></span>Đến ngày
+        <input id="NHLDenNgay" name = "NHLDenNgay" value = "@NHLDen" type="text" />
+        </p>
+        <p>
+        Ngày hết hiệu lực
+        <span style="margin-left:10px"></span>Từ ngày
+        @{var NHHLTu = "";
+          var NHHLDen = "";
+          try{
+              NHHLTu = NHHLTuNgay.Value.ToShortDateString();
+          }catch{}
+          try
+          {
+              NHHLDen = NHHLDenNgay.Value.ToShortDateString();
+          }
+          catch { }
+            }
+        <input id="NHHLTuNgay" name = "NHHLTuNgay" value = "@NHHLTu" type="text" />
+        <span style="margin-left:10px"></span>Đến ngày
+        <input id="NHHLDenNgay" name = "NHHLDenNgay" value = "@NHHLDen" type="text" />
+        </p>
+        <p>
+        NLĐ ký<span style="margin-left:35px"></span>
+        @Html.DropDownList("NLDKy", NLDKy_id,String.Empty, new { id = "NLDKy",name = "NLDKy"})
+        </p>
+        <p>
+        Trình HT<span style="margin-left:27px"></span>
+        @Html.DropDownList("TrinhHT", TrinhHT_id, String.Empty, new { id = "TrinhHT", name = "TrinhHT" })
+        </p>
+        <p>
+        HT ký<span style="margin-left:47px"></span>
+        @Html.DropDownList("HTKy", HTKy_id, String.Empty, new { id = "HTKy", name = "HTKy" })
+        </p>
+        <p>
+        Lưu<span style="margin-left:60px"></span>
+        @Html.DropDownList("Luu", Luu_id, String.Empty, new { id = "Luu", name = "Luu" })
+        </p>
+        <p>
+        Trả<span style="margin-left:64px"></span>
+        @Html.DropDownList("Tra", Tra_id, String.Empty, new { id = "Tra", name = "Tra" })
+        </p>
+        <p>
+        @if(HDLDCuoi == null){ 
+        <input id="HDLDCuoi" name = "HDLDCuoi" type="checkbox" />
+        }else{
+            <input id="HDLDCuoi" name = "HDLDCuoi" checked = "true" type="checkbox" />
+        }HĐLĐ cuối
+        </p>
+        <p>
+        @if (HDHetHan == null)
+        { 
+        <input id="HDHetHan" name = "HDHetHan" type="checkbox" />
+        }
+        else{
+            <input id="HDHetHan" checked = "true" name = "HDHetHan" type="checkbox" />
+        }HĐ quá hạn chưa xử lý
+        </p>
+        <p>
+        @if (HDSapHetHan == null)
+        { 
+        <input id="HDSapHetHan" name = "HDSapHetHan" type="checkbox" />
+        }
+        else{
+            <input id="HDSapHetHan" checked = "true" name = "HDSapHetHan" type="checkbox" />
+        }HĐ sắp hết hạn
+        </p>
+            <input id="Submit1" type="submit" value="Lọc" style = "width:100px" />
+            if (cts.Count() <= 0)
+            {
+              <input id="btnCauHinh" type="button" disabled = "true" value="Xuất excel" />
+            }
+            else
+            {
+                var listXuatExcel = new List<hdChiTietHDLD>();
+                foreach (var item in cts)
+                {
+                    listXuatExcel.Add(item);
+                }
+                TempData["listXuatExcel"] = listXuatExcel;
+                <a href="@Url.Action("Index", "XuatExcel")">
+                    <input id="btnCauHinh" type="button" value="Xuất excel" /></a>
+            }
+        }
+    </div>
+
+</div>
+
+<div style="padding: 0; width:1000px;margin-left:-13%">
+<table id ="BaoCaoView">
+<thead>
+    <tr>
+        <th style="text-align:center" >
+            STT
+        </th>
+        <th style="text-align:center">
+            Họ và tên
+        </th>
+        <th style="text-align:center" >
+            Đơn<br />vị
+        </th>
+        <th style="text-align:center" >
+            Chức danh CM
+        </th>
+        <th style="text-align:center" >
+            Số HĐ
+        </th>
+        <th style="text-align:center" >
+            Loại HĐ
+        </th>
+        <th style="text-align:center" >
+            Thời hạn HĐ
+        </th>
+        <th style="text-align:center" >
+            Ngày hiệu<br />lực
+        </th>
+        <th style="text-align:center" >
+            Ngày hết<br />hiệu lực
+        </th>
+        <th style="text-align:center" >
+            Ngày NLĐ ký
+        </th>
+        <th style="text-align:center" >
+            Ngày trình HT
+        </th>
+        <th style="text-align:center" >
+            Ngày HT ký
+        </th>
+        <th style="text-align:center" >
+            Ngày lưu
+        </th>
+        <th style="text-align:center" >
+            Ngày trả
+        </th>
+        <th style="text-align:center" >
+            Lương cơ bản
+        </th>
+        <th style="text-align:center" >
+            Hệ số lương
+        </th>
+        <th style="text-align:center" >
+            Bậc 
+        </th>
+        <th style="text-align:center" >
+            Ngạch
+        </th>
+        <th style="text-align:center" >
+            Nhóm
+        </th>
+        <th style="text-align:center" >
+            Bảng lương
+        </th>
+    </tr>
+</thead>
+<tbody>
+@{int count = 0;}
+@foreach (var item in cts)
+{
+    count = count + 1;
+    <tr>
+    <td style="text-align:center">
+    @count
+    </td>
+    <td style="text-align:center"  >
+    @Html.DisplayFor(model => item.HotenNLD)
+    </td>
+    @{  string tenDonVi = "";
+        if (item.Donvi_id != null)
+        {
+            int? Donvi_id = item.Donvi_id;
+            tenDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).First().tenDonVi;
+        }
+    }
+    <td style="text-align: center" data-tip="@tenDonVi">
+    @{  string maDonVi = "";
+        if (item.Donvi_id != null)
+        {
+            int? Donvi_id = item.Donvi_id;
+            maDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).First().maDonVi;
+        }
+        @Html.DisplayFor(model => maDonVi)
+    }
+    </td>
+    <td style="text-align:center"  >
+    @{  string tenChucDanh = "";
+        if (item.Chucdanh_id != null)
+        {
+            int? ChucDanh_id = item.Chucdanh_id;
+            tenChucDanh = db0.dmChucDanhChuyenMon.Where(dv => dv.id == ChucDanh_id).First().tenChucDanhChuyenMon;
+        }
+        @Html.Raw(tenChucDanh)
+    }
+    </td>
+    <td style="text-align:center"  >
+        @Html.DisplayFor(model => item.SoHD)
+    </td>
+    <td style="text-align:center"  >
+        @Html.DisplayFor(model => item.LoaiHD)
+    </td>
+    <td style="text-align:center"  >
+        @{int THHD_id = item.ThoihanHD_id;
+          var tenThoiHan = db.dmThoiHanHD.Where(th => th.id == THHD_id).FirstOrDefault().tenThoiHanHD;}
+        @Html.DisplayFor(model => tenThoiHan)
+    </td>
+    <td style="text-align:center">
+        @item.NgayHL.ToShortDateString()
+    </td>
+    <td style="text-align:center">
+    @try
+    {
+        @item.NgayhetHL.Value.ToShortDateString()
+    }
+    catch
+    {@item.NgayhetHL }
+    </td>
+    <td style="text-align:center">
+        @if (item.QT_NgayNLDky == null)
+        {
+            @item.QT_NLDky
+        }
+        else
+        {
+            try
+            {@item.QT_NgayNLDky.Value.ToShortDateString()}
+            catch
+            {@item.QT_NgayNLDky }
+
+        }
+    </td>
+    <td style="text-align:center">
+        @if (item.QT_NgayTrinhHT == null)
+        {
+            @item.QT_TrinhHT
+        }
+        else
+        {
+            try
+            {@item.QT_NgayTrinhHT.Value.ToShortDateString()}
+            catch
+            { @item.QT_NgayTrinhHT}
+
+        }
+    </td>
+    <td style="text-align:center">
+        @if (item.QT_NgayHTky == null)
+        {
+            @item.QT_HTky
+        }
+        else
+        {
+            try
+            {@item.QT_NgayHTky.Value.ToShortDateString() }
+            catch
+            {@item.QT_NgayHTky }
+
+        }
+        
+    </td>
+    <td style="text-align:center">
+        @if (item.QT_NgayLuuHS == null)
+        {
+            @item.QT_LuuHS
+        }
+        else
+        {
+            try
+            {@item.QT_NgayLuuHS.Value.ToShortDateString() }
+            catch
+            {@item.QT_NgayLuuHS }
+
+        }
+    </td>
+    <td style="text-align:center">  
+        @if (item.QT_NgayTraNLD == null)
+        {
+            @item.QT_TraNLD
+        }
+        else
+        {
+            try
+            {@item.QT_NgayTraNLD.Value.ToShortDateString() }
+            catch
+            {@item.QT_NgayTraNLD }
+
+        }
+    </td>
+    <td style="text-align:center">
+        @item.Mucluongchinh
+    </td>
+    @{
+        double? HeSo = null;
+        var Bac = "";
+        var Ngach = "";
+        var Nhom = "";
+
+
+        int? nHSLuong_id = item.HSLuong_id;
+        int? nNgach_id = item.Ngach_id;
+        int? nNhom_id = item.Nhom_id;
+        try
+        {
+            HeSo = db0.dmBangLuong.Where(bl => bl.id == nHSLuong_id).FirstOrDefault().hesoLuong;
+        }
+        catch
+        {
+        }
+        try
+        {
+            Bac = db0.dmBangLuong.Where(bl => bl.id == nHSLuong_id).FirstOrDefault().bacLuong;
+        }
+        catch
+        {
+        }
+        try
+        {
+            Ngach = db0.dmNgachVienChuc.Where(bl => bl.id == nNgach_id).FirstOrDefault().tenNgachVienChuc;
+        }
+        catch
+        {
+        }
+        try
+        {
+            Nhom = db0.dmNhomNgachVienChuc.Where(bl => bl.id == nNhom_id).FirstOrDefault().tenNhomNgachVienChuc;
+        }
+        catch
+        {
+        }
+}
+    <td style="text-align:center">
+    @Html.Raw(HeSo)
+    </td>
+    <td style="text-align:center">
+    @Html.Raw(Bac)
+    </td>
+    <td style="text-align:center">
+    @Html.Raw(Ngach)
+    </td>
+    <td style="text-align:center">
+    @Html.Raw(Ngach)
+    </td>
+    <td style="text-align:center">
+    @item.Bangluong_id
+    </td>
+    </tr>
+}
+@if (cts.Count() == 0)
+{
+<tr>
+        <td colspan = 20 style = "text-align:center">Không có dữ liệu!</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+</tr>
+}
+</tbody>
+</table>
+</div>
+<style>
+    table
+    {
+        overflow: auto;
+        width: 100%;
+        display: block;
+    }
+    input
+    {
+        margin: 0 0 0 0;
+    }
+    td
+    {
+        padding: 0;
+    }
+    .ui-state-hover
+    {
+        font-weight: normal !important;
+    }
+</style>
+<style>
+    td
+    {
+        padding: 0 0 0 0;
+    }
+    input
+    {
+        margin: 0 0 0 0;
+        width: auto;
+    }
+</style>
+<script>
+    $().ready(function () {
+        var table$ = $("#BaoCaoView");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+    });
+</script>
+
+<style>
+    .ui-tabs .ui-tabs-nav li a
+    {
+        padding: .5em .5em;
+    }
+</style>
+
+<script>
+    $(function () {
+        $("#BaoCao").accordion({
+            header: "h3:not(.ignore)",
+            collapsible: true,
+            heightStyle: "content"
+        });
+    });
+</script>
+
+
+
+<script>
+    $("#HoVaTen").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#DonVi").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#LoaiHD").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#ThoiHanHD").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#NLDKy").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#TrinhHT").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#HTKy").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#Luu").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#Tra").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(function () {
+        $("[id=NHLTuNgay]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+        $("[id=NHLDenNgay]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+        $("[id=NHHLTuNgay]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+        $("[id=NHHLDenNgay]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+    });
+
+    $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+</script>
+

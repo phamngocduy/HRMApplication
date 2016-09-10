@@ -1,0 +1,82 @@
+﻿@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.QLBHXH.Models.dmLaiSuatTruyThu>
+<script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+@{
+    ViewBag.Title = "Danh mục lãi suất truy thu";
+}
+
+<h2>Danh mục lãi suất truy thu</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table id="LaiSuatTruyThu">
+<thead>
+    <tr>
+        <th nowrap>
+           STT
+        </th>
+        <th nowrap>
+            Ngày áp dụng
+        </th>
+        <th nowrap>
+            Ngày kết thúc
+        </th>
+        <th nowrap> 
+            BHXH
+        </th>
+        <th nowrap>
+            @Html.DisplayNameFor(model => model.BHYT)
+        </th>
+        <th nowrap>
+            @Html.DisplayNameFor(model => model.BHTN)
+        </th>
+
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    
+@foreach (var item in Model) {
+    <tr>
+            <td>
+            @Html.DisplayFor(modelItem => item.STT)
+        </td>
+        <td>
+            @item.NgayApDung.Value.ToShortDateString()
+        </td>
+        <td>
+            @item.NgayKetThuc.Value.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BHXH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BHYT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BHTN)
+        </td>
+
+        <td>
+<td align="right" nowrap>        
+            <a class="dialog" href="dmLaiSuatTruyThu/Edit?id=@item.id" title="Chỉnh sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+             <a class="dialog" href="dmLaiSuatTruyThu/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a> 
+        </td>
+        </td>>
+    </tr>
+}   
+</tbody>
+</table>
+
+
+<script>
+    $(document).ready(function () {
+        $("#LaiSuatTruyThu").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+  </script>

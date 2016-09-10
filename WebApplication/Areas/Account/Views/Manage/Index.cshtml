@@ -1,0 +1,32 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Accounts.Models.ManageViewModel
+@{
+    ViewBag.Title = "Quản lý Tài khoản";
+}
+
+@section featured {
+@if (HRM.Accounts.Filters.Membership.IsAdmin(User.Identity.Name)) {
+<section class="featured">
+    <div class="content-wrapper">
+        <form action="~/Account/Manage" id="manageForm" method="post">
+            <a href="javascript:document.getElementById('manageForm').submit()">Quản trị Người dùng hệ thống HRM</a>
+        </form>
+    </div>
+</section>
+}}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+@Html.StatusMessage()
+@Html.ValidationSummary()
+
+<section id="leftForm">
+    <p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+    @Html.Partial("ChangeUserNamePartial", Model.ChangeUserNameModel)
+</section>
+
+<section id="rightForm">
+    @Html.Partial("ChangePasswordPartial", Model.ChangePasswordModel)
+</section>

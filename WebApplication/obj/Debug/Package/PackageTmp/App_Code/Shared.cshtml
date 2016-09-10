@@ -1,0 +1,19 @@
+﻿@using System.Collections
+
+@functions {
+    public static Hashtable ALL() {
+        return HRM.Webpages.TinhCong.Shared.DanhSach;
+    }
+    public static Hashtable GET(int NV_id, string type) {
+        if (NV_id == 770) {
+            NV_id = Math.Abs(NV_id);
+        }
+        var DS = HRM.Webpages.TinhCong.Shared.DanhSach;
+        var TC = (DS[NV_id] ?? new Hashtable()) as Hashtable; DS[NV_id] = TC;
+        var HS = (TC[type] ?? new Hashtable()) as Hashtable; TC[type] = HS;
+        return HS;
+    }
+    public static void Clear() {
+        HRM.Webpages.TinhCong.Shared.DanhSach = null;
+    }
+}

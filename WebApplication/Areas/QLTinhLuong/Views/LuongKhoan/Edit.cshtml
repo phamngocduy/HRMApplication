@@ -1,0 +1,52 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "LuongKhoan";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvLuongKhoan where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+<dl id="@rand" class="dl-horizontal">
+@if (dr == null)
+{
+    <dt>Nhân viên</dt>
+    <dd>@Html.DropDownList("NV_id", new SelectList(db.dsNhanVien.Select(nv => new { id = nv.id, HoVaTen = nv.HoVaTen + " - " + nv.tenDonVi }), "id", "HoVaTen", null), String.Empty)</dd>
+}
+else
+{
+    @Html.Hidden("NV_id", dr["NV_id"])
+}
+    <dt>Thời gian</dt>
+    <dd>
+        @Html.Editor(dr, dt.Columns["BatDau"])
+        <span>-</span>
+        @Html.Editor(dr, dt.Columns["KetThuc"])
+    </dd>
+    <dt>Mức lương</dt>
+    <dd>@Html.Editor(dr, dt.Columns["SoTien"])</dd>
+    <dt>Ghi chú</dt>
+    <dd>@Html.Editor(dr, dt.Columns["GhiChu"])</dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text").css("width", "80px");
+    form.find("select").combobox();
+</script>

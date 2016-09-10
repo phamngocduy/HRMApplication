@@ -1,0 +1,17 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model dynamic
+@{
+    var db = ViewBag.db as HRMDBEntities;
+    var TinhThanh_id = ViewBag.TinhThanh_id as int?;
+    var QuanHuyen_id = ViewBag.QuanHuyen_id as int?;
+    var PhuongXa_id = ViewBag.PhuongXa_id as int?;
+    var dmPhuongXa = db.dmPhuongXa.Where(px => px.idQuanHuyen == QuanHuyen_id);
+    var dmQuanHuyen = db.dmQuanHuyen.Where(qh => qh.idTinhThanh == TinhThanh_id);
+    var dmTinhThanh = db.dmTinhThanh;
+    var rand = new Random().Next();
+}
+@Html.DropDownList(ViewBag.TinhThanh as string, new SelectList(dmTinhThanh, "id", "tenTinhThanh", TinhThanh_id), String.Empty)
+@Html.DropDownList(ViewBag.QuanHuyen as string, new SelectList(dmQuanHuyen, "id", "tenQuanHuyen", QuanHuyen_id), String.Empty)
+@Html.DropDownList(ViewBag.PhuongXa as string, new SelectList(dmPhuongXa, "id", "tenPhuongXa", PhuongXa_id), String.Empty)

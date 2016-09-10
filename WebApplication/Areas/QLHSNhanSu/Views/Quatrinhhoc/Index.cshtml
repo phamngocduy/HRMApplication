@@ -1,0 +1,52 @@
+﻿@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.Databases.Models.QuaTrinhHoc>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+@Html.ActionLink("Thêm bậc học", "Create", new { ViewBag.id }, null)
+</p>
+<table id="NhanVien1">
+   <thead>
+    <tr>
+        <th>@Html.VN("BacHoc")</th>
+        <th>@Html.VN("TruongHoc")</th>
+        <th>@Html.VN("NamBatDau")</th>
+        <th>@Html.VN("NamKetThuc")</th>
+        <th>@Html.VN("GhiChu")</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BacHoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TruongHoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamBatDau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamKetThuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $("#NhanVien1").dataTable();
+    });
+</script>

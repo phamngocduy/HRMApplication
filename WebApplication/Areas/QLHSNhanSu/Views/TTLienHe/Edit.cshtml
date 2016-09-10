@@ -1,0 +1,77 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Edit";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from NhanVien where id=@p0", Model);
+    var dr = dt.Rows[0];
+}
+
+@using (Html.BeginForm("Update", "TTLienHe"))
+{
+    @Html.Hidden("name", "NhanVien")
+    @Html.Hidden("id", dr["id"])
+<div style="overflow-x:auto">
+<table>
+    <tr>
+        <td>Điện thoại nhà riêng</td>
+        <td>@Html.Editor(dr, dt.Columns["ttlhDTNhaRieng"])</td>
+    </tr>
+    <tr>
+        <td>Điện thoại di động</td>
+        <td>@Html.Editor(dr, dt.Columns["ttlhDTDiDong"])</td>
+    </tr>
+    <tr>
+        <td>Địa chỉ Email trường</td>
+        <td>@Html.Editor(dr, dt.Columns["ttlhEmailTruong"])</td>
+    </tr>
+    <tr>
+        <td>Địa chỉ Email khác</td>
+        <td>@Html.Editor(dr, dt.Columns["ttlhEmailKhac"])</td>
+    </tr>
+    <tr>
+        <td>Địa chỉ tạm trú KT3</td>
+        @{
+            ViewBag.NV_id = Model;
+            ViewBag.Column = dt.Columns["ttlhDCTamTruKT3_id"];
+        }
+        <td colspan=2>@Html.Partial("DiaChiNha", dr[ViewData["Column"] as DataColumn])</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Cập nhật" />
+        </td>
+    </tr>
+</table>
+</div>
+}
+
+<div id="DiaChiNha" style="padding:0">
+<h3 style="margin:0">Địa chỉ nhà...</h3>
+<div style="padding:0">
+@Html.Action("IndexP", "DiaChiNha", new { NV_id = Model })
+</div>
+</div>
+
+<style>
+    input { width: auto; font-weight: bold }
+</style>
+
+<script>
+    $(function () {
+        $("td").attr("nowrap", true);
+        $("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).attr("size", $(this).val().length + 1);
+        });
+        $("#DiaChiNha").accordion({
+            active: 1,
+            collapsible: true,
+            heightStyle: "content"
+        });
+    });
+</script>

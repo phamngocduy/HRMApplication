@@ -1,0 +1,157 @@
+INFO 09:51:22 – Home/Index
+INFO 09:51:23 – Login/Index
+INFO 10:17:31 – Login/Index
+INFO 10:17:31 – Home/Index
+INFO 10:17:43 – HDNguoiLaoDong/Index
+INFO 10:18:07 – TuyenDung/Index
+INFO 10:24:34 – TuyenDung/XemTheoNam
+INFO 10:24:34 – TuyenDung/Index
+ERROR10:24:49 – Object reference not set to an instance of an object.
+/controller=TuyenDung/action=Index
+   at ASP._Page_Areas_TuyenDung_Views_TuyenDung_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\TuyenDung\Views\TuyenDung\Index.cshtml:line 349
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:29:11 – TuyenDung/Index
+INFO 10:29:32 – TuyenDung/XemTheoNam
+INFO 10:29:32 – TuyenDung/Index
+ERROR10:30:02 – Object reference not set to an instance of an object.
+/controller=TuyenDung/action=Index
+   at ASP._Page_Areas_TuyenDung_Views_TuyenDung_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\TuyenDung\Views\TuyenDung\Index.cshtml:line 542
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:31:07 – TuyenDung/Index
+INFO 10:31:55 – TuyenDung/XemTheoNam
+INFO 10:31:55 – TuyenDung/Index
+INFO 10:38:34 – TuyenDung/Index
+INFO 10:38:50 – TuyenDung/Index
+INFO 10:39:05 – TuyenDung/XemTheoNam
+INFO 10:39:06 – TuyenDung/Index
+INFO 10:41:36 – TuyenDung/XemTheoNam
+INFO 10:41:36 – TuyenDung/Index
+INFO 10:41:55 – TuyenDung/XemTheoNam
+INFO 10:41:55 – TuyenDung/Index
+INFO 10:43:20 – HDNguoiLaoDong/Index
+INFO 10:44:50 – QTKyHDTungNguoi/Index&NLD_id=640
+INFO 10:45:06 – ThemMoiHD/Details_HDThuViec
+INFO 10:45:20 – ThemMoiPLHD/Create_PLHDSo2&HD_id=606
+ERROR10:45:21 – Object reference not set to an instance of an object.
+/controller=ThemMoiPLHD/action=Create_PLHDSo2
+   at ASP._Page_Areas_HDLaoDong_Views_ThemMoiPLHD_Create_PLHDSo2_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\ThemMoiPLHD\Create_PLHDSo2.cshtml:line 10
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:49:53 – ThemMoiPLHD/Create_PLHDSo2&HD_id=606
+ERROR10:49:57 – Index was outside the bounds of the array.
+/controller=ThemMoiPLHD/action=Create_PLHDSo2
+   at ASP._Page_Areas_HDLaoDong_Views_ThemMoiPLHD_Create_PLHDSo2_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\ThemMoiPLHD\Create_PLHDSo2.cshtml:line 12
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:51:30 – ThemMoiPLHD/Create_PLHDSo2&HD_id=606
+INFO 10:52:28 – ThemMoiPLHD/Create_PLHDSo2&HD_id=606
+INFO 10:52:57 – ThemMoiPLHD/Create_PLHDSo2&HD_id=606
+INFO 10:52:57 – ThemMoiPLHD/Details_PLHDSo2
+INFO 10:53:03 – CreateWordHD/Details_PL2
+INFO 10:53:26 – HDNguoiLaoDong/Index
+INFO 10:53:33 – DSNLDCanTaoHD/Index
+INFO 10:54:20 – TuyenDung/Index
+INFO 10:54:29 – TuyenDung/Create&UV_id=-1
+INFO 10:54:30 – ThongTinChung/Create&UV_id=-1
+INFO 10:55:06 – ThongTinChung/Create&UV_id=-1&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=79&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 10:55:06 – TuyenDung/Create&UV_id=371
+INFO 10:55:06 – ThongTinBangCap/Create&UV_id=371
+INFO 10:55:22 – TuyenDung/Create&UV_id=371
+INFO 10:55:22 – ThongTinLienHe/Create&UV_id=371
+INFO 10:55:39 – ThongTinLienHe/Create&UngVien_id=371&id=948&DTDiDong1=&DTDiDong2=&hkPhuongXa_id=&hkQuanHuyen_id=&hkTinhThanh_id=&llPhuongXa_id=&llQuanHuyen_id=&llTinhThanh_id=
+INFO 10:55:39 – TuyenDung/Create&UV_id=371
+INFO 10:55:39 – ThongTinUngTuyen/Create&UV_id=371
+INFO 10:55:54 – ThongTinUngTuyen/Create&UngVien_id=371&id=358&ViTriUngTuyen_id=32&DonViUngTuyen_id=50
+INFO 10:55:54 – TuyenDung/Index
+INFO 10:56:07 – TuyenDung/Index
+INFO 10:56:22 – QLLichHen/Index
+INFO 10:56:43 – QLLichHen/Edit&id=&DonViPhongVan_id=50&UngCuVien_id=371
+INFO 10:56:43 – QLLichHen/Index
+INFO 10:57:11 – TuyenDung/Index
+INFO 10:57:31 – TuyenDung/Index
+INFO 10:57:37 – TuyenDung/Index
+INFO 10:57:50 – TuyenDung/Index
+INFO 10:58:20 – TuyenDung/Index
+INFO 10:58:30 – TuyenDung/Create&UV_id=-1
+INFO 10:58:30 – ThongTinChung/Create&UV_id=-1
+INFO 10:58:50 – ThongTinChung/Create&UV_id=-1&GioiTinh_id=1&TinhThanh_id=&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 10:58:51 – TuyenDung/Create&UV_id=372
+INFO 10:58:51 – ThongTinBangCap/Create&UV_id=372
+INFO 10:59:03 – TuyenDung/Create&UV_id=372
+INFO 10:59:03 – ThongTinLienHe/Create&UV_id=372
+INFO 10:59:13 – ThongTinLienHe/Create&UngVien_id=372&id=949&DTDiDong1=&DTDiDong2=&hkPhuongXa_id=&hkQuanHuyen_id=&hkTinhThanh_id=&llPhuongXa_id=&llQuanHuyen_id=&llTinhThanh_id=
+INFO 10:59:13 – TuyenDung/Create&UV_id=372
+INFO 10:59:13 – ThongTinUngTuyen/Create&UV_id=372
+INFO 10:59:27 – ThongTinUngTuyen/Create&UngVien_id=372&id=359&ViTriUngTuyen_id=35&DonViUngTuyen_id=2
+INFO 10:59:28 – TuyenDung/Index
+INFO 10:59:47 – TuyenDung/Index

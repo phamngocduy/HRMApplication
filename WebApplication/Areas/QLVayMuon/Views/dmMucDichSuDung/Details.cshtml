@@ -1,0 +1,65 @@
+﻿@*model HRM.Databases.Models.dmMucDichSuDung
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>dmMucDichSuDung</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MaMucDich)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaMucDich)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenMucDich)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenMucDich)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HanMucToiDa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HanMucToiDa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ThoiGianHoanTien)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThoiGianHoanTien)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DonViThoiGian)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DonViThoiGian)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.stt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.stt)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+*@

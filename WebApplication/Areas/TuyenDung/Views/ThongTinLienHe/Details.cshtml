@@ -1,0 +1,110 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdThongTinLienHe
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+<hr />
+Thông tin liên hệ
+<hr />
+<p>
+    @Html.Raw("ĐT di động 1")
+    <input id="DTDiDong1" type="text" style="width:200px" readonly value = "@Html.DisplayFor(model => model.DTDiDong1)"/>
+    <span style="margin-left:50px"></span>
+    @Html.Raw("Email")
+    <input id="Email" type="text" style="width:340px" readonly value="@Html.DisplayFor(model => model.Email)"/>
+</p>
+<p>
+    @Html.Raw("ĐT di động 2")
+    <input id="DTDiDong2" type="text" style="width:200px" readonly value="@Html.DisplayFor(model => model.DTDiDong2)"/>
+</p>
+<p>
+    @Html.Raw("ĐT nhà")
+    <span style="margin-left:40px"></span>
+    <input id="DTNha" type="text" style="width:200px" readonly value="@Html.DisplayFor(model => model.DTNha)"/>
+</p>
+<hr />
+Hộ khẩu thường trú
+<hr />
+<p>
+    @Html.Raw("Địa chỉ")
+    <span style="margin-left:14px"></span>
+    @try
+        {
+            <input id="hkttTenDuong" type="text" style="width:200px" readonly value="@Model.tdHoKhauThuongTrus.Single().hkTenDuong" />
+        }
+        catch
+        {
+            <input id="hkttTenDuong" type="text" style="width:200px" readonly />
+        }
+        @try
+        {
+            //<input id="hkttPhuongXa" type="text" style="width:150px" readonly value="@Model.tdHoKhauThuongTrus.Single().dmPhuongXa.tenPhuongXa"/>
+        }
+        catch
+        {
+            <input id="hkttPhuongXa" type="text" style="width:150px" readonly />
+        }
+        @try
+        {
+            //<input id="hkttQuanHuyen" type="text" style="width:150px" readonly value="@Model.tdHoKhauThuongTrus.Single().dmQuanHuyen.tenQuanHuyen"/>
+        }
+        catch
+        {
+            <input id="hkttQuanHuyen" type="text" style="width:150px" readonly />
+        }
+        @try
+        {
+            //<input id="hkttTinhThanh" type="text" style="width:150px" readonly value="@Model.tdHoKhauThuongTrus.Single().dmTinhThanh.tenTinhThanh"/>
+        }
+        catch
+        {
+            <input id="hkttTinhThanh" type="text" style="width:150px" readonly/>
+        }
+</p>
+<hr />
+Địa chỉ liên lạc
+<hr />
+<p>
+    @Html.Raw("Địa chỉ")
+    <span style="margin-left:14px"></span>
+        @try
+        {
+            <input id="dcllTenDuong" type="text" style="width:200px" readonly value="@Model.tdDiaChiLienLacs.Single().llTenDuong"/>
+        }
+        catch
+        {
+            <input id="dcllTenDuong" type="text" style="width:200px" readonly />
+        }
+        @try
+        {
+            //<input id="dcllPhuongXa" type="text" style="width:150px" readonly value="@Model.tdDiaChiLienLacs.Single().dmPhuongXa.tenPhuongXa"/>
+        }
+        catch
+        {
+            <input id="dcllPhuongXa" type="text" style="width:150px" readonly />
+        }
+        @try
+        {
+            //<input id="dcllQuanHuyen" type="text" style="width:150px" readonly value="@Model.tdDiaChiLienLacs.Single().dmQuanHuyen.tenQuanHuyen"/>
+        }
+        catch
+        {
+            <input id="dcllQuanHuyen" type="text" style="width:150px" readonly />
+        }
+        @try
+        {
+            //<input id="dcllTinhThanh" type="text" style="width:150px" readonly value="@Model.tdDiaChiLienLacs.Single().dmTinhThanh.tenTinhThanh"/>
+        }
+        catch
+        {
+            <input id="dcllTinhThanh" type="text" style="width:150px" readonly/>
+        }
+</p>
+
+<p style="margin-left:670px">
+    <a href="@Url.Action("Details", "TuyenDung", new { tab = "ThongTinLienHe", nat = "Edit", id = ViewBag.UngVien_id })">
+    <input id="Sua" type="button" value="Sửa" style="width:80px"  />
+    </a>
+</p>

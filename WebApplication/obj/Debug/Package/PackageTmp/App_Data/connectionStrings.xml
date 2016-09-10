@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<connectionStrings>
+  <add name="AuthConnecti0n" connectionString="Data Source=.\ABU;AttachDbFilename=|DataDirectory|Login.mdf;Integrated Security=True;Connect Timeout=10;User Instance=True;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDBEntitie5" connectionString="Data Source=.\ABU;AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security=True;Connect Timeout=10;User Instance=True;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+
+  <add name="AuthConnection" connectionString="Data Source=.\ABU;Initial Catalog=HRMAUTH;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDBEntities" connectionString="Data Source=.\ABU;Initial Catalog=187;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB0Entities" connectionString="Data Source=cmu.vanlanguni.edu.vn;Initial Catalog=HRMTTNS0;Persist Security Info=True;User ID=hrmadmin;Password=12345678;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB1Entities" connectionString="Data Source=cmu.vanlanguni.edu.vn;Initial Catalog=HRMTTNS1;Persist Security Info=True;User ID=hrmadmin;Password=12345678;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB2Entities" connectionString="Data Source=cmu.vanlanguni.edu.vn;Initial Catalog=HRMTTNS2;Persist Security Info=True;User ID=hrmadmin;Password=12345678;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+<!--
+  <add name="AuthConnection" connectionString="Data Source=.\ABU;Initial Catalog=hrmAUTH;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDBEntities" connectionString="Data Source=.\ABU;Initial Catalog=hrmTTNS;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB0Entities" connectionString="Data Source=.\ABU;Initial Catalog=hrmTTNS0;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB1Entities" connectionString="Data Source=.\ABU;Initial Catalog=hrmTTNS1;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB2Entities" connectionString="Data Source=.\ABU;Initial Catalog=hrmTTNS2;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+
+  <add name="AuthConnection" connectionString="Data Source=cmu.vanlanguni.edu.vn;Initial Catalog=HRMAUTH;Persist Security Info=True;User ID=hrmadmin;Password=12345678;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDBEntities" connectionString="Data Source=.\ABU;Initial Catalog=hrmTTNS;Persist Security Info=True;User ID=sa;Password=12345;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB1Entities" connectionString="Data Source=cmu.vanlanguni.edu.vn;Initial Catalog=HRMTTNS1;Persist Security Info=True;User ID=hrmadmin;Password=12345678;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+  <add name="HRMDB2Entities" connectionString="Data Source=cmu.vanlanguni.edu.vn;Initial Catalog=HRMTTNS2;Persist Security Info=True;User ID=hrmadmin;Password=12345678;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+-->
+</connectionStrings>

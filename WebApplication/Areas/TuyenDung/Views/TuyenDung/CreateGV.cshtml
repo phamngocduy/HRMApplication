@@ -1,0 +1,44 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Create";
+    var db0 = new HRMDBEntities();
+    var maNV = db0.SqlQuery("select top 1 MaNV from NhanVien order by id desc");
+    var NhanVien = new HRM.Databases.Models.NhanVien();
+}
+@Html.BeginDiv()
+
+<h2>Thêm hồ sơ nhân viên</h2>
+<br />
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.Hidden("UV_id", Model)
+    <fieldset>
+        <legend>NhanVien</legend>
+        <div>Mã nhân viên hiện tại là @maNV.Rows[0][0]</div>
+
+        <div class="editor-label">
+            @Html.LabelForVN(model => NhanVien.MaHS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => NhanVien.MaHS)
+            @Html.ValidationMessageFor(model => NhanVien.MaHS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelForVN(model => NhanVien.MaNV)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => NhanVien.MaNV)
+            @Html.ValidationMessageFor(model => NhanVien.MaNV)
+        </div>
+
+        <p>
+            <input type="submit" value="Thêm mới" />
+            <a title="Close" class="close" href="@Url.Action("Index")">Hủy</a>
+        </p>
+    </fieldset>
+}
+
+@Html.EndDiv()

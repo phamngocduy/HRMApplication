@@ -1,0 +1,307 @@
+INFO 10:44:05 – Home/Index
+INFO 10:44:07 – Login/Index
+INFO 10:50:46 – Login/Index
+INFO 10:50:46 – Home/Index
+INFO 10:50:53 – TinhCong/Index
+INFO 10:51:07 – TinhCong/DieuChinh2
+INFO 10:51:17 – TinhCong/DC_EditP2&id=25
+INFO 10:51:26 – TinhCong/CongThuc2
+INFO 10:51:33 – TinhCong/Details&NV_id=32
+INFO 10:52:05 – TinhCong/DC_EditP2&id=25
+INFO 10:52:08 – TinhCong/DC_UpdateS2&id=25
+INFO 10:52:08 – TinhCong/DieuChinh2
+INFO 10:54:32 – TinhCong/DC_EditP2&id=25
+INFO 10:54:39 – TinhCong/DC_UpdateS2&id=25
+INFO 10:54:39 – TinhCong/DieuChinh2
+INFO 10:54:51 – TinhCong/DieuChinh
+INFO 10:54:55 – TinhCong/DC_EditP&id=46
+INFO 10:54:57 – TinhCong/DC_UpdateS&id=46
+INFO 10:54:57 – TinhCong/DieuChinh
+INFO 10:55:02 – TinhCong/DieuChinh2
+INFO 10:55:04 – TinhCong/DC_EditP2&id=25
+INFO 10:55:06 – TinhCong/DC_UpdateS2&id=25
+INFO 10:55:07 – TinhCong/DieuChinh2
+INFO 10:55:12 – TinhCong/DC_EditP&id=46
+INFO 10:55:15 – TinhCong/DC_UpdateS&id=46
+INFO 10:55:15 – TinhCong/DieuChinh
+INFO 10:55:17 – TinhCong/DC_EditP
+INFO 10:55:25 – TinhCong/DC_EditP2
+INFO 10:55:37 – TinhCong/DC_CreateS2&id=&NV_id=422
+INFO 10:55:38 – TinhCong/DieuChinh2
+INFO 10:55:50 – TinhCong/DieuChinh
+INFO 10:56:01 – TinhCong/DC_DeleteS2&id=70
+INFO 10:56:01 – TinhCong/DieuChinh2
+INFO 10:56:03 – TinhCong/DieuChinh2
+INFO 10:56:20 – TinhCong/TuDien
+INFO 10:56:55 – TinhCong/Index
+INFO 10:57:02 – TinhCong/TuDien2
+INFO 10:58:01 – TinhCong/TuDien2
+INFO 10:58:09 – TinhCong/TuDien
+INFO 10:58:11 – TinhCong/TuDien2
+INFO 10:58:22 – TinhCong/TuDien
+INFO 10:58:26 – TinhCong/TuDien
+INFO 10:59:23 – TinhCong/TuDien2
+INFO 10:59:30 – TinhCong/TuDien2
+INFO 10:59:31 – TinhCong/TuDien2
+INFO 10:59:34 – TinhCong/TuDien
+INFO 10:59:41 – TinhCong/TuDien2
+INFO 10:59:43 – TinhCong/TuDien2
+INFO 10:59:45 – TinhCong/TuDien2
+INFO 10:59:48 – TinhCong/TuDien
+INFO 10:59:55 – TinhCong/TuDien2
+INFO 10:59:57 – TinhCong/TuDien2
+INFO 10:59:59 – TinhCong/TuDien2
+INFO 11:00:09 – TinhCong/CongThuc2
+INFO 11:00:12 – TinhCong/Details&NV_id=60
+INFO 11:11:39 – TinhCong/Details&NV_id=60
+INFO 11:13:39 – TinhCong/Details&NV_id=60
+INFO 11:14:12 – TinhCong/Details&NV_id=60
+INFO 11:35:40 – TinhCong/Details&NV_id=60
+INFO 11:38:24 – TinhCong/Details&NV_id=60
+ERROR11:38:27 – Value cannot be null.
+Parameter name: values
+/controller=TinhCong/action=Details
+   at System.String.Join(String separator, IEnumerable`1 values)
+   at ASP.TinhThuong.<>c__DisplayClass3d.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhThuong.cshtml:line 552
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at CallSite.Target(Closure , CallSite , _Page_Views_TinhCong_Details_cshtml , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at ASP._Page_Views_TinhCong_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Details.cshtml:line 16
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:39:28 – Home/Index
+INFO 11:39:29 – Login/Index
+INFO 11:39:53 – Login/Index
+INFO 11:39:53 – Home/Index
+INFO 11:40:01 – TinhCong/Details&NV_id=60
+ERROR11:40:14 – Value cannot be null.
+Parameter name: values
+/controller=TinhCong/action=Details
+   at System.String.Join(String separator, IEnumerable`1 values)
+   at ASP.TinhThuong.<>c__DisplayClass3d.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhThuong.cshtml:line 552
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at CallSite.Target(Closure , CallSite , _Page_Views_TinhCong_Details_cshtml , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at ASP._Page_Views_TinhCong_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Details.cshtml:line 16
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:40:40 – TinhCong/Details&NV_id=60
+ERROR11:41:01 – Value cannot be null.
+Parameter name: values
+/controller=TinhCong/action=Details
+   at System.String.Join(String separator, IEnumerable`1 values)
+   at ASP.TinhThuong.<>c__DisplayClass3d.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhThuong.cshtml:line 552
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at CallSite.Target(Closure , CallSite , _Page_Views_TinhCong_Details_cshtml , Object )
+   at ASP._Page_Views_TinhCong_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Details.cshtml:line 16
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:41:03 – TinhCong/Details&NV_id=60
+ERROR11:41:28 – Value cannot be null.
+Parameter name: values
+/controller=TinhCong/action=Details
+   at System.String.Join(String separator, IEnumerable`1 values)
+   at ASP.TinhThuong.<>c__DisplayClass3d.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhThuong.cshtml:line 552
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at CallSite.Target(Closure , CallSite , _Page_Views_TinhCong_Details_cshtml , Object )
+   at ASP._Page_Views_TinhCong_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Details.cshtml:line 16
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:41:47 – TinhCong/Details&NV_id=60
+INFO 11:42:10 – TinhCong/Details&NV_id=422
+INFO 11:43:57 – TinhCong/Details&NV_id=60
+INFO 11:49:37 – TinhCong/Details&NV_id=60
+INFO 12:49:24 – TinhCong/Details&NV_id=60
+INFO 12:50:44 – TinhCong/Details&NV_id=60
+INFO 12:51:43 – TinhCong/Details&NV_id=60
+INFO 12:52:29 – TinhCong/CongThuc2
+ERROR12:52:30 – Parameter was not defined
+Parameter name: PL
+/controller=TinhCong/action=CongThuc2
+/CongThuc=H*PL/BatDau=01/09/2012/KetThuc=31/08/2015
+   at NCalc.Domain.EvaluationVisitor.Visit(Identifier parameter) in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 662
+   at NCalc.Domain.Identifier.Accept(LogicalExpressionVisitor visitor) in C:\Workspace\HRMApplication\HRMLibraries\Domain\Parameter.cs:line 15
+   at NCalc.Domain.EvaluationVisitor.<>c__DisplayClass2.<Visit>b__1() in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 105
+   at NCalc.Domain.EvaluationVisitor.Visit(BinaryExpression expression) in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 178
+   at NCalc.Domain.BinaryExpression.Accept(LogicalExpressionVisitor visitor) in C:\Workspace\HRMApplication\HRMLibraries\Domain\BinaryExpression.cs:line 20
+   at NCalc.Expression.Evaluate() in C:\Workspace\HRMApplication\HRMLibraries\Expression.cs:line 270
+   at ASP.TinhDiem.<>c__DisplayClass4a.<dTongDiem>b__49(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 324
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.HelperPage.WriteTo(TextWriter writer, HelperResult value)
+   at ASP.TinhCong.<>c__DisplayClass3f.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 548
+   at System.Web.WebPages.HelperResult.ToString()
+   at System.Web.Mvc.HtmlHelper.Raw(Object value)
+   at CallSite.Target(Closure , CallSite , HtmlHelper`1 , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at ASP._Page_Views_TinhCong_CongThuc2_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\CongThuc2.cshtml:line 50
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:53:56 – TinhCong/CongThuc2
+INFO 12:54:03 – TinhCong/CongThuc2
+ERROR12:54:03 – Parameter was not defined
+Parameter name: PL
+/controller=TinhCong/action=CongThuc2
+/CongThuc=H*PL/BatDau=01/09/2012/KetThuc=31/08/2015
+   at NCalc.Domain.EvaluationVisitor.Visit(Identifier parameter) in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 662
+   at NCalc.Domain.Identifier.Accept(LogicalExpressionVisitor visitor) in C:\Workspace\HRMApplication\HRMLibraries\Domain\Parameter.cs:line 15
+   at NCalc.Domain.EvaluationVisitor.<>c__DisplayClass2.<Visit>b__1() in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 105
+   at NCalc.Domain.EvaluationVisitor.Visit(BinaryExpression expression) in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 178
+   at NCalc.Domain.BinaryExpression.Accept(LogicalExpressionVisitor visitor) in C:\Workspace\HRMApplication\HRMLibraries\Domain\BinaryExpression.cs:line 20
+   at NCalc.Expression.Evaluate() in C:\Workspace\HRMApplication\HRMLibraries\Expression.cs:line 270
+   at ASP.TinhDiem.<>c__DisplayClass4a.<dTongDiem>b__49(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 324
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.HelperPage.WriteTo(TextWriter writer, HelperResult value)
+   at ASP.TinhCong.<>c__DisplayClass3f.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 548
+   at System.Web.WebPages.HelperResult.ToString()
+   at System.Web.Mvc.HtmlHelper.Raw(Object value)
+   at CallSite.Target(Closure , CallSite , HtmlHelper`1 , Object )
+   at ASP._Page_Views_TinhCong_CongThuc2_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\CongThuc2.cshtml:line 50
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:54:22 – TinhCong/CongThuc2
+ERROR12:54:50 – Parameter was not defined
+Parameter name: PL
+/controller=TinhCong/action=CongThuc2
+/CongThuc=H*PL/BatDau=01/09/2012/KetThuc=31/08/2015
+   at NCalc.Domain.EvaluationVisitor.Visit(Identifier parameter) in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 662
+   at NCalc.Domain.Identifier.Accept(LogicalExpressionVisitor visitor) in C:\Workspace\HRMApplication\HRMLibraries\Domain\Parameter.cs:line 15
+   at NCalc.Domain.EvaluationVisitor.<>c__DisplayClass2.<Visit>b__1() in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 105
+   at NCalc.Domain.EvaluationVisitor.Visit(BinaryExpression expression) in C:\Workspace\HRMApplication\HRMLibraries\Domain\EvaluationVisitor.cs:line 178
+   at NCalc.Domain.BinaryExpression.Accept(LogicalExpressionVisitor visitor) in C:\Workspace\HRMApplication\HRMLibraries\Domain\BinaryExpression.cs:line 20
+   at NCalc.Expression.Evaluate() in C:\Workspace\HRMApplication\HRMLibraries\Expression.cs:line 270
+   at ASP.TinhDiem.<>c__DisplayClass4a.<dTongDiem>b__49(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 324
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.HelperPage.WriteTo(TextWriter writer, HelperResult value)
+   at ASP.TinhCong.<>c__DisplayClass3f.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 548
+   at System.Web.WebPages.HelperResult.ToString()
+   at System.Web.Mvc.HtmlHelper.Raw(Object value)
+   at CallSite.Target(Closure , CallSite , HtmlHelper`1 , Object )
+   at ASP._Page_Views_TinhCong_CongThuc2_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\CongThuc2.cshtml:line 50
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:55:17 – TinhCong/CongThuc2
+INFO 12:56:22 – TinhCong/Details&NV_id=422
+INFO 12:56:23 – TinhCong/Details&NV_id=423

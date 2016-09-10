@@ -1,0 +1,128 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@{
+    ViewBag.Title = "Index";
+    var db = ViewBag.db as HRMDBEntities;
+    var query = "select * from dsQLTapSu ";
+    query += (bool)ViewBag.All ? null : "where ThoiGianKetThuc is null";
+    var dt = db.SqlQuery(query + ((bool)ViewBag.All ? " order by maDonVi, HoVaTen" : " order by ThoiGianDenHan"));
+    var rand = new Random().Next();
+    var no = db.SqlQuery(@"select nvQTLamViec.*, nvSoYeuLyLich.HoVaTen from nvQTLamViec
+    left join dmChucDanhChuyenMon on nvQTLamViec.ChucDanhChuyenMon_id = dmChucDanhChuyenMon.id
+    left join nvQLTapSu on nvQTLamViec.id = nvQLTapSu.CT_id
+    left join nvSoYeuLyLich on nvQTLamViec.NV_id = nvSoYeuLyLich.NV_id
+    where nvQTLamViec.ThoiGianKetThuc is null and dmChucDanhChuyenMon.qlTapSu = 1 and nvQLTapSu.id is null");
+}
+
+<p class="ui-state-highlight">
+    Danh sách giảng viên tập sự trường ĐHDL Văn Lang
+    <span style="float:right">
+        <span>Hiển thị tất cả</span>
+        @Html.CheckBox("All")
+    </span>
+</p>
+
+@if (no.Rows.Count > 0)
+{
+    <p class="ui-state-error">
+    <span>Có @no.Rows.Count giảng viên chưa quản lý tập sự: </span>
+    @foreach (DataRow nr in no.Rows)
+    {
+        <span>@Html.ActionLink(nr["HoVaTen"] as string ?? "Noname!", "Details", "HSNhanSu", new { id = nr["NV_id"], tab = "QTLamViec" }, new { target = "_blank" }) </span>
+    }
+    </p>
+}
+
+<table id="@rand" class="table table-bordered table-hover">
+<thead class="ui-widget-header">
+    <tr>
+        <th nowrap>Họ và tên</th>
+        <th nowrap>Đơn vị</th>
+        <th style="text-align:center" nowrap>Thời gian<br />tuyển dụng</th>
+        <th style="text-align:center" nowrap data-tip="Chức danh chuyên môn">CD<br />CM</th>
+        <th style="text-align:center" nowrap>Thời gian<br />bắt đầu</th>
+        <th style="text-align:center" nowrap>Thời gian<br />đến hạn</th>
+        <th style="text-align:center" nowrap>Thời gian<br />kết thúc</th>
+        <th style="text-align:center" nowrap data-tip="Tháng làm việc">T</th>
+        <th style="text-align:center" nowrap>Ngày<br />thông báo</th>
+        <th style="text-align:center" nowrap>Ngày nhận<br />hồ sơ</th>
+        <th style="text-align:center" nowrap>Ngày lập<br />tờ trình</th>
+        <!--
+        <th title="Bồi dưỡng nghiệp vụ sư phạm" nowrap>BDNVSP</th>
+        <th title="Lý luận dạy học đại học" nowrap>LLDHĐH</th>
+        -->
+        <th nowrap></th>
+    </tr>
+</thead>
+<tbody class="ui-widget-content">
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr id="@dr["NV_id"]">
+        <td>
+            @Html.ActionLink(dr["HoVaTen"] as string, "Details", "HSNhanSu", new { id = dr["NV_id"], tab = "QTLamViec" }, new { target = "_blank" })
+        </td>
+        <td>
+            <mark data-tip="@dr["tenDonVi"]">@dr["maDonVi"]</mark>
+        </td>
+        <td>
+            @(dr["NgayTuyenDung"] is DBNull ? null : (dr["NgayTuyenDung"] as DateTime?).Value.ToShortDateString())
+        </td>
+        <td>
+            <mark data-tip="@dr["tenChucDanhChuyenMon"]">@dr["maChucDanhChuyenMon"]</mark>
+        </td>
+        <td>
+            @(((DateTime)dr["ThoiGianBatDau"]).ToShortDateString())
+        </td>
+        <td>
+            <b>@(dr["ThoiGianDenHan"] is DBNull ? null : (dr["ThoiGianDenHan"] as DateTime?).Value.ToShortDateString())</b>
+        </td>
+        <td>
+            <b>@(dr["ThoiGianKetThuc"] is DBNull ? null : (dr["ThoiGianKetThuc"] as DateTime?).Value.ToShortDateString())</b>
+        </td>
+        <td>
+        @{ var ThoiGianBatDau = (DateTime)dr["ThoiGianBatDau"]; var ThoiGianKetThuc = dr["ThoiGianKetThuc"] as DateTime?; }
+            <mark><sup data-tip="@TinhThamNien.Ti1nh(ThoiGianBatDau, ThoiGianKetThuc)">@(ThoiGianKetThuc.HasValue ? (int)((ThoiGianKetThuc.Value - ThoiGianBatDau).Days / (365.25 / 12) + 0.5) : (int)((DateTime.Now - ThoiGianBatDau).Days / (365.25 / 12) + 0.5))</sup></mark>
+        </td>
+        <td>
+            @dr["NgayThongBao"]
+        </td>
+        <td>
+            @dr["NgayNhanHoSo"]
+        </td>
+        <td>
+            @dr["NgayLapToTrinh"]
+        </td>
+        <td>
+            <button class="select" style="width:16px"></button>
+            <ul style="z-index:1000">
+                <li>@Html.Link4U("~/QLTTNhanSu/QLTapSu/EditP?id=" + dr["id"], "Edit")</li>
+                <li>@Html.Link4D("~/QLTTNhanSu/QLTapSu/DeleteS?id=" + dr["id"], "Delete")</li>
+            </ul>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#@rand").find("th").attr("nowrap", true);
+        $("#@rand").find(".select").button({
+            text: false,
+            icons: { primary: "ui-icon-circle-triangle-s" }
+        }).click(function () {
+            var menu = $(this).next().show().position({
+                my: "left top",
+                at: "left bottom",
+                of: this
+            });
+            $(document).one("click", function () { menu.hide(); });
+            return false;
+        }).next().hide().menu();
+        $("input#All").click(function () {
+            window.location = "@Url.Action("Index", "QLTapSu")?All=" + this.checked;
+        });
+    });
+</script>

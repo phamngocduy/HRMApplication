@@ -1,0 +1,59 @@
+﻿@*@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.Databases.Models.dmHeSoLuong>
+
+
+<p>
+   
+    <a class="dialog" href="HeSoLuong/Create" title="Thêm"> Thêm Hệ Số Lương</a>
+</p>
+<table id="listHeSoLuong">
+<thead>
+    <tr>
+        <th>
+            Mã HSLương
+        </th>
+        <th>
+            Nhóm Ngạch
+        </th>
+        <th>
+           Bậc Lương
+        </th>
+        <th>
+            HSLương
+        </th>
+        <th>
+            STT
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.maHeSoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idNhomNgach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idBacLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HeSoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stt)
+        </td>
+         <td align="right">
+            <a class="dopost" href="HeSoLuong/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a class="dialog" href="HeSoLuong/Edit?id=@item.id" title="Sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    @Html.dataTables("listHeSoLuong")
+</script>
+*@

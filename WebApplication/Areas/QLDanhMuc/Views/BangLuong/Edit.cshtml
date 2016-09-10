@@ -1,0 +1,55 @@
+﻿@model HRM.Databases.Models.dmBangLuong
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmDonVi</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bacLuong, "Bậc")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.bacLuong)
+            @Html.ValidationMessageFor(model => model.bacLuong)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hesoLuong, "Hệ số lương")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hesoLuong)
+            @Html.ValidationMessageFor(model => model.hesoLuong)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phuCap, "Phụ cấp thâm niên")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phuCap)
+            @Html.ValidationMessageFor(model => model.phuCap)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.soThang, "Số tháng giữ bậc")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.soThang)
+            @Html.ValidationMessageFor(model => model.soThang)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idNhomNgach, "Nhóm ngạch")
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.idNhomNgach)
+            @Model.dmNhomNgachVienChuc.tenNhomNgachVienChuc (@Model.dmNhomNgachVienChuc.maNhomNgachVienChuc)
+        </div>
+
+        <p>
+            <input class="dialog" type="submit" value="Lưu" />
+        </p>
+    </fieldset>
+}

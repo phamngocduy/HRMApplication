@@ -1,0 +1,86 @@
+﻿@model IEnumerable<HRM.QLVayMuon.Models.dmGiayTo>
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Danh mục Giấy tờ";
+}
+
+   <div>
+    @Html.ActionLink("Trở về màn hình Danh Sách Nhân Viên Vay Mượn", "Index", "NhanVienVayMuon")
+    </div>
+    <p>
+    @Html.ActionLink("Thêm giấy tờ", "Create")
+    </p>
+   <p> <h3 align =center><font>Danh sách Giấy tờ vay mượn</font></h3></p>
+@Html.StatusMessage(TempData["Message"])
+<table id="dmGiayTo">
+    <thead>
+        <tr>
+        <th style="text-align: center" nowrap>
+                STT
+            </th>
+            <th style="text-align: center" nowrap>
+                Tên giấy tờ
+            </th>
+            <th style="text-align: center" nowrap>
+                Thuộc mục đích
+            </th>
+            
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                
+            <tr>
+            <td style="text-align: center" nowrap>
+                    @Html.DisplayFor(modelItem => item.stt)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.TenGiayTo)
+                </td>
+               <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.dmMucDichSuDung.TenMucDich)
+                </td>
+                
+                <td>
+            <a href="dmGiayTo/Delete?id=@item.id" title="Xoá"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a href="dmGiayTo/Edit?id=@item.id" title="Chỉnh sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+            </td>
+               </tr>
+        }
+    </tbody>
+</table>
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script src="/Content/datatables/DataTableFixedHeader.js"></script>
+<script>
+    $(document).ready(function () {
+        var oTable = $('#dmGiayTo').dataTable({
+            "bJQueryUI": true,
+            "sScrollY": "100%",
+            "sScrollX": "100%"
+
+
+        });
+        //        new FixedHeader(oTable, { "bottom": true });
+
+        new $.fn.dataTable.FixedColumns(oTable, {
+            "iLeftColumns": 2,
+            "iRightColumns": 1
+        });
+
+    });
+</script>
+<style type="text/css">
+    #panel
+    {
+        text-align: left;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
+    }
+    #panel
+    {
+        display: none;
+    }
+</style>

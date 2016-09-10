@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "HSNhanSu";
+}
+<h2>Quản lý thông tin nhân sự</h2>
+<h3>
+    <ul>
+        <li>
+            <span>Thông tin CB/GV/NV</span>
+            <ul>
+                <li>
+                    @Html.ActionLink("Danh sách", "Index")
+                    <span>&gt;</span>
+                    <span>Sơ yếu lý lịch, Học tập, Làm việc...</span>
+                </li>
+                <li>
+                    <span>Quản lý học tập</span>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Theo dõi học lấy bằng", "Index", "nvQTHocTap")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Theo dõi học lấy chứng chỉ", "qtChungChi", "nvQTHocTap")
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink("Quản lý tập sự", "Index", "QLTapSu")
+                </li>
+                <li>
+                    @Html.ActionLink("Quản lý thử việc", "Index", "QLThuViec")
+                </li>
+                <li>
+                    <span>Danh sách</span>
+                    @Html.ActionLink("Giảng viên", "Index", "GiangVien")
+                    @Html.ActionLink("Giáo sư", "Index", "GiaoSu")
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>Thông tin giảng viên thỉnh giảng</span>
+            <ul>
+                <li>
+                    @Html.ActionLink("Danh sách", "Index", "HSNhanSu", new { area = "QLThinhGiang" }, null)
+                    <span>&gt;</span>
+                    <span>Sơ yếu lý lịch, Bằng cấp, Đơn vị...</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</h3>

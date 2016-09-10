@@ -1,0 +1,152 @@
+﻿@model IEnumerable<HRM.QLVayMuon.Models.KhoanVay>
+@using HRM.QLVayMuon.Models
+@using HRM.Webpages.Helpers
+
+@{
+    ViewBag.Title = "Index";
+    var db = new HRMDB1Entities();
+    var NV_id = (int)ViewBag.NV_id;
+}
+
+
+
+<h3 align=center><font><b>Danh sách khoản vay của:
+    @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).MaNV -
+    @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).HoVaTen -
+    @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).DonVi</b>
+</font></h3>
+
+<p>
+    @Html.ActionLink("Thêm khoản vay", "Create", new { id = NV_id })
+</p>
+<p >
+
+    @Html.ActionLink("Trở về danh sách nhân viên vay mượn", "Index", "NhanVienVayMuon")
+    
+</p>
+
+@Html.StatusMessage(TempData["Message"])
+
+<table id= "KhoanVay">
+<thead>
+    <tr>
+        <th>
+            @Html.VN("Số chứng từ")
+        </th>
+        <th>
+            @Html.VN("Ngày chứng từ")
+        </th>
+        <th>
+            @Html.VN("Diễn giải")
+        </th>
+        <th>
+            @Html.VN("Mục đích")
+        </th>
+        <th>
+            @Html.VN("Định mức")
+        </th>
+        <th>
+            @Html.VN("Số tiền vay")
+        </th>
+        <th>
+            @Html.VN("Số tháng")
+        </th>
+        <th>
+            @Html.VN("Trả từ tháng")
+        </th>
+        <th>
+            @Html.VN("Trả đến tháng")
+        </th>
+        <th>
+            @Html.VN("Đã trả xong")
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.SoChungTu)
+        </td>
+        <td>            
+            @item.NgayChungTu.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienGiai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dmMucDichSuDung.TenMucDich)
+        </td>
+        <td>
+            @if (item.DinhMuc == true)
+            {
+                    <span>
+                    Định mức
+                    </span>
+            }
+            else
+            {
+                    <span>
+                    Ngoài Định mức
+                    </span>
+            }
+        </td>
+
+        <td>@String.Format("{0:#,##0}", item.SoTienVay)</td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.SoThang)
+        </td>
+        <td>
+            @if (@item.TraTuThang != null)
+            {
+            @item.TraTuThang.GetValueOrDefault().ToShortDateString()
+            }
+        </td>
+        <td>
+            @if (@item.TraTuThang != null)
+            {
+            @item.TraDenThang.GetValueOrDefault().ToShortDateString()
+            }
+        </td>
+        <td>
+             @if (item.DatraXong == true)
+            {
+                    <span>
+                    @Html.CheckBox("check1", true)
+                   @*@Html.CheckBox("check1", true, new { disabled = "disabled" })*@
+                    </span>
+            }
+            else
+            {
+                    <span>
+                    @Html.CheckBox("check1", false)
+                 @*@Html.CheckBox("check2", false, new { disabled = "disabled" })*@
+                    </span>
+            }
+        </td>
+        <td>
+            <a class="dialog" href="~/QLVayMuon/khoanVay/Edit?id=@item.id" title="Chỉnh sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+          <a class="dialog" href="~/QLVayMuon/khoanVay/details?id=@item.id" title="Bổ sung hồ sơ"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+           <a class="dialog" href="~/QLVayMuon/khoanVay/HoanVayDetails?id=@item.id" title="Chi tiết hoàn vay"><span class="ui-icon ui-icon-minusthick" style="display:inline-block"/></a>
+           <a class="dialog" href="~/QLVayMuon/KhoanVay/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+
+
+</tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#KhoanVay").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+</script>
+

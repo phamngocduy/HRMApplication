@@ -1,0 +1,821 @@
+INFO 08:14:42 – Home/Index
+INFO 08:14:42 – Login/Index
+INFO 08:15:49 – Home/Index
+INFO 08:15:49 – Login/Index
+ERROR08:15:50 – Exception has been thrown by the target of an invocation.
+/16308fbb-d21b-4175-8955-82fac0cd324c=System.Web.Mvc.DictionaryValueProvider`1[System.Object]/partial=True/controller=Login/action=Index
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at HRM.Accounts.Filters.InitializeMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Workspace\HRMApplication\WebApplication\Areas\Account\Filters\InitializeMembership.cs:line 22
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+ERROR08:15:50 – Exception has been thrown by the target of an invocation.
+/controller=Home/action=Index
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at HRM.Accounts.Filters.InitializeMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Workspace\HRMApplication\WebApplication\Areas\Account\Filters\InitializeMembership.cs:line 22
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeAction(ControllerContext controllerContext, String actionName, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__17(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Controller.BeginExecuteCore(AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Controller.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__2(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.<>c__DisplayClass7.<BeginProcessRequest>b__6()
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerWrapper.Wrap[TResult](Func`1 func)
+   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, Object routeValues)
+   at ASP._Page_Views_Home_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\Home\Index.cshtml:line 12
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:15:58 – Login/Index
+INFO 08:15:58 – Home/Index
+INFO 08:19:49 – TuyenDung/Index
+INFO 08:20:25 – TuyenDung/Create&UV_id=-1
+INFO 08:20:26 – ThongTinChung/Create&UV_id=-1
+INFO 08:23:00 – ThongTinChung/Create&UV_id=-1&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=79&DanToc_id=1&TonGiao_id=3&QuocTich_id=1
+INFO 08:23:01 – TuyenDung/Create&UV_id=415
+INFO 08:23:01 – ThongTinBangCap/Create&UV_id=415
+INFO 08:23:52 – DanhMuc/List
+INFO 08:24:03 – DanhMuc/Index
+INFO 08:24:35 – DanhMuc/Index
+INFO 08:24:57 – DanhMuc/Delete
+ERROR08:24:57 – An error occurred while updating the entries. See the inner exception for details.
+/controller=DanhMuc/action=Delete/dm=HocVi/id=4
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at HRM.Databases.Models.HRMDB0Entities.SaveChanges(Boolean ok) in C:\Workspace\HRMApplication\HRMDatabase\Models.Context.cs:line 33
+   at HRM.Databases.Models.HRMDBEntities.SaveChanges() in C:\Workspace\HRMApplication\HRMDatabase0\Class1.cs:line 12
+   at HRM.QLDanhMuc.Controllers.DanhMucController.Delete(String dm, Int32 id) in C:\Workspace\HRMApplication\WebApplication\Areas\QLDanhMuc\Controllers\DanhMucController.cs:line 99
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:26:37 – DanhMuc/Create
+INFO 08:30:23 – DanhMuc/Index
+INFO 08:30:56 – ThongTinBangCap/Create&id=&UngVien_id=415&TrinhDo_id=2&ChuyenNganh_id=241&NoiDaoTao=Van Lang&XepLoai_id=3
+INFO 08:30:56 – TuyenDung/Create&UV_id=415
+INFO 08:30:56 – ThongTinBangCap/Create&UV_id=415
+INFO 08:30:58 – TuyenDung/Create&UV_id=415
+INFO 08:30:58 – ThongTinLienHe/Create&UV_id=415
+INFO 08:33:57 – TuyenDung/Create&UV_id=415
+INFO 08:33:57 – ThongTinLienHe/Create&UV_id=415
+INFO 08:34:37 – ThongTinLienHe/Create&UngVien_id=415&id=992&DTDiDong1=0917654899&DTDiDong2=&hkPhuongXa_id=&hkQuanHuyen_id=&hkTinhThanh_id=&llPhuongXa_id=&llQuanHuyen_id=&llTinhThanh_id=
+INFO 08:34:37 – TuyenDung/Create&UV_id=415
+INFO 08:34:37 – ThongTinUngTuyen/Create&UV_id=415
+INFO 08:38:55 – ThongTinUngTuyen/Create&UngVien_id=415&id=402&ViTriUngTuyen_id=35&DonViUngTuyen_id=34
+INFO 08:38:55 – TuyenDung/Index
+INFO 08:39:16 – KiemTraHS/Edit
+INFO 08:39:29 – KiemTraHS/Edit&Id=932&UngVien_id=415
+INFO 08:39:29 – TuyenDung/Index
+INFO 08:39:36 – KiemTraHS/Edit
+INFO 08:41:43 – KiemTraHS/Edit&Id=932&UngVien_id=415
+INFO 08:41:43 – TuyenDung/Index
+INFO 08:42:01 – KiemTraHS/Edit
+INFO 08:42:21 – KiemTraHS/Edit&Id=932&UngVien_id=415
+INFO 08:42:21 – TuyenDung/Index
+INFO 08:42:38 – KiemTraHS/Edit
+INFO 08:42:43 – KiemTraHS/Edit&Id=932&UngVien_id=415
+INFO 08:42:43 – TuyenDung/Index
+INFO 08:42:46 – KiemTraHS/Edit
+INFO 08:42:50 – KiemTraHS/Edit&Id=932&UngVien_id=415
+INFO 08:42:50 – TuyenDung/Index
+INFO 08:42:55 – KiemTraHS/Edit
+INFO 08:43:41 – KiemTraHS/Edit&Id=932&UngVien_id=415
+INFO 08:43:41 – TuyenDung/Index
+INFO 08:43:54 – TuyenDung/Details
+INFO 08:43:54 – ThongTinChung/Edit
+INFO 08:44:30 – TuyenDung/Index
+INFO 08:44:43 – QLLichHen/Index
+INFO 08:45:05 – TuyenDung/Index
+INFO 08:45:12 – TuyenDung/Details
+INFO 08:45:12 – ThongTinChung/Edit
+INFO 08:46:05 – TuyenDung/Index
+INFO 08:46:06 – QLLichHen/Index
+INFO 08:47:30 – QLLichHen/Edit&id=&DonViPhongVan_id=24&UngCuVien_id=415
+INFO 08:47:30 – QLLichHen/Index
+INFO 08:48:16 – TuyenDung/Index
+INFO 08:48:59 – QLLichHen/Index
+INFO 08:49:37 – TuyenDung/Index
+INFO 08:49:45 – TuyenDung/Details
+INFO 08:49:45 – ThongTinChung/Edit
+INFO 08:50:09 – TuyenDung/Index
+INFO 08:50:19 – QLLichHen/Index
+INFO 08:50:46 – TuyenDung/Index
+INFO 08:52:46 – TuyenDung/Details
+INFO 08:52:46 – ThongTinChung/Edit
+INFO 08:52:48 – QuaTrinhTuyenDung/Index&UV_id=415
+INFO 08:53:24 – TuyenDung/Index
+INFO 08:53:28 – TuyenDung/Details
+INFO 08:53:28 – ThongTinChung/Edit
+INFO 08:53:33 – QuaTrinhTuyenDung/Index&UV_id=415
+INFO 08:53:53 – QuaTrinhTuyenDung/Edit&id=16
+INFO 08:53:53 – QuaTrinhTuyenDung/Index&UV_id=415
+INFO 08:54:04 – TuyenDung/Index
+INFO 08:54:19 – TuyenDung/UpdateKQTuyenDung&id=415
+INFO 08:54:19 – TuyenDung/Index
+INFO 08:55:19 – TuyenDung/UpdateKQTuyenDung&id=376
+INFO 08:55:19 – TuyenDung/Index
+INFO 08:57:28 – HSNhanSu/Index
+INFO 08:57:28 – NhanVien/IndexP
+INFO 08:57:31 – QLThuViec/Index
+INFO 08:58:10 – Home/Index
+INFO 08:58:12 – DanhMuc/List
+INFO 08:58:15 – DanhMuc/Index
+INFO 08:58:15 – ChucDanhChuyenMon/Index
+INFO 08:58:52 – DanhMuc/Index
+INFO 09:02:47 – HSNhanSu/Index
+INFO 09:02:47 – NhanVien/IndexP
+INFO 09:02:50 – QLThuViec/Index
+INFO 09:02:53 – QLThuViec/Index
+INFO 09:03:03 – QLThuViec/Index
+INFO 09:03:09 – QLThuViec/EditP&id=28
+INFO 09:03:33 – QLThuViec/UpdateS&id=28&DonVi_id=4&ChucDanhChuyenMon_id=23
+INFO 09:03:33 – QLThuViec/Index
+INFO 09:03:42 – QLThuViec/EditP&id=28
+INFO 09:05:46 – DanhMuc/List
+INFO 09:05:48 – DanhMuc/Index
+INFO 09:05:48 – ChucDanhChuyenMon/Index
+INFO 09:06:04 – ChucDanhChuyenMon/Edit&id=35
+INFO 09:06:07 – ChucDanhChuyenMon/Edit&id=35&id=35
+INFO 09:06:12 – DanhMuc/Index
+INFO 09:06:12 – ChucDanhChuyenMon/Index
+INFO 09:06:55 – DanhMuc/Index
+INFO 09:07:14 – ChucDanhChuyenMon/Edit&id=25
+INFO 09:07:15 – ChucDanhChuyenMon/Edit&id=26
+INFO 09:09:32 – HDNguoiLaoDong/Index
+INFO 09:12:28 – CauHinhHeThong/Create
+INFO 09:12:34 – DanhMuc/Index_dmThoiHanHD
+INFO 09:12:57 – CauHinhHeThong/Create
+INFO 09:13:00 – DanhMuc/Index_dmThoiGioLamViec
+INFO 09:13:08 – CauHinhHeThong/Create
+INFO 09:13:20 – HDNguoiLaoDong/Index
+INFO 09:13:24 – CauHinhHeThong/Create
+INFO 09:13:26 – DanhMuc/Index_dmThoiHanHD
+INFO 09:16:17 – CauHinhHeThong/Create
+INFO 09:16:19 – HDNguoiLaoDong/Index
+INFO 09:16:57 – HSNhanSu/Index
+INFO 09:16:57 – NhanVien/IndexP
+INFO 09:17:07 – HSNhanSu/Details
+INFO 09:17:07 – SoYeuLyLich/EditP
+INFO 09:17:08 – TheDinhDanh/IndexP
+INFO 09:17:30 – HSNhanSu/Details
+INFO 09:17:30 – QTLamViecTruoc/IndexP
+INFO 09:17:31 – QTLamViec/IndexP
+INFO 09:18:26 – DanhMuc/List
+INFO 09:18:32 – DanhMuc/Index
+INFO 09:18:32 – ChucDanhChuyenMon/Index
+INFO 09:19:07 – QTLamViec/EditP&id=377
+INFO 09:19:44 – QTLamViec/EditP&NV_id=47
+INFO 09:20:13 – QTLamViec/CreateS&id=&NV_id=47&DonVi_id=33&ChucDanh_id=3&ChucDanhChuyenMon_id=35&ChucVu_id=&NgheNghiep_id=
+INFO 09:20:13 – HSNhanSu/Details
+INFO 09:20:13 – QTLamViecTruoc/IndexP
+INFO 09:20:13 – QTLamViec/IndexP
+INFO 09:30:48 – DanhMuc/Index
+INFO 09:36:55 – QLTapSu/Index
+INFO 09:39:15 – HSNhanSu/Index
+INFO 09:39:15 – NhanVien/IndexP
+INFO 09:40:54 – HSNhanSu/Details
+INFO 09:40:54 – SoYeuLyLich/EditP
+INFO 09:40:54 – TheDinhDanh/IndexP
+INFO 09:40:58 – HSNhanSu/Details
+INFO 09:40:58 – QTLamViecTruoc/IndexP
+INFO 09:40:58 – QTLamViec/IndexP
+INFO 09:47:04 – QTLamViec/EditP&NV_id=187
+INFO 09:47:37 – QTLamViec/CreateS&id=&NV_id=187&DonVi_id=&ChucDanh_id=&ChucDanhChuyenMon_id=&ChucVu_id=&NgheNghiep_id=
+INFO 09:47:37 – HSNhanSu/Details
+INFO 09:47:38 – QTLamViecTruoc/IndexP
+INFO 09:47:38 – QTLamViec/IndexP
+INFO 09:47:43 – QTLamViec/EditP&id=403
+INFO 09:47:59 – QTLamViec/UpdateS&id=403&NV_id=187&DonVi_id=&ChucDanh_id=&ChucDanhChuyenMon_id=&ChucVu_id=&NgheNghiep_id=
+INFO 09:47:59 – HSNhanSu/Details
+INFO 09:47:59 – QTLamViecTruoc/IndexP
+INFO 09:47:59 – QTLamViec/IndexP
+INFO 09:51:31 – HSNhanSu/Details
+INFO 09:51:31 – CTDoanTheTruoc/IndexP
+INFO 09:51:32 – CTDoanThe/IndexP
+INFO 09:52:15 – CTDoanThe/EditP&id=1
+INFO 09:52:25 – HSNhanSu/Details
+INFO 09:52:25 – QHGiaDinh/IndexP
+INFO 09:52:30 – HSNhanSu/Details
+INFO 09:52:30 – CTDoanTheTruoc/IndexP
+INFO 09:52:30 – CTDoanThe/IndexP
+INFO 09:52:37 – CTDoanThe/EditP&id=1
+INFO 09:53:00 – CTDoanThe/EditP&id=1
+INFO 09:54:28 – CTDoanThe/UpdateS&id=1&NV_id=187&DonVi_id=Cong Doan&ChucVu_id=8
+INFO 09:54:28 – HSNhanSu/Details
+INFO 09:54:28 – CTDoanTheTruoc/IndexP
+INFO 09:54:28 – CTDoanThe/IndexP
+INFO 09:54:33 – HSNhanSu/Details
+INFO 09:54:33 – TTKhenThuongTruoc/IndexP
+INFO 09:54:33 – TTKhenThuong/IndexP
+INFO 09:54:37 – TTKhenThuong/EditP&NV_id=187
+INFO 09:54:43 – HSNhanSu/Details
+INFO 09:54:43 – CTDoanTheTruoc/IndexP
+INFO 09:54:43 – CTDoanThe/IndexP
+INFO 09:55:26 – HSNhanSu/Details
+INFO 09:55:26 – nvTapHuan/Index
+INFO 09:55:26 – nvCTNganHan/Index
+INFO 09:57:10 – HDNguoiLaoDong/Index
+INFO 09:58:22 – DSNLDCanTaoHD/Index
+INFO 09:58:30 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=87
+INFO 09:58:30 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=87
+INFO 09:58:45 – HDNguoiLaoDong/Index
+INFO 10:07:41 – DSNLDCanTaoHD/Index
+INFO 10:07:53 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=87
+INFO 10:07:53 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=87
+INFO 10:08:21 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=87
+INFO 10:08:21 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=87
+INFO 10:09:05 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=87
+INFO 10:09:05 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=87
+INFO 10:14:20 – DSNLDCanTaoHD/Index
+INFO 10:14:22 – HDNguoiLaoDong/Index
+INFO 10:14:27 – DSNLDCanTaoHD/Index
+INFO 10:15:13 – DanhMuc/List
+INFO 10:15:16 – DanhMuc/Index
+INFO 10:15:16 – ChucDanhChuyenMon/Index
+INFO 10:15:30 – ChucDanhChuyenMon/Edit&id=20
+INFO 10:15:39 – ChucDanhChuyenMon/Edit&id=20&id=20
+INFO 10:15:43 – DSNLDCanTaoHD/Index
+INFO 10:16:30 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=106
+INFO 10:16:30 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=106
+INFO 10:16:36 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=106
+INFO 10:16:36 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=106
+INFO 10:16:57 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=106
+INFO 10:17:21 – HSNhanSu/Index
+INFO 10:17:21 – NhanVien/IndexP
+INFO 10:18:40 – QLThuViec/Index
+INFO 10:20:59 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=169
+INFO 10:20:59 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=169
+INFO 10:22:29 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=169
+INFO 10:22:29 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=169
+INFO 10:22:33 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=169
+INFO 10:22:33 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=169
+INFO 10:23:50 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=169&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=34&ThoihanHD_id=5&Chucdanh_id=35&Chucvu_id=&ThoigioLV_id=7&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 10:23:50 – ThemMoiHD/Edit_HDThuViec
+INFO 10:24:00 – ThemMoiHD/Edit_HDThuViec&Gioitinh_id=1&Donvi_id=34&ThoihanHD_id=5&Chucdanh_id=35&Chucvu_id=&ThoigioLV_id=7&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 10:24:00 – CreateWordHD/Details_TV
+INFO 10:38:14 – ThemMoiHD/Edit_HDThuViec&Gioitinh_id=1&Donvi_id=34&ThoihanHD_id=5&Chucdanh_id=35&Chucvu_id=&ThoigioLV_id=7&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 10:38:14 – CreateWordHD/Details_TV
+INFO 10:40:04 – HDNguoiLaoDong/Index
+INFO 10:40:34 – DSHDSapHetHan/Index
+INFO 10:40:45 – HDNguoiLaoDong/Index
+INFO 10:43:01 – DSHDSapHetHan/Index
+INFO 10:43:25 – QTKyHDTungNguoi/Index&NLD_id=710
+INFO 10:43:54 – QTKyHDTungNguoi/Index&NLD_id=710
+INFO 10:44:29 – ThemMoiHD/Create_Exeption&NLD_id=710
+INFO 10:44:29 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=170
+INFO 10:44:29 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=170
+INFO 10:44:34 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=170
+INFO 10:44:34 – ThemMoiHD/Create_HDDaiHan&DSNLDCanTaoHD_id=170
+ERROR10:44:35 – Object reference not set to an instance of an object.
+/controller=ThemMoiHD/action=Create_HDDaiHan
+   at ASP._Page_Areas_HDLaoDong_Views_ThemMoiHD_Create_HDDaiHan_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\ThemMoiHD\Create_HDDaiHan.cshtml:line 40
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:44:39 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=170
+INFO 10:45:46 – TuyenDung/Index
+INFO 10:45:51 – TuyenDung/Create&UV_id=-1
+INFO 10:45:51 – ThongTinChung/Create&UV_id=-1
+INFO 10:46:03 – TuyenDung/Details
+INFO 10:46:03 – ThongTinChung/Edit
+INFO 10:46:11 – TuyenDung/Index
+INFO 10:46:25 – TuyenDung/UpdateKQTuyenDung&id=365
+INFO 10:46:25 – TuyenDung/Index
+INFO 10:47:05 – ChucDanhChuyenMon/Edit&id=27
+INFO 10:47:11 – ChucDanhChuyenMon/Edit&id=27&id=27
+INFO 10:47:15 – TuyenDung/Index
+INFO 10:47:24 – TuyenDung/UpdateKQTuyenDung&id=364
+INFO 10:47:24 – TuyenDung/CreateNV&UV_id=364
+INFO 10:47:49 – TuyenDung/CreateNV&UV_id=364&UV_id=364
+INFO 10:47:49 – TuyenDung/Index
+INFO 10:47:59 – HDNguoiLaoDong/Index
+INFO 10:48:04 – DSNLDCanTaoHD/Index
+INFO 10:48:36 – HSNhanSu/Index
+INFO 10:48:36 – NhanVien/IndexP
+INFO 10:48:49 – HSNhanSu/Details
+INFO 10:48:49 – SoYeuLyLich/EditP
+INFO 10:48:49 – TheDinhDanh/IndexP
+INFO 10:48:51 – HSNhanSu/Details
+INFO 10:48:51 – QTLamViecTruoc/IndexP
+INFO 10:48:52 – QTLamViec/IndexP
+INFO 10:48:53 – QTLamViec/EditP&NV_id=671
+INFO 10:49:13 – QTLamViec/CreateS&id=&NV_id=671&DonVi_id=33&ChucDanh_id=2&ChucDanhChuyenMon_id=27&ChucVu_id=&NgheNghiep_id=
+INFO 10:49:13 – HSNhanSu/Details
+INFO 10:49:13 – QTLamViecTruoc/IndexP
+INFO 10:49:13 – QTLamViec/IndexP
+INFO 10:49:19 – HeSoLuong/Index
+INFO 10:49:34 – HSNhanSu/Details
+INFO 10:49:34 – SoYeuLyLich/EditP
+INFO 10:49:35 – TheDinhDanh/IndexP
+INFO 10:49:52 – BangLuong/maNgach&idNgach=71
+INFO 10:49:52 – BangLuong/idNhomNgach&idNgach=71
+INFO 10:49:52 – BangLuong/dsBacLuong&idNhomNgach=26
+INFO 10:49:54 – BangLuong/HeSoLuong&idNhomNgach=26
+INFO 10:49:59 – SoYeuLyLich/Update&id=671&nid=647&GioiTinh_id=&NoiSinh_TinhThanh_id=&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=&HoKhauThuongTru_id=&NoiOHienNay_id=&NgachVienChuc_id=71&BacLuong_id=5&TrinhDoHocVan_id=&HocVi_id=&HocHam_id=&LyLuanChinhTri_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 10:49:59 – HSNhanSu/Details
+INFO 10:49:59 – SoYeuLyLich/EditP
+INFO 10:49:59 – TheDinhDanh/IndexP
+INFO 10:50:09 – DSNLDCanTaoHD/Index
+INFO 10:50:11 – DSNLDCanTaoHD/Index
+INFO 10:50:17 – HDNguoiLaoDong/Index
+INFO 10:50:19 – HDNguoiLaoDong/Index
+INFO 10:50:22 – HDNguoiLaoDong/Index
+INFO 10:50:24 – DSNLDCanTaoHD/Index
+INFO 10:50:55 – DSNLDCanTaoHD/Index
+INFO 10:50:57 – DSNLDCanTaoHD/Index
+INFO 10:51:10 – HDNguoiLaoDong/Index
+INFO 10:51:24 – HDNguoiLaoDong/Index
+INFO 10:51:27 – DSNLDCanTaoHD/Index
+INFO 10:51:39 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=167
+INFO 10:51:39 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=167
+INFO 10:51:41 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=167
+INFO 10:51:41 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=167
+INFO 10:53:02 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=167&Gioitinh_id=1&Quoctich_id=&Nghenghiep_id=&Donvi_id=39&ThoihanHD_id=13&Chucdanh_id=35&Chucvu_id=&ThoigioLV_id=2&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 10:53:02 – ThemMoiHD/Edit_HDCoHuu
+INFO 10:53:27 – ThemMoiHD/Edit_HDCoHuu&Gioitinh_id=1&Donvi_id=39&ThoihanHD_id=13&Chucdanh_id=35&Chucvu_id=&ThoigioLV_id=2&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 10:53:27 – ThemMoiHD/Edit_HDCoHuu
+INFO 10:53:36 – ThemMoiHD/Edit_HDCoHuu
+INFO 10:53:36 – ThemMoiHD/Edit_HDCoHuu
+INFO 10:58:09 – NhanVienBHXH/Index2
+INFO 10:58:11 – NhanVienBHXH/Create
+INFO 10:58:12 – NhanVienBHXH/edit&id=1
+INFO 10:58:12 – NhanVienBHXH/delete&id=1
+INFO 11:15:12 – DanhSachDieuChinhTangGiam/index2
+INFO 11:15:14 – DanhSachDieuChinhTangGiam/Create
+INFO 11:15:15 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR11:15:16 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:15:23 – DanhSachDieuChinhChucDanh/index2
+INFO 11:15:24 – DanhSachDieuChinhChucDanh/Create
+INFO 11:19:35 – DanhSachDieuChinhTangGiam/index2
+INFO 11:19:35 – DanhSachDieuChinhTangGiam/Create
+INFO 11:19:36 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR11:19:36 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:21:17 – HSNhanSu/Index
+INFO 11:21:17 – NhanVien/IndexP
+INFO 11:21:20 – HSNhanSu/Download
+ERROR11:21:21 – Arithmetic overflow error converting expression to data type nvarchar.
+/controller=HSNhanSu/action=Download
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at System.Data.SqlClient.SqlDataReader.Read()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataTable[] dataTables, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at System.Data.Common.LoadAdapter.FillFromReader(DataTable[] dataTables, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at System.Data.DataTable.Load(IDataReader reader, LoadOption loadOption, FillErrorEventHandler errorHandler)
+   at System.Data.DataTable.Load(IDataReader reader)
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in C:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 29
+   at ASP._Page_Areas_QLHSNhanSu_Views_HSNhanSu_Download_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\HSNhanSu\Download.cshtml:line 23
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:28:45 – NhanVienVayMuon/Index
+INFO 11:35:24 – NhanVienVayMuon/Details&NV_id=4145
+INFO 11:36:11 – dmMucDichSuDung/Index
+INFO 11:36:42 – NhanVienVayMuon/Baocao
+INFO 11:45:06 – HSNhanSu/Index
+INFO 11:45:06 – NhanVien/IndexP
+INFO 11:54:19 – NhanVienBHXH/Index2
+INFO 11:54:19 – NhanVienBHXH/Create
+INFO 11:54:20 – NhanVienBHXH/delete&id=1
+INFO 11:54:21 – NhanVienBHXH/edit&id=1
+INFO 11:54:31 – DanhSachDieuChinhTangGiam/index2
+INFO 11:54:32 – DanhSachDieuChinhTangGiam/Create
+INFO 11:54:32 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR11:54:32 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:55:17 – DanhSachDieuChinhChucDanh/index2
+INFO 11:55:18 – DanhSachDieuChinhChucDanh/Create
+INFO 11:55:35 – DanhSachDieuChinhTangGiam/index2
+INFO 11:55:36 – DanhSachDieuChinhTangGiam/Create
+INFO 11:55:36 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR11:55:36 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:56:41 – QTBHXH/Index2&id=43
+INFO 11:56:43 – QTBHXH/delete&id=1
+ERROR11:56:43 – Object reference not set to an instance of an object.
+/controller=QTBHXH/action=delete
+   at HRM.QLBHXH.Controllers.QTBHXHController.Delete(Int32 id) in C:\Workspace\HRMApplication\WebApplication\Areas\QLBHXH\Controllers\QTBHXHController.cs:line 124
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:57:33 – QTBHXH/Index2&id=40
+INFO 11:57:34 – QTBHXH/delete&id=1
+ERROR11:57:34 – Object reference not set to an instance of an object.
+/controller=QTBHXH/action=delete
+   at HRM.QLBHXH.Controllers.QTBHXHController.Delete(Int32 id) in C:\Workspace\HRMApplication\WebApplication\Areas\QLBHXH\Controllers\QTBHXHController.cs:line 124
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:57:37 – QTBHXH/Index2&id=52
+INFO 11:57:38 – QTBHXH/delete&id=1
+ERROR11:57:38 – Object reference not set to an instance of an object.
+/controller=QTBHXH/action=delete
+   at HRM.QLBHXH.Controllers.QTBHXHController.Delete(Int32 id) in C:\Workspace\HRMApplication\WebApplication\Areas\QLBHXH\Controllers\QTBHXHController.cs:line 124
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 02:41:29 – Home/Index
+INFO 02:41:33 – TuyenDung/Index
+INFO 02:41:38 – TuyenDung/Create&UV_id=-1
+INFO 02:41:38 – ThongTinChung/Create&UV_id=-1
+INFO 02:42:17 – ThongTinChung/Create&UV_id=-1&GioiTinh_id=1&TinhThanh_id=&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=82&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 02:42:17 – TuyenDung/Create&UV_id=416
+INFO 02:42:17 – ThongTinBangCap/Create&UV_id=416
+INFO 02:42:19 – TuyenDung/Create&UV_id=416
+INFO 02:42:19 – ThongTinLienHe/Create&UV_id=416
+INFO 02:42:21 – TuyenDung/Create&UV_id=416
+INFO 02:42:21 – ThongTinLienHe/Create&UV_id=416
+INFO 02:42:26 – ThongTinLienHe/Create&UngVien_id=416&id=993&DTDiDong1=&DTDiDong2=&hkPhuongXa_id=&hkQuanHuyen_id=&hkTinhThanh_id=&llPhuongXa_id=&llQuanHuyen_id=&llTinhThanh_id=
+INFO 02:42:26 – TuyenDung/Create&UV_id=416
+INFO 02:42:26 – ThongTinUngTuyen/Create&UV_id=416
+INFO 02:42:48 – ThongTinUngTuyen/Create&UngVien_id=416&id=403&ViTriUngTuyen_id=32&DonViUngTuyen_id=8
+INFO 02:42:48 – TuyenDung/Index
+INFO 02:42:52 – TuyenDung/Details
+INFO 02:42:52 – ThongTinChung/Edit
+INFO 02:43:01 – TuyenDung/Details
+INFO 02:43:01 – ThongTinBangCap/Edit
+INFO 02:43:03 – TuyenDung/Details
+INFO 02:43:03 – ThongTinLienHe/Edit
+INFO 02:43:08 – TuyenDung/Details
+INFO 02:43:08 – ThongTinUngTuyen/Edit
+INFO 02:43:12 – TuyenDung/Details
+INFO 02:43:12 – ThongTinChung/Edit
+INFO 02:44:21 – TuyenDung/Details
+INFO 02:44:21 – ThongTinChung/Edit
+INFO 03:08:58 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=82&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:08:58 – TuyenDung/Details
+INFO 03:08:58 – ThongTinChung/Edit
+INFO 03:11:25 – Home/Index
+INFO 03:11:25 – Login/Index
+INFO 03:11:36 – Login/Index
+INFO 03:11:36 – Home/Index
+INFO 03:11:43 – TuyenDung/Details
+INFO 03:11:44 – ThongTinBangCap/Edit
+INFO 03:12:12 – TuyenDung/Details
+INFO 03:12:12 – ThongTinChung/Edit
+INFO 03:12:20 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:13:39 – TuyenDung/Details
+INFO 03:13:39 – ThongTinChung/Edit
+INFO 03:13:46 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=48&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:14:16 – TuyenDung/Details
+INFO 03:14:16 – ThongTinChung/Edit
+INFO 03:16:29 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:18:17 – TuyenDung/Details
+INFO 03:18:17 – ThongTinChung/Edit
+INFO 03:20:54 – TuyenDung/Details
+INFO 03:20:54 – ThongTinLienHe/Edit
+INFO 03:21:37 – ThongTinLienHe/Edit&UngVien_id=416&id=993&DTDiDong1=0123456789&DTDiDong2=0123456789&hkPhuongXa_id=&hkQuanHuyen_id=&hkTinhThanh_id=&llPhuongXa_id=&llQuanHuyen_id=&llTinhThanh_id=
+INFO 03:21:37 – TuyenDung/Details
+INFO 03:21:37 – ThongTinLienHe/Edit
+INFO 03:21:42 – TuyenDung/Details
+INFO 03:21:42 – ThongTinBangCap/Edit
+INFO 03:21:44 – TuyenDung/Details
+INFO 03:21:44 – ThongTinChung/Edit
+INFO 03:21:49 – TuyenDung/Details
+INFO 03:21:49 – ThongTinUngTuyen/Edit
+INFO 03:21:55 – TuyenDung/Details
+INFO 03:21:55 – ThongTinLienHe/Edit
+INFO 03:22:00 – TuyenDung/Details
+INFO 03:22:00 – ThongTinChung/Edit
+INFO 03:22:17 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=77&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:22:17 – TuyenDung/Details
+INFO 03:22:17 – ThongTinChung/Edit
+INFO 03:24:02 – Home/Index
+INFO 03:24:09 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:25:04 – TuyenDung/Details
+INFO 03:25:04 – ThongTinChung/Edit
+INFO 03:25:13 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:25:32 – TuyenDung/Details
+INFO 03:25:32 – ThongTinChung/Edit
+INFO 03:25:37 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=48&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:25:49 – TuyenDung/Details
+INFO 03:25:49 – ThongTinChung/Edit
+INFO 03:26:06 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:26:52 – TuyenDung/Details
+INFO 03:26:52 – ThongTinChung/Edit
+INFO 03:27:42 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=77&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:27:44 – TuyenDung/Details
+INFO 03:27:46 – ThongTinChung/Edit
+INFO 03:27:57 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:27:57 – TuyenDung/Details
+INFO 03:27:57 – ThongTinChung/Edit
+INFO 03:28:01 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:28:01 – TuyenDung/Details
+INFO 03:28:01 – ThongTinChung/Edit
+INFO 03:29:19 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=6&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:29:19 – TuyenDung/Details
+INFO 03:29:19 – ThongTinChung/Edit
+INFO 03:29:42 – TuyenDung/Details
+INFO 03:29:42 – ThongTinChung/Edit
+INFO 03:29:57 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=48&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:29:57 – TuyenDung/Details
+INFO 03:29:57 – ThongTinChung/Edit
+INFO 03:31:10 – TuyenDung/Details
+INFO 03:31:10 – ThongTinChung/Edit
+INFO 03:31:14 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=92&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:31:14 – TuyenDung/Details
+INFO 03:31:14 – ThongTinChung/Edit
+INFO 03:31:18 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=48&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:31:18 – TuyenDung/Details
+INFO 03:31:19 – ThongTinChung/Edit
+INFO 03:31:22 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=79&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=77&DanToc_id=1&TonGiao_id=&QuocTich_id=1
+INFO 03:31:22 – TuyenDung/Details
+INFO 03:31:22 – ThongTinChung/Edit
+INFO 03:42:04 – TuyenDung/Details
+INFO 03:42:06 – ThongTinChung/Edit
+INFO 03:42:12 – TuyenDung/Details
+INFO 03:42:12 – ThongTinUngTuyen/Edit
+INFO 03:42:29 – TuyenDung/Index
+INFO 03:42:39 – TuyenDung/Details
+INFO 03:42:39 – ThongTinChung/Edit
+INFO 03:42:55 – ThongTinChung/Edit&GioiTinh_id=1&TinhThanh_id=31&QuocGia_id=1&LoaiThe_id=1&NoiCap_id=48&DanToc_id=1&TonGiao_id=3&QuocTich_id=1
+INFO 03:42:56 – TuyenDung/Details
+INFO 03:42:56 – ThongTinChung/Edit
+INFO 03:43:01 – TuyenDung/Details
+INFO 03:43:01 – ThongTinUngTuyen/Edit
+INFO 03:44:16 – TuyenDung/Details
+INFO 03:44:17 – ThongTinUngTuyen/Edit
+INFO 03:44:36 – ThongTinUngTuyen/Edit&UngVien_id=416&id=403&ViTriUngTuyen_id=32&DonViUngTuyen_id=34
+INFO 03:44:36 – TuyenDung/Details
+INFO 03:44:36 – ThongTinUngTuyen/Edit
+INFO 11:30:17 – Home/Index
+INFO 11:30:19 – Login/Index
+INFO 11:43:35 – Login/Index
+INFO 11:43:36 – Home/Index
+INFO 11:43:39 – HSNhanSu/Index
+INFO 11:43:40 – NhanVien/IndexP
+INFO 11:43:47 – HSNhanSu/Download

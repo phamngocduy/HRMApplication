@@ -1,0 +1,73 @@
+﻿@model HRM.QLVayMuon.Models.HoanVay
+@using HRM.QLVayMuon.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+
+    var db = new HRMDB1Entities();
+
+    var HV_id = (int)ViewBag.HV_id;
+}
+@Html.BeginDiv()
+
+
+<h3>Bạn có chắc chắn xóa hoàn vay này?</h3>
+
+<fieldset>
+    <legend>HoanVay</legend>
+    <div class="display-label">
+         @Html.Label("Thuộc khoản vay có số chứng từ:")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.KhoanVay.SoChungTu)
+    </div>
+    <div class="display-label">
+         @Html.Label("Số chứng từ:")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SoChungTu)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Ngày chứng từ:")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayChungTu)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Diễn giải:")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DienGiai)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Số tiền hoàn:")
+    </div>
+    <div class="display-field">
+            @String.Format("{0:#,##0}",Model.SoTienHoan)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Số tiền lãi:")
+    </div>
+    <div class="display-field">
+           @String.Format("{0:#,##0}",Model.SoTienLai)
+    </div>
+
+    
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xóa" /> 
+        
+    </p>
+    
+    <p>
+    @Html.ActionLink("Trở về danh sách hoàn vay", "Index")
+    </p>
+}
+
+
+@Html.EndDiv()

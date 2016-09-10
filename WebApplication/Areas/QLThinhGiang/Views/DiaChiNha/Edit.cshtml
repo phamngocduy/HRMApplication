@@ -1,0 +1,78 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model int?
+@{
+    var action = "DiaChiNha";
+    var NV_id = ViewBag.NV_id as int?;
+    var db = ViewBag.db as HRMDB_Entities;
+    var d0 = new HRM.Databases.Models.HRMDB0Entities();
+    var dt = db.SqlQuery("select * from nvDiaChiNha where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+    
+    var PhuongXa = "PhuongXa_id";
+    var QuanHuyen = "QuanHuyen_id";
+    var TinhThanh = "TinhThanh_id";
+    
+    var PhuongXa_id = dr != null ? dr[PhuongXa] as int? : null;
+    var QuanHuyen_id = dr != null ? dr[QuanHuyen] as int? : null;
+    var TinhThanh_id = dr != null ? dr[TinhThanh] as int? : null;
+    var dmPhuongXa = d0.dmPhuongXa.Where(px => px.idQuanHuyen == QuanHuyen_id);
+    var dmQuanHuyen = d0.dmQuanHuyen.Where(qh => qh.idTinhThanh == TinhThanh_id);
+    var dmTinhThanh = d0.dmTinhThanh;
+
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("NV_id", NV_id.HasValue ? NV_id.Value : dr["NV_id"])
+<dl id="@rand" class="dl-horizontal">
+    <dt>Địa chỉ</dt>
+    <dd>@Html.Editor(dr, dt.Columns["DiaChi"])</dd>
+    <dt>Xã, phường</dt>
+    <dd>
+        @Html.DropDownList(PhuongXa, new SelectList(dmPhuongXa, "id", "tenPhuongXa", PhuongXa_id), String.Empty)
+    </dd>
+    <dt>Huyện, quận</dt>
+    <dd>
+        @Html.DropDownList(QuanHuyen, new SelectList(dmQuanHuyen, "id", "tenQuanHuyen", QuanHuyen_id), String.Empty)
+    </dd>
+    <dt>Tỉnh, TP.</dt>
+    <dd>
+        @Html.DropDownList(TinhThanh, new SelectList(dmTinhThanh, "id", "tenTinhThanh", TinhThanh_id), String.Empty)
+    </dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<style>
+    input { width: auto; font-weight: bold }
+</style>
+
+<script>
+    $("td").attr("nowrap", true);
+    $("input[type=text]").on("input", function () {
+        $(this).attr("size", $(this).val().length + 1);
+    }).each(function () {
+        $(this).attr("size", $(this).val().length + 1);
+    });
+
+    var form = $("#@rand");
+    var PhuongXa = form.find("#PhuongXa_id").combobox();
+    var QuanHuyen = form.find("#QuanHuyen_id").combobox();
+    var TinhThanh = form.find("#TinhThanh_id").combobox();
+    TinhThanh.change(function () {
+        var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/QuanHuyen/List?idTinhThanh=";
+        QuanHuyen.trigger("connect", [link + $(this).val(), PhuongXa.empty()]);
+    });
+    QuanHuyen.change(function () {
+        var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/PhuongXa/List?idQuanHuyen=";
+        PhuongXa.trigger("connect", link + $(this).val());
+    });
+</script>

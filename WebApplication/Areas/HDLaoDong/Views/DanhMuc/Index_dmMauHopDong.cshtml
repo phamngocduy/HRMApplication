@@ -1,0 +1,138 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases_HDLaoDong.Models
+@model IEnumerable<dmMauHopDong>
+@{
+    ViewBag.Title = "Index_dmMauHopDong";
+    var db = new HRMDB2Entities();
+    int? id_mhd = null;
+}
+
+<b style="margin-left:35%;font-size:large">Danh mục mẫu hợp đồng</b>
+    <p>@Html.StatusMessage(TempData["Message_DanhMuc"])</p>
+    <p>
+    @Html.ActionLink("Quay lại", "Create", "CauHinhHeThong")
+    <a href="#" onclick="$('#dialog-create').show()">Thêm mới</a>
+    </p>
+<div id="dialog-edit" style="display: none">
+    @using (Html.BeginForm("Edit_dmMauHopDong", "DanhMuc", FormMethod.Post, new { id = "Edit_dmMauHopDong" }))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>dmMauHopDong</legend>
+            <p>
+                <input id = "MHDid_hid"  name = "id" type = "hidden"/>
+                <label>STT</label>
+                <input id="stt_edit"  name = "stt" type="number" style = "width:270px"/>
+                <label>Mẫu hợp đồng</label>
+                <input id="tenMauHD_edit"  name = "tenMauHD" type="text" style = "width:270px"/>
+                <label>Nội dung</label>
+                <textarea id="hdNoiDung_edit" name="hdNoiDung"></textarea>
+            </p>
+            <p>
+                <input class="dialog" type="submit" value="Lưu" style = "width:80px"/>
+                <a href="#" onclick="$('#dialog-edit').hide()">Hủy</a>
+            </p>
+        </fieldset>
+    }
+</div>
+<div id="dialog-create" style="display: none">
+    @using (Html.BeginForm("Create_dmMauHopDong", "DanhMuc", FormMethod.Post, new { id = "Create_dmMauHopDong" }))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>dmMauHopDong</legend>
+            <p>
+                <label>STT</label>
+                <input id="stt_create" name = "stt" type="number" style = "width:270px"/>
+                <label>Mẫu hợp đồng</label>
+                <input id="tenMauHD_create" name = "tenMauHD" type="text" style = "width:270px"/>
+                <label>Nội dung</label>
+                <textarea id="hdNoiDung_create" name="hdNoiDung"></textarea>
+            </p>
+            <p>
+                <input class="dialog" type="submit" value="Lưu" style = "width:80px"/>
+                <a href="#" onclick="$('#dialog-create').hide()">Hủy</a>
+            </p>
+        </fieldset>
+    }
+</div>
+    <table id ="dmMauHopDong">
+    <thead>
+        <tr>
+            <th style="text-align:center; width:15px" nowrap>
+                STT
+            </th>
+            <th style="text-align:center" nowrap>
+                Mẫu hợp đồng
+            </th>
+            <th style="text-align:center" nowrap>
+                Nội dung
+            </th>
+            <th style="width:5px"></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.stt)
+    </td>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.tenMauHD)
+    </td>
+    <td style="text-align:center" nowrap>
+        <textarea id="@item.id" style="display:none">@HttpUtility.HtmlDecode(item.hdNoiDung)</textarea>
+    </td>
+    <td style="text-align:center" nowrap>
+        <input type="submit" style="position:absolute;left:-9999px" />
+        <a title="Xóa" onclick="return prompt('Xác nhận xóa loại hợp đồng! (yes)') == 'yes'" href="@Url.Action("Delete_dmMauHopDong", "DanhMuc", new { id = item.id })"><span class="ui-icon ui-icon-trash" style="display:inline-block"></span></a>
+        <a title="Sửa" onclick = "return LHD_edit('@item.id','@item.stt','@item.tenMauHD')" ><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+
+<script>
+    $(document).ready(function () {
+        $("#dmMauHopDong").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+
+</script>
+
+<script src="~/Scripts/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+
+<style>
+    body { margin: 0 }
+</style>
+
+<script>
+    $(function () {
+        $("form#Edit_dmMauHopDong").submit(function () {
+            $("#hdNoiDung_edit").val(CKEDITOR.instances["hdNoiDung_edit"].getData());
+        });
+        $("form#Create_dmMauHopDong").submit(function () {
+            $("#hdNoiDung_create").val(CKEDITOR.instances["hdNoiDung_create"].getData());
+            alert($("#hdNoiDung_create").val());
+        });
+    });
+    function LHD_edit(id,stt,tenMauHD) {
+        url = $(this).attr('href');
+        $("#dialog-edit").show();
+        document.getElementById('MHDid_hid').value = id;
+        document.getElementById('stt_edit').value = stt;
+        document.getElementById('tenMauHD_edit').value = tenMauHD;
+        CKEDITOR.instances["hdNoiDung_edit"].setData($("textarea#" + id).val());
+        return false;
+    }
+    $(document).ready(function () {
+        $("textarea#hdNoiDung_edit").ckeditor({ htmlEncodeOutput: true });
+        $("textarea#hdNoiDung_create").ckeditor({ htmlEncodeOutput: true });
+    });
+</script>

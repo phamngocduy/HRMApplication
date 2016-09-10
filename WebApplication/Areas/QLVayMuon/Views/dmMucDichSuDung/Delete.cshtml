@@ -1,0 +1,42 @@
+﻿@model HRM.QLVayMuon.Models.dmMucDichSuDung
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+}
+<h3>
+    Bạn có chắc muốn xoá Mục đích sử dụng này?</h3>
+<fieldset>
+    <legend>dmMucDichSuDung</legend>
+    <div class="display-label">
+        @Html.VN("Mã mục đích:")
+        <b>@Html.DisplayFor(model => model.MaMucDich)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tên mục đích:")
+        <b>@Html.DisplayFor(model => model.TenMucDich)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Hạn mức tối đa (VNĐ): ")
+        <b>@String.Format("{0:#,##0}", Model.HanMucToiDa)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Thời gian hoàn tiền: ")
+        <b>@Html.DisplayFor(model => model.ThoiGianHoanTien)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Đơn vị thời gian: ")
+        <b>@Html.DisplayFor(model => model.DonViThoiGian)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Ghi chú:")
+        <b>@Html.DisplayFor(model => model.GhiChu)</b>
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Xoá" />
+        |
+        @Html.ActionLink("Trở về màn hình Danh sách Mục đích sử dụng", "Index")
+    </p>
+}

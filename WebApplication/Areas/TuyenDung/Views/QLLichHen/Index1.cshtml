@@ -1,0 +1,267 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdXemVaXepLichHen
+@using System.Data.Objects;
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@using HRM.Webpages.Helpers
+@using HRM.Libraries.Helpers
+@{
+    ViewBag.Title = "Index";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var DonVi_id = new SelectList(db0.dmDonVi.OrderBy(tt => tt.tenDonVi), "id", "tenDonVi", db0.dmDonVi);
+    int ungvienid = ViewBag.ungvienid;
+}
+
+<div style="">
+@Html.StatusMessage(TempData["Message"])
+</div>
+<p>
+<div style="">
+</p>
+<table id="QLLichHen" class="tableWithFloatingHeader">
+<thead>
+    <tr>
+        <th style="text-align:center" nowrap >
+            Ngày PV/GT
+        </th>
+        <th style="text-align:center" nowrap >
+            Giờ PV/GT
+        </th>
+        <th style="text-align:center" nowrap >
+            Địa điểm PV/GT
+        </th>
+        <th style="text-align:center" nowrap >
+            Đơn vị</br>phỏng vấn
+        </th>      
+        <th style="text-align:center" nowrap data-tip="Đã báo ứng viên">        
+            ĐBUV
+        </th>
+        <th style="text-align:center" nowrap>        
+            Ghi chú   
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@{var qllichhen = db.tdXemVaXepLichHen.Where(lh => lh.tdTTUngCuVien.tdThongTinUngTuyens.FirstOrDefault().NgayNhanHS.Value.Year == DateTime.Today.Year && lh.tdTTUngCuVien.KetQuaTuyenDung == null);
+  var cts = qllichhen.OrderBy(lh => lh.NgayPhongVan).Where(lh => lh.UngCuVien_id == ungvienid);
+  var cts1 = db.tdXemVaXepLichHen    
+       .Where(lh => lh.UngCuVien_id == ungvienid)
+       .OrderBy(lh => lh.NgayPhongVan);
+}
+@{var Distinct = new HashSet<int>();}
+@foreach (var item in cts)
+{
+    if (!Distinct.Add(item.id)) { continue; }
+    using (Html.BeginForm("Edit1", "QLLichHen"))
+    {
+        ViewData.TemplateInfo.HtmlFieldPrefix = null;
+        @Html.Hidden("id", @item.id)
+        @Html.Hidden("ungvienid", ungvienid)
+    //    var tdPrefix = "" + item.id;
+        if (qllichhen.Count() == 0) { continue; }
+        <tr id="@item.id">
+            <td style="text-align:center" nowrap >
+            <span id="View">
+                @if (item.NgayPhongVan != null)
+                {
+                    @item.NgayPhongVan.Value.ToShortDateString();
+                }
+            </span>
+            <span id="Edit">
+             
+                @Html.EditorFor(modelItem => item.NgayPhongVan)
+                @Html.ValidationMessageFor(modelItem => item.NgayPhongVan)
+            </span>  
+            </td>
+            <td style="text-align:center" nowrap >
+                <span id="View">
+                    @Html.DisplayFor(modelItem => item.Gio)
+                </span>
+                <span id="Edit" >
+                    @Html.TextBoxFor(modelItem => item.Gio, new { style = "width:80px; font-size:small", id = "time" })
+                    @Html.ValidationMessageFor(modelItem => item.Gio)
+                </span>
+            </td>
+            <td >
+            <span id="View">
+                @Html.DisplayFor(modelItem => item.DiaDiemPhongVan)
+            </span>
+            <span id="Edit">
+                @Html.TextBoxFor(modelItem => item.DiaDiemPhongVan, new { style = "width:auto; font-size:small" })
+            </span>
+            </td>
+            
+            <td >
+            <span id="View">
+                @{var tenDonVi = "";
+                  try
+                  {
+                      tenDonVi = db0.dmDonVi.Where(dv => dv.id == item.DonViPhongVan_id).FirstOrDefault().tenDonVi;
+                  }
+                  catch { }
+                 
+                 }
+                @Html.Raw(tenDonVi)
+            </span>
+            <span id="Edit">
+                @Html.DropDownListFor(modelItem => item.DonViPhongVan_id, new SelectList(db0.dmDonVi.OrderBy(tt => tt.tenDonVi), "id", "tenDonVi", item.DonViPhongVan_id), String.Empty, new { style = "width:120px;height:25px" })
+                @Html.ValidationMessageFor(modelItem => item.DonViPhongVan_id)
+            </span>
+            </td>           
+            <td style="text-align:center" >
+                <span id="View">
+                    @Html.DisplayFor(modelItem => item.DaBaoChoUngCuVien)
+                </span>
+                <span id="Edit">
+                    @Html.CheckBoxFor(modelItem => item.DaBaoChoUngCuVien)
+                    @Html.ValidationMessageFor(modelItem => item.DaBaoChoUngCuVien)
+                </span>
+                
+            </td>
+            <td style="text-align:left">
+            <span id="View">
+                @Html.DisplayFor(modelItem => item.GhiChu, new { style = "width:auto;max-width:120px" }) 
+            </span>
+            <span id="Edit">
+                @Html.TextBoxFor(modelItem => item.GhiChu, new { style = "width:auto" })
+                @Html.ValidationMessageFor(modelItem => item.GhiChu)
+            </span>
+            </td>
+            <td style="text-align:center" >
+                <input type="submit" style="position:absolute;left:-9999px" />
+                <a title="Sửa" id="Edit"><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+                <a title="Lưu" id ="Save" hidden><span class = "ui-icon ui-icon-disk"  style="display:inline-block"></span></a>     
+            </td>
+        </tr>
+    }
+}
+@using (Html.BeginForm("Edit1", "QLLichHen"))
+{
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+       
+        <tr>
+         @Html.HiddenFor(modelItem => modelItem.id, 123123);
+         @Html.Hidden("ungvienid", 435)
+          <td style="text-align:center" wrap>
+             @Html.EditorFor(modelItem => modelItem.NgayPhongVan)
+             @Html.ValidationMessageFor(modelItem => modelItem.NgayPhongVan)
+          </td>
+          <td style="text-align:center" wrap>
+             @Html.TextBoxFor(modelItem => modelItem.Gio, new { style = "width:80px; font-size:small", id = "time" })
+             @Html.ValidationMessageFor(modelItem => modelItem.Gio)
+          </td>
+          <td >
+             <input id="DiaDiemPhongVan" name = "DDPhongVan" type="text" style ="width:auto; font-size:small"/>
+          </td>
+          <td  wrap>
+             @Html.DropDownListFor(modelItem => modelItem.DonViPhongVan_id, DonVi_id, String.Empty, new { style = "width:120px;height:25px" })
+          </td>            
+          <td style="text-align:center">
+             @Html.CheckBoxFor(modelItem => modelItem.DaBaoChoUngCuVien)
+          </td>
+          <td style="text-align:left">
+             <input id="GhiChu" name = "GhiChu" type="text" style ="width:auto"/>
+          </td>
+          <td style="text-align:justify" >
+            <input type="submit" style="position:absolute;left:-9999px" />
+            <a title="Thêm mới" id = "Save"><span class = "ui-icon ui-icon-circle-plus"  style="display:inline-block"></span></a> 
+        </td>
+        </tr> 
+}
+</tbody>
+</table>
+</div>
+<style>
+    td { padding: 0 0 0 0 }
+    input { margin: 0 0 0 0; width: auto; }
+</style>
+<link href="/Scripts/jquery.ptTimeSelect.css" rel="stylesheet"
+    type="text/css" />
+
+<script src="@Href("~/Scripts/jquery.ptTimeSelect.js")"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input[id="time"]').ptTimeSelect();
+    });
+</script>
+
+<script src="@Href("~/Scripts/datatables/DataTableFixedHeader.js")"></script>
+<script>
+    $().ready(function () {
+        var table$ = $("#QLLichHen");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+        table$.css("width", "1010px");
+        table$.find("span[id=Edit]").prop("hidden", true);
+        table$.find("input[type=datetime]").css("width", "100px").css("height", "25px")
+              .css("border", "0").css("border-bottom", "1px dotted")
+              .datepicker({ changeMonth: true, changeYear: true })
+              .css("font-size", "1.1em").css("margin", "0").css("padding", "0");
+        table$.find("a[id=Edit]").on("click", function () {
+            var row = $(this).parents("tr");
+            do {
+                row.find("span[id=View]").prop("hidden", true);
+                row.find("span[id=Edit]").prop("hidden", false);
+                row = row.next("tr");
+            } while (row.length > 0)
+            $(this).prop("hidden", true).next("a").prop("hidden", false);
+            return false;
+        });
+        table$.find("a[id=Save]").on("click", function () {
+            $(this).parents("tr").prev("input").prev("form").submit();
+            return false;
+        });
+
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+
+        var header = new FixedHeader(document.getElementById("QLLichHen"));
+
+        $("body").unblock()
+
+        var nDiv = document.createElement("input");
+        nDiv.style.position = "absolute";
+        nDiv.style.top = "0px";
+        nDiv.style.left = "0px";
+        nDiv.style.width = "80px";
+        nDiv.style.margin = "0";
+        nDiv.style.padding = "0";
+        nDiv.className = "Utility";
+        document.body.appendChild(nDiv);
+        var oDiv = undefined;
+        $(nDiv).hide().on("click", function () {
+            if ($(this).val() == "Số ngày")
+                $(this).val("");
+        }).on("input", function () {
+            var days = parseInt($(this).val());
+            if (days > 0) {
+                var data = $.trim($(this).prop("base")).split('/');
+                var dd = parseInt(data[0], 10);
+                var mm = parseInt(data[1], 10);
+                var yyyy = parseInt(data[2], 10);
+                var date = new Date(yyyy, mm - 1, dd);
+                date = new Date(date.setDate(date.getDate() + days));
+                oDiv.val(date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear());
+            }
+        }).on("focusout", function () { $(this).hide(); });
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+        $("#Filter").find("input[type=text]")
+
+    });
+</script>
+
+<script>
+    $("input[type=text],input[type=datetime],input[type=number]").css("border", "0").css("border-bottom", "1px dotted");
+    $("input[type=text]").on("input", function () {
+        $(this).attr("size", $(this).val().length + 1);
+    }).each(function () {
+        $(this).attr("size", $(this).val().length + 1);
+    });
+</script>

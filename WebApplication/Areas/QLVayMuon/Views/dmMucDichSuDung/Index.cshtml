@@ -1,0 +1,109 @@
+﻿@model IEnumerable<HRM.QLVayMuon.Models.dmMucDichSuDung>
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Danh mục Mục đích sử dụng";
+}
+
+   <div>
+    @Html.ActionLink("Trở về màn hình Danh Sách Nhân Viên Vay Mượn", "Index", "NhanVienVayMuon")
+    </div>
+    <p>
+    @Html.ActionLink("Thêm mục đích sử dụng", "Create")
+    </p>
+    <p><h3 align =center><font>Danh sách Mục đích sử dụng vay mượn</font></h3></p>
+@Html.StatusMessage(TempData["Message"])
+<table id="dmMucDichSuDung">
+    <thead>
+        <tr>
+        <th style="text-align: center" nowrap>
+                STT
+            </th>
+            @*<th style="text-align: center" nowrap>
+                Mã
+            </th>*@
+            <th style="text-align: center" nowrap>
+                Tên mục đích
+            </th>
+            <th style="text-align: center" nowrap>
+                Hạn mức tối đa (VNĐ)
+            </th>
+            <th style="text-align: center" nowrap>
+                TG hoàn tiền
+            </th>
+            <th style="text-align: center" nowrap>
+                ĐV thời gian
+            </th>
+            <th style="text-align: center" nowrap>
+                Ghi chú
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                
+            <tr>
+            <td style="text-align: center" nowrap>
+                    @Html.DisplayFor(modelItem => item.stt)
+                </td>
+              @*  <td style="text-align: center" nowrap>
+                    @Html.DisplayFor(modelItem => item.MaMucDich)
+                </td>*@
+               <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.TenMucDich)
+                </td>
+                <td style="text-align: right" nowrap>
+                    @String.Format("{0:#,##0}", item.HanMucToiDa)
+                   
+                </td>
+                <td style="text-align: center" nowrap>
+                    @Html.DisplayFor(modelItem => item.ThoiGianHoanTien)
+                </td>
+                <td style="text-align: center" nowrap>
+                    @Html.DisplayFor(modelItem => item.DonViThoiGian)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td>
+            <a href="dmMucDichSuDung/Delete?id=@item.id" title="Xoá"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a href="dmMucDichSuDung/Edit?id=@item.id" title="Chỉnh sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+            </td>
+               </tr>
+        }
+    </tbody>
+</table>
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script src="/Content/datatables/DataTableFixedHeader.js"></script>
+<script>
+    $(document).ready(function () {
+        var oTable = $('#dmMucDichSuDung').dataTable({
+            "bJQueryUI": true,
+            "sScrollY": "100%",
+            "sScrollX": "100%"
+
+
+        });
+        //        new FixedHeader(oTable, { "bottom": true });
+
+        new $.fn.dataTable.FixedColumns(oTable, {
+            "iLeftColumns": 2,
+            "iRightColumns": 1
+        });
+
+    });
+</script>
+<style type="text/css">
+    #panel
+    {
+        text-align: left;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
+    }
+    #panel
+    {
+        display: none;
+    }
+</style>

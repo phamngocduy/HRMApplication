@@ -1,0 +1,85 @@
+INFO 03:07:05 – Home/Index
+INFO 03:07:07 – Login/Index
+INFO 03:07:16 – Login/Index
+INFO 03:07:16 – Home/Index
+INFO 03:07:20 – HDNguoiLaoDong/Index
+INFO 03:07:25 – TuyenDung/Index
+ERROR03:07:33 – Object reference not set to an instance of an object.
+/controller=HDNguoiLaoDong/action=Index
+   at ASP._Page_Areas_HDLaoDong_Views_HDNguoiLaoDong_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\HDNguoiLaoDong\Index.cshtml:line 147
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:08:32 – Home/Index
+INFO 03:08:33 – Login/Index
+INFO 03:08:41 – Login/Index
+INFO 03:08:41 – Home/Index
+INFO 03:08:43 – HDNguoiLaoDong/Index
+ERROR03:12:17 – Object reference not set to an instance of an object.
+/controller=HDNguoiLaoDong/action=Index
+   at ASP._Page_Areas_HDLaoDong_Views_HDNguoiLaoDong_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\HDNguoiLaoDong\Index.cshtml:line 147
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:12:17 – HDNguoiLaoDong/Index
+INFO 04:29:19 – Home/Index
+INFO 04:29:19 – Login/Index
+INFO 04:29:29 – Login/Index
+INFO 04:29:29 – Home/Index
+INFO 04:29:31 – ThongKe/Index
+ERROR04:29:34 – Object reference not set to an instance of an object.
+/controller=ThongKe/action=Bieu51
+   at HRM.Webpages.DateModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Workspace\HRMApplication\WebApplication\App_Start\ModelBinder.cs:line 16
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+INFO 04:30:27 – Home/Index
+INFO 04:30:28 – Login/Index
+INFO 04:31:34 – Login/Index
+INFO 04:31:34 – Home/Index
+ERROR04:32:38 – Object reference not set to an instance of an object.
+/controller=ThongKe/action=Bieu51
+   at HRM.Webpages.DateModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Workspace\HRMApplication\WebApplication\App_Start\ModelBinder.cs:line 16
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+ERROR04:33:56 – Object reference not set to an instance of an object.
+/controller=ThongKe/action=Bieu51
+   at HRM.Webpages.DateModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) in C:\Workspace\HRMApplication\WebApplication\App_Start\ModelBinder.cs:line 16
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+INFO 04:34:06 – ThongKe/Bieu52
+INFO 04:34:56 – ThongKe/Bieu51

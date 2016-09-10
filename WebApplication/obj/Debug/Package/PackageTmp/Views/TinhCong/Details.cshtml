@@ -1,0 +1,25 @@
+﻿@model int
+@using System.Data
+@using System.Collections;
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+
+@TinhCong.Details(Model, ViewBag)
+
+<script>
+    $(function () {
+        $("table#Details").dataTable({
+            aLengthMenu: [
+                [25, 50, 100, 200, -1],
+                [25, 50, 100, 200, "All"]
+            ],
+            iDisplayLength: -1,
+            "sDom": '<"H"Tfr>t<"F"ip>',
+            "oTableTools": {
+                "sSwfPath": "/hrm/Content/copy_csv_xls.swf",
+                "aButtons": ["xls", "print"]
+            }
+        });
+    });
+</script>

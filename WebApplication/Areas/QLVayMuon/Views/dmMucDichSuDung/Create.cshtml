@@ -1,0 +1,115 @@
+﻿@model HRM.QLVayMuon.Models.dmMucDichSuDung
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2>
+    Thêm mới</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmMucDichSuDung</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaMucDich, "Mã mục đích")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaMucDich)
+            @Html.ValidationMessageFor(model => model.MaMucDich)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TenMucDich, "Tên mục đích")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TenMucDich)
+            @Html.ValidationMessageFor(model => model.TenMucDich)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HanMucToiDa, "Hạn mức tối đa (VNĐ)")
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.HanMucToiDa)
+            @Html.ValidationMessageFor(model => model.HanMucToiDa)
+        </div>
+        <input id="HanMuc" value="" />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ThoiGianHoanTien, "Thời gian hoàn tiền")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ThoiGianHoanTien)
+            @Html.ValidationMessageFor(model => model.ThoiGianHoanTien)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DonViThoiGian, "Đơn vị thời gian")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DonViThoiGian)
+            @Html.ValidationMessageFor(model => model.DonViThoiGian)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GhiChu, "Ghi chú")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+        <p>
+            <input type="submit" value="Tạo" onclick="return check();"/>
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Trở về màn hình Danh sách Mục đích sử dụng", "Index")
+</div>
+<script>
+
+//tu them dau phay vao so
+$('#HanMuc').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    ;
+  });
+
+});
+
+    $("#HanMuc").keyup(function () {
+
+            //Clear the hidden field
+        $("#HanMucToiDa").val("");
+
+            //Create char array from phone number field
+            var charArray = $(this).val().split("");
+
+            var phoneNumber = "";
+
+            //Iterate over each character in the char array
+            //and determine if it is a number
+            $.each(charArray, function (index, value) {
+                if (!isNaN(value) && value != " ") {
+                    phoneNumber = phoneNumber + value;
+                }
+            });
+
+            //Set hidden field
+            $("#HanMucToiDa").val(phoneNumber);
+        });
+//thong bao loi neu cac truong bi null
+        function check() {
+
+
+            if (document.getElementById('HanMucToiDa').value == "") {
+                alert("Hạn mức tối đa không được bỏ trống!");
+
+                return false;
+            }
+        }
+</script>

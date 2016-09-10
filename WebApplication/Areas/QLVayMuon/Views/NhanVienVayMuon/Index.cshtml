@@ -1,0 +1,89 @@
+﻿@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.QLVayMuon.Models.NhanVienVayMuon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Thêm nhân viên vay mượn", "Create") 
+    @Html.ActionLink("Báo cáo", "Baocao")
+    @Html.ActionLink("Nhập dữ liệu hoàn vay","Index", "ImportHoanVay")
+    @Html.ActionLink("Danh mục Mục đích sử dụng", "Index", "dmMucDichSuDung")
+    @Html.ActionLink("Danh mục Giấy tờ", "Index", "dmGiayTo")
+</p>
+<h3 align =center><font>Danh Sách Nhân Viên Vay Mượn</font></h3>
+
+@Html.StatusMessage(TempData["Message"])
+<table id = NhanVienVayMuon>
+<thead>
+    <tr>
+        <th>@Html.VN("Mã nhân viên")</th>
+        <th>@Html.VN("Họ và tên")</th>
+        <th>@Html.VN("Đơn vị")</th>
+        <th>@Html.VN("Tổng tiền vay")</th>
+        <th>@Html.VN("Tổng tiền hoàn")</th>
+        <th>@Html.VN("Dư nợ cuối kỳ")</th>
+        <th>@Html.VN("Tổng tiền lãi")</th>
+        <th>@Html.VN("Số lần còn lại phải trả")</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoVaTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonVi)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TongSoTienVay )
+
+        </td>*@
+        <td>@String.Format("{0:#,##0}", item.TongSoTienVay)</td>
+        <td>@String.Format("{0:#,##0}", item.TongSoTienHoan)</td>
+        <td>@String.Format("{0:#,##0}", item.SoDuNoCuoiKy)</td>
+        <td>@String.Format("{0:#,##0}", item.TongSoTienLai)</td>
+    @*    <td>
+            @Html.DisplayFor(modelItem => item.TongSoTienHoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDuNoCuoiKy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongSoTienLai)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.SoThangConLaiPhaiTra)
+        </td>
+        <td>
+            <a href="NhanVienVayMuon/Details?NV_id=@item.id" title="Chi tiết vay mượn"><span class="ui-icon ui-icon-clipboard" style="display:inline-block"/></a>
+            <a href="KhoanVay/Index?NV_id=@item.id" title="Khoản vay"><span class="ui-icon ui-icon-plusthick" style="display:inline-block"/></a>
+            <a href="HoanVay/index?NV_id=@item.id" title="Hoàn vay"><span class="ui-icon ui-icon-minusthick" style="display:inline-block"/></a>
+            <a href="NhanVienVayMuon/Delete?NV_id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#NhanVienVayMuon").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+  "bJQueryUI": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+
+   
+
+</script>

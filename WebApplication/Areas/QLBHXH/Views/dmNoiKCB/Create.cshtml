@@ -1,0 +1,46 @@
+﻿@model HRM.QLBHXH.Models.dmNoiKCB
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Thêm mới nơi KCB</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmNoiKCB</legend>
+
+
+
+        <table>
+  <tr>
+    <td> Mã BV</td>
+    <td>
+            @Html.EditorFor(model => model.MaBV)
+            @Html.ValidationMessageFor(model => model.MaBV)</td>
+  </tr>
+  <tr>
+    <td> Tên bệnh viện</td>
+    <td>
+            @Html.EditorFor(model => model.TenBV)
+            @Html.ValidationMessageFor(model => model.TenBV)</td>
+  </tr>
+  <tr>
+    <td> Ghi chú</td>
+    <td>
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)</td>
+  </tr>
+</table>
+     
+
+       
+            <input type="submit" value="Tạo" />
+    
+    </fieldset>
+}
+
+
+

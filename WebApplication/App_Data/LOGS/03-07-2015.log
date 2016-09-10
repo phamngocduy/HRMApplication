@@ -1,0 +1,293 @@
+INFO 10:27:16 – Home/Index
+INFO 10:27:18 – Login/Index
+INFO 10:35:35 – Login/Index
+INFO 10:35:36 – Home/Index
+INFO 10:35:45 – HSNhanSu/Details
+INFO 10:35:48 – SoYeuLyLich/EditP
+INFO 10:35:56 – TheDinhDanh/IndexP
+INFO 10:36:31 – Home/Index
+INFO 10:36:35 – HSNhanSu/Menu
+INFO 10:36:41 – HSNhanSu/Index
+INFO 10:36:41 – NhanVien/IndexP
+INFO 10:36:45 – HSNhanSu/Details
+INFO 10:36:49 – SoYeuLyLich/EditP
+INFO 10:36:54 – TheDinhDanh/IndexP
+INFO 10:54:46 – HSNhanSu/Details
+INFO 10:54:50 – SoYeuLyLich/EditP
+INFO 10:54:55 – TheDinhDanh/IndexP
+INFO 10:55:50 – Home/Index
+INFO 10:56:00 – HSNhanSu/Details
+INFO 10:56:10 – SoYeuLyLich/EditP
+INFO 10:56:57 – TheDinhDanh/IndexP
+INFO 10:57:16 – Home/Index
+INFO 10:57:19 – HSNhanSu/Details
+INFO 10:57:20 – SoYeuLyLich/EditP
+INFO 10:58:29 – TheDinhDanh/IndexP
+INFO 10:59:06 – HSNhanSu/Details
+INFO 10:59:06 – SoYeuLyLich/EditP
+INFO 10:59:06 – TheDinhDanh/IndexP
+INFO 11:12:38 – HSNhanSu/Details
+INFO 11:12:38 – SoYeuLyLich/EditP
+INFO 11:12:39 – TheDinhDanh/IndexP
+INFO 11:17:53 – HSNhanSu/Details
+INFO 11:17:57 – SoYeuLyLich/EditP
+INFO 11:17:59 – TheDinhDanh/IndexP
+INFO 11:19:03 – HSNhanSu/Details
+INFO 11:19:03 – SoYeuLyLich/EditP
+ERROR11:19:04 – 'column' argument cannot be null.
+Parameter name: column
+/NV_id=36/controller=SoYeuLyLich/action=EditP/id=36/85cb4843-5036-48bc-a1bf-72e2c6577494=System.Web.Mvc.DictionaryValueProvider`1[System.Object]
+   at System.Data.DataRow.CheckColumn(DataColumn column)
+   at System.Data.DataRow.get_Item(DataColumn column)
+   at HRM.Webpages.Helpers.DataTableExt.Editor(HtmlHelper html, DataRow model, DataColumn field) in C:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 208
+   at ASP._Page_Areas_QLHSNhanSu_Views_SoYeuLyLich_Edit_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\SoYeuLyLich\Edit.cshtml:line 194
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ERROR11:19:04 – Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'.
+/controller=HSNhanSu/action=Details/id=36
+   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, Object routeValues)
+   at ASP._Page_Areas_QLHSNhanSu_Views_HSNhanSu_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\HSNhanSu\Details.cshtml:line 35
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:21:22 – HSNhanSu/Details
+INFO 11:21:22 – SoYeuLyLich/EditP
+INFO 11:21:22 – TheDinhDanh/IndexP
+INFO 11:23:13 – HSNhanSu/Details
+INFO 11:23:13 – HSNhanSu/Details
+INFO 11:23:17 – SoYeuLyLich/EditP
+INFO 11:23:22 – SoYeuLyLich/EditP
+INFO 11:23:25 – TheDinhDanh/IndexP
+INFO 11:23:25 – TheDinhDanh/IndexP
+INFO 11:23:42 – HSNhanSu/Details
+INFO 11:23:42 – SoYeuLyLich/EditP
+ERROR11:23:43 – 'column' argument cannot be null.
+Parameter name: column
+/NV_id=36/controller=SoYeuLyLich/action=EditP/id=36/b3af6170-4aeb-46da-a90a-0b93a8a3f921=System.Web.Mvc.DictionaryValueProvider`1[System.Object]
+   at System.Data.DataRow.CheckColumn(DataColumn column)
+   at System.Data.DataRow.get_Item(DataColumn column)
+   at HRM.Webpages.Helpers.DataTableExt.Editor(HtmlHelper html, DataRow model, DataColumn field) in C:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 208
+   at ASP._Page_Areas_QLThinhGiang_Views_SoYeuLyLich_Edit_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\SoYeuLyLich\Edit.cshtml:line 46
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ERROR11:23:43 – Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'.
+/controller=HSNhanSu/action=Details/id=36
+   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)
+   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)
+   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)
+   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, Object routeValues)
+   at ASP._Page_Areas_QLThinhGiang_Views_HSNhanSu_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\Views\HSNhanSu\Details.cshtml:line 28
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 11:24:45 – HSNhanSu/Details
+INFO 11:24:45 – SoYeuLyLich/EditP
+INFO 11:24:45 – TheDinhDanh/IndexP
+INFO 11:24:50 – SoYeuLyLich/Update&id=36&nid=9&GioiTinh_id=1&NoiSinh_TinhThanh_id=79&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=714&HoKhauThuongTru_id=909&NoiOHienNay_id=1058&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=21&HocVi_id=4&HocHam_id=&LyLuanChinhTri_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 11:24:50 – HSNhanSu/Details
+INFO 11:24:50 – SoYeuLyLich/EditP
+INFO 11:24:51 – TheDinhDanh/IndexP
+INFO 11:24:57 – SoYeuLyLich/Update&id=36&nid=9&GioiTinh_id=1&NoiSinh_TinhThanh_id=79&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=714&HoKhauThuongTru_id=909&NoiOHienNay_id=1058&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=21&HocVi_id=4&HocHam_id=&LyLuanChinhTri_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 11:24:57 – HSNhanSu/Details
+INFO 11:24:57 – SoYeuLyLich/EditP
+INFO 11:24:58 – TheDinhDanh/IndexP
+INFO 11:32:55 – HSNhanSu/Details
+INFO 11:32:56 – SoYeuLyLich/EditP
+INFO 11:32:57 – TheDinhDanh/IndexP
+INFO 11:33:12 – HSNhanSu/Details
+INFO 11:33:12 – SoYeuLyLich/EditP
+INFO 11:33:13 – TheDinhDanh/IndexP
+INFO 11:35:20 – HSNhanSu/Details
+INFO 11:35:20 – SoYeuLyLich/EditP
+INFO 11:35:20 – TheDinhDanh/IndexP
+INFO 11:35:30 – SoYeuLyLich/Update&id=36&nid=9&GioiTinh_id=1&NoiSinh_TinhThanh_id=79&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=714&HoKhauThuongTru_id=909&NoiOHienNay_id=1058&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=21&HocVi_id=4&HocHam_id=&LyLuanChinhTri_id=&TrinhDoNgoaiNgu_id=6&TrinhDoTinHoc_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 11:35:30 – HSNhanSu/Details
+INFO 11:35:30 – SoYeuLyLich/EditP
+INFO 11:35:30 – TheDinhDanh/IndexP
+INFO 11:35:39 – SoYeuLyLich/Update&id=36&nid=9&GioiTinh_id=1&NoiSinh_TinhThanh_id=79&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=714&HoKhauThuongTru_id=909&NoiOHienNay_id=1058&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=21&HocVi_id=4&HocHam_id=&LyLuanChinhTri_id=&TrinhDoNgoaiNgu_id=6&TrinhDoTinHoc_id=1&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 11:35:39 – HSNhanSu/Details
+INFO 11:35:39 – SoYeuLyLich/EditP
+INFO 11:35:39 – TheDinhDanh/IndexP
+INFO 01:11:30 – HSNhanSu/Details
+INFO 01:11:30 – SoYeuLyLich/EditP
+INFO 01:11:32 – TheDinhDanh/IndexP
+INFO 01:13:58 – HSNhanSu/Details
+INFO 01:13:58 – SoYeuLyLich/EditP
+INFO 01:13:59 – TheDinhDanh/IndexP
+INFO 01:14:12 – SoYeuLyLich/Update&id=36&nid=9&GioiTinh_id=1&NoiSinh_TinhThanh_id=79&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=714&HoKhauThuongTru_id=909&NoiOHienNay_id=1058&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=21&HocVi_id=4&ChucDanhGiangVien_id=4&HocHam_id=1&LyLuanChinhTri_id=&TrinhDoNgoaiNgu_id=6&TrinhDoTinHoc_id=1&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 01:14:13 – HSNhanSu/Details
+INFO 01:14:13 – SoYeuLyLich/EditP
+INFO 01:14:13 – TheDinhDanh/IndexP
+INFO 01:15:13 – HSNhanSu/Details
+INFO 01:15:13 – SoYeuLyLich/EditP
+INFO 01:15:14 – TheDinhDanh/IndexP
+INFO 01:15:28 – HSNhanSu/Details
+INFO 01:15:29 – SoYeuLyLich/EditP
+INFO 01:15:29 – TheDinhDanh/IndexP
+INFO 01:16:00 – HSNhanSu/Details
+INFO 01:16:00 – SoYeuLyLich/EditP
+INFO 01:16:02 – TheDinhDanh/IndexP
+INFO 01:31:42 – HSNhanSu/Details
+INFO 01:31:42 – SoYeuLyLich/EditP
+INFO 01:31:43 – TheDinhDanh/IndexP
+INFO 01:31:55 – HSNhanSu/Details
+INFO 01:31:55 – SoYeuLyLich/EditP
+INFO 01:31:56 – TheDinhDanh/IndexP
+INFO 01:40:03 – HSNhanSu/Details
+INFO 01:40:03 – SoYeuLyLich/EditP
+INFO 01:40:04 – TheDinhDanh/IndexP
+INFO 01:40:25 – HSNhanSu/Details
+INFO 01:40:25 – SoYeuLyLich/EditP
+INFO 01:40:26 – TheDinhDanh/IndexP
+INFO 01:41:57 – HSNhanSu/Details
+INFO 01:41:57 – SoYeuLyLich/EditP
+INFO 01:41:57 – TheDinhDanh/IndexP
+INFO 01:52:38 – HSNhanSu/Details
+INFO 01:52:44 – SoYeuLyLich/EditP
+INFO 01:52:46 – TheDinhDanh/IndexP
+INFO 01:54:15 – HSNhanSu/Details
+INFO 01:54:15 – SoYeuLyLich/EditP
+INFO 01:54:16 – TheDinhDanh/IndexP
+INFO 01:54:23 – HocVi/tenTrinhDo&idHocVi=2
+INFO 01:54:38 – HSNhanSu/Details
+INFO 01:54:38 – SoYeuLyLich/EditP
+INFO 01:54:39 – TheDinhDanh/IndexP
+INFO 01:54:43 – HocVi/tenTrinhDo&idHocVi=10
+INFO 01:54:46 – HocVi/tenTrinhDo&idHocVi=3
+INFO 01:54:48 – HocVi/tenTrinhDo&idHocVi=15
+INFO 01:54:51 – HocVi/tenTrinhDo&idHocVi=17
+INFO 01:54:54 – HocVi/tenTrinhDo&idHocVi=15
+INFO 01:54:58 – HocVi/tenTrinhDo&idHocVi=2
+INFO 01:55:02 – HocVi/tenTrinhDo&idHocVi=10
+INFO 01:55:04 – SoYeuLyLich/Update&id=36&nid=9&GioiTinh_id=1&NoiSinh_TinhThanh_id=79&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=714&HoKhauThuongTru_id=909&NoiOHienNay_id=1058&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=21&HocVi_id=10&ChucDanhGiangVien_id=4&HocHam_id=1&LyLuanChinhTri_id=&TrinhDoNgoaiNgu_id=6&TrinhDoTinHoc_id=1&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 01:55:04 – HSNhanSu/Details
+INFO 01:55:04 – SoYeuLyLich/EditP
+INFO 01:55:04 – TheDinhDanh/IndexP
+INFO 02:00:07 – HSNhanSu/Details
+INFO 02:00:10 – SoYeuLyLich/EditP
+INFO 02:00:15 – TheDinhDanh/IndexP
+INFO 02:00:48 – HSNhanSu/Details
+INFO 02:00:48 – SoYeuLyLich/EditP
+INFO 02:00:49 – TheDinhDanh/IndexP
+INFO 02:00:55 – HocVi/tenTrinhDo&idHocVi=10
+INFO 02:00:56 – SoYeuLyLich/Update&id=36&nid=9&GioiTinh_id=1&NoiSinh_TinhThanh_id=79&NoiSinh_QuanHuyen_id=&NoiSinh_PhuongXa_id=&QueQuan_TinhThanh_id=&QueQuan_QuanHuyen_id=&QueQuan_PhuongXa_id=&DanToc_id=&TonGiao_id=&QuocTich_id=&ChungMinhNhanDan_id=714&HoKhauThuongTru_id=909&NoiOHienNay_id=1058&NgachVienChuc_id=&BacLuong_id=&TrinhDoHocVan_id=21&HocHam_id=&HocVi_id=10&LyLuanChinhTri_id=&QuanHamCaoNhat_id=&DanhHieuCaoNhat_id=&LaThuongBinhHang_id=&GiaDinhChinhSach_id=
+INFO 02:00:57 – HSNhanSu/Details
+INFO 02:00:57 – SoYeuLyLich/EditP
+INFO 02:00:57 – TheDinhDanh/IndexP
+INFO 04:04:20 – HSNhanSu/Details
+INFO 04:04:20 – SoYeuLyLich/EditP
+INFO 04:04:21 – TheDinhDanh/IndexP
+INFO 04:05:58 – HSNhanSu/Details
+INFO 04:05:58 – SoYeuLyLich/EditP
+INFO 04:06:00 – TheDinhDanh/IndexP
+INFO 04:08:51 – HSNhanSu/Details
+INFO 04:08:51 – SoYeuLyLich/EditP
+INFO 04:08:52 – TheDinhDanh/IndexP
+INFO 10:43:23 – HSNhanSu/Details
+INFO 10:43:24 – QTLamViecTruoc/IndexP
+INFO 10:43:25 – QTLamViec/IndexP
+INFO 10:43:27 – QTKiemNhiem/IndexP
+INFO 11:10:38 – HSNhanSu/Details
+ERROR11:10:38 – An error occurred while executing the command definition. See the inner exception for details.
+/controller=HSNhanSu/action=Details/id=36
+   at System.Data.EntityClient.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   at System.Data.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   at System.Data.Objects.DataClasses.RelatedEnd.Load()
+   at System.Data.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   at System.Data.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   at System.Data.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   at System.Data.Entity.DynamicProxies.NhanVien_737A7FE20FE2627DC1EEA8848087B03E50DB4823B3564242FBC713DC31189CC5.get_nvQTLamViec()
+   at ASP._Page_Areas_QLHSNhanSu_Views_HSNhanSu_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\HSNhanSu\Details.cshtml:line 16
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)

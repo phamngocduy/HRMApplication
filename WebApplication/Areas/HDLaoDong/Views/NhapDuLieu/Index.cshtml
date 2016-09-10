@@ -1,0 +1,253 @@
+﻿@model IEnumerable<HRM.Databases_HDLaoDong.Models.hdChiTietHDLD>
+@using HRM.Databases_HDLaoDong.Models;
+@using HRM.Databases.Models;
+@using HRM.Webpages.Helpers;
+@{
+    ViewBag.Title = "Index";
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var db = new HRMDB2Entities();
+    var listCTHD = (List<hdChiTietHDLD>)TempData["lisHDCTHDLD"];
+    
+    
+}
+<div style="padding: 0; width:1000px;margin-left:-13%">
+@using (Html.BeginForm("ImportToExcel", "NhapDuLieu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" id="FileUpload1" name="FileUpload1" style="width: auto" />
+    <input type="hidden" name="path" value="@TempData["path"]" />
+    <input type="submit" id="view" name="view" value="Xem trước" />
+    <input type="submit" id="import" name="import" value="Import" />
+}
+@Html.StatusMessage(TempData["Message_Error"])
+<table id ="ViewImportTable">
+<thead>
+    <tr>
+        <th style="text-align:center" >
+            STT
+        </th>
+        <th style="text-align:center">
+            Họ và tên
+        </th>
+        <th style="text-align:center" >
+            Đơn<br />vị
+        </th>
+        <th style="text-align:center" >
+            Chức danh CM
+        </th>
+        <th style="text-align:center" >
+            Số HĐ
+        </th>
+        <th style="text-align:center" >
+            Loại HĐ
+        </th>
+        <th style="text-align:center" >
+            Ngày hiệu<br />lực
+        </th>
+        <th style="text-align:center" >
+            Ngày hết<br />hiệu lực
+        </th>
+        <th style="text-align:center" >
+            Ngày NLĐ ký
+        </th>
+        <th style="text-align:center" >
+            Ngày lưu
+        </th>
+        <th style="text-align:center" >
+            Ngày trả
+        </th>
+        <th style="text-align:center" >
+            Lương cơ bản
+        </th>
+        <th style="text-align:center" >
+            Hệ số lương
+        </th>
+        <th style="text-align:center" >
+            Bậc 
+        </th>
+        <th style="text-align:center" >
+            Ngạch
+        </th>
+        <th style="text-align:center" >
+            Nhóm
+        </th>
+        <th style="text-align:center" >
+            Bảng lương
+        </th>
+    </tr>
+</thead>
+<tbody>
+@{int count = 0;
+  var cts = new List<hdChiTietHDLD>();
+  if(listCTHD != null){
+      cts = listCTHD;
+  }
+  }
+@foreach (var item in cts)
+{
+    count = count + 1;
+    <tr>
+    <td style="text-align:center">
+    @count
+    </td>
+    <td style="text-align:center"  >
+    @Html.DisplayFor(model => item.HotenNLD)
+    </td>
+    @{  string tenDonVi = "";
+        if (item.Donvi_id != null)
+        {
+            int? Donvi_id = item.Donvi_id;
+            tenDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).First().tenDonVi;
+        }
+    }
+    <td style="text-align: center" data-tip="@tenDonVi">
+    @{  string maDonVi = "";
+        if (item.Donvi_id != null)
+        {
+            int? Donvi_id = item.Donvi_id;
+            maDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).First().maDonVi;
+        }
+        @Html.DisplayFor(model => maDonVi)
+    }
+    </td>
+    <td style="text-align:center"  >
+    @{  string tenChucDanh = "";
+        if (item.Chucdanh_id != null)
+        {
+            int? ChucDanh_id = item.Chucdanh_id;
+            tenChucDanh = db0.dmChucDanhChuyenMon.Where(dv => dv.id == ChucDanh_id).First().tenChucDanhChuyenMon;
+        }
+        @Html.Raw(tenChucDanh)
+    }
+    </td>
+    <td style="text-align:center"  >
+        @Html.DisplayFor(model => item.SoHD)
+    </td>
+    <td style="text-align:center"  >
+        @Html.DisplayFor(model => item.LoaiHD)
+    </td>
+    <td style="text-align:center">
+        @item.NgayHL.ToShortDateString()
+    </td>
+    <td style="text-align:center">
+        @item.NgayhetHL
+    </td>
+    <td style="text-align:center">
+        @item.QT_NgayNLDky
+    </td>
+    <td style="text-align:center">
+        @item.QT_NgayLuuHS
+    </td>
+    <td style="text-align:center">
+        @item.QT_NgayTraNLD
+    </td>
+    <td style="text-align:center">
+        @item.Mucluongchinh
+    </td>
+    @{
+        double? HeSo = null;
+        var Bac = "";
+        var Ngach = "";
+        var Nhom = "";
+
+
+        int? nHSLuong_id = item.HSLuong_id;
+        int? nNgach_id = item.Ngach_id;
+        int? nNhom_id = item.Nhom_id;
+        try
+        {
+            HeSo = db0.dmBangLuong.Where(bl => bl.id == nHSLuong_id).FirstOrDefault().hesoLuong;
+        }
+        catch
+        {
+        }
+        try
+        {
+            Bac = db0.dmBangLuong.Where(bl => bl.id == nHSLuong_id).FirstOrDefault().bacLuong;
+        }
+        catch
+        {
+        }
+        try
+        {
+            Ngach = db0.dmNgachVienChuc.Where(bl => bl.id == nNgach_id).FirstOrDefault().tenNgachVienChuc;
+        }
+        catch
+        {
+        }
+        try
+        {
+            Nhom = db0.dmNhomNgachVienChuc.Where(bl => bl.id == nNhom_id).FirstOrDefault().tenNhomNgachVienChuc;
+        }
+        catch
+        {
+        }
+}
+    <td style="text-align:center">
+    @Html.Raw(HeSo)
+    </td>
+    <td style="text-align:center">
+    @Html.Raw(Bac)
+    </td>
+    <td style="text-align:center">
+    @Html.Raw(Ngach)
+    </td>
+    <td style="text-align:center">
+    @Html.Raw(Ngach)
+    </td>
+    <td style="text-align:center">
+    @item.Bangluong_id
+    </td>
+    </tr>
+}
+</tbody>
+</table>
+</div>
+<style>
+    table
+    {
+        overflow: auto;
+        width: 100%;
+        display: block;
+    }
+    input
+    {
+        margin: 0 0 0 0;
+    }
+    td
+    {
+        padding: 0;
+    }
+    .ui-state-hover
+    {
+        font-weight: normal !important;
+    }
+</style>
+<style>
+    td
+    {
+        padding: 0 0 0 0;
+    }
+    input
+    {
+        margin: 0 0 0 0;
+        width: auto;
+    }
+</style>
+<script>
+    var message = '<%=ViewData["mymessage"]%>';
+    if (message.length > 0)
+        windows.alert(message);
+</script>
+
+<script>
+    $().ready(function () {
+        var table$ = $("#ViewImportTable");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+
+    });
+</script>

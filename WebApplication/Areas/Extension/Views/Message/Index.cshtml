@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HRM.Extension.Databases.Models.Message>
+@{
+    var all = Request.QueryString["all"] == "1";
+    var id = "InBox" + Environment.TickCount.ToString();
+    var user = String.Format("|{0}|", User.Identity.Name.ToLower());
+}
+<div id="@id" style="overflow:hidden">
+<h3>Hộp thư thoại (@Model.Count(m => m.Users.Contains(user) && !m.Read.Contains(user)) chưa đọc)</h3>
+<div>
+<input type="checkbox" onclick="ShowAllMessage(this)" @(all ? "checked" : null) />Hiển thị tất cả
+<a href="@Url.Action("Compose")" onclick="return Message_Edit($(this),$(this).nextAll('table').first(),Message_Callback)">Tạo tin nhắn mới</a>
+<span></span>
+<table>
+<thead>
+    <tr>
+        <th>Lưu</th>
+        <th>Ngày</th>
+        <th>Nội dung</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var msg in Model.OrderBy(m => m.Date))
+{
+    var read = (msg.Read ?? "").Contains(user);
+    <tr>
+        <td>@Html.CheckBox("Star", (msg.Star ?? "").Contains(user))</td>
+        <td>@msg.Date.ToShortDateString()</td>
+        <td><div style="white-space:nowrap">
+            <a href="@Url.Action("Details", new { id = msg.id })"
+             class="@(read ? null : "unread")"
+             onclick="return Message_Edit($(this).removeClass('unread'),undefined,Message_Callback)">@msg.Content</a>
+            </div></td>
+    </tr>
+}
+</tbody>
+</table>
+</div>
+</div>
+<style>
+    .unread { font-weight: bold; }
+</style>
+
+<script>
+    function Message_Callback() {
+        $("#@id").parent().load("@Url.Action("Partial")");
+    }
+    function ShowAllMessage(checkbox) {
+        $("#@id").block({ message: "Loading..." })
+        .parent().load("@Url.Action("Partial")?all=" + (checkbox.checked ? "1" : "0"));
+    }
+    $(function() {
+        $("#@id").accordion({
+            active: parseInt($.cookie("HopThuThoai")),
+            collapsible: true,
+            heightStyle: "content",
+            activate: function (event, ui) {
+                $.cookie("HopThuThoai", parseInt($(this).accordion("option","active")));
+            }
+        });
+    });
+</script>

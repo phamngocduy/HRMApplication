@@ -1,0 +1,58 @@
+﻿@model HRM.QLBHXH.Models.dmLoaiTangGiam
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmLoaiTangGiam</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            Mã
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ma)
+            @Html.ValidationMessageFor(model => model.Ma)
+        </div>
+
+        <div class="editor-label">
+            Loại tăng giảm
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LoaiTangGiam)
+            @Html.ValidationMessageFor(model => model.LoaiTangGiam)
+        </div>
+
+        <div class="editor-label">
+            Ghi chú
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STT)
+            @Html.ValidationMessageFor(model => model.STT)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

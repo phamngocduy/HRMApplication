@@ -1,0 +1,62 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "GiaoSu";
+    var NV_id = ViewBag.NV_id as int?;
+    var HH_id = ViewBag.HH_id as int?;
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvHocHam where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+
+    var NhanVien = "NV_id";
+    var HocHam = "HocHam_id";
+    
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+<dl id="@rand" class="dl-horizontal">
+@if (dr == null)
+{
+    if (NV_id.HasValue)
+    {
+        @Html.Hidden(NhanVien, NV_id.Value)
+    }
+    else
+    {
+        <dt>Họ và tên</dt>
+        <dd>@Html.DropDownList(NhanVien, new SelectList(db.dsNhanVien.ToList().Select(nv => new { id = nv.id, HoVaTen = String.Format("{0} - {1}", nv.HoVaTen, nv.maDonVi) }), "id", "HoVaTen"), "")</dd>
+    }
+    if (HH_id.HasValue)
+    {
+        @Html.Hidden(HocHam, HH_id.Value)
+    }
+    else
+    {
+        <dt>Chức danh giảo sư</dt>
+        <dd>@Html.DropDownList(HocHam, new SelectList(db.dmHocHam.OrderBy(hh => hh.stt), "id", "tenHocHam"), String.Empty)</dd>
+    }
+}
+    <dt>Ngày bắt đầu hiệu lực</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgayBatDau"])</dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text");
+    form.find("select").combobox();
+</script>

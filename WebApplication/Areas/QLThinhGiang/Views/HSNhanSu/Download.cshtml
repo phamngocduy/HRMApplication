@@ -1,0 +1,190 @@
+﻿@using System.Data
+@using System.Text
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model string
+@{
+    const string LOC = "loc", DLV = "DLV", DNV = "DNV", ALL = "ALL";
+    const string TAI = "Tai", CSV = "CSV";
+    var query = "";
+    switch (Request.QueryString[LOC])
+    {
+        case ALL:
+            break;
+        case DNV:
+            query = " where ngaynghiviec is not null";
+            break;
+        case DLV:
+        default:
+            query = " where ngaynghiviec is null";
+            break;
+    }
+
+    var dt = (ViewBag.DB as HRMDB_Entities).SqlQuery(@"
+SET CONCAT_NULL_YIELDS_NULL OFF;
+select nv.MaHS MaSoHS, nv.MaNV MaNhanVien, syll.HoVaTen HoTen,
+(
+	select distinct dv.tenDonVi + ','
+	from nvQTLamViec lv, dmDonVi dv
+	where lv.NV_id = nv.id and lv.DonVi_id = dv.id
+	and lv.id <> nv.qtlvCongTac_id for xml path('')
+) DonVi,
+(
+	select distinct dv.tenDonVi
+	from nvQTLamViec lv, dmDonVi dv
+	where lv.id = nv.qtlvCongTac_id and lv.DonVi_id = dv.id
+) DonViMoi,
+GioiTinh.tenGioiTinh GioiTinh, syll.NgaySinh,
+year(getdate()) - year(syll.NgaySinh) Tuoi,
+Case syll.DaNghiHuu when 'TRUE' then 'x' else '' end as VeHuu,
+NoiSinh.tenTinhThanh NoiSinh, QueQuan.tenTinhThanh NguyenQuan,
+(
+	select dc.DiaChi + '  ' + dc.tenPhuongXa + '  ' + dc.tenQuanHuyen + '  ' + dc.tenTinhThanh
+	from dsDiaChiNha dc
+	where syll.HoKhauThuongTru_id = dc.id
+) DCThuongTru,
+(
+	select dc.DiaChi + '  ' + dc.tenPhuongXa + '  ' + dc.tenQuanHuyen + '  ' + dc.tenTinhThanh
+	from dsDiaChiNha dc
+	where syll.NoiOHienNay_id = dc.id
+) DCLienLac,
+nv.ttlhDTNhaRieng DTNR, nv.ttlhDTDiDong DTDD,
+nv.ttlhEmailTruong + ',' + nv.ttlhEmailKhac Email,
+(
+	select cm.SoThe
+	from dsTheDinhDanh cm
+	where syll.ChungMinhNhanDan_id = cm.id
+) SoCMND,
+(
+	select CONVERT(VARCHAR(8),  cm.NgayCap, 3)
+	from dsTheDinhDanh cm
+	where syll.ChungMinhNhanDan_id = cm.id
+) NgayCap,
+(
+	select cm.tenTinhThanh
+	from dsTheDinhDanh cm
+	where syll.ChungMinhNhanDan_id = cm.id
+) NoiCap,
+(
+select N'Bằng ' + tenLoaiBangCap + N' Danh hiệu ' + tenDanhHieu +' '
+from nvBangCap b inner join dmDanhHieu h on b.DanhHieu_id=h.id 
+inner join dmLoaiHinhDaoTao l on l.id=b.LoaiHinhDaoTao_id 
+inner join dmloaibangcap lb on lb.id=b.loaibangcap_id
+inner join dmXepLoaiTotNghiep x on x.id=b.XepLoaiTotNghiep_id
+where b.nv_id=nv.id
+order by NgayTN  for xml path('')
+) BangCap,
+(
+select  ChuyenNganh +' '
+from nvBangCap b inner join dmDanhHieu h on b.DanhHieu_id=h.id 
+inner join dmLoaiHinhDaoTao l on l.id=b.LoaiHinhDaoTao_id 
+inner join dmloaibangcap lb on lb.id=b.loaibangcap_id
+inner join dmXepLoaiTotNghiep x on x.id=b.XepLoaiTotNghiep_id
+where b.nv_id=nv.id
+order by NgayTN  for xml path('')
+) Chuyennganh,
+(
+select tenLoaiHinhDaoTao +' '
+from nvBangCap b inner join dmDanhHieu h on b.DanhHieu_id=h.id 
+inner join dmLoaiHinhDaoTao l on l.id=b.LoaiHinhDaoTao_id 
+inner join dmloaibangcap lb on lb.id=b.loaibangcap_id
+inner join dmXepLoaiTotNghiep x on x.id=b.XepLoaiTotNghiep_id
+where b.nv_id=nv.id
+order by NgayTN  for xml path('')
+) LoaiHinhDaoTao,
+(
+select tenXepLoaiTotNghiep +' '
+from nvBangCap b inner join dmDanhHieu h on b.DanhHieu_id=h.id 
+inner join dmLoaiHinhDaoTao l on l.id=b.LoaiHinhDaoTao_id 
+inner join dmloaibangcap lb on lb.id=b.loaibangcap_id
+inner join dmXepLoaiTotNghiep x on x.id=b.XepLoaiTotNghiep_id
+where b.nv_id=nv.id
+order by NgayTN  for xml path('')
+) XepLoaiTotNghiep,
+(
+select CONVERT(VARCHAR(8), ngayTN, 3) +' '
+from nvBangCap b inner join dmDanhHieu h on b.DanhHieu_id=h.id 
+inner join dmLoaiHinhDaoTao l on l.id=b.LoaiHinhDaoTao_id 
+inner join dmloaibangcap lb on lb.id=b.loaibangcap_id
+inner join dmXepLoaiTotNghiep x on x.id=b.XepLoaiTotNghiep_id
+where b.nv_id=nv.id
+order by NgayTN  for xml path('')
+) NgayTN,
+(
+	select CONVERT(VARCHAR(8), ngaybatdau, 3) + '-' + Cast(Convert(decimal(10,2),hsl.HeSoLuong) as nvarchar(10)) + ';'
+	from nvHeSoLuong hsl
+	where hsl.NV_id = nv.id and NgayBatDau < '2006-9-1'
+	order by NgayBatDau for xml path('')
+) DBL_25CP_310806,
+
+(
+	select CONVERT(VARCHAR(8), ngaybatdau, 3) + '-' + Cast(Convert(decimal(10,2),hsl.HeSoLuong) as nvarchar(10)) + ';'
+	from nvHeSoLuong hsl
+	where hsl.NV_id = nv.id and 
+	(NgayBatDau > '2006-8-31' or NgayKetThuc > '2006-8-31')
+	order by NgayBatDau for xml path('')
+) DBL_ND204_010906,
+Cast(Convert(decimal(10,2),HeSoLuong.HeSoLuong) as nvarchar(10)) HeSoLuongHienHuong, HeSoLuong.BacLuong NgachBac,
+CONVERT(VARCHAR(8), HeSoLuong.NgayBatDau , 3) ThoiGianGiuBac, HeSoLuong.NgayKetThuc ThoiGianTangBac
+from NhanVien nv
+left join nvSoYeuLyLich syll on syll.NV_id = nv.id
+left join dmGioiTinh GioiTinh on syll.GioiTinh_id = GioiTinh.id
+left join dmTinhThanh NoiSinh on syll.NoiSinh_TinhThanh_id = NoiSinh.id
+left join dmTinhThanh QueQuan on syll.QueQuan_TinhThanh_id = QueQuan.id
+left join nvHeSoLuong HeSoLuong on nv.qltlHeSoLuong_id = HeSoLuong.id" + query);
+    var excel = new StringBuilder();
+    using (var writer = new ExcelWriter(excel))
+    {
+        writer.WriteStartDocument();
+        writer.WriteStartWorksheet("Sheet1");
+
+        writer.WriteStartRow();
+        foreach (DataColumn dc in dt.Columns)
+        {
+            writer.WriteExcelUnstyledCell(dc.ColumnName);
+        }
+        writer.WriteEndRow();
+        
+        foreach (DataRow row in dt.Rows)
+        {
+            writer.WriteStartRow();
+            foreach (DataColumn col in dt.Columns)
+            {
+                writer.WriteExcelAutoStyledCell(row[col].ToString().TrimEnd(',',';').Trim());
+            }
+            writer.WriteEndRow();
+        }
+
+        var D = new Func<Nullable<DateTime>, object>(d => d.HasValue ? (object)d.Value : null);
+        @*
+        foreach (var item in Model)
+        {
+            writer.WriteStartRow();
+            writer.WriteExcelAutoStyledCell(item.NhanVien.MaNV);
+            var HoTen = item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen.Trim();
+            var Ten = HoTen.Trim().Split(' ').Last().Trim();
+            writer.WriteExcelAutoStyledCell(HoTen.Substring(0, HoTen.LastIndexOf(Ten)));
+            writer.WriteExcelAutoStyledCell(Ten);
+            writer.WriteExcelAutoStyledCell(item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen);
+            writer.WriteExcelAutoStyledCell(item.DonVi != null ? item.DonVi.tenDonVi : null);
+            writer.WriteExcelAutoStyledCell(D(item.NhanVien.nvSoYeuLyLiches.Single().NgayTuyenDung));
+            writer.WriteExcelAutoStyledCell(item.ChucDanhChuyenMon != null ? item.ChucDanhChuyenMon.tenChucDanhChuyenMon : null);
+            writer.WriteExcelAutoStyledCell(D(item.ThoiGianBatDau));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().ThoiGianDenHan));
+            writer.WriteExcelAutoStyledCell(D(item.ThoiGianKetThuc));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().NgayThongBao));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().NgayNhanHoSo));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().NgayLapToTrinh));
+            writer.WriteExcelAutoStyledCell(item.NhanVien.ChungChis.Where(cc => cc.dmLoaichungchi.maLoaiChungChi == "NV").Count() > 0 ? "X" : "");
+            writer.WriteExcelAutoStyledCell(item.NhanVien.ChungChis.Where(cc => cc.dmLoaichungchi.maLoaiChungChi == "LL").Count() > 0 ? "X" : "");
+            writer.WriteEndRow();
+        }
+        *@
+        writer.WriteEndWorksheet();
+        writer.WriteEndDocument();
+    }
+    Response.AddHeader("content-disposition", "attachment; filename=DSNV.xls");
+    Response.ContentType = "application/xls";
+    Response.Write(excel.ToString());
+    //Response.End();
+}

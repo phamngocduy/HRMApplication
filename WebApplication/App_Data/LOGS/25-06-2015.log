@@ -1,0 +1,271 @@
+INFO 01:42:49 – Home/Index
+INFO 01:42:50 – Login/Index
+INFO 02:30:58 – Login/Index
+INFO 02:30:58 – Home/Index
+INFO 02:31:02 – HDNguoiLaoDong/Index
+ERROR02:31:08 – Object reference not set to an instance of an object.
+/controller=HDNguoiLaoDong/action=Index
+   at ASP._Page_Areas_HDLaoDong_Views_HDNguoiLaoDong_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\HDNguoiLaoDong\Index.cshtml:line 147
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 02:41:24 – HDNguoiLaoDong/Index
+INFO 02:42:12 – CauHinhHeThong/Create
+INFO 02:43:12 – DanhMuc/Index_dmThoiHanHD
+INFO 02:46:07 – CauHinhHeThong/Create
+INFO 02:46:11 – DanhMuc/Index_dmThoiGioLamViec
+INFO 03:04:30 – CauHinhHeThong/Create
+INFO 03:04:33 – HDNguoiLaoDong/Index
+INFO 03:05:20 – QTKyHDTungNguoi/Index&NLD_id=638
+INFO 03:05:33 – HDNguoiLaoDong/Index
+INFO 03:06:24 – QTKyHDTungNguoi/Index&NLD_id=638
+INFO 03:06:31 – ThemMoiHD/Create_Exeption&NLD_id=638
+INFO 03:06:31 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=176
+INFO 03:06:31 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=176
+INFO 03:07:10 – HDNguoiLaoDong/Index
+INFO 03:07:39 – ThemMoiHD/Create_Exeption&NLD_id=638
+INFO 03:07:39 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=177
+INFO 03:07:39 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:07:42 – HDNguoiLaoDong/Index
+INFO 03:08:06 – DSNLDCanTaoHD/Index
+ERROR03:08:07 – Sequence contains no elements
+/controller=DSNLDCanTaoHD/action=Index
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at ASP._Page_Areas_HDLaoDong_Views_DSNLDCanTaoHD_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\DSNLDCanTaoHD\Index.cshtml:line 63
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:08:09 – DSNLDCanTaoHD/Index
+ERROR03:08:09 – Sequence contains no elements
+/controller=DSNLDCanTaoHD/action=Index
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at ASP._Page_Areas_HDLaoDong_Views_DSNLDCanTaoHD_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\DSNLDCanTaoHD\Index.cshtml:line 63
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:17:26 – DSNLDCanTaoHD/Index
+ERROR03:17:26 – Sequence contains no elements
+/controller=DSNLDCanTaoHD/action=Index
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at ASP._Page_Areas_HDLaoDong_Views_DSNLDCanTaoHD_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\DSNLDCanTaoHD\Index.cshtml:line 63
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:17:29 – DSNLDCanTaoHD/Index
+ERROR03:17:30 – Sequence contains no elements
+/controller=DSNLDCanTaoHD/action=Index
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at ASP._Page_Areas_HDLaoDong_Views_DSNLDCanTaoHD_Index_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\DSNLDCanTaoHD\Index.cshtml:line 63
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:19:03 – DSNLDCanTaoHD/Index
+INFO 03:19:51 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=177
+INFO 03:19:51 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:20:00 – DSNLDCanTaoHD/Index
+INFO 03:23:28 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=177
+INFO 03:23:29 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:31:33 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:45:48 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:46:39 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:47:54 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:47:54 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=177
+ERROR03:47:57 – Object reference not set to an instance of an object.
+/controller=ThemMoiHD/action=Create_HDCoHuu
+   at ASP._Page_Areas_HDLaoDong_Views_ThemMoiHD_Create_HDCoHuu_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Views\ThemMoiHD\Create_HDCoHuu.cshtml:line 41
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:48:02 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:51:14 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=177
+INFO 03:55:47 – CauHinhHeThong/Create
+INFO 04:04:14 – CauHinhHeThong/Create
+INFO 04:04:39 – CauHinhHeThong/Create
+INFO 04:05:15 – CauHinhHeThong/Create
+INFO 04:05:31 – CauHinhHeThong/Create
+INFO 04:05:57 – CauHinhHeThong/Create
+INFO 04:06:02 – CauHinhHeThong/Create
+INFO 04:06:16 – CauHinhHeThong/Create
+INFO 04:06:44 – CauHinhHeThong/Create
+INFO 04:06:50 – CauHinhHeThong/Create
+INFO 04:08:44 – CauHinhHeThong/Create
+INFO 04:08:50 – CauHinhHeThong/Create
+INFO 04:09:12 – CauHinhHeThong/Create
+INFO 04:09:18 – CauHinhHeThong/Create
+INFO 04:09:52 – DanhMuc/Index_dmThoiHanHD
+INFO 04:10:04 – DanhMuc/Index_dmThoiHanHD
+INFO 04:10:29 – DanhMuc/Index_dmThoiGioLamViec
+INFO 04:18:35 – DanhMuc/Index_dmThoiGioLamViec
+INFO 04:18:52 – DanhMuc/Index_dmThoiHanHD
+INFO 10:39:38 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:40:52 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:41:14 – DanhMuc/Edit_dmLoaiHopDong&id=1
+INFO 10:41:15 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:41:21 – DanhMuc/Edit_dmLoaiHopDong&id=1
+INFO 10:41:21 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:41:51 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:42:14 – DanhMuc/Create_dmLoaiHopDong
+INFO 10:42:14 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:42:20 – DanhMuc/Create_dmLoaiHopDong
+INFO 10:42:20 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:47:20 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:49:33 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:49:54 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:50:56 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:51:07 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:51:33 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:51:36 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:51:48 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:54:33 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:55:04 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:56:46 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:56:51 – DanhMuc/Delete_dmLoaiHopDong
+INFO 10:56:51 – DanhMuc/Index_dmLoaiHopDong
+INFO 10:58:43 – DanhMuc/Index_dmMauHopDong
+ERROR10:58:44 – The view 'Index_dmMauHopDong' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/HDLaoDong/Views/DanhMuc/Index_dmMauHopDong.aspx
+~/Areas/HDLaoDong/Views/DanhMuc/Index_dmMauHopDong.ascx
+~/Areas/HDLaoDong/Views/Shared/Index_dmMauHopDong.aspx
+~/Areas/HDLaoDong/Views/Shared/Index_dmMauHopDong.ascx
+~/Views/DanhMuc/Index_dmMauHopDong.aspx
+~/Views/DanhMuc/Index_dmMauHopDong.ascx
+~/Views/Shared/Index_dmMauHopDong.aspx
+~/Views/Shared/Index_dmMauHopDong.ascx
+~/Areas/HDLaoDong/Views/DanhMuc/Index_dmMauHopDong.cshtml
+~/Areas/HDLaoDong/Views/DanhMuc/Index_dmMauHopDong.vbhtml
+~/Areas/HDLaoDong/Views/Shared/Index_dmMauHopDong.cshtml
+~/Areas/HDLaoDong/Views/Shared/Index_dmMauHopDong.vbhtml
+~/Views/DanhMuc/Index_dmMauHopDong.cshtml
+~/Views/DanhMuc/Index_dmMauHopDong.vbhtml
+~/Views/Shared/Index_dmMauHopDong.cshtml
+~/Views/Shared/Index_dmMauHopDong.vbhtml
+/controller=DanhMuc/action=Index_dmMauHopDong
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)

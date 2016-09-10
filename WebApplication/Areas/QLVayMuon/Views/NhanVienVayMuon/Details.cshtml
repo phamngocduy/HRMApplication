@@ -1,0 +1,200 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLVayMuon.Models
+@model IEnumerable<HRM.QLVayMuon.Models.ChiTietVayMuon>
+
+@{
+    ViewBag.Title = "Details";
+    var db = new HRMDB1Entities();
+    var NV_id = (int)ViewBag.NV_id;
+}
+
+
+
+@Html.ActionLink("Trở về danh sách nhân viên vay mượn", "index")
+<h3 align=center><font>Chi Tiết Vay Mượn</font></h3>
+
+
+<table id="ThongTinChung" align=center >
+<tr >
+<td>Đơn vị: </td>
+<td><b> @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).DonVi </b></td>
+</tr>
+<tr>
+<td>Họ và tên:  </td>
+<td><b>@db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).HoVaTen</b></td>
+</tr>
+
+<tr>
+<td>Mã nhân viên:  </td>
+<td><b>@db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).MaNV</b></td>
+</tr>
+
+<tr>
+<td>Tổng số tiền vay: </td>
+<td><b>    @String.Format("{0:#,##0}",@db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).TongSoTienVay)</b></td>
+</tr>
+
+<tr>
+<td> Tổng số tiền hoàn:</td>
+<td><b>    @String.Format("{0:#,##0}",@db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).TongSoTienHoan)</b> </td>
+</tr>
+
+<tr>
+<td> Tổng số tiền lãi: </td>
+<td><b>     @String.Format("{0:#,##0}",@db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).TongSoTienLai)</b></td>
+</tr>
+
+<tr>
+<td>Số dư nợ cuối kì: </td>
+<td><b>    @String.Format("{0:#,##0}", @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).SoDuNoCuoiKy)</b></td>
+</tr>
+
+<tr>
+<td width ="200">Số tháng còn lại phải trả:</td>
+<td width ="200"><b> @db.NhanVienVayMuon.FirstOrDefault(kv => kv.id == NV_id).SoThangConLaiPhaiTra</b></td>
+</tr>
+
+</table>
+
+
+
+
+<table id = "VayMuonChiTiet">
+<thead>
+    <tr>
+        <th>@Html.VN("ID khoản vay")</th>
+        <th>@Html.VN("Số chứng từ")</th>
+        <th>@Html.VN("Ngày chứng từ")</th>       
+        <th>@Html.VN("Diễn giải")</th>
+        <th>@Html.VN("Mục đích sử dụng")</th>
+        <th>@Html.VN("Định mức")</th>
+        <th>@Html.VN("Số tiền vay")</th>
+        <th>@Html.VN("Số tiền hoàn")</th>
+        <th>@Html.VN("Số tiền lãi")</th>
+    </tr>
+</thead>
+  <tbody>
+  
+@foreach (var item in Model) {
+    <tr>
+    
+         <td>
+  
+            @Html.DisplayFor(modelItem => item.idVm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoChungTu)
+        </td>
+        <td>
+            @item.NgayChungTu.ToShortDateString()
+        </td>
+         
+        <td>
+            @Html.DisplayFor(modelItem => item.DienGiai)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.dmMucDichSuDung.TenMucDich)
+        </td>
+         <td disabled="disabled" >
+                @if (item.Dinhmuc == true)
+                {
+                    <span >
+                    Định mức
+                    </span>
+                }
+                @if (item.Dinhmuc == false)
+                {
+                    <span >
+                    Ngoài định mức
+                    </span>
+                }
+            
+        </td>
+        <td>
+          
+             @String.Format("{0:#,##0}", item.SoTienVay)
+      
+        </td>
+         <td>
+              @String.Format("{0:#,##0}", item.SotienHoan)
+        </td>
+        <td>
+               @String.Format("{0:#,##0}",item.SotienLai)
+        </td>   
+    </tr>
+}
+  
+</tbody>
+</table>
+
+@*<a href="#" class="export">Export Table data into Excel</a>*@
+<script>
+    $(document).ready(function () {
+        $("#VayMuonChiTiet").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+       
+        
+
+       
+    });
+
+
+
+//    $(document).ready(function () {
+
+//        function exportTableToCSV($table, filename) {
+
+//            var $rows = $table.find('tr:has(td)'),
+
+//            // Temporary delimiter characters unlikely to be typed by keyboard
+//            // This is to avoid accidentally splitting the actual contents
+//            tmpColDelim = String.fromCharCode(11), // vertical tab character
+//            tmpRowDelim = String.fromCharCode(0), // null character
+
+//            // actual delimiter characters for CSV format
+//            colDelim = '","',
+//            rowDelim = '"\r\n"',
+
+//            // Grab text from table into CSV formatted string
+//            csv = '"' + $rows.map(function (i, row) {
+//                var $row = $(row),
+//                    $cols = $row.find('td');
+
+//                return $cols.map(function (j, col) {
+//                    var $col = $(col),
+//                        text = $col.text();
+
+//                    return text.replace('"', '""'); // escape double quotes
+
+//                }).get().join(tmpColDelim);
+
+//            }).get().join(tmpRowDelim)
+//                .split(tmpRowDelim).join(rowDelim)
+//                .split(tmpColDelim).join(colDelim) + '"',
+
+//            // Data URI
+//            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+//            $(this)
+//            .attr({
+//                'download': filename,
+//                'href': csvData,
+//                'target': '_blank'
+//            });
+//        }
+
+//        // This must be a hyperlink
+//        $(".export").on('click', function (event) {
+//            // CSV
+//            exportTableToCSV.apply(this, [$('#VayMuonChiTiet>table'), 'export.xls']);
+
+//            // IF CSV, don't do event.preventDefault() or return false
+//            // We actually need this to be a typical hyperlink
+//        });
+//    });
+
+ 
+</script>

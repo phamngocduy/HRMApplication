@@ -1,0 +1,171 @@
+﻿@model IEnumerable<HRM.QLBHXH.Models.dmTyLeDongBHXH>
+@{
+    ViewBag.Title = "Danh mục Tỷ lệ đóng bảo hiểm - BHXH";
+}
+<h2>
+    Tỷ lệ đóng Bảo hiểm</h2>
+<div>
+    @Html.ActionLink("Trở về màn hình Nhân viên BHXH", "Index2", "NhanVienBHXH")
+</div>
+<p>
+    @Html.ActionLink("Thêm tỷ lệ đóng báo hiểm - BHXH", "Create")
+</p>
+<table id="dmTyLeDongBH">
+    <thead>
+        <tr>
+            <th style="text-align: center" nowrap rowspan="2">
+                STT
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Ngày áp dụng
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap rowspan="2">
+                Ngày kết thúc
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="3">
+                BHXH (%)&nbsp;
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="3">
+                BHYT (%)&nbsp;
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="3">
+                BHTN (%)&nbsp;
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Tổng cộng (%)
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Trạng thái
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+            </th>
+        </tr>
+        <tr>
+            <th style="text-align: center" nowrap>
+                D.Nghiệp
+            </th>
+            <th style="text-align: center" nowrap>
+                Người LĐ
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap>
+                Tổng
+            </th>
+            <th style="text-align: center" nowrap>
+                D.Nghiệp
+            </th>
+            <th style="text-align: center" nowrap>
+                Người LĐ
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap>
+                Tổng
+            </th>
+            <th style="text-align: center" nowrap>
+                D.Nghiệp
+            </th>
+            <th style="text-align: center" nowrap>
+                Người LĐ
+            </th>
+            <th style="text-align: center" nowrap>
+                Tổng
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.STT)
+                </td>
+                <td style="text-align: center" nowrap>@item.NgayApDung.ToShortDateString()
+                </td>
+                <td style="text-align: center" nowrap>
+                    @if (@item.NgayKetThuc != null)
+                    {
+                        @item.NgayKetThuc.GetValueOrDefault().ToShortDateString()
+                    }
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.DoanhNghiepBHXH)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.NguoiLDBHXH)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.TongBHXH)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.DoanhNghiepBHYT)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.NguoiLDBHYT)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.TongBHYT)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.DoanhNghiepBHTN)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.NguoiLDBHTN)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.TongBHTN)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.TongCong)
+                </td>
+                <td nowrap>
+                    @if (item.TrangThai == true)
+                    {
+                        <span><b>Đang áp dụng</b> </span>
+                    }
+                    else
+                    {
+                        <span></span>
+                    }
+                </td>
+                 <td>
+            <a href="dmTyLeDongBH/Delete?id=@item.id" title="Xoá"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a href="dmTyLeDongBH/Edit?id=@item.id" title="Chỉnh sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+​
+<div id="tabs">
+</div>
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script src="/Content/datatables/DataTableFixedHeader.js"></script>
+<script>
+
+
+    $.get("../dmTyLeDongBH/Create").success(function (data) {
+        $('#tabs').html(data);
+    });
+
+
+    $(document).ready(function () {
+        var oTable = $('#dmTyLeDongBH').dataTable({
+            "bJQueryUI": true,
+            "sScrollY": "100%",
+            "sScrollX": "100%"
+
+
+        });
+        //        new FixedHeader(oTable, { "bottom": true });
+
+        new $.fn.dataTable.FixedColumns(oTable, {
+            "iLeftColumns": 2,
+            "iRightColumns": 2
+        });
+
+    });
+
+    $("#flip").click(function () {
+        $("#panel").slideToggle("fast");
+    });
+
+</script>
+<style type="text/css">
+    #panel
+    {
+        text-align: left;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
+    }
+    #panel
+    {
+        display: none;
+    }
+</style>

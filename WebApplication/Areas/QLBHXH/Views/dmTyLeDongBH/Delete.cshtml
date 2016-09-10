@@ -1,0 +1,70 @@
+﻿@model HRM.QLBHXH.Models.dmTyLeDongBHXH
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+}
+<h3>
+    Bạn có chắc muốn xoá Tỷ lệ đóng Bảo hiểm này?</h3>
+<fieldset>
+    <legend>dmTyLeDongBHXH</legend>
+    <div class="display-label">
+        @Html.VN("Ngày áp dụng:")
+        <b>@Html.DisplayFor(model => model.NgayApDung)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Ngày kết thúc:")
+        <b>@Html.DisplayFor(model => model.NgayKetThuc)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tỷ lệ đóng BHXH - Doanh nghiệp (%):")
+        <b>@Html.DisplayFor(model => model.DoanhNghiepBHXH)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tỷ lệ đóng BHXH - Người lao động (%):")
+        <b>@Html.DisplayFor(model => model.NguoiLDBHXH)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tổng tỷ lệ đóng BHXH (%):")
+        <b>@Html.DisplayFor(model => model.TongBHXH)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tỷ lệ đóng BHYT - Doanh nghiệp (%):")
+        <b>@Html.DisplayFor(model => model.DoanhNghiepBHYT)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tỷ lệ đóng BHYT - Người lao động (%):")
+        <b>@Html.DisplayFor(model => model.NguoiLDBHYT)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tổng tỷ lệ đóng BHYT (%):")
+        <b>@Html.DisplayFor(model => model.TongBHYT)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tỷ lệ đóng BHTN - Doanh nghiệp (%):")
+        <b>@Html.DisplayFor(model => model.DoanhNghiepBHTN)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tỷ lệ đóng BHTN - Người lao động (%):")
+        <b>@Html.DisplayFor(model => model.NguoiLDBHTN)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tổng tỷ lệ đóng BHTN (%):")
+        <b>@Html.DisplayFor(model => model.TongBHTN)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Tổng tỷ lệ đóng Bảo hiểm (%):")
+        <b>@Html.DisplayFor(model => model.TongCong)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Đang áp dụng ")
+        <b>@Html.DisplayFor(model => model.TrangThai)</b>
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Xoá" />
+        |
+        @Html.ActionLink("Trở về màn hình Tỷ lệ đóng Bảo hiểm", "Index")
+    </p>
+}

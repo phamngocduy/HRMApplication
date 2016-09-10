@@ -1,0 +1,53 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model IEnumerable<HRM.Databases.Models.dmQuanHuyen>
+@{
+    var db = ViewBag.db as HRMDBEntities;
+    var PXs = (from px in db.dmPhuongXa
+               group px by px.idQuanHuyen into g
+               select new { idQuanHuyen = g.Key, Count = g.Count() }).ToList()
+               .Select(px => new Tuple<int, int>(px.idQuanHuyen, px.Count)).ToList();
+    var Models = (from qh in Model
+                  join px in PXs on qh.id equals px.Item1 into QH_PXs
+                  from qh_px in QH_PXs.DefaultIfEmpty(new Tuple<int, int>(qh.id, 0))
+                  select new Tuple<dmQuanHuyen, int>(qh, qh_px.Item2)).ToList();
+}
+<table id="listQuanHuyen">
+<thead>
+    <tr>
+        <th>STT</th>
+        <th>Mã</th>
+        <th>Tên @Html.VN("QuanHuyen")</th>
+        <th>Tên @Html.VN("TinhThanh")</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Models)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item1.stt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item1.maQuanHuyen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item1.tenQuanHuyen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item1.dmTinhThanh.tenTinhThanh)
+        </td>
+        <td align="right" nowrap>
+            <mark><sup data-tip="Có @item.Item2 @Html.VN("PhuongXa")">@item.Item2</sup></mark>
+            <a class="dialog" href="PhuongXa/Create?id=@item.Item1.id" title="Thêm @Html.VN("PhuongXa")"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+            <a class="dopost" href="QuanHuyen/Delete?id=@item.Item1.id" title="Xóa @Html.VN("QuanHuyen")"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a class="dialog" href="QuanHuyen/Edit?id=@item.Item1.id" title="Sửa @Html.VN("QuanHuyen")"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    @Html.dataTables("listQuanHuyen")
+</script>

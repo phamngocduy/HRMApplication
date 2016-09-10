@@ -1,0 +1,88 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLVayMuon.Models
+@using HRM.QLVayMuon.Models
+@model IEnumerable<HRM.QLVayMuon.Models.HoSoVayMuon>
+
+@{
+    ViewBag.Title = "Details";
+    var db = new HRMDB1Entities();
+    var NV_id = (int)ViewBag.NV_id;
+    var idkv = ViewBag.IDKV;
+    string n = db.KhoanVay.First(k => k.id == NV_id).SoChungTu;
+    
+    int v = db.KhoanVay.First(k => k.id == NV_id).idNhanVienVayMuon;
+}
+
+<p>
+
+
+     
+    @Html.ActionLink("Trở về khoản vay", "index", new { NV_id = v})
+</p>
+
+<h4>Hồ sơ của khoản vay có số chứng từ là: @db.KhoanVay.First( k => k.id == NV_id).SoChungTu </h4>
+
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+ 
+<fieldset>
+
+<div id="tabs"></div>
+
+<h4>Danh sách hồ sơ</h4>
+
+
+<div id="tab">
+@foreach (var item in Model)
+{
+ <div>
+    <tr >
+        <td> @Html.HiddenFor(modelItem => item.id) </td>
+        <td> @Html.EditorFor(modelItem => item.TrangThai)</td>
+        <td> @Html.DisplayFor(modelItem => item.dmGiayTo.TenGiayTo) </td>
+     </tr>
+ 
+ </div>
+
+}
+</div>
+
+
+
+
+
+<input  type="submit" value="Lưu" />
+
+</fieldset>
+}
+
+
+
+<script>
+    $("#TrangThai").change(function () 
+    {
+    if($(this).is(':checked'))
+        console.log("return true");
+    else
+        console.log("return false");
+        });
+
+
+$("#tab").tabs();
+
+
+
+    $.get("../taptin?parent=@n").success(function (data) {
+        $('#tabs').html(data);
+    });
+
+ 
+
+   
+</script>

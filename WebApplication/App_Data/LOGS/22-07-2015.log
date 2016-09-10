@@ -1,0 +1,242 @@
+INFO 12:06:27 – TinhCong/CongThuc
+INFO 12:07:07 – TinhCong/CongThuc
+INFO 12:08:03 – TinhCong/Details&NV_id=35
+INFO 12:13:15 – TinhCong/CongThuc
+INFO 12:14:12 – TinhCong/CongThuc
+INFO 12:16:09 – TinhCong/CongThuc
+INFO 12:16:34 – TinhCong/CongThuc
+INFO 12:16:53 – TinhCong/CongThuc
+INFO 12:20:41 – TinhCong/CongThuc
+INFO 12:22:30 – TinhCong/CongThuc
+INFO 12:34:27 – TinhCong/Index
+INFO 12:37:23 – TinhCong/Index
+INFO 12:37:35 – TinhCong/Index
+INFO 12:37:38 – TinhCong/ThamNien
+INFO 12:37:42 – TinhCong/EditP
+INFO 12:39:56 – TinhCong/EditP
+ERROR12:39:57 – Incorrect syntax near '='.
+/controller=TinhCong/action=EditP
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(Database db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 35
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 20
+   at ASP._Page_Views_TinhCong_Edit_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Edit.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:41:15 – TinhCong/ThamNien
+INFO 12:41:18 – TinhCong/EditP
+ERROR12:41:18 – Incorrect syntax near '='.
+/controller=TinhCong/action=EditP
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(Database db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 35
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 20
+   at ASP._Page_Views_TinhCong_Edit_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Edit.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:42:11 – TinhCong/EditP
+INFO 12:42:22 – TinhCong/CreateS&id=
+INFO 12:42:22 – TinhCong/ThamNien
+INFO 12:42:28 – TinhCong/EditP
+INFO 12:42:37 – TinhCong/CreateS&id=
+INFO 12:42:37 – TinhCong/ThamNien
+INFO 12:42:40 – TinhCong/EditP
+INFO 12:42:46 – TinhCong/CreateS&id=
+INFO 12:42:46 – TinhCong/ThamNien
+INFO 12:43:00 – TinhCong/ThamNien
+INFO 12:43:08 – TinhCong/EditP&id=2
+INFO 12:43:10 – TinhCong/UpdateS&id=2
+INFO 12:43:10 – TinhCong/ThamNien
+INFO 12:43:12 – TinhCong/EditP&id=2
+INFO 12:43:14 – TinhCong/UpdateS&id=2
+INFO 12:43:14 – TinhCong/ThamNien
+INFO 12:43:16 – TinhCong/DeleteS&id=3
+INFO 12:43:17 – TinhCong/ThamNien
+INFO 12:43:19 – TinhCong/EditP
+INFO 12:43:24 – TinhCong/CreateS&id=
+INFO 12:43:24 – TinhCong/ThamNien
+INFO 12:51:38 – TinhCong/CongThuc
+INFO 12:51:48 – TinhCong/Details&NV_id=16
+INFO 12:52:57 – Home/Index
+INFO 12:52:59 – Login/Index
+INFO 12:53:10 – Login/Index
+INFO 12:53:10 – Home/Index
+INFO 12:53:14 – TinhCong/Details&NV_id=16
+INFO 12:54:35 – TinhCong/Details&NV_id=16
+INFO 12:54:50 – TinhCong/EditP&id=1
+INFO 12:54:52 – TinhCong/UpdateS&id=1
+INFO 12:54:52 – TinhCong/ThamNien
+INFO 12:54:54 – TinhCong/Details&NV_id=16
+INFO 12:55:01 – TinhCong/EditP&id=1
+INFO 12:55:04 – TinhCong/UpdateS&id=1
+INFO 12:55:05 – TinhCong/ThamNien
+INFO 12:55:21 – TinhCong/CongThuc
+INFO 08:25:36 – Home/Index
+INFO 08:25:37 – Login/Index
+INFO 08:25:45 – Login/Index
+INFO 08:25:45 – Home/Index
+INFO 08:25:49 – TinhCong/CongThuc
+INFO 08:25:52 – TinhCong/Index
+INFO 08:26:36 – TinhCong/CongThuc
+INFO 08:26:45 – TinhCong/CongThuc
+INFO 08:30:01 – TinhCong/Details&NV_id=34
+INFO 08:32:38 – TinhCong/Details&NV_id=34
+ERROR08:32:41 – Item has already been added. Key in dictionary: 'CDCV'  Key being added: 'CDCV'
+/controller=TinhCong/action=Details
+   at System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add)
+   at System.Collections.Hashtable.Add(Object key, Object value)
+   at ASP.TinhDiem.<>c__DisplayClassd.<dBoNhiem>b__3(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 128
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.HelperPage.WriteTo(TextWriter writer, HelperResult value)
+   at ASP.TinhCong.<>c__DisplayClass41.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 411
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at CallSite.Target(Closure , CallSite , _Page_Views_TinhCong_Details_cshtml , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at ASP._Page_Views_TinhCong_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Details.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:33:07 – TinhCong/Details&NV_id=34
+INFO 08:34:58 – TinhCong/CongThuc
+INFO 08:36:50 – TinhCong/CongThuc
+INFO 08:37:06 – TinhCong/CongThuc
+INFO 08:37:20 – TinhCong/CongThuc
+INFO 08:39:55 – TinhCong/Details&NV_id=34
+INFO 08:43:02 – TinhCong/Details&NV_id=45
+INFO 08:45:26 – TinhCong/Details&NV_id=92
+INFO 08:46:38 – TinhCong/Details&NV_id=92
+INFO 08:48:40 – TinhCong/CongThuc
+INFO 08:49:05 – TinhCong/CongThuc
+INFO 08:49:33 – TinhCong/CongThuc
+INFO 08:50:09 – TinhCong/CongThuc
+INFO 08:51:59 – TinhCong/CongThuc
+INFO 08:52:09 – TinhCong/CongThuc
+INFO 08:52:16 – TinhCong/CongThuc
+INFO 08:53:00 – TinhCong/CongThuc
+INFO 08:53:06 – TinhCong/CongThuc
+INFO 08:53:35 – TinhCong/CongThuc
+INFO 08:54:54 – TinhCong/CongThuc
+INFO 08:57:02 – TinhCong/CongThuc
+INFO 08:57:06 – TinhCong/CongThuc
+INFO 08:57:09 – TinhCong/CongThuc
+INFO 09:01:30 – TinhCong/CongThuc
+INFO 09:01:40 – TinhCong/CongThuc
+INFO 09:01:59 – TinhCong/CongThuc
+INFO 09:02:24 – TinhCong/CongThuc
+INFO 09:05:47 – TinhCong/Details&NV_id=92
+INFO 09:35:35 – TinhCong/CongThuc
+INFO 09:38:01 – TinhCong/CongThuc
+INFO 09:38:16 – TinhCong/CongThuc
+INFO 09:38:22 – TinhCong/CongThuc
+INFO 09:38:25 – TinhCong/CongThuc
+INFO 09:39:04 – TinhCong/ThamNien
+INFO 09:40:09 – TinhCong/Details&NV_id=16
+INFO 12:41:31 – TinhCong/CongThuc
+INFO 12:42:23 – TinhCong/Details&NV_id=111
+INFO 12:43:12 – TinhCong/TuDien
+INFO 12:45:16 – TinhCong/TuDien
+INFO 12:45:21 – TinhCong/TuDien
+INFO 12:45:22 – TinhCong/TuDien
+INFO 12:45:46 – TinhCong/TuDien
+INFO 12:45:57 – TinhCong/CongThuc
+INFO 12:47:12 – TinhCong/Details&NV_id=16
+INFO 01:08:41 – TinhCong/Details&NV_id=24
+INFO 01:09:11 – TinhCong/Details&NV_id=111
+INFO 01:11:08 – TinhCong/Details&NV_id=60
+INFO 01:16:50 – TinhCong/Details&NV_id=60
+INFO 01:20:08 – TinhCong/Details&NV_id=60
+INFO 01:20:33 – TinhCong/TuDien
+INFO 01:26:18 – Home/Index
+INFO 01:26:20 – Login/Index
+INFO 01:26:44 – Login/Index
+INFO 01:26:44 – Home/Index
+INFO 01:26:48 – TinhCong/Details&NV_id=60
+INFO 01:31:46 – TinhCong/Details&NV_id=60
+INFO 01:35:50 – TinhCong/CongThuc
+INFO 01:37:17 – TinhCong/Details&NV_id=111
+INFO 01:42:54 – TinhCong/Details&NV_id=104
+INFO 01:43:47 – TinhCong/Details&NV_id=27
+INFO 01:46:48 – HSNhanSu/Index
+INFO 01:46:49 – NhanVien/IndexP
+INFO 01:46:58 – HSNhanSu/Details
+INFO 01:47:02 – QTLamViecTruoc/IndexP
+INFO 01:47:03 – QTLamViec/IndexP
+INFO 01:47:04 – QTKiemNhiem/IndexP
+INFO 01:47:17 – QTLamViec/EditP&id=1419
+INFO 01:47:25 – QTLamViec/UpdateS&id=1419&NV_id=129&DonVi_id=47&ChucDanh_id=8&ChucDanhChucVu_id=1&NgheNghiep_id=9
+INFO 01:47:25 – HSNhanSu/Details
+INFO 01:47:25 – QTLamViecTruoc/IndexP
+INFO 01:47:25 – QTLamViec/IndexP
+INFO 01:47:25 – QTKiemNhiem/IndexP
+INFO 01:47:54 – TinhCong/CongThuc
+INFO 01:48:15 – TinhCong/Details&NV_id=147
+INFO 01:50:27 – TinhCong/Details&NV_id=147
+INFO 02:00:12 – TinhCong/Details&NV_id=27
+INFO 02:00:25 – TinhCong/CongThuc

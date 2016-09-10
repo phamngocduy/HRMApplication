@@ -1,0 +1,480 @@
+﻿@using System.Data
+@using System.Collections;
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+
+@functions {
+    static int val(DateTime dt) { return val(dt.Month, dt.Year); }
+    static int val(DateTime? dt) { return dt.HasValue ? val(dt.Value) : int.MaxValue; }
+    static int val(int month, int year) { return month + year * 100; }
+    static int text(DateTime dt) { return text(dt.Day, dt.Month, dt.Year); }
+    static int text(DateTime? dt) { return dt.HasValue ? text(dt.Value) : int.MaxValue; }
+    static int text(int day, int month, int year) { return day + month * 100 + year * 10000; }
+    static string ToShortDateString(object dt) { return dt is DateTime ? ((DateTime)dt).ToShortDateString() : "nay"; }
+    public static DataTable dsNhanVien(HRMDBEntities db) {
+        return db.SqlQuery(@"
+select
+NhanVien.id, NhanVien.MaNV,
+nvSoYeuLyLich.HoVaTen,
+dmDonVi.maDonVi, isnull(dmDonVi.tenDonVi,dv.tenDonVi) tenDonVi,
+ISNULL(bcTuyenDung.NgayBatDau, nvSoYeuLyLich.ngayBatDauLamViec) ngayBatDauLamViec, NhanVien.ngayNghiViec
+from fnNhanVien(getdate()) NV
+left join NhanVien on NV.idNhanVien=NhanVien.id
+inner join bcTuyenDung on NhanVien.id=bcTuyenDung.NV_id
+left join nvSoYeuLyLich on nvSoYeuLyLich.NV_id=NhanVien.id
+left join nvQTLamViec on NV.idLamViec=nvQTLamViec.id
+left join dmDonVi on nvQTLamViec.DonVi_id=dmDonVi.id
+left join nvQTLamViec lv on NhanVien.qtlvCongTac_id=lv.id
+left join dmDonVi dv on lv.DonVi_id=dv.id
+where NhanVien.ngayNghiViec is null
+and NhanVien.id not in (667,666,770,
+321,74,263,684,659,70,722,362,155,584
+,278)
+order by ISNULL(dmDonVi.stt,100), dmDonVi.id
+/*
+declare @moc date = getdate()
+select nv.id, nv.MaNV, ll.HoVaTen, dmDonVi.maDonVi, dmDonVi.tenDonVi,
+isNull(bcTuyenDung.NgayBatDau, ll.ngayBatDauLamViec) ngayBatDauLamViec, nv.ngayNghiViec
+from fnNhanVien(@moc) fn
+left join NhanVien nv on fn.idNhanVien = nv.id
+left join nvSoYeuLyLich ll on ll.NV_id = nv.id
+left join nvQTLamViec lv on fn.idLamViec = lv.id
+left join dmDonVi on lv.DonVi_id = dmDonVi.id
+left join bcTuyenDung on bcTuyenDung.NV_id = nv.id
+where nv.ngayNghiViec is null
+and nv.id not in (130,278,70,684,584,253,263,740,321,659,521,699,444,289,74,362,155,557,507
+,760,761,754,748,741,757,742,743,756,744,755,753,752,749,745,750,746,747,751
+,667,666,770
+,671,508,672,507,557,172,506)
+order by isNull(dmDonVi.stt,100), dmDonVi.id*/");
+/*
+PHẠM HOÀNG CHƯƠNG	NGUYỄN THÁI DIÊN	DƯƠNG NGỌC MỸ HÒA	NGUYỄN LAN HƯƠNG cl	VŨ PHƯƠNG LINH	NGUYỄN THANH MAI	LÊ GIÁP NHẬT	NGUYỄN THỊ HỒNG NHUNG cb	NGUYỄN NGỌC UYÊN THAO	ĐỒNG PHƯƠNG THẢO	DƯƠNG PHƯƠNG THẢO	NGUYỄN THỊ NGỌC THI	TRƯƠNG ĐÌNH ANH THƯ	LƯU HUYỀN TRANG	DƯƠNG VỸ TRUNG	MAI ANH TUẤN	NGUYỄN NHẬT BẰNG    NGUYỄN THÚY HƯỜNG   NGÔ TRUNG VIỆT
+BÙI VINH PHÚC   CAO ĐĂNG DƯƠNG  HỒ THỊ TRÚC GIANG   HOÀNG THỊ KIM LIÊN  LƯƠNG DUYÊN PHU NGUYỄN BẢO LAN  NGUYỄN CÔNG TRỨ NGUYỄN HỮU AN   NGUYỄN HỮU TRUNG CHÁNH  NGUYỄN NGỌC CẨN NGUYỄN NGỌC TÂM NGUYỄN TRỌNG THUẦN  NGUYỄN VĂN LỢI  NGUYỄN VĂN THÊM NGUYỄN VĂN TƯ   PHẠM HƯƠNG  TÔ XUÂN GIÁP    TRẦN TRỌNG MIÊNG    TRƯƠNG QUANG TUẤN
+*/
+    }
+}
+
+@helper Details(int NV_id, dynamic ViewBag, string congThuc = null) {
+    ViewBag.Title = "Details";
+    var db = ViewBag.db as HRMDBEntities;
+    var NVs = ViewBag.NVs as IEnumerable<DataRow>;
+    NVs = NVs == null ? db.SqlQuery(String.Format(@"
+select isNull(bcTuyenDung.NgayBatDau, nvSoYeuLyLich.ngayBatDauLamViec) ngayBatDauLamViec, NhanVien.ngayNghiViec from NhanVien
+left join nvSoYeuLyLich on nvSoYeuLyLich.NV_id = NhanVien.id
+left join bcTuyenDung on bcTuyenDung.NV_id = NhanVien.id
+where NhanVien.id = {0}", NV_id)).Rows.ToArray() :
+NVs.Where(nv => nv[0].Equals(NV_id)).ToArray();
+    var NV = NVs.First();
+    var LVs = ViewBag.LVs as IEnumerable<DataRow>;
+/*    LVs = LVs == null ? db.SqlQuery(String.Format(@"
+select * from nvQTLamViec
+left join dmDonVi on nvQTLamViec.DonVi_id = dmDonVi.id
+left join dmChucDanh on nvQTLamViec.ChucDanh_id = dmChucDanh.id
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+LVs.Where(lv => lv["NV_id"].Equals(NV_id)).ToArray();*/
+    var DCs = ViewBag.DCs as IEnumerable<DataRow>;
+    DCs = DCs == null ? db.SqlQuery(String.Format(@"
+select * from bcDieuChinh
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+DCs.Where(dc => dc["NV_id"].Equals(NV_id)).ToArray();
+    var KLs = ViewBag.KLs as IEnumerable<DataRow>;
+    KLs = KLs == null ? db.SqlQuery(String.Format(@"
+select * from bcNghiKL
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+KLs.Where(kl => kl["NV_id"].Equals(NV_id)).ToArray();
+    var BNs = ViewBag.BNs as IEnumerable<DataRow>;
+    BNs = BNs == null ? db.SqlQuery(String.Format(@"
+select * from bcChucVu
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+BNs.Where(bn => bn["nv_id"].Equals(NV_id)).ToArray();
+    var TDs = ViewBag.TDs as IEnumerable<DataRow>;
+    TDs = TDs == null ? db.SqlQuery(String.Format(@"
+select * from bcTuyenDung
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+TDs.Where(td => td["NV_id"].Equals(NV_id)).ToArray();
+    var CNs = ViewBag.CNs as IEnumerable<DataRow>;
+    CNs = CNs == null ? db.SqlQuery(String.Format(@"
+select * from bcChuyenNgach
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+CNs.Where(cn => cn["NV_id"].Equals(NV_id)).ToArray();
+    var HHs = ViewBag.HHs as IEnumerable<DataRow>;
+    HHs = HHs == null ? db.SqlQuery(String.Format(@"
+select * from nvHocHam
+left join dmHocHam on nvHocHam.HocHam_id = dmHocHam.id
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+HHs.Where(hh => hh["NV_id"].Equals(NV_id)).ToArray();
+    var BCs = ViewBag.BCs as IEnumerable<DataRow>;
+    BCs = BCs == null ? db.SqlQuery(String.Format(@"
+select * from bcBangCap
+left join dmTrinhDo on trinhDo_id = dmTrinhDo.id
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+BCs.Where(bc => bc["nv_id"].Equals(NV_id)).ToArray();
+    var CDs = ViewBag.CDs as IEnumerable<DataRow>;
+    CDs = CDs == null ? db.SqlQuery(String.Format(@"
+select * from nvChucDanhGiangVien
+left join dmChucDanhGiangVien on nvChucDanhGiangVien.ChucDanh_id = dmChucDanhGiangVien.id
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+CDs.Where(cd => cd["NV_id"].Equals(NV_id)).ToArray();
+    var HQs = ViewBag.HQs as IEnumerable<DataRow>;
+    HQs = HQs == null ? db.SqlQuery(String.Format(@"
+select * from bcHQCV
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+HQs.Where(hq => hq["nv_id"].Equals(NV_id)).ToArray();
+    var DTs = ViewBag.DTs as IEnumerable<DataRow>;
+    DTs = DTs == null ? db.SqlQuery(String.Format(@"
+select * from bcDoanThe
+where NV_id = {0}", NV_id)).Rows.ToArray() :
+DTs.Where(dt => dt["NV_id"].Equals(NV_id)).ToArray();
+    var tbH = ViewBag.tbH as IEnumerable<DataRow>;
+    tbH = tbH == null ? db.SqlQuery(String.Format(@"
+select nv_id, AVG(H) H from bcHQCV
+where tuNgay > '2005-8-31' and nv_id = {0}
+group by NV_id", NV_id)).Rows.ToArray() :
+tbH.Where(tb => tb["nv_id"].Equals(NV_id)).ToArray();
+
+<h2>@Request.QueryString["HoVaTen"] - @Request.QueryString["DonVi"]</h2>
+<h3>Làm việc từ @ToShortDateString(NV["ngayBatDauLamViec"]) đến @ToShortDateString(NV["ngayNghiViec"])</h3>
+
+<table id="Details">
+<thead>
+    <tr>
+        <th rowspan=2></th>
+        <th rowspan=2><mark title="Thâm niên">TN</mark></th>
+        <th colspan=4>Bổ nhiệm</th>
+        <th colspan=4>Học hàm học vị</th>
+        <th rowspan=2><mark title="Mức độ đóng góp">H</mark></th>
+        <th rowspan=2><mark title="Công tác Đoàn thể">ĐT</mark></th>
+        <th rowspan=2><mark title="Tổng">T</mark></th>
+    </tr>
+    <tr>
+        <th>Vị trí</th>
+        <th><mark title="Điểm">Đ</mark></th>
+        <th><mark title="Kiêm nhiệm">KN</mark></th>
+        <th><mark title="Điểm">Đ</mark></th>
+        <th><mark title="Học hàm">HH</mark></th>
+        <th><mark title="Trình độ">TĐ</mark></th>
+        <th><mark title="Chức danh giảng viên">CD</mark></th>
+        <th><mark title="Điểm">Đ</mark></th>
+    </tr>
+</thead>
+<tbody>
+@for (int year = 1995; year <= 2015; year++)
+{
+    for (int month = 1; month <= 12; month++)
+    {
+        if (year == 2015 && month == 6) { break; }
+        var now = new DateTime(year, month, 1);
+        if (val(NV["ngayBatDauLamViec"] as DateTime?) > val(now)) { continue; }
+        <tr>
+            <td>@year/@month</td>
+            @{ // Tham nien
+                @*
+                var lvs = new List<Tuple<DataRow, double>>();
+                foreach (var lv in LVs)
+                {
+                    var batDau = (DateTime)lv["ThoiGianBatDau"];
+                    var ketThuc = lv["ThoiGianKetThuc"] as DateTime?;
+                    if (val(batDau) == val(ketThuc))
+                    {
+                        lvs.Add(new Tuple<DataRow, double>(lv, (ketThuc.Value.Day - batDau.Day + 1.0) / DateTime.DaysInMonth(year, month)));
+                    }
+                    else if (val(batDau) < val(now))
+                    {
+                        if (val(now) < val(ketThuc))
+                        {
+                            lvs.Add(new Tuple<DataRow, double>(lv, 1));
+                        }
+                        if (val(ketThuc) == val(now))
+                        {
+                            lvs.Add(new Tuple<DataRow, double>(lv, (float)ketThuc.Value.Day / DateTime.DaysInMonth(year, month)));
+                        }
+                    }
+                    else if (val(batDau) == val(now))
+                    {
+                        lvs.Add(new Tuple<DataRow, double>(lv, (DateTime.DaysInMonth(year, month) - batDau.Day + 1) / (float)DateTime.DaysInMonth(year, month)));
+                    }
+                }
+                *@
+                var dcs = new List<Tuple<DataRow, double>>();
+                foreach (var dc in DCs)
+                {
+                    var batDau = (DateTime)dc["BatDau"];
+                    var ketThuc = dc["KetThuc"] as DateTime?;
+                    var heSo = (double)dc["HeSo"];
+                    if (val(batDau) <= val(now) && val(now) <= val(ketThuc))
+                    {
+                        if (batDau.Day < 15 && (!ketThuc.HasValue || ketThuc.Value.Day >= 15))
+                        {
+                            dcs.Add(new Tuple<DataRow, double>(dc, heSo));
+                        }
+                    }
+                }
+                var kls = new List<Tuple<DataRow, double>>();
+                foreach (var kl in KLs)
+                {
+                    var batDau = (DateTime)kl["NgayBatDau"];
+                    var ketThuc = kl["NgayKetThuc"] as DateTime?;
+                    if (val(batDau) == val(ketThuc))
+                    {
+                        kls.Add(new Tuple<DataRow, double>(kl, (ketThuc.Value.Day - batDau.Day + 1.0) / DateTime.DaysInMonth(year, month)));
+                    }
+                    else if (val(batDau) < val(now))
+                    {
+                        if (val(now) < val(ketThuc))
+                        {
+                            kls.Add(new Tuple<DataRow, double>(kl, 1));
+                        }
+                        if (val(ketThuc) == val(now))
+                        {
+                            kls.Add(new Tuple<DataRow, double>(kl, (float)ketThuc.Value.Day / DateTime.DaysInMonth(year, month)));
+                        }
+                    }
+                    else if (val(batDau) == val(now))
+                    {
+                        kls.Add(new Tuple<DataRow, double>(kl, (DateTime.DaysInMonth(year, month) - batDau.Day + 1) / (float)DateTime.DaysInMonth(year, month)));
+                    }
+                }
+                var diem = 1.0;
+                if (val(NV["ngayBatDauLamViec"] as DateTime?) == val(now)) {
+                    var start = (DateTime)NV["ngayBatDauLamViec"];
+                    diem = (DateTime.DaysInMonth(year, month) - start.Day + 1) / (float)DateTime.DaysInMonth(year, month);
+                }
+                var dieuChinh = dcs.Count > 0 ? dcs.Min(dc => dc.Item2) : 1.0;
+                diem = Math.Max(diem - Math.Min(kls.Sum(kl => kl.Item2), 1), 0) * dieuChinh;
+                <td>
+                    @TinhDiem.dThamNien(diem, NV_id, val(now))
+                @if (kls.Count > 0)
+                {
+                    <mark title="@String.Join("\n", kls.Select(kl => String.Format("Nghỉ KL từ {0} đến {1} (2)", ToShortDateString(kl.Item1["NgayBatDau"]), ToShortDateString(kl.Item1["NgayKetThuc"]), kl.Item2)))">!</mark>
+                }
+                </td>
+            }
+            @{
+                var bns = new List<Tuple<DataRow, double>>();
+                foreach (var bn in BNs)
+                {
+                    var batDau = (DateTime)bn["ngayBatDau"];
+                    var ketThuc = bn["ngayKetThuc"] as DateTime?;
+                    if (val(batDau) == val(ketThuc))
+                    {
+                        bns.Add(new Tuple<DataRow, double>(bn, (ketThuc.Value.Day - batDau.Day + 1.0) / DateTime.DaysInMonth(year, month)));
+                    }
+                    else if (val(batDau) < val(now))
+                    {
+                        if (val(now) < val(ketThuc))
+                        {
+                            bns.Add(new Tuple<DataRow, double>(bn, 1));
+                        }
+                        if (val(ketThuc) == val(now))
+                        {
+                            bns.Add(new Tuple<DataRow, double>(bn, (float)ketThuc.Value.Day / DateTime.DaysInMonth(year, month)));
+                        }
+                    }
+                    else if (val(batDau) == val(now))
+                    {
+                        bns.Add(new Tuple<DataRow, double>(bn, (DateTime.DaysInMonth(year, month) - batDau.Day + 1) / (float)DateTime.DaysInMonth(year, month)));
+                    }
+                }
+                var cns = new List<Tuple<DataRow, double>>();
+                foreach (var cn in CNs)
+                {
+                    var batDau = (DateTime)cn["ngayBatDau"];
+                    var ketThuc = cn["ngayKetThuc"] as DateTime?;
+                    if (val(batDau) <= val(now) && val(now) <= val(ketThuc))
+                    {
+                        cns.Add(new Tuple<DataRow, double>(cn, 1));
+                    }
+                }
+                var bds = new List<Tuple<DataRow, double>>();
+                foreach (var td in TDs)
+                {
+                    var batDau = (DateTime)td["ngayBatDau"];
+                    if (val(batDau) <= val(now))
+                    {
+                        bds.Add(new Tuple<DataRow, double>(td, 1));
+                    }
+                }
+            }
+            @{
+                var lvc = new List<List<Tuple<DataRow, double>>>();
+                var lvp = new List<DataRow>();
+                bool part = false;
+                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
+                {
+                    var date = text(i, month, year);
+                    lvc.Add(bns.Where(bn =>
+                        text(bn.Item1["ngayBatDau"] as DateTime?) <= date &&
+                        date <= text(bn.Item1["ngayKetThuc"] as DateTime?))
+                        .Select(bn => bn).ToList());
+                    part |= lvc.Last().Count == 0;
+                    var cn = cns.FirstOrDefault(lv =>
+                        text(lv.Item1["ngayBatDau"] as DateTime?) <= date &&
+                        date <= text(lv.Item1["ngayKetThuc"] as DateTime?));
+                    if (cn != null)
+                    {
+                        lvp.Add(cn.Item1); continue;
+                    }
+                    var bd = bds.FirstOrDefault(lv =>
+                        text(lv.Item1["ngayBatDau"] as DateTime?) <= date);
+                    if (bd != null)
+                    {
+                        lvp.Add(bd.Item1); continue;
+                    }
+                    lvp.Add(null);
+                }
+                @*
+                <td>
+                    <mark title="@String.Format("{0}\n{1}\n{2}",
+                        String.Join("\n", bns.Select(bn => String.Format("{0}: {1} từ {2} đến {3} ({4})", bn.Item1["tenDonVi"], bn.Item1["chucVu"], ToShortDateString(bn.Item1["ngayBoNhiem"]), ToShortDateString(bn.Item1["ngayKetThuc"]), bn.Item2))),
+                        String.Join("\n", cns.Select(lv => String.Format("{0}: {1} từ {2} đến {3} ({4})", lv.Item1["TenDonVi"], lv.Item1["ChucDanh"], ToShortDateString(lv.Item1["NgayBatDau"]), ToShortDateString(lv.Item1["NgayKetThuc"]), lv.Item2))),
+                        String.Join("\n", cns.Select(lv => String.Format("{0}: {1} từ {2} đến {3} ({4})", lv.Item1["TenDonVi"], lv.Item1["ChucDanh"], ToShortDateString(lv.Item1["NgayBatDau"]), ToShortDateString(lv.Item1["NgayKetThuc"]), lv.Item2))))">
+                        @String.Join(";", bns.OrderBy(bn => bn.Item1["kiemNhiem"].ToString()).Select(bn => bn.Item1["maChucVu"].ToString()).Where(cv => (cv != "CT" && cv != "PCT" && cv != "UV")))&nbsp;
+                        @(part ? String.Join(";", lvp.Where(lv => lv != null).Select(lv => lv["ChucDanh"]).Distinct()) : null)
+                    </mark>
+                </td>
+                *@
+                @TinhDiem.dBoNhiem(lvc, lvp, NV_id, val(now))
+            }
+            @{ // Hoc ham
+                var hhs = new List<Tuple<DataRow, double>>();
+                foreach (var hh in HHs)
+                {
+                    var batDau = (DateTime)hh["NgayBatDau"];
+                    if (val(batDau) < val(now))
+                    {
+                        hhs.Add(new Tuple<DataRow, double>(hh, 1));
+                    }
+                    if (val(batDau) == val(now))
+                    {
+                        hhs.Add(new Tuple<DataRow, double>(hh, (DateTime.DaysInMonth(year, month) - batDau.Day + 1) / (float)DateTime.DaysInMonth(year, month)));
+                    }
+                }
+                <td>
+                    <mark title="@String.Join(";", hhs.Select(hh => String.Format("{0}:{1}", hh.Item1["NgayBatDau"], hh.Item2)))">
+                        @String.Join(";", hhs.Select(hh => hh.Item1["maHocHam"].ToString()))
+                    </mark>
+                </td>
+            }
+            @{ // Hoc vi
+                var bcs = new List<Tuple<DataRow, DateTime?, double>>();
+                foreach (var bc in BCs)
+                {
+                    var congNhan = bc["ngayHoanThanh"] as DateTime?;
+                    congNhan = congNhan.HasValue ? congNhan : bc["ngayCap"] as DateTime?;
+                    congNhan = congNhan.HasValue ? congNhan : NV["ngayBatDauLamViec"] as DateTime?;
+                    if (val(congNhan) < val(now))
+                    {
+                        bcs.Add(new Tuple<DataRow, DateTime?, double>(bc, congNhan, 1));
+                    }
+                    if (val(congNhan) == val(now))
+                    {
+                        bcs.Add(new Tuple<DataRow, DateTime?, double>(bc, congNhan, (DateTime.DaysInMonth(year, month) - congNhan.Value.Day + 1) / (float)DateTime.DaysInMonth(year, month)));
+                    }
+                }
+                <td>
+                    <mark title="@String.Join("\n", bcs.Select(bc => String.Format("Bằng {0} từ ngày {1} ({2}))", bc.Item1["trinhDo"], ToShortDateString(bc.Item2), bc.Item3)))">
+                    @{
+                        var tds = bcs.OrderByDescending(bc => bc.Item1["doUuTien"]).Select(bc => bc.Item1["trinhDo"].ToString());
+                        var cao = tds.Count(td => td == tds.First());
+                        @String.Format(cao > 1 ? "{0}({1})" : "{0}", tds.FirstOrDefault(), cao);
+                    }
+                    </mark>
+                </td>
+            }
+            @{ // Chuc danh
+                var cds = new List<Tuple<DataRow, double>>();
+                foreach (var cd in CDs)
+                {
+                    var batDau = (DateTime)cd["NgayBatDau"];
+                    if (val(batDau) < val(now))
+                    {
+                        cds.Add(new Tuple<DataRow, double>(cd, 1));
+                    }
+                    if (val(batDau) == val(now))
+                    {
+                        cds.Add(new Tuple<DataRow, double>(cd, (DateTime.DaysInMonth(year, month) - batDau.Day + 1) / (float)DateTime.DaysInMonth(year, month)));
+                    }
+                }
+                <td>
+                    <mark title="@String.Join(";", cds.Select(hh => String.Format("{0}:{1}", hh.Item1["NgayBatDau"], hh.Item2)))">
+                        @String.Join(";", cds.Select(hh => hh.Item1["maChucDanhGiangVien"].ToString()))
+                    </mark>
+                </td>
+                <td>
+                    @TinhDiem.dHocHamHocVi(hhs, bcs.Select(bc => new Tuple<DataRow, double>(bc.Item1, bc.Item3)).ToList(), cds, NV_id, val(now))
+                </td>
+            }
+            @{ // HQCV H
+                var hqs = new List<Tuple<DataRow, double>>();
+                foreach (var hq in HQs)
+                {
+                    var batDau = (DateTime)hq["tuNgay"];
+                    var ketThuc = (DateTime)hq["denNgay"];
+                    if (val(batDau) <= val(now) && val(now) <= val(ketThuc))
+                    {
+                        hqs.Add(new Tuple<DataRow, double>(hq, 1));
+                    }
+                }
+                if (hqs.Count > 1)
+                {
+                    //TB.Add("HQCV: co 2 gia tri");
+                }
+                <td>
+                    <mark title="@String.Join(";", hqs.Select(hq => String.Format("{0}-{1}", hq.Item1["danhHieuTapThe"], hq.Item1["danhHieuCaNhan"])))">
+                        @String.Join(";", hqs.Select(hq => Math.Round((double)hq.Item1["H"], 2)))
+                    </mark>
+                </td>
+                @TinhDiem.dHieuQuaCongViec(tbH, hqs, HQs.Where(hq => val(hq["denNgay"] as DateTime?) <= val(now)).OrderBy(hq => hq["denNgay"]).LastOrDefault(), NV_id, val(now))
+            }
+            @{ // Doan the
+                var dts = new List<Tuple<DataRow, double>>();
+                foreach (var dt in DTs)
+                {
+                    var batDau = (DateTime)dt["BatDau"];
+                    var ketThuc = dt["KetThuc"] as DateTime?;
+                    if (val(batDau) == val(ketThuc))
+                    {
+                        dts.Add(new Tuple<DataRow, double>(dt, (ketThuc.Value.Day - batDau.Day + 1.0) / DateTime.DaysInMonth(year, month)));
+                    }
+                    if (val(batDau) < val(now))
+                    {
+                        if (val(now) < val(ketThuc))
+                        {
+                            dts.Add(new Tuple<DataRow, double>(dt, 1));
+                        }
+                        if (val(ketThuc) == val(now))
+                        {
+                            dts.Add(new Tuple<DataRow, double>(dt, (float)ketThuc.Value.Day / DateTime.DaysInMonth(year, month)));
+                        }
+                    }
+                    if (val(batDau) == val(now))
+                    {
+                        dts.Add(new Tuple<DataRow, double>(dt, (DateTime.DaysInMonth(year, month) - batDau.Day + 1) / (float)DateTime.DaysInMonth(year, month)));
+                    }
+                }
+                <td>
+                    <mark title="@String.Join("\n", dts.Select(lv => String.Format("{0} từ {1} đến {2} ({3})", lv.Item1["ChucVu"], ToShortDateString(lv.Item1["BatDau"]), ToShortDateString(lv.Item1["KetThuc"]), lv.Item2)))">
+                        @String.Join(";", dts.Select(lv => lv.Item1["KyHieu"].ToString()))
+                    </mark>
+                    @TinhDiem.dDoanThe(dts, NV_id, val(now))
+                </td>
+                <td>
+                    @(congThuc == null ? TinhDiem.dTongDiem(NV_id, val(now)) : TinhDiem.dTongDiem(NV_id, val(now), congThuc))
+                </td>
+            }
+        </tr>
+        if (val(NV["ngayNghiViec"] as DateTime?) < val(now)) { break; }
+    }
+}
+</tbody>
+</table>
+    
+<div>
+    <h4>Tổng điểm: @TinhDiem._TongDiem(NV_id, ViewBag)</h4>
+</div>
+
+<style>
+    table#TC td { border: 1px solid !important; padding: 0; }
+</style>
+}

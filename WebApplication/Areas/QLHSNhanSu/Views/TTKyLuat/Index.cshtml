@@ -1,0 +1,82 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    var action = "TTKyLuat";
+    ViewBag.Title = "Edit";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from dsTTKyLuat where NV_id=@p0", Model);
+    var rand = new Random().Next();
+}
+
+<table id="@rand" class="table table-hover table-bordered" style="margin:0">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTTNhanSu/"+action+"/EditP?NV_id=" + Model)
+        </th>
+        <th>Hình thức</th>
+        <th>Số QĐ</th>
+        <th>Ngày</th>
+        <th>Cấp QĐ</th>
+        <th>Đơn vị</th>
+        <th>Lý do</th>
+        <th>Mức bồi thường</th>
+        <th>Ghi chú</th>
+        <th>Hiển thị</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            @Html.Editor4U("~/QLTTNhanSu/"+action+"/EditP?id=" + dr["id"])
+            @Html.Editor4D("~/QLTTNhanSu/"+action+"/DeleteS?id=" + dr["id"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["tenHinhThucKyLuat"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["SoQuyetDinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayQuyetDinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["CapRaQuyetDinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["DonViRaKyLuat"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["LyDoKyLuat"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["MucBoiThuong"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["GhiChu"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["TrangThai"])
+        </td>
+    </tr>
+}
+@if (dt.Rows.Count == 0)
+{
+    <tr>
+        <td colspan=10 style="text-align:center">
+            <i>Không có.</i>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#@rand").find("th,td").attr("nowrap", true);
+    });
+</script>

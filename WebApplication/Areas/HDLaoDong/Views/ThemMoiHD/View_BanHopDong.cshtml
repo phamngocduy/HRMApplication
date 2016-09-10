@@ -1,0 +1,22 @@
+﻿@model HRM.Databases_HDLaoDong.Models.hdChiTietHDLD
+@{
+    ViewBag.Title = "View_BanHopDong";
+}
+
+<p>
+    @Html.ActionLink("Quay lại", Request.QueryString["Back"], new { id = Model.id })
+    <span style="float:right">Nhấn nút Save để lưu thay đổi!</span>
+</p>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.id)
+    @Html.TextAreaFor(model => model.banHopDong)
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $("textarea#banHopDong").ckeditor();
+    });
+</script>

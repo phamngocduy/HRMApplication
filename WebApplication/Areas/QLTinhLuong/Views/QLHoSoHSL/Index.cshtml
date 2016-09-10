@@ -1,0 +1,126 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@{
+    ViewBag.Title = "Index";
+    var name = "dsQLHoSoHSL";
+    var table = "nvQLHoSoHSL";
+    var action = "QLHoSoHSL";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from "+name+" where HoanThanh=0");
+    
+    var rand = new Random().Next();
+    var uc = new HRM.Accounts.Models.UsersContext();
+}
+
+<p class="ui-state-highlight">Quản lý hồ sơ điều chỉnh hệ số lương</p>
+
+@using (Html.BeginForm("Upgrade", action))
+{
+<table id="@rand" class="table table-bordered table-hover table-condensed">
+<thead class="ui-widget-header">
+    <tr>
+        <th></th>
+        <th>Họ tên</th>
+        <th>Đến hạn</th>
+        <th>Bậc</th>
+        <th>HSL</th>
+        <th><mark data-tip="Vượt khung">VK</mark></th>
+        <th><mark data-tip="Số tháng giữ bậc">TG</mark></th>
+        <th><mark data-tip="Bản tự nhận xét">BTNX</mark></th>
+        <th><mark data-tip="Biên bản dự giờ/họp đơn vị">BBDG</mark></th>
+        <th><mark data-tip="Nhận xét của trưởng đơn vị">NX_TDV</mark></th>
+    </tr>
+</thead>
+<tbody class="ui-widget-content">
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            <button class="select" style="width:16px"></button>
+            <ul style="z-index:1000">
+                <li>@Html.Link4U("~/QLTinhLuong/QLHoSoHSL/EditP?id=" + dr["id"], "Edit")</li>
+                <li>@Html.Link4D("~/QLTinhLuong/QLHoSoHSL/DeleteS?name=" + table + "&id=" + dr["id"], "Delete")</li>
+                <li>@Html.Link4U("~/QLTinhLuong/QLHoSoHSL/BaoLuuP?HSL_id=" + dr["HSL_id"], "Bảo lưu")</li>
+            </ul><br />
+            @Html.Hidden("HoSo_id", dr["id"])
+            @Html.Hidden("HeSo_id", dr["HSL_id"])
+            @Html.CheckBox("SEL", true, new { HoSo_id = dr["id"], HeSo_id = dr["HSL_id"] })
+        </td>
+        <td>
+            <u>@Html.Display(dr, dt.Columns["HoVaTen"])</u>
+        </td>
+        <td>
+            <b>@Html.Display(dr, dt.Columns["HSL_ThoiGianDenHan"])</b>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["HSL_BacLuong"])<br />
+            <span class="ui-icon ui-icon-arrow-1-e" style="display:inline-block"></span>
+            <i><u>@Html.Display(dr, dt.Columns["BacLuong"])</u></i>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["HSL_HeSoLuong"])<br />
+            <span class="ui-icon ui-icon-arrow-1-e" style="display:inline-block"></span>
+            <i><u>@Html.Display(dr, dt.Columns["HeSoLuong"])</u></i>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["HSL_PhuCap"])<br />
+            <span class="ui-icon ui-icon-arrow-1-e" style="display:inline-block"></span>
+            <i><u>@Html.Display(dr, dt.Columns["PhuCap"])</u></i>
+        </td>
+        <td>
+            <mark data-tip="(tháng)">@Html.Display(dr, dt.Columns["ThoiGianGiuBac"])</mark>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["BanTuNhanXet"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["BienBanHopDonVi"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["DeXuatTruongDonVi"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+@Html.BeginDiv()
+    @Html.Label("SoQuyetDinh", "Số quyết định")
+    @Html.TextBox("SoQuyetDinh")
+    @Html.Label("LyDo", "Lý do điều chỉnh hệ số lương")
+    @Html.TextBox("LyDoThayDoi")
+    @Html.Label("GhiChu", "Ghi chú")
+    @Html.TextBox("GhiChu")
+    @Html.Hidden("User_id", uc.UserProfiles.Single(u => u.UserName == User.Identity.Name).UserId)
+    <input type="submit" value="Điều chỉnh HSL" />
+@Html.EndDiv()
+}
+
+<script>
+    $(function () {
+        $("#@rand").find("th").attr("nowrap", true);
+        $("#@rand").find(".select").button({
+            text: false,
+            icons: { primary: "ui-icon-circle-triangle-s" }
+        }).click(function () {
+            var menu = $(this).next().show().position({
+                my: "left top",
+                at: "left bottom",
+                of: this
+            });
+            $(document).one("click", function () { menu.hide(); });
+            return false;
+        }).next().hide().menu();
+        $("#@rand").find("[id=SEL]").change(function () {
+            if (this.checked) {
+                $(this).parent().find("#HeSo_id").val($(this).attr("HeSo-id"));
+                $(this).parent().find("#HoSo_id").val($(this).attr("HoSo-id"));
+            } else $(this).parent().find("[type=hidden]").val("");
+        }).css("margin-left", "2px");
+        $("[type=date]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        }).prop("type", "text");
+    });
+</script>

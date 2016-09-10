@@ -1,0 +1,56 @@
+﻿@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Manage Accounts";
+}
+
+<div id="tabProfiles">
+    <ul>
+        <li><a href="#tabListUsers">User profiles</a></li>
+        <li><a href="#tabListRoles">Role profiles</a></li>
+    </ul>
+    <div id="tabListUsers" align="center">
+        @Html.Partial("ManageUsersPartial")
+    </div>
+    <div id="tabListRoles" align="center" style="padding:0">
+        @Html.Partial("PermissionsPartial")
+    </div>
+</div>
+@*    var gridRoles = new Grid()
+    {
+        Caption = "List of all Roles",
+        Columns = new List<Column>() {
+        new Column("Id") { Name = "RoleId", Sortable=false, Hidden=true },
+        new Column("Role name") { Name="RoleName", Align=Alignment.Center, Width=200, Sortable=true },
+        new Column("Creation date") { Name="CreationDate", Align=Alignment.Center, Width=200, Sortable=true }},
+        Width = 600,
+        RowNum = 10,
+        RowList = new int[] { 10, 20, 30 },
+        Pager = "list-roles-pager"
+    };
+}
+@section Scripts {
+    @jqUI.Tabs("tabs-profiles")
+    @jqUI.Tabs("tabs-edit-user", "autoHideGrid")
+    @jqUI.Tabs("tabs-edit-role")
+    @jqGrid.Grid("list-users", gridUsers, new ManageUsersModel().UserProfiles)
+<script>
+    var Users = $("#list-users");
+    function autoHideGrid(id) {
+        $("#list-users").jqGrid("setGridState", ($(id).text()=="Register"?"hidden":"visible"));
+    }
+    function onSelectRow_Users(row) {
+        SetPassword(id = row["UserId"]);
+        $("[id='UserId']").each(function() { this.value = id; });
+    }
+      $("label").css("font-size", "1em").css("font-weight", "100");
+      $("#refreshPermissions").button();
+@if (Model != null) {
+@:  for (id = 1; id <= Users.getGridParam("records"); id++)
+@:      if (Users.getRowData(id)["UserId"] == @Model)
+@:          Users.setSelection(id, true);
+}
+</script>
+}*@
+@section Scripts {
+    @Html.jqTabs("tabProfiles")
+}

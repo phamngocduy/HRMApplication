@@ -1,0 +1,41 @@
+﻿@model HRM.QLVayMuon.Models.NhanVienVayMuon
+@using HRM.QLVayMuon.Models
+@using HRM.Webpages.Helpers
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+@Html.BeginDiv()
+<h3>Bạn có chắc chắn có muốn xóa nhân viên này?</h3>
+<fieldset>
+    <legend>NhanVienVayMuon</legend>
+
+    <div class="display-label">
+         @Html.VN("Mã nhân viên:")
+         <b>@Html.DisplayFor(model => model.MaNV)</b>
+    </div>
+    <div class="display-label">
+         @Html.VN("Họ và tên:")
+         <b>@Html.DisplayFor(model => model.HoVaTen)</b>
+    </div>
+    <div class="display-field">
+         @Html.VN("Đơn vị:")
+         <b>@Html.DisplayFor(model => model.DonVi)</b>
+    </div>
+    
+</fieldset>
+
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xóa" /> 
+        
+    </p>
+    <p>
+        @Html.ActionLink("Trở về danh sách nhân viên vay mượn", "Index")
+    </p>
+}
+
+@Html.EndDiv()

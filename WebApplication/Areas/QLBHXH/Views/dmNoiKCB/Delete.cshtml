@@ -1,0 +1,37 @@
+﻿@model HRM.QLBHXH.Models.dmNoiKCB
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa nơi KCB</h2>
+
+<h3>Bạn có chắc chắn xóa?</h3>
+<fieldset>
+    <legend>dmNoiKCB</legend>
+
+        <div class="display-label">
+         <b>Mã:</b>
+
+        @Html.DisplayFor(model => model.MaBV)
+    </div>
+
+    <div class="display-label">
+         <b>Tên bệnh viện:</b>
+  
+        @Html.DisplayFor(model => model.TenBV)
+    </div>
+
+    <div class="display-label">
+         <b>Ghi chú:</b>
+  
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+
+   
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xóa" />
+    </p>
+}

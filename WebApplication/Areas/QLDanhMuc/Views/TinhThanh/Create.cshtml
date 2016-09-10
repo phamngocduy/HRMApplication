@@ -1,0 +1,32 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Databases.Models.dmTinhThanh
+
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmTinhThanh</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.maTinhThanh, "Mã")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.maTinhThanh)
+            @Html.ValidationMessageFor(model => model.maTinhThanh)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tenTinhThanh, "Tên " + Html.VN("TinhThanh"))
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tenTinhThanh)
+            @Html.ValidationMessageFor(model => model.tenTinhThanh)
+        </div>
+
+        <p>
+            <input class="dialog" type="submit" value="Lưu" />
+        </p>
+    </fieldset>
+}

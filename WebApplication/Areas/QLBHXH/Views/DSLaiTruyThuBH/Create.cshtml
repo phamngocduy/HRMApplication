@@ -1,0 +1,196 @@
+﻿@model HRM.QLBHXH.Models.nvbhLaiTruyThuBH
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Thêm mới</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>nvbhLaiTruyThuBH</legend>
+        <span>
+        @Html.VN("Họ và tên: ")
+        @Html.DropDownList("idnvbhNhanVienBHXH", String.Empty)
+        @Html.ValidationMessageFor(model => model.idnvbhNhanVienBHXH)
+        </span>
+        <br />
+        <span>
+        @Html.VN("Tiền lương hoặc chênh lệch tiền lương: ")
+        @Html.EditorFor(model => model.TienLuongHoacChenhLechTienLuong)
+        @Html.ValidationMessageFor(model => model.TienLuongHoacChenhLechTienLuong)
+        </span>
+        <span>
+        @Html.VN("Từ tháng năm: ")
+        @Html.EditorFor(model => model.TuThangNam)
+        @Html.ValidationMessageFor(model => model.TuThangNam)
+
+        @Html.VN("Đến tháng năm: ")
+        @Html.EditorFor(model => model.DenThangNam)
+        @Html.ValidationMessageFor(model => model.DenThangNam)
+
+        
+        @Html.VN("Số tháng truy thu: ")
+        @Html.EditorFor(model => model.SoThangTruyThu)
+        @Html.ValidationMessageFor(model => model.SoThangTruyThu)
+        </span>
+        <span>
+        @Html.VN("Năm áp dụng tỷ lệ đóng bảo hiểm: ")
+        @Html.DropDownList("iddmTyLeDongBHXH", String.Empty)
+        @Html.ValidationMessageFor(model => model.iddmTyLeDongBHXH)
+        </span>
+        <span>
+        @Html.VN("Năm áp dụng Mức lương tối thiểu chung: ")
+        @Html.DropDownList("iddmMucLuongToiThieuChung", String.Empty)
+        @Html.ValidationMessageFor(model => model.iddmMucLuongToiThieuChung)
+        </span>
+        <span>
+        @Html.VN("Năm áp dụng Lãi suất truy thu: ")
+        @Html.DropDownList("iddmLaiSuatTruyThu", String.Empty)
+        @Html.ValidationMessageFor(model => model.iddmLaiSuatTruyThu)
+        </span>
+        <span>
+        @Html.VN("Tổng thời gian chậm đóng: ")
+        @Html.EditorFor(model => model.TongThoiGianChamDong)
+        @Html.ValidationMessageFor(model => model.TongThoiGianChamDong)
+        </span>
+        <br />
+        <span>
+        @Html.VN("Ghi chú: ")
+        @Html.EditorFor(model => model.GhiChu)
+        @Html.ValidationMessageFor(model => model.GhiChu)
+        </span>
+        <p>
+            <input type="submit" value="Tạo" />
+        </p>
+    </fieldset>
+}
+
+
+
+
+<script>
+    $("#idnvbhNhanVienBHXH").combobox();
+    $("#iddmTyLeDongBHXH").combobox();
+    $("#iddmLaiSuatTruyThu").combobox();
+    $("#iddmMucLuongToiThieuChung").combobox();
+    $("#TuThangNam").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#DenThangNam").datepicker({
+        changeDay: true,
+        changeMonth: true,
+        changeYear: true
+    });
+    /////////////
+
+    var tuthangnam = $("[id$=TuThangNam");
+    var denthangnam = $("[id$=DenThangNam");
+    denthangnam.change(function () {
+        var str = $(tuthangnam).val();
+        var str1 = $(this).val();
+
+
+        var res = str1.split("/");
+        ka1 = res[0]
+        ka2 = res[1]
+        ka3 = res[2]
+
+        ngay1 = parseInt(ka1)
+        thang1 = parseInt(ka2)
+        nam1 = parseInt(ka3)
+
+        var res1 = str.split("/");
+        ka4 = res1[0]
+        ka5 = res1[1]
+        ka6 = res1[2]
+
+        ngay = parseInt(ka4)
+        thang = parseInt(ka5)
+        nam = parseInt(ka6)
+
+        var nam2 = nam1 - nam;
+
+        Year = parseInt(nam2)
+
+        ii = sothangtruythu = (12 * Year) - thang + thang1 + 1
+        $("[id$=SoThangTruyThu]").val(ii);
+    });
+
+    /////////////
+    tuthangnam.change(function () {
+        var str = $(this).val();
+        var str1 = $(denthangnam).val();
+
+
+        var res = str1.split("/");
+        ka1 = res[0]
+        ka2 = res[1]
+        ka3 = res[2]
+
+        ngay1 = parseInt(ka1)
+        thang1 = parseInt(ka2)
+        nam1 = parseInt(ka3)
+
+        var res1 = str.split("/");
+        ka4 = res1[0]
+        ka5 = res1[1]
+        ka6 = res1[2]
+
+        ngay = parseInt(ka4)
+        thang = parseInt(ka5)
+        nam = parseInt(ka6)
+
+        var nam2 = nam1 - nam;
+
+        Year = parseInt(nam2)
+
+        ii = sothangtruythu = (12 * Year) - thang + thang1 + 1
+        $("[id$=SoThangTruyThu]").val(ii);
+    });
+    // remove text bg
+    $("input[type=text],input[type=datetime],input[type=number]").css("background-color", "transparent");
+    $("input[type=text],input[type=datetime],input[type=number]").css("border", "0").css("border-bottom", "1px dotted");
+    $("#Tien1").css("border", "0").css("border-bottom", "1px dotted");
+    $("#Tien2").css("border", "0").css("border-bottom", "1px dotted");
+    // remove Combobox bg
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(".custom-combobox-input").on("input", function () {
+        $(this).attr("size", $(this).val().length + 4);
+    });
+    // set auto size
+    setInterval(function () {
+        $(".custom-combobox-input").each(function () {
+            $(this).attr("size", $(this).val().length + 4);
+        });
+    }, 1000);
+    $("input[type=text]").on("input", function () {
+        $(this).attr("size", $(this).val().length + 1);
+    }).each(function () {
+        $(this).attr("size", $(this).val().length + 1);
+    });
+    $("input[type=datetime]").css("width", "90px");
+    // set size for tex editor
+
+    $("#SoThangTruyThu").css("width", "100");
+    $("#TongThoiGianChamDong").css("width", "100");
+    $("#GhiChu").css("width", "100");
+    $(".custom-combobox-input").css("background-color", "transparent").css("margin", "5px 0 6px 0");
+    $("input[type=text],input[type=datetime],input[type=number],.custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+    
+
+</script>
+
+<style>
+    form { width: auto }
+    input { width: auto; font-weight: bold }
+    span { display: inline-block; white-space: nowrap }
+    label { display: inline; color: gray; font-size: 1.1em }
+</style>

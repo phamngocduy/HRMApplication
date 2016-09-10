@@ -1,0 +1,120 @@
+﻿@model HRM.QLBHXH.Models.dmMucLuongToiThieuChung
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Chỉnh sửa</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmMucLuongToiThieuChung</legend>
+      <b> Ngày bắt đầu</b>
+       
+      
+            @Html.TextBoxFor(model => model.NgayBatDau, "{0: dd/MM/yyyy}", new { style = "width: 100px",@id = "NgayBatDau1" , @class = "text" })
+            @Html.ValidationMessageFor(model => model.NgayBatDau)
+        
+      <b>Ngày kết thúc</b>
+     
+           @Html.TextBoxFor(model => model.NgayKetThuc, "{0: dd/MM/yyyy}", new { style = "width: 100px", @id = "NgayKetThuc1", @class = "text" })
+            @Html.ValidationMessageFor(model => model.NgayKetThuc)
+     
+        <div >
+        <b>  Mức lương tối thiểu chung (VNĐ)</b>
+       @*     <input id="MucLuongTTC1" value="" />*@
+       <input id="MucLuongTTC1" value= @String.Format("{0:#,##0}", Model.MucLuong) class="text"/>
+            @Html.HiddenFor(model => model.MucLuong, new { @id = "MucLuong1" })
+            @Html.ValidationMessageFor(model => model.MucLuong)
+        </div>
+      <div >
+         <b> Ghi chú</b>
+       
+            @Html.TextBoxFor(model => model.GhiChu, new {  @class = "text" })
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+        <div >
+          <b>Đang áp dụng</b>
+  
+            @Html.EditorFor(model => model.TrangThai)
+            @Html.ValidationMessageFor(model => model.TrangThai)
+        </div>
+    
+        <p>
+            <input type="submit" value="Lưu" />
+        </p>
+    </fieldset>
+}
+
+<script>
+
+ $(".text").css("background-color", "transparent").css("margin", "5px 0 6px 0").css("border", "0").css("border-bottom", "1px dotted");
+//    $(".custom-combobox-input").removeClass("ui-state-default");
+//    $(".custom-combobox-input").removeClass("ui-widget-content");
+//    $(".custom-combobox-input").removeClass("ui-corner-left");
+//    $(".custom-combobox-toggle").removeClass("ui-state-default");
+//    $(".custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+//    $(".custom-combobox-input").css("background-color", "transparent").css("margin", "5px 0 6px 0");
+
+
+
+$("#NgayBatDau1").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+    $("#NgayKetThuc1").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+
+//tu them dau phay vao so
+$('#MucLuongTTC1').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    ;
+  });
+
+
+
+
+});
+
+
+
+    $("#MucLuongTTC1").keyup(function () {
+
+            //Clear the hidden field
+            $("#MucLuong1").val("");
+
+            //Create char array from phone number field
+            var charArray = $(this).val().split("");
+
+            var phoneNumber = "";
+
+            //Iterate over each character in the char array
+            //and determine if it is a number
+            $.each(charArray, function (index, value) {
+                if (!isNaN(value) && value != " ") {
+                    phoneNumber = phoneNumber + value;
+                }
+            });
+
+            //Set hidden field
+            $("#MucLuong1").val(phoneNumber);
+        });
+
+
+
+
+</script>

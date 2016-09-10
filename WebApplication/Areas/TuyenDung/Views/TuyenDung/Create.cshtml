@@ -1,0 +1,61 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdTTUngCuVien
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Create";
+    if (ViewBag.Tab == null) { ViewBag.Tab = "ThongTinChung"; }
+}
+<b style="font-size:larger;margin-left:40%">
+    
+</b>
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>
+<div id="TuyenDung" >
+    <ul style="padding:0">
+        <li style="margin:0"><a href="#ThongTinChung">Thông tin chung</a></li>
+        <li style="margin:0"><a href="#ThongTinBangCap">Thông tin bằng cấp</a></li>
+        <li style="margin:0"><a href="#ThongTinLienHe">Thông tin liên hệ</a></li>
+        <li style="margin:0"><a href="#ThongTinUngTuyen">Thông tin ứng tuyển</a></li>
+    </ul>
+    <div id="ThongTinChung" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinChung")
+        {
+            @Html.Action("Create", "ThongTinChung", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+    <div id="ThongTinBangCap" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinBangCap")
+        {
+            @Html.Action("Edit", "ThongTinLienHe", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+    <div id="ThongTinLienHe" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinLienHe")
+        {
+             @Html.Action("Edit", "ThongTinLienHe", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+    <div id="ThongTinUngTuyen" style="padding:0">
+        @if (ViewBag.Tab == "ThongTinUngTuyen")
+        {
+            @Html.Action("Edit", "ThongTinLienHe", new { UV_id = ViewBag.UngVien_id })
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+
+        $("#TuyenDung").tabs({
+            active: $("#TuyenDung div").index($("#@ViewBag.Tab")),
+       
+//            activate: function (event, ui) {
+//                $("body").block();
+//                location.href = location.protocol + "//" + location.host + document.location.pathname + "?tab=" + ui.newTab.children("a").attr("href").replace("#", "")
+//            }
+        }).tabs();
+
+    });
+</script>
+

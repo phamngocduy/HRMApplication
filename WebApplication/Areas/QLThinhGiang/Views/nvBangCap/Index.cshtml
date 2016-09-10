@@ -1,0 +1,259 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.QLThinhGiang.Models.nvBangCap
+@{
+    var db = ViewBag.DB as HRM.QLThinhGiang.Models.HRMDB_Entities;
+    var d0 = new HRM.Databases.Models.HRMDB0Entities();
+    var nvBangCap = db.NhanVien.Find(Model.NV_id).nvBangCaps.Where(n => n.Xoa != true).Where(n => n.SauKhiVeTruong != true).ToList();
+    var nvBangCapSau = db.NhanVien.Find(Model.NV_id).nvBangCaps.Where(n => n.Xoa != true).Where(n => n.SauKhiVeTruong == true).ToList();
+}
+@Html.StatusMessage(TempData["Message"])
+@Html.ValidationSummary(TempData["ModelState"])
+<h3>Văn bằng</h3>
+<div style="overflow:auto">
+<table id="tmp" style="width:1270px" class="table-hover">
+<thead>
+<tr nowarp>
+    <th width="100px" >Trình độ</th>
+    <th width="100px">Danh hiệu</th>
+    <td width="150px"><b>Nhóm chuyên ngành</b></td>
+    <th width="100px">Chuyên ngành</th>
+    <th width="100px" >Loại hình</th> 
+    <th width="110px" >Nơi học</th>
+    <th width="190px" ></th>
+    <th></th>
+    <th width="100px" >Xếp loại</th>     
+    <th width="100px"> Ngày cấp</th>
+    <td width="20px"><b> DHC </b></td>
+    <th width="100px" >CNC</th>
+    <th width="100px" >Ghi chú</th>
+    <th></th>
+    <th> </th>
+    <th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan=18 nowrap>
+</tr>
+@foreach (var item in nvBangCap)
+{
+    var prefix = "item" + item.GetHashCode();
+<tr>
+
+@using (Html.BeginForm("Update", "nvBangCap"))
+{
+    @Html.Hidden("Prefix", prefix)
+    @Html.Hidden("BC_id", item.id)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+    @Html.Hidden("false", item.SauKhiVeTruong)
+    <td>
+    @Html.DropDownListFor(model => item.LoaiBangCap_id, new SelectList(d0.dmLoaiBangCap, "id", "tenloaibangcap", item.LoaiBangCap_id))
+    @Html.ValidationMessageFor(model => item.LoaiBangCap_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => item.DanhHieu_id, new SelectList(d0.dmDanhHieu, "id", "tendanhhieu", item.DanhHieu_id))
+    @Html.ValidationMessageFor(model => item.DanhHieu_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => item.ChuyenNganh_id, new SelectList(d0.dmChuyenNganh, "id", "tenchuyennganh", item.ChuyenNganh_id))
+    @Html.ValidationMessageFor(model => item.ChuyenNganh_id)
+    </td>
+    <td>
+    @Html.TextBoxFor(model => item.ChuyenNganh, new { Title = item.ChuyenNganh.ToString() })
+    @Html.ValidationMessageFor(model => item.ChuyenNganh)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => item.LoaiHinhDaoTao_id, new SelectList(d0.dmLoaiHinhDaoTao, "id", "tenloaihinhdaotao", item.LoaiHinhDaoTao_id))
+    @Html.ValidationMessageFor(model => item.LoaiHinhDaoTao_id)
+    </td>
+    <td>
+    @Html.TextBoxFor(model => item.TenTruong, new { Title = item.TenTruong.ToString() })
+    @Html.ValidationMessageFor(model => item.TenTruong)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => item.QuocGia_id, new SelectList(d0.dmQuocGia, "id", "tenquocgia", item.QuocGia_id))
+    @Html.ValidationMessageFor(model => item.QuocGia_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => item.NoiHoc_id, new SelectList(d0.dmNoiHoc, "id", "tennoihoc", item.NoiHoc_id))
+    @Html.ValidationMessageFor(model => item.NoiHoc_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => item.XepLoaiTotNghiep_id, new SelectList(d0.dmXepLoaiTotNghiep, "id", "tenXepLoaiTotNghiep", item.XepLoaiTotNghiep_id))
+    @Html.ValidationMessageFor(model => item.XepLoaiTotNghiep_id)
+    </td>
+    <td>
+    @Html.EditorFor(model => item.NgayTN)
+    @Html.ValidationMessageFor(model => item.NgayTN)
+    </td>
+    <td>
+    @Html.CheckBoxFor(model => item.Chuyennganhchinh)
+    @Html.ValidationMessageFor(model => item.Chuyennganhchinh)
+    </td>
+    <td>
+    @Html.CheckBoxFor(model => item.DanhHieuChinh)
+    @Html.ValidationMessageFor(model => item.DanhHieuChinh)
+    </td>
+    <td>
+    @Html.EditorFor(model => item.GhiChu)
+    @Html.ValidationMessageFor(model => item.GhiChu)
+    </td>
+    <td>
+    <input type="submit" value="Update" style="position:absolute;left:-9999px" />
+    </td>
+    <td>
+    <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    </td>
+    <td>
+    <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+    </td>
+    <td>
+    <a title="Xóa" href="~/QLTTNhanSu/nvBangCap/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa quá bằng cấp này?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+    </td>
+}
+ 
+</tr>
+ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+<tr>
+@using (Html.BeginForm("Update", "nvBangCap"))
+{
+    @Html.Hidden("false", Model.SauKhiVeTruong)
+    var prefix = "model" + Model.GetHashCode();
+    @Html.HiddenFor(model => model.NV_id)
+    <td>
+    @Html.DropDownListFor(model => model.LoaiBangCap_id, new SelectList(d0.dmLoaiBangCap, "id", "tenloaibangcap", Model.LoaiBangCap_id), string.Empty)
+    @Html.ValidationMessageFor(model => model.LoaiBangCap_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => model.DanhHieu_id, new SelectList(d0.dmDanhHieu, "id", "tendanhhieu"), string.Empty)
+    @Html.ValidationMessageFor(model => model.DanhHieu_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => model.ChuyenNganh_id, new SelectList(d0.dmChuyenNganh, "id", "tenchuyennganh"), string.Empty)
+    @Html.ValidationMessageFor(model => model.ChuyenNganh_id)
+    </td>
+    <td>
+    @Html.EditorFor(model => model.ChuyenNganh)
+    @Html.ValidationMessageFor(model => model.ChuyenNganh)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => model.LoaiHinhDaoTao_id, new SelectList(d0.dmLoaiHinhDaoTao, "id", "tenloaihinhdaotao"), string.Empty)
+    @Html.ValidationMessageFor(model => model.LoaiHinhDaoTao_id)
+    </td>
+    <td>
+    @Html.EditorFor(model => model.TenTruong)
+    @Html.ValidationMessageFor(model => model.TenTruong)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => model.QuocGia_id, new SelectList(d0.dmQuocGia, "id", "tenquocgia", "Việt Nam"), string.Empty)
+    @Html.ValidationMessageFor(model => model.QuocGia_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => model.NoiHoc_id, new SelectList(d0.dmNoiHoc, "id", "tennoihoc", Model.NoiHoc_id), string.Empty)
+    @Html.ValidationMessageFor(model => model.NoiHoc_id)
+    </td>
+    <td>
+    @Html.DropDownListFor(model => model.XepLoaiTotNghiep_id, new SelectList(d0.dmXepLoaiTotNghiep, "id", "tenXepLoaiTotNghiep"), string.Empty)
+    @Html.ValidationMessageFor(model => model.XepLoaiTotNghiep_id)
+    </td>
+    <td>
+    @Html.EditorFor(model => model.NgayTN)
+    @Html.ValidationMessageFor(model => model.NgayTN)
+    </td>
+    <td>
+    @Html.CheckBoxFor(model => model.Chuyennganhchinh)
+    @Html.ValidationMessageFor(model => model.Chuyennganhchinh)
+    </td>
+    <td>
+    @Html.CheckBoxFor(model => model.DanhHieuChinh)
+    @Html.ValidationMessageFor(model => model.DanhHieuChinh)
+    </td>
+    <td>
+    @Html.EditorFor(model => model.GhiChu)
+    @Html.ValidationMessageFor(model => model.GhiChu)
+    </td>
+    <td>
+    <input type="submit" value="Update" style="position:absolute;left:-9999px" />
+    </td>
+    <td>
+    <span title="Thêm, Nhấn Enter để Lưu" class="ui-icon ui-icon-circle-plus" style="display:inline-block"></span>
+    </td>
+    <td></td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+
+input { margin: 0 1 1 1 }
+input, textarea {
+    border: 0px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 1px;
+    width: 300px;
+  
+}
+.ui-icon-triangle-1-s { display: none; }
+.ui-button-icon-primary { display: none; }
+th {
+    height: 50px;
+}
+tr {
+    height: 10px;
+}
+</style>
+
+    
+<script>
+    $(function () {
+        var $table = $("#tmp");
+
+        $table.find("[id^=item]").prop("disabled", true);
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $table.find("input,select").css("border", "0").css("border-bottom", "1px dotted");
+        $table.find("input[type=datetime]").css("border-bottom", "1px dotted");
+        $("[id$=TenTruong], [id=TenTruong]").css("width", "100px");
+        $("[id$=ChuyenNganh_id],[id$=GhiChu]").css("width", "150px");
+        $("[id$=TenTruong], [id=TenTruong]").css("border-bottom", "1px dotted");
+        $("[id$=LoaiBangCap_id],[id$=cn1],[id$=NoiHoc_id],[id$=QuocGia_id],[id$=LoaiHinhDaoTao_id],[id$=XepLoaiTotNghiep_id],[id$=TrongNuoc],[id$=SoVaoSo],[id$=TrongNuoc],[id$=SoHieu]").css("width", "100px");
+//        $('.ui-autocomplete-input').css('width', '100px');
+        $table.find("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).css("width", "auto")
+                   .attr("size", $(this).val().length + 1);
+        });
+        var bc = $("[id$=LoaiBangCap_id]").combobox();
+        var dh = $("[id$=DanhHieu_id]").combobox();
+        var cn = $("[id$=ChuyenNganh_id]").combobox();
+        var qg = $("[id$=QuocGia_id]").combobox();
+        var lh = $("[id$=LoaiHinhDaoTao_id]").combobox();
+        var nh = $("[id$=NoiHoc_id]").combobox();
+        var xl = $("[id$=XepLoaiTotNghiep_id]").combobox();
+        lh.parent().find("input.ui-autocomplete-input").css("width", "70px").css("border-bottom", "1px dotted");
+        bc.parent().find("input.ui-autocomplete-input").css("width", "70px").css("border-bottom", "1px dotted");
+        dh.parent().find("input.ui-autocomplete-input").css("width", "70px").css("border-bottom", "1px dotted");
+        cn.parent().find("input.ui-autocomplete-input").css("width", "140px").css("border-bottom", "1px dotted");
+        qg.parent().find("input.ui-autocomplete-input").css("width", "70px").css("border-bottom", "1px dotted");
+        nh.parent().find("input.ui-autocomplete-input").css("width", "70px").css("border-bottom", "1px dotted");
+        xl.parent().find("input.ui-autocomplete-input").css("width", "50px", "border", "0");
+        $(".custom-combobox-input").css("border", "1").css("border-bottom", "2px dotted");
+        $(".custom-combobox-input").removeClass("ui-state-default");
+        $(".custom-combobox-input").removeClass("ui-button-icon-primary");
+     //   $(".ui-icon").removeClass("ui-icon ui-icon-triangle-1-s");
+        $(".ui-button").removeClass("ui-button-icon-primary");
+   //     $(".ui-icon").removeClass("ui-button-icon-primary");
+        $(".custom-combobox-input").removeClass("ui-widget-content");
+        $(".custom-combobox-input").removeClass("ui-widget");
+        $(".custom-combobox-width").removeClass("ui-width-default");
+        $(".custom-combobox-input").removeClass("ui-corner-left");
+        $(".custom-combobox-toggle").removeClass("ui-state-default");
+    });
+</script>

@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <img src="~/Images/Header.png" />
+    </section>
+}
+
+@if (String.IsNullOrEmpty(User.Identity.Name))
+{
+    @Html.Action("Index", "Login", new { area = "Account", partial = true })
+    return;
+}
+
+<style type="text/css">
+.main-content
+{
+    background-color: rgb(98, 111, 180);
+}
+    .myul  
+    {
+        clear:both;
+        list-style-type:none;
+        margin-bottom: 10px;
+    }
+.myul li
+{
+    float:left;
+    height: 180px;
+    width: 180px;
+    margin: 10px;
+}
+.myul li img
+{
+    height: 100%;
+    width: 100%;
+}
+ul.enlarge{
+    list-style-type:none; /*remove the bullet point*/
+    margin-left:0;
+    }
+    ul.enlarge li{
+    display:inline-block; /*places the images in a line*/
+    position: relative;
+    z-index: 0; /*resets the stack order of the list items - later we'll increase this*/
+    margin:10px 40px 0 20px;
+    }
+ul.enlarge img{
+    background-color:#eae9d4;
+    padding: 6px;
+    -webkit-box-shadow: 0 0 6px rgba(132, 132, 132, .75);
+    -moz-box-shadow: 0 0 6px rgba(132, 132, 132, .75);
+    box-shadow: 0 0 6px rgba(132, 132, 132, .75);
+    -webkit-border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    border-radius: 4px; 
+}
+ul.enlarge span{
+    position:absolute;
+    left: -9999px;
+    background-color:#eae9d4;
+    padding: 10px;
+    font-family: 'Droid Sans', sans-serif;
+    font-size:.9em;
+    text-align: center; 
+    color: #495a62; 
+    -webkit-box-shadow: 0 0 20px rgba(0,0,0, .75));
+    -moz-box-shadow: 0 0 20px rgba(0,0,0, .75);
+    box-shadow: 0 0 20px rgba(0,0,0, .75);
+    -webkit-border-radius: 8px; 
+    -moz-border-radius: 8px; 
+    border-radius:8px;
+}
+ul.enlarge li:hover{
+    z-index: 50;
+    cursor:pointer;
+}
+ul.enlarge span img{
+    padding:2px;
+    background:#ccc;
+}
+ul.enlarge li:hover span{ 
+    top: -300px; 
+    left: -20px; 
+}
+ul.enlarge li:hover:nth-child(2) span{
+    left: -100px; 
+}
+ul.enlarge li:hover:nth-child(3) span{
+    left: -200px; 
+}
+   
+ul.enlarge img, ul.enlarge span{
+    behavior: url(pie/PIE.htc); 
+}
+</style>
+ 
+<ul class="enlarge">
+<li>
+    <a href="~/Account/Manage" target="_blank">
+        <img src="~/Images/PhanQuyen.png" width="150px" height="100px" alt="Dechairs" />
+    </a>
+    <br />Phân quyền người dùng
+</li>
+<li>
+    <a href="~/QLDanhMuc/DanhMuc" target="_blank">
+        <img src="~/Images/DanhMuc.png" width="150px" height="100px" alt="Blackpool sunset" />
+    </a>
+    <br />Quản lý Danh mục
+</li>
+</ul>
+<ul class="enlarge">
+<li>
+    <a href="~/TuyenDung/TuyenDung/Index" target="_blank">
+        <img src="~/Images/TuyenDung.png" width="150px" height="100px" alt="Blackpool sunset" />
+    </a>
+    <br />Quản lý quá trình Tuyển dụng
+</li>
+<li>
+    <a href="~/HDLaoDong/HDNguoiLaoDong/Index" target="_blank">
+        <img src="~/Images/HDLD.png" width="150px" height="100px" alt="Blackpool pier" />
+    </a>
+    <br />Quản lý Hợp Đồng Lao Động
+</li>
+<li>
+    <a href="~/QLTTNhanSu/HSNhanSu/Menu" target="_blank">
+        <img src="~/Images/SoYeuLyLich.png" width="150px" height="100px" alt="Blackpool pier" />
+    </a>
+    <br />Quản lý Thông tin nhân sự
+</li>
+@*
+<li>
+    <img src="~/Images/HocTap.png" width="150px" height="100px" alt="Blackpool pier" />
+    <br />Quản lý quá trình Học tập
+</li>
+<li>
+    <img src="~/Images/LamViec.png" width="150px" height="100px" alt="Dechairs" />
+    <br />Quản lý quá trình Làm việc
+</li>
+*@
+<li>
+    <a href="~/QLTinhLuong/HeSoLuong" target="_blank">
+        <img src="~/Images/HesoLuong.png" width="150px" height="100px" alt="Blackpool pier" />
+    </a>
+    <br />Quản lý Hệ số lương
+</li>
+@*
+<li>
+    <img src="~/Images/DanhGiaKLCV.png" width="150px" height="100px" alt="Dechairs" />
+    <br />Đánh giá Hiệu Quả Công Việc
+</li>
+<li>
+    <img src="~/Images/LyLichKH.png" width="150px" height="100px" alt="Blackpool sunset" />
+    <br />Quản lý Lý lịch Khoa Học
+</li>
+*@
+<li>
+    <a href="~/QLVayMuon/NhanVienVayMuon" target="_blank">
+        <img src="~/Images/VayMuon.png" width="150px" height="100px" alt="Blackpool pier" />
+    </a>
+    <br />Quản lý Vay mượn
+</li>
+<li>
+    <a href="~/QLBHXH/NhanVienBHXH/Index2" target="_blank">
+        <img src="~/Images/BHXH.png" width="150px" height="100px" alt="Blackpool pier" />
+    </a>
+    <br />Quản lý BHXH
+</li>
+<li>
+    <a href="~/TKBaoCao/ThongKe" target="_blank">
+        <img src="~/Images/report.png" width="150px" height="100px" alt="Blackpool pier" />
+    </a>
+    <br />Thống kê Báo cáo
+</li>
+
+</ul>
+    @* <ul class="myul">
+        <li><img src="Images/PhanQuyen.png" alt="$" /></li>
+        <li><img src="Images/DanhMuc.png" alt="$" /></li>
+        <li><img src="Images/SoYeuLyLich.png" alt="$" /></li>
+        <li><img src="Images/HocTap.png" alt="$" /></li>
+        <li><img src="Images/LamViec.png" alt="$" /></li>
+        <li><img src="Images/TuyenDung.png" alt="$" /></li>
+        <li><img src="Images/HDLD.png" alt="$" /></li>
+        <li><img src="Images/HesoLuong.png" alt="$" /></li>
+        <li><img src="Images/DanhGiaKLCV.png" alt="$" /></li>
+        <li><img src="Images/LyLichKH.png" alt="$" /></li>
+        <li><img src="Images/BHXH.png" alt="$" /></li>
+        <li><img src="Images/VayMuon.png" alt="$" /></li>
+
+    </ul>*@
+
+</div>
+
+<script>
+    $(function () {
+        $(".main-content").css("background-color", "rgb(98, 111, 180)");
+    });
+</script>

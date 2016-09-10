@@ -1,0 +1,43 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLDanhMuc.Models
+@model IEnumerable<HRM.Databases.Models.dmNgachVienChuc>
+
+<p>
+    <a class="dialog" href="NgachVienChuc/Create" title="Thêm">Thêm ngạch viên chức</a>
+</p>
+<table id="listNgach">
+<thead>
+    <tr>
+        <th></th>
+        <th>Mã</th>
+        <th>Tên ngạch</th>
+        <th>Nhóm ngạch</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.stt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.maNgachVienChuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenNgachVienChuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dmNhomNgachVienChuc.tenNhomNgachVienChuc)
+        </td>
+        <td align="right">
+            <a class="dopost" href="NgachVienChuc/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a class="dialog" href="NgachVienChuc/Edit?id=@item.id" title="Sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    @Html.dataTables("listNgach")
+</script>

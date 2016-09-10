@@ -1,0 +1,93 @@
+﻿@model IEnumerable<HRM.Databases_HDLaoDong.Models.hdCanTaoHDLD>
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@{
+    ViewBag.Title = "Index";
+    var db0 = new HRM.Databases.Models.HRMDB0Entities(); 
+}
+
+<b style="margin-left:30%;font-size:large">Danh sách NLĐ cần tạo hợp đồng lao động</b>
+<p>
+<br /></p>
+<div id="HDLD1" style="padding: 0; width:1000px;font-size:small">
+<p>@Html.ActionLink("Quay lại", "Index", "HDNguoiLaoDong")</p>
+<table id ="TableDSNLDCanTaoHD">
+<thead>
+    <tr>
+        <th style="text-align:center;width:30px" nowrap>
+            STT
+        </th>
+        <th style="text-align:center;width:150px" nowrap>
+            Họ và tên
+        </th>
+        <th style="text-align:center" nowrap>
+            Đơn vị
+        </th>
+        <th style="text-align:center;width:200px" nowrap>
+            Chức danh<br />CM
+        </th>
+        <th style="text-align:center" nowrap>
+            Lý do
+        </th>
+        <th style="text-align:center;width:10px" nowrap>
+        </th>
+    </tr>
+</thead>
+<tbody>
+@{int count = 0;}
+@foreach (var item in Model)
+{
+    count = count +1;
+    <tr>
+    <td>
+    @count
+    </td>
+    <td  style="text-align:center" nowrap>
+    @Html.DisplayFor(model => item.Hoten)
+    </td>
+    <td style="text-align:center">
+    @{  string tenDonVi = "";
+        if (item.Donvi_id != null)
+        {
+            int? Donvi_id = item.Donvi_id;
+            tenDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).First().tenDonVi;
+        }
+                  @Html.DisplayFor(model => tenDonVi)
+    }
+    </td>
+    <td  style="text-align:center">
+            @{  string tenChucDanh = "";
+                if (item.VitriCT_id != null)
+                {
+                    int? ChucDanh_id = item.VitriCT_id;
+                    tenChucDanh = db0.dmChucDanhChuyenMon.Where(dv => dv.id == ChucDanh_id).First().tenChucDanhChuyenMon;
+                }
+                @Html.Raw(tenChucDanh)
+            }
+    </td>
+    <td  style="text-align:center">
+    @Html.DisplayFor(model => item.Lydo)
+    </td>
+    <td style="text-align:center" >
+    @using (Html.BeginForm("TruyenID","ThemMoiHD", new { DSNLDCanTaoHD_id = item.id }))
+    {
+    <a title="Tạo mới hợp đồng" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-circle-plus"  style="display:inline-block"></span></a>
+        }
+    </td>
+    </tr>
+}
+</tbody>
+</table>
+</div>
+<br />
+
+<script>
+    $(document).ready(function () {
+        $("#TableDSNLDCanTaoHD").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+</script>
+

@@ -1,0 +1,64 @@
+﻿@using System.Text
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@*model IEnumerable<nvQTCongTac>
+@{
+    var excel = new StringBuilder();
+    using (var writer = new ExcelWriter(excel))
+    {
+        writer.WriteStartDocument();
+        writer.WriteStartWorksheet("Sheet1");
+
+        writer.WriteStartRow();
+        writer.WriteExcelUnstyledCell("Mã NV");
+        writer.WriteExcelUnstyledCell("Họ");
+        writer.WriteExcelUnstyledCell("Tên");
+        writer.WriteExcelUnstyledCell("Họ và tên");
+        writer.WriteExcelUnstyledCell("Đơn vị");
+        writer.WriteExcelUnstyledCell("Thời gian tuyển dụng");
+        writer.WriteExcelUnstyledCell("Chức danh chuyên môn");
+        writer.WriteExcelUnstyledCell("Thời gian bắt đầu");
+        writer.WriteExcelUnstyledCell("Thời gian đến hạn");
+        writer.WriteExcelUnstyledCell("Thời gian kết thúc");
+        writer.WriteExcelUnstyledCell("Ngày thông báo");
+        writer.WriteExcelUnstyledCell("Ngày nhận hồ sơ");
+        writer.WriteExcelUnstyledCell("Ngày lập tờ trình");
+        writer.WriteExcelUnstyledCell("BDNVSP");
+        writer.WriteExcelUnstyledCell("LLDHĐH");
+        writer.WriteEndRow();
+
+        var D = new Func<Nullable<DateTime>, object>(d => d.HasValue ? (object)d.Value : null);
+        
+        foreach (var item in Model)
+        {
+            writer.WriteStartRow();
+            writer.WriteExcelAutoStyledCell(item.NhanVien.MaNV);
+            var HoTen = item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen.Trim();
+            var Ten = HoTen.Trim().Split(' ').Last().Trim();
+            writer.WriteExcelAutoStyledCell(HoTen.Substring(0, HoTen.LastIndexOf(Ten)));
+            writer.WriteExcelAutoStyledCell(Ten);
+            writer.WriteExcelAutoStyledCell(item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen);
+            writer.WriteExcelAutoStyledCell(item.DonVi != null ? item.DonVi.tenDonVi : null);
+            writer.WriteExcelAutoStyledCell(D(item.NhanVien.nvSoYeuLyLiches.Single().NgayTuyenDung));
+            writer.WriteExcelAutoStyledCell(item.ChucDanhChuyenMon != null ? item.ChucDanhChuyenMon.tenChucDanhChuyenMon : null);
+            writer.WriteExcelAutoStyledCell(D(item.ThoiGianBatDau));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().ThoiGianDenHan));
+            writer.WriteExcelAutoStyledCell(D(item.ThoiGianKetThuc));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().NgayThongBao));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().NgayNhanHoSo));
+            writer.WriteExcelAutoStyledCell(D(item.nvQLTapSus.Single().NgayLapToTrinh));
+            writer.WriteExcelAutoStyledCell(item.NhanVien.ChungChis.Where(cc => cc.dmLoaichungchi.maLoaiChungChi == "NV").Count() > 0 ? "X" : "");
+            writer.WriteExcelAutoStyledCell(item.NhanVien.ChungChis.Where(cc => cc.dmLoaichungchi.maLoaiChungChi == "LL").Count() > 0 ? "X" : "");
+            writer.WriteEndRow();
+        }
+
+        writer.WriteEndWorksheet();
+        writer.WriteEndDocument();
+    }
+    
+    Response.AddHeader("content-disposition", "attachment; filename=Book1.xls");
+    Response.ContentType = "application/xls";
+    Response.Write(excel.ToString());
+    Response.End();
+}
+*@

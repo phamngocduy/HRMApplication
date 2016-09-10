@@ -1,0 +1,126 @@
+﻿@using System.IO
+@using OfficeOpenXml
+@using HRM.Databases.Models
+@{
+    ViewBag.Title = "BaoCao3CongKhai";
+    var File = new FileInfo(ViewBag.Path);
+}
+
+@helper HienThi(IQueryable<nvTTThongKe> db) {
+    var c = 1;
+    foreach (var nv in db)
+    {
+        @(c++)@(".")@nv.NhanVien.nvSoYeuLyLiches.Single().HoVaTen<br />
+    }
+}
+@helper ThongKe(ExcelWorksheet sheet, char col, int row, string code, HRMDBEntities db) {
+    var Khoa = db.dmKhoaGiangDay.Single(k => k.maKhoaGiangDay == code);
+    var Tong = db.nvTTThongKe.Where(tk => tk.KhoaGiangDayChinh == Khoa.id);
+
+    var TienSy_id = db.dmHocVi.Single(hv => hv.maHocVi == "TS").id;
+    var TienSy = Tong.Where(tk => tk.NhanVien.nvSoYeuLyLiches.FirstOrDefault().HocVi_id == TienSy_id);
+    var TSKH_id = db.dmHocVi.Single(hv => hv.maHocVi == "TSKH").id;
+    var TSKH = Tong.Where(tk => tk.NhanVien.nvSoYeuLyLiches.FirstOrDefault().HocVi_id == TSKH_id);
+
+    var GiaoSu_id = db.dmHocHam.Single(hh => hh.maHocHam == "GS").id;
+    var GiaoSu = TienSy.Where(tk => tk.NhanVien.nvSoYeuLyLiches.FirstOrDefault().HocHam_id == GiaoSu_id);
+
+    var PhoGiaoSu_id = db.dmHocHam.Single(hh => hh.maHocHam == "PGS").id;
+    var PhoGiaoSu = TienSy.Where(tk => tk.NhanVien.nvSoYeuLyLiches.FirstOrDefault().HocHam_id == PhoGiaoSu_id);
+
+    TienSy = TienSy.Union(TSKH).Except(GiaoSu).Except(PhoGiaoSu);
+
+    var ThacSy_id = db.dmHocVi.Single(hv => hv.maHocVi == "THS").id;
+    var ThacSy = Tong.Where(tk => tk.NhanVien.nvSoYeuLyLiches.FirstOrDefault().HocVi_id == ThacSy_id);
+
+    var DaiHoc_id = db.dmHocVi.Single(hv => hv.maHocVi == "ĐH").id;
+    var DaiHoc = Tong.Where(tk => tk.NhanVien.nvSoYeuLyLiches.FirstOrDefault().HocVi_id == DaiHoc_id);
+
+    var Khac = Tong.Except(GiaoSu).Except(PhoGiaoSu).Except(TienSy).Except(ThacSy).Except(DaiHoc);
+
+    sheet.Cells[String.Format("{0}{1}", col, row)].Value = GiaoSu.Count();
+    col = (char)((int)col + 1);
+    sheet.Cells[String.Format("{0}{1}", col, row)].Value = PhoGiaoSu.Count();
+    col = (char)((int)col + 1);
+    sheet.Cells[String.Format("{0}{1}", col, row)].Value = TienSy.Count();
+    col = (char)((int)col + 1);
+    sheet.Cells[String.Format("{0}{1}", col, row)].Value = ThacSy.Count();
+    col = (char)((int)col + 1);
+    sheet.Cells[String.Format("{0}{1}", col, row)].Value = DaiHoc.Count();
+    col = (char)((int)col + 1);
+    sheet.Cells[String.Format("{0}{1}", col, row)].Value = Khac.Count();
+
+    <td>@HienThi(GiaoSu)</td>
+    <td>@HienThi(PhoGiaoSu)</td>
+    <td>@HienThi(TienSy)</td>
+    <td>@HienThi(ThacSy)</td>
+    <td>@HienThi(DaiHoc)</td>
+    <td>@HienThi(Khac)</td>
+}
+
+<table>
+<tr>
+    <td>Khoa / Bộ môn</td>
+    <td>Giáo sư</td>
+    <td>Phó giáo sư</td>
+    <td>TSKH, tiến sỹ</td>
+    <td>Thạc sỹ</td>
+    <td>Cử nhân</td>
+    <td>Khác</td>
+</tr>
+@using (var db = new HRMDBEntities())
+{
+    using (var excel = new ExcelPackage(File))
+    {
+        var hb = excel.Workbook.Worksheets["23"];
+        <tr><td>Khoa Công nghệ phần mềm</td>
+        @ThongKe(hb, 'D', 14, "T", db)</tr>
+        <tr><td>Khoa Kỹ thuật nhiệt lạnh</td>
+        @ThongKe(hb, 'D', 15, "NL", db)</tr>
+        <tr><td>Khoa Kiến trúc - Xây dựng</td>
+        @ThongKe(hb, 'D', 16, "AX", db)</tr>
+        <tr><td>Khoa Công nghệ & Quản lý môi trường</td>
+        @ThongKe(hb, 'D', 17, "M", db)</tr>
+        <tr><td>Khoa Công nghệ Sinh học</td>
+        @ThongKe(hb, 'D', 18, "S", db)</tr>
+        <tr><td>Khoa Tài chính - Ngân hàng</td>
+        @ThongKe(hb, 'D', 19, "F", db)</tr>
+        <tr><td>Khoa Kế toán - Kiểm toán</td>
+        @ThongKe(hb, 'D', 20, "K", db)</tr>
+        <tr><td>Khoa Quản trị Kinh doanh</td>
+        @ThongKe(hb, 'D', 21, "Q", db)</tr>
+        <tr><td>Khoa Thương mại</td>
+        @ThongKe(hb, 'D', 22, "C", db)</tr>
+        <tr><td>Khoa Du lịch</td>
+        @ThongKe(hb, 'D', 23, "D", db)</tr>
+        <tr><td>Khoa Quan hệ công chúng & Truyền thông</td>
+        @ThongKe(hb, 'D', 24, "P", db)</tr>
+        <tr><td>Khoa Ngoại ngữ</td>
+        @ThongKe(hb, 'D', 25, "N", db)</tr>
+        <tr><td>Khoa Mỹ thuật công nghiệp</td>
+        @ThongKe(hb, 'D', 26, "H", db)</tr>
+        <tr><td>Bộ môn Anh văn</td>
+        @ThongKe(hb, 'D', 27, "CBA", db)</tr>
+        <tr><td>Bộ môn tin học đại cương</td>
+        @ThongKe(hb, 'D', 28, "CBT", db)</tr>
+        <tr><td>Bộ môn toán</td>
+        @*ThongKe(hb, 'D', 29, "CB?", db)*@</tr>
+        <tr><td>Bộ môn lý luận chính trị</td>
+        @ThongKe(hb, 'D', 30, "CBC", db)</tr>
+        <tr><td>Các bộ môn khác</td></tr>
+        <tr><td>Trung tâm Ngoại ngữ</td></tr>
+        if (ViewBag.Save)
+        {
+            Response.AddHeader("content-disposition", "attachment; filename=" + ViewBag.File);
+            Response.ContentType = "application/xls";
+            Response.BinaryWrite(excel.GetAsByteArray());
+            Response.End();
+        }
+        db.Dispose();
+    }
+}
+</table>
+
+<style>
+td { white-space: nowrap }
+</style>

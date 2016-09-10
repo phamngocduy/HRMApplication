@@ -1,0 +1,44 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Accounts.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in HRM";
+}
+
+<hgroup class="title">
+    <h1>Đăng nhập Hệ thống.</h1>
+</hgroup>
+
+<article>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+@Html.ValidationSummary(true)
+@Html.StatusMessage()
+<fieldset>
+    <legend>Log in Form</legend>
+    <ol>
+        <li>
+            @Html.LabelFor(m => m.UserName, "Tài khoản")
+            @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.Password, "Mật khẩu")
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </li>
+        <li>
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe, "Ghi nhớ?", new { @class = "checkbox" })
+        </li>
+    </ol>
+    <input type="submit" value="Đăng nhập" />
+</fieldset>
+}
+</article>
+
+<aside>
+    <h3>Chưa có tài khoản Đăng nhập?</h3>
+    <p>
+        Xin vui lòng liên hệ <a href="mailto:lehuuphuoc">Administrator</a> để tạo Tài khoản.
+    </p>
+</aside>

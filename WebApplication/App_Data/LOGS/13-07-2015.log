@@ -1,0 +1,184 @@
+INFO 08:53:21 – Home/Index
+INFO 08:53:29 – TinhCong/Summary
+INFO 08:55:00 – TinhCong/Details&NV_id=16
+INFO 08:56:11 – TinhCong/Summary
+INFO 08:57:28 – TinhCong/Details&NV_id=47
+INFO 08:58:50 – TinhCong/Details&NV_id=47
+INFO 08:59:16 – TinhCong/Summary
+INFO 09:02:23 – TinhCong/Summary
+INFO 09:03:11 – TinhCong/Details&NV_id=47
+INFO 09:04:17 – TinhCong/Summary
+INFO 09:05:22 – TinhCong/Details&NV_id=16
+INFO 09:05:40 – TinhCong/Details&NV_id=47
+INFO 09:08:02 – TinhCong/Details&NV_id=47
+INFO 09:08:15 – TinhCong/Summary
+INFO 09:09:29 – TinhCong/Details&NV_id=47
+INFO 09:16:17 – TinhCong/Summary
+INFO 09:44:24 – TinhCong/Summary
+INFO 09:45:17 – TinhCong/Details&NV_id=275
+INFO 09:52:16 – TinhCong/Details&NV_id=54
+INFO 10:25:49 – TinhCong/Summary
+INFO 10:36:07 – TinhCong/Summary
+INFO 10:56:32 – TinhCong/Summary
+INFO 10:57:53 – TinhCong/Details&NV_id=422
+INFO 10:58:58 – TinhCong/Details&NV_id=422
+INFO 11:10:36 – TinhCong/Details&NV_id=422
+INFO 11:11:31 – TinhCong/Summary
+INFO 02:34:13 – TinhCong/Summary
+INFO 02:37:46 – TinhCong/Summary
+INFO 02:42:19 – TinhCong/Compare
+INFO 02:46:19 – TinhCong/Compare
+INFO 02:46:28 – TinhCong/Compare
+INFO 02:49:22 – TinhCong/Compare
+INFO 02:49:39 – TinhCong/Compare
+INFO 02:49:49 – TinhCong/Compare
+INFO 02:56:45 – TinhCong/Compare
+INFO 03:07:09 – TinhCong/Details&NV_id=16
+INFO 03:09:25 – TinhCong/Compare
+INFO 03:14:16 – TinhCong/Compare
+INFO 03:22:44 – TinhCong/Compare
+INFO 03:23:18 – TinhCong/Compare
+ERROR03:23:18 – Object reference not set to an instance of an object.
+/controller=TinhCong/action=Compare
+/PhuongAn=(BN+HHHV)*H+DT
+   at ASP.TinhDiem.tinhDiem(Int32 NV_id, String congThuc) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 469
+   at ASP._Page_Views_TinhCong_Compare_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Compare.cshtml:line 41
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:24:26 – Home/Index
+INFO 03:24:38 – TinhCong/Compare
+ERROR03:25:27 – Object reference not set to an instance of an object.
+/controller=TinhCong/action=Compare
+/PhuongAn=(BN+HHHV)*H+DT
+   at ASP.TinhDiem.tinhDiem(Int32 NV_id, String congThuc) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 469
+   at ASP._Page_Views_TinhCong_Compare_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Compare.cshtml:line 41
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:25:54 – TinhCong/Compare
+INFO 03:31:22 – TinhCong/Summary
+INFO 03:31:56 – TinhCong/Compare
+INFO 03:32:34 – TinhCong/Compare
+INFO 03:32:55 – TinhCong/Compare
+INFO 03:52:16 – TinhCong/Compare
+INFO 03:52:44 – TinhCong/Summary
+INFO 03:53:18 – TinhCong/Compare
+INFO 03:53:53 – TinhCong/Details&NV_id=8
+INFO 03:57:33 – TinhCong/Summary
+INFO 04:04:45 – TinhCong/Index
+INFO 04:08:20 – TinhCong/Details&NV_id=698
+INFO 04:09:46 – TinhCong/Details&NV_id=698
+INFO 04:17:53 – TinhCong/Details&NV_id=144
+INFO 04:20:44 – TinhCong/Details&NV_id=144
+INFO 04:22:53 – TinhCong/Details&NV_id=144
+INFO 04:23:07 – TinhCong/Details&NV_id=144
+INFO 04:23:17 – TinhCong/Details&NV_id=698
+INFO 06:37:17 – TinhCong/Index
+INFO 06:37:56 – TinhCong/Index
+INFO 06:38:01 – TinhCong/Details&NV_id=770
+INFO 06:39:53 – TinhCong/Summary
+INFO 06:41:36 – TinhCong/Summary
+INFO 06:43:55 – TinhCong/Details&NV_id=770
+INFO 06:44:23 – TinhCong/Details&NV_id=770
+INFO 06:46:21 – TinhCong/Details&NV_id=770
+INFO 06:48:51 – TinhCong/Details&NV_id=770
+INFO 06:49:12 – TinhCong/Summary
+INFO 06:51:26 – TinhCong/Summary
+INFO 06:52:59 – TinhCong/Summary
+ERROR06:53:30 – Exception of type 'System.Exception' was thrown.
+/controller=TinhCong/action=Summary
+   at ASP.Shared.GET(Int32 NV_id, String type) in c:\Workspace\HRMApplication\WebApplication\App_Code\Shared.cshtml:line 9
+   at ASP.TinhDiem.<>c__DisplayClass1.<dThamNien>b__0(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhDiem.cshtml:line 15
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.HelperPage.WriteTo(TextWriter writer, HelperResult value)
+   at ASP.TinhCong.<>c__DisplayClass3f.<Details>b__17(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 219
+   at System.Web.WebPages.HelperResult.ToString()
+   at System.Web.Mvc.HtmlHelper.Raw(Object value)
+   at CallSite.Target(Closure , CallSite , HtmlHelper`1 , Object )
+   at ASP._Page_Views_TinhCong_Summary_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Summary.cshtml:line 57
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 06:55:05 – TinhCong/Summary
+INFO 07:27:38 – TinhCong/Summary
+INFO 07:27:48 – TinhCong/Summary
+INFO 07:28:19 – TinhCong/Summary
+INFO 07:31:21 – TinhCong/Summary
+INFO 07:31:45 – TinhCong/Summary
+INFO 07:32:24 – TinhCong/Details&NV_id=770
+INFO 07:32:49 – TinhCong/Details&NV_id=770
+INFO 07:33:45 – TinhCong/Details&NV_id=770
+INFO 07:34:02 – TinhCong/Details&NV_id=770
+INFO 07:37:07 – TinhCong/Summary
+INFO 08:34:10 – TinhCong/Summary
+INFO 08:34:19 – TinhCong/Summary
+INFO 08:38:25 – TinhCong/Summary
+INFO 08:38:51 – TinhCong/Details&NV_id=770
+INFO 08:39:48 – TinhCong/Details&NV_id=770
+INFO 08:42:35 – TinhCong/Summary
+INFO 08:54:09 – TinhCong/Summary
+INFO 08:56:24 – TinhCong/Summary
+INFO 09:04:28 – TinhCong/Details&NV_id=47
+INFO 09:05:27 – TinhCong/Details&NV_id=211
+INFO 09:11:34 – TinhCong/Details&NV_id=211
+INFO 09:15:16 – TinhCong/Details&NV_id=211
+INFO 09:21:14 – TinhCong/Summary
+INFO 09:25:40 – TinhCong/Details&NV_id=247
+INFO 09:25:42 – TinhCong/Details&NV_id=8
+INFO 09:25:43 – TinhCong/Details&NV_id=67
+INFO 09:29:17 – TinhCong/Summary
+INFO 09:30:14 – TinhCong/Details&NV_id=8
+INFO 09:30:39 – TinhCong/Details&NV_id=765
+INFO 09:30:51 – TinhCong/Details&NV_id=766
+INFO 09:31:27 – TinhCong/Summary
+INFO 09:56:15 – TinhCong/Summary
+INFO 10:00:23 – TinhCong/Summary

@@ -1,0 +1,138 @@
+﻿@model HRM.QLBHXH.Models.nvbhDanhSachDieuChinhTangGiam
+@{
+    ViewBag.Title = "Create";
+    
+}
+<h2>
+    Tạo mới điều chỉnh chức danh</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>nvbhDanhSachDieuChinhChucDanh</legend>
+        @Html.HiddenFor(model => model.idLoaiDieuChinh, new { @Value = 9 })
+        Tên đơn vị(<font color="red"><b>*</b></font>):
+        <div class="editor-label">@Html.DropDownList("dsdonvi", "--Chọn đơn vị--")
+        </div>
+        Tên nhân viên(<font color="red"><b>*</b></font>):
+        <div class="editor-field">
+            @Html.DropDownList("idnvbhNhanVienBHXH", "--Chọn Tên nhân viên--")
+            @Html.HiddenFor(model => model.idnvbhNhanVienBHXH, new { @id = "idnv" })
+        </div>
+        @Html.HiddenFor(model => model.Tang, new { Value = "Thay đổi chức danh công việc, nghề, điều kiện, nơi làm việc" })
+        @Html.HiddenFor(model => model.NV_id)
+        @Html.HiddenFor(model => model.DonVi_id)
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.NgayPhatSinh, new { @value = DateTime.Now.ToLongDateString() })
+            @Html.ValidationMessageFor(model => model.NgayPhatSinh)
+        </div>
+        <div class="editor-label">
+            Chức vụ cũ
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CVCu)
+            @Html.ValidationMessageFor(model => model.CVMoi)
+        </div>
+        <div class="editor-label">
+            Chức vụ mới(<font color="red"><b>*</b></font>):
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ChucVu", "--Chọn chức vụ--")
+            @Html.HiddenFor(model => model.CVMoi)
+            @Html.ValidationMessageFor(model => model.CVMoi)
+        </div>
+        <div class="editor-label">
+            Từ tháng năm(<font color="red"><b>*</b></font>):
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TuThangNam)
+            @Html.ValidationMessageFor(model => model.TuThangNam)
+        </div>
+        <div class="editor-label">
+            Đến tháng năm
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DenThangNam)
+            @Html.ValidationMessageFor(model => model.DenThangNam)
+        </div>
+        <div class="editor-label">
+            Ghi chú
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+        <font color="red"><b>(*)Không được để trống</b></font>
+        <p>
+            <input type="submit" value="Tạo" onclick="return check();" />
+        </p>
+    </fieldset>
+}
+<script>
+//script cho datetime picker
+    $("#NgayPhatSinh").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+      $("#TuThangNam").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+      $("#DenThangNam").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+
+    //combobox
+    var dv = $("[id$=dsdonvi]").combobox();
+    var ten = $("[id$=idnvbhNhanVienBHXH").combobox();
+   var CV= $("[id$=ChucVu]").combobox();
+    
+
+    //cascade combobox
+    dv.change(function () {
+        ten.trigger("connect", "/hrm/QLBHXH/DanhSachDieuChinhChucDanh/nvds?dvid=" + $(this).val());
+         var text1 = $(this).val();
+        $("[id$=DonVi_id]").val(text1);
+    });
+    ten.change(function () {
+        var text = $(this).val();
+        $("[id$=NV_id]").val(text);
+    });
+        CV.change(function () {
+        var text1 =$("#ChucVu option:selected").text();
+        $("[id$= CVMoi]").val(text1);
+    });
+   
+     
+    //thong bao loi neu cac truong bi null
+    function check() {
+        if (document.getElementById('dsdonvi').value == "") {
+            alert("Tên đơn vị không được bỏ trống!");
+            return false;
+        }
+        if (document.getElementById('idnvbhNhanVienBHXH').value == "") {
+            alert("Tên nhân viên không được bỏ trống!");
+            return false;
+        }
+           if (document.getElementById('CVMoi').value == "") {
+            alert("Tên chức vụ mới không được bỏ trống!");
+            return false;
+        }
+            if (document.getElementById('TuThangNam').value == "") {
+            alert("Từ tháng năm không được bỏ trống!");
+            return false;
+        }
+
+
+    }
+    //css cho combobox
+     $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+</script>

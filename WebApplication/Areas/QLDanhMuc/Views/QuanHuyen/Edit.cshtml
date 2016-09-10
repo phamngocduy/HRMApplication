@@ -1,0 +1,40 @@
+﻿@model HRM.Databases.Models.dmQuanHuyen
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmQuanHuyen</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.maQuanHuyen)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.maQuanHuyen)
+            @Html.ValidationMessageFor(model => model.maQuanHuyen)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tenQuanHuyen)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tenQuanHuyen)
+            @Html.ValidationMessageFor(model => model.tenQuanHuyen)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idTinhThanh, "tên tỉnh/thành")
+        </div>
+        <div class="editor-field">
+        @*    @Html.EditorFor(model => model.idTinhThanh)
+          @Html.DropDownList("idTinhThanh", string.Empty)*@
+         @Html.DropDownList("idTinhThanh", String.Empty)
+            @Html.ValidationMessageFor(model => model.idTinhThanh)
+        </div>
+
+        <p>
+            <input class="dialog" type="submit" value="Save" />
+        </p>
+    </fieldset>
+}

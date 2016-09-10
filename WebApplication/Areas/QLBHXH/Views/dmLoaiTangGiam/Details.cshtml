@@ -1,0 +1,43 @@
+﻿@model HRM.QLBHXH.Models.dmLoaiTangGiam
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>dmLoaiTangGiam</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ma)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ma)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LoaiTangGiam)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoaiTangGiam)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.STT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.STT)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

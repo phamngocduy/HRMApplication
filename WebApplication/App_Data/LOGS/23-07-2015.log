@@ -1,0 +1,410 @@
+INFO 08:37:48 – TinhCong/Index
+INFO 08:38:14 – TinhCong/Index
+INFO 08:38:34 – TinhCong/ThamNien
+INFO 08:38:41 – TinhCong/TN_EditP
+ERROR08:38:41 – The partial view 'Edit' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/TinhCong/Edit.aspx
+~/Views/TinhCong/Edit.ascx
+~/Views/Shared/Edit.aspx
+~/Views/Shared/Edit.ascx
+~/Views/TinhCong/Edit.cshtml
+~/Views/TinhCong/Edit.vbhtml
+~/Views/Shared/Edit.cshtml
+~/Views/Shared/Edit.vbhtml
+/controller=TinhCong/action=TN_EditP
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:39:56 – TinhCong/TN_EditP
+ERROR08:39:57 – The partial view 'TN_EditP' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/TinhCong/TN_EditP.aspx
+~/Views/TinhCong/TN_EditP.ascx
+~/Views/Shared/TN_EditP.aspx
+~/Views/Shared/TN_EditP.ascx
+~/Views/TinhCong/TN_EditP.cshtml
+~/Views/TinhCong/TN_EditP.vbhtml
+~/Views/Shared/TN_EditP.cshtml
+~/Views/Shared/TN_EditP.vbhtml
+/controller=TinhCong/action=TN_EditP
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:40:24 – TinhCong/TN_EditP
+INFO 08:40:31 – TinhCong/TN_CreateS&id=
+INFO 08:40:31 – TinhCong/ThamNien
+INFO 08:40:38 – TinhCong/TN_EditP&id=5
+INFO 08:40:40 – TinhCong/TN_UpdateS&id=5
+INFO 08:40:40 – TinhCong/ThamNien
+INFO 08:40:46 – TinhCong/TN_DeleteS&id=5
+INFO 08:40:46 – TinhCong/ThamNien
+INFO 08:43:42 – TinhCong/DieuChinh
+INFO 08:47:50 – TinhCong/DieuChinh
+INFO 08:48:15 – TinhCong/DieuChinh
+INFO 08:48:46 – TinhCong/DieuChinh
+INFO 08:51:21 – TinhCong/DieuChinh
+INFO 08:51:26 – TinhCong/DC_EditP&id=30
+INFO 08:51:39 – TinhCong/CongThuc
+INFO 08:51:46 – TinhCong/Details&NV_id=47
+INFO 08:52:01 – TinhCong/DC_EditP&id=84
+INFO 08:52:04 – TinhCong/TN_UpdateS&id=84
+ERROR08:52:04 – BatDau: Input string was not in a correct format.
+/controller=TinhCong/action=TN_UpdateS
+/id=84/BatDau=02/01/1996/KetThuc=11/04/1997/HeSo=0.9
+   at HRM.Webpages.Helpers.DataTableExt.format(DataColumn field, String value) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 174
+   at HRM.Webpages.Helpers.DataTableExt.SqlUpdate(Database db, String name, NameValueCollection form) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 111
+   at HRM.Webpages.Helpers.DataTableExt.SqlUpdate(HRMDBEntities db, String name, NameValueCollection form) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 92
+   at HRM.Webpages.Helpers.HoSoController.UpdateS(String name) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\Controller.cs:line 57
+   at HRM.Webpages.Controllers.TinhCongController.TN_UpdateS() in c:\Workspace\HRMApplication\WebApplication\Controllers\TinhCongController.cs:line 112
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:52:14 – TinhCong/DieuChinh
+INFO 08:52:18 – TinhCong/DC_EditP&id=84
+INFO 08:52:20 – TinhCong/TN_UpdateS&id=84
+ERROR08:52:20 – BatDau: Input string was not in a correct format.
+/controller=TinhCong/action=TN_UpdateS
+/id=84/BatDau=02/01/1996/KetThuc=11/04/1997/HeSo=0.8
+   at HRM.Webpages.Helpers.DataTableExt.format(DataColumn field, String value) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 174
+   at HRM.Webpages.Helpers.DataTableExt.SqlUpdate(Database db, String name, NameValueCollection form) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 111
+   at HRM.Webpages.Helpers.DataTableExt.SqlUpdate(HRMDBEntities db, String name, NameValueCollection form) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 92
+   at HRM.Webpages.Helpers.HoSoController.UpdateS(String name) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\Controller.cs:line 57
+   at HRM.Webpages.Controllers.TinhCongController.TN_UpdateS() in c:\Workspace\HRMApplication\WebApplication\Controllers\TinhCongController.cs:line 112
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:53:27 – TinhCong/DC_EditP&id=84
+INFO 08:53:34 – TinhCong/DC_UpdateS&id=84
+INFO 08:53:34 – TinhCong/DieuChinh
+INFO 08:53:36 – TinhCong/DieuChinh
+INFO 08:53:37 – TinhCong/DC_EditP&id=84
+INFO 08:53:39 – TinhCong/DC_UpdateS&id=84
+INFO 08:53:40 – TinhCong/DieuChinh
+INFO 08:53:43 – TinhCong/DieuChinh
+INFO 08:53:44 – TinhCong/Details&NV_id=47
+INFO 08:53:46 – TinhCong/Details&NV_id=47
+INFO 08:53:56 – TinhCong/DC_EditP&id=84
+INFO 08:53:58 – TinhCong/DC_UpdateS&id=84
+INFO 08:53:58 – TinhCong/DieuChinh
+INFO 08:58:20 – TinhCong/DieuChinh
+INFO 08:58:26 – TinhCong/DC_EditP&id=30
+INFO 08:58:29 – TinhCong/DC_EditP
+ERROR08:58:29 – Column 'id' does not belong to table .
+/controller=TinhCong/action=DC_EditP
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at ASP._Page_Views_TinhCong_DC_EditP_cshtml.<Execute>b__2(DataRow row) in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\DC_EditP.cshtml:line 14
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.MultiSelectList.GetListItemsWithValueField()
+   at System.Web.Mvc.MultiSelectList.GetListItems()
+   at System.Web.Mvc.MultiSelectList.GetEnumerator()
+   at System.Web.Mvc.Html.SelectExtensions.SelectInternal(HtmlHelper htmlHelper, ModelMetadata metadata, String optionLabel, String name, IEnumerable`1 selectList, Boolean allowMultiple, IDictionary`2 htmlAttributes)
+   at System.Web.Mvc.Html.SelectExtensions.DropDownList(HtmlHelper htmlHelper, String name, IEnumerable`1 selectList, String optionLabel)
+   at ASP._Page_Views_TinhCong_DC_EditP_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\DC_EditP.cshtml:line 22
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 08:59:02 – TinhCong/DC_EditP
+INFO 08:59:49 – TinhCong/DC_EditP
+INFO 09:00:05 – TinhCong/DC_CreateS&id=&NV_id=422
+INFO 09:00:05 – TinhCong/DieuChinh
+INFO 09:00:16 – TinhCong/Details&NV_id=422
+INFO 09:00:31 – TinhCong/DC_EditP&id=85
+INFO 09:00:37 – TinhCong/DC_UpdateS&id=85
+INFO 09:00:37 – TinhCong/DieuChinh
+INFO 09:00:40 – TinhCong/Details&NV_id=422
+INFO 09:00:51 – TinhCong/DC_DeleteS&id=85
+INFO 09:00:51 – TinhCong/DieuChinh
+INFO 09:01:38 – TinhCong/Details&NV_id=422
+INFO 09:01:47 – TinhCong/Details&NV_id=421
+INFO 09:16:08 – TinhCong/DieuChinh
+INFO 09:26:07 – Home/Index
+INFO 09:27:34 – Home/Index
+INFO 09:47:41 – TinhCong/DieuChinh
+INFO 09:52:31 – TinhCong/DieuChinh
+INFO 09:52:49 – TinhCong/DC_EditP
+INFO 09:52:51 – TinhCong/DC_EditP&id=30
+INFO 09:57:43 – TinhCong/Index
+INFO 09:57:49 – TinhCong/CongThuc
+INFO 09:57:53 – TinhCong/TuDien
+INFO 09:59:30 – TinhCong/TuDien
+INFO 10:08:50 – TinhCong/TuDien
+INFO 10:26:40 – TinhCong/TuDien
+INFO 10:28:20 – TinhCong/CongThuc
+INFO 10:51:38 – TinhCong/TuDien
+INFO 10:51:52 – TinhCong/TuDien
+INFO 10:52:47 – TinhCong/TuDien
+INFO 10:52:52 – TinhCong/TuDien
+INFO 10:53:50 – TinhCong/TuDien
+INFO 10:54:28 – TinhCong/Details&NV_id=526
+INFO 10:55:38 – TinhCong/CongThuc
+INFO 10:57:17 – TinhCong/DieuChinh
+INFO 10:57:34 – TinhCong/DC_EditP
+INFO 10:59:38 – TinhCong/DC_CreateS&id=&NV_id=526
+INFO 10:59:38 – TinhCong/DieuChinh
+INFO 10:59:49 – TinhCong/Details&NV_id=526
+INFO 10:59:57 – TinhCong/CongThuc
+INFO 11:00:22 – TinhCong/DC_DeleteS&id=30
+INFO 11:00:23 – TinhCong/DieuChinh
+INFO 11:00:53 – TinhCong/DC_DeleteS&id=25
+INFO 11:00:53 – TinhCong/DieuChinh
+INFO 11:01:03 – TinhCong/DC_DeleteS&id=69
+INFO 11:01:03 – TinhCong/DieuChinh
+INFO 11:01:46 – TinhCong/DC_DeleteS&id=40
+INFO 11:01:46 – TinhCong/DieuChinh
+INFO 11:02:47 – TinhCong/Details&NV_id=34
+INFO 11:03:26 – TinhCong/Details&NV_id=16
+INFO 11:04:43 – TinhCong/Details&NV_id=56
+INFO 11:09:05 – TinhCong/Details&NV_id=113
+INFO 11:11:00 – TinhCong/CongThuc
+INFO 11:12:19 – TinhCong/Details&NV_id=238
+INFO 11:13:15 – TinhCong/Details&NV_id=383
+INFO 11:14:18 – TinhCong/TuDien
+INFO 11:15:58 – TinhCong/Details&NV_id=383
+INFO 11:16:21 – TinhCong/CongThuc
+INFO 11:18:56 – TinhCong/Details&NV_id=27
+INFO 11:21:53 – TinhCong/TuDien
+INFO 11:24:56 – TinhCong/Details&NV_id=27
+INFO 11:26:42 – TinhCong/Details&NV_id=27
+INFO 12:14:12 – TinhCong/DC_EditP&id=67
+INFO 12:14:14 – TinhCong/DC_UpdateS&id=67
+INFO 12:14:15 – TinhCong/DieuChinh
+INFO 12:14:25 – TinhCong/Details&NV_id=27
+INFO 12:14:33 – TinhCong/CongThuc
+INFO 12:15:44 – TinhCong/Details&NV_id=27
+INFO 12:16:34 – TinhCong/DC_EditP&id=31
+INFO 12:16:35 – TinhCong/DC_UpdateS&id=31
+INFO 12:16:35 – TinhCong/DieuChinh
+INFO 12:16:51 – TinhCong/DC_EditP&id=38
+INFO 12:16:56 – TinhCong/DC_UpdateS&id=38
+INFO 12:16:56 – TinhCong/DieuChinh
+INFO 12:17:53 – TinhCong/DC_EditP&id=41
+INFO 12:18:00 – TinhCong/DC_UpdateS&id=41
+INFO 12:18:00 – TinhCong/DieuChinh
+INFO 12:18:26 – TinhCong/DC_EditP&id=48
+INFO 12:18:39 – TinhCong/DC_UpdateS&id=48
+INFO 12:18:39 – TinhCong/DieuChinh
+INFO 12:20:39 – TinhCong/DC_EditP&id=84
+INFO 12:20:43 – TinhCong/DC_UpdateS&id=84
+INFO 12:20:43 – TinhCong/DieuChinh
+INFO 12:30:32 – TinhCong/Details&NV_id=27
+INFO 12:32:02 – TinhCong/Details&NV_id=27
+INFO 12:34:55 – TinhCong/Details&NV_id=27
+INFO 12:35:45 – TinhCong/Details&NV_id=718
+INFO 12:35:58 – TinhCong/DC_EditP
+INFO 12:36:18 – TinhCong/Details&NV_id=718
+INFO 12:36:30 – TinhCong/DC_CreateS&id=&NV_id=718
+INFO 12:36:30 – TinhCong/DieuChinh
+INFO 12:37:25 – TinhCong/Details&NV_id=27
+INFO 12:37:27 – TinhCong/Details&NV_id=27
+INFO 12:41:17 – TinhCong/Details&NV_id=130
+INFO 12:41:31 – TinhCong/CongThuc
+INFO 12:41:53 – TinhCong/DC_DeleteS&id=72
+INFO 12:41:53 – TinhCong/DieuChinh
+INFO 12:45:51 – TinhCong/Details&NV_id=15
+INFO 12:48:27 – TinhCong/Details&NV_id=15
+INFO 12:50:23 – TinhCong/Details&NV_id=15
+INFO 12:50:48 – TinhCong/Details&NV_id=14
+INFO 12:55:27 – TinhCong/Details&NV_id=14
+INFO 12:56:28 – TinhCong/Details&NV_id=14
+INFO 12:57:11 – TinhCong/Details&NV_id=32
+INFO 12:59:04 – TinhCong/Details&NV_id=14
+INFO 12:59:19 – TinhCong/TuDien
+INFO 01:02:45 – TinhCong/Details&NV_id=14
+INFO 01:02:51 – TinhCong/Details&NV_id=32
+INFO 01:04:53 – TinhCong/Details&NV_id=32
+INFO 01:06:41 – TinhCong/Details&NV_id=113
+INFO 01:07:43 – TinhCong/Details&NV_id=113
+INFO 01:08:59 – TinhCong/Details&NV_id=111
+INFO 01:15:50 – TinhCong/Details&NV_id=32
+INFO 01:16:37 – TinhCong/Details&NV_id=32
+INFO 01:16:51 – TinhCong/Details&NV_id=32
+INFO 01:18:52 – TinhCong/Details&NV_id=113
+INFO 01:20:33 – TinhCong/Details&NV_id=113
+INFO 01:21:16 – TinhCong/Details&NV_id=111
+INFO 01:22:06 – TinhCong/Details&NV_id=111
+INFO 01:25:31 – TinhCong/TuDien
+INFO 01:26:40 – TinhCong/Details&NV_id=111
+INFO 01:27:18 – TinhCong/Details&NV_id=111
+INFO 01:30:08 – TinhCong/TuDien
+INFO 01:35:18 – TinhCong/CongThuc
+INFO 01:36:07 – TinhCong/Details&NV_id=16
+INFO 01:38:58 – TinhCong/Details&NV_id=47
+INFO 01:39:13 – TinhCong/Details&NV_id=47
+INFO 02:38:58 – TinhCong/Details&NV_id=47
+INFO 02:39:16 – TinhCong/CongThuc
+INFO 02:40:26 – TinhCong/CongThuc
+INFO 02:40:34 – TinhCong/CongThuc
+INFO 02:53:13 – TinhCong/Details&NV_id=54
+INFO 03:11:53 – TinhCong/CongThuc
+INFO 03:12:01 – TinhCong/CongThuc
+INFO 03:20:49 – TinhCong/Details&NV_id=252
+INFO 03:22:18 – TinhCong/CongThuc
+INFO 03:24:23 – TinhCong/Details&NV_id=252
+INFO 03:24:43 – TinhCong/CongThuc
+INFO 03:24:49 – TinhCong/CongThuc
+INFO 03:33:46 – TinhCong/DieuChinh
+INFO 03:35:01 – TinhCong/DieuChinh
+INFO 03:35:28 – TinhCong/DieuChinh
+INFO 03:35:57 – TinhCong/DC_EditP
+INFO 03:37:01 – TinhCong/DC_EditP
+INFO 03:37:21 – TinhCong/DieuChinh
+INFO 03:37:37 – TinhCong/DC_EditP&id=29
+INFO 03:37:39 – TinhCong/DC_UpdateS&id=29
+INFO 03:37:39 – TinhCong/DieuChinh
+INFO 03:37:53 – TinhCong/DC_EditP&id=34
+INFO 03:37:57 – TinhCong/DC_UpdateS&id=34
+INFO 03:37:57 – TinhCong/DieuChinh
+INFO 03:38:06 – TinhCong/DC_EditP&id=35
+INFO 03:38:08 – TinhCong/DC_UpdateS&id=35
+INFO 03:38:08 – TinhCong/DieuChinh
+INFO 03:38:19 – TinhCong/DC_EditP&id=37
+INFO 03:38:21 – TinhCong/DC_UpdateS&id=37
+INFO 03:38:21 – TinhCong/DieuChinh
+INFO 03:38:28 – TinhCong/DC_EditP&id=38
+INFO 03:38:31 – TinhCong/DC_UpdateS&id=38
+INFO 03:38:31 – TinhCong/DieuChinh
+INFO 03:38:58 – TinhCong/DC_EditP&id=39
+INFO 03:39:29 – TinhCong/DC_UpdateS&id=39
+INFO 03:39:29 – TinhCong/DieuChinh
+INFO 03:39:41 – TinhCong/DC_EditP&id=41
+INFO 03:39:44 – TinhCong/DC_UpdateS&id=41
+INFO 03:39:44 – TinhCong/DieuChinh
+INFO 03:40:16 – TinhCong/DC_EditP&id=46
+INFO 03:40:18 – TinhCong/DC_UpdateS&id=46
+INFO 03:40:18 – TinhCong/DieuChinh
+INFO 03:40:31 – TinhCong/DC_EditP&id=50
+INFO 03:40:34 – TinhCong/DC_UpdateS&id=50
+INFO 03:40:34 – TinhCong/DieuChinh
+INFO 03:40:42 – TinhCong/DC_EditP&id=68
+INFO 03:40:44 – TinhCong/DC_UpdateS&id=68
+INFO 03:40:44 – TinhCong/DieuChinh
+INFO 03:41:29 – TinhCong/DC_EditP&id=46
+INFO 03:41:31 – TinhCong/DC_UpdateS&id=46
+INFO 03:41:31 – TinhCong/DieuChinh
+INFO 03:44:06 – TinhCong/DC_EditP&id=71
+INFO 03:44:09 – TinhCong/DC_UpdateS&id=71
+INFO 03:44:09 – TinhCong/DieuChinh
+INFO 03:45:15 – TinhCong/Details&NV_id=45
+INFO 03:54:37 – TinhCong/Details&NV_id=45
+INFO 03:55:09 – TinhCong/Details&NV_id=96
+INFO 03:55:27 – TinhCong/Details&NV_id=24
+INFO 04:27:33 – TinhCong/Details&NV_id=252
+INFO 04:29:24 – TinhCong/Details&NV_id=252
+INFO 07:25:30 – TinhCong/CongThuc
+INFO 07:25:42 – TinhCong/CongThuc
+INFO 07:25:49 – TinhCong/CongThuc
+INFO 07:25:55 – TinhCong/CongThuc
+INFO 07:26:08 – TinhCong/CongThuc
+INFO 07:27:43 – TinhCong/Details&NV_id=47
+INFO 07:29:30 – TinhCong/Details&NV_id=56
+INFO 07:32:50 – TinhCong/Details&NV_id=56
+INFO 07:34:31 – TinhCong/TuDien
+INFO 07:36:24 – TinhCong/Details&NV_id=56
+INFO 07:40:23 – TinhCong/Details&NV_id=56
+INFO 07:44:27 – TinhCong/Details&NV_id=56
+INFO 07:48:42 – TinhCong/TuDien
+INFO 07:50:41 – TinhCong/Details&NV_id=56
+INFO 07:51:55 – TinhCong/TuDien
+INFO 07:52:10 – TinhCong/Details&NV_id=56
+INFO 07:52:49 – TinhCong/Details&NV_id=45
+INFO 07:54:01 – TinhCong/Details&NV_id=45
+INFO 07:55:29 – TinhCong/Details&NV_id=56
+INFO 08:00:03 – TinhCong/Details&NV_id=56
+INFO 08:17:16 – TinhCong/Details&NV_id=60
+INFO 08:21:17 – TinhCong/Details&NV_id=60
+INFO 08:34:54 – TinhCong/Details&NV_id=11
+INFO 08:36:21 – TinhCong/Details&NV_id=11
+INFO 08:38:50 – TinhCong/Details&NV_id=11
+INFO 08:39:42 – TinhCong/Details&NV_id=24
+INFO 08:41:30 – TinhCong/Details&NV_id=11
+INFO 08:46:00 – TinhCong/Details&NV_id=56
+INFO 08:53:52 – TinhCong/CongThuc
+INFO 08:53:56 – TinhCong/CongThuc
+INFO 08:53:59 – TinhCong/CongThuc
+INFO 09:23:03 – TinhCong/Details&NV_id=45
+INFO 09:25:32 – TinhCong/Details&NV_id=45
+INFO 09:30:28 – TinhCong/Details&NV_id=112
+INFO 09:32:49 – TinhCong/Details&NV_id=60
+INFO 09:33:24 – TinhCong/Details&NV_id=60
+INFO 09:34:29 – TinhCong/Details&NV_id=60
+INFO 09:35:16 – TinhCong/Details&NV_id=60
+INFO 09:46:19 – TinhCong/Details&NV_id=56
+INFO 09:48:18 – TinhCong/Details&NV_id=111
+INFO 09:49:51 – TinhCong/Details&NV_id=111
+INFO 10:01:23 – TinhCong/Details&NV_id=111
+INFO 10:08:40 – TinhCong/Details&NV_id=111
+INFO 10:17:23 – TinhCong/TuDien
+INFO 10:21:01 – TinhCong/Details&NV_id=111
+INFO 10:22:45 – TinhCong/Details&NV_id=111
+INFO 10:24:34 – TinhCong/Details&NV_id=34
+INFO 10:25:37 – TinhCong/Details&NV_id=34
+INFO 10:27:34 – TinhCong/Details&NV_id=165
+INFO 10:28:22 – TinhCong/Details&NV_id=165
+INFO 10:56:23 – TinhCong/Details&NV_id=595
+INFO 10:57:29 – TinhCong/Details&NV_id=648
+INFO 10:57:42 – TinhCong/Details&NV_id=660

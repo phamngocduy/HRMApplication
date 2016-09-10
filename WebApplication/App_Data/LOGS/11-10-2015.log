@@ -1,0 +1,207 @@
+INFO 05:36:54 – Message/Index
+INFO 05:37:00 – Message/Details
+INFO 05:38:47 – Message/Index
+INFO 05:38:52 – Message/Details
+INFO 05:39:12 – Message/Index
+INFO 05:39:15 – Message/Details
+INFO 05:39:16 – Message/Details
+INFO 05:39:17 – Message/Details
+INFO 05:39:18 – Message/Details
+INFO 05:39:19 – Message/Details
+INFO 05:39:20 – Message/Details
+INFO 05:40:50 – Message/Details
+INFO 05:40:51 – Message/Details
+INFO 05:42:50 – Message/Details
+INFO 05:43:57 – Message/Details
+INFO 05:44:46 – Message/Details
+INFO 05:44:49 – Message/Details
+INFO 05:44:54 – Message/Details
+INFO 05:47:29 – Message/Details
+ERROR05:47:30 – c:\Users\duy\AppData\Local\Temp\Temporary ASP.NET Files\hrm\1f20eecd\b64c9ff\App_Web_details.cshtml.663d59e6.d-ozxdou.0.cs(142): error CS1513: } expected
+/controller=Message/action=Details/id=1
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindPartialView(ControllerContext controllerContext, String partialViewName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass8.<FindPartialView>b__7(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindPartialView(ControllerContext controllerContext, String partialViewName)
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 05:47:40 – Message/Details
+ERROR05:47:40 – c:\Users\duy\AppData\Local\Temp\Temporary ASP.NET Files\hrm\1f20eecd\b64c9ff\App_Web_details.cshtml.663d59e6.o1vvkwli.0.cs(142): error CS1513: } expected
+/controller=Message/action=Details/id=1
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindPartialView(ControllerContext controllerContext, String partialViewName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass8.<FindPartialView>b__7(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindPartialView(ControllerContext controllerContext, String partialViewName)
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 05:47:59 – Message/Details
+INFO 05:48:28 – Message/Index
+INFO 05:48:30 – Message/Details
+INFO 05:49:34 – Message/Details
+INFO 05:50:09 – Message/Details
+INFO 06:11:43 – Message/Index
+INFO 06:11:55 – Message/Details
+INFO 06:12:01 – Message/Index
+INFO 06:12:03 – Message/Details
+INFO 06:12:04 – Message/Unread
+INFO 06:12:04 – Message/Index
+INFO 06:12:10 – Message/Details
+INFO 06:12:12 – Message/Delete
+INFO 06:12:13 – Message/Index
+INFO 09:56:21 – Message/Details
+INFO 09:57:02 – Message/Index
+INFO 09:57:08 – Message/Details
+INFO 09:57:09 – Message/Unread
+INFO 09:57:10 – Message/Index
+INFO 10:11:53 – Message/Details
+INFO 10:13:16 – Message/Index
+INFO 10:13:18 – Message/Details
+INFO 10:14:11 – Message/Index
+INFO 10:14:13 – Message/Details
+INFO 10:15:30 – Message/Index
+INFO 10:15:33 – Message/Details
+INFO 10:15:35 – Message/Unread
+INFO 10:15:42 – Message/Index
+INFO 10:15:44 – Message/Details
+INFO 10:20:47 – Message/Index
+INFO 10:20:57 – Message/Partial
+INFO 10:21:03 – Message/Details
+INFO 10:21:18 – Message/Index
+INFO 10:21:20 – Message/Details
+INFO 10:21:21 – Message/Unread
+INFO 10:21:21 – Message/Partial
+INFO 10:21:26 – Message/Details
+INFO 10:21:27 – Message/Unread
+INFO 10:21:27 – Message/Partial
+INFO 10:21:36 – Message/Index
+INFO 10:21:39 – Message/Details
+INFO 10:21:40 – Message/Unread
+INFO 10:21:41 – Message/Partial
+INFO 10:21:51 – Message/Index
+INFO 10:21:53 – Message/Details
+INFO 10:21:54 – Message/Unread
+INFO 10:21:58 – Message/Partial
+INFO 10:22:06 – Message/Details
+INFO 10:22:08 – Message/Unread
+INFO 10:22:10 – Message/Partial
+INFO 10:22:11 – Message/Details
+INFO 10:22:12 – Message/Unread
+INFO 10:22:12 – Message/Partial
+INFO 10:22:14 – Message/Details
+INFO 10:22:15 – Message/Unread
+INFO 10:22:15 – Message/Partial
+INFO 10:24:56 – Message/Index
+INFO 10:26:15 – Message/Index
+INFO 10:27:26 – Message/Index
+INFO 10:31:01 – Message/Index
+INFO 10:31:04 – Message/Partial
+INFO 10:31:09 – Message/Partial
+INFO 10:31:11 – Message/Partial
+INFO 10:31:18 – Message/Partial
+INFO 10:31:19 – Message/Partial
+INFO 10:31:22 – Message/Index
+INFO 10:31:24 – Message/Partial
+INFO 10:31:26 – Message/Partial
+INFO 10:31:27 – Message/Partial
+INFO 10:31:27 – Message/Partial
+INFO 10:32:15 – Message/Partial
+INFO 10:32:16 – Message/Partial
+INFO 10:32:17 – Message/Partial
+INFO 10:32:19 – Message/Partial
+INFO 10:32:20 – Message/Partial
+INFO 10:32:21 – Message/Partial
+INFO 10:32:22 – Message/Partial
+INFO 10:32:23 – Message/Partial
+INFO 10:32:25 – Message/Partial
+INFO 10:33:04 – Message/Partial
+INFO 10:33:06 – Message/Partial
+INFO 10:33:07 – Message/Partial
+INFO 10:33:07 – Message/Partial
+INFO 10:33:08 – Message/Partial
+INFO 10:33:09 – Message/Partial
+INFO 10:33:10 – Message/Partial
+INFO 10:33:12 – Message/Details
+INFO 10:33:13 – Message/Delete
+INFO 10:33:13 – Message/Partial
+INFO 10:33:14 – Message/Partial
+INFO 10:33:15 – Message/Partial
+INFO 10:33:16 – Message/Partial
+INFO 10:33:19 – Message/Details
+INFO 10:33:22 – Message/Partial
+INFO 10:33:23 – Message/Partial
+INFO 10:33:24 – Message/Partial
+INFO 10:33:25 – Message/Partial
+INFO 10:33:27 – Message/Details
+INFO 10:33:39 – Message/Partial
+INFO 10:33:40 – Message/Partial
+INFO 10:33:41 – Message/Details
+INFO 10:33:43 – Message/Unread
+INFO 10:33:43 – Message/Partial
+INFO 10:33:45 – Message/Partial
+INFO 10:33:47 – Message/Details
+INFO 10:33:48 – Message/Delete
+INFO 10:33:48 – Message/Partial
+INFO 10:33:50 – Message/Partial
+INFO 10:34:10 – Message/Partial
+INFO 10:34:10 – Message/Partial
+INFO 10:41:28 – Message/Index
+INFO 10:44:05 – Message/Index
+INFO 10:44:09 – Message/Index
+INFO 10:44:13 – Message/Compose
+INFO 10:44:26 – Message/Compose

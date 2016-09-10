@@ -1,0 +1,152 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.Databases.Models.nvQTHocTap
+@{
+      
+    var db = ViewBag.DB as HRM.Databases.Models.HRMDBEntities;
+    HRM.Databases.Models.nvQTChungChi nvcc = new HRM.Databases.Models.nvQTChungChi();
+    var nvqthoctap = db.NhanViens.All.Find(Model.NV_id).nvQTHocTaps.Where(n => n.Xoa != true && n.NV_id == Model.NV_id);
+}
+
+@Html.StatusMessage(TempData["Message"])
+@Html.ValidationSummary(TempData["ModelState"])
+<div style="overflow:auto">
+<table id="QTHocTap">
+<thead>
+    <tr>
+        <th>Tên trường</th>
+        <th>Bằng cấp</th>
+        <th>Chuyên ngành</th>
+        <th>Hình thức học</th>
+        <th>Nơi học</th>
+        <th>Khóa học</th>
+        <th>LD đào tạo</th>
+        <th>Bắt đầu</th>
+        <th>Dự kiến</th>
+        <th>Két thúc</th>
+        <th>Kết quả</th>
+        <th>Xếp loại TN</th>
+        <th>Chi phí</th>
+        <th>Hỗ trợ</th>
+        <th>Số QĐ</th>
+        <th>Ngày QĐ</th>
+        <th>Cam kết</th>
+        <th>Thưởng</th>
+        <th>Điều chỉnh lương</th>
+        <th>Nộp chứng nhận</th>
+        <th>Nộp bằng</th>
+        <th>Cấp bằng</th>
+        <th>Hiện trạng</th>
+        <th>Chế độ</th>
+        <th>Ghi chú</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in nvqthoctap)
+{
+    
+    <tr>
+    @using (Html.BeginForm("Update", "nvQTHocTap"))
+    {
+        var prefix = "item" + item.GetHashCode();
+    @Html.Hidden("Prefix", prefix)
+    @Html.Hidden("HT_id", item.id)
+     @Html.Hidden("true", item.HienThi)
+        ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+        <td>@Html.EditorFor(model => item.TenTruong)</td>
+        <td>@Html.DropDownListFor(model => item.LoaiBangCap_id, new SelectList(db.dmLoaiBangCap, "id", "tenloaibangcap", item.LoaiBangCap_id))</td>
+        <td>@Html.DropDownListFor(model => item.ChuyenNganh_id, new SelectList(db.dmChuyenNganh, "id", "tenchuyennganh", item.ChuyenNganh_id))</td>
+        <td>@Html.DropDownListFor(model => item.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "tennoihoc", item.NoiHoc_id))</td>
+        <td>@Html.DropDownListFor(model => item.QuocGia_id, new SelectList(db.dmQuocGia, "id", "tenquocgia", item.QuocGia_id))</td>
+        <td>@Html.DropDownListFor(model => item.LoaiKhoaHoc_id, new SelectList(db.dmLoaiKhoaHoc, "id", "tenloaikhoahoc", item.LoaiKhoaHoc_id))</td>
+        <td>@Html.DropDownListFor(model => item.LoaiHinhDaoTao_id, new SelectList(db.dmLoaiHinhDaoTao, "id", "tenloaihinhdaotao", item.LoaiHinhDaoTao_id))</td>
+        <td>@Html.EditorFor(model => item.BatDau)</td>
+        <td>@Html.EditorFor(model => item.KetThucDuKien)</td>
+        <td>@Html.EditorFor(model => item.KetThucChinhThuc)</td>
+        <td>@Html.EditorFor(model => item.KetQua)</td>
+        <td>@Html.DropDownListFor(model => item.XepLoaiTotNghiep_id, new SelectList(db.dmXepLoaiTotNghiep, "id", "tenloaitotnghiep", item.XepLoaiTotNghiep_id))</td>
+        <td>@Html.EditorFor(model => item.ChiPhiDaoTao)</td>
+        <td>@Html.EditorFor(model => item.KinhPhiHoTro)</td>
+        <td>@Html.EditorFor(model => item.SoQuyetDinh)</td>
+        <td>@Html.EditorFor(model => item.NgayCapQuyetDinh)</td>
+        <td>@Html.EditorFor(model => item.CamKet)</td>
+        <td>@Html.EditorFor(model => item.ThuongHoanThanh)</td>
+        <td>@Html.EditorFor(model => item.NgayDieuChinhLuong)</td>
+        <td>@Html.EditorFor(model => item.NgayNopChungNhanHoanThanh)</td>
+        <td>@Html.EditorFor(model => item.NgayNopBang)</td>
+        <td>@Html.EditorFor(model => item.NgayCapBang)</td>
+        <td>@Html.DropDownListFor(model => item.HienTrang_id, new SelectList(db.dmHienTrangDiHoc, "id", "tenhientrang", item.HienTrang_id))</td>
+        <td>@Html.DropDownListFor(model => item.CheDo_id, new SelectList(db.dmCheDoHoc, "id", "tenchedo"), item.CheDo_id)</td>
+        <td>@Html.EditorFor(model => item.GhiChu)</td>
+        <td>         
+           <input type="submit" value="Update" style="position:absolute;left:-9999px" />
+    <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" ><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+            <a title="Xóa" href="~/QLTTNhanSu/nvQTHocTap/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa quá trình học tập này?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+        </td>
+        ViewData.TemplateInfo.HtmlFieldPrefix = null;
+    }
+
+    </tr>
+}<tr>
+@using (Html.BeginForm("Update", "nvQTHocTap"))
+{
+    
+        var prefix = "item" + Model.GetHashCode();
+        @Html.HiddenFor(model=>model.NV_id)
+        @Html.Hidden("true", Model.HienThi)
+     //   ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+        <td>@Html.EditorFor(model => model.TenTruong)</td>
+        <td>@Html.DropDownListFor(model => model.LoaiBangCap_id, new SelectList(db.dmLoaiBangCap, "id", "tenloaibangcap"), string.Empty)</td>
+        <td>@Html.DropDownListFor(model => model.ChuyenNganh_id, new SelectList(db.dmChuyenNganh, "id", "tenchuyennganh"), string.Empty)</td>
+        <td>@Html.DropDownListFor(model => model.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "tennoihoc"), string.Empty)</td>
+        <td>@Html.DropDownListFor(model => model.QuocGia_id, new SelectList(db.dmQuocGia, "id", "tenquocgia"), string.Empty)</td>
+        <td>@Html.DropDownListFor(model => model.LoaiKhoaHoc_id, new SelectList(db.dmLoaiKhoaHoc, "id", "tenloaikhoahoc"), string.Empty)</td>
+        <td>@Html.DropDownListFor(model => model.LoaiHinhDaoTao_id, new SelectList(db.dmLoaiHinhDaoTao, "id", "tenloaihinhdaotao"), string.Empty)</td>
+        <td>@Html.EditorFor(model => model.BatDau)</td>
+        <td>@Html.EditorFor(model => model.KetThucDuKien)</td>
+        <td>@Html.EditorFor(model => model.KetThucChinhThuc)</td>
+        <td>@Html.EditorFor(model => model.KetQua)</td>
+        <td>@Html.DropDownListFor(model => model.XepLoaiTotNghiep_id, new SelectList(db.dmXepLoaiTotNghiep, "id", "tenloaitotnghiep"), string.Empty)</td>
+        <td>@Html.EditorFor(model => model.ChiPhiDaoTao)</td>
+        <td>@Html.EditorFor(model => model.KinhPhiHoTro)</td>
+        <td>@Html.EditorFor(model => model.SoQuyetDinh)</td>
+        <td>@Html.EditorFor(model => model.NgayCapQuyetDinh)</td>
+        <td>@Html.EditorFor(model => model.CamKet)</td>
+        <td>@Html.EditorFor(model => model.ThuongHoanThanh)</td>
+        <td>@Html.EditorFor(model => model.NgayDieuChinhLuong)</td>
+        <td>@Html.EditorFor(model => model.NgayNopChungNhanHoanThanh)</td>
+        <td>@Html.EditorFor(model => model.NgayNopBang)</td>
+        <td>@Html.EditorFor(model => model.NgayCapBang)</td>
+        <td>@Html.DropDownListFor(model => model.HienTrang_id, new SelectList(db.dmHienTrangDiHoc, "id", "tenhientrang"), string.Empty)</td>
+        <td>@Html.DropDownListFor(model => model.CheDo_id, new SelectList(db.dmCheDoHoc, "id", "tenchedo"), string.Empty)</td>
+        <td>@Html.EditorFor(model => model.GhiChu)</td>
+        <td>         
+           <input type="submit" value="Update" style="position:absolute;left:-9999px" />
+           <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+        </td>
+        ViewData.TemplateInfo.HtmlFieldPrefix = null;
+    }
+
+    </tr>
+
+</tbody>
+</table>
+</div>
+Chứng chỉ
+@*@Html.Partial("ChungChi",nvcc)*@
+@Html.Action("ChungChi","nvQTHocTap",Model.NV_id)
+
+<style>
+td { padding: 0 0 0 0 }
+input { margin: 0 0 0 0 }
+</style>
+<script>
+    $(document).ready(function () {
+       // $table.find("[id^=item],[id=cn1]").prop("visible", true);
+        $("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $("[id$=LoaiBangCap_id],[id$=LoaiHocTap_id],[id$=CheDo_id],[id$=CamKet],[id$=ThuongHoanThanh],[id$=HienTrang_id],[id$=ChiPhiDaoTao],[id$=KinhPhiHoTro],[id$=SoQuyetDinh],[id$=KetQua],[id=cn1],[id$=NoiHoc_id],[id$=QuocGia_id],[id$=ChuyenNganh_id],[id$=LoaiHinhDaoTao_id],[id$=XepLoaiTotNghiep_id],[id$=TrongNuoc],[id$=TenTruong],[id$=SoVaoSo],[id$=TrongNuoc],[id$=SoHieu],[id$=GhiChu]").css("width", "90px");
+        $("input[type=text],input[type=datetime],input[type=number]").css("border", "0").css("border-bottom", "1px dotted");
+      
+    });
+</script>

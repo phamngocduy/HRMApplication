@@ -1,0 +1,58 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model int?
+@{
+    var action = "TheDinhDanh";
+    var NV_id = ViewBag.NV_id as int?;
+    var db = ViewBag.db as HRMDB_Entities;
+    var d0 = new HRM.Databases.Models.HRMDB0Entities();
+    var dt = db.SqlQuery("select * from nvTheDinhDanh where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+    
+    var LoaiThe = "LoaiThe_id";
+    var NoiCap = "NoiCap_id";
+    
+    var LoaiThe_id = dr != null ? dr[LoaiThe] as int? : null;
+    var NoiCap_id = dr != null ? dr[NoiCap] as int? : null;
+
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("NV_id", NV_id.HasValue ? NV_id.Value : dr["NV_id"])
+<dl id="@rand" class="dl-horizontal">
+    <dt>Loại thẻ</dt>
+    <dd>
+        @Html.DropDownList(LoaiThe, new SelectList(d0.dmLoaiTheDinhDanh, "id", "tenLoaiTheDinhDanh", LoaiThe_id), String.Empty)
+    </dd>
+    <dt>Số thẻ</dt>
+    <dd>@Html.Editor(dr, dt.Columns["SoThe"])</dd>
+    <dt>Ngày cấp</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgayCap"])</dd>
+    <dt>Ngày hết hạn</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgayHetHan"])</dd>
+    <dt>Nơi cấp</dt>
+    <dd>
+        @Html.DropDownList(NoiCap, new SelectList(d0.dmTinhThanh, "id", "tenTinhThanh", NoiCap_id), String.Empty)
+    </dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    $(function () {
+        var form = $("#@rand");
+        form.find("[type=date]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        }).prop("type", "text");
+    });
+</script>

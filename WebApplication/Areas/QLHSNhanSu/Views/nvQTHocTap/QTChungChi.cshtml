@@ -1,0 +1,318 @@
+﻿@using HRM.Webpages.Helpers;
+@using HRM.Databases.Models;
+@using HRM.QLTTNhanSu.Models;
+@{
+    string prefix = null;
+    ViewBag.Title = "Index";
+    var db = new HRMDBEntities();
+    var All = Request["All"] == "on";
+    var From = new Nullable<DateTime>();
+    var To = new Nullable<DateTime>();
+    DateTime date;
+    if (DateTime.TryParse(Request["From"], out date))
+    { From = date; }
+    if (DateTime.TryParse(Request["To"], out date))
+    { To = date; }
+    var Download = Request["Download"] == "OK";
+    var Database = new List<nvQTChungChi>();
+}
+ @Html.ActionLink("Theo dõi học lấy văn bằng", "Index", "nvQTHocTap")
+@Html.StatusMessage(TempData["Message"])
+@using (Html.BeginForm("QTChungChi", "nvQTHocTap", FormMethod.Get, new { id = "Filter" }))
+{
+            <input type="datetime" name="From" title="Từ ngày" value="@From" />
+        <input type="datetime" name="To" title="Đến ngày" value="@To" />
+        <input type="checkbox" name="All" @(All ? "checked" : "") /><span>Tất cả</span>
+        <input type="submit" value="Filter" />
+    <a href="/hrm/QLTTNhanSu/nvQTHocTap/qtChungChi?From=@Request["From"]&To=@Request["To"]&All=@Request["All"]&Download=OK" title="Download"><img src="~/images/excel.gif" /></a>
+   @* <span>&nbsp;Tìm kiếm</span><input id="TimKiem" type="text" />*@
+}
+<table id="example" class="stripe row-border order-column" cellspacing="0" width="100%">
+<thead>
+    <tr>
+       <th>Họ tên</th>
+        <th>Đơn vị</th>
+        <th>Loại chứng chỉ</th>
+        <th>Tên trường</th>
+        <th>Tên khóa học</th>
+        <th>Quốc gia</th>
+        <th>Nơi học</th>
+        <th>Số QĐ</th>
+        <th>Ngày cấp QĐ</th>
+        <th>Chế độ</th>
+        <th>Bắt đầu</th>
+        <th>Kết thúc dự kiến</th>
+        <th>Kết thúc chính thức</th>
+        <th>Kết quả</th>
+        <th>Kinh phí</th>
+        <th>Chi phí khác</th>
+        <th>Nhà trường<br />hỗ trợ</th>   
+        <th>Hiện trạng</th>
+        <th>Ghi chú</th>
+        <th></th>
+    </tr>
+</thead>
+
+<tbody>
+    @{var cts = db.nvQTChungChi
+        .Where(ct => ct.ThoiGianBatDau >= From || !From.HasValue)
+                .Where(ct => ct.ThoiGianBatDau <= To || !To.HasValue)
+                .Where(ct => !ct.ThoiGianKetThucChinhThuc.HasValue || All);
+      if (All)
+      {
+          cts = db.nvQTChungChi;
+      }
+      Database.AddRange(cts); 
+    }
+  @foreach (var item in cts)
+  {
+      ViewData.TemplateInfo.HtmlFieldPrefix = null;
+      prefix = "item" + item.GetHashCode();
+ <tr>
+    @using (Html.BeginForm("Update_CC", "nvQTHocTap", new { From = From.HasValue ? From.Value.ToShortDateString() : "", To = To.HasValue ? To.Value.ToShortDateString() : "", All = All ? "on" : "" }))
+    {     
+       @Html.Hidden("Prefix", prefix)
+       @Html.Hidden("CC_id", item.id)
+        ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+     <td>@item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen</td>
+     <td>@item.dmDonVi.maDonVi</td>
+    <td> 
+    @Html.DropDownListFor(model => item.LoaiChungChi_id, new SelectList(db.dmLoaiChungChi, "id", "tenloaichungchi"), item.LoaiChungChi_id)
+    @Html.ValidationMessageFor(model => item.LoaiChungChi_id)  
+    </td>
+    <td>  
+     @Html.EditorFor(model => item.TenTruong)
+     @Html.ValidationMessageFor(model => item.TenTruong)   
+    </td>
+     <td>
+        @Html.EditorFor(model => item.TenKhoaHoc)
+        @Html.ValidationMessageFor(model => item.TenKhoaHoc)  
+    </td>     
+       <td> 
+            @Html.DropDownListFor(model => item.QuocGia_id, new SelectList(db.dmQuocGia, "id", "tenquocgia"), item.QuocGia_id)
+            @Html.ValidationMessageFor(model => item.QuocGia_id)   
+    </td >
+    <td>
+
+        @Html.DropDownListFor(model => item.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "tennoihoc"), item.NoiHoc_id)
+        @Html.ValidationMessageFor(model => item.NoiHoc_id)   
+    </td>
+        <td>  
+        @Html.EditorFor(model => item.SoQuyetDinh)
+        @Html.ValidationMessageFor(model => item.SoQuyetDinh) 
+    </td>
+    <td>  
+        @Html.EditorFor(model => item.NgayCapQD)
+        @Html.ValidationMessageFor(model => item.NgayCapQD)  
+    </td>
+        <td> 
+        @Html.DropDownListFor(model => item.CheDo_id, new SelectList(db.dmCheDoHoc, "id", "tenchedohoc"), item.CheDo_id)
+        @Html.ValidationMessageFor(model => item.CheDo_id)   
+    </td>
+    <td>
+        @Html.EditorFor(model => item.ThoiGianBatDau)
+        @Html.ValidationMessageFor(model => item.ThoiGianBatDau)  
+    </td>
+    <td>
+        @Html.EditorFor(model => item.ThoiGianKetThucDuKien)
+        @Html.ValidationMessageFor(model => item.ThoiGianKetThucDuKien)    
+    </td>
+    <td>   
+        @Html.EditorFor(model => item.ThoiGianKetThucChinhThuc)
+        @Html.ValidationMessageFor(model => item.ThoiGianKetThucChinhThuc)   
+    </td>
+    <td>    
+        @Html.EditorFor(model => item.KetQua)
+        @Html.ValidationMessageFor(model => item.KetQua) 
+    </td>
+   <td>
+        @Html.EditorFor(model => item.HocPhi)
+        @Html.ValidationMessageFor(model => item.HocPhi)    
+    </td>
+        <td>   
+        @Html.EditorFor(model => item.ChiPhiKhac)
+        @Html.ValidationMessageFor(model => item.ChiPhiKhac) 
+    </td>
+         <td> 
+        @Html.EditorFor(model => item.KinhPhiHoTro)
+        @Html.ValidationMessageFor(model => item.KinhPhiHoTro)  
+    </td>  
+    <td>  
+        @Html.DropDownListFor(model => item.HienTrang_id, new SelectList(db.dmHienTrangDiHoc, "id", "tenhientrangdihoc"), item.HienTrang_id)
+        @Html.ValidationMessageFor(model => item.HienTrang_id)   
+    </td>           
+    <td>  
+        @Html.EditorFor(model => item.GhiChu)
+        @Html.ValidationMessageFor(model => item.GhiChu)  
+    </td>
+    <td>
+    <input type="submit" style="position:absolute; left:-999999999px" />
+    <a title="Sửa" id="Edit"><span class="ui-icon ui-icon-pencil" style="display:inline-block" /></a>
+    <a title="Lưu" id="Save" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block" /></a>
+    </td>
+    }
+</tr>   
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+  }
+    <tr>
+    @model HRM.Databases.Models.nvQTChungChi
+    @using (Html.BeginForm("Update_CC", "nvQTHocTap"))
+    {
+        ViewData.TemplateInfo.HtmlFieldPrefix = null;
+       <td>@Html.DropDownList("nvien", new SelectList(db.nvSoYeuLyLich, "nv_id", "hovaten"), string.Empty) </td>   
+        @Html.HiddenFor(model => model.NV_id, new { id = "nv_id" })        
+        <td> @Html.DropDownListFor(model => model.DonVi_id, new SelectList(db.dmDonVi, "id", "madonvi"), string.Empty, new { @class = "donvi" })</td>
+        <td>
+        @Html.DropDownListFor(model => model.LoaiChungChi_id, new SelectList(db.dmLoaiChungChi, "id", "tenloaichungchi"), string.Empty)
+        @Html.ValidationMessageFor(model => model.LoaiChungChi_id)
+        </td>
+        <td>
+        @Html.EditorFor(model => model.TenTruong)
+        @Html.ValidationMessageFor(model => model.TenTruong)
+        </td>
+        <td>
+          @Html.EditorFor(model => model.TenKhoaHoc)
+          @Html.ValidationMessageFor(model => model.TenKhoaHoc)
+        </td>
+        <td>
+            @Html.DropDownListFor(model => model.QuocGia_id, new SelectList(db.dmQuocGia, "id", "tenquocgia"), string.Empty)
+            @Html.ValidationMessageFor(model => model.QuocGia_id)        
+        </td>
+        <td>
+            @Html.DropDownListFor(model => model.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "tennoihoc"), string.Empty)
+            @Html.ValidationMessageFor(model => model.NoiHoc_id)
+        </td>
+         <td>
+            @Html.EditorFor(model => model.SoQuyetDinh)
+            @Html.ValidationMessageFor(model => model.SoQuyetDinh)
+        </td>
+        <td>
+            @Html.EditorFor(model => model.NgayCapQD)
+            @Html.ValidationMessageFor(model => model.NgayCapQD)
+        </td>
+         <td>
+            @Html.DropDownListFor(model => model.CheDo_id, new SelectList(db.dmCheDoHoc, "id", "tenchedohoc"), string.Empty)
+            @Html.ValidationMessageFor(model => model.CheDo_id)
+        </td>
+        <td>
+            @Html.EditorFor(model => model.ThoiGianBatDau)
+            @Html.ValidationMessageFor(model => model.ThoiGianBatDau)
+        </td>
+         <td>
+            @Html.EditorFor(model => model.ThoiGianKetThucDuKien)
+            @Html.ValidationMessageFor(model => model.ThoiGianKetThucDuKien)
+        </td>
+         <td>
+            @Html.EditorFor(model => model.ThoiGianKetThucChinhThuc)
+            @Html.ValidationMessageFor(model => model.ThoiGianKetThucChinhThuc)
+        </td>
+         <td>
+            @Html.EditorFor(model => model.KetQua)
+            @Html.ValidationMessageFor(model => model.KetQua)
+        </td>
+         <td>
+            @Html.EditorFor(model => model.HocPhi)
+            @Html.ValidationMessageFor(model => model.HocPhi)
+        </td>
+          <td>
+            @Html.EditorFor(model => model.ChiPhiKhac)
+            @Html.ValidationMessageFor(model => model.ChiPhiKhac)
+        </td>
+        <td>
+            @Html.EditorFor(model => model.KinhPhiHoTro)
+            @Html.ValidationMessageFor(model => model.KinhPhiHoTro)
+        </td>
+       
+ 
+         <td>
+            @Html.DropDownListFor(model => model.HienTrang_id, new SelectList(db.dmHienTrangDiHoc, "id", "tenhientrangdihoc"), string.Empty)
+            @Html.ValidationMessageFor(model => model.HienTrang_id)
+        </td>
+        
+       
+        <td>
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </td>
+         <td>
+            <input type="submit" style="position:absolute; left:-989999999px" />
+            <a title="Lưu" id="Save"><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+           @* <a title="Lưu" id="Save" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>*@   
+       </td>      
+    
+    }
+    </td>
+    </tr>
+</tbody>
+</table>
+  @if (Download)
+  {
+    @Html.Partial("DownloadCC", Database)
+  }
+
+<style>
+input { margin: 0 0 0 0 }
+input, textarea {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 1px;
+    width: 300px;
+}
+.hoten{ width: 160px; }
+.donvi { width: 160px; }
+.vanbang { width: 90px; }
+.loaitn { width: 50px; }
+input, select 
+{
+    width: 140px;
+}
+
+</style>
+  	  <script type="text/javascript" language="javascript" src="/hrm/Scripts/datatables/dataTables.fixedColumns.js"></script>
+<script >
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            "sScrollY": "600px",
+            "sScrollX": "130%",
+            "bScrollCollapse": true,
+            "bPaginate": false,
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aaSorting": [[5, "asc"]],
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+
+        new $.fn.DataTable.FixedColumns(table, {
+
+        });
+        var $table = $("#example");
+        $table.find("[id^=item]").prop("disabled", true);
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $table.find("input,select").css("border", "0").css("border-bottom", "1px dotted");
+        $table.find("input[type=datetime]").css("border-bottom", "1px dotted");
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+        var hoten = $("[id$=nvien]").combobox({
+            //            valueField: 'NV_id',
+            //            textField: 'HoVaTen'
+        });
+        var donvi = $("[id$=DonVi_id]").combobox({
+            //            valueField: 'NV_id',
+            //            textField: 'HoVaTen'
+        });
+        var nhvien = $("[id$=nv_id]");
+        donvi.css("width", "50px");
+        //  var donvi = $("[id$=DonVi_id]");
+        //  $("[id$=DonVi_id]").css("width", "50px");
+        donvi.change(function () {
+            hoten.trigger("connect", "/hrm/nvQTHocTap/DSNV?idDonvi=" + $(this).val());
+        });
+        hoten.change(function () {
+            nhvien.val($(this).val());
+    //        alert(nhvien.val());
+        });
+    });
+</script>

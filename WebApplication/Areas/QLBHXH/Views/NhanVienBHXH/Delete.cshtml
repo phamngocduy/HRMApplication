@@ -1,0 +1,31 @@
+﻿@model HRM.QLBHXH.Models.nvbhNhanVienBHXH
+@using HRM.QLBHXH.Models
+@{
+    ViewBag.Title = "Delete";
+    var db = new HRMDB1Entities();
+    int idnv = ViewBag.idnv;
+}
+
+
+<h2><font color="red">Bạn có muốn xóa thông tin nhân viên?</font></h2>
+
+ <b>Mã NV:</b> @(db.nvbhNhanVienBHXH.FirstOrDefault(k => k.id == idnv) ?? new nvbhNhanVienBHXH()).MANV<br />
+ <b>Họ và tên:</b> @(db.nvbhNhanVienBHXH.FirstOrDefault(k => k.id == idnv) ?? new nvbhNhanVienBHXH()).HoVaTen<br />
+ <b>Đơn vị:</b> @(db.nvbhNhanVienBHXH.FirstOrDefault(k => k.id == idnv) ?? new nvbhNhanVienBHXH()).DonVi
+
+
+
+@*<fieldset>
+    <legend>nvbhNhanVienBHXH</legend>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id)
+    </div>
+</fieldset>*@
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xóa" /> 
+         <input type="button" value="Không đồng ý" onclick="location.href='@Url.Action("index2", "NhanVienBHXH")'" />
+     
+   
+    </p>
+}

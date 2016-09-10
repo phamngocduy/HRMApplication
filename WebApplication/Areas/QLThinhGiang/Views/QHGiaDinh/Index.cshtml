@@ -1,0 +1,64 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model int
+@{
+    ViewBag.Title = "Edit";
+    var db = ViewBag.db as HRMDB_Entities;
+    var dt = db.SqlQuery("select * from dsQHGiaDinh where NV_id=@p0", Model);
+}
+
+<table id="qhGiaDinh" class="table table-hover table-bordered">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLThinhGiang/QHGiaDinh/EditP?NV_id=" + Model)
+        </th>
+        <th>Mối<br /> quan hệ</th>
+        <th>Họ và tên</th>
+        <th>Năm sinh</th>
+        <th>Nghề nghiệp</th>
+        <th>Nơi công tác</th>
+        <th>Nơi cư trú</th>
+        <th>Mã số<br /> người phụ thuộc</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            @Html.Editor4U("~/QLThinhGiang/QHGiaDinh/EditP?id=" + dr["id"])
+            @Html.Editor4D("~/QLThinhGiang/QHGiaDinh/DeleteS?id=" + dr["id"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["tenMoiQuanHe"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["HoTen"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgaySinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgheNghiep"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["CoQuan"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["DiaChi"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["MaSoThue"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#qhGiaDinh").find("th,td").attr("nowrap", true);
+    });
+</script>

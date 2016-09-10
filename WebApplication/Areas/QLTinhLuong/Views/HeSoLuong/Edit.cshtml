@@ -1,0 +1,59 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "HeSoLuong";
+    var NV_id = ViewBag.NV_id as int?;
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvHeSoLuong where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+
+    var NhomNgach = "NhomNgach_id";
+    var NhomNgach_id = dr != null ? dr[NhomNgach] as int? : null;
+    var Ngach = "Ngach_id";
+    var Ngach_id = dr != null ? dr[Ngach] as int? : null;
+    
+    var rand = new Random().Next();
+    var uc = new HRM.Accounts.Models.UsersContext();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("NV_id", NV_id.HasValue ? NV_id.Value : dr["NV_id"])
+<dl id="@rand" class="dl-horizontal">
+    <dt>Thời gian</dt>
+    <dd>
+        @Html.Editor(dr, dt.Columns["NgayBatDau"])-
+        @Html.Editor(dr, dt.Columns["NgayKetThuc"])
+    </dd>
+@{
+    ViewBag.NhomNgach = dt.Columns["NhomNgach_id"].ColumnName;
+    ViewBag.Ngach = dt.Columns["Ngach_id"].ColumnName;
+    ViewBag.BacLuong = dt.Columns["BacLuong"].ColumnName;
+    ViewBag.HeSoLuong = dt.Columns["HeSoLuong"].ColumnName;
+    ViewBag.PhuCap = dt.Columns["PhuCap"].ColumnName;
+    ViewBag.SoThang = dt.Columns["ThoiGianGiuBac"].ColumnName;
+}
+    @Html.Partial("BangLuong", dt)
+    <dt>Lý do thay đổi</dt>
+    <dd>@Html.Editor(dr, dt.Columns["LyDoThayDoi"])</dd>
+    <dt>Ghi chú</dt>
+    <dd>@Html.Editor(dr, dt.Columns["GhiChu"])</dd>
+    <dt>@Html.Hidden("User_id", uc.UserProfiles.Single(u => u.UserName == User.Identity.Name).UserId)</dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text").css("width", "90px");
+</script>

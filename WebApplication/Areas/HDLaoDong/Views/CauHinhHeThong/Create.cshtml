@@ -1,0 +1,108 @@
+﻿@model HRM.Databases_HDLaoDong.Models.hdCauHinh
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@using HRM.Webpages.Helpers;
+@{
+    ViewBag.Title = "Create";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var QuocGia_id = new SelectList(db0.dmQuocGia.OrderBy(tt => tt.stt), "id", "tenQuocGia",Model.Quoctich_id);
+    var ChucVu_id = new SelectList(db0.dmChucDanhChuyenMon.OrderBy(tt => tt.stt), "id", "tenChucDanhChuyenMon",Model.Chucvu_id);
+    var GioiTinh_id = new SelectList(db0.dmGioiTinh.OrderBy(tt => tt.stt), "id", "tenGioiTinh", Model.Gioitinh_id);
+}
+@using (@Html.BeginForm())
+{
+    <input id="Hidden1" name = "id" type="hidden" value = "@ViewBag.id" />
+    <div style="margin-left:22%">
+    <b style="margin-left: 30%; font-size: large">Cấu hình</b>
+    @Html.StatusMessage(TempData["Message_CauHinh"])
+    <p>
+    @Html.ActionLink("Quay lại", "Index", "HDNguoiLaoDong")
+    @Html.ActionLink("Danh mục loại hợp đồng", "Index_dmLoaiHopDong", "DanhMuc")
+    @Html.ActionLink("Danh mục mẫu hợp đồng", "Index_dmMauHopDong", "DanhMuc")
+    <br /><span style="margin-left:60px"></span>
+    @Html.ActionLink("Danh mục thời hạn HĐ", "Index_dmThoiHanHD", "DanhMuc")
+    @Html.ActionLink("Danh mục thời giờ làm việc", "Index_dmThoiGioLamViec", "DanhMuc")
+    </p>
+    <p>
+    <b><span style = "font-style:italic">Thông tin người sử dụng lao động</span></b> 
+    </p>
+    <p>
+    Họ và tên<span style="margin-left:20px"></span>
+    @Html.TextBoxFor(model => model.HotenNSDLD)
+    </p>
+    <p>
+    Giới tính<span style="margin-left:28px"></span>
+    @Html.DropDownListFor(model => model.Gioitinh_id, GioiTinh_id, String.Empty, new { id = "GioiTinh"})
+    </p>
+    <p>
+    Quốc tịch<span style="margin-left:21px"></span>
+    @Html.DropDownListFor(model => model.Quoctich_id, QuocGia_id, String.Empty, new { id = "QuocTich" })
+    </p>
+    <p>
+    Chức vụ<span style="margin-left:30px"></span>
+    @Html.DropDownListFor(model => model.Chucvu_id, ChucVu_id, String.Empty, new { id = "ChucVu" })
+    </p>
+    <p>
+    Cơ quan<span style="margin-left:27px"></span>
+    @Html.TextBoxFor(model => model.Coquan)
+    </p>
+    <p>
+    Địa chỉ<span style="margin-left:39px"></span>
+    </p>
+    @Html.TextAreaFor(model => model.Diachi)
+    <p>
+    Số điện thoại
+    @Html.TextBoxFor(model => model.SDT)
+    </p>
+    <b><span style = "font-style:italic">Thông tin hợp đồng</span></b> 
+    <p>
+    Mức lương cơ sở<span style="margin-left:53px"></span>
+    <input id="money" name="Mucluongchinh" class="money" value = "@Model.Mucluongchinh" type="text" /> VNĐ 
+    </p>
+    <p>
+    Cơ số tiền lương<span style="margin-left:55px"></span>
+    <input id="money" name="Cosotienluong" class="money" value = "@Model.Cosotienluong" type="text" /> VNĐ 
+    </p>
+    <p>
+    @Html.Raw("MLTT chung dưới TC")<span style="margin-left:29px"></span>
+    <input id="money" name="MLTTChung1" class="money" value = "@Model.MLTTChung1" type="text" /> VNĐ 
+    </p>
+    <p>
+    @Html.Raw("MLTT chung từ TC trở lên")<span style="margin-left:0px"></span>
+    <input id="money" name="MLTTChung2" class="money" value = "@Model.MLTTChung2" type="text" /> VNĐ 
+    </p>
+    <p>
+    Địa điểm làm việc
+    </p>
+    @Html.TextAreaFor(model => model.DiadiemLV)
+    <p>
+    <b><span style = "font-style:italic">Thời hạn thông báo hết hạn hợp đồng</span></b> 
+    </p>
+    <p>
+    Hợp đồng thử việc<span style="margin-left:62px"></span>
+    <input type="number" name="NgayHDTV" value = "@Model.NgayHDTV" min="0" max="120" style="width: 60px"> Ngày
+    </p> 
+    <p>
+    HĐ chính thức & HĐ dài hạn
+    <input type="number" name="NgayHDCT" value = "@Model.NgayHDCT" min="0" max="120" style="width: 60px"> Ngày
+    </p>
+    <p style="margin-left:65%">
+        <input id="Button1" type="submit" value="Cập nhật" />
+    </p>
+    </div>
+}
+<script>
+    $("#QuocTich").combobox().parent().find("input.ui-autocomplete-input").css("width", "302px");
+    $("#ChucVu").combobox().parent().find("input.ui-autocomplete-input").css("width", "302px");
+    $("#GioiTinh").combobox().parent().find("input.ui-autocomplete-input").css("width", "302px");
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+</script>
+<script src="http://localhost:26919/Scripts/jquery.mask.min.js" type="text/javascript"></script>
+<script>
+    $('.money').mask('0.000.000.000', { reverse: true });
+</script>

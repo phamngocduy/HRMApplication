@@ -1,0 +1,61 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLDanhMuc.Models
+@model IEnumerable<HRM.Databases.Models.dmQuyetDinh>
+
+<p>
+    @Html.DropDownList("loaiQuyetDinh", "Chọn loại quyết định")
+    <a class="dialog" href="QuyetDinh/Create?loai=@ViewBag.loaiQuyetDinh.SelectedValue" title="Thêm">Thêm quyết định</a>
+</p>
+<table id="listQuyetDinh">
+<thead>
+    <tr>
+        <th>Số</th>
+        <th>Ngày ký</th>
+        <th>Nội dung</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaQuyetDinh)
+        </td>
+        <td>
+            @if (item.NgayApDung.HasValue || item.NgayKetThuc.HasValue)
+            {
+                var range = String.Format("{0} - {1}", item.NgayApDung.HasValue ? item.NgayApDung.Value.ToShortDateString() : "~"
+                                                     , item.NgayKetThuc.HasValue ? item.NgayKetThuc.Value.ToShortDateString() : "~");
+                <span class="help" data-tip="@range">@item.NgayKy.ToShortDateString()</span>
+            }
+            else
+            {
+                <span>@item.NgayKy.ToShortDateString()</span>
+            }
+        </td>
+        <td>
+            @if (String.IsNullOrEmpty(item.GhiChu))
+            {
+                @Html.DisplayFor(modelItem => item.NoiDung)
+            }
+            else
+            {
+                <span class="success" data-tip="@item.GhiChu">@item.NoiDung</span>
+            }
+        </td>
+        <td align="right">
+            <a class="dopost" href="QuyetDinh/Delete?id=@item.id" title="Xóa"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a class="dialog" href="QuyetDinh/Edit?id=@item.id" title="Sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script>
+    @Html.dataTables("listQuyetDinh")
+    $(function() {
+        $("#loaiQuyetDinh").change(function() {
+            reload($(this).parents(".ui-tabs-panel"), "QuyetDinh/Index?loai="+$(this).val());
+        });
+    });
+</script>

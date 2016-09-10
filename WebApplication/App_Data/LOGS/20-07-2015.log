@@ -1,0 +1,137 @@
+INFO 12:53:09 – Home/Index
+INFO 12:53:10 – Login/Index
+INFO 12:53:18 – Login/Index
+INFO 12:53:18 – Home/Index
+INFO 12:54:31 – Home/Index
+INFO 12:54:39 – TinhCong/Index
+INFO 12:54:44 – TinhCong/CongThuc
+ERROR12:54:45 – No connection string named 'HRMDBEntities' could be found in the application config file.
+/controller=TinhCong/action=CongThuc
+   at System.Data.Entity.Internal.LazyInternalConnection.Initialize()
+   at System.Data.Entity.Internal.LazyInternalConnection.get_Connection()
+   at System.Data.Entity.Internal.LazyInternalContext.get_Connection()
+   at System.Data.Entity.Database.get_Connection()
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(Database db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 28
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 20
+   at ASP.TinhCong.dsNhanVien(HRMDBEntities db) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 16
+   at ASP._Page_Views_TinhCong_CongThuc_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\CongThuc.cshtml:line 9
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:55:00 – TinhCong/CongThuc
+INFO 12:55:07 – TinhCong/Details&NV_id=45
+INFO 12:55:16 – TinhCong/Details&NV_id=16
+INFO 12:55:33 – TinhCong/Details&NV_id=45
+INFO 12:55:33 – TinhCong/Details&NV_id=16
+INFO 12:59:16 – TinhCong/Details&NV_id=45
+INFO 01:02:49 – TinhCong/Details&NV_id=45
+INFO 01:06:57 – Home/Index
+INFO 01:06:59 – Login/Index
+INFO 01:07:09 – Login/Index
+INFO 01:07:09 – Home/Index
+INFO 01:07:11 – TinhCong/Details&NV_id=45
+INFO 01:09:22 – TinhCong/Details&NV_id=45
+INFO 01:09:51 – TinhCong/CongThuc
+INFO 01:12:33 – TinhCong/Details&NV_id=45
+INFO 01:14:16 – TinhCong/Details&NV_id=45
+INFO 01:17:03 – TinhCong/Details&NV_id=45
+INFO 01:17:29 – TinhCong/Details&NV_id=45
+INFO 01:18:01 – TinhCong/Details&NV_id=45
+INFO 01:18:04 – TinhCong/Details&NV_id=698
+INFO 01:19:37 – TinhCong/Details&NV_id=45
+INFO 01:21:06 – TinhCong/CongThuc
+INFO 01:21:42 – TinhCong/CongThuc
+INFO 01:22:56 – TinhCong/CongThuc
+INFO 01:25:27 – TinhCong/CongThuc
+INFO 01:27:41 – TinhCong/CongThuc
+INFO 01:29:36 – TinhCong/Details&NV_id=45
+INFO 01:32:04 – TinhCong/Details&NV_id=698
+INFO 01:33:55 – TinhCong/Details&NV_id=698
+INFO 01:34:51 – TinhCong/Details&NV_id=698
+INFO 01:47:09 – TinhCong/Details&NV_id=45
+INFO 01:47:43 – TinhCong/Details&NV_id=45
+INFO 01:48:06 – TinhCong/Details&NV_id=45
+INFO 01:49:46 – TinhCong/Details&NV_id=45
+INFO 01:50:08 – TinhCong/Details&NV_id=698
+INFO 01:50:25 – TinhCong/Details&NV_id=422
+INFO 03:26:09 – Home/Index
+INFO 03:26:10 – Login/Index
+INFO 03:26:20 – Login/Index
+INFO 03:26:20 – Home/Index
+INFO 03:26:25 – TinhCong/Index
+INFO 03:26:30 – TinhCong/CongThuc
+INFO 03:26:36 – TinhCong/CongThuc
+INFO 03:28:11 – TinhCong/CongThuc
+INFO 04:02:16 – TinhCong/Index
+INFO 04:02:20 – TinhCong/TuDien
+INFO 04:02:22 – TinhCong/TuDien
+INFO 04:03:27 – TinhCong/Index
+INFO 04:03:40 – TinhCong/TuDien
+ERROR04:03:55 – A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+/controller=TinhCong/action=TuDien
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(Database db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 32
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 20
+   at ASP._Page_Views_TinhCong_TuDien_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\TuDien.cshtml:line 11
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 04:04:08 – TinhCong/TuDien
+INFO 04:04:14 – TinhCong/TuDien
+INFO 04:05:33 – TinhCong/Index
+INFO 04:05:42 – TinhCong/Index
+INFO 04:05:45 – TinhCong/TuDien
+INFO 04:19:46 – TinhCong/Details&NV_id=45
+INFO 04:21:31 – TinhCong/TuDien
+INFO 04:21:47 – TinhCong/Details&NV_id=627
+INFO 04:25:03 – TinhCong/Details&NV_id=62

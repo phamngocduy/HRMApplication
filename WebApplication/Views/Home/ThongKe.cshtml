@@ -1,0 +1,30 @@
+﻿@using HRM.Databases.Models
+@{
+    ViewBag.Title = "Thống kê";
+    var db = new HRMDBEntities();
+    var dir = db.TaiNguyen.Single(tn => tn.tenTaiNguyen == "TEMPLATES");
+    var files = new SelectList(db.TaiNguyen.Where(tn => tn.idTaiNguyen == dir.id), "id", "tenTaiNguyen");
+}
+@helper CreateForm(string action, string controller, string display, SelectList files)
+{
+    using (Html.BeginForm(action, controller))
+    {
+        @Html.DropDownList(display, files, String.Empty)
+        @Html.Hidden("F_id", null)
+        @Html.CheckBox("Save", new { title = "Download" })
+        <input type="submit" value="@display" />
+    }
+}
+
+<div id="ThongKe">
+    @CreateForm("BaoCao3CongKhai", "QLTTNhanSu/ThongKe", "3 công khai", files)
+    @CreateForm("BaoCaoNganhGiangDay", "QLTTNhanSu/ThongKe", "Ngành giảng dạy", files)
+</div>
+
+<script>
+    $(function () {
+        $("select").change(function () {
+            $(this).next("[name=F_id]").val($(this).val());
+        });
+    });
+</script>

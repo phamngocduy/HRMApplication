@@ -1,0 +1,73 @@
+﻿@model HRM.Databases_HDLaoDong.Models.hdPhuLucHD12LuuFile
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@{
+    ViewBag.Title = "Attach_PLHDSo1";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    TempData["Details"] = TempData["Details"];
+}
+
+<b style="margin-left:40%;font-size:large">Đính kèm phụ lục hợp đồng số 1</b>
+@using (Html.BeginForm("Attach_PLHDSo1", "ThemMoiPLHD", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    <input type= "hidden" name = "Details" value = "@TempData["Details"]" />
+    <div>
+         @try
+         {
+    <p>@Html.ActionLink("Quay lại", TempData["Details"].ToString(), "ThemMoiHD", new { id = ViewBag.HD_id }, null)</p>
+         }
+         catch
+         { <p>@Html.ActionLink("Quay lại", "Index", "HDNguoiLaoDong")</p>}
+    <p>
+    Tên PLHĐ<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left:39px"></span>
+    @Html.TextBoxFor(model => model.TenPL, new { style = "width:220px" })
+    <span style="margin-left:75px"></span>Ngày lập<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left:11px"></span>
+    @Html.TextBoxFor(model => model.NgaylapPL, new { style = "width:210px", id = "NgayLap" })
+    </p>
+    <p>
+    Số HĐ gốc<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left:34px"></span>
+    <input id="SoHD" style = "width:222px" value = "@TempData["SoHD"]" type="text" />
+    <input id="HD_id" name = "HD_id" type="hidden" value = "@ViewBag.HD_id" />
+    <input id="LoaiPL" name = "LoaiPL" type="hidden" value = "PLSo1" />
+    </p>
+    <br />
+    <b>Nội dung PL</b><hr />
+    Đính kèm PLHĐ số 1<span title="Bắt buộc nhập" style="color:Blue">(*)</span><input id="fileToUpload" type="file" name="fileToUpload" /> 
+    <p>
+    Ghi chú
+    </p>
+    @Html.TextAreaFor(model => model.Ghichu, new { style = "width: 802px; height: 100px" })   
+    </div>
+    <div style="margin-left:87%">
+        <input id="Submit1" type="submit" value="Lưu" style="width:100px"/>
+    </div>
+}
+<script>
+    $("#SoHDGoc").combobox().parent().find("input.ui-autocomplete-input").css("width", "222px");
+
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(function () {
+        $("[id=NgayLap]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+        $("[id=NgayCoHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=NgayHetHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+

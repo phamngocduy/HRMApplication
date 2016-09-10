@@ -1,0 +1,114 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@{
+    const string LOC = "loc", DLV = "DLV", DNV = "DNV", ALL = "ALL";
+    ViewBag.Title = "Index";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = new DataTable();
+    var query = "";
+    switch (Request.QueryString[LOC])
+    {
+        case ALL:
+            break;
+        case DNV:
+            query = " where ngayNghiViec is not null";
+            break;
+        case DLV:
+        default:
+            query = " where ngayNghiViec is null";
+            break;
+    }
+    const string TAI = "Tai", CSV = "CSV";
+    dt = db.SqlQuery(@"with
+        NV as (select distinct NV_id from nvHocHam),
+        HH as (select id HH_id from dmHocHam),
+        GS as (select * from NV, HH)
+    select nvHocHam.*, nvSoYeuLyLich.HoVaTen, NhanVien.id idNV, NhanVien.MaNV,
+    dmDonVi.maDonVi, dmDonVi.tenDonVi, dmHocHam.maHocHam, dmHocHam.tenHocHam
+    from GS left join nvHocHam on (GS.NV_id = nvHocHam.NV_id and GS.HH_id = nvHocHam.HocHam_id)
+    left join NhanVien on GS.NV_id = NhanVien.id
+    left join nvQTLamViec on NhanVien.qtlvCongTac_id = nvQTLamViec.id
+    left join dmDonVi on nvQTLamViec.DonVi_id = dmDonVi.id
+    left join nvSoYeuLyLich on nvSoYeuLyLich.NV_id = NhanVien.id
+    left join dmHocHam on GS.HH_id = dmHocHam.id" + query + @" 
+    order by dmDonVi.stt, NhanVien.id, dmHocHam.stt");
+    var rand = new Random().Next();
+    var dmHocHams = db.dmHocHam.OrderBy(cd => cd.stt).ToList();
+}
+
+<p class="ui-state-highlight">
+    Danh sách giáo sư, phó giáo sư trường ĐHDL Văn Lang
+    <select id="@rand">
+        <option value="@DLV" @(Request.QueryString[LOC] == DLV ? "selected" : null))>Đang làm việc</option>
+        <option value="@DNV" @(Request.QueryString[LOC] == DNV ? "selected" : null)>Đã nghỉ việc</option>
+        <option value="@ALL" @(Request.QueryString[LOC] == ALL ? "selected" : null)>Tất cả</option>
+    </select>
+    <a href="@Url.Action("Download", "HSNhanSu")?@(LOC)=@(Request.QueryString[LOC]??DLV)&@(TAI)=@(CSV)">Tải file Excel...</a>
+</p>
+
+<table style="width:100%">
+    <thead>
+        <tr align="right">
+            <td><b>@Html.Link4C("~/QLTTNhanSu/GiaoSu/EditP", "Thêm mới")</b></td>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<table id="dsGiaoSu">
+<thead class="ui-widget-header">
+    <tr>
+        <th id="Create"><mark title="Đơn vị">ĐV</mark></th>
+        <th><abbr title="Mã nhân viên">Mã</abbr></th>
+        <th>Họ và tên</th>
+    @foreach (var hh in dmHocHams)
+    {
+        <th>@hh.tenHocHam</th>
+    }
+    </tr>
+</thead>
+<tbody class="ui-widget-content">
+@for (int i=0; i<dt.Rows.Count;)
+{
+    var row = dt.Rows[i];
+    <tr>
+        <td>
+            <mark title="@row["tenDonVi"]">@row["maDonVi"]</mark>
+        </td>
+        <td>@row["MaNV"]</td>
+        <td>
+            @Html.ActionLink(row["HoVaTen"] as string, "Details", "HSNhanSu", new { id = row["idNV"] }, null)
+        </td>
+    @for (int j=0; j<dmHocHams.Count; j++, i++)
+    {
+        row = dt.Rows[i];
+        <td>
+        @if (row["NgayBatDau"] is DBNull)
+        {
+            @Html.Editor4I(String.Format("~/QLTTNhanSu/GiaoSu/EditP?NV_id={0}&HH_id={1}", row["idNV"], dmHocHams[j].id))
+        }
+        else
+        {
+            @Html.Link4U("~/QLTTNhanSu/GiaoSu/EditP?id=" + row["id"], ((DateTime)row["NgayBatDau"]).ToShortDateString())
+            @Html.Editor4D("~/QLTTNhanSu/GiaoSu/DeleteS?id=" + row["id"])
+        }
+        </td>
+    }
+    @if (dmHocHams.Count == 0) { i++; }
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#dsGiaoSu").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+        }).find("th,td").attr("nowrap", true);
+        $("select#@rand").change(function () {
+            location = "@Url.Action("Index", "HSNhanSu")" + "/HSNhanSu?@(LOC)=" + $(this).val();
+        });
+    });
+</script>

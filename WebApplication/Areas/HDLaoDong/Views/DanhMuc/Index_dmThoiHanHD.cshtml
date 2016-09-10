@@ -1,0 +1,259 @@
+﻿@using HRM.Webpages.Helpers
+@model IEnumerable<HRM.Databases_HDLaoDong.Models.dmThoiHanHD>
+@{
+    ViewBag.Title = "Index_dmThoiHanHD";
+    var LoaiHD = new List<string>();
+    LoaiHD.Add("Hợp đồng cơ hữu");
+    LoaiHD.Add("Thử việc");
+    LoaiHD.Add("Hợp đồng dài hạn");
+    var listLoaiHD = new SelectList(LoaiHD);
+    var listLoaiHD_edit = new SelectList(LoaiHD);
+    var type = new List<string>();
+    type.Add("=");
+    type.Add(">");
+    type.Add("<");
+    var listType = new SelectList(type);
+    var listType_edit = new SelectList(type);
+}
+<b style="margin-left:35%;font-size:large">Danh mục thời hạn hợp đồng</b>
+    <p>@Html.StatusMessage(TempData["Message_DanhMuc"])</p>
+    <p>
+    @Html.ActionLink("Quay lại", "Create", "CauHinhHeThong")
+    @Html.ActionLink("Thêm mới", "", new { }, new { @class = "lnkEdit" }) 
+    </p>
+    <table id ="dmThoiHanHD">
+    <thead>
+        <tr>
+            <th style="text-align:center; width:15px" nowrap>
+                STT
+            </th>
+            <th style="text-align:center" nowrap>
+                Thời hạn hợp đồng
+            </th>
+            <th style="text-align:center;width:200px" nowrap>
+                Loại hợp đồng
+            </th>
+            <th style="width:5px"></th>
+        </tr>
+    </thead>
+    <tbody>
+    @{int stt = 0;}
+    @foreach (var item in Model)
+    {
+        stt = stt +1;
+    <tr>
+    <td style="text-align:center" nowrap>
+        @stt
+    </td>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.tenThoiHanHD)
+    </td>
+    <td style="text-align:center" nowrap>
+        @Html.DisplayFor(model => item.loaiHopDong)
+    </td>
+    <td style="text-align:center" >
+        <input type="submit" style="position:absolute;left:-9999px" />
+        <a title="Sửa" onclick = "return THHD_edit('@item.id','@item.loaiHopDong','@item.tenThoiHanHD')" ><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+<div id="dialog-create" style="display: none">
+    @using (Html.BeginForm("Create_dmThoiHanHD","DanhMuc",FormMethod.Post))
+    {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>dmThoiHanHD</legend>
+        <p>
+            Loại HĐ<span style="margin-left:29px"></span>
+            <span onchange = "loaiHDChange()">
+            @Html.DropDownList("loaiHopDong", listLoaiHD,String.Empty)
+                <input id="tenThoiHanHD" name = "tenThoiHanHD" value = "tenThoiHanHD" type="hidden" />
+            </span>
+        </p>
+        <p>
+            Thời hạn HĐ
+            <span onchange = "typeChange()">
+            @Html.DropDownList("Type", listType, String.Empty)
+            </span>
+            <input id = "SoThang" name = "valThoiHanHD" type="number" name="quantity" min="0" max="100" style = "width:64px" /> <span id = "Ngay" hidden = "true">Ngày</span><span id = "Thang">Tháng</span>
+        </p>
+        <p>
+            <input class="dialog" type="submit" value="Lưu" style = "width:80px"/>
+        </p>
+    </fieldset>
+    }
+</div>
+<div id="dialog-edit" style="display: none">
+    @using (Html.BeginForm("Edit_dmThoiHanHD","DanhMuc",FormMethod.Post))
+    {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>dmThoiHanHD</legend>
+        <p>
+            <input id = "THHDid_hid" name = "id" type = "hidden"/>
+            Loại HĐ<span style="margin-left:29px"></span>
+            <span onchange = "loaiHDChange_edit()">
+            @Html.DropDownList("loaiHopDong_edit", listLoaiHD_edit, String.Empty, new {style = "height:30px; width:150px"})
+                <input id="tenThoiHanHD_edit" name = "tenThoiHanHD" value = "tenThoiHanHD" type="hidden" />
+            </span>
+        </p>
+        <p>
+            Thời hạn HĐ
+            <span  onchange = "typeChange_edit()">
+            @Html.DropDownList("Type_edit", listType_edit, String.Empty, new { style = "height:30px;width:70px" })
+            </span>
+            <input id = "SoThang_edit" name = "valThoiHanHD" type="number" name="quantity" min="0" max="100" style = "width:64px" /> <span id = "Ngay_edit" hidden = "true">Ngày</span><span id = "Thang_edit">Tháng</span>
+        </p>
+        <p>
+            <input class="dialog" type="submit" value="Cập nhật" style = "width:auto"/>
+        </p>
+    </fieldset>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#dmThoiHanHD").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+</script>
+<script>
+    function loaiHDChange() {
+        var elem = document.getElementById("loaiHopDong"),
+        selectedNode = elem.options[elem.selectedIndex];
+        if (selectedNode.value == "Thử việc") {
+            Ngay.hidden = false;
+            Thang.hidden = true;
+        } else {
+            Thang.hidden = false;
+            Ngay.hidden = true;
+        }
+    }
+    function typeChange() {
+        var elem = document.getElementById("Type"),
+        selectedNode = elem.options[elem.selectedIndex];
+        if (selectedNode.value == "KXĐ") {
+            SoThang.value = "";
+            SoThang.disabled = true;
+        } else {
+            SoThang.disabled = false;
+        }
+    }
+    function loaiHDChange_edit() {
+        var elem = document.getElementById("loaiHopDong_edit"),
+        selectedNode = elem.options[elem.selectedIndex];
+        if (selectedNode.value == "Thử việc") {
+            Ngay_edit.hidden = false;
+            Thang_edit.hidden = true;
+        } else {
+            Thang_edit.hidden = false;
+            Ngay_edit.hidden = true;
+        }
+    }
+    function typeChange_edit() {
+        var elem = document.getElementById("Type_edit"),
+        selectedNode = elem.options[elem.selectedIndex];
+        if (selectedNode.value == "KXĐ") {
+            SoThang_edit.value = "";
+            SoThang_edit.disabled = true;
+        } else {
+            SoThang_edit.disabled = false;
+        }
+    }
+</script>
+<script>
+    $("#dialog-create").dialog({
+        title: 'Create',
+        autoOpen: false,
+        resizable: false,
+        width: 400,
+        show: { effect: 'drop', direction: "up" },
+        modal: true,
+        draggable: true,
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close").show();
+        }
+    });
+    $("#dialog-edit").dialog({
+        title: 'Edit',
+        autoOpen: false,
+        resizable: false,
+        width: 400,
+        show: { effect: 'drop', direction: "up" },
+        modal: true,
+        draggable: true,
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close").show();
+        }
+    });
+
+    $(".lnkEdit").live("click", function (e) {
+        // e.preventDefault(); use this or return false
+        url = $(this).attr('href');
+        $(".ui-dialog-title").html("Thêm mới");
+        $("#dialog-create").dialog('open');
+        return false;
+    });
+    function THHD_edit(id, loaiHopDong, tenThoiHanHD) {
+        url = $(this).attr('href');
+        $(".ui-dialog-title").html("Chỉnh sửa");
+        $("#dialog-edit").dialog('open');
+        var selecid = 0;
+        if (loaiHopDong == "Hợp đồng cơ hữu") {
+            selecid = 1;
+            Thang_edit.hidden = false;
+            Ngay_edit.hidden = true;
+        }
+        if (loaiHopDong == "Thử việc") {
+            selecid = 2;
+            Ngay_edit.hidden = false;
+            Thang_edit.hidden = true;
+        }
+        if (loaiHopDong == "Hợp đồng dài hạn") {
+            selecid = 3;
+            Thang_edit.hidden = false;
+            Ngay_edit.hidden = true;
+        }
+        var m = parseInt(tenThoiHanHD);
+        var selectypeid = 0;
+        var sotthang = 0;
+        if (m > 0) {
+            var datast = tenThoiHanHD.split(' ');
+            selectypeid = 1;
+            sotthang = parseInt(datast[0]);
+        } else {
+            var data = tenThoiHanHD.split(' ');
+            if (data[0] == "Trên") {
+                selectypeid = 2;
+                sotthang = parseInt(data[1]);
+            } else if (data[0] == "Dưới") {
+                selectypeid = 3;
+                sotthang = parseInt(data[1]);
+            } 
+        }
+        document.getElementById('THHDid_hid').value = id;
+        document.getElementById('loaiHopDong_edit').selectedIndex = selecid;
+        document.getElementById('Type_edit').selectedIndex = selectypeid;
+        document.getElementById('SoThang_edit').value = sotthang;
+        return false;
+    }
+
+</script>
+<script>
+    $("#loaiHopDong").combobox().parent().find("input.ui-autocomplete-input").css("width", "150px");
+    $("#Type").combobox().parent().find("input.ui-autocomplete-input").css("width", "70px");
+    //$("#loaiHopDong_edit").combobox().parent().find("input.ui-autocomplete-input").css("width", "150px");
+    //$("#Type_edit").combobox().parent().find("input.ui-autocomplete-input").css("width", "70px");
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+</script>
+
+

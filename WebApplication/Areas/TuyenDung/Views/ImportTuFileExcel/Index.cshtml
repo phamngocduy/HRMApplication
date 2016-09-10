@@ -1,0 +1,229 @@
+﻿@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@{
+    ViewBag.Title = "Index";
+    int countmax = 0;
+    var tempt = (List<tdImportExcel>)TempData["tdttungvien"];
+    if (tempt != null)
+    {
+        countmax = tempt.First().BangCap.Count;
+        foreach (var im in tempt)
+        {
+            if (countmax <= im.BangCap.Count)
+            {
+                countmax = im.BangCap.Count;
+            }
+        }
+    }
+}
+@using (Html.BeginForm("ImportToExcel", "ImportTuFileExcel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" id="FileUpload1" name="FileUpload1" style="width: auto" />
+    <input type="submit" id="view" name="view" value="Xem trước" />
+    <input type="submit" id="import" name="import" value="Import" />
+}
+<table id="ViewImportTable" class="tableWithFloatingHeader">
+    <thead>
+        <tr>
+            <th style="text-align: center" nowrap>
+                Họ và tên
+            </th>
+            <th style="text-align: center" nowrap>
+                Giới tính
+            </th>
+            <th style="text-align: center" nowrap>
+                Ngày sinh
+            </th>
+            <th style="text-align: center" nowrap>
+                Nơi sinh
+            </th>
+            <th style="text-align: center" nowrap>
+                Loại thẻ</br>định danh
+            </th>
+            <th style="text-align: center" nowrap>
+                Số thẻ
+            </th>
+            <th style="text-align: center" nowrap>
+                Nơi cấp
+            </th>
+            <th style="text-align: center" nowrap>
+                Ngày cấp
+            </th>
+            <th style="text-align: center" nowrap>
+                Ngày hết hạn
+            </th>
+            <th style="text-align: center" nowrap>
+                ĐT di động
+            </th>
+            <th style="text-align: center" nowrap>
+                ĐT nhà
+            </th>
+            <th style="text-align: center" nowrap>
+                Email
+            </th>
+            <th style="text-align: center" nowrap>
+                Địa chỉ liên hệ
+            </th>
+            @if (countmax > 0)
+            {
+                for (int i = 0; i < countmax; i++)
+                {
+                <th style="text-align: center" nowrap>
+                    Bằng cấp
+                </th>
+                }
+            }
+            else
+            {
+                <th style="text-align: center" nowrap>
+                    Bằng cấp
+                </th> 
+            }
+            <th style="text-align: center" nowrap>
+                Vị trí</br>ứng tuyển
+            </th>
+            <th style="text-align: center" nowrap>
+                Đơn vị</br>ứng tuyển
+            </th>
+            <th style="text-align: center" nowrap>
+                Ngày nhận</br>hồ sơ
+            </th>
+            <th style="text-align: center" nowrap>
+                Kết quả</br>tuyển dụng
+            </th>
+            <th style="text-align: center" nowrap>
+                Ghi chú
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var listview = new List<tdImportExcel>();
+          if (TempData["tdttungvien"] != null)
+          {
+              listview = (List<tdImportExcel>)TempData["tdttungvien"];
+              TempData["listImport"] = TempData["tdttungvien"];
+          }
+        }
+        @foreach (var item in listview)
+        {
+            <tr>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.HoVaTen)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.GioiTinh)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.NgaySinh)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.NoiSinh)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.LoaiTheDinhDanh)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.SoThe)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.NoiCap)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.NgayCap)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.NgayHetHan)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.DTDiDong)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.DTNha)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.Email)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.DiaChiLienHe)
+                </td>
+                @if (countmax > 0)
+                {
+                    for (int i = 0; i < countmax; i++)
+                    {
+                        <td nowrap>
+                        @Html.DisplayFor(model => item.BangCap[i])
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td nowrap>
+                    @Html.DisplayFor(model => item.BangCap)    
+                    </td>
+                }
+                <td nowrap>
+                    @Html.DisplayFor(model => item.ViTriUngTuyen)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.DonViUngTuyen)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.NgayNhanHoSo)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.KetQuaTuyenDung)
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(model => item.GhiChu)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    table
+    {
+        overflow: auto;
+        width: 100%;
+        display: block;
+    }
+    input
+    {
+        margin: 0 0 0 0;
+    }
+    td
+    {
+        padding: 0;
+    }
+    .ui-state-hover
+    {
+        font-weight: normal !important;
+    }
+</style>
+<style>
+    td
+    {
+        padding: 0 0 0 0;
+    }
+    input
+    {
+        margin: 0 0 0 0;
+        width: auto;
+    }
+</style>
+<script>
+    var message = '<%=ViewData["mymessage"]%>';
+    if (message.length > 0)
+        windows.alert(message);
+</script>
+<script>
+    $().ready(function () {
+        var table$ = $("#ViewImportTable");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+    });
+</script>

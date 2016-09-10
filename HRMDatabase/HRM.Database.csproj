@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{296709F4-3808-449B-8E36-4112D2D257F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRM.Databases</RootNamespace>
+    <AssemblyName>HRM.Databases</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models.Context.cs" />
+    <Compile Include="Models.Views.cs" />
+    <Compile Include="Models\adHeSoLuong.cs" />
+    <Compile Include="Models\bcKhoaGiangDay.cs" />
+    <Compile Include="Models\BoiDuongChuyenMon.cs" />
+    <Compile Include="Models\BuoiTapHuan.cs" />
+    <Compile Include="Models\ChungChi.cs" />
+    <Compile Include="Models\CTNganHan.cs" />
+    <Compile Include="Models\DanhHieu.cs" />
+    <Compile Include="Models\DiaPhuong.cs" />
+    <Compile Include="Models\dmBangLuong.cs" />
+    <Compile Include="Models\dmCheDoHoc.cs" />
+    <Compile Include="Models\dmChucDanh.cs" />
+    <Compile Include="Models\dmChucDanhChuyenMon.cs" />
+    <Compile Include="Models\dmChucDanhGiangVien.cs" />
+    <Compile Include="Models\dmChucVu.cs" />
+    <Compile Include="Models\dmChucVuDoanThe.cs" />
+    <Compile Include="Models\dmChuyenNganh.cs" />
+    <Compile Include="Models\dmCongTacDoanThe.cs" />
+    <Compile Include="Models\dmDanhHieu.cs" />
+    <Compile Include="Models\dmDanhHieuPhongTang.cs" />
+    <Compile Include="Models\dmDanToc.cs" />
+    <Compile Include="Models\dmDonVi.cs" />
+    <Compile Include="Models\dmGiaDinhChinhSach.cs" />
+    <Compile Include="Models\dmGioiTinh.cs" />
+    <Compile Include="Models\dmHangThuongBinh.cs" />
+    <Compile Include="Models\dmHienTrangDiHoc.cs" />
+    <Compile Include="Models\dmHinhThucKhenThuong.cs" />
+    <Compile Include="Models\dmHinhThucKyLuat.cs" />
+    <Compile Include="Models\dmHocHam.cs" />
+    <Compile Include="Models\dmHocVi.cs" />
+    <Compile Include="Models\dmKhoaGiangDay.cs" />
+    <Compile Include="Models\dmLoaiBangCap.cs" />
+    <Compile Include="Models\dmLoaiBaoLuuHSL.cs" />
+    <Compile Include="Models\dmLoaiChungChi.cs" />
+    <Compile Include="Models\dmLoaiCongTac.cs" />
+    <Compile Include="Models\dmLoaiHinhDaoTao.cs" />
+    <Compile Include="Models\dmLoaiHocTap.cs" />
+    <Compile Include="Models\dmLoaiKhoaHoc.cs" />
+    <Compile Include="Models\dmLoaiNghiNganHan.cs" />
+    <Compile Include="Models\dmLoaiQuyetDinh.cs" />
+    <Compile Include="Models\dmLoaiTheDinhDanh.cs" />
+    <Compile Include="Models\dmMoiQuanHe.cs" />
+    <Compile Include="Models\dmNgachVienChuc.cs" />
+    <Compile Include="Models\dmNganhGiangDay.cs" />
+    <Compile Include="Models\dmNgheNghiep.cs" />
+    <Compile Include="Models\dmNhomNgachVienChuc.cs" />
+    <Compile Include="Models\dmNhomNganh.cs" />
+    <Compile Include="Models\dmNoiHoc.cs" />
+    <Compile Include="Models\dmPhanLoaiCBGVNV.cs" />
+    <Compile Include="Models\dmPhuongXa.cs" />
+    <Compile Include="Models\dmQuanHamQuanDoi.cs" />
+    <Compile Include="Models\dmQuanHuyen.cs" />
+    <Compile Include="Models\dmQuocGia.cs" />
+    <Compile Include="Models\dmQuyetDinh.cs" />
+    <Compile Include="Models\dmThanhPhanGiaDinh.cs" />
+    <Compile Include="Models\dmTinhThanh.cs" />
+    <Compile Include="Models\dmTonGiao.cs" />
+    <Compile Include="Models\dmTrinhDo.cs" />
+    <Compile Include="Models\dmTrinhDoChinhTri.cs" />
+    <Compile Include="Models\dmTrinhDoHocVan.cs" />
+    <Compile Include="Models\dmTrinhDoNgoaiNgu.cs" />
+    <Compile Include="Models\dmTrinhDoQuanLy.cs" />
+    <Compile Include="Models\dmTrinhDoTinHoc.cs" />
+    <Compile Include="Models\dmXepLoaiTotNghiep.cs" />
+    <Compile Include="Models\dsBangCap.cs" />
+    <Compile Include="Models\dsChucDanhGiangVien.cs" />
+    <Compile Include="Models\dsChucDanhGiangVien1.cs" />
+    <Compile Include="Models\dsCTDoanThe.cs" />
+    <Compile Include="Models\dsCTDoanTheTruoc.cs" />
+    <Compile Include="Models\dsDiaChiNha.cs" />
+    <Compile Include="Models\dsDienBienLuong.cs" />
+    <Compile Include="Models\dsGiuBacLuong.cs" />
+    <Compile Include="Models\dsHeSoLuong.cs" />
+    <Compile Include="Models\dsHocHam.cs" />
+    <Compile Include="Models\dsHocHam1.cs" />
+    <Compile Include="Models\dsNganhGiangDay.cs" />
+    <Compile Include="Models\dsNhanVien.cs" />
+    <Compile Include="Models\dsNhanVienMoi.cs" />
+    <Compile Include="Models\dsQHGiaDinh.cs" />
+    <Compile Include="Models\dsQLHoSoHSL.cs" />
+    <Compile Include="Models\dsQLTapSu.cs" />
+    <Compile Include="Models\dsQLThuViec.cs" />
+    <Compile Include="Models\dsQTKiemNhiem.cs" />
+    <Compile Include="Models\dsQTLamNghiViec.cs" />
+    <Compile Include="Models\dsSoYeuLyLich.cs" />
+    <Compile Include="Models\dsTheDinhDanh.cs" />
+    <Compile Include="Models\dsTTKhenThuong.cs" />
+    <Compile Include="Models\dsTTKyLuat.cs" />
+    <Compile Include="Models\hrmTTNSContext.cs" />
+    <Compile Include="Models\hvBangCap1.cs" />
+    <Compile Include="Models\Mapping\adHeSoLuongMap.cs" />
+    <Compile Include="Models\Mapping\bcKhoaGiangDayMap.cs" />
+    <Compile Include="Models\Mapping\BoiDuongChuyenMonMap.cs" />
+    <Compile Include="Models\Mapping\BuoiTapHuanMap.cs" />
+    <Compile Include="Models\Mapping\ChungChiMap.cs" />
+    <Compile Include="Models\Mapping\CTNganHanMap.cs" />
+    <Compile Include="Models\Mapping\DanhHieuMap.cs" />
+    <Compile Include="Models\Mapping\DiaPhuongMap.cs" />
+    <Compile Include="Models\Mapping\dmBangLuongMap.cs" />
+    <Compile Include="Models\Mapping\dmCheDoHocMap.cs" />
+    <Compile Include="Models\Mapping\dmChucDanhChuyenMonMap.cs" />
+    <Compile Include="Models\Mapping\dmChucDanhGiangVienMap.cs" />
+    <Compile Include="Models\Mapping\dmChucDanhMap.cs" />
+    <Compile Include="Models\Mapping\dmChucVuDoanTheMap.cs" />
+    <Compile Include="Models\Mapping\dmChucVuMap.cs" />
+    <Compile Include="Models\Mapping\dmChuyenNganhMap.cs" />
+    <Compile Include="Models\Mapping\dmCongTacDoanTheMap.cs" />
+    <Compile Include="Models\Mapping\dmDanhHieuMap.cs" />
+    <Compile Include="Models\Mapping\dmDanhHieuPhongTangMap.cs" />
+    <Compile Include="Models\Mapping\dmDanTocMap.cs" />
+    <Compile Include="Models\Mapping\dmDonViMap.cs" />
+    <Compile Include="Models\Mapping\dmGiaDinhChinhSachMap.cs" />
+    <Compile Include="Models\Mapping\dmGioiTinhMap.cs" />
+    <Compile Include="Models\Mapping\dmHangThuongBinhMap.cs" />
+    <Compile Include="Models\Mapping\dmHienTrangDiHocMap.cs" />
+    <Compile Include="Models\Mapping\dmHinhThucKhenThuongMap.cs" />
+    <Compile Include="Models\Mapping\dmHinhThucKyLuatMap.cs" />
+    <Compile Include="Models\Mapping\dmHocHamMap.cs" />
+    <Compile Include="Models\Mapping\dmHocViMap.cs" />
+    <Compile Include="Models\Mapping\dmKhoaGiangDayMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiBangCapMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiBaoLuuHSLMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiChungChiMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiCongTacMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiHinhDaoTaoMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiHocTapMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiKhoaHocMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiNghiNganHanMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiQuyetDinhMap.cs" />
+    <Compile Include="Models\Mapping\dmLoaiTheDinhDanhMap.cs" />
+    <Compile Include="Models\Mapping\dmMoiQuanHeMap.cs" />
+    <Compile Include="Models\Mapping\dmNgachVienChucMap.cs" />
+    <Compile Include="Models\Mapping\dmNganhGiangDayMap.cs" />
+    <Compile Include="Models\Mapping\dmNgheNghiepMap.cs" />
+    <Compile Include="Models\Mapping\dmNhomNgachVienChucMap.cs" />
+    <Compile Include="Models\Mapping\dmNhomNganhMap.cs" />
+    <Compile Include="Models\Mapping\dmNoiHocMap.cs" />
+    <Compile Include="Models\Mapping\dmPhanLoaiCBGVNVMap.cs" />
+    <Compile Include="Models\Mapping\dmPhuongXaMap.cs" />
+    <Compile Include="Models\Mapping\dmQuanHamQuanDoiMap.cs" />
+    <Compile Include="Models\Mapping\dmQuanHuyenMap.cs" />
+    <Compile Include="Models\Mapping\dmQuocGiaMap.cs" />
+    <Compile Include="Models\Mapping\dmQuyetDinhMap.cs" />
+    <Compile Include="Models\Mapping\dmThanhPhanGiaDinhMap.cs" />
+    <Compile Include="Models\Mapping\dmTinhThanhMap.cs" />
+    <Compile Include="Models\Mapping\dmTonGiaoMap.cs" />
+    <Compile Include="Models\Mapping\dmTrinhDoChinhTriMap.cs" />
+    <Compile Include="Models\Mapping\dmTrinhDoHocVanMap.cs" />
+    <Compile Include="Models\Mapping\dmTrinhDoMap.cs" />
+    <Compile Include="Models\Mapping\dmTrinhDoNgoaiNguMap.cs" />
+    <Compile Include="Models\Mapping\dmTrinhDoQuanLyMap.cs" />
+    <Compile Include="Models\Mapping\dmTrinhDoTinHocMap.cs" />
+    <Compile Include="Models\Mapping\dmXepLoaiTotNghiepMap.cs" />
+    <Compile Include="Models\Mapping\dsBangCapMap.cs" />
+    <Compile Include="Models\Mapping\dsChucDanhGiangVien1Map.cs" />
+    <Compile Include="Models\Mapping\dsChucDanhGiangVienMap.cs" />
+    <Compile Include="Models\Mapping\dsCTDoanTheMap.cs" />
+    <Compile Include="Models\Mapping\dsCTDoanTheTruocMap.cs" />
+    <Compile Include="Models\Mapping\dsDiaChiNhaMap.cs" />
+    <Compile Include="Models\Mapping\dsDienBienLuongMap.cs" />
+    <Compile Include="Models\Mapping\dsGiuBacLuongMap.cs" />
+    <Compile Include="Models\Mapping\dsHeSoLuongMap.cs" />
+    <Compile Include="Models\Mapping\dsHocHam1Map.cs" />
+    <Compile Include="Models\Mapping\dsHocHamMap.cs" />
+    <Compile Include="Models\Mapping\dsNganhGiangDayMap.cs" />
+    <Compile Include="Models\Mapping\dsNhanVienMap.cs" />
+    <Compile Include="Models\Mapping\dsNhanVienMoiMap.cs" />
+    <Compile Include="Models\Mapping\dsQHGiaDinhMap.cs" />
+    <Compile Include="Models\Mapping\dsQLHoSoHSLMap.cs" />
+    <Compile Include="Models\Mapping\dsQLTapSuMap.cs" />
+    <Compile Include="Models\Mapping\dsQLThuViecMap.cs" />
+    <Compile Include="Models\Mapping\dsQTKiemNhiemMap.cs" />
+    <Compile Include="Models\Mapping\dsQTLamNghiViecMap.cs" />
+    <Compile Include="Models\Mapping\dsSoYeuLyLichMap.cs" />
+    <Compile Include="Models\Mapping\dsTheDinhDanhMap.cs" />
+    <Compile Include="Models\Mapping\dsTTKhenThuongMap.cs" />
+    <Compile Include="Models\Mapping\dsTTKyLuatMap.cs" />
+    <Compile Include="Models\Mapping\hvBangCap1Map.cs" />
+    <Compile Include="Models\Mapping\NhanVienMap.cs" />
+    <Compile Include="Models\Mapping\nvBangCapMap.cs" />
+    <Compile Include="Models\Mapping\nvChucDanhGiangVienMap.cs" />
+    <Compile Include="Models\Mapping\nvCTDoanTheMap.cs" />
+    <Compile Include="Models\Mapping\nvCTDoanTheTruocMap.cs" />
+    <Compile Include="Models\Mapping\nvCTNganHanMap.cs" />
+    <Compile Include="Models\Mapping\nvDiaChiNhaMap.cs" />
+    <Compile Include="Models\Mapping\nvGiuBacLuongMap.cs" />
+    <Compile Include="Models\Mapping\nvHeSoLuongMap.cs" />
+    <Compile Include="Models\Mapping\nvHocHamMap.cs" />
+    <Compile Include="Models\Mapping\nvKhoaGiangDayMap.cs" />
+    <Compile Include="Models\Mapping\nvLuongKhoanMap.cs" />
+    <Compile Include="Models\Mapping\nvNganhGiangDayMap.cs" />
+    <Compile Include="Models\Mapping\nvQHGiaDinhMap.cs" />
+    <Compile Include="Models\Mapping\nvQLHoSoHSLMap.cs" />
+    <Compile Include="Models\Mapping\nvQLTapSuMap.cs" />
+    <Compile Include="Models\Mapping\nvQLThuViecMap.cs" />
+    <Compile Include="Models\Mapping\nvQTChungChiMap.cs" />
+    <Compile Include="Models\Mapping\nvQTHocTapMap.cs" />
+    <Compile Include="Models\Mapping\nvQTKiemNhiemMap.cs" />
+    <Compile Include="Models\Mapping\nvQTLamViecMap.cs" />
+    <Compile Include="Models\Mapping\nvQTLamViecTruocMap.cs" />
+    <Compile Include="Models\Mapping\nvQTNghiNganHanMap.cs" />
+    <Compile Include="Models\Mapping\nvSoYeuLyLichMap.cs" />
+    <Compile Include="Models\Mapping\nvTapHuanMap.cs" />
+    <Compile Include="Models\Mapping\nvTheDinhDanhMap.cs" />
+    <Compile Include="Models\Mapping\nvTrangThaiLuongMap.cs" />
+    <Compile Include="Models\Mapping\nvTTKhenThuongMap.cs" />
+    <Compile Include="Models\Mapping\nvTTKhenThuongTruocMap.cs" />
+    <Compile Include="Models\Mapping\nvTTKyLuatMap.cs" />
+    <Compile Include="Models\Mapping\nvTTKyLuatTruocMap.cs" />
+    <Compile Include="Models\Mapping\nvTTMoRongMap.cs" />
+    <Compile Include="Models\Mapping\nvTTThongKeMap.cs" />
+    <Compile Include="Models\Mapping\QuaTrinhHocMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TaiNguyenMap.cs" />
+    <Compile Include="Models\Mapping\TapHuanMap.cs" />
+    <Compile Include="Models\Mapping\tdBangCap1Map.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\nvBangCap.cs" />
+    <Compile Include="Models\nvChucDanhGiangVien.cs" />
+    <Compile Include="Models\nvCTDoanThe.cs" />
+    <Compile Include="Models\nvCTDoanTheTruoc.cs" />
+    <Compile Include="Models\nvCTNganHan.cs" />
+    <Compile Include="Models\nvDiaChiNha.cs" />
+    <Compile Include="Models\nvGiuBacLuong.cs" />
+    <Compile Include="Models\nvHeSoLuong.cs" />
+    <Compile Include="Models\nvHocHam.cs" />
+    <Compile Include="Models\nvKhoaGiangDay.cs" />
+    <Compile Include="Models\nvLuongKhoan.cs" />
+    <Compile Include="Models\nvNganhGiangDay.cs" />
+    <Compile Include="Models\nvQHGiaDinh.cs" />
+    <Compile Include="Models\nvQLHoSoHSL.cs" />
+    <Compile Include="Models\nvQLTapSu.cs" />
+    <Compile Include="Models\nvQLThuViec.cs" />
+    <Compile Include="Models\nvQTChungChi.cs" />
+    <Compile Include="Models\nvQTHocTap.cs" />
+    <Compile Include="Models\nvQTKiemNhiem.cs" />
+    <Compile Include="Models\nvQTLamViec.cs" />
+    <Compile Include="Models\nvQTLamViecTruoc.cs" />
+    <Compile Include="Models\nvQTNghiNganHan.cs" />
+    <Compile Include="Models\nvSoYeuLyLich.cs" />
+    <Compile Include="Models\nvTapHuan.cs" />
+    <Compile Include="Models\nvTheDinhDanh.cs" />
+    <Compile Include="Models\nvTrangThaiLuong.cs" />
+    <Compile Include="Models\nvTTKhenThuong.cs" />
+    <Compile Include="Models\nvTTKhenThuongTruoc.cs" />
+    <Compile Include="Models\nvTTKyLuat.cs" />
+    <Compile Include="Models\nvTTKyLuatTruoc.cs" />
+    <Compile Include="Models\nvTTMoRong.cs" />
+    <Compile Include="Models\nvTTThongKe.cs" />
+    <Compile Include="Models\QuaTrinhHoc.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\TaiNguyen.cs" />
+    <Compile Include="Models\TapHuan.cs" />
+    <Compile Include="Models\tdBangCap1.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
+    <None Include="Models.edmx">
+      <LastGenOutput>Models.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Models.Context.tt" />
+    <None Include="Models.tt">
+      <LastGenOutput>Models.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

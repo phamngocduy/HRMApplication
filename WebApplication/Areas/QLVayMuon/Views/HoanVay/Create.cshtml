@@ -1,0 +1,161 @@
+﻿@model HRM.QLVayMuon.Models.HoanVay
+@using HRM.QLVayMuon.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Create";
+    var db = new HRMDB1Entities();
+    var NV_id = (int)ViewBag.NV_id;
+}
+@Html.BeginDiv()
+@Html.StatusMessage(TempData["Message"])
+@Html.ValidationSummary(TempData["ModelState"])
+<h4>
+Tạo mới hoàn vay cho: @db.NhanVienVayMuon.First(k => k.id == NV_id).MaNV -@db.NhanVienVayMuon.First(k => k.id == NV_id).HoVaTen - @db.NhanVienVayMuon.First(k => k.id == NV_id).DonVi</h4>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>HoanVay</legend>
+        @Html.TextBoxFor(model => model.TrangThai, new { @Value = "true", @Type = "hidden" })
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idKhoanVay, "Thuộc khoản vay")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idKhoanVay", "-- Chọn số chứng từ khoản vay --")
+            @Html.ValidationMessageFor(model => model.idKhoanVay)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoChungTu, "Số chứng từ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoChungTu)
+            @Html.ValidationMessageFor(model => model.SoChungTu)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NgayChungTu, "Ngày chứng từ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NgayChungTu)
+            @Html.ValidationMessageFor(model => model.NgayChungTu)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DienGiai, "Diễn giải")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DienGiai)
+            @Html.ValidationMessageFor(model => model.DienGiai)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoTienHoan, "Số tiền hoàn")
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.SoTienHoan)
+            @Html.ValidationMessageFor(model => model.SoTienHoan)
+        </div>
+        <input id="Hoan" />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoTienLai, "Số tiền lãi")
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.SoTienLai)*@
+            @Html.HiddenFor(model => model.SoTienLai, new { @Value = "0" })
+            @Html.ValidationMessageFor(model => model.SoTienLai)
+        </div>
+        <input id="Lai" value="0" />
+        <p>
+            <input type="submit" value="Tạo" onclick="return check();" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Trở về danh sách hoàn vay", "Index", new { NV_id = NV_id })
+</div>
+@Html.EndDiv()
+
+<script>
+//tao ra commbobox
+    $("#NgayChungTu").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true,
+    });
+    //tao ra commbobox
+    $("#idKhoanVay").combobox();
+
+//them dau cah vao sotien
+ $('#Hoan').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        });
+    });
+    $("#Hoan").keyup(function () {
+        //Clear the hidden field
+        $("#SoTienHoan").val("");
+        //Create char array from phone number field
+        var charArray = $(this).val().split("");
+        var phoneNumber = "";
+        //Iterate over each character in the char array
+        //and determine if it is a number
+        $.each(charArray, function (index, value) {
+            if (!isNaN(value) && value != " ") {
+                phoneNumber = phoneNumber + value;
+            }
+        });
+        //Set hidden field
+        $("#SoTienHoan").val(phoneNumber);
+    });
+ //them dau cah vao sotien   
+ $('#Lai').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        });
+    });
+    $("#Lai").keyup(function () {
+        //Clear the hidden field
+        $("#SoTienLai").val("");
+        //Create char array from phone number field
+        var charArray = $(this).val().split("");
+        var phoneNumber = "";
+        //Iterate over each character in the char array
+        //and determine if it is a number
+        $.each(charArray, function (index, value) {
+            if (!isNaN(value) && value != " ") {
+                phoneNumber = phoneNumber + value;
+            }
+        });
+        //Set hidden field
+        $("#SoTienLai").val(phoneNumber);
+    });
+
+       //kiem tra null cua sotienhoan va sotienlai
+     function check()
+            {
+                if (document.getElementById('Hoan').value==""
+                 || document.getElementById('Hoan').value==undefined)
+                {
+                    alert ("Vui lòng nhập số tiền hoàn");
+                    return false;
+                }
+
+                if (document.getElementById('Lai').value==""
+                 || document.getElementById('Lai').value==undefined)
+                {
+                    alert ("Vui lòng nhập số tiền lãi");
+                    return false;
+                }
+
+                return true;
+            }
+</script>

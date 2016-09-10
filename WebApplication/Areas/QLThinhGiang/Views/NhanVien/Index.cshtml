@@ -1,0 +1,91 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@{
+    const string LOC = "loc", DLV = "DLV", DNV = "DNV", ALL = "ALL";
+    ViewBag.Title = "Index";
+    var db = ViewBag.db as HRMDB_Entities;
+    var dt = new DataTable();
+    var query = "";
+    switch (Request.QueryString[LOC])
+    {
+        case ALL:
+            //dt = db.SqlQuery("select * from dsNhanVien");
+            break;
+        case DNV:
+            //dt = db.SqlQuery("select * from dsNhanVien where ngaynghiviec is not null");
+            query = " where ngaynghiviec is not null";
+            break;
+        case DLV:
+        default:
+            //dt = db.SqlQuery("select * from dsNhanVien where ngaynghiviec is null");
+            query = " where ngaynghiviec is null";
+            break;
+    }
+    const string TAI = "Tai", CSV = "CSV";
+    dt = db.SqlQuery("select * from dsNhanVien" + query);
+    var noHoTen = 0; var noDonVi = 0;
+    var rand = new Random().Next();
+}
+
+<p class="ui-state-highlight">
+    Danh sách GV thỉnh giảng trường ĐHDL Văn Lang
+    <select id="@rand">
+        <option value="@DLV" @(Request.QueryString[LOC] == DLV ? "selected" : null))>Đang làm việc</option>
+        <option value="@DNV" @(Request.QueryString[LOC] == DNV ? "selected" : null)>Đã nghỉ việc</option>
+        <option value="@ALL" @(Request.QueryString[LOC] == ALL ? "selected" : null)>Tất cả</option>
+    </select>
+    <a href="@Url.Action("Download", "QLThinhGiang")?@(TAI)=@(CSV)">Tải file Excel...</a>
+</p>
+<span id="noHoTen"></span>
+
+<table id="dsNhanVien">
+<thead class="ui-widget-header">
+    <tr>
+        <th>Mã NV</th>
+        <th>Họ và tên</th>
+        <th><u>
+            @Html.Link4C("~/QLThinhGiang/NhanVien/CreateP", "Thêm mới")
+        </u></th>
+    </tr>
+</thead>
+<tbody class="ui-widget-content">
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            <abbr title="@dr["MaHS"]">@Html.Display(dr, dt.Columns["MaNV"])</abbr>
+        </td>
+        <td class="@(dr["HoVaTen"] is DBNull ? "ui-state-error" : null)">
+            @Html.Display(dr, dt.Columns["HoVaTen"])
+            @if (dr["HoVaTen"] is DBNull) { noHoTen++; }
+        </td>
+        <td>
+            @Html.ActionLink("Cập nhật", "Details", "HSNhanSu", new { id = dr["id"] }, null)
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#dsNhanVien").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "aoColumns": [null, null, { bSortable: false }]
+        }).find("th,td").attr("nowrap", true);
+        $("select#@rand").change(function () {
+            location = "@Url.Action("Index", "HSNhanSu")" + "/HSNhanSu?@(LOC)=" + $(this).val();
+        });
+    });
+</script>
+@if (noHoTen > 0)
+{
+<script>
+    $(function () {
+        $("#noHoTen").text("Có @noHoTen nhân viên chưa nhập họ và tên!").addClass("ui-state-error");
+    });
+</script>
+}

@@ -1,0 +1,56 @@
+﻿@model HRM.Databases.Models.QuaTrinhHoc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>QuaTrinhHoc</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NV_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NV_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BacHoc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BacHoc)
+    </div>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.TruongHoc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TruongHoc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NamBatDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NamBatDau)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NamKetThuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NamKetThuc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,242 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@using HRM.QLThinhGiang.Models
+@model HRMDBEntities
+@{
+    var db = ViewBag.db as HRMDBEntities;
+    var db_ = ViewBag.db0 as HRMDB_Entities;
+    var khoaTK = int.Parse(String.IsNullOrEmpty(Request.Form["KhoaTK"]) ? "0" : Request.Form["KhoaTK"]);
+    var ngayTK = DateTime.Parse(Request.Form["NgayTK"] ?? DateTime.Now.ToShortDateString());
+    ViewBag.Title = "TK_Ngan";
+    var table = db.SqlQuery(String.Format(@"
+    declare @moc date = '{0}-{1}-{2}'
+    select nv.*, lv.*, bc.*, syll.*, dmDonVi.id DonVi_id, dmTrinhDo.*,
+    dmDonVi.*, dmChucDanh.*, dmChucDanhChuyenMon.*, dmChucDanhGiangVien.*
+    from NhanVien nv
+    left join (
+        select *, row_number() over (partition by NV_id order by ThoiGianBatDau) stt from nvQTLamViec
+        where ThoiGianBatDau <= @moc and (ThoiGianKetThuc >= @moc or ThoiGianKetThuc is null)) lv on lv.NV_id = nv.id
+    left join (
+        select *, row_number() over (partition by NV_id order by sttTrinhDo) stt from dsBangCap
+        where NgayTN <= @moc) bc on bc.NV_id = nv.id
+    left join nvSoYeuLyLich syll on syll.NV_id = nv.id
+    left join dmDonVi on lv.DonVi_id = dmDonVi.id
+    left join dmChucDanh on lv.ChucDanh_id = dmChucDanh.id
+    left join dmLoaiBangCap on bc.LoaiBangCap_id = dmLoaiBangCap.id
+    left join dmTrinhDo on dmLoaiBangCap.idTrinhDo = dmTrinhDo.id
+    left join dmChucDanhChuyenMon on lv.ChucDanhChucVu_id = dmChucDanhChuyenMon.id
+    left join dmChucDanhGiangVien on syll.ChucDanhGiangVien_id = dmChucDanhGiangVien.id
+    where (nv.ngayNghiViec is null or nv.ngayNghiViec > @moc)
+    and (lv.stt is null or lv.stt = 1) and (bc.stt is null or bc.stt = 1)
+    order by dmDonVi.id", ngayTK.Year, ngayTK.Month, ngayTK.Day));
+    string ChucDanhGiangVien_id = "ChucDanhGiangVien_id", DonVi_id = "DonVi_id",
+        maTrinhDo = "maTrinhDo";
+    var GVCHs = table.Rows.ToArray().Where(r => !(r[ChucDanhGiangVien_id] is DBNull));
+    var GVCH_Ks = GVCHs.Where(r => r[DonVi_id].Equals(khoaTK));
+    var GVCH_K_TSs = GVCH_Ks.Where(r => r[maTrinhDo].Equals("TS"));
+    var GVCH_K_ThSs = GVCH_Ks.Where(r => r[maTrinhDo].Equals("ThS"));
+    var GVCH_K_DHs = GVCH_Ks.Where(r => r[maTrinhDo].Equals("DH"));
+    var DLGGs = (from gg in db_.gvDuLieuGioGiang.ToList()
+                 join dv in db.dmDonVi.ToList() on gg.KhoaGiangDay equals dv.maDonVi
+                 where (dv.id.Equals(khoaTK) && dv.Khoa_BoMon.Equals("K")) select gg).ToList();
+    var DLGG_Ks = (from gg in DLGGs
+                   join dv in db.dmDonVi on gg.DonViCongTac equals dv.maDonVi
+                   where dv.id.Equals(khoaTK) select gg);
+    var DLGG_KKs = (from gg in DLGGs
+                    join dv in db.dmDonVi on gg.DonViCongTac equals dv.maDonVi
+                    where !dv.id.Equals(khoaTK) select gg);
+    var DLGG_K_CHs = DLGG_Ks.Where(gg => gg.PhanLoaiGV2.Equals("GVCH"));
+    var DLGG_KK_CHs = DLGG_KKs.Where(gg => gg.PhanLoaiGV2.Equals("GVCH"));
+    var DLGG_TGs = DLGGs.Where(gg => gg.PhanLoaiGV2.Equals("GVTG"));
+    var DLGG_BMs = (from gg in db_.gvDuLieuGioGiang.ToList()
+                    join dv in db.dmDonVi.ToList() on gg.KhoaGiangDay equals dv.maDonVi
+                    where (dv.id.Equals(khoaTK) && dv.Khoa_BoMon.Equals("BM")) select gg).ToList();
+    var DLGG_ = DLGGs.Sum(gg => gg.TietQuyDoi);
+    var DLGG_K_CH_ = DLGG_K_CHs.Sum(gg => gg.TietQuyDoi);
+    var DLGG_KK_CH_ = DLGG_KK_CHs.Sum(gg => gg.TietQuyDoi);
+    var DLGG_TG_ = DLGG_TGs.Sum(gg => gg.TietQuyDoi);
+    var DLGG_BM_ = DLGG_BMs.Sum(gg => gg.TietQuyDoi);
+    var DLGG_KKKs = (from gg in db_.gvDuLieuGioGiang.ToList()
+                     join dv in db.dmDonVi.ToList() on gg.DonViCongTac equals dv.maDonVi
+                     where (dv.id.Equals(khoaTK) && !gg.KhoaGiangDay.Equals(dv.maDonVi)) select gg).ToList();
+    var DLGG_KKK_CHs = DLGG_KKKs.Where(gg => gg.PhanLoaiGV2.Equals("GVCH"));
+    var DLGG_KKK_CH_ = DLGG_KKK_CHs.Sum(gg => gg.TietQuyDoi);
+    
+    ViewBag.Random = new Random();
+    var rand1 = (ViewBag.Random as Random).Next();
+    var rand2 = (ViewBag.Random as Random).Next();
+    var rand3 = (ViewBag.Random as Random).Next();
+}
+@helper MarkGV(IEnumerable<DataRow> GVs, string title) {
+    string MaNV = "MaNV", HoVaTen = "HoVaTen";
+    var rand = (ViewBag.Random as Random).Next();
+    if (GVs.Count() > 0) {
+        <mark title="@String.Join(", ", GVs.Select(r => r[HoVaTen]).ToArray())">
+            <a href="#" onclick="$('#@rand').dialog({width:'auto',title:'@title'})">@GVs.Count()</a>
+        </mark>
+        <div id="@rand" style="display:none">
+            <table>
+                <thead>
+                    <th>Mã</th>
+                    <th>Họ và tên</th>
+                </thead>
+                <tbody>
+                @foreach (var row in GVs)
+                {
+                    <tr>
+                        <td>@row[MaNV]</td>
+                        <td>@row[HoVaTen]</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    } else { <span>@GVs.Count()</span> }
+}
+@helper MarkGG(double sum, IEnumerable<gvDuLieuGioGiang> GGs, string title) {
+    var rand = (ViewBag.Random as Random).Next();
+    if (GGs.Count() > 0) {
+        <mark title="@String.Join(", ", GGs.Select(gv => gv.HoVaTen).ToArray())">
+            <a href="#" onclick="$('#@rand').dialog({width:'auto',title:'@title'})">@sum</a>
+        </mark>
+        <div id="@rand" style="display:none">
+            <table>
+                <thead>
+                    <th>Họ và tên</th>
+                    <th>Môn dạy</th>
+                    <th><mark><abbr title="Tiết quy đổi">TQD</abbr></mark></th>
+                    <th><mark><abbr title="Đơn vị công tác">DV</abbr></mark></th>
+                    <th><mark><abbr title="Khoa giảng dạy">K</abbr></mark></th>
+                    <th><mark><abbr title="Ngành giảng dạy">N</abbr></mark></th>
+                </thead>
+                <tbody>
+                @foreach (var gg in GGs)
+                {
+                    <tr>
+                        <td>@gg.HoVaTen</td>
+                        <td>@gg.MonDay</td>
+                        <td>@gg.TietQuyDoi</td>
+                        <td>@gg.DonViCongTac</td>
+                        <td>@gg.KhoaGiangDay</td>
+                        <td>@gg.NganhGiangDay</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    } else { <span>@sum</span> }
+}
+
+@using (Html.BeginForm())
+{
+    <h2 style="display:inline">
+        TÌNH HÌNH GVCH KHOA
+    </h2>
+    var dmDonVis = db.dmDonVi.Where(dv => dv.Khoa_BoMon == "K").OrderBy(dv => dv.stt);
+    @Html.DropDownList("KhoaTK", new SelectList(dmDonVis, "id", "tenDonVi", khoaTK), "", new { id = rand1 });
+    <input id="@rand2" type="hidden" name="NgayTK" value="@ngayTK" />
+    <input type="submit" value="Thống kê" />
+}
+
+<table id="TK_Ngan" border="1">
+    <tr>
+        <td rowspan=2>TT</td>
+        <td rowspan=2 colspan=2>Nội dung</td>
+        <td colspan=2>NH
+            <input id="@rand3" type="date" value="@ngayTK" />
+        </td>
+    </tr>
+    <tr>
+        <td>Số lượng</td>
+        <td>Tỷ lệ</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td colspan=2>Số lượng SV</td>
+    </tr>
+    <tr>
+        <td rowspan=4>2</td>
+        <td>Số lượng GVCH</td>
+        <td>Tổng số</td>
+        <td>@MarkGV(GVCH_Ks, "Danh sách GVCH khoa")</td>
+    </tr>
+    <tr>
+        <td rowspan=3>Trong đó:</td>
+        <td>TS</td>
+        <td>@MarkGV(GVCH_K_TSs, "GVCH trình độ TS")</td>
+        <td>@Math.Round(GVCH_K_TSs.Count() * 100f / GVCH_Ks.Count())%</td>
+    </tr>
+    <tr>
+        <td>ThS</td>
+        <td>@MarkGV(GVCH_K_ThSs, "GVCH trình độ ThS")</td>
+        <td>@Math.Round(GVCH_K_ThSs.Count() * 100f / GVCH_Ks.Count())%</td>
+    </tr>
+    <tr>
+        <td>ĐH</td>
+        <td>@MarkGV(GVCH_K_DHs, "GVCH trình độ ĐH")</td>
+        <td>@Math.Round(GVCH_K_DHs.Count() * 100f / GVCH_Ks.Count())%</td>
+    </tr>
+    <tr>
+        <td rowspan=5>3</td>
+        <td>Tổng giờ giảng (nhiệm vụ khoa)</td>
+        <td>ΣGG của khoa (không tính GG của Ban KHCB)</td>
+        <td>@MarkGG(DLGG_, DLGGs, "ΣGG của khoa (không tính GG của Ban KHCB)")</td>
+    </tr>
+    <tr>
+        <td rowspan=3>Trong đó:</td>
+        <td>ΣGVCH của khoa</td>
+        <td>@MarkGG(DLGG_K_CH_, DLGG_K_CHs, "ΣGVCH của khoa")</td>
+        <td>@Math.Round(DLGG_K_CH_ * 100f / DLGG_)%</td>
+    </tr>
+    <tr>
+        <td>ΣGVCH khoa khác (A,B,C,...)</td>
+        <td>@MarkGG(DLGG_KK_CH_, DLGG_KK_CHs, "ΣGVCH khoa khác (A,B,C,...)")</td>
+        <td>@Math.Round(DLGG_KK_CH_ * 100f / DLGG_)%</td>
+    </tr>
+    <tr>
+        <td>ΣGVTG</td>
+        <td>@MarkGG(DLGG_TG_, DLGG_TGs, "ΣGVTG")</td>
+        <td>@Math.Round(DLGG_TG_ * 100f / DLGG_)%</td>
+    </tr>
+    <tr>
+        <td>Giờ giảng Ban KHCB</td>
+        <td></td>
+        <td>@MarkGG(DLGG_BM_, DLGG_BMs, "Giờ giảng Ban KHCB")</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td colspan=2>GG dạy cho đơn vị khác của GVCH (A,B,C,...)</td>
+        <td>@MarkGG(DLGG_KKK_CH_, DLGG_KKK_CHs, "GG dạy cho đơn vị khác của GVCH (A,B,C,...)")</td>
+    </tr>
+    <tr>
+        <td rowspan=3>5</td>
+        <td rowspan=3>Số giờ/GV*</td>
+        <td>Trung bình</td>
+    </tr>
+    <tr>
+        <td>Thấp nhất</td>
+    </tr>
+    <tr>
+        <td>Cao nhất</td>
+    </tr>
+</table>
+<div>Ghi chú: *: không tính chức danh trợ giảng</div>
+<h3>THỐNG KÊ GIỜ GIẢNG GIẢNG VIÊN CƠ HỮU (Tiết ...)</h3>
+
+<style>
+    table#TK_Ngan td { border: 1px solid !important; padding: 0; }
+</style>
+<script>
+    $(function () {
+        $("#@rand1").combobox();
+        $("#@rand3").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        }).change(function () {
+            $("#@rand2").val($(this).val());
+        }).prop("type", "text").css("width", "80px");
+    });
+</script>

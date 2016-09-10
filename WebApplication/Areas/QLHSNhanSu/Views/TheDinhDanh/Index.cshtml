@@ -1,0 +1,50 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    var action = "TheDinhDanh";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from dsTheDinhDanh where NV_id=@p0", Model);
+}
+
+<table class="table table-hover">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTTNhanSu/"+action+"/EditP?NV_id=" + Model)
+        </th>
+        <th>Số thẻ</th>
+        <th>Ngày cấp</th>
+        <th>Ngày hết hạn</th>
+        <th>Nơi cấp</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            @Html.Display(dr, dt.Columns["tenLoaiTheDinhDanh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["SoThe"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayCap"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayHetHan"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["tenTinhThanh"])
+        </td>
+        <td>
+            @Html.Editor4U("~/QLTTNhanSu/"+action+"/EditP?id=" + dr["id"])
+            @Html.Editor4D("~/QLTTNhanSu/"+action+"/DeleteS?id=" + dr["id"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>

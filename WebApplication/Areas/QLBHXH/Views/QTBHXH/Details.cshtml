@@ -1,0 +1,85 @@
+﻿@model HRM.QLBHXH.Models.nvbhQuaTrinhBHXH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>nvbhQuaTrinhBHXH</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvbhNhanVienBHXH.HoVaTen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvbhNhanVienBHXH.HoVaTen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ThoiGianBatDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThoiGianBatDau)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ThoiGianKetThuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThoiGianKetThuc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MucLuongDongBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MucLuongDongBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MucDongBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MucDongBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MucDongBHTN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MucDongBHTN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HeSoTienLuongDongBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HeSoTienLuongDongBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MucDongToiThieu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MucDongToiThieu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu2)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

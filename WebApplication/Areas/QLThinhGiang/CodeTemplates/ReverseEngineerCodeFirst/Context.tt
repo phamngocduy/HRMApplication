@@ -1,0 +1,48 @@
+<#@ template hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude" #><#@
+ output extension=".cs" #><#
+
+    var efHost = (EfTextTemplateHost)Host;
+    var code = new CodeGenerationTools(this);
+#>
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
+using HRM.QLThinhGiang.Models;
+using HRM.QLThinhGiang.Models.Mapping;
+namespace HRM.QLThinhGiang.Models
+{
+    public partial class HRMDB_Entities : DbContext
+    {
+        static HRMDB_Entities()
+        {
+            Database.SetInitializer<HRMDB_Entities>(null);
+        }
+
+        public HRMDB_Entities()
+            : base("Name=HRMDB0Entities")
+        {
+        }
+
+<#
+    foreach (var set in efHost.EntityContainer.BaseEntitySets.OfType<EntitySet>())
+    {
+#>
+        public DbSet<<#= set.ElementType.Name #>> <#= set.ElementType.Name #> { get; set; }
+<#
+    }
+#>
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+<#
+    foreach (var set in efHost.EntityContainer.BaseEntitySets.OfType<EntitySet>())
+    {
+#>
+            modelBuilder.Configurations.Add(new <#= set.ElementType.Name #>Map());
+<#
+    }
+#>
+        }
+    }
+}

@@ -1,0 +1,101 @@
+﻿@using System.Data
+@using System.Collections;
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@{
+    ViewBag.Title = "Summary";
+    var db = new HRMDBEntities();
+    var table = TinhCong.dsNhanVien(db);
+    var count = 0;
+    ViewBag.ALL = 0; Shared.Clear();
+}
+
+<h2>Danh sách CB/GV/NV trường ĐH Văn Lang</h2>
+
+<table id="Summary">
+<thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Họ và tên</th>
+        <th>Đơn vị</th>
+        <th>Điểm</th>
+        <th>Tiền</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var row in table.Rows.ToArray())
+{
+    var S = new Func<string, string>(s => String.IsNullOrEmpty(s) ? "_" : s);
+    <tr>
+        <td>@(++count)</td>
+        <td>@row["MaNV"]</td>
+        <td><mark title="@row["MaNV"]">@Html.ActionLink(S(row["HoVaTen"].ToString().ToUpper()), "Details", new { NV_id = row["id"], HoVaTen = S(row["HoVaTen"].ToString()), DonVi = S(row["tenDonVi"].ToString()) }, new { target = "_blank" })</mark></td>
+        <td><mark title="@row["maDonVi"]">@(row["id"].Equals(526) ? null : row["tenDonVi"])</mark></td>
+        @if (!String.IsNullOrEmpty(Request.Form["CongThuc"]))
+        {
+            Html.Raw(TinhCong.Details((int)row["id"], ViewBag, Request.Form["CongThuc"]));
+            <td id="diem">@TinhDiem._TongDiem((int)row["id"], ViewBag)</td>
+            <td id="tien"></td>
+        }
+        else
+        {
+            <td id="diem">0</td>
+            <td id="tien"></td>
+        }
+        @{
+            foreach (var tb in ViewBag.TB ?? new List<string>())
+            {
+                <span>@tb</span>
+            }
+        }
+    </tr>
+}
+</tbody>
+</table>
+
+@*<h4>Tổng: @ViewBag.ALL</h4>*@
+
+@using (Html.BeginForm())
+{
+    <br />
+    <label>Công thức:</label>
+    @Html.TextBox("CongThuc", Request.Form["CongThuc"])
+    <input type="submit" value="Tính điểm" />
+}
+<form id="Tien">
+    <label>Số tiền:</label>
+    @Html.TextBox("SoTien", Request.Form["SoTien"])
+    <input type="submit" value="Tính tiền" />
+</form>
+
+<script>
+    $(function () {
+        $("table#Summary").dataTable({
+            aLengthMenu: [
+                [25, 50, 100, 200, -1],
+                [25, 50, 100, 200, "All"]
+            ],
+            iDisplayLength: -1,
+            "sDom": '<"H"Tfr>t<"F"ip>',
+            "oTableTools": {
+                "sSwfPath": "/hrm/Content/copy_csv_xls.swf",
+                "aButtons": ["xls", "print"]
+            },
+            "aoColumns": [null, null, null, null, { "sType": "numeric" }, { "targets": "no-sort" }]
+        });
+        $("form#Tien").live("submit", function (e) {
+            e.preventDefault();
+            var score = 0;
+            $("[id=diem]").each(function () {
+                score += parseFloat($(this).text());
+            });
+            score = Math.max(score, 1);
+            var money = parseFloat($(this).find("input").val());
+            $("[id=diem]").each(function () {
+                $(this).next().text(Math.round(parseFloat($(this).text()) * money / score));
+            });
+        });
+    });
+</script>

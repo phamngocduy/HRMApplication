@@ -1,0 +1,85 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Edit";
+    var KiemNhiem = "QTKiemNhiem";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery(@"select * from dsQTKiemNhiem where NV_id=@p0 order by ThoiGianBatDau desc", Model);
+    var rand = new Random().Next();
+}
+
+<span class="ui-state-highlight">
+    Thông tin kiêm nhiệm
+</span>
+
+<table id="@rand" class="table table-bordered table-condensed" style="margin:0">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTTNhanSu/" + KiemNhiem + "/EditP?NV_id=" + Model)
+        </th>
+        <th style="text-align:center">Thời gian</th>
+        <th>Đơn vị<br />công tác</th>
+        <th>Công việc</th>
+        <th>Phụ cấp</th>
+        <th>Ghi chú</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            <button class="select" style="width:16px"></button>
+            <ul style="z-index:1000">
+                <li>@Html.Link4U("~/QLTTNhanSu/" + KiemNhiem + "/EditP?id=" + dr["id"], "Edit")</li>
+                <li>@Html.Link4D("~/QLTTNhanSu/" + KiemNhiem + "/DeleteS?id=" + dr["id"], "Delete")</li>
+            </ul>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["ThoiGianBatDau"])<br />
+            @if (dr["ThoiGianKetThuc"] is DBNull)
+            {
+                <span>~</span>
+            }
+            else
+            {
+                @Html.Display(dr, dt.Columns["ThoiGianKetThuc"])
+            }
+        </td>
+        <td>
+            <mark data-tip="@Html.Display(dr, dt.Columns["tenDonVi"])">@Html.Display(dr, dt.Columns["maDonVi"])</mark>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["CongViec"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["PhuCap"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["GhiChu"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#@rand").find("th").attr("nowrap", true);
+        $("#@rand").find(".select").button({
+            text: false,
+            icons: { primary: "ui-icon-circle-triangle-s" }
+        }).click(function () {
+            var menu = $(this).next().show().position({
+                my: "left top",
+                at: "left bottom",
+                of: this
+            });
+            $(document).one("click", function () { menu.hide(); });
+            return false;
+        }).next().hide().menu();
+    });
+</script>

@@ -1,0 +1,74 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    var action = "TTKyLuatTruoc";
+    ViewBag.Title = "Edit";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvTTKyLuatTruoc where NV_id=@p0", Model);
+    var rand = new Random().Next();
+}
+
+<table id="@rand" class="table table-hover table-bordered" style="margin:0">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTTNhanSu/"+action+"/EditP?NV_id=" + Model)
+        </th>
+        <th>Số QĐ</th>
+        <th>Ngày</th>
+        <th>Cấp QĐ</th>
+        <th>Nơi cấp</th>
+        <th>Lý do</th>
+        <th>Ghi chú</th>
+        <th>Hiển thị</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            @Html.Editor4U("~/QLTTNhanSu/"+action+"/EditP?id=" + dr["id"])
+            @Html.Editor4D("~/QLTTNhanSu/"+action+"/DeleteS?id=" + dr["id"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["SoQuyetDinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayQuyetDinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["CapQuyetDinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NoiCapQuyetDinh"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["LyDoKyLuat"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["TrangThai"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["GhiChu"])
+        </td>
+    </tr>
+}
+@if (dt.Rows.Count == 0)
+{
+    <tr>
+        <td colspan=8 style="text-align:center">
+            <i>Không có.</i>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#@rand").find("th,td").attr("nowrap", true);
+    });
+</script>

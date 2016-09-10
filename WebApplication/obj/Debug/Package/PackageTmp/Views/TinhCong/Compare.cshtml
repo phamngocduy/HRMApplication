@@ -1,0 +1,63 @@
+﻿@using System.Data
+@using System.Collections;
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@{
+    ViewBag.Title = "Summary";
+    var db = new HRMDBEntities();
+    var table = TinhCong.dsNhanVien(db);
+    var phuongAn = (Request.Form["PhuongAn"] ?? "").Split('\n').Where(pa => !String.IsNullOrEmpty(pa));
+}
+
+<table id="Compare">
+<thead>
+    <tr>
+        <th>Họ và tên</th>
+    @foreach (var pa in phuongAn)
+    {
+        <th>@pa</th>
+    }
+    </tr>
+</thead>
+<tbody>
+@foreach (var row in table.Rows.ToArray())
+{
+    var S = new Func<string, string>(s => String.IsNullOrEmpty(s) ? "_" : s);
+    <tr>
+        <td><mark title="@row["MaNV"]">@Html.ActionLink(S(row["HoVaTen"].ToString().ToUpper()), "Details", new { NV_id = row["id"], HoVaTen = S(row["HoVaTen"].ToString()), DonVi = S(row["tenDonVi"].ToString()) })</mark></td>
+    @foreach (var pa in phuongAn)
+    {
+        <td>@Math.Round(TinhDiem.tinhDiem((int)row["id"], pa), 2)</td>
+    }
+    </tr>
+}
+</tbody>
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.TextArea("PhuongAn", Request.Form["PhuongAn"])
+    <input type="submit" value="So sánh" />
+}
+
+<script>
+    $(function () {
+        $("table#Compare").dataTable({
+            aLengthMenu: [
+                [25, 50, 100, 200, -1],
+                [25, 50, 100, 200, "All"]
+            ],
+            iDisplayLength: -1,
+            "sDom": '<"H"Tfr>t<"F"ip>',
+            "oTableTools": {
+                "sSwfPath": "/hrm/Content/copy_csv_xls.swf",
+                "aButtons": ["xls", "print"]
+            },
+            "aoColumns": [null,
+            @foreach (var pa in phuongAn) {
+                @Html.Raw("{ 'sType': 'numeric' },")
+            }]
+        });
+    });
+</script>

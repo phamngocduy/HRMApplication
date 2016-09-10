@@ -1,0 +1,19 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model Object
+@{
+    var db = ViewBag.db as HRMDB_Entities;
+    var dt = db.SqlQuery("select * from dsDiaChiNha where NV_id=@p0", ViewData["NV_id"]);
+    var dsDiaChi = dt.Rows.OfType<DataRow>().Select(dr => new
+    {
+        id = dr["id"],
+        DiaChi = (dr["DiaChi"] as string)
+            + (!String.IsNullOrEmpty(dr["tenPhuongXa"] as string) ? ", " + dr["tenPhuongXa"] as string : null)
+            + (!String.IsNullOrEmpty(dr["tenQuanHuyen"] as string) ? ", " + dr["tenQuanHuyen"] as string : null)
+            + (!String.IsNullOrEmpty(dr["tenTinhThanh"] as string) ? ", " + dr["tenTinhThanh"] as string : null)
+    }).ToList();
+}
+
+@Html.DropDownList(((DataColumn)ViewData["Column"]).ColumnName,
+                    new SelectList(dsDiaChi, "id", "DiaChi", Model), String.Empty, new { @class = "readonly" })

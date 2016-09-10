@@ -1,0 +1,99 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLVayMuon.Models
+@model IEnumerable<HRM.QLVayMuon.Models.HoanVay>
+
+@{
+    ViewBag.Title = "Index";
+    var db =  new HRMDB1Entities();
+
+    //var NhanVien = db.NhanVienVayMuon.All.Find((int)ViewBag.NV_id);
+    var KV_id = (int)ViewBag.KV_id;
+    
+    
+}
+
+
+<p>
+    <h4>
+    Chi tiết hoàn vay của khoản vay có số chứng từ: @db.KhoanVay.FirstOrDefault(kv => kv.id == KV_id).SoChungTu
+    </h4>     
+</p>
+
+<p >
+
+    @Html.ActionLink("Trở về danh sách khoản vay", "Index",  new { NV_id = db.KhoanVay.FirstOrDefault(k => k.id == KV_id).NhanVienVayMuon.id })
+    
+</p>
+
+<table id = "HoanVay">
+<thead>
+    <tr>
+        <th>@Html.VN("Số chứng từ")</th>
+        <th>@Html.VN("Ngày chứng từ")</th>
+        <th>@Html.VN("Diễn giải")</th>
+        <th>@Html.VN("Mục đích sử dụng")</th>
+        <th>@Html.VN("Định mức")</th>
+        <th>@Html.VN("Số tiền hoàn")</th>
+        <th>@Html.VN("Số tiền lãi")</th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoChungTu)
+        </td>
+        <td>
+            @item.NgayChungTu.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienGiai)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.KhoanVay.dmMucDichSuDung.TenMucDich)
+        </td>
+         <td>
+                @if (item.KhoanVay.DinhMuc == true)
+                {
+                    <span>
+                    Định mức
+                    </span>
+                }
+                else
+                {
+                    <span>
+                    Ngoài Định mức
+                    </span>
+                }
+            
+        </td>
+
+        <td>@String.Format("{0:#,##0}", item.SoTienHoan)</td>
+
+        <td>@String.Format("{0:#,##0}", item.SoTienLai)</td>
+       
+        <td>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#HoanVay").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+
+     
+
+</script>
+

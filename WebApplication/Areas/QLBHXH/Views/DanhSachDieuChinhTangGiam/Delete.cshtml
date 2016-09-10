@@ -1,0 +1,45 @@
+﻿@using HRM.Webpages.Helpers
+@model HRM.QLBHXH.Models.nvbhDanhSachDieuChinhTangGiam
+
+@{
+    ViewBag.Title = "Delete";
+    var hoten = ViewBag.hovaten;
+}
+<h2><font color="red">Bạn có muốn xóa thông tin?</font></h2>
+
+<fieldset>
+    <legend>nvbhDanhSachDieuChinhTangGiam</legend>         
+        @Html.VN("Loại điều chỉnh: ")
+        <b>@Html.DisplayFor(model => model.dmLoaiDieuChinh.LoaiDieuChinh)</b>
+        <br />
+
+    @*    @Html.VN("Loại: ")
+        <b>@Html.DisplayFor(model => model.dmLoaiTangGiam.LoaiTangGiam)</b>
+        <br />*@
+
+        @Html.VN("Họ và tên: ")
+   
+
+           <b>  @Html.Display("hovaten", String.Empty)  </b> 
+        <br />
+
+        @Html.VN("Mã nhân viên: ")
+        <b>        @Html.Display("manv", String.Empty)</b>
+        <br />
+
+        @Html.VN("Số sổ BHXH: ")
+        <b>        @Html.Display("sobh", String.Empty)</b>
+        <br />
+
+        @Html.VN("Ngày phát sinh: ")
+        <b>@Html.DisplayFor(model => model.NgayPhatSinh)</b>
+
+
+
+    
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xóa" />      
+    </p>
+}

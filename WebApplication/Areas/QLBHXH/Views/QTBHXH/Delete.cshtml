@@ -1,0 +1,62 @@
+﻿@model HRM.QLBHXH.Models.nvbhQuaTrinhBHXH
+
+@{
+    ViewBag.Title = "Delete";
+    var ten=ViewBag.nvten;
+}
+
+<h3>Bạn có muốn xóa thông tin quá trình này của @ten?</h3>
+<fieldset>
+    <legend>nvbhQuaTrinhBHXH</legend>
+
+
+    <div class="display-field">
+    <b>Thời gian bắt đầu:</b> 
+        @Html.DisplayFor(model => model.ThoiGianBatDau)
+    </div>
+     <div class="display-field">
+   <b> Thời gian kết thúc:</b> 
+   
+        @Html.DisplayFor(model => model.ThoiGianKetThuc)
+    </div>
+    <div class="display-field">
+   <b>Mức lương đóng BHXH:</b> 
+    
+        @Html.DisplayFor(model => model.MucLuongDongBHXH)
+    </div>
+       <div class="display-field">
+<b> Mức đóng BHXH:</b> 
+ 
+        @Html.DisplayFor(model => model.MucDongBHXH)
+    </div>
+     <div class="display-field">
+<b> Mức đóng BHTN:</b> 
+   
+        @Html.DisplayFor(model => model.MucDongBHTN)
+    </div>
+      <div class="display-field">
+<b> HSL:</b> 
+  
+        @Html.DisplayFor(model => model.HeSoTienLuongDongBHXH)
+    </div>
+     <div class="display-field">
+<b> Mức lương tối thiểu:</b> 
+   
+        @Html.DisplayFor(model => model.MucDongToiThieu)
+    </div>
+    <div class="display-field">
+<b> Ghi chú 1:</b> 
+    
+        @Html.DisplayFor(model => model.GhiChu1)
+    </div>
+       <div class="display-field">
+<b> Ghi chú 2:</b> 
+ 
+        @Html.DisplayFor(model => model.GhiChu2)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Xóa" /> 
+    </p>
+}

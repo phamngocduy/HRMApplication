@@ -1,0 +1,384 @@
+﻿@model IEnumerable<HRM.Databases_HDLaoDong.Models.hdNLD>
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Index";
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var db = new HRMDB2Entities();
+    var listXem = new List<string>();
+    listXem.Add("HĐLĐ cuối");
+    listXem.Add("Tất cả");
+    var XemTatCa = "";
+    try
+    {
+        XemTatCa = TempData["XemTatCa"].ToString();
+    }
+    catch { }
+    var selectXem = new SelectList(listXem, XemTatCa);
+    
+}
+@{var dsHDLDDaloc = new hdChiTietHDLD();
+  dsHDLDDaloc = null;
+}
+<div style="margin-left: 45%">
+    <a href="@Url.Action("Index", "NhapDuLieu")">
+        <input id="bntNhapDuLieu" type="button" value="Nhập dữ liệu" /></a> <a href="@Url.Action("Index", "BaoCao", new { dsHDLDDaloc = dsHDLDDaloc })">
+            <input id="btnBaoCao" type="button" value="Báo cáo" /></a> <a href="@Url.Action("Create", "CauHinhHeThong")">
+                <input id="btnCauHinh" type="button" value="Cấu hình" /></a>
+</div>
+<div style="padding: 0; width: 1000px; font-size: inherit">
+    @{
+        if (TempData["MessageHDHH"] != null)
+        {
+        <span class="message-error">Có @TempData["MessageHDHH"] HĐLĐ sắp hết hạn.</span>if (TempData["MessageHDHH"] != null)
+                                                                   {<a title="Danh sách hợp đồng lao động sắp hết hạn" href="~/HDLaoDong/DSHDSapHetHan/Index"><span
+                                                                   class="ui-icon ui-icon-arrowreturnthick-1-e" style="display: inline-block; width: 20px;
+                                                                   height: 12px"></span></a>}<br />
+        <br />
+        }
+        if (TempData["MessageNLDCT"] != null)
+        {
+        <span class="message-error">Có @TempData["MessageNLDCT"] Tuyển dụng đạt.</span>if (TempData["MessageNLDCT"] != null)
+                                                                    {<a title="Danh sách NLĐ cần tạo hợp đồng lao động" href="~/HDLaoDong/DSNLDCanTaoHD/Index"><span
+                                                                    class="ui-icon ui-icon-arrowreturnthick-1-e" style="display: inline-block; width: 20px;
+                                                                    height: 12px"></span></a>}
+        <br />
+        }
+        @Html.StatusMessage(TempData["Message_NhapDuLieu"])
+    }
+</div>
+<div style="padding: 0; width: 1000px; font-size: small">
+    <table id="TableHDNLD">
+        <thead>
+            <tr>
+                <th style="text-align: center; width: 20px" nowrap>
+                    STT
+                </th>
+                <th style="text-align: center" nowrap>
+                    Số HĐ
+                </th>
+                <th style="text-align: center" nowrap>
+                    Họ và tên
+                </th>
+                <th style="text-align: center" nowrap>
+                    Đơn<br />
+                    vị
+                </th>
+                <th style="text-align: center" nowrap>
+                    Chức danh<br />
+                    CM
+                </th>
+                <th style="text-align: center" nowrap>
+                    Loại HĐ
+                </th>
+                <th style="text-align: center" nowrap>
+                    Thời<br />
+                    hạn
+                </th>
+                <th style="text-align: center" nowrap>
+                    Ngày có<br />
+                    hiệu lực
+                </th>
+                <th style="text-align: center" nowrap>
+                    Ngày hết<br />
+                    hiệu lực
+                </th>
+                <th style="text-align: center" nowrap>
+                    PLHĐ<br />
+                    đi kèm
+                </th>
+                <th style="text-align: center" nowrap>
+                    Hoàn<br />
+                    thành
+                </th>
+            </tr>
+        </thead>
+        @if (XemTatCa != "Tất cả")
+        {
+            <tbody>
+                @{int count = 0;}
+                @foreach (var item in Model)
+                {
+                    count = count + 1;
+                    <tr>
+                        <td style="text-align: center">
+                            @count
+                        </td>
+                        <td style="text-align: center" nowrap>
+                            @if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().LoaiHD.ToLower() == "Thử việc".ToLower())
+                            {
+                                @Html.ActionLink(item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().SoHD, "Details_HDThuViec", "ThemMoiHD", new { id = item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().id }, null)
+                            }
+                            else if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().LoaiHD.ToLower() == "Hợp đồng cơ hữu".ToLower())
+                            {
+                                @Html.ActionLink(item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().SoHD, "Details_HDCoHuu", "ThemMoiHD", new { id = item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().id }, null)
+                            }
+                            else if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().LoaiHD.ToLower() == "Hợp đồng dài hạn".ToLower() || item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().LoaiHD.ToLower() == "Hợp đồng dài hạn".ToLower())
+                            {
+                                @Html.ActionLink(item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().SoHD, "Details_HDDaiHan", "ThemMoiHD", new { id = item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().id }, null)
+                            }
+                        </td>
+                        <td style="text-align: center" nowrap>
+                            @Html.ActionLink(item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().HotenNLD, "Index", "QTKyHDTungNguoi", new { NLD_id = item.id }, null)
+                        </td>
+                        @{  string tenDonVi = "";
+                            if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().Donvi_id != null)
+                            {
+                                int? Donvi_id = item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().Donvi_id;
+                                tenDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).First().tenDonVi;
+                            }
+                        }
+                        <td style="text-align: center" data-tip="@tenDonVi">
+                            @{  string maDonVi = "";
+                                if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().Donvi_id != null)
+                                {
+                                    int? Donvi_id = item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().Donvi_id;
+                                    maDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).FirstOrDefault().maDonVi;
+                                }
+                                @Html.DisplayFor(model => maDonVi)
+                            }
+                        </td>
+                        <td style="text-align: center">
+                            @{  string tenChucDanh = "";
+                                if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().Chucdanh_id != null)
+                                {
+                                    int? ChucDanh_id = item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().Chucdanh_id;
+                                    tenChucDanh = db0.dmChucDanhChuyenMon.Where(dv => dv.id == ChucDanh_id).FirstOrDefault().tenChucDanhChuyenMon;
+                                }
+                                @Html.Raw(tenChucDanh)
+                            }
+                        </td>
+                        <td style="text-align: center">
+                            @Html.DisplayFor(model => item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().dmLoaiHopDong.tenLoaiHD)
+                        </td>
+                        <td style="text-align: center">
+                            @Html.DisplayFor(model => item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().dmThoiHanHD.tenThoiHanHD)
+                        </td>
+                        <td style="text-align: center">
+                            @item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().NgayHL.ToShortDateString()
+                        </td>
+                        <td style="text-align: center">
+                            @try
+                            {
+                                @item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().NgayhetHL.Value.ToShortDateString()
+                            }
+                            catch
+                            {
+                            }
+                        </td>
+                        @{
+                            int HD_id = item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().id;
+                            var pl1 = db.hdPhuLucHD12LuuFile.Where(pl => pl.HD_id == HD_id && pl.LoaiPL == "PLSo1");
+                            var pl2 = db.hdPhuLucHD12LuuFile.Where(pl => pl.HD_id == HD_id && pl.LoaiPL == "PLSo2");
+                
+                        }
+                        <td style="text-align: center">
+                            @if (pl1.Count() > 0)
+                            {
+                                @Html.Raw("PL Hơp đồng số 1, ")
+                            }
+                            @if (pl2.Count() > 0)
+                            {
+                                @Html.Raw("PL Hơp đồng số 2")
+                            }
+                        </td>
+                        <td style="text-align: center">
+                            @{
+                            string status = "";
+                            if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_NgayNLDky != null || (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_NLDky != null && item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_NLDky != ""))
+                            {
+                                status = "NLĐ đã ký";
+                                if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_NgayTrinhHT != null || (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_TrinhHT != null && item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_TrinhHT != ""))
+                                {
+                                    status = "Đã trình HT";
+                                    if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_NgayHTky != null || (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_HTky != null && item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_HTky != ""))
+                                    {
+                                        status = "HT đã ký";
+                                        if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_NgayLuuHS != null || (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_LuuHS != null && item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_LuuHS != ""))
+                                        {
+                                            status = "Đã lưu HS";
+                                            if (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_NgayTraNLD != null || (item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_TraNLD != null && item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().QT_TraNLD != ""))
+                                            {
+                                                status = "Hoàn thành";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            }
+                            @Html.Raw(status)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        }
+        else
+        {
+            <tbody>
+                @{int count = 0;}
+                @foreach (var item in Model)
+                {
+                    foreach (var it in item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL))
+                    {
+                        count = count + 1;
+                    <tr>
+                        <td style="text-align: center">
+                            @count
+                        </td>
+                        <td style="text-align: center" nowrap>
+                            @if (it.id == item.hdChiTietHDLDs.OrderByDescending(ct => ct.NgayhetHL).FirstOrDefault().id)
+                            {
+                                if (it.LoaiHD == "Thử việc")
+                                {
+                                <span data-tip="HĐLĐ cuối"><b>@Html.ActionLink(it.SoHD, "Details_HDThuViec", "ThemMoiHD", new { id = it.id }, null)</b></span>
+                                }
+                                else if (it.LoaiHD == "Hợp đồng cơ hữu")
+                                {
+                                <span data-tip="HĐLĐ cuối"><b>@Html.ActionLink(it.SoHD, "Details_HDCoHuu", "ThemMoiHD", new { id = it.id }, null)</b></span>
+                                }
+                                else if (it.LoaiHD == "Hợp đồng dài hạn")
+                                {
+                                <span data-tip="HĐLĐ cuối"><b>@Html.ActionLink(it.SoHD, "Details_HDDaiHan", "ThemMoiHD", new { id = it.id }, null)</b></span>
+                                }
+                            }
+                            else
+                            {
+                                if (it.LoaiHD == "Thử việc")
+                                {
+                                @Html.ActionLink(it.SoHD, "Details_HDThuViec", "ThemMoiHD", new { id = it.id }, null)
+                                }
+                                else if (it.LoaiHD == "Hợp đồng cơ hữu")
+                                {
+                                @Html.ActionLink(it.SoHD, "Details_HDCoHuu", "ThemMoiHD", new { id = it.id }, null)
+                                }
+                                else if (it.LoaiHD == "Hợp đồng dài hạn")
+                                {
+                                @Html.ActionLink(it.SoHD, "Details_HDDaiHan", "ThemMoiHD", new { id = it.id }, null)
+                                }
+                            }
+                        </td>
+                        <td style="text-align: center" nowrap>
+                            @Html.ActionLink(it.HotenNLD, "Index", "QTKyHDTungNguoi", new { NLD_id = item.id }, null)
+                        </td>
+                        @{  string tenDonVi = "";
+                            if (it.Donvi_id != null)
+                            {
+                                int? Donvi_id = it.Donvi_id;
+                                tenDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).FirstOrDefault().tenDonVi;
+                            }
+                        }
+                        <td style="text-align: center" data-tip="@tenDonVi">
+                            @{  string maDonVi = "";
+                                if (it.Donvi_id != null)
+                                {
+                                    int? Donvi_id = it.Donvi_id;
+                                    maDonVi = db0.dmDonVi.Where(dv => dv.id == Donvi_id).FirstOrDefault().maDonVi;
+                                }
+                                @Html.DisplayFor(model => maDonVi)
+                            }
+                        </td>
+                        <td style="text-align: center">
+                            @{  string tenChucDanh = "";
+                                if (it.Chucdanh_id != null)
+                                {
+                                    int? ChucDanh_id = it.Chucdanh_id;
+                                    tenChucDanh = db0.dmChucDanhChuyenMon.Where(dv => dv.id == ChucDanh_id).FirstOrDefault().tenChucDanhChuyenMon;
+                                }
+                                @Html.Raw(tenChucDanh)
+                            }
+                        </td>
+                        <td style="text-align: center">
+                            @Html.DisplayFor(model => it.LoaiHD)
+                        </td>
+                        <td style="text-align: center">
+                            @Html.DisplayFor(model => it.dmThoiHanHD.tenThoiHanHD)
+                        </td>
+                        <td style="text-align: center">
+                            @it.NgayHL.ToShortDateString()
+                        </td>
+                        <td style="text-align: center">
+                            @try
+                            {
+                                @it.NgayhetHL.Value.ToShortDateString()
+                            }
+                            catch
+                            {
+                            }
+                        </td>
+                        @{
+                            int HD_id = it.id;
+                            var pl1 = db.hdPhuLucHD12LuuFile.Where(pl => pl.HD_id == HD_id && pl.LoaiPL == "PLSo1");
+                            var pl2 = db.hdPhuLucHD12LuuFile.Where(pl => pl.HD_id == HD_id && pl.LoaiPL == "PLSo2");
+                
+                        }
+                        <td style="text-align: center">
+                            @if (pl1.Count() > 0)
+                            {
+                                @Html.Raw("PL Hơp đồng số 1, ")
+                            }
+                            @if (pl2.Count() > 0)
+                            {
+                                @Html.Raw("PL Hơp đồng số 2")
+                            }
+                        </td>
+                        <td style="text-align: center">
+                            @{
+                            string status = "";
+                            if (it.QT_NgayNLDky != null || (it.QT_NLDky != null && it.QT_NLDky != ""))
+                            {
+                                status = "NLĐ đã ký";
+                                if (it.QT_NgayTrinhHT != null || (it.QT_TrinhHT != null && it.QT_TrinhHT != ""))
+                                {
+                                    status = "Đã trình HT";
+                                    if (it.QT_NgayHTky != null || (it.QT_HTky != null && it.QT_HTky != ""))
+                                    {
+                                        status = "HT đã ký";
+                                        if (it.QT_NgayLuuHS != null || (it.QT_LuuHS != null && it.QT_LuuHS != ""))
+                                        {
+                                            status = "Đã lưu HS";
+                                            if (it.QT_NgayTraNLD != null || (it.QT_TraNLD != null && it.QT_TraNLD != ""))
+                                            {
+                                                status = "Hoàn thành";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            }
+                            @Html.Raw(status)
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody> 
+        }
+    </table>
+    <br />
+    <p>
+        Xem tất cả
+        @Html.DropDownList("XemTatCa", selectXem, new { onChange = "myFunction()" })
+    </p>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#TableHDNLD").dataTable({
+            "bAutoWidth": false,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+</script>
+<script>
+    function myFunction() {
+        var index = document.getElementById('XemTatCa').selectedIndex;
+        var m = document.getElementById('XemTatCa').options[index].text;
+        $.ajax({
+            url: "XemTatCa?value=" + m,
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+
+</script>

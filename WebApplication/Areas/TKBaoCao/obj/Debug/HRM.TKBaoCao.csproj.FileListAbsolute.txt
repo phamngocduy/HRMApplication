@@ -1,0 +1,11 @@
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.TKBaoCao.dll
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.TKBaoCao.pdb
+C:\Workspace\HRMApplication\WebApplication\Areas\TKBaoCao\obj\Debug\HRM.TKBaoCao.csprojResolveAssemblyReference.cache
+C:\Workspace\HRMApplication\WebApplication\Areas\TKBaoCao\obj\Debug\HRM.TKBaoCao.dll
+C:\Workspace\HRMApplication\WebApplication\Areas\TKBaoCao\obj\Debug\HRM.TKBaoCao.pdb
+D:\Projects\HRMApplication\WebApplication\bin\HRM.TKBaoCao.dll.config
+D:\Projects\HRMApplication\WebApplication\bin\HRM.TKBaoCao.dll
+D:\Projects\HRMApplication\WebApplication\bin\HRM.TKBaoCao.pdb
+D:\Projects\HRMApplication\WebApplication\Areas\TKBaoCao\obj\Debug\HRM.TKBaoCao.csprojResolveAssemblyReference.cache
+D:\Projects\HRMApplication\WebApplication\Areas\TKBaoCao\obj\Debug\HRM.TKBaoCao.dll
+D:\Projects\HRMApplication\WebApplication\Areas\TKBaoCao\obj\Debug\HRM.TKBaoCao.pdb

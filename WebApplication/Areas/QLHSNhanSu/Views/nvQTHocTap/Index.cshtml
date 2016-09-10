@@ -1,0 +1,270 @@
+﻿@using HRM.Webpages.Helpers;
+@using HRM.Databases.Models;
+@using HRM.QLTTNhanSu.Models;
+@using System.Data.Objects;
+    @{
+        string prefix = null;
+        ViewBag.Title = "Index";
+        var db = new HRMDBEntities();
+        var All = Request["All"] == "on";
+        var From = new Nullable<DateTime>();
+        var To = new Nullable<DateTime>();
+        DateTime date;
+        if (DateTime.TryParse(Request["From"], out date))
+        { From = date; }
+        if (DateTime.TryParse(Request["To"], out date))
+        { To = date; }
+        var Download = Request["Download"] == "OK";
+        var Database = new List<nvQTHocTap>();
+                     
+    }
+@Html.ActionLink("Theo dõi học lấy chứng chỉ", "qtChungChi", "nvQTHocTap")
+@Html.StatusMessage(TempData["Message"])
+@using (Html.BeginForm("Index", "nvQTHocTap", FormMethod.Get, new { id = "Filter" }))
+{
+        <input type="datetime" name="From" title="Từ ngày" value="@From" />
+        <input type="datetime" name="To" title="Đến ngày" value="@To" />
+        <input type="checkbox" name="All" @(All ? "checked" : "") /><span>Tất cả</span>
+        <input type="submit" value="Filter" />
+         <a href="/hrm/QLTTNhanSu/nvQTHocTap/Index?From=@Request["From"]&To=@Request["To"]&All=@Request["All"]&Download=OK" title="Download"><img src="~/images/excel.gif" /></a>
+   @* <span>&nbsp;Tìm kiếm</span><input id="TimKiem" type="text" />*@
+}
+<table id="example" class="tableWithFloatingHeader">
+    <thead>
+        <tr>
+        <th>Họ và tên</th>
+        <th>Đv</th>
+        <th>Văn bằng</th>
+        <th>Nhóm ngành</th>
+        <th>Chuyên ngành</th>      
+        <th>Tên trường</th>
+        <th>Nơi học</th>
+        <th>NN</th>       
+        <th>Loại hình<br />đào tạo</th>
+        <th>Số QĐ</th>
+        <th>Ngày cấp QĐ</th>
+        <th>Cam kết</th>
+        <th>Chế độ</th>
+        <th>Thời gian<br />bắt đầu</th>
+        <th>Kết thúc<br />dự kiến</th>
+        <th>Kết thúc<br />chính thức</th>
+        <th>Xếp loại<br />tốt nghiệp</th>
+        <th>Học phí</th>
+        <th>Chi phí khác</th>
+        <th>Nhà trường<br />hỗ trợ</th>      
+        <th>Thưởng</th>
+        <th>Điều chỉnh <br /> lương</th>       
+        <th>Hiện trạng</th>
+        <th>Ghi chú</th>
+        <th></th>      
+        </tr>
+    </thead>
+<tbody>
+     @{var cts = db.nvQTHocTap
+         .Where(ct => !ct.KetThucChinhThuc.HasValue || All)
+         .Where(ct => ct.BatDau >= From || !From.HasValue)
+          .Where(ct => ct.BatDau <= To || !To.HasValue)
+          .Where(ct => ct.HienTrang_id != 4);
+       if (All)
+       {
+           cts = db.nvQTHocTap;
+       }
+
+       Database.AddRange(cts); 
+    }
+@foreach (var item in cts)
+{
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+    prefix = "item" + item.GetHashCode();
+ <tr>   
+    @using (Html.BeginForm("Update", "nvQTHocTap", new { From = From.HasValue ? From.Value.ToShortDateString() : "", To = To.HasValue ? To.Value.ToShortDateString() : "", All = All ? "on" : "" }))
+    {     
+         @Html.Hidden("Prefix", prefix)
+         @Html.Hidden("HT_id", item.id)
+        TempData["id"] = item.id;
+
+        ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+            <td>@item.NhanVien.nvSoYeuLyLiches.Single().HoVaTen</td>
+            <td>@item.dmDonVi.maDonVi</td>
+            <td>@Html.DropDownListFor(model => item.LoaiBangCap_id, new SelectList(db.dmLoaiBangCap, "id", "tenloaibangcap", item.LoaiBangCap_id))</td>
+            <td>@Html.DropDownListFor(model => item.ChuyenNganh_id, new SelectList(db.dmChuyenNganh, "id", "tenChuyenNganh", item.ChuyenNganh_id), new { @class = "cn" })</td>
+            <td>@Html.TextBoxFor(model => item.ChuyenNganh)</td>
+            <td>@Html.TextBoxFor(model => item.TenTruong)</td>
+            <td>@Html.DropDownListFor(model => item.QuocGia_id, new SelectList(db.dmQuocGia, "id", "tenQuocGia", item.QuocGia_id), new { @class = "size2" })</td>
+            <td>@Html.DropDownListFor(model => item.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "tennoihoc", item.NoiHoc_id), new { @class = "size2" })</td>
+            <td>@Html.DropDownListFor(model => item.LoaiHinhDaoTao_id, new SelectList(db.dmLoaiHinhDaoTao, "id", "tenloaihinhdaotao", item.LoaiHinhDaoTao_id), new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => item.SoQuyetDinh)</td>
+            <td>@Html.EditorFor(model => item.NgayCapQuyetDinh)</td>
+            <td>@Html.EditorFor(model => item.CamKet)</td>
+            <td>@Html.DropDownListFor(model => item.CheDo_id, new SelectList(db.dmCheDoHoc, "id", "tenchedohoc", item.CheDo_id), new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => item.BatDau)</td>
+            <td>@Html.EditorFor(model => item.KetThucDuKien)</td>
+            <td>@Html.EditorFor(model => item.KetThucChinhThuc)</td>
+            <td>@Html.DropDownListFor(model => item.XepLoaiTotNghiep_id, new SelectList(db.dmXepLoaiTotNghiep,"id", "tenxeploaitotnghiep", item.XepLoaiTotNghiep_id), new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => item.HocPhi)</td>
+            <td>@Html.EditorFor(model => item.KinhPhiKhac)</td>
+            <td>@Html.EditorFor(model => item.KinhPhiHoTro)</td>
+            <td>@Html.EditorFor(model => item.ThuongHoanThanh)</td>
+            <td>@Html.EditorFor(model => item.DieuChinhLuong)</td>
+            <td>@Html.DropDownListFor(model => item.HienTrang_id, new SelectList(db.dmHienTrangDiHoc, "id", "tenhientrangdihoc", item.HienTrang_id), new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => item.GhiChu)</td>
+            <td><input type="submit" style="position:absolute; left:-989999999px" />
+            
+              <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+           
+            <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+            </td>
+      
+    }
+</tr>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+<tr>
+ @model HRM.Databases.Models.nvQTHocTap
+ 
+  @using (Html.BeginForm("Update", "nvQTHocTap"))
+  {   
+            <td>@Html.DropDownList("nvien", new SelectList(db.nvSoYeuLyLich, "nv_id", "hovaten"), string.Empty) </td>   
+             @Html.HiddenFor(model => model.NV_id, new { id = "nv_id" })        
+            <td> @Html.DropDownListFor(model => model.DonVi_id, new SelectList(db.dmDonVi, "id", "madonvi"), string.Empty)</td>
+            <td>@Html.DropDownListFor(model => model.LoaiBangCap_id, new SelectList(db.dmLoaiBangCap, "id", "tenloaibangcap"), string.Empty)</td>
+            <td>@Html.DropDownListFor(model => model.ChuyenNganh_id, new SelectList(db.dmChuyenNganh, "id", "tenChuyenNganh", string.Empty), new { @class = "cn" })</td>
+            <td>@Html.TextBoxFor(model => model.ChuyenNganh)</td>
+            <td>@Html.TextBoxFor(model => model.TenTruong)</td>
+            <td>@Html.DropDownListFor(model => model.QuocGia_id, new SelectList(db.dmQuocGia, "id", "tenQuocGia", string.Empty), new { @class = "size2" })</td>
+            <td>@Html.DropDownListFor(model => model.NoiHoc_id, new SelectList(db.dmNoiHoc, "id", "tennoihoc"), string.Empty, new { @class = "size2" })</td>
+            <td>@Html.DropDownListFor(model => model.LoaiHinhDaoTao_id, new SelectList(db.dmLoaiHinhDaoTao, "id", "tenloaihinhdaotao"), string.Empty, new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => model.SoQuyetDinh)</td>
+            <td>@Html.EditorFor(model => model.NgayCapQuyetDinh)</td>
+            <td>@Html.EditorFor(model => model.CamKet)</td>
+            <td>@Html.DropDownListFor(model => model.CheDo_id, new SelectList(db.dmCheDoHoc, "id", "tenchedohoc"), string.Empty, new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => model.BatDau)</td>
+            <td>@Html.EditorFor(model => model.KetThucDuKien)</td>
+            <td>@Html.EditorFor(model => model.KetThucChinhThuc)</td>
+            <td>@Html.DropDownListFor(model => model.XepLoaiTotNghiep_id, new SelectList(db.dmXepLoaiTotNghiep, "id", "tenXepLoaiTotNghiep"), string.Empty, new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => model.HocPhi)</td>
+            <td>@Html.EditorFor(model => model.KinhPhiKhac)</td>
+            <td>@Html.EditorFor(model => model.KinhPhiHoTro)</td>
+            <td>@Html.EditorFor(model => model.ThuongHoanThanh)</td>
+            <td>@Html.CheckBoxFor(model => model.DieuChinhLuong)</td>
+            <td>@Html.DropDownListFor(model => model.HienTrang_id, new SelectList(db.dmHienTrangDiHoc, "id", "tenhientrangdihoc"), string.Empty, new { @class = "size2" })</td>
+            <td>@Html.EditorFor(model => model.GhiChu)</td>
+            
+            <td>
+                <input type="submit" style="position:absolute; left:-989999999px" />
+                <a title="Lưu" id="Save"><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+                <a title="Lưu" id="Save" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+            </td>
+            
+  }   
+       </tr>   
+</tbody>
+</table>
+@if (Download)
+{
+    @Html.Partial("Download", Database)
+}
+<style>
+input { margin: 0 0 0 0 }
+input, textarea {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 1px;
+    width: 100px;
+}
+.cn { width: 150px; }
+.size2 { width: 90px; }
+.sizengay { width: 70px; }
+.sizetien { width: 70px; }
+@*input, .hoten 
+{
+    width: 140px;
+}*@
+@*.custom-combobox .hoten
+{
+width: 140px;
+}*@
+@*input, .donvi 
+{
+    width: 140px;
+     text-align: right;
+}*@
+@*.custom-combobox .hoten
+ {
+  width: 100px;
+}*@
+
+</style>
+
+    <script type="text/javascript" language="javascript" src="/hrm/Scripts/datatables/dataTables.fixedColumns.js"></script>
+    
+    
+<script >
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            "sScrollY": "400px",
+            "sScrollX": "100%",
+            "bScrollCollapse": true,
+            "bPaginate": false,
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aaSorting": [[5, "asc"]]
+        });
+        new $.fn.DataTable.FixedColumns(table, {
+            leftColumns: 1,
+            rightColumns: 1
+        });
+        var $table = $("#example");
+        $table.find("[id^=item]").prop("disabled", true);
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $table.find("input,select").css("border", "0").css("border-bottom", "1px dotted");
+        $table.find("input[type=datetime]").css("border-bottom", "1px dotted");
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+        var hoten = $("[id$=nvien]").combobox({
+
+        });
+        hoten.parent().find("input.ui-autocomplete-input").css("width", "140px")
+        //        var donvi = $("[id$=DonVi_id]");
+        //        var donvi = $("[id$=DonVi_id]").combobox({
+
+        //        });
+        var donvi = $("#DonVi_id").combobox();
+        var bangcap = $('#LoaiBangCap_id').combobox();
+        var chuyennganh = $('#ChuyenNganh_id').combobox();
+        var quocgia = $('#QuocGia_id').combobox();
+        var noihoc = $('#NoiHoc_id').combobox();
+        var loaihinh = $('#LoaiHinhDaoTao_id').combobox();
+        var chedo = $('#CheDo_id').combobox();
+        var xeploaitotnghiep = $('#XepLoaiTotNghiep_id').combobox();
+        var hientrang = $('#HienTrang_id').combobox();
+        donvi.parent().find("input.ui-autocomplete-input").css("width", "50px");
+        bangcap.parent().find("input.ui-autocomplete-input").css("width", "70px");
+        chuyennganh.parent().find("input.ui-autocomplete-input").css("width", "150px");
+        quocgia.parent().find("input.ui-autocomplete-input").css("width", "70px");
+        loaihinh.parent().find("input.ui-autocomplete-input").css("width", "70px");
+        chedo.parent().find("input.ui-autocomplete-input").css("width", "70px");
+        xeploaitotnghiep.parent().find("input.ui-autocomplete-input").css("width", "70px");
+        hientrang.parent().find("input.ui-autocomplete-input").css("width", "70px");
+
+        $(".custom-combobox-input").removeClass("ui-state-default");
+        $(".custom-combobox-input").removeClass("ui-widget-content");
+        $(".custom-combobox-width").removeClass("ui-width-default");
+        $(".custom-combobox-input").removeClass("ui-corner-left");
+        $(".custom-combobox-toggle").removeClass("ui-state-default");
+        var nhvien = $("[id$=nv_id]");
+        //       donvi.css("width", "50px");
+
+        donvi.change(function () {
+            //   alert('124');
+            hoten.trigger("connect", "/hrm/nvQTHocTap/DSNV?idDonvi=" + $(this).val());
+        });
+        hoten.change(function () {
+            nhvien.val($(this).val());
+
+        });
+    });
+</script>

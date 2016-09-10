@@ -1,0 +1,55 @@
+﻿@using System.Data.Objects
+@using HRM.Webpages.Helpers
+@using HRM.Databases_HDLaoDong.Models
+@{
+    var db = new HRMDB2Entities();
+    ViewBag.Title = "Create_ChonLoaiHD";
+    var hdCanTaoHDLD = db.hdCanTaoHDLD.Find(ViewData["DSNLDCanTaoHD_id"]);
+    var hdChiTietHDLDs = (from ct in db.hdChiTietHDLD
+        join hd in db.hdNLD on ct.NLD_id equals hd.id
+        where (hd.NV_id.Contains(hdCanTaoHDLD.MaNV) &&
+        ct.mauHopDong != null) select ct).ToList();
+    var mauHopDongs = db.dmMauHopDong.ToList().Select(mau => new dmMauHopDong { tenMauHD = mau.tenMauHD, hdNoiDung = mau.hdNoiDung })
+        .Union(hdChiTietHDLDs.Select(luu => new dmMauHopDong { tenMauHD = luu.SoHD, hdNoiDung = luu.mauHopDong })).ToList();
+}
+<b style="margin-left: 35%; font-size: large">Chọn loại hợp đồng cần tạo</b>
+<p>
+<br />
+</p>
+    @Html.BeginDiv()
+    @using (Html.BeginForm("Create_ChonLoaiHD", "ThemMoiHD", new { DSNLDCanTaoHD_id = ViewBag.DSNLDCanTaoHD_id }, FormMethod.Post, new { id = "Create_ChonLoaiHD" })) {
+        <fieldset>
+            <legend>Hợp Đồng</legend>
+            Chọn loại HĐ
+            @Html.DropDownList("LoaiHopDong", new SelectList(db.dmLoaiHopDong, "id", "tenLoaiHD", null), "")
+            <textarea id="MauHopDong" name="MauHopDong" style="display:none"></textarea>
+            <input id="Submit1" type="submit" value="Tạo hợp đồng" />
+        </fieldset>
+    }
+    @Html.EndDiv()
+<script src="~/Scripts/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+<style> body { margin: 0 } </style>
+<script>
+    $(function () {
+        $("select#LoaiHopDong,select#XemHopDong")
+        .combobox().parent().find("input.ui-autocomplete-input").css("width", "230px");
+        $(".custom-combobox-input").removeClass("ui-state-default");
+        $(".custom-combobox-input").removeClass("ui-widget-content");
+        $(".custom-combobox-width").removeClass("ui-width-default");
+        $(".custom-combobox-input").removeClass("ui-corner-left");
+        $(".custom-combobox-toggle").removeClass("ui-state-default");
+        $("#XemHopDong").change(function () {
+            CKEDITOR.instances["XemHopDong"].setData($(this).val());
+        });
+        $("form#Create_ChonLoaiHD").submit(function () {
+            $("#MauHopDong").val(CKEDITOR.instances["XemHopDong"].getData());
+        });
+        $("textarea#XemHopDong").ckeditor({ htmlEncodeOutput: true });
+    });
+</script>
+
+Mẫu hợp đồng
+@Html.DropDownList("XemHopDong", new SelectList(mauHopDongs, "hdNoiDung", "tenMauHD", null), "")
+
+<textarea id="XemHopDong"></textarea>

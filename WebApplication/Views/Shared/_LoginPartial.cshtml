@@ -1,0 +1,75 @@
+﻿@using HRM.Webpages.Helpers
+<div>
+<div>
+@if (Request.IsAuthenticated)
+{
+    <a id="splitButton" href="~/Account/Manage" class = "username" title = "Manage">Hello, @User.Identity.Name!</a>
+}
+else
+{
+    <a id="splitButton" href="~/Account/Login?ReturnUrl=@Html.ReturnUrl()">Đăng nhập</a>
+}
+    <button id="select">Select an action</button>
+</div>
+<ul>
+@if (Request.IsAuthenticated)
+{
+    <li>
+        <form action="~/Account/Logout" id="logoutForm" method="post">
+            <a href="javascript:document.getElementById('logoutForm').submit()"><mark><strong>Thoát</strong></mark></a>
+        </form>
+    </li>
+}
+@{
+    foreach (var theme in Themes.List)
+    {
+        if (theme[0].Trim().Equals(Request.Cookies["Theme"].Value))
+        {
+            <li><a href="" class="theme" style="background-color:@theme[1];color:@theme[2];pointer-events:none;" back="@theme[3]" fore="@theme[4]"><strong><u>@theme[0].Trim()</u></strong></a></li>
+        }
+        else
+        {
+            <li><a href="" class="theme" style="background-color:@theme[1];color:@theme[2];" back="@theme[3]" fore="@theme[4]">@theme[0].Trim()</a></li>
+        }
+    }
+}
+    </ul>
+</div>
+<style>
+    .ui-menu { position: absolute; width: 150px; }
+</style>
+<script>
+    $(function () {
+        $(".theme").click(function () {
+            $.cookie("Theme", $.trim($(this).text()), { expires: 7 });
+        });
+        $(".theme").hover(
+            function () {
+                this.prevBack = $(this).css("background");
+                this.prevFore = $(this).css("color");
+                $(this).css("background", $(this).attr("back"));
+                $(this).css("color", $(this).attr("fore"));
+            },
+            function () {
+                $(this).css("background", this.prevBack);
+                $(this).css("color", this.prevFore);
+            });
+    });
+    $("#splitButton")
+    .button().next().button({
+        text: false,
+        icons: {
+            primary: "ui-icon-triangle-1-s"
+        }
+    }).click(function () {
+        var menu = $(this).parent().next().show().position({
+            my: "left top",
+            at: "left bottom",
+            of: this
+        }).zIndex(9999);
+        $(document).one("click", function () {
+            menu.hide();
+        });
+        return false;
+    }).parent().buttonset().next().hide().menu();
+</script>

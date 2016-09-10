@@ -1,0 +1,67 @@
+﻿@model HRM.Databases.Models.QuaTrinhCongTac_Truoc
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>QuaTrinhCongTac_Truoc</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NhanVien.MaNV)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NhanVien.MaNV)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DonViCongTac)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DonViCongTac)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ChucVu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChucVu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ChucDanh)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChucDanh)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ThoiGianBatDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThoiGianBatDau)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ThoiGianKetThuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThoiGianKetThuc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

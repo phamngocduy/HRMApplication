@@ -1,0 +1,113 @@
+﻿@model HRM.QLBHXH.Models.nvbhNhanVienBHXH
+@{
+    ViewBag.Title = "Create";
+
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>nvbhNhanVienBHXH</legend>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Đơn vị
+                    </th>
+                    <th>
+                        Tên nhân Viên
+                    </th>
+                    <th>
+                        Mã NV
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td nowrap class="size" id="coDV">@Html.DropDownList("dsdonvi", "--Chọn đơn vị--")
+                        @Html.ValidationMessageFor(model => model.DonVi)
+                    </td>
+                    <td nowrap class="size">
+                        @Html.DropDownList("nhanvien", "--Chọn tên nhân viên--")
+                        @Html.ValidationMessageFor(model => model.HoVaTen)
+                    </td>
+                    <td class="size1">
+                        <input id="Manvbh" disabled="disabled" />
+                        @Html.HiddenFor(model => model.MANV)
+                         @Html.HiddenFor(model => model.Donvi_id)
+                          @Html.HiddenFor(model => model.NV_id)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @Html.HiddenFor(model => model.DonVi)
+        @Html.HiddenFor(model => model.HoVaTen)
+        <input type="submit" value="Thêm" onclick="return check();" />
+    </fieldset>
+}
+<script>
+
+
+    var dv = $("[id$=dsdonvi]").combobox();
+    var ten = $("[id$=nhanvien").combobox();
+    dv.change(function () {
+        ten.trigger("connect", "/hrm/QLBHXH/NhanVienBHXH/nvds?idDonvi=" + $(this).val());
+        var DV = $("#dsdonvi option:selected").text();
+        var DVid = $(this).val();
+        $("[id$=DonVi]").val(DV);
+        $("[id$=Donvi_id]").val(DVid);
+    });
+    ten.change(function () {
+        var text = $(this).val();
+        var list = text.split('-');
+
+        $("[id$=Manvbh]").val(list[0]);
+        $("[id$=MANV]").val(list[0]);
+        $("[id$=NV_id]").val(list[1]);
+        
+
+    });
+
+  
+
+
+
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+//    $("input[type=text]").css("background-color", "transparent");
+//    $("input[type=text],input[type=datetime],input[type=number],.custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+
+    //ham check xem cac truong nhap vao co null hay ko
+    function check() {
+
+
+        if (document.getElementById('dsdonvi').value == "") {
+            alert("Đơn vị không được bỏ trống!");
+
+            return false;
+        }
+   
+
+        if (document.getElementById('nhanvien').value == "") {
+            alert("Tên nhân viên không được bỏ trống!");
+
+            return false;
+        }
+            return true;
+  
+    }
+
+</script>
+<style>
+    .size .custom-combobox-input
+    {
+        width: 250px;
+    }
+    input#Manvbh
+    {
+        width: 80px;
+    }
+</style>

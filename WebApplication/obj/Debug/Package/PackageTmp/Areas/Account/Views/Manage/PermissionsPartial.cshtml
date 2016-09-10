@@ -1,0 +1,229 @@
+﻿@using HRM.Webpages.Helpers
+
+<table align="center">
+<tr>
+<td valign="top" style="padding:0">
+    <table id="gridRoles"></table>
+    <div id="gridRolesPager"></div>
+    <div align="right">
+        <button id="saveAction">Save actions</button>
+    </div>
+</td>
+<td valign="top" style="padding:0">
+    <table id="gridActions"></table>
+    <div id="gridActionsPager"></div>
+</td>
+</tr>
+</table>
+
+<script>
+function editFunction(response) {
+    if (response.responseText)
+        return false;
+    else return true;
+}
+function addFunction(response) {
+    var result = editFunction(response);
+    if (result) {
+        this.lastSel = 1;
+        $("#"+this.id).trigger("reloadGrid");
+    }
+    return result;
+}
+function errorFunction(rowid, response) {
+    @Html.jqGridError("response.responseText")
+    $actionsDiv.find("div.ui-inline-edit,div.ui-inline-del").show();
+}
+function loadFunction(data) {
+    $("#"+this.id).setSelection(this.lastSel, true);
+    this.lastSel = null;
+}
+function deleteFunction(response, postdata) {
+    return [(response.responseText?false:true), response.responseText];
+}
+function getSelectedRow(jqgrid) {
+    return jqgrid.getRowData(jqgrid.getGridParam("selrow"));
+}
+
+var GridRoles = $("#gridRoles");
+GridRoles.jqGrid({
+    url: "@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/Roles",
+    editurl: "@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/EditRole",
+    datatype: "json", mtype: "POST",
+    colNames: ["RoleId", "Role name", "Summary", "", ""],
+    colModel: [
+   	{ name:"RoleId", hidden:true, search:false, editable:true },
+   	{ name:"RoleName", width:100, search:true, sortable:false, editable:true },
+   	{ name:"Summary", width:80, search:false, sortable:false },
+    { name:"Actions", hidden:true, search:false, editable:true },
+    { width:23, search:false, sortable:false, formatter:"actions", formatoptions: { editbutton:false, delbutton:true,
+        delOptions: {
+            url: "@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/EditRole",
+            delData: {
+                RoleId: function () { return getSelectedRow(GridRoles)["RoleId"]; },
+                RoleName: function () { return getSelectedRow(GridRoles)["RoleName"]; }
+            },
+            afterSubmit: deleteFunction
+    }}}],
+    width: 380,
+    height: "100%",
+    rowNum: 1000,
+    rowList: [1000],
+    pager: "#gridRolesPager",
+    caption: "List of all Roles",
+    loadComplete: loadFunction,
+    onSelectRow: function (rowid) {
+        this.lastSel = rowid;
+        var ids = getSelectedRow(GridRoles)["Actions"];
+        ids = $.trim(ids).split(",");
+        var count = GridActions.getGridParam("records");
+        GridActions.resetSelection();
+        for (id = 1; id <= count; id++)
+            for (i = 0; i < ids.length; i++)
+                if (GridActions.getRowData(id)["Id"] == ids[i])
+                    GridActions.setSelection(id, false);
+        $("#saveAction").button("option", "disabled", true);
+}});
+GridRoles.jqGrid("navGrid", "#gridRolesPager", { edit: false, add: false, del: false });
+GridRoles.jqGrid("inlineNav", "#gridRolesPager", {
+    addParams: {
+        addRowParams: {
+            keys: true,
+            successfunc: addFunction,
+            errorfunc: errorFunction
+        }
+    },
+    editParams: {
+        keys: true,
+        restoreAfterError: true,
+        successfunc: editFunction,
+        errorfunc: errorFunction
+    }
+});
+
+var Controllers = [
+@foreach (var file in new DirectoryInfo(Server.MapPath("~/bin")).EnumerateFiles("HRM.*.dll"))
+{
+    foreach (var type in System.Reflection.Assembly.LoadFile(file.FullName).GetTypes())
+    {
+        if (!String.IsNullOrEmpty(type.Namespace) && type.Namespace.EndsWith(".Controllers")
+            && !type.Name.StartsWith("<"))
+        {
+            @MvcHtmlString.Create(String.Format("\"{0}\",", type.Name))
+        }
+    }
+}
+];
+function editController(elem) {
+    $("#"+elem.id).autocomplete({
+        source: Controllers, minLength: 0,
+    }).on("focus", function () {
+        $(this).autocomplete("search", '');
+    });
+    $(".ui-autocomplete").css("fontSize", "0.9em");
+}
+
+var GridActions = $("#gridActions");
+GridActions.jqGrid({
+    url: "@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/Actions",
+    editurl: "@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/EditAction",
+    datatype: "json", mtype: "POST",
+    colNames: ["Id", "Controller", "Action", ""],
+    colModel: [
+   	{ name:"Id", hidden:true, search:false, editable:true },
+   	{ name:"Controller", width:90, search:true, sortable:false, editable:true, editoptions:{dataInit:editController} },
+   	{ name:"Action", width:110, search:false, sortable:false, editable:true, edittype:"custom",
+        editoptions: {
+            custom_element: function (value, options) {
+                var span = document.createElement("span");
+                var id = $("#" + options.id.split("_")[0] + "_Id").val();
+                $("<a href='@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/EditActions/" + id + "' target='_blank' style='display:inline-block'><span class='ui-icon ui-icon-pencil'/></a>").appendTo($(span));
+                var text = document.createElement("input");
+                text.type="text";
+                text.value = value;
+                span.appendChild(text);
+                return span;
+            },
+            custom_value: function (elem, operation, value) {
+                if(operation === 'get') {
+                   return $('input', elem).val();
+                } else if(operation === 'set') {
+                   $('input', elem).val(value);
+                }
+            }
+        } },
+    { width:23, search:false, sortable:false, formatter:"actions", formatoptions: { editbutton:false, delbutton:true,
+        delOptions: {
+            url: "@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/EditAction",
+            onclickSubmit: function (params, posdata) {
+                return {
+                    Id: function () { return GridActions.getRowData(posdata)["Id"]; },
+                    Action: function() { return getSelectedRow(GridActions)["Action"]; },
+                    Controller: function() { return getSelectedRow(GridActions)["Controller"]; }
+                };
+            },
+            afterSubmit: function (response, postdata) {
+                if (!response.responseText) GridRoles.trigger("reloadGrid");
+                return deleteFunction(response, postdata);
+            }
+    }}}],
+    width: 400,
+    height: "100%",
+    rowNum: 1000,
+    rowList: [1000],
+    scrollrows: true,
+    multiselect: true,
+    pager: "#gridActionsPager",
+    caption: "List of all Actions",
+    onSelectRow: function (rowid) {
+        $("#saveAction").button("option", "disabled", GridRoles.getGridParam("selrow")<1);
+    }
+});
+GridActions.jqGrid("navGrid", "#gridActionsPager", { edit: false, add: false, del: false });
+GridActions.jqGrid("inlineNav", "#gridActionsPager", {
+    addParams: {
+        addRowParams: {
+            keys: true,
+            successfunc: addFunction,
+            errorfunc: errorFunction
+        }
+    },
+    editParams: {
+        keys: true,
+        restoreAfterError: true,
+        successfunc: addFunction,
+        errorfunc: errorFunction
+    }
+});
+
+$("#gridRolesPager_right").hide();
+$("#gridActionsPager_right").hide();
+$("input#cb_gridActions.cbox").hide();
+$("#saveAction").button()
+    .button("option", "disabled", true)
+    .click(function (event) {
+        event.preventDefault();
+        var form = $("<form>");
+        form.append($("<input>", { name: "roleId", value: getSelectedRow(GridRoles)["RoleId"], type: "hidden" }));
+        var actions = GridActions.getGridParam("selarrrow");
+        if (actions != null)
+            for (i = 0; i < actions.length; i++)
+                form.append($("<input>", { name: "actionIds", value: GridActions.getRowData(actions[i])["Id"], type: "textbox" }));
+        $("body").block();
+        $.ajax({
+            url: "@HttpRuntime.AppDomainAppVirtualPath/Account/Permission/SaveAction", type: "POST",
+            data: form.serialize(),
+            success: function (response) {
+                if (response)
+                    @Html.jqGridError("response")
+                GridRoles.trigger("reloadGrid");
+                $("#saveAction").button("option", "disabled", true);
+                $("body").unblock();
+            },
+            error: function (response) {
+                @Html.jqGridError("response.responseText");
+                $("body").unblock();
+            }
+        });
+    });
+</script>

@@ -1,0 +1,89 @@
+﻿@using LinqToExcel
+@using System.Data
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Controllers
+@{
+    ViewBag.Title = "Import";
+    var excel = new LinqToExcel.ExcelQueryFactory(ViewBag.File);
+}
+<table>
+<tr>
+    <th>MaNV</th>
+    <th>KhoaGiangDayChinh</th>
+    <th>KhoaGiangDay</th>
+    <th>NganhGiangDayChinh</th>
+    <th>NganhGiangDay</th>
+</tr>
+@using (var db = new HRMDBEntities())
+{
+    foreach (var row in excel.Worksheet())
+    {
+        var MaNV = row["(MaNV)"].Value as string;
+        var NhanVien = db.NhanViens.All.SingleOrDefault(nv => nv.MaNV == MaNV);
+        if (NhanVien == null)
+        {
+            <tr><td>@MaNV not found!</td></tr>
+            break;
+        }
+        var maLoai = row["(PhanLoaiCBGVNV)"].Value as string;
+        var Loai = db.dmPhanLoaiCBGVNV.SingleOrDefault(l => l.maPhanLoaiCBGVNV == maLoai);
+        if (Loai == null && !String.IsNullOrEmpty(maLoai))
+        {
+            <tr><td>@maLoai not found!</td></tr>
+            break;
+        }
+        var maKhoa = row["(KhoaGiangDayChinh)"].Value as string;
+        var Khoa = db.dmKhoaGiangDay.SingleOrDefault(k => k.maKhoaGiangDay == maKhoa);
+        if (Khoa == null && !String.IsNullOrEmpty(maKhoa))
+        {
+            <tr><td>@maKhoa not found!</td></tr>
+            break;
+        }
+        var maKhoas = (row["(KhoaGiangDay)"].Value as string ?? "").Split(',').Where(m => !String.IsNullOrEmpty(m));
+        var Khoas = (from m in maKhoas select db.dmKhoaGiangDay.SingleOrDefault(k => k.maKhoaGiangDay == m));
+        if (Khoas.Contains(null) && !String.IsNullOrEmpty(String.Join("", maKhoas)))
+        {
+            <tr><td>@maKhoas not found!</td></tr>
+            break;
+        }
+        var maNganh = row["(NganhGiangDayChinh)"].Value as string;
+        var Nganh = db.dmNganhGiangDay.SingleOrDefault(n => n.maNganhGiangDay == maNganh);
+        if (Nganh == null && !String.IsNullOrEmpty(maNganh))
+        {
+            <tr><td>@maNganh not found!</td></tr>
+            break;
+        }
+        var maNganhs = (row["(NganhGiangDay)"].Value as string ?? "").Split(',').Where(m => !String.IsNullOrEmpty(m));
+        var Nganhs = (from m in maNganhs select db.dmNganhGiangDay.SingleOrDefault(n => n.maNganhGiangDay == m));
+        if (Nganhs.Contains(null) && !String.IsNullOrEmpty(String.Join("", maNganhs)))
+        {
+            <tr><td>@maNganhs not found!</td></tr>
+            break;
+        }
+        var nvTTThongKe = NhanVien.nvTTThongKes.SingleOrDefault();
+        if (nvTTThongKe == null)
+        {
+            using (var controller = new nvTTThongKeController())
+            {
+                controller.Create(NhanVien.id);
+            }
+        }
+        nvTTThongKe.dmPhanLoaiCBGVNV = Loai;
+        nvTTThongKe.dmKhoaGiangDay = Khoa;
+        NhanVien.nvKhoaGiangDays.ToList().ForEach(k => db.Entry(k).State = EntityState.Deleted);
+        Khoas.ToList().ForEach(k => db.nvKhoaGiangDay.Add(new nvKhoaGiangDay { NV_id = NhanVien.id, KhoaGiangDay = k.id }));
+        nvTTThongKe.dmNganhGiangDay = Nganh;
+        NhanVien.nvNganhGiangDays.ToList().ForEach(n => db.Entry(n).State = EntityState.Deleted);
+        Nganhs.ToList().ForEach(n => db.nvNganhGiangDay.Add(new nvNganhGiangDay { NV_id = NhanVien.id, NganhGiangDay = n.id }));
+        db.Entry(nvTTThongKe).State = EntityState.Modified;
+    <tr>
+        <td>@row["(MaNV)"]</td>
+        <td>@row["(KhoaGiangDayChinh)"]</td>
+        <td>@row["(KhoaGiangDay)"]</td>
+        <td>@row["(NganhGiangDayChinh)"]</td>
+        <td>@row["(NganhGiangDay)"]</td>
+    </tr>
+    }
+    db.SaveChanges();
+}
+</table>

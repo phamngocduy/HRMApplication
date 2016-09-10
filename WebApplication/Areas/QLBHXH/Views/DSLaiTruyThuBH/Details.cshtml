@@ -1,0 +1,106 @@
+﻿@model HRM.QLBHXH.Models.nvbhLaiTruyThuBH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>nvbhLaiTruyThuBH</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dmLaiSuatTruyThu.id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dmLaiSuatTruyThu.id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dmMucLuongToiThieuChung.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dmMucLuongToiThieuChung.GhiChu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dmTyLeDongBHXH.DoanhNghiepBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dmTyLeDongBHXH.DoanhNghiepBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TienLuongHoacChenhLechTienLuong)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TienLuongHoacChenhLechTienLuong)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TuThangNam)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TuThangNam)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DenThangNam)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DenThangNam)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SoThangTruyThu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SoThangTruyThu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TongThoiGianChamDong)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TongThoiGianChamDong)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TienLaiTruyThuBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TienLaiTruyThuBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TienLaiTruyThuBHTN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TienLaiTruyThuBHTN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TienLaiTruyThuBHYT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TienLaiTruyThuBHYT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TongCong)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TongCong)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GhiChu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GhiChu)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

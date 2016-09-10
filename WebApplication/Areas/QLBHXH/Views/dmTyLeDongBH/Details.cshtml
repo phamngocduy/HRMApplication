@@ -1,0 +1,113 @@
+﻿@model HRM.QLBHXH.Models.dmTyLeDongBHXH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>dmTyLeDongBHXH</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayApDung)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayApDung)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayKetThuc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayKetThuc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DoanhNghiepBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DoanhNghiepBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NguoiLDBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NguoiLDBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TongBHXH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TongBHXH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DoanhNghiepBHYT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DoanhNghiepBHYT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NguoiLDBHYT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NguoiLDBHYT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TongBHYT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TongBHYT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DoanhNghiepBHTN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DoanhNghiepBHTN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NguoiLDBHTN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NguoiLDBHTN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TongNHTN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TongNHTN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TongCong)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TongCong)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThai)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThai)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.STT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.STT)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

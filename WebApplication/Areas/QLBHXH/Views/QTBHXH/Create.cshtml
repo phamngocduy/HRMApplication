@@ -1,0 +1,104 @@
+﻿@model HRM.QLBHXH.Models.nvbhQuaTrinhBHXH
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>nvbhQuaTrinhBHXH</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idNVBHXH, "nvbhNhanVienBHXH")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idNVBHXH", String.Empty)
+            @Html.ValidationMessageFor(model => model.idNVBHXH)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ThoiGianBatDau)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ThoiGianBatDau)
+            @Html.ValidationMessageFor(model => model.ThoiGianBatDau)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ThoiGianKetThuc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ThoiGianKetThuc)
+            @Html.ValidationMessageFor(model => model.ThoiGianKetThuc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MucLuongDongBHXH)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MucLuongDongBHXH)
+            @Html.ValidationMessageFor(model => model.MucLuongDongBHXH)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MucDongBHXH)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MucDongBHXH)
+            @Html.ValidationMessageFor(model => model.MucDongBHXH)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MucDongBHTN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MucDongBHTN)
+            @Html.ValidationMessageFor(model => model.MucDongBHTN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HeSoTienLuongDongBHXH)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HeSoTienLuongDongBHXH)
+            @Html.ValidationMessageFor(model => model.HeSoTienLuongDongBHXH)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MucDongToiThieu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MucDongToiThieu)
+            @Html.ValidationMessageFor(model => model.MucDongToiThieu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GhiChu1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu1)
+            @Html.ValidationMessageFor(model => model.GhiChu1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GhiChu2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu2)
+            @Html.ValidationMessageFor(model => model.GhiChu2)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

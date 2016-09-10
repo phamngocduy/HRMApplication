@@ -1,0 +1,48 @@
+﻿@model HRM.QLVayMuon.Models.NhanVienVayMuon
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Cập nhật</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>NhanVienVayMuon</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DonVi, "Đơn vị")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DonVi)
+            @Html.ValidationMessageFor(model => model.DonVi)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HoVaTen, "Họ và tên")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HoVaTen)
+            @Html.ValidationMessageFor(model => model.HoVaTen)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaNV, "Mã nhân viên")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaNV)
+            @Html.ValidationMessageFor(model => model.MaNV)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+

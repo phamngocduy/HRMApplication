@@ -1,0 +1,252 @@
+﻿@model IEnumerable<HRM.QLBHXH.Models.v_qtbhxh>
+@{
+    ViewBag.Title = "Index2";
+    var ten = ViewBag.Ten1;
+
+
+    var tongnambhxh = ViewBag.tongnambhxh;
+    var tongthangbhxh = ViewBag.tongthangbhxh;
+    var tongnambhtn = ViewBag.tongnambhtn;
+    var tongthangbhtn = ViewBag.tongthangbhtn;
+}
+<a style="text-align: right" title="Trở lại danh sách NV BHXH" onclick="location.href='@Url.Action("index2", "NhanVienBHXH")'">
+    <span class="ui-icon     
+ui-icon-arrowreturnthick-1-w " style="display: inline-block" /></a><font size="3"
+    color="#0099CC"><b>Quá trình tham gian BHXH của @ten</b></font> <a style="text-align: right"
+        title="Đóng" class='button2'><span class="ui-icon ui-icon-closethick" style="display: inline-block" />
+    </a>
+<div id="tgbh" style="background: #FFFFCC">
+    <div>
+        <b>Tổng thời gian tham gia BHXH: </b>@if (tongnambhxh != null)
+                                       {@tongnambhxh}  else
+                                       { <span>0</span>}
+        năm, @if (tongthangbhxh != null)
+             {@tongthangbhxh}
+             else
+                                       { <span>0</span>}  tháng</div>
+    <div>
+        <b>Tổng thời gian tham gia BHTH: </b> @if (tongnambhtn != null)
+                                       {@tongnambhtn}
+                                       else
+                                       { <span>0</span>}
+        năm, @if (tongthangbhtn != null)
+            {@tongthangbhtn }
+            else
+            { <span>0</span>}
+        tháng</div>
+</div>
+<div id="delete">
+</div>
+<table id="QuaTrinh">
+    <thead>
+        <tr>
+            <th style="text-align: center" nowrap rowspan="2">
+                Mã NV
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Họ và tên
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Đơn vị
+            </th>
+            <th style="text-align: center" rowspan="2" nowrap>
+                Số sổ BHXH
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Số phiếu KCB
+            </th>
+            @*   <th style="text-align: center" nowrap rowspan="2">
+                TG bắt đầu tham gia BHXH
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Số năm tham gia BHXH
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                TG tham gia BHXH tại trường
+            </th>*@
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="5">
+                QÚA TRÌNH THAM GIA BHXH (Ghi sổ)
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="2">
+                Theo dõi
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Ghi chú 1
+            </th>
+            @*    <th style="text-align: center" nowrap rowspan="2">
+                Ghi chú 2
+            </th>*@
+            <th rowspan="2">
+            </th>
+        </tr>
+        <tr>
+            <th style="text-align: left" nowrap>
+                TG bắt đầu
+            </th>
+            <th style="text-align: left" nowrap>
+                TG kết thúc
+            </th>
+            @*  <th style="text-align: left" nowrap>
+                TG tham gian BHTN
+            </th>*@
+            <th style="text-align: left" nowrap>
+                ML đóng BHXH
+            </th>
+            <th style="text-align: left" nowrap>
+                ML BHXH
+            </th>
+            <th style="text-align: left" nowrap>
+                ML BHTN
+            </th>
+            <th style="text-align: left" nowrap>
+                HS TL đóng BHXH
+            </th>
+            <th style="text-align: left" nowrap>
+                MĐ tối thiểu
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.MANV)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.HoVaTen)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.DonVi)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.SoBHXH)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.SoKCB)
+                </td>
+                @* <td style="text-align: left" nowrap>
+                    @if (item.nvbhNhanVienBHXH.ThoiGianBatDauBHXH != null)
+                    {
+                        @item.nvbhNhanVienBHXH.ThoiGianBatDauBHXH.GetValueOrDefault().ToShortDateString()}
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.nvbhNhanVienBHXH.SoNamThamGiaBHXH)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @if (item.ThoiGianKetThuc != null)
+                    {
+                        @item.nvbhNhanVienBHXH.ThoiGianThamGiaBHXHTaiTruong.GetValueOrDefault().ToShortDateString()}
+                </td>*@
+                <td style="text-align: left" nowrap>
+                    @if (item.ThoiGianBatDau != null)
+                    {
+                        @item.ThoiGianBatDau.GetValueOrDefault().ToShortDateString()}
+                </td>
+                <td style="text-align: left" nowrap>
+                    @if (item.ThoiGianKetThuc != null)
+                    {
+                        @item.ThoiGianKetThuc.GetValueOrDefault().ToShortDateString()}
+                </td>
+                @*   <td style="text-align: left" nowrap>
+                    @if (item.nvbhNhanVienBHXH.ThoiGianThamGiaBHTN != null)
+                    {
+                        @item.nvbhNhanVienBHXH.ThoiGianThamGiaBHTN.GetValueOrDefault().ToShortDateString()}
+                </td>*@
+                <td style="text-align: left" nowrap>
+                    @String.Format("{0:#,##0}", item.MucLuongDongBHXH)
+           
+                </td>
+                <td style="text-align: left" nowrap>
+                    @String.Format("{0:#,##0}", item.MucDongBHXH)
+                    
+                </td>
+                <td style="text-align: left" nowrap>
+                    @String.Format("{0:#,##0}", item.MucDongBHTN)
+                    
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.HeSoTienLuongDongBHXH)
+                </td>
+                <td style="text-align: left" nowrap>
+                    
+                    @String.Format("{0:#,##0}", item.MucDongToiThieu)
+                </td>
+                <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.GhiChu1)
+                </td>
+                @*   <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.GhiChu2)
+                </td>*@
+                <td style="text-align: left" nowrap>
+                    <a data-val1="@item.id" title="Xóa" class='button1'><span class="ui-icon ui-icon-trash"
+                        style="display: inline-block" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script src="/Content/datatables/DataTableFixedHeader.js"></script>
+<script>
+
+
+    $.get("../QTBHXH/delete?id=1").success(function (data) {
+        $('#delete').html(data);
+
+    });
+    $("#delete").tabs();
+    $(".button2").hide();
+    var oTable = $('#QuaTrinh').dataTable({
+        "bJQueryUI": true,
+        "sScrollY": "100%",
+        "sScrollX": "100%"
+        , "bSort": false
+
+
+    });
+    new $.fn.dataTable.FixedColumns(oTable, {
+        //        "iLeftColumns": 2,
+        "iRightColumns": 1
+    });
+
+
+    $(function () {
+        $('.button1').click(function () {
+            var Val1 = $(this).attr("data-val1");
+
+
+            $.get("../QTBHXH/delete?id=" + Val1).success(function (data) {
+                $('#delete').html(data);
+                $("#delete").slideDown("medium");
+            });
+            var $t1 = $('#tgbh');
+            if ($t1.is(':visible')) {
+                $t1.slideUp();
+                // Other stuff to do on slideUp
+            }
+
+            $(".button2").show();
+        });
+    });
+
+    $(function () {
+        $('.button2').click(function () {
+            $(".button2").hide();
+            $("#delete").slideUp("medium");
+
+            $('#tgbh').slideDown();
+
+        });
+    });
+
+
+
+
+</script>
+<style type="text/css">
+    #delete
+    {
+        display: none;
+    }
+</style>

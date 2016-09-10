@@ -1,0 +1,163 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdThongTinLienHe
+@using System.Data.Objects;
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+    var db = new HRM.Databases.Models.HRMDBEntities();
+    var hkTinhThanh_id = new SelectList(db.dmTinhThanh.OrderBy(tt => tt.tenTinhThanh), "id", "tenTinhThanh", Model.tdHoKhauThuongTrus.SingleOrDefault().hkTinhThanh_id);
+    var hkQuanHuyen_id = new SelectList(db.dmQuanHuyen.OrderBy(tt => tt.tenQuanHuyen), "id", "tenQuanHuyen", Model.tdHoKhauThuongTrus.SingleOrDefault().hkQuanHuyen_id);
+    var hkPhuongXa_id = new SelectList(db.dmPhuongXa.OrderBy(tt => tt.tenPhuongXa), "id", "tenPhuongXa", Model.tdHoKhauThuongTrus.SingleOrDefault().hkPhuongXa_id);
+    var llTinhThanh_id = new SelectList(db.dmTinhThanh.OrderBy(tt => tt.tenTinhThanh), "id", "tenTinhThanh", Model.tdDiaChiLienLacs.SingleOrDefault().llTinhThanh_id);
+    var llQuanHuyen_id = new SelectList(db.dmQuanHuyen.OrderBy(tt => tt.tenQuanHuyen), "id", "tenQuanHuyen", Model.tdDiaChiLienLacs.SingleOrDefault().llQuanHuyen_id);
+    var llPhuongXa_id = new SelectList(db.dmPhuongXa.OrderBy(tt => tt.tenPhuongXa), "id", "tenPhuongXa", Model.tdDiaChiLienLacs.SingleOrDefault().llPhuongXa_id);
+}
+@using (Html.BeginForm(new { tab = "ThongTinLienHe", nat = "Edit", id = ViewBag.UngVien_id}))
+{
+    @Html.ValidationSummary(true)
+    <form name="ttlhForm" action="Create">
+    <fieldset>
+    <hr />
+    <b><span style = "font-style:italic">Thông tin liên hệ</span></b>
+    <p>
+        <input type="hidden" name="UngVien_id" value="@ViewBag.UngVien_id" />
+        <input type="hidden" name="id" value="@ViewBag.Id" />
+        @Html.ValidationMessageFor(model => model.UngVien_id)
+    </p>
+    <p>
+        @Html.Raw("ĐT di động 1")
+        @Html.TextBoxFor(model => model.DTDiDong1, new { style = "width:150px;", minlength = "10", maxlength = "11", id = "DTDD1", type = "tel" })
+        @Html.Raw("ĐT di động 2")
+        @Html.TextBoxFor(model => model.DTDiDong2, new { style = "width:150px;", minlength = "10", maxlength = "11", id = "DTDD2", type = "tel"})
+        @Html.Raw("ĐT nhà")
+        @Html.TextBoxFor(model => model.DTNha, new { style = "width:130px;", minlength = "6", maxlength = "10", id = "DTNha", onblur = "return ValidateMobNumber('DTNha')" })
+
+        @*@Html.ValidationMessageFor(model => model.Email)*@
+    </p>
+    <p>
+        @Html.Raw("Email")
+        <span style="margin-left:50px"></span>
+        @Html.TextBoxFor(model => model.Email, new { style = "width:605px;", id = "Email",type="email" })
+        @*@Html.ValidationMessageFor(model => model.DTDiDong2)*@
+    </p>
+    <p>
+       
+        @Html.ValidationMessageFor(model => model.DTNha)
+    </p>
+    <hr />
+    <b><span style = "font-style:italic">Địa chỉ thường trú</span></b> 
+    <p>    
+        @Html.TextBoxFor(model => model.tdHoKhauThuongTrus.SingleOrDefault().hkTenDuong, new { style = "width:200px"})
+        @Html.DropDownListFor(model => model.tdHoKhauThuongTrus.SingleOrDefault().hkPhuongXa_id, hkPhuongXa_id, String.Empty)
+        @Html.DropDownListFor(model => model.tdHoKhauThuongTrus.SingleOrDefault().hkQuanHuyen_id, hkQuanHuyen_id, String.Empty)
+        @Html.DropDownListFor(model => model.tdHoKhauThuongTrus.SingleOrDefault().hkTinhThanh_id, hkTinhThanh_id, String.Empty)
+    <hr />
+    <b><span style = "font-style:italic">Địa chỉ liên lạc</span></b>
+    <p>
+        @Html.TextBoxFor(model => model.tdDiaChiLienLacs.SingleOrDefault().llTenDuong, new { style = "width:200px"})
+        @Html.DropDownListFor(model => model.tdDiaChiLienLacs.SingleOrDefault().llPhuongXa_id, llPhuongXa_id, String.Empty)
+        @Html.DropDownListFor(model => model.tdDiaChiLienLacs.SingleOrDefault().llQuanHuyen_id, llQuanHuyen_id, String.Empty)
+        @Html.DropDownListFor(model => model.tdDiaChiLienLacs.SingleOrDefault().llTinhThanh_id, llTinhThanh_id, String.Empty)
+    <p style="margin-left:300px">
+        <a href="@Url.Action("Details", "TuyenDung", new { tab = "ThongTinBangCap", nat = "Edit", id = ViewBag.UngVien_id })"><input id="btnLuu" type="button"  value="Thông tin bằng cấp"/></a>
+        <input type="submit" value="Cập nhật"/>
+        <a href="@Url.Action("Details", "TuyenDung", new { tab = "ThongTinUngTuyen", nat = "Edit", id = ViewBag.UngVien_id })"><input id="btnLuu" type="button"  value="Thông tin ứng tuyển"/></a>
+    </p>
+    </fieldset>
+    </form>
+    
+}
+<script>
+    $(function () {
+        $("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).attr("size", $(this).val().length + 1);
+        });
+
+        var hkPhuongXa = $("#hkPhuongXa_id").combobox();
+        var hkQuanHuyen = $("#hkQuanHuyen_id").combobox();
+        var hkTinhThanh = $("#hkTinhThanh_id").combobox();
+        hkTinhThanh.change(function () {
+            var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/QuanHuyen/List?idTinhThanh=" + $(this).val();
+            hkQuanHuyen.trigger("connect", [link, function () {
+                hkQuanHuyen.trigger("change");
+            } ]);
+        });
+        hkQuanHuyen.change(function () {
+            hkPhuongXa.trigger("connect", "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/PhuongXa/List?idQuanHuyen=" + $(this).val());
+        });
+
+        var llPhuongXa = $("#llPhuongXa_id").combobox();
+        var llQuanHuyen = $("#llQuanHuyen_id").combobox();
+        var llTinhThanh = $("#llTinhThanh_id").combobox();
+        llTinhThanh.change(function () {
+            var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/QuanHuyen/List?idTinhThanh=" + $(this).val();
+            llQuanHuyen.trigger("connect", [link, function () {
+                llQuanHuyen.trigger("change");
+            } ]);
+        });
+        llQuanHuyen.change(function () {
+            llPhuongXa.trigger("connect", "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/PhuongXa/List?idQuanHuyen=" + $(this).val());
+        });
+
+        $(".custom-combobox-input").removeClass("ui-state-default");
+        $(".custom-combobox-input").removeClass("ui-widget-content");
+        $(".custom-combobox-input").removeClass("ui-corner-left");
+        $(".custom-combobox-toggle").removeClass("ui-state-default");
+        $(".custom-combobox-input").on("input", function () {
+            $(this).attr("size", $(this).val().length + 4);
+        });
+        setInterval(function () {
+            $(".custom-combobox-input").each(function () {
+                $(this).attr("size", $(this).val().length + 4);
+            });
+        }, 1000);
+        $("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).attr("size", $(this).val().length + 1);
+        });
+        $("input[type=datetime]").css("width", "90px");
+        $("input[type=text]").css("background-color", "transparent");
+        $(".text-box").css("background-color", "transparent").css("margin", "5px 0 6px 0");
+        $(".custom-combobox-input").css("background-color", "transparent").css("margin", "5px 0 6px 0").css("width", "150px");
+    });
+</script>
+
+<script type="text/javascript">
+
+    function ValidateMobNumber(txtMobId) {
+        var fld = document.getElementById(txtMobId);
+
+        if (fld.value != "") {
+            if (isNaN(fld.value)) {
+                alert("Vui lòng điền số điện thoại không bao gồm ký tự chữ.");
+                fld.value = "";
+                fld.focus();
+                return false;
+            }
+            else if (!(fld.value.length > 5 && fld.value.length < 12)) {
+                alert("Vui lòng điền 10 đến 11 chữ số đối với di động \n và 6 đến 10 chữ số đối với điện thoại bàn.");
+                fld.value = "";
+                fld.focus();
+                return false;
+            }
+        }
+    }
+    function IsEmail(txtEmail) {
+        var mob = "^([\w.-]+) ([\w-]+)((.(\w){2,3})+)$";
+        var txtMail = document.getElementById(txtEmail);
+        if (txtMail.value != "") {
+            if (mob.test(txtMail.value) == false) {
+                alert("Vui lòng nhập đúng định dạng email.");
+                txtMail.focus();
+                return false;
+            }
+        }
+        return true;
+    }
+</script>
+

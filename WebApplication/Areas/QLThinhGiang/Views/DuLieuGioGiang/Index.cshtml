@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quản lý dữ liệu giờ giảng</h2>
+
+<div>
+    @Html.ActionLink("Xem toàn bộ dữ liệu giờ giảng", "List", null, new { target = "_blank" })
+</div>
+
+<div>
+@using (Html.BeginForm("Upload", "DuLieuGioGiang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+}
+</div>
+
+<div>
+    <a href="~/Forms/HRM0/Dulieumau_Giogiang.xls">Tập tin mẫu dữ liệu giờ giảng</a>
+</div>

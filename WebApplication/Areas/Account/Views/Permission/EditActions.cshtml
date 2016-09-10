@@ -1,0 +1,49 @@
+﻿@using System.Reflection
+@model HRM.Accounts.Models.Behavior
+@{
+    ViewBag.Title = "EditActions";
+    var controller = Model.Controller.Split(':').Last();
+}
+
+@using (var db = new HRM.Accounts.Models.UsersContext())
+{
+    foreach (var role in db.RoleProfiles)
+    {
+        @role.RoleName
+    }
+}
+
+<h2>Edit Actions</h2>
+
+@Html.ValidationSummary(true)
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Controller)
+
+    <h3>
+        @Html.DisplayFor(model => model.Controller)
+    </h3>
+    @Html.LabelFor(model => model.Action)
+    @Html.EditorFor(model => model.Action)
+    @Html.ValidationMessageFor(model => model.Action)
+    <input type="submit" value="Update" />
+}
+
+@foreach (var file in new DirectoryInfo(Server.MapPath("~/bin")).EnumerateFiles("HRM.*.dll"))
+{
+    foreach (var type in Assembly.LoadFile(file.FullName).GetTypes())
+    {
+        if (!String.IsNullOrEmpty(type.Namespace) && type.Namespace.EndsWith(".Controllers")
+            && !type.Name.StartsWith("<") && type.Name.Equals(controller))
+        {
+            foreach (var action in type.GetMethods())
+            {
+                if (!action.Name.StartsWith("get_") && !action.Name.StartsWith("set_"))
+                {
+                    @action.Name <br />
+                }
+            }
+        }
+    }
+}

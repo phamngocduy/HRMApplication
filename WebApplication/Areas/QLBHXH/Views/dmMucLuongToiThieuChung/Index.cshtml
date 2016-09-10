@@ -1,0 +1,96 @@
+﻿@model IEnumerable<HRM.QLBHXH.Models.dmMucLuongToiThieuChung>
+@{
+    ViewBag.Title = "Danh mục Mức lương tối thiểu chung - BHXH";
+}
+<h2>
+    Mức lương tối thiểu chung</h2>
+<div>
+    @Html.ActionLink("Trở về màn hình Nhân viên BHXH", "Index", "NhanVienBHXH")
+</div>
+<p>
+    @Html.ActionLink("Thêm mức lương tối thiểu chung - BHXH", "Create")
+</p>
+<table id="dmMucLuongToiThieuChung">
+    <thead>
+        <tr>
+            <th style="text-align: center" nowrap>
+                STT
+            </th>
+            <th style="text-align: center" nowrap>
+                Ngày bắt đầu
+            </th>
+            <th style="text-align: center" nowrap>
+                Ngày kết thúc
+            </th>
+            <th style="text-align: center">
+                Mức lương tối thiểu chung (VNĐ)
+            </th>
+          
+            <th style="text-align: center" nowrap>
+                Trạng thái
+            </th>
+            <th style="text-align: center" nowrap>
+                Ghi chú
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                
+            <tr>
+                <td style="text-align: center" nowrap>
+                    @Html.DisplayFor(modelItem => item.STT)
+                </td>
+                <td style="text-align: center" nowrap>
+                    @item.NgayBatDau.ToShortDateString()
+                </td>
+                <td style="text-align: center" nowrap>
+                   
+                    @if (@item.NgayKetThuc != null)
+                    {
+                        @item.NgayKetThuc.GetValueOrDefault().ToShortDateString()
+                    }
+                </td>
+                <td nowrap>
+                    @String.Format("{0:#,##0}", item.MucLuong)
+                   
+                </td>
+                <td nowrap>
+                    @if (item.TrangThai == true)
+                    {
+                        <span><b>Đang áp dụng</b> </span>
+                    }
+                    else
+                    {
+                        <span></span>
+                    }
+                </td>
+                <td nowrap>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td>
+            <a href="~/QLBHXH/dmMucLuongToiThieuChung/Delete?id=@item.id" title="Xoá"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a href="~/QLBHXH/dmMucLuongToiThieuChung/Edit?id=@item.id" title="Chỉnh sửa"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+            </td>
+               </tr>
+        }
+    </tbody>
+</table>
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script src="/Content/datatables/DataTableFixedHeader.js"></script>
+<script>
+    $(document).ready(function () {
+        var oTable = $("#dmMucLuongToiThieuChung").dataTable({
+            "bAutoWidth": true,
+            "bStateSave": true,
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "bJQueryUI": true
+          
+        });
+
+      });
+
+</script>

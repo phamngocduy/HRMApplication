@@ -1,0 +1,369 @@
+INFO 01:28:54 – Home/Index
+INFO 01:28:56 – Login/Index
+INFO 01:29:22 – Login/Index
+INFO 01:29:22 – Home/Index
+INFO 01:29:29 – HSNhanSu/Index
+INFO 01:29:30 – NhanVien/IndexP
+INFO 01:29:38 – TuyenDung/Index
+INFO 01:35:07 – HSNhanSu/Details
+INFO 01:35:10 – SoYeuLyLich/EditP
+INFO 01:35:11 – TheDinhDanh/IndexP
+INFO 01:39:32 – TuyenDung/Index
+INFO 01:40:24 – TuyenDung/Details
+INFO 01:40:24 – ThongTinChung/Edit
+INFO 01:41:36 – TuyenDung/Index
+INFO 01:41:39 – QLLichHen/Index
+INFO 01:42:18 – HDNguoiLaoDong/Index
+INFO 01:45:33 – ThongKe/Bieu51
+ERROR01:45:35 – Invalid column name 'idHocVi'.
+/controller=ThongKe/action=Bieu51
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in C:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 26
+   at ASP._Page_Areas_QLHSNhanSu_Views_ThongKe_Bieu51_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\ThongKe\Bieu51.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:48:09 – TuyenDung/Index
+INFO 01:48:11 – QLLichHen/Index
+INFO 01:50:06 – QLLichHen/Index
+INFO 01:51:39 – QLLichHen/Index
+INFO 01:51:56 – QLLichHen/Index
+INFO 01:53:11 – ThongKe/Bieu51
+ERROR01:53:13 – The multi-part identifier "dmTrinhDo.id" could not be bound.
+The column prefix 'dmTrinhDo' does not match with a table name or alias name used in the query.
+/controller=ThongKe/action=Bieu51
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in C:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 26
+   at ASP._Page_Areas_QLHSNhanSu_Views_ThongKe_Bieu51_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\ThongKe\Bieu51.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:53:41 – ThongKe/Bieu51
+ERROR01:53:42 – Column 'maHocVi' does not belong to table .
+/controller=ThongKe/action=Bieu51
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at ASP._Page_Areas_QLHSNhanSu_Views_ThongKe_Bieu51_cshtml.<>c__DisplayClass19.<>c__DisplayClass1b.<ThongKe>b__d(DataRow r) in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\ThongKe\Bieu51.cshtml:line 69
+   at System.Linq.Enumerable.<>c__DisplayClassf`1.<CombinePredicates>b__e(TSource x)
+   at System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_Areas_QLHSNhanSu_Views_ThongKe_Bieu51_cshtml.<>c__DisplayClass2.<Mark>b__0(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\ThongKe\Bieu51.cshtml:line 50
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageExecutingBase.WriteTo(TextWriter writer, HelperResult content)
+   at ASP._Page_Areas_QLHSNhanSu_Views_ThongKe_Bieu51_cshtml.<>c__DisplayClass19.<ThongKe>b__5(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\ThongKe\Bieu51.cshtml:line 89
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at ASP._Page_Areas_QLHSNhanSu_Views_ThongKe_Bieu51_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Areas\QLHSNhanSu\Views\ThongKe\Bieu51.cshtml:line 161
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 01:55:23 – ThongKe/Bieu51
+INFO 02:20:10 – HSNhanSu/Index
+INFO 02:20:11 – NhanVien/IndexP
+INFO 02:20:16 – HSNhanSu/Details
+INFO 02:20:16 – SoYeuLyLich/EditP
+INFO 02:20:16 – TheDinhDanh/IndexP
+INFO 02:23:50 – TuyenDung/Index
+INFO 02:23:54 – QLLichHen/Index
+INFO 02:23:59 – TuyenDung/Details
+INFO 02:23:59 – ThongTinChung/Edit
+INFO 02:24:03 – TuyenDung/Details
+INFO 02:24:03 – QLLichHen/Index1
+INFO 02:24:20 – TuyenDung/Index
+INFO 02:24:22 – QLLichHen/Index
+INFO 02:24:33 – TuyenDung/Details
+INFO 02:24:33 – ThongTinChung/Edit
+INFO 02:24:35 – TuyenDung/Details
+INFO 02:24:35 – QLLichHen/Index1
+INFO 02:25:27 – HDNguoiLaoDong/Index
+INFO 03:05:49 – NhanVienBHXH/Index2
+INFO 03:05:54 – NhanVienBHXH/Create
+INFO 03:05:55 – NhanVienBHXH/delete&id=1
+INFO 03:05:57 – NhanVienBHXH/edit&id=1
+INFO 03:06:07 – QTBHXH/Index2&id=43
+INFO 03:06:09 – QTBHXH/delete&id=1
+ERROR03:06:09 – Object reference not set to an instance of an object.
+/controller=QTBHXH/action=delete
+   at HRM.QLBHXH.Controllers.QTBHXHController.Delete(Int32 id) in C:\Workspace\HRMApplication\WebApplication\Areas\QLBHXH\Controllers\QTBHXHController.cs:line 124
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:26:00 – NhanVienBHXH/index2
+INFO 03:26:01 – NhanVienBHXH/Create
+INFO 03:26:02 – NhanVienBHXH/edit&id=1
+INFO 03:26:02 – NhanVienBHXH/delete&id=1
+INFO 03:36:22 – DanhSachDieuChinhTangGiam/index2
+INFO 03:36:24 – DanhSachDieuChinhTangGiam/Create
+INFO 03:36:26 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR03:36:26 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:38:50 – NhanVienBHXH/index2
+INFO 03:38:55 – NhanVienBHXH/Create
+INFO 03:38:55 – NhanVienBHXH/delete&id=1
+INFO 03:38:55 – NhanVienBHXH/edit&id=1
+INFO 03:39:02 – QTBHXH/Index2&id=43
+INFO 03:39:03 – QTBHXH/delete&id=1
+ERROR03:39:03 – Object reference not set to an instance of an object.
+/controller=QTBHXH/action=delete
+   at HRM.QLBHXH.Controllers.QTBHXHController.Delete(Int32 id) in C:\Workspace\HRMApplication\WebApplication\Areas\QLBHXH\Controllers\QTBHXHController.cs:line 124
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:43:06 – HSNhanSu/Index
+INFO 03:43:06 – NhanVien/IndexP
+INFO 03:43:09 – HSNhanSu/Details
+INFO 03:43:10 – SoYeuLyLich/EditP
+INFO 03:43:10 – TheDinhDanh/IndexP
+INFO 03:46:01 – dmMucLuongToiThieuChung/Index
+INFO 03:46:24 – dmMucLuongToiThieuChung/Create
+INFO 03:47:06 – dmMucLuongToiThieuChung/Create
+ERROR03:47:07 – An error occurred while updating the entries. See the inner exception for details.
+/controller=dmMucLuongToiThieuChung/action=Create
+/NgayBatDau=01/05/2015/NgayKetThuc=/MucLuong=1200000/GhiChu=/TrangThai=true,false
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at HRM.QLBHXH.Controllers.dmMucLuongToiThieuChungController.Create(dmMucLuongToiThieuChung dmmucluongtoithieuchung) in C:\Workspace\HRMApplication\WebApplication\Areas\QLBHXH\Controllers\dmMucLuongToiThieuChungController.cs:line 62
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:47:20 – dmMucLuongToiThieuChung/Create
+ERROR03:47:20 – An error occurred while updating the entries. See the inner exception for details.
+/controller=dmMucLuongToiThieuChung/action=Create
+/NgayBatDau=01/05/2015/NgayKetThuc=31/05/2015/MucLuong=1200000/GhiChu=/TrangThai=true,false
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at HRM.QLBHXH.Controllers.dmMucLuongToiThieuChungController.Create(dmMucLuongToiThieuChung dmmucluongtoithieuchung) in C:\Workspace\HRMApplication\WebApplication\Areas\QLBHXH\Controllers\dmMucLuongToiThieuChungController.cs:line 62
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 03:47:55 – dmNoiKCB/Index
+INFO 03:50:21 – HSNhanSu/Index
+INFO 03:50:21 – NhanVien/IndexP
+INFO 03:50:30 – HSNhanSu/Details
+INFO 03:50:31 – QTLamViecTruoc/IndexP
+INFO 03:50:31 – QTLamViec/IndexP
+INFO 04:07:32 – DanhSachDieuChinhTangGiam/index2
+INFO 04:07:33 – DanhSachDieuChinhTangGiam/Create
+INFO 04:07:33 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR04:07:33 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 04:08:39 – DanhSachDieuChinhTangGiam/index2
+INFO 04:08:40 – DanhSachDieuChinhTangGiam/Create
+INFO 04:08:41 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR04:08:41 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)

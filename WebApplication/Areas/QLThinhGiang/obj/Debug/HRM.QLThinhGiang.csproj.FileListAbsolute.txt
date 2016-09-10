@@ -1,0 +1,13 @@
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.QLThinhGiang.dll
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.QLThinhGiang.pdb
+C:\Workspace\HRMApplication\WebApplication\Areas\QLGVThinhGiang\obj\Debug\HRM.QLThinhGiang.dll
+C:\Workspace\HRMApplication\WebApplication\Areas\QLGVThinhGiang\obj\Debug\HRM.QLThinhGiang.pdb
+C:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\obj\Debug\HRM.QLThinhGiang.dll
+C:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\obj\Debug\HRM.QLThinhGiang.pdb
+C:\Workspace\HRMApplication\WebApplication\Areas\QLThinhGiang\obj\Debug\HRM.QLThinhGiang.csprojResolveAssemblyReference.cache
+D:\Projects\HRMApplication\WebApplication\bin\HRM.QLThinhGiang.dll.config
+D:\Projects\HRMApplication\WebApplication\bin\HRM.QLThinhGiang.dll
+D:\Projects\HRMApplication\WebApplication\bin\HRM.QLThinhGiang.pdb
+D:\Projects\HRMApplication\WebApplication\Areas\QLThinhGiang\obj\Debug\HRM.QLThinhGiang.csprojResolveAssemblyReference.cache
+D:\Projects\HRMApplication\WebApplication\Areas\QLThinhGiang\obj\Debug\HRM.QLThinhGiang.dll
+D:\Projects\HRMApplication\WebApplication\Areas\QLThinhGiang\obj\Debug\HRM.QLThinhGiang.pdb

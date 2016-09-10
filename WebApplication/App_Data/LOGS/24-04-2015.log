@@ -1,0 +1,269 @@
+INFO 10:17:53 – Home/Index
+INFO 10:17:54 – Login/Index
+INFO 10:18:06 – Login/Index
+INFO 10:18:06 – Home/Index
+INFO 10:18:10 – NhanVienBHXH/Index2
+INFO 10:18:17 – NhanVienBHXH/Create
+INFO 10:18:17 – NhanVienBHXH/edit&id=1
+INFO 10:18:18 – NhanVienBHXH/delete&id=1
+INFO 10:18:21 – DanhSachDieuChinhChucDanh/index2
+INFO 10:19:33 – DanhSachDieuChinhChucDanh/index2
+INFO 10:20:41 – DanhSachDieuChinhChucDanh/index2
+INFO 10:21:22 – DanhSachDieuChinhChucDanh/index2
+INFO 10:22:03 – DanhSachDieuChinhChucDanh/index2
+INFO 10:22:14 – Home/Index
+INFO 10:22:14 – Login/Index
+INFO 10:22:19 – Login/Index
+INFO 10:22:19 – Home/Index
+INFO 10:22:22 – NhanVienBHXH/Index2
+INFO 10:22:23 – NhanVienBHXH/Create
+INFO 10:22:23 – NhanVienBHXH/edit&id=1
+INFO 10:22:23 – NhanVienBHXH/delete&id=1
+INFO 10:22:24 – DanhSachDieuChinhChucDanh/index2
+INFO 10:22:56 – DanhSachDieuChinhChucDanh/index2
+INFO 10:23:41 – DanhSachDieuChinhChucDanh/index2
+INFO 10:24:53 – DanhSachDieuChinhChucDanh/index2
+INFO 10:25:26 – DanhSachDieuChinhChucDanh/index2
+INFO 10:27:06 – DanhSachDieuChinhChucDanh/index2
+INFO 10:27:09 – DanhSachDieuChinhChucDanh/index2
+INFO 10:27:31 – DanhSachDieuChinhChucDanh/index2
+INFO 10:27:36 – DanhSachDieuChinhChucDanh/index2
+INFO 10:27:37 – DanhSachDieuChinhChucDanh/index2
+INFO 10:43:05 – NhanVienBHXH/index2
+INFO 10:43:06 – NhanVienBHXH/Create
+INFO 10:43:07 – NhanVienBHXH/delete&id=1
+INFO 10:43:08 – NhanVienBHXH/edit&id=1
+INFO 10:43:12 – DanhSachDieuChinhTangGiam/index2
+INFO 10:43:15 – DanhSachDieuChinhTangGiam/Create
+INFO 10:43:17 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR10:43:18 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:43:35 – DanhSachDieuChinhTangGiam/index2
+INFO 10:43:35 – DanhSachDieuChinhTangGiam/Create
+INFO 10:43:36 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR10:43:36 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:43:39 – DanhSachDieuChinhTangGiam/edit&id=102606
+INFO 10:44:00 – DanhSachDieuChinhTangGiam/edit&id=102606&idLoaiDieu=1&idLoaiDieuChinh=1&idLoaiTang=TM&idLoaiTangGiam=TM&idnvbhNhanVienBHXH=1&NVID=38&NV_id=38
+INFO 10:44:00 – DanhSachDieuChinhTangGiam/Index2
+INFO 10:44:01 – DanhSachDieuChinhTangGiam/Create
+INFO 10:44:01 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR10:44:02 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:44:05 – DanhSachDieuChinhTangGiam/edit&id=102606
+INFO 10:45:28 – DanhSachDieuChinhTangGiam/edit&id=102606
+INFO 10:45:54 – DanhSachDieuChinhTangGiam/QuaTrinhTatCa
+ERROR10:45:54 – The partial view 'QuaTrinhTatCa' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.aspx
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.ascx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.aspx
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.ascx
+~/Views/Shared/QuaTrinhTatCa.aspx
+~/Views/Shared/QuaTrinhTatCa.ascx
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.cshtml
+~/Areas/QLBHXH/Views/Shared/QuaTrinhTatCa.vbhtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.cshtml
+~/Views/DanhSachDieuChinhTangGiam/QuaTrinhTatCa.vbhtml
+~/Views/Shared/QuaTrinhTatCa.cshtml
+~/Views/Shared/QuaTrinhTatCa.vbhtml
+/controller=DanhSachDieuChinhTangGiam/action=QuaTrinhTatCa
+   at System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 10:48:42 – HDNguoiLaoDong/Index
+INFO 10:48:54 – DSNLDCanTaoHD/Index
+INFO 10:48:59 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=85
+INFO 10:48:59 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=85
+INFO 10:49:06 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=85
+INFO 10:49:06 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 10:56:59 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 10:57:17 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 10:57:47 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 10:58:43 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 10:59:25 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 11:00:19 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 11:01:42 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 11:03:50 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 11:04:30 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 11:05:17 – ThemMoiHD/Create_HDCoHuu&DSNLDCanTaoHD_id=85
+INFO 11:06:14 – DSNLDCanTaoHD/Index
+INFO 11:06:18 – HDNguoiLaoDong/Index
+INFO 11:06:21 – ThemMoiHD/Details_HDThuViec
+INFO 11:06:29 – ThemMoiHD/Edit_HDThuViec
+INFO 11:06:44 – ThemMoiHD/Edit_HDThuViec
+INFO 11:06:44 – ThemMoiHD/Edit_HDThuViec
+INFO 11:07:22 – ThemMoiHD/Create_HDCoHuu&Gioitinh_id=1&Quoctich_id=&Nghenghiep_id=&Donvi_id=48&ThoihanHD_id=25&Chucdanh_id=30&Chucvu_id=&ThoigioLV_id=7&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 11:07:22 – ThemMoiHD/Edit_HDCoHuu
+INFO 11:07:51 – HDNguoiLaoDong/Index
+INFO 11:07:55 – HDNguoiLaoDong/Index
+INFO 11:08:06 – ThemMoiHD/Details_HDThuViec
+INFO 11:08:10 – QTKyHDTungNguoi/Index&NLD_id=642
+INFO 11:08:15 – QTKyHDTungNguoi/Index&NLD_id=641
+INFO 11:08:19 – QTKyHDTungNguoi/Index&NLD_id=638
+INFO 11:08:22 – QTKyHDTungNguoi/Index&NLD_id=639
+INFO 11:08:42 – HDNguoiLaoDong/Index
+INFO 11:12:00 – ThemMoiHD/Edit_HDCoHuu
+INFO 11:12:09 – ThemMoiHD/Edit_HDCoHuu&Gioitinh_id=1&Donvi_id=48&ThoihanHD_id=25&Chucdanh_id=30&Chucvu_id=&ThoigioLV_id=7&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 11:12:09 – ThemMoiHD/Edit_HDCoHuu
+INFO 12:11:19 – Home/Index
+INFO 12:11:20 – Login/Index
+INFO 12:11:34 – Login/Index
+INFO 12:11:34 – Home/Index
+INFO 12:11:39 – HDNguoiLaoDong/Index
+INFO 12:11:50 – DSNLDCanTaoHD/Index
+INFO 12:11:59 – ThemMoiHD/TruyenID&DSNLDCanTaoHD_id=90
+INFO 12:11:59 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=90
+INFO 12:12:08 – ThemMoiHD/Create_ChonLoaiHD&DSNLDCanTaoHD_id=90
+INFO 12:12:08 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90
+INFO 12:12:33 – ThemMoiHD/Create_HDThuViec&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=8&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:12:33 – ThemMoiHD/Edit_HDThuViec
+INFO 12:12:51 – ThemMoiHD/Create_HDThuViec&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=8&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:12:51 – ThemMoiHD/Edit_HDThuViec
+INFO 12:12:59 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90
+INFO 12:13:34 – ThemMoiHD/Create_HDThuViec&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=10&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:13:34 – ThemMoiHD/Edit_HDThuViec
+INFO 12:14:55 – Home/Index
+INFO 12:14:56 – Login/Index
+INFO 12:15:05 – Login/Index
+INFO 12:15:05 – Home/Index
+INFO 12:15:09 – ThemMoiHD/Create_HDThuViec&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=10&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+ERROR12:16:15 – Object reference not set to an instance of an object.
+/controller=ThemMoiHD/action=Create_HDThuViec
+/HotenNLD=Tr?n Tr?n Tr?n/Gioitinh_id=1/Quoctich_id=1/Ngaysinh=12/02/1985 12:00:00 SA/Noisinh=Thành ph? C?n Tho/Nghenghiep_id=/Diachithuongtru=Phu?ng  An L?c, Thành ph? Ðà N?ng/soCMND=0914707163     /cmndNgaycap=04/02/2015 12:00:00 SA/cmndNoicap=92/Donvi_id=50/SoHD=123456/LoaiHD=Th? vi?c/ThoihanHD_id=4/NgayHL=24/04/2015/NgayhetHL=/Chucdanh_id=20/Chucvu_id=/ChucvutruongDV=/Congviec=/ThoigioLV_id=10/Mucluongchinh=123.456.789/Tyleluong=/HSLuong_id=/Bac_id=/Ngach_id=/Nhom_id=/Bangluong_id=/QT_NgayNLDky=/QT_NgayTrinhHT=/QT_NgayHTky=/QT_NgayLuuHS=/QT_NgayTraNLD=/Ghichu=/Save=Luu
+   at HRM.HDLaoDong.Controllers.ThemMoiHDController.Create_HDThuViec(hdChiTietHDLD hdchitiethdld, hdNLD hdnld) in C:\Workspace\HRMApplication\WebApplication\Areas\HDLaoDong\Controllers\ThemMoiHDController.cs:line 89
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 12:18:11 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90
+INFO 12:19:44 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:20:03 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:20:20 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=10&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:20:20 – ThemMoiHD/Edit_HDThuViec
+INFO 12:20:38 – Home/Index
+INFO 12:20:52 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90
+INFO 12:21:16 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=10&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:22:18 – ThemMoiHD/Edit_HDThuViec
+INFO 12:24:16 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90
+INFO 12:24:54 – ThemMoiHD/Create_HDThuViec&DSNLDCanTaoHD_id=90&Gioitinh_id=1&Quoctich_id=1&Nghenghiep_id=&Donvi_id=50&ThoihanHD_id=4&Chucdanh_id=20&Chucvu_id=&ThoigioLV_id=10&HSLuong_id=&Bac_id=&Ngach_id=&Nhom_id=&Bangluong_id=
+INFO 12:24:55 – ThemMoiHD/Edit_HDThuViec
+INFO 10:37:58 – Home/Index
+INFO 10:37:59 – Login/Index
+INFO 10:38:15 – Login/Index
+INFO 10:38:15 – Home/Index
+INFO 10:38:18 – HSNhanSu/Index
+INFO 10:38:19 – NhanVien/IndexP

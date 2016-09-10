@@ -1,0 +1,42 @@
+﻿@model HRM.QLBHXH.Models.dmMucLuongToiThieuVung
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Delete";
+}
+<h3>
+    Bạn có chắc muốn xoá Mức lương tối thiểu vùng này?</h3>
+<fieldset>
+    <legend>dmMucLuongToiThieuChung</legend>
+    <div class="display-label">
+        @Html.VN("Ngày bắt đầu:")
+        <b>@Html.DisplayFor(model => model.NgayBatDau)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Ngày kết thúc:")
+        <b>@Html.DisplayFor(model => model.NgayKetThuc)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Mức lương tối thiểu vùng (VNĐ):")
+        <b>@String.Format("{0:#,##0}", Model.MucLuong)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Thuộc vùng:")
+        <b>@Html.DisplayFor(model => model.ThuocVung)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Đang áp dụng ")
+        <b>@Html.DisplayFor(model => model.TrangThai)</b>
+    </div>
+    <div class="display-label">
+        @Html.VN("Ghi chú:")
+        <b>@Html.DisplayFor(model => model.GhiChu)</b>
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Xoá" />
+        |
+        @Html.ActionLink("Trở về màn hình Mức lương tối thiểu vùng", "Index")
+    </p>
+}

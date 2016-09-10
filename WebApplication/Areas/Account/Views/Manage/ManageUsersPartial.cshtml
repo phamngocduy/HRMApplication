@@ -1,0 +1,70 @@
+﻿@using HRM.Accounts.Models
+@using HRM.Webpages.Models.Trirand
+@using HRM.Webpages.Helpers
+
+<table id="gridUsers" align="center"></table>
+<div id="gridUsersPager"></div>
+<div id="tabsEditUser" style="width:600px;">
+    <ul>
+        <li><a href="#tabsEditUserActions">Actions</a></li>
+        <li><a href="#tabsEditUserPermission">Permission</a></li>
+        <li><a href="#tabsEditUserRegister">Register</a></li>
+    </ul>
+    <div id="tabsEditUserActions" align="left">
+        @Html.Partial("ResetPasswordPartial", new ResetPasswordModel())
+    </div>
+    <div id="tabsEditUserPermission">
+        @Html.Partial("SetPermissionPartial", new SetPermissionModel() { Permissions = ViewBag.Permissions })
+    </div>
+    <div id="tabsEditUserRegister" align="left">
+        @Html.Partial("RegisterUserPartial", new RegisterUserModel() { Account = ViewBag.Account })
+    </div>
+</div>
+
+@{
+    var gridUsers = new Grid() {
+        Caption = "List of all Users",
+        Columns = new Column[] {
+        new Column("Id") { Name="UserId", Sortable=false, Hidden=true },
+        new Column("User name") { Name="UserName", Align=Alignment.Center, Width=200, Sortable=true },
+        new Column("Creation date") { Name="CreationDate", Align=Alignment.Center, Width=200, Sortable=true },
+        new Column("Last activity") { Name="LastActivityDate", Align=Alignment.Center, Width=200, Sortable=true },
+        new Column("Permissions") { Name="Permissions", Sortable=false, Hidden=true }},
+        Width = 600,
+        RowNum = 10,
+        RowList = new int[] { 10, 20, 30 },
+        Pager = "gridUsersPager",
+        Selected = Html.ToIntList(ViewData["gridId"]),
+        onSelectRow = "onSelectRow1Users",
+        loadComplete = "loadComplete1Users",
+        navGrid = new Navigator("gridUsersPager")
+    };
+    object listUsers = null;
+    using (var context = new UsersContext()) {
+        listUsers = context.UserProfiles.AsEnumerable()
+        .Select(user => new { UserId = user.UserId, UserName = user.UserName,
+            CreationDate = user.CreationDate, LastActivityDate = user.LastActivityDate,
+            Permissions = String.Join(" ", (from role in user.GetRoles() select role.RoleId).ToArray()) }).ToArray();
+    }
+}
+
+<script>
+var GridId = 0;
+var GridUsers = $("#gridUsers");
+
+function onSelectRow1Users(row) {
+    GridId = GridUsers.getGridParam("selrow");
+    resetPassword(GridId, row["UserId"], row["UserName"]);
+    registerUser(GridId);
+    setPermissions(GridId, row["UserId"], row["UserName"], row["Permissions"]);
+}
+function loadComplete1Users(data) {
+    GridUsers.setSelection(gridId, true);
+}
+function autoHideGridUsers(tab) {
+    GridUsers.setGridState($(tab).text()=="Register"?"hidden":"visible");
+}
+$("label").css("font-size", "1em").css("font-weight", "100");
+</script>
+@Html.jqTabs("tabsEditUser", "autoHideGridUsers")
+@Html.jqGrid("gridUsers", gridUsers, listUsers)

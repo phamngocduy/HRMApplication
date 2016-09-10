@@ -1,0 +1,11 @@
+C:\Workspace\HRMApplication\WebApplication\Areas\Extension\obj\Debug\Extension.csprojResolveAssemblyReference.cache
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.Extension.dll
+C:\Workspace\HRMApplication\WebApplication\bin\HRM.Extension.pdb
+C:\Workspace\HRMApplication\WebApplication\Areas\Extension\obj\Debug\HRM.Extension.dll
+C:\Workspace\HRMApplication\WebApplication\Areas\Extension\obj\Debug\HRM.Extension.pdb
+D:\Projects\HRMApplication\WebApplication\bin\HRM.Extension.dll.config
+D:\Projects\HRMApplication\WebApplication\bin\HRM.Extension.dll
+D:\Projects\HRMApplication\WebApplication\bin\HRM.Extension.pdb
+D:\Projects\HRMApplication\WebApplication\Areas\Extension\obj\Debug\Extension.csprojResolveAssemblyReference.cache
+D:\Projects\HRMApplication\WebApplication\Areas\Extension\obj\Debug\HRM.Extension.dll
+D:\Projects\HRMApplication\WebApplication\Areas\Extension\obj\Debug\HRM.Extension.pdb

@@ -1,0 +1,98 @@
+﻿@using System.Data
+@using System.Linq
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@using HRM.QLThinhGiang.Models
+@{
+    var namTK = int.Parse(Request.Form["NamTK"] ?? DateTime.Now.Year.ToString());
+    ViewBag.Title = "NVDV";
+    var db = ViewBag.db as HRMDBEntities;
+    var db_ = ViewBag.db0 as HRMDB_Entities;
+    var dmDonVis = db.dmDonVi.Where(dv => dv.Khoa_BoMon.Equals("K") || dv.Khoa_BoMon.Equals("BM"))
+        .OrderByDescending(dv => dv.Khoa_BoMon).ThenBy(dv => dv.stt).ToList();
+    var gvDuLieuGioGiangs = db_.gvDuLieuGioGiang.Where(dl => dl.NamHoc.Equals(namTK)).ToList();
+    var GVCH = gvDuLieuGioGiangs.Where(gv => gv.PhanLoaiGV2.Equals("GVCH"));
+    var GVTG = gvDuLieuGioGiangs.Where(gv => gv.PhanLoaiGV2.Equals("GVTG"));
+    ViewBag.Random = new Random();
+}
+@helper Mark(double sum, IEnumerable<gvDuLieuGioGiang> GV, string title) {
+    var rand = (ViewBag.Random as Random).Next();
+    if (GV.Count() > 0) {
+        <mark title="@String.Join(", ", GV.Select(gv => gv.HoVaTen).ToArray())">
+            <a href="#" onclick="$('#@rand').dialog({width:'auto',title:'@title'})">@sum</a>
+        </mark>
+        <div id="@rand" style="display:none">
+            <table>
+                <thead>
+                    <th>Họ và tên</th>
+                    <th>Môn dạy</th>
+                    <th><mark><abbr title="Tiết quy đổi">TQD</abbr></mark></th>
+                    <th><mark><abbr title="Đơn vị công tác">DV</abbr></mark></th>
+                    <th><mark><abbr title="Khoa giảng dạy">K</abbr></mark></th>
+                    <th><mark><abbr title="Ngành giảng dạy">N</abbr></mark></th>
+                </thead>
+                <tbody>
+                @foreach (var gv in GV)
+                {
+                    <tr>
+                        <td>@gv.HoVaTen</td>
+                        <td>@gv.MonDay</td>
+                        <td>@gv.TietQuyDoi</td>
+                        <td>@gv.DonViCongTac</td>
+                        <td>@gv.KhoaGiangDay</td>
+                        <td>@gv.NganhGiangDay</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    } else { <span>@sum</span> }
+}
+@helper ThongKe(int count, dmDonVi dv, IEnumerable<gvDuLieuGioGiang> GVCHs, IEnumerable<gvDuLieuGioGiang> GVTGs) {
+    var maDonVi = dv.maDonVi;
+    var GVCH = GVCHs.Where(gv => gv.DonViCongTac.Equals(maDonVi));
+    var GVTG = GVTGs.Where(gv => gv.DonViCongTac.Equals(maDonVi));
+    var tGVCH = GVCH.Sum(dl => dl.TietQuyDoi);
+    var tGVTG = GVTG.Sum(dl => dl.TietQuyDoi);
+    <td>@count</td>
+    <td>@dv.tenDonVi</td>
+    <td>@(tGVCH + tGVTG)</td>
+    <td>@Mark(tGVCH, GVCH, dv.tenDonVi + " - GVCH")</td>
+    <td><b>@Math.Round(tGVCH * 100 / (tGVCH + tGVTG), 1)%</b></td>
+    <td>@Mark(tGVTG, GVTG, dv.tenDonVi + " - GVTG")</td>
+    <td>@Math.Round(tGVTG * 100 / (tGVCH + tGVTG), 1)%</td>
+}
+
+<h3>THỐNG KÊ GIỜ GIẢNG TOÀN TRƯỜNG (theo nhiệm vụ đơn vị)</h3>
+
+<table id="NVDV" border="1">
+    <tr>
+        <td rowspan="2">STT</td>
+        <td rowspan="2">ĐƠN VỊ TK</td>
+        <td colspan="5">
+        @using (Html.BeginForm())
+        {
+            <span>NĂM HỌC</span>
+            <input type="text" name="NamTK" value="@namTK" style="width:100px" />
+            <input type="submit" value="Thống kê" />
+        }
+        </td>
+    </tr>
+    <tr>
+        <td>Tổng số giờ quy đổi</td>
+        <td>GVCH</td>
+        <td>Tỉ lệ GG GVCH</td>
+        <td>GVTG</td>
+        <td>Tỉ lệ GG GVTG</td>
+    </tr>
+@{ var count = 1; }
+@foreach (var dv in dmDonVis)
+{
+    <tr>@ThongKe(count++, dv, GVCH, GVTG)</tr>
+}
+</table>
+
+<style>
+    table#NVDV td { border: 1px solid !important; padding: 0; }
+</style>

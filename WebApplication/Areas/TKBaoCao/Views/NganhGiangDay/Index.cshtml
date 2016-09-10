@@ -1,0 +1,97 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Index";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from dsNganhGiangDay where NV_id=@p0", Model);
+    var ngayBC = Request.QueryString["NgayBC"];
+}
+
+<p class="ui-state-highlight">
+    Quản lý ngành giảng dạy của <b>@dt.Rows[0]["HoVaTen"]</b>
+    <span style="float:right"><b>@Html.ActionLink("Quay lại", "List")</b></span>
+</p>
+
+<table id="NganhGiangDay" class="table table-hover table-bordered">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/TKBaoCao/NganhGiangDay/EditP?NV_id=" + Model)
+        </th>
+        <th>Ngành giảng dạy</th>
+        <th>Khoa giảng dạy</th>
+        <th>Thời gian</th>
+    @if (!String.IsNullOrEmpty(ngayBC))
+    {
+        <th>Lưu BC ngày</th>
+    }
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    if (dr["idNganhGiangDay"] is DBNull) { continue; }
+    <tr style="@(dr["LaChinh"].ToString().Equals("1") ? "background:lightblue" : null)">
+        <td>
+            <button class="select" style="width:16px"></button>
+            <ul style="z-index:1000">
+                <li>@Html.Link4U("~/TKBaoCao/NganhGiangDay/EditP?id=" + dr["idNganhGiangDay"], "Edit")</li>
+                <li>@Html.Link4D("~/TKBaoCao/NganhGiangDay/DeleteS?id=" + dr["idNganhGiangDay"], "Delete")</li>
+                <li>@Html.Link4S("~/TKBaoCao/NganhGiangDay/CurrentS?id=" + dr["idNganhGiangDay"], "Là ngành chính")</li>
+            @if (!String.IsNullOrEmpty(ngayBC))
+            {
+                <li>@Html.Link4S("~/TKBaoCao/NganhGiangDay/ReportS?id=" + dr["idNganhGiangDay"] + "&NgayBC=" + ngayBC, "Là chính cho BC ngày " + DateTime.Parse(ngayBC).ToShortDateString())</li>
+            }
+            </ul>
+        </td>
+        <td>
+            <span>@dr["maNganhGiangDay"]</span>
+            <span>-</span>
+            <span>@dr["tenNganhGiangDay"]</span>
+        </td>
+        <td>
+            <span>@dr["maKhoaGiangDay"]</span>
+            <span>-</span>
+            <span>@dr["tenKhoaGiangDay"]</span>
+        </td>
+        <td>
+            <span>@Html.Display(dr, dr.Table.Columns["ThoiGianBatDau"])</span>
+            <span>~</span>
+            <span>@Html.Display(dr, dr.Table.Columns["ThoiGianKetThuc"])</span>
+        </td>
+    @if (!String.IsNullOrEmpty(ngayBC))
+    {
+        var nv_id = (int)dr["id"];
+        var id = (int)dr["idNganhGiangDay"];
+        <td>
+        @foreach (var ngay in db.bcKhoaGiangDay.Where(bc => bc.NV_id == nv_id && bc.Chinh_id == id))
+        {
+            <span><mark>@ngay.NgayBC.ToShortDateString()</mark></span>
+        }
+        </td>
+    }
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#NganhGiangDay").find("th,td").attr("nowrap", true);
+        $("#NganhGiangDay").find("th").attr("nowrap", true);
+        $("#NganhGiangDay").find(".select").button({
+            text: false,
+            icons: { primary: "ui-icon-circle-triangle-s" }
+        }).click(function () {
+            var menu = $(this).next().show().position({
+                my: "left top",
+                at: "left bottom",
+                of: this
+            });
+            $(document).one("click", function () { menu.hide(); });
+            return false;
+        }).next().hide().menu();
+    });
+</script>

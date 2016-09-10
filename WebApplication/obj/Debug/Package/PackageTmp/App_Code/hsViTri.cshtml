@@ -1,0 +1,219 @@
+﻿@using System.Collections
+
+@functions {
+    public static Tuple<double, string> TinhDiem(IEnumerable<string> VTs) {
+        var diem = 0.0;
+        var cach = new HashSet<string>();
+        if (VTs.Contains("CT"))
+        {
+            diem += 6 - 6;
+            cach.Add("Chủ tịch HĐQT: 6");
+        }
+        else if (VTs.Contains("HT"))
+        {
+            diem += 5;
+            cach.Add("Hiệu trưởng: 5");
+        }
+        else if (VTs.Contains("PCT"))
+        {
+            diem += 4.5 - 4.5;
+            cach.Add("Phó Chủ tịch HĐQT: 4.5");
+        }
+        else if (VTs.Contains("PHT"))
+        {
+            diem += 4;
+            cach.Add("Phó Hiệu trưởng: 4");
+        }
+        else if (VTs.Contains("UV"))
+        {
+            diem += 3.5 - 3.5;
+            cach.Add("Ủy viên HĐQT đương nhiệm: 3.5");
+        }
+        else if (VTs.Contains("TK3"))
+        {
+            diem += 3.5;
+            cach.Add("Trưởng Khoa Khoa học ứng dụng; Trưởng khoa đào tạo 4 ngành, có cao học, 2 văn bằng: 3.5");
+        }
+        else if (VTs.Contains("QTK4"))
+        {
+            diem += 3.4;
+            cach.Add("Quyền Trưởng khoa Khoa học ứng dụng: 3.4");
+        }
+        else if (VTs.Contains("TK_D"))
+        {
+            diem += 3.3;
+            cach.Add("Trưởng khoa 2 văn bằng: 3.3");
+        }
+        else if (VTs.Contains("TK_Q"))
+        {
+            diem += 3.1;
+            cach.Add("Trưởng khoa 2 chuyên ngành: 3.1");
+        }
+        else if (VTs.Contains("TK2"))
+        {
+            diem += 3.2;
+            cach.Add("Trưởng khoa 2 ngành/3 chuyên ngành, ban TCCN 4 ngành, ban KHCB GV đông: 3.2");
+        }
+        else if (VTs.Contains("TK"))
+        {
+            diem += 3;
+            cach.Add("Trưởng khoa: 3");
+        }
+        else if (VTs.Contains("PK-PTK2"))
+        {
+            diem += 3;
+            cach.Add("Phó trưởng khoa Phụ trách khoa 2 ngành: 3");
+        }
+        else if (VTs.Contains("TP3"))
+        {
+            diem += 3.5;
+            cach.Add("Trưởng phòng Đào tạo, KH&QLNL: 3.5");
+        }
+        else if (VTs.Contains("T_TT-TV"))
+        {
+            diem += 3.0;
+            cach.Add("Trung tâm thông tin + thư viện: 3.0");
+        }
+        else if (VTs.Contains("TP2"))
+        {
+            diem += 3;
+            cach.Add("Trưởng phòng Kế toán: 3");
+        }
+        else if (VTs.Contains("PK-PTK"))
+        {
+            diem += 2.8;
+            cach.Add("Phó trưởng khoa Phụ trách khoa: 2.8");
+        }
+        else if (VTs.Contains("TP"))
+        {
+            diem += 2.8;
+            cach.Add("Trưởng Phòng, ban chức năng, trung tâm thông tin: 2.8");
+        }
+        else if (VTs.Contains("PP-PTP2"))
+        {
+            diem += 2.7;
+            cach.Add("Phó trưởng phòng phụ trách phòng (2 mảng công việc): 2.7");
+        }
+        else if (VTs.Contains("PP-PTP"))
+        {
+            diem += 2.6;
+            cach.Add("Phó trưởng phòng phụ trách phòng: 2.6");
+        }
+        else if (VTs.Contains("PTK4"))
+        {
+            diem += 2.5;
+            cach.Add("Phó Trưởng khoa Khoa học ứng dụng: 2.5");
+        }
+        else if (VTs.Contains("PK3"))
+        {
+            diem += 2.5;
+            cach.Add("Phó Trưởng khoa đào tạo 4 ngành : 2.5");
+        }
+        else if (VTs.Contains("PK2"))
+        {
+            diem += 2.3;
+            cach.Add("Phó Trưởng khoa 2 ngành hoặc 3 chuyên ngành, đào tạo chứng chỉ quốc tế, ban TCCN 4 ngành: 2.3");
+        }
+        else if (VTs.Contains("PTK-PTNG"))
+        {
+            diem += 2.2;
+            cach.Add("Phó chủ nhiệm khoa, đặc trách trưởng ngành: 2.2");
+        }
+        else if (VTs.Contains("PP3"))
+        {
+            diem += 2.5;
+            cach.Add("Phó trưởng phòng KH&QLNL, Đào tạo: 2.5");
+        }
+        else if (VTs.Contains("PP2"))
+        {
+            diem += 2.2;
+            cach.Add("Phó trưởng phòng KH&QLNL, Đào tạo: 2.2");
+        }
+        else if (VTs.Contains("GĐ2"))
+        {
+            diem += 2.2;
+            cach.Add("Giám đốc trung tâm kỹ thuật tin học, Trung tâm hỗ trợ sinh viên (từ năm 2009): 2.2");
+        }
+        else if (VTs.Contains("GĐ3"))
+        {
+            diem += 2.5;
+            cach.Add("2.5");
+        }
+        else if (VTs.Contains("PK"))
+        {
+            diem += 2.1;
+            cach.Add("Phó trưởng khoa: 2.1");
+        }
+        else if (VTs.Contains("TNG"))
+        {
+            diem += 2;
+            cach.Add("Trưởng ngành (trực thuộc khoa): 2");
+        }
+        else if (VTs.Contains("PP"))
+        {
+            diem += 2;
+            cach.Add("Phó trưởng phòng, ban chức năng: 2");
+        }
+        else if (VTs.Contains("TL"))
+        {
+            diem += 2;
+            cach.Add("Trợ lý Trưởng đơn vị: 2");
+        }
+        else if (VTs.Contains("GĐ"))
+        {
+            diem += 2;
+            cach.Add("Giám đốc trung tâm: 2");
+        }
+        else if (VTs.Contains("PGĐ-PT2"))
+        {
+            diem += 2;
+            cach.Add("Phó Giám đốc Trung tâm hỗ trợ sinh viên (từ năm 2009): 2");
+        }
+        else if (VTs.Contains("PGĐ-PT"))
+        {
+            diem += 1.8;
+            cach.Add("Phó Giám đốc Phụ trách trung tâm: 1.8");
+        }
+        else if (VTs.Contains("TBM-AV"))
+        {
+            diem += 2.0;
+            cach.Add("Trưởng bộ môn Anh văn: 2.0");
+        }
+        else if (VTs.Contains("TBM"))
+        {
+            diem += 1.8;
+            cach.Add("Trưởng bộ môn: 1.8");
+        }
+        else if (VTs.Contains("PGĐ2"))
+        {
+            diem += 1.7;
+            cach.Add("Phó Giám đốc Trung tâm kỹ thuật tin học: 1.7");
+        }
+        else if (VTs.Contains("PTBM"))
+        {
+            diem += 1.7;
+            cach.Add("Phó Trưởng Phụ trách bộ môn: 1.7");
+        }
+        else if (VTs.Contains("PNG"))
+        {
+            diem += 1.6;
+            cach.Add("Phó trưởng ngành (trực thuộc khoa): 1.6");
+        }
+        else if (VTs.Contains("PB"))
+        {
+            diem += 1.5;
+            cach.Add("Phó trưởng ban xúc tiến dự án gò vấp, dự án trực thuộc trường: 1.5");
+        }
+        else if (VTs.Contains("PGĐ"))
+        {
+            diem += 1.5;
+            cach.Add("Phó Giám đốc trung tâm: 1.5");
+        }
+        else if (VTs.Contains("PBM"))
+        {
+            diem += 1.5;
+            cach.Add("Phó Trưởng bộ môn: 1.5");
+        }
+        return new Tuple<double, string>(diem, cach.FirstOrDefault());
+    }
+}

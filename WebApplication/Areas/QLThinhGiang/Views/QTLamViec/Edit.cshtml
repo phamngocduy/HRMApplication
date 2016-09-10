@@ -1,0 +1,41 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model int
+@{
+    ViewBag.Title = "Edit";
+    var db = ViewBag.db as HRMDB_Entities;
+    var d0 = new HRM.Databases.Models.HRMDB0Entities();
+    var dt = db.SqlQuery("select * from NhanVien where id=@p0", Model);
+    var dr = dt.Rows[0];
+    var DonVi_id = "DonVi_id";
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm("Update", "TTLienHe"))
+{
+    @Html.Hidden("name", "NhanVien")
+    @Html.Hidden("id", dr["id"])
+<div id="@rand" style="overflow-x:auto">
+<table>
+    <tr>
+        <td>Đơn vị công tác</td>
+        <td>
+            @Html.DropDownList(DonVi_id, new SelectList(d0.dmDonVi, "id", "tenDonVi", dr[DonVi_id]), String.Empty)
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Cập nhật" />
+        </td>
+    </tr>
+</table>
+</div>
+}
+
+<script>
+    $(function () {
+        $("#@rand").find("#@DonVi_id").combobox();
+    });
+</script>

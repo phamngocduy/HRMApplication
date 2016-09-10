@@ -1,0 +1,254 @@
+﻿@model HRM.QLVayMuon.Models.KhoanVay
+@using HRM.QLVayMuon.Models
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Edit";
+    var db = new HRMDB1Entities();
+
+    var HV_id = (int)ViewBag.HV_id;
+}
+
+@Html.BeginDiv()
+<h4>Khoản vay của: 
+@db.KhoanVay.First(k => k.id == HV_id).NhanVienVayMuon.MaNV - 
+@db.KhoanVay.First(k => k.id == HV_id).NhanVienVayMuon.HoVaTen - 
+@db.KhoanVay.First(k => k.id == HV_id).NhanVienVayMuon.DonVi
+</h4>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>KhoanVay</legend>
+
+        @Html.HiddenFor(model => model.idNhanVienVayMuon)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idMucDichSuDung, "Mục đích sử dụng")
+        </div>
+        <div class="editor-field">
+         @*   @Html.EditorFor(model => model.idMucDichSuDung)*@
+             @Html.DropDownList("idMucDichSuDung", String.Empty)
+            @Html.ValidationMessageFor(model => model.idMucDichSuDung)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoChungTu, "Số chứng từ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoChungTu)
+            @Html.ValidationMessageFor(model => model.SoChungTu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NgayChungTu, "Ngày chứng từ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NgayChungTu)
+            @Html.ValidationMessageFor(model => model.NgayChungTu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DienGiai, "Diễn giải")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DienGiai)
+            @Html.ValidationMessageFor(model => model.DienGiai)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DinhMuc, "Định mức")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DinhMuc)
+            @Html.ValidationMessageFor(model => model.DinhMuc)
+        </div>
+
+        <div class="editor-field">
+            @Html.LabelFor(model => model.SoTienVay, "Số tiền vay")
+        </div>
+        <div class="editor-field">
+     
+            @Html.HiddenFor(model => model.SoTienVay)
+            @Html.ValidationMessageFor(model => model.SoTienVay)
+        </div>
+      
+      
+         <input id="Vay"  value= @String.Format("{0:#,##0}", Model.SoTienVay) />
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoThang, "Số tháng")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoThang)
+            @Html.ValidationMessageFor(model => model.SoThang)
+        </div>
+
+@*        <div class="editor-label">
+            @Html.LabelFor(model => model.SoNgay, "Số ngày")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoNgay)
+            @Html.ValidationMessageFor(model => model.SoNgay)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TraTuThang, "Trả từ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TraTuThang)
+            @Html.ValidationMessageFor(model => model.TraTuThang)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TraDenThang, "Trả đến")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TraDenThang)
+            @Html.ValidationMessageFor(model => model.TraDenThang)
+        </div>
+
+          <div class="editor-label">
+            @Html.LabelFor(model => model.DatraXong, "Đã trả xong")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DatraXong)
+            @Html.ValidationMessageFor(model => model.DatraXong)
+        </div>
+
+        <p>
+            <input type="submit" value="Lưu" onclick="return check();"/>
+    
+        </p>
+    </fieldset>
+
+}
+<div>
+    @Html.ActionLink("Trở lại danh sách khoản vay", "Index", new { NV_id = db.KhoanVay.FirstOrDefault(k => k.id == HV_id).idNhanVienVayMuon })
+</div>
+
+@Html.EndDiv()
+
+
+<script>
+     $("#TraTuThang").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true});
+
+     $("#TraDenThang").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true
+    });
+
+      $("#NgayChungTu").datepicker({
+        changeDay: true,
+       changeMonth: true,
+        changeYear: true
+    });
+
+    $("#idMucDichSuDung").combobox();
+
+    $('#Vay').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        $(this).val(function (index, value) {
+            return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    ;
+        });
+
+
+
+
+    });
+
+
+
+    $("#Vay").keyup(function () {
+
+        //Clear the hidden field
+        $("#SoTienVay").val("");
+
+        //Create char array from phone number field
+        var charArray = $(this).val().split("");
+
+        var phoneNumber = "";
+
+        //Iterate over each character in the char array
+        //and determine if it is a number
+        $.each(charArray, function (index, value) {
+            if (!isNaN(value) && value != " ") {
+                phoneNumber = phoneNumber + value;
+            }
+        });
+
+        //Set hidden field
+        $("#SoTienVay").val(phoneNumber);
+    });
+
+
+    var tratu = $("[id$=TraTuThang");
+    var tratu1 = $("[id$=SoThang");
+    tratu.change(function () {
+        var str = $(tratu).val();
+        var str1 = $(tratu1).val();
+        ngay1 = parseInt(str1)
+
+        var res = str.split("/");
+        ka1 = res[0]
+        ka2 = res[1]
+        ka3 = res[2]
+
+
+
+        ngay = parseInt(ka1)
+        thang = parseInt(ka2) + ngay1 - 1
+        nam = parseInt(ka3)
+
+
+        if (thang > 12) { thang = thang - 12; nam = nam + 1; }
+        if (thang > 24) { thang = thang - 24; nam = nam + 2; }
+        if (thang > 36) { thang = thang - 36; nam = nam + 3; }
+
+
+        ii = ngaythangnam = ngay + "/" + thang + "/" + nam
+        $("[id$=TraDenThang]").val(ii);
+    });
+
+
+
+    function verify() {
+        if (!document.getElementById('Vay').value.trim().length) {
+            alert("Vui lòng nhập số tiền vay");
+        }
+
+    };
+
+
+    function check() {
+        if (document.getElementById('Vay').value == ""
+                 || document.getElementById('Vay').value == undefined) {
+            alert("Vui lòng nhập số tiền vay");
+            return false;
+        }
+
+
+
+        return true;
+    }
+
+
+
+
+</script>
+
+
+

@@ -1,0 +1,18 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model Object
+@{
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from dsTheDinhDanh where NV_id=@p0", ViewData["NV_id"]);
+    var dsTheDinhDanh = dt.Rows.OfType<DataRow>().Select(dr => new
+    {
+        id = dr["id"],
+        TheDinhDanh = (dr["SoThe"] as string)
+            + (!String.IsNullOrEmpty(dr["NgayCap"] as string) ? " - " + dr["NgayCap"] as string : null)
+            + (!String.IsNullOrEmpty(dr["tenTinhThanh"] as string) ? " - " + dr["tenTinhThanh"] as string : null)
+    }).ToList();
+}
+
+@Html.DropDownList(((DataColumn)ViewData["Column"]).ColumnName,
+                    new SelectList(dsTheDinhDanh, "id", "TheDinhDanh", Model), String.Empty, new { @class = "readonly" })

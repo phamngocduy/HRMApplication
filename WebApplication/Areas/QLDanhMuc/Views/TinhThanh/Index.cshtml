@@ -1,0 +1,50 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model IEnumerable<HRM.Databases.Models.dmTinhThanh>
+@{
+    var db = ViewBag.db as HRMDBEntities;
+    var QHs = db.dmQuanHuyen.ToList().GroupBy(qh => qh.idTinhThanh)
+                .Select(g => new Tuple<int,int>(g.Key, g.Count())).ToList();
+    var Models = (from tt in Model
+                  join qh in QHs on tt.id equals qh.Item1 into TT_QHs
+                  from tt_qh in TT_QHs.DefaultIfEmpty(new Tuple<int, int>(tt.id, 0))
+                  select new Tuple<dmTinhThanh, int>(tt, tt_qh.Item2)).ToList();
+}
+<p>
+    <a class="dialog" href="TinhThanh/Create" title="Thêm">Thêm @Html.VN("TinhThanh")</a>
+</p>
+<table id="listTinhThanh">
+<thead>
+    <tr>
+        <th>STT</th>
+        <th>Mã</th>
+        <th>Tên @Html.VN("TinhThanh")</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Models) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item1.stt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item1.maTinhThanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item1.tenTinhThanh)
+        </td>
+        <td align="right" nowrap>
+            <mark><sup data-tip="Có @item.Item2 @Html.VN("QuanHuyen")">@item.Item2</sup></mark>
+            <a class="dialog" href="QuanHuyen/Create?id=@item.Item1.id" title="Thêm @Html.VN("QuanHuyen")"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+            <a class="dopost" href="TinhThanh/Delete?id=@item.Item1.id" title="Xóa @Html.VN("TinhThanh")"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+            <a class="dialog" href="TinhThanh/Edit?id=@item.Item1.id" title="Sửa @Html.VN("TinhThanh")"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    @Html.dataTables("listTinhThanh")
+</script>

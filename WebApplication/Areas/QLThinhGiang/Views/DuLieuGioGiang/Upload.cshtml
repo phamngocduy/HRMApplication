@@ -1,0 +1,396 @@
+﻿@using System.IO
+@using System.Data
+@using System.Linq
+@using LinqToExcel
+@using System.Transactions
+@using HRM.Databases.Models
+@using HRM.QLThinhGiang.Models
+@{
+    ViewBag.Title = "Upload";
+    var excelFileName = Request.Form["excelFileName"];
+    if (String.IsNullOrEmpty(excelFileName))
+    {
+        excelFileName = Path.GetTempFileName();
+        Request.Files[0].SaveAs(excelFileName);
+    }
+    var excel = new ExcelQueryFactory(excelFileName);
+    var DuLieu = (from dl in excel.Worksheet(0) select dl).ToList();
+    string HocKy = "HK", NamHoc = "NH", HoVaTen = "Họ và tên", Ma = "Mã",
+        ChucDanh = "CD", HocVi = "HV", ChucDanhTrinhDo = "CD-TD", MonDay = "Môn dạy",
+        TietThuc = "Tiết thực", TietQuyDoi = "Tiết quy đổi", Lop = "Lớp", So = "số",
+        HeSoChucDanh = "Hệ số CD", HeSoLopDong = "Hệ số LD", MucChuan = "Mức chuẩn",
+        DonGia = "Đơn giá", TongThuLao = "Tổng thù lao", LyThuyet = "LT", ThucHanh = "TH",
+        NhomMH2 = "Nhóm MH2", NhomMH3 = "Nhóm MH3", NhomMH6 = "Nhóm MH6",
+        DonViCongTac = "Đơn vị công tác", KhoaGiangDay = "Khoa giảng dạy",
+        NganhGiangDay = "Ngành giảng dạy", PhanLoaiGV = "PHÂN LOẠI GV",
+        PhanLoaiGV2 = "PHÂN LOẠI GV2", DacCach = "ĐẶC CÁCH", GhiChu = "GHI CHÚ";
+    var db = new HRMDBEntities();
+    var db0 = new HRMDB_Entities();
+    var dmDonVis = db.dmDonVi.ToList();
+    var dmNganhGiangDays = db.dmNganhGiangDay.ToList();
+    var nvSoYeuLyLichs = db.nvSoYeuLyLich.ToList();
+    var gvSoYeuLyLichs = db0.nvSoYeuLyLich.ToList();
+    var nvQTLamViecs = db.nvQTLamViec.ToList();
+    var NhanViens = db.NhanViens.All.ToList();
+    var ThinhGiangs = db0.NhanVien.ToList();
+    var nvNganhGiangDays = db.nvNganhGiangDay.ToList();
+    var culture = System.Globalization.CultureInfo.CurrentCulture;
+
+    db.Dispose(); db0.Dispose();
+    var scope = new TransactionScope();
+    db = new HRMDBEntities();
+    //db0 = new HRMDB_Entities();
+    var gvDuLieuGioGiangs = new List<gvDuLieuGioGiang>();
+    var confirm = ViewContext.RouteData.Values["action"].ToString().ToLower().Equals("confirm");
+}
+
+<div>
+    <b>Dữ liệu dự kiến:</b>
+</div>
+
+<table id="DuLieu">
+    <thead>
+        <tr>
+            <th nowrap>@HocKy</th>
+            <th nowrap>@NamHoc</th>
+            <th nowrap>@HoVaTen</th>
+            <th nowrap>@Ma</th>
+            <th nowrap>@ChucDanh</th>
+            <th nowrap>@HocVi</th>
+            <th nowrap>@ChucDanhTrinhDo</th>
+            <th nowrap>@MonDay</th>
+            <th nowrap>@TietThuc</th>
+            <th nowrap>@TietQuyDoi</th>
+            <th nowrap>@Lop</th>
+            <th nowrap>@So</th>
+            <th nowrap>@HeSoChucDanh</th>
+            <th nowrap>@HeSoLopDong</th>
+            <th nowrap>@MucChuan</th>
+            <th nowrap>@DonGia</th>
+            <th nowrap>@TongThuLao</th>
+            <th nowrap>@LyThuyet</th>
+            <th nowrap>@ThucHanh</th>
+            <th nowrap>@NhomMH2</th>
+            <th nowrap>@NhomMH3</th>
+            <th nowrap>@NhomMH6</th>
+            <th nowrap>@DonViCongTac</th>
+            <th nowrap>@KhoaGiangDay</th>
+            <th nowrap>@NganhGiangDay</th>
+            <th nowrap>@PhanLoaiGV</th>
+            <th nowrap>@PhanLoaiGV2</th>
+            <th nowrap>@DacCach</th>
+            <th nowrap>@GhiChu</th>
+        </tr>
+    </thead>
+    <tbody>
+@try
+{
+    foreach (var dl in DuLieu.ToList())
+    {
+        string value = String.Empty;
+        var model = new gvDuLieuGioGiang();
+        dmDonVi donvi = null, khoa = null;
+        dmNganhGiangDay nganh = null;
+        <tr>
+            <td nowrap>
+            @{
+                @(value = dl[HocKy].ToString().Trim())
+        model.HocKy = int.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[NamHoc].ToString().Trim())
+        model.NamHoc = int.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[HoVaTen].ToString().Trim())
+        model.HoVaTen = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[Ma].ToString().Trim())
+        model.maGV = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[ChucDanh].ToString().Trim())
+        model.ChucDanh = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[HocVi].ToString().Trim())
+        model.HocVi = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[ChucDanhTrinhDo].ToString().Trim())
+        model.ChucDanhTrinhDo = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[MonDay].ToString().Trim())
+        model.MonDay = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[TietThuc].ToString().Trim())
+        model.TietThuc = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[TietQuyDoi].ToString().Trim())
+        model.TietQuyDoi = double.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[Lop].ToString().Trim())
+        model.Lop = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[So].ToString().Trim())
+        model.So = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[HeSoChucDanh].ToString().Trim())
+        model.HeSoChucDanh = double.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[HeSoLopDong].ToString().Trim())
+        model.HeSoLopDong = double.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[MucChuan].ToString().Trim())
+        model.MucChuan = int.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[DonGia].ToString().Trim())
+        model.DonGia = double.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[TongThuLao].ToString().Trim())
+        model.TongThuLao = int.Parse(value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[LyThuyet].ToString().Trim())
+        model.LyThuyet = double.Parse(value.Trim() == "" ? "0" : value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[ThucHanh].ToString().Trim())
+        model.ThucHanh = double.Parse(value.Trim() == "" ? "0" : value);
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[NhomMH2].ToString().Trim())
+        model.NhomMH2 = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[NhomMH3].ToString().Trim())
+        model.NhomMH3 = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[NhomMH6].ToString().Trim())
+        model.NhomMH6 = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[DonViCongTac].ToString().Trim())
+        model.DonViCongTac = value;
+        donvi = dmDonVis.Single(dv => dv.maDonVi.Equals(value));
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[KhoaGiangDay].ToString().Trim())
+        model.KhoaGiangDay = value;
+        khoa = dmDonVis.Single(dv => dv.maDonVi.Equals(value));
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[NganhGiangDay].ToString().Trim())
+        model.NganhGiangDay = value;
+        nganh = dmNganhGiangDays.Single(n => n.maNganhGiangDay.Equals(value));
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[PhanLoaiGV].ToString().Trim())
+        model.PhanLoaiGV = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[PhanLoaiGV2].ToString().Trim())
+        model.PhanLoaiGV2 = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[DacCach].ToString().Trim())
+        model.DacCach = value;
+            }
+            </td>
+            <td nowrap>
+            @{
+                @(value = dl[GhiChu].ToString().Trim())
+        model.GhiChu = value;
+            }
+            </td>
+        </tr>
+        if (model.PhanLoaiGV2 == "GVCH")
+        {
+            var gvs = !String.IsNullOrEmpty(model.maGV) ? NhanViens.Where(gv => gv.MaNV.Equals(model.maGV)).Select(gv => gv.id).ToList() :
+                nvSoYeuLyLichs.Where(gv => model.HoVaTen.ToLower().Equals((gv.HoVaTen ?? "").ToLower())).Select(gv => gv.NV_id).ToList();
+            if (gvs.Count == 0)
+            {
+                throw new Exception("Không tìm thấy GVCH " + model.HoVaTen);
+            }
+            if (gvs.Count >= 2)
+            {
+                gvs = (from lv in nvQTLamViecs
+                       join gv in gvs on lv.NV_id equals gv
+                       join nv in NhanViens on gv equals nv.id
+                       where lv.DonVi_id.Equals(donvi.id)
+                       where !nv.ngayNghiViec.HasValue
+                       select gv).Distinct().ToList();
+                if (gvs.Count != 1)
+                {
+                    throw new Exception("Tìm thấy nhiều GV " + model.HoVaTen);
+                }
+            }
+            var NV_id = gvs.Single();
+            var nvNganhGiangDay = nvNganhGiangDays.Where(gv => gv.NV_id.Equals(NV_id) &&
+                gv.KhoaGiangDay.Equals(khoa.id) && gv.NganhGiangDay.Equals(nganh.id) &&
+                !gv.ThoiGianKetThuc.HasValue).LastOrDefault();
+            if (nvNganhGiangDay == null)
+            {
+                <tr>
+                    <td colspan="3" style="color:orange">Tạo mới Khoa & Ngành giảng dạy</td>
+                </tr>
+                nvNganhGiangDay = new nvNganhGiangDay();
+                nvNganhGiangDay.NV_id = NV_id;
+                nvNganhGiangDay.NganhGiangDay = nganh.id;
+                nvNganhGiangDay.KhoaGiangDay = khoa.id;
+                nvNganhGiangDay.ThoiGianBatDau = (
+                    model.HocKy == 1 ? new DateTime(model.NamHoc, 9, 1) :
+                    model.HocKy == 2 ? new DateTime(model.NamHoc + 1, 2, 1) :
+                    DateTime.Now);
+                db.nvNganhGiangDay.Add(nvNganhGiangDay);
+                db.SaveChanges();
+            }
+            model.nvNganhGiangDay_id = nvNganhGiangDay.id;
+            model.GV_id = NV_id;
+            model.maGV = NhanViens.Single(gv => gv.id == NV_id).MaNV;
+        }
+        else if (model.PhanLoaiGV2 == "GVTG")
+        {
+            var gvs = !String.IsNullOrEmpty(model.maGV) ? ThinhGiangs.Where(gv => gv.MaNV.Equals(model.maGV)).Select(gv => gv.id).ToList() :
+                gvSoYeuLyLichs.Where(gv => model.HoVaTen.ToLower().Equals((gv.HoVaTen ?? "").ToLower())).Select(gv => gv.NV_id).ToList();
+            if (gvs.Count == 0)
+            {
+                throw new Exception("Không tìm thấy GVTG " + model.HoVaTen);
+            }
+            if (gvs.Count >= 2)
+            {
+                gvs = (from gv in gvs
+                       join tg in ThinhGiangs on gv equals tg.id
+                       where tg.DonVi_id.Equals(donvi.id)
+                       select gv).Distinct().ToList();
+                if (gvs.Count != 1)
+                {
+                    throw new Exception("Tìm thấy nhiều GV " + model.HoVaTen);
+                }
+            }
+            var NV_id = gvs.Single();
+            model.GV_id = NV_id;
+            model.maGV = ThinhGiangs.Single(gv => gv.id == NV_id).MaNV;
+        }
+        else
+        {
+            throw new Exception("Phải là GVCH hoặc GVTG!");
+        }
+        model.ThoiGian = DateTime.Now;
+        //db0.gvDuLieuGioGiang.Add(model);
+        gvDuLieuGioGiangs.Add(model);
+    }
+    
+    if (confirm)
+    {
+        scope.Complete();
+    }
+    db.Dispose();
+    scope.Dispose();
+    
+    scope = new TransactionScope();
+    db0 = new HRMDB_Entities();
+    gvDuLieuGioGiangs.ForEach(gv => db0.gvDuLieuGioGiang.Add(gv));
+    db0.SaveChanges();
+    if (confirm)
+    {
+        scope.Complete();
+    }
+    db0.Dispose();
+    scope.Dispose();
+}
+catch (Exception e)
+{
+    <tr>
+        <td style="color:red">@e.Message</td>
+    </tr>
+}
+    </tbody>
+</table>
+
+<div>
+@using (Html.BeginForm("Confirm", "DuLieuGioGiang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Hidden("excelFileName", excelFileName)
+    <input type="submit" value="Thực hiện lưu dữ liệu!" />
+}
+</div>
+
+<style>
+    table#DuLieu td { border: 1px solid !important; padding: 0; }
+</style>
+@if (confirm)
+{
+<script>
+    $(function () {
+        alert("Thực hiện lưu dữ liệu thành công!");
+        location = "@Url.Action("Index")";
+    });
+</script>
+}

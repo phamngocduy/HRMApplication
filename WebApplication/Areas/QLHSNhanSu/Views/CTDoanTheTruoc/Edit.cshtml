@@ -1,0 +1,50 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int?
+@{
+    var action = "CTDoanTheTruoc";
+    var NV_id = ViewBag.NV_id as int?;
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvCTDoanTheTruoc where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+    
+    var CongTac = "CongTac_id";
+    var CongTac_id = dr != null ? dr[CongTac] as int? : null;
+
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("NV_id", NV_id.HasValue ? NV_id.Value : dr["NV_id"])
+<dl id="@rand" class="dl-horizontal">
+    <dt>Công tác</dt>
+    <dd>@Html.DropDownList(CongTac, new SelectList(db.dmCongTacDoanThe, "id", "tenCongTacDoanThe", CongTac_id), String.Empty)</dd>
+    <dt>Ngày bắt đầu</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgayBatDau"])</dd>
+    <dt>Ngày kết thúc</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgayKetThuc"])</dd>
+    <dt>Tên đơn vị</dt>
+    <dd>@Html.Editor(dr, dt.Columns["DonVi"])</dd>
+    <dt>Chức danh/chức vụ</dt>
+    <dd>@Html.Editor(dr, dt.Columns["ChucVu"])</dd>
+    <dt>Ghi chú</dt>
+    <dd>@Html.Editor(dr, dt.Columns["GhiChu"])</dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text");
+</script>

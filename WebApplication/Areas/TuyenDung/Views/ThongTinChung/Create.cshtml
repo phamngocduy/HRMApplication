@@ -1,0 +1,159 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdTTUngCuVien
+@using System.Data.Objects;
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@using HRM.Webpages.Helpers
+@using HRM.Libraries.Helpers
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var TinhThanh_id = new SelectList(db0.dmTinhThanh.OrderBy(tt => tt.tenTinhThanh), "id", "tenTinhThanh", db0.dmTinhThanh);
+    var DanToc_id = new SelectList(db0.dmDanToc.OrderBy(tt => tt.tenDanToc), "id", "tenDanToc", db0.dmDanToc.Where(dt => dt.tenDanToc == "Kinh").FirstOrDefault().id);
+    var TonGiao_id = new SelectList(db0.dmTonGiao.OrderBy(tt => tt.tenTonGiao), "id", "tenTonGiao", db0.dmTonGiao);
+    var QuocTich_id = new SelectList(db0.dmQuocGia.OrderBy(tt => tt.tenQuocGia), "id", "tenQuocGia", db0.dmQuocGia.Where(dt => dt.tenQuocGia == "Việt Nam").FirstOrDefault().id);
+    var GioiTinh_id = new SelectList(db0.dmGioiTinh.OrderBy(tt => tt.tenGioiTinh), "id", "tenGioiTinh", db0.dmGioiTinh);
+    var LoaiTheDinhDanh_id = new SelectList(db.tdLoaiTheDinhDanh.OrderBy(td => td.LoaiTheDinhDanh), "id", "LoaiTheDinhDanh", db.tdLoaiTheDinhDanh);
+}
+
+
+@using (Html.BeginForm("Create", "ThongTinChung", new { tab = "ThongTinBangCap", UV_id = ViewBag.UngVien_id }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+    <p>
+        @Html.Raw("Họ và tên")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        @Html.TextBoxFor(model => model.HoVaTen, new { style = "width:440px" })
+        @Html.ValidationMessageFor(model => model.HoVaTen, "Vui lòng điền họ tên ứng viên.")  
+  
+        @Html.Raw("Giới tính")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        <span style="margin-left:8px"></span>
+        @Html.DropDownListFor(model => model.GioiTinh_id, GioiTinh_id, String.Empty, new { style = "width:100px", id = "GioiTinh" })
+        @*@Html.ValidationMessageFor(model => model.GioiTinh_id, "Vui lòng chọn giới tính.")*@
+    </p>
+    <p>
+        @Html.Raw("Ngày sinh")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        @Html.TextBoxFor(model => model.NgaySinh, new { style = "width:100px;", id = "NgaySinh" })
+        @*@Html.ValidationMessageFor(model => model.NgaySinh)*@
+        @Html.Raw("Nơi sinh")
+        @Html.HiddenFor(model => model.KetQuaTuyenDung, new { value=" " }))
+        <span style="margin-left:7px"></span>
+        @Html.DropDownListFor(model => model.tdNoiSinhs.SingleOrDefault().TinhThanh_id, TinhThanh_id, String.Empty, new { style = "width:180px" , id = "NoiSinh"})
+        @Html.ValidationMessageFor(model => model.tdNoiSinhs.SingleOrDefault().TinhThanh_id)
+        @Html.DropDownListFor(model => model.tdNoiSinhs.SingleOrDefault().QuocGia_id, QuocTich_id, new { style = "width:215px" , id = "QuocGia"})
+        @Html.ValidationMessageFor(model => model.tdNoiSinhs.SingleOrDefault().QuocGia_id)
+    </p>
+    <hr />
+    <p>
+        @Html.Raw("Giấy tờ tùy thân")
+        <span style="margin-left:0px"></span>
+        @Html.DropDownListFor(model => model.tdTheDinhDanhs.SingleOrDefault().LoaiThe_id, LoaiTheDinhDanh_id, new { style = "width:89px", id = "LoaiThe" })
+        @Html.ValidationMessageFor(model => model.tdTheDinhDanhs.SingleOrDefault().LoaiThe_id)
+        @Html.Raw("Số thẻ")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        @Html.TextBoxFor(model => model.tdTheDinhDanhs.SingleOrDefault().SoThe, new { style = "width:122px" })
+        @Html.Raw("Nơi cấp")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        <span style="margin-left:36px"></span>
+         @Html.DropDownListFor(model => model.tdTheDinhDanhs.SingleOrDefault().NoiCap_id, TinhThanh_id, String.Empty, new { style = "width:280px;", id = "NoiCap" })
+        @*@Html.ValidationMessageFor(model => model.tdTheDinhDanhs.SingleOrDefault().SoThe)*@
+       
+       @* @Html.ValidationMessageFor(model => model.TrinhDo_id)*@
+    </p>
+    <p>
+        @Html.Raw("Ngày cấp")<span title="Bắt buộc nhập" style="color:Blue">(*)</span>
+        <span style="margin-left:14px"></span>
+        @Html.TextBoxFor(model => model.tdTheDinhDanhs.SingleOrDefault().NgayCap, new { style = " width:288px", id = "NgayCap" })
+        @Html.Raw("Ngày hết hạn")
+        <span style="margin-left:16px"></span>
+        @Html.TextBoxFor(model => model.tdTheDinhDanhs.SingleOrDefault().NgayHetHan, new { style = " width:200px", id = "NgayHetHan" })
+        @Html.ValidationMessageFor(model => model.tdTheDinhDanhs.SingleOrDefault().NgayHetHan)
+    </p>
+    <p>
+        @Html.Raw("Dân tộc")
+    
+        <span style="margin-left:40px"></span>
+        @Html.DropDownListFor(model => model.DanToc_id, DanToc_id, new { style = "width:auto;", id = "DanToc" })
+        @Html.ValidationMessageFor(model => model.DanToc_id)
+        @Html.Raw("Tôn giáo")
+        <span style="margin-left:0px"></span>
+        @Html.DropDownListFor(model => model.TonGiao_id, TonGiao_id, String.Empty, new { style = "width:auto;", id = "TonGiao" })
+        @Html.ValidationMessageFor(model => model.TonGiao_id)
+        @Html.Raw("Quốc tịch")
+        <span style="margin-left:15px"></span>
+        @Html.DropDownListFor(model => model.QuocTich_id, QuocTich_id, new { style = "width:290px", id = "QuocTich" })
+    </p>
+    <p>
+        @Html.Raw("TT hôn nhân")
+        <span style="margin-left:11px"></span>
+        @Html.TextBoxFor(model => model.TTHonNhan, new { style = " width:680px" })
+        @Html.ValidationMessageFor(model => model.TTHonNhan)
+    </p>
+    <p style="margin-left:705px">
+            <input type="submit" value="Lưu" style="width:80px"/>
+    </p>
+    </fieldset>
+}
+<script>
+    $(function () {
+        $("[id=NgaySinh]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange:'c-100:c+100'
+        });
+        $("[id=NgayCap]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=NgayHetHan]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+
+<style>
+input { width: auto; font-weight: bold }
+label { display: inline; color: gray; font-size: 1.1em }
+td { white-space: nowrap; padding: 0em 0.5em 0em 0.5em }
+</style>
+
+<script>
+    $(function () {
+        $("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).attr("size", $(this).val().length + 1);
+        });
+        var PhuongXa = $("#DiaChiTamTru_DiaPhuong_PhuongXa_id").combobox();
+        var QuanHuyen = $("#DiaChiTamTru_DiaPhuong_QuanHuyen_id").combobox();
+        var TinhThanh = $("#DiaChiTamTru_DiaPhuong_TinhThanh_id").combobox();
+        TinhThanh.change(function () {
+            var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/QuanHuyen/List?idTinhThanh=" + $(this).val();
+            QuanHuyen.trigger("connect", [link, function () {
+                QuanHuyen.trigger("change");
+            } ]);
+        });
+        QuanHuyen.change(function () {
+            PhuongXa.trigger("connect", "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/PhuongXa/List?idQuanHuyen=" + $(this).val());
+        });
+    });
+</script>
+<script>
+    $("#NoiSinh").combobox().parent().find("input.ui-autocomplete-input");
+    $("#QuocGia").combobox().parent().find("input.ui-autocomplete-input").css("width", "250px");
+    $("#LoaiThe").combobox().parent().find("input.ui-autocomplete-input").css("width", "89px");
+    $("#NoiCap").combobox().parent().find("input.ui-autocomplete-input");
+    $("#DanToc").combobox().parent().find("input.ui-autocomplete-input").css("width", "120px");
+    $("#TonGiao").combobox().parent().find("input.ui-autocomplete-input").css("width", "120px");
+    $("#QuocTich").combobox().parent().find("input.ui-autocomplete-input");
+    $("#GioiTinh").combobox().parent().find("input.ui-autocomplete-input").css("width", "102px");
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+</script>
+

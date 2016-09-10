@@ -1,0 +1,113 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLDanhMuc.Models
+@model IEnumerable<HRM.Databases.Models.TaiNguyen>
+@{
+    ViewBag.Title = "Index";
+    var Path = new List<TaiNguyen>();
+    var Parent = new Nullable<int>();
+    if (ViewBag.Parent != null)
+    {
+        Parent = ViewBag.Parent.id;
+        while (ViewBag.Parent != null)
+        {
+            Path.Insert(0, new TaiNguyen()
+            {
+                id = ViewBag.Parent.id,
+                tenTaiNguyen = ViewBag.Parent.tenTaiNguyen
+            });
+            ViewBag.Parent = (ViewBag.Parent as TaiNguyen).getParent();
+        }
+    }
+}
+@Html.BeginDiv()
+
+<p>
+    @Html.ActionLink("Create Folder", "Create", new { parent = Parent, isFolder = true }, null),
+    @Html.ActionLink("Add File", "Create", new { parent = Parent }, null)<br />
+    <a href="Index"><span class="ui-icon ui-icon-home" style="display:inline-block"/></a>
+    @foreach (var folder in Path)
+    {
+        @Html.ActionLink(folder.tenTaiNguyen, "Index", new { parent = folder.id })
+    }
+    @if (Session["Selected"] != null)
+    {
+        <strong>(@Html.ActionLink("Paste here!", "Paste/" + (Session["Selected"] as TaiNguyen).id, new { parent = Parent }, new { id = "Paste" }))</strong>
+        <a href="Move?parent=@Parent" title="Cancel"><span class="ui-icon ui-icon-close" style="display:inline-block"/></a>
+        <script>
+            $(function () {
+                $("#Paste").click(function () {
+                    $("<form action='Paste' method='post'></form>")
+                    .append("<input type='text' name='id' value='@((Session["Selected"] as TaiNguyen).id)' />")
+                    .append("<input type='text' name='parent' value='@Parent' />")
+                    .submit();
+                    return false;
+                });
+            });
+        </script>
+        <font color="red">@TempData["Message"]</font>
+    }
+</p>
+<table id="TaiNguyen">
+<thead>
+    <tr>
+        <th style="display:none;"></th>
+        <th>
+            @Html.VN("tenTaiNguyen")
+        </th>
+        <th>
+            @Html.VN("tepDinhKem")
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td style="display:none;">@String.Format("{0}", item.laThuMuc ? "TM" : "TT")</td>
+        <td>
+            @if (item.laThuMuc)
+            {
+                <span class="ui-icon ui-icon-folder-open" style="display:inline-block"></span>
+                @Html.ActionLink(item.tenTaiNguyen, "Index", new { parent = item.id })
+            }
+            else
+            {
+                <span class="ui-icon ui-icon-document" style="display:inline-block"></span>
+                @Html.DisplayFor(model => item.tenTaiNguyen)
+            }
+        </td>
+        <td>
+            @if (!item.laThuMuc)
+            {
+                <a href="Download/tn/@item.id" title="Download">@item.tepDinhKem</a>
+                <a href="Upload/tn/@item.id" title="Upload"><span class="ui-icon ui-icon-image" style="display:inline-block"/></a>
+            }
+        </td>
+        <td align="right" nowrap>
+            @if (Session["Selected"] == null)
+            {
+                <a href="Move/tn/@item.id" title="Move"><span class="ui-icon ui-icon-scissors" style="display:inline-block"/></a>
+            }
+            else
+            {
+                var selected = Session["Selected"] as TaiNguyen;
+                if (item.id != selected.id)
+                {
+                    <a href="Move/tn/@item.id" title="Move"><span class="ui-icon ui-icon-scissors" style="display:inline-block"/></a>
+                }
+            }
+            <a href="Rename/tn/@item.id" title="Rename"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+            <a href="Delete/tn/@item.id" title="Delete"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    @Html.dataTables("TaiNguyen")
+</script>
+
+@Html.EndDiv()

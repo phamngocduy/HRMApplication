@@ -1,0 +1,52 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.QLThinhGiang.Models
+@model int?
+@{
+    var action = "QHGiaDinh";
+    var NV_id = ViewBag.NV_id as int?;
+    var db = ViewBag.db as HRMDB_Entities;
+    var d0 = new HRM.Databases.Models.HRMDB0Entities();
+    var dt = db.SqlQuery("select * from nvQHGiaDinh where id=@p0", Model.HasValue ? Model.Value : 0);
+    var dr = dt.Rows.Count > 0 ? dt.Rows[0] : null;
+
+    var QuanHe = "QuanHe_id";
+    
+    var rand = new Random().Next();
+}
+
+@using (Html.BeginForm(Model.HasValue ? "UpdateS" : "CreateS", action))
+{
+    @Html.Hidden("id", Model)
+    @Html.Hidden("NV_id", NV_id.HasValue ? NV_id.Value : dr["NV_id"])
+<dl id="@rand" class="dl-horizontal">
+    <dt>Mối quan hệ</dt>
+    <dd>@Html.DropDownList(QuanHe, new SelectList(d0.dmMoiQuanHe, "id", "tenMoiQuanHe", dr != null ? dr[QuanHe] : null), String.Empty)</dd>
+    <dt>Họ và tên</dt>
+    <dd>@Html.Editor(dr, dt.Columns["HoTen"])</dd>
+    <dt>Năm sinh</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgaySinh"])</dd>
+    <dt>Nghề nghiệp</dt>
+    <dd>@Html.Editor(dr, dt.Columns["NgheNghiep"])</dd>
+    <dt>Nơi công tác</dt>
+    <dd>@Html.Editor(dr, dt.Columns["CoQuan"])</dd>
+    <dt>Nơi cư trú</dt>
+    <dd>@Html.Editor(dr, dt.Columns["DiaChi"])</dd>
+    <dt>Mã số</dt>
+    <dd>@Html.Editor(dr, dt.Columns["MaSoThue"])</dd>
+    <dt></dt>
+    <dd>
+        <input type="submit" value="Save" />
+        <a title="Close" class="close" href="">X</a>
+    </dd>
+</dl>
+}
+
+<script>
+    var form = $("#@rand");
+    form.find("[type=date]").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy"
+    }).prop("type", "text");
+</script>

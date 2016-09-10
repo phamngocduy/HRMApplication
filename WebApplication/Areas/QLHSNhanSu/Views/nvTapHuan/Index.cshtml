@@ -1,0 +1,123 @@
+﻿@*
+@using HRM.Webpages.Helpers
+@model HRM.Databases.Models.nvTapHuan                               
+@{
+    var db = ViewBag.DB as HRM.Databases.Models.HRMDBEntities;
+    var nvTapHuan = db.NhanViens.All.Find(Model.NV_id).nvTapHuans.ToList();
+        } 
+
+<h3 class="ignore">Tập huấn nội bộ</h3>
+<table id="nvTapHuan">
+<tr>
+
+  
+    <th nowrap>&nbsp;Nội dung</th>
+    <th colspan=2 style="text-align:center">Thời gian</th>     
+    <th nowrap>&nbsp;Kinh phí</th>
+    <th nowrap>&nbsp;Ghi chú</th>
+</tr>
+
+@foreach (var item in   nvTapHuan)
+    {
+    var prefix = "item" + item.GetHashCode();
+<tr>
+@using (Html.BeginForm("Update", "TapHuan"))
+{
+    @Html.Hidden("Prefix", prefix)
+    @Html.Hidden("TH_id", item.id)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+//<td>
+  //  @Html.DropDownListFor(model => item.LoaiCongTac_id, new SelectList(db.dmLoaiCongTac, "id", "tenLoaiCongTac", item.LoaiCongTac_id), String.Empty)<br />
+   // @Html.ValidationMessageFor(model => item.LoaiCongTac_id)
+//</td>
+<td>
+    @Html.EditorFor(model => item.TapHuan.NoiDung)<br />
+    @Html.ValidationMessageFor(model => item.TapHuan.NoiDung)
+</td>
+<td>
+    @Html.EditorFor(model => item.TapHuan.BatDau)<br />
+    @Html.ValidationMessageFor(model => item.TapHuan.BatDau)
+</td>
+<td>
+    @Html.EditorFor(model => item.TapHuan.KetThuc)<br />
+    @Html.ValidationMessageFor(model => item.TapHuan.KetThuc)
+</td>
+<td>
+    @Html.EditorFor(model => item.TapHuan.KinhPhi)<br />
+    @Html.ValidationMessageFor(model => item.TapHuan.KinhPhi)
+</td>
+<td>
+    @Html.EditorFor(model => item.TapHuan.GhiChu)<br />
+    @Html.ValidationMessageFor(model => item.TapHuan.GhiChu)
+</td>
+    <td nowrap>
+    <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Sửa" onclick="$(this).hide().parents('tr').find('a,input,select').prop('disabled',false).prop('hidden',false)"><span class="ui-icon ui-icon-pencil" style="display:inline-block"/></a>
+    <a title="Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()" hidden><span class="ui-icon ui-icon-disk" style="display:inline-block"/></a>
+  //  <a title="Xóa" href="~/QLTTNhanSu/TapHuan/Delete/@item.id" onclick="return confirm('Bạn có muốn xóa @item.noidung vào ngày @item.BatDau?')"><span class="ui-icon ui-icon-trash" style="display:inline-block"/></a>
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+}
+<tr>
+@using (Html.BeginForm("Update" , "TapHuan"))
+{
+    var prefix ="model" + Model.GetHashCode();
+    @Html.Hidden("Prefix", prefix)
+    ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+    @Html.HiddenFor(model => model.id)
+   // <td>
+  //  @Html.DropDownListFor(model => model.LoaiCongTac_id, new SelectList(db.dmLoaiCongTac, "id", "tenLoaiCongTac"), String.Empty)<br />
+  //  @Html.ValidationMessageFor(model => model.LoaiCongTac_id)
+//</td>
+<td>
+    @Html.EditorFor(model => model.TapHuan.NoiDung)<br />
+    @Html.ValidationMessageFor(model => model.TapHuan.NoiDung)
+</td>
+<td>
+    @Html.EditorFor(model => model.TapHuan.BatDau)<br />
+    @Html.ValidationMessageFor(model => model.TapHuan.BatDau)
+</td>
+<td>
+    @Html.EditorFor(model => model.TapHuan.KetThuc)<br />
+    @Html.ValidationMessageFor(model => model.TapHuan.KetThuc)
+</td>
+<td>
+    @Html.EditorFor(model => model.TapHuan.KinhPhi)<br />
+    @Html.ValidationMessageFor(model => model.TapHuan.KinhPhi)
+</td>
+<td>
+    @Html.EditorFor(model => model.TapHuan.GhiChu)<br />
+    @Html.ValidationMessageFor(model => model.TapHuan.GhiChu)
+</td>
+    <td nowrap>
+    <input type="submit" style="position:absolute;left:-9999px" />
+    <a title="Thêm, Nhấn Enter để Lưu" onclick="$(this).parents('tr').find('form').submit()"><span class="ui-icon ui-icon-circle-plus" style="display:inline-block"/></a>
+</td>
+    ViewData.TemplateInfo.HtmlFieldPrefix = null;
+}
+</tr>
+</table>
+
+<style>
+td { padding: 0 2px 0 0 }
+input { margin: 0 0 0 0 }
+</style>
+
+<script>
+    $(function () {
+        var $table = $("#nvTapHuan");
+        $table.find("[id^=item]").prop("disabled", true);
+        $table.find("input[type=datetime]").datepicker({ changeMonth: true, changeYear: true }).css("width", "80px");
+        $table.find("input,select").css("border", "0").css("border-bottom", "1px dotted");
+        $table.find("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length + 1);
+        }).each(function () {
+            $(this).css("width", "auto")
+                   .attr("size", $(this).val().length + 1);
+        });
+
+    });
+</script>
+*@

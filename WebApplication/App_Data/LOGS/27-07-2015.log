@@ -1,0 +1,160 @@
+INFO 02:09:32 – Home/Index
+INFO 02:09:34 – Login/Index
+INFO 02:10:35 – Login/Index
+INFO 02:10:35 – Home/Index
+INFO 02:10:55 – Home/Index
+INFO 02:10:55 – Login/Index
+INFO 02:11:15 – Login/Index
+INFO 02:11:15 – Home/Index
+INFO 02:14:00 – Home/Index
+INFO 02:14:11 – TinhCong/Index
+INFO 02:18:46 – TinhCong/CongThuc
+INFO 02:26:07 – TinhCong/Index
+INFO 02:28:37 – TinhCong/TuDien
+INFO 02:28:39 – TinhCong/TuDien
+INFO 02:29:34 – TinhCong/CongThuc
+INFO 02:29:43 – TinhCong/Details&NV_id=87
+INFO 02:36:56 – TinhCong/TuDien
+INFO 02:37:32 – TinhCong/TuDien
+INFO 02:39:06 – TinhCong/TuDien
+INFO 02:40:36 – TinhCong/TuDien
+INFO 02:41:44 – TinhCong/TuDien
+INFO 02:42:04 – TinhCong/TuDien
+INFO 02:43:05 – TinhCong/TuDien
+INFO 02:45:14 – TinhCong/TuDien
+INFO 02:45:35 – TinhCong/TuDien
+INFO 02:47:30 – TinhCong/TuDien
+INFO 02:48:50 – TinhCong/TuDien
+INFO 02:49:03 – TinhCong/TuDien
+INFO 02:52:33 – TinhCong/TuDien
+INFO 02:53:17 – TinhCong/TuDien
+INFO 02:54:29 – TinhCong/TuDien
+INFO 02:54:44 – TinhCong/TuDien
+INFO 02:55:53 – TinhCong/ThamNien
+INFO 03:06:28 – Home/Index
+INFO 03:30:44 – TinhCong/CongThuc
+INFO 03:30:53 – TinhCong/Details&NV_id=391
+INFO 03:31:32 – TinhCong/Details&NV_id=397
+INFO 03:31:53 – TinhCong/Details&NV_id=393
+INFO 03:32:06 – TinhCong/Details&NV_id=389
+INFO 03:32:18 – TinhCong/Details&NV_id=394
+INFO 03:32:32 – TinhCong/Details&NV_id=399
+INFO 03:32:46 – TinhCong/Details&NV_id=469
+INFO 03:33:01 – TinhCong/Details&NV_id=379
+INFO 03:33:12 – TinhCong/Details&NV_id=401
+INFO 03:34:54 – TinhCong/Details&NV_id=397
+INFO 03:42:05 – TinhCong/Details&NV_id=401
+INFO 03:44:20 – TinhCong/Details&NV_id=469
+INFO 03:54:27 – TinhCong/Details&NV_id=666
+INFO 03:54:40 – TinhCong/Details&NV_id=27
+INFO 03:54:54 – TinhCong/Details&NV_id=7
+INFO 03:55:06 – TinhCong/Details&NV_id=27
+INFO 03:55:33 – TinhCong/Details&NV_id=666
+INFO 03:57:14 – TinhCong/Details&NV_id=666
+INFO 03:58:18 – TinhCong/Details&NV_id=666
+INFO 03:58:46 – TinhCong/CongThuc
+INFO 04:00:51 – TinhCong/Details&NV_id=47
+INFO 04:01:07 – TinhCong/Details&NV_id=16
+INFO 04:01:22 – TinhCong/Details&NV_id=111
+INFO 04:08:56 – TinhCong/Details&NV_id=16
+ERROR04:08:56 – Invalid object name 'bcTuDien'.
+/controller=TinhCong/action=Details
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(Database db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 35
+   at HRM.Webpages.Helpers.DataTableExt.SqlQuery(HRMDBEntities db, String sql, Object[] parameters) in c:\Workspace\HRMApplication\HRMLibraries\Helpers\DataTable.cs:line 20
+   at ASP.TinhCong.hsTuDien(HRMDBEntities db) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 59
+   at ASP.TinhCong.<>c__DisplayClass3f.<Details>b__1b(TextWriter __razor_helper_writer) in c:\Workspace\HRMApplication\WebApplication\App_Code\TinhCong.cshtml:line 165
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at CallSite.Target(Closure , CallSite , _Page_Views_TinhCong_Details_cshtml , Object )
+   at ASP._Page_Views_TinhCong_Details_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\Details.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 04:11:04 – TinhCong/Details&NV_id=16
+INFO 04:11:26 – TinhCong/Details&NV_id=47
+INFO 04:11:38 – TinhCong/Details&NV_id=63
+INFO 04:12:14 – TinhCong/TuDien
+INFO 04:12:23 – TinhCong/TuDien
+INFO 04:12:26 – TinhCong/TuDien
+INFO 04:12:30 – TinhCong/TuDien
+INFO 04:12:33 – TinhCong/ThamNien
+INFO 04:13:41 – TinhCong/TuDien
+INFO 04:16:16 – TinhCong/TuDien
+INFO 04:16:51 – TinhCong/TuDien
+INFO 04:17:10 – TinhCong/TuDien
+INFO 04:18:03 – TinhCong/Index
+INFO 04:18:45 – TinhCong/TuDien
+INFO 04:19:13 – TinhCong/TuDien
+INFO 04:25:28 – TinhCong/CongThuc
+INFO 04:26:55 – TinhCong/CongThuc
+INFO 04:27:01 – TinhCong/CongThuc
+INFO 04:31:19 – TinhCong/Details&NV_id=55
+INFO 04:32:05 – TinhCong/DieuChinh
+INFO 04:32:14 – TinhCong/DC_EditP
+INFO 04:32:44 – TinhCong/DC_CreateS&id=&NV_id=55
+INFO 04:32:44 – TinhCong/DieuChinh
+INFO 04:33:43 – TinhCong/Details&NV_id=55
+INFO 04:34:44 – TinhCong/CongThuc
+ERROR04:34:45 – Column 'maDonVi' does not belong to table .
+/controller=TinhCong/action=CongThuc
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at ASP._Page_Views_TinhCong_CongThuc_cshtml.Execute() in c:\Workspace\HRMApplication\WebApplication\Views\TinhCong\CongThuc.cshtml:line 56
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+INFO 04:35:09 – TinhCong/CongThuc
+INFO 04:36:03 – TinhCong/CongThuc
+INFO 04:39:15 – TinhCong/CongThuc
+INFO 04:39:41 – TinhCong/CongThuc
+INFO 04:53:22 – TinhCong/CongThuc
+INFO 04:59:02 – TinhCong/CongThuc
+INFO 05:02:45 – TinhCong/CongThuc
+INFO 05:05:22 – TinhCong/CongThuc
+INFO 05:05:59 – TinhCong/CongThuc
+INFO 05:20:22 – TinhCong/Details&NV_id=118
+INFO 05:20:28 – TinhCong/Details&NV_id=53

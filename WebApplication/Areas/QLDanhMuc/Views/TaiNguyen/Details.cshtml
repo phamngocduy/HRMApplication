@@ -1,0 +1,36 @@
+﻿@model HRM.Databases.Models.TaiNguyen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>dmTaiNguyen</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.chaTaiNguyen.tenTaiNguyen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.chaTaiNguyen.tenTaiNguyen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tenTaiNguyen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tenTaiNguyen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tepDinhKem)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tepDinhKem)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

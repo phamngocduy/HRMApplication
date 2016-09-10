@@ -1,0 +1,83 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model int
+@{
+    ViewBag.Title = "Edit";
+    var action = "QTLamViecTruoc";
+    var db = ViewBag.db as HRMDBEntities;
+    var dt = db.SqlQuery("select * from nvQTLamViecTruoc where NV_id=@p0", Model);
+    var rand = new Random();
+    var rand1 = rand.Next();
+    var rand2 = rand.Next();
+    var ThamNienGiangDayT = "qtlvThamNienGiangDayT";
+}
+
+<table id="@rand1" class="table table-hover table-bordered" style="margin:0">
+<thead>
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTTNhanSu/"+action+"/EditP?NV_id=" + Model)
+        </th>
+        <th colspan=2>Thời gian</th>
+        <th>Đơn vị công tác</th>
+        <th>Chức danh/chức vụ</th>
+        <th>Ghi chú</th>
+    </tr>
+</thead>
+<tbody>
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            @Html.Editor4U("~/QLTTNhanSu/"+action+"/EditP?id=" + dr["id"])
+            @Html.Editor4D("~/QLTTNhanSu/"+action+"/DeleteS?id=" + dr["id"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["ThoiGianBatDau"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["ThoiGianKetThuc"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["DonViCongTac"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["ChucDanhChucVu"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["GhiChu"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+@using (Html.BeginForm("UpdateThamNien", "QTLamViecTruoc"))
+{
+    dt = db.SqlQuery("select * from NhanVien where id=@p0", Model);
+    var dr = dt.Rows[0];
+    @Html.Hidden("id", dr["id"])
+    var ThamNien = int.Parse(dr[ThamNienGiangDayT].ToString());
+<table id="@rand2"><tr><td>
+    <label style="display:inline">Thâm niêm giảng dạy: </label>
+    @Html.TextBox("YEAR", ThamNien / 12, new { type = "number", style = "width:50px" })
+    <span>(năm)</span>
+    @Html.TextBox("MONTH", ThamNien % 12, new { type = "number", style = "width:50px" })
+    <span>(tháng)</span>
+    @Html.Hidden(ThamNienGiangDayT, ThamNien)
+    <input type="submit" value="Cập nhật" />
+</td></tr></table>
+}
+
+<script>
+    $(function () {
+        $("#@rand1").find("th,td").attr("nowrap", true);
+        $("#@rand2").find("input[type=submit]").click(function () {
+            var form = $(this).parents("form");
+            var year = parseInt(form.find("#YEAR").val());
+            var month = parseInt(form.find("#MONTH").val());
+            form.find("#@ThamNienGiangDayT").val(year * 12 + month);
+        });
+    });
+</script>

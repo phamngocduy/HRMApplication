@@ -1,0 +1,31 @@
+﻿@using HRM.QLVayMuon.Models
+@model HRM.QLVayMuon.Models.TapTin
+@{
+    ViewBag.Title = "Rename";
+}
+
+<h2>Rename</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.idTapTin)
+    @Html.HiddenFor(model => model.tepDinhKem)
+    @Html.HiddenFor(model => model.laThuMuc)
+    @*
+    <input type="hidden" name="folder" value="@Model.getFolder()" />
+    <p>@Model.getFolder()</p>
+    *@
+    @Html.LabelFor(model => model.tenThuMuc)
+    @Html.EditorFor(model => model.tenThuMuc)
+    @Html.ValidationMessageFor(model => model.tenThuMuc)
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { parent = Model.idTapTin })
+</div>

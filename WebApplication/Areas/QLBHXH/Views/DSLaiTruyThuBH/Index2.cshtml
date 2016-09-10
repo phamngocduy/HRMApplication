@@ -1,0 +1,305 @@
+﻿@model IEnumerable<HRM.QLBHXH.Models.nvbhLaiTruyThuBH>
+@{
+    ViewBag.Title = "Index2";
+}
+<div>
+    @Html.ActionLink("Trở về màn hình Nhân viên BHXH", "Index2", "NhanVienBHXH")
+</div>
+<h2>Danh sách Lãi truy thu Bảo hiểm</h2>
+
+    <input type="button" value="Thêm nhân viên vào danh sách" id="ThemNhanVien" />
+  <a style="text-align: right" title="Đóng" class='CloseButton'><span class="ui-icon ui-icon-closethick"
+    style="display: inline-block" /></a>
+<div id="tabs"></div>
+<div id="edit"></div>
+<div id="delete"></div>
+<table id="nvbhLaiTruyThuBH">
+    <thead>
+        <tr>
+          
+            <th style="text-align: center" nowrap rowspan="2">
+                Họ và tên
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Mã số BHXH
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray" nowrap rowspan="2">
+                Tiền lương, <br /> hoặc chênh lệch <br /> Tiền lương
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="3">
+                Thời gian truy thu&nbsp;
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="3">
+                Tỷ lệ đóng (%)&nbsp;
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="5">
+                Tiền lãi truy thu&nbsp;
+            </th>
+            <th style="text-align: center; border-right: 1.5px solid gray;" nowrap colspan="3">
+                Lãi suất truy thu (%)&nbsp;
+            </th>
+              
+            <th style="text-align: center" nowrap rowspan="2">
+                Tiền lương làm căn cứ truy thu <br /> tính theo MLTTC  <br /> từng thời điểm
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+                Ghi chú
+            </th>
+            <th style="text-align: center" nowrap rowspan="2">
+            </th>
+            </tr>
+            <tr>
+                <th style="text-align: center" nowrap>
+                    Từ tháng năm
+                </th>
+                <th style="text-align: center" nowrap>
+                    Đến tháng năm
+                </th>
+                <th style="text-align: center; border-right: 1.5px solid gray;" nowrap>
+                    Số tháng <br /> truy thu
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHXH
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHTN
+                </th>
+                <th style="text-align: center; border-right: 1.5px solid gray;" nowrap>
+                    BHYT
+                </th>
+                <th style="text-align: center" nowrap>
+                    Tổng thời gian <br /> chậm đóng
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHXH
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHTN
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHYT
+                </th>
+                <th style="text-align: center" nowrap>
+                    Tổng cộng
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHXH
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHYT
+                </th>
+                <th style="text-align: center" nowrap>
+                    BHTN
+                </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.nvbhNhanVienBHXH.HoVaTen)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.nvbhNhanVienBHXH.SoBHXH)</td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.TienLuongHoacChenhLechTienLuong)
+                </td>
+                <td style="text-align: center" nowrap> @item.TuThangNam.ToShortDateString()
+                </td>
+                <td style="text-align: center" nowrap> @item.DenThangNam.ToShortDateString()
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.SoThangTruyThu)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.dmTyLeDongBHXH.TongBHXH)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.dmTyLeDongBHXH.TongBHTN)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.dmTyLeDongBHXH.TongBHYT)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.TongThoiGianChamDong)
+                </td>
+                <td style="text-align: center" nowrap>@String.Format("{0:#,##0}", item.TienLaiTruyThuBHXH)
+                </td>
+                <td style="text-align: center" nowrap>@String.Format("{0:#,##0}", item.TienLaiTruyThuBHTN)
+                </td>
+                <td style="text-align: center" nowrap>@String.Format("{0:#,##0}", item.TienLaiTruyThuBHYT)
+                </td>
+                <td style="text-align: center" nowrap>@String.Format("{0:#,##0}", item.TongCong)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.dmLaiSuatTruyThu.BHXH)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.dmLaiSuatTruyThu.BHYT)
+                </td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.dmLaiSuatTruyThu.BHTN)
+                </td>
+                
+                <td style="text-align: center" nowrap>@String.Format("{0:#,##0}", item.dmMucLuongToiThieuChung.MucLuong)</td>
+                <td style="text-align: center" nowrap>@Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                
+                 <td>
+                 <a  title="Chỉnh sửa" data-val1="@item.id"  class='button1'><span class="ui-icon ui-icon-pencil" style="display: inline-block" /></a>
+            
+            <a  title="Xoá" data-val1="@item.id"  class='button2'><span class="ui-icon ui-icon-trash" style="display: inline-block" /></a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="/Scripts/datatables/FixedColumns.js"></script>
+<script src="/Content/datatables/DataTableFixedHeader.js"></script>
+<script>
+
+    // script cho create
+    $(".CloseButton").hide();
+//    $.get("../DSLaiTruyThuBH/Create").success(function (data) {
+//        $('#tabs').html(data);
+//    });
+
+    // add tab cho các tab thêm, edit, delete
+    $("#tabs").tabs();
+
+    $("#delete").tabs();
+    ///script nhấn thêm nhân viên
+
+
+
+    $("#ThemNhanVien").click(function () {
+
+        var $t1 = $('#tabs');
+        if ($t1.is(':visible')) {
+            $t1.slideUp();
+            // Other stuff to do on slideUp
+        }
+        else { $t1.slideDown(); }
+        $.get("../DSLaiTruyThuBH/create").success(function (data) {
+            $('#tabs').html(data);
+
+        });
+
+
+        //        $(".CloseButton").show();
+
+        var $t2 = $('#delete');
+
+        //dong cac tab con lai dang open
+
+        if ($t2.is(':visible')) {
+            $t3.slideUp();
+            // Other stuff to do on slideUp
+        }
+      
+    });
+
+
+ 
+
+
+
+    // script cho CloseButton
+    $(function () {
+        $('.CloseButton').click(function () {
+            $(".CloseButton").hide();
+        
+            $("#tabs").slideUp("medium");
+            $("#delete").slideUp("medium");
+
+
+        });
+    });
+    /// Script cho edit
+    $(function () {
+        $('.button1').click(function () {
+            var Val1 = $(this).attr("data-val1");
+            var $t1 = $('#tabs');
+            var $t2 = $('#delete');
+            if ($t1.is(':visible')) {
+                $t1.slideUp();
+                // Other stuff to do on slideUp
+            }
+            if ($t2.is(':visible')) {
+                $t2.slideUp();
+                // Other stuff to do on slideUp
+            }
+            //get trang edit len tab
+            $.get("../DSLaiTruyThuBH/edit?id=" + Val1).success(function (data) {
+                $('#tabs').html(data);
+                $("#tabs").slideDown("fast");
+            });
+
+            $(".CloseButton").show();
+
+            //back to top of the page
+//            $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+        });
+    });
+
+
+    // Script xu li nut delete
+    $(function () {
+        $('.button2').click(function () {
+            var Val1 = $(this).attr("data-val1");
+            //goi delete view len tab
+            $.get("../DSLaiTruyThuBH/delete?id=" + Val1).success(function (data) {
+                $('#delete').html(data);
+                $("#delete").slideDown("medium");
+            });
+            //hien ra nut close
+            $(".CloseButton").show();
+            //dong cac tab con lai dang open
+            var $t1 = $('#tabs');
+      
+            if ($t1.is(':visible')) {
+                $t1.slideUp();
+                // Other stuff to do on slideUp
+            }
+        
+
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+
+        });
+    });
+
+
+
+
+    // Script cho bảng
+    $(document).ready(function () {
+        var oTable = $('#nvbhLaiTruyThuBH').dataTable({
+            "bJQueryUI": true,
+            "sScrollY": "100%",
+            "sScrollX": "100%"
+
+
+        });
+
+        new $.fn.dataTable.FixedColumns(oTable, {
+            "iLeftColumns": 2,
+            "iRightColumns": 1
+        })
+
+    });
+
+   
+</script>
+
+<style type="text/css">
+    #panel
+    {
+        text-align: left;
+    }
+    
+    
+    #tabs
+    {
+        text-align: left;
+    }
+    
+    #tabs,#edit, #delete
+    {
+        display: none;
+    }
+      
+</style>

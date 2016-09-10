@@ -1,0 +1,62 @@
+﻿@using HRM.QLBHXH.Models
+@model HRM.QLBHXH.Models.dmLoaiDieuChinh
+
+@{
+    HRMDB1Entities db = new HRMDB1Entities();
+    ViewBag.Title = "Create";
+    //int ltg = (int)ViewBag.ltg;
+}
+
+<h2>Thêm mới loại điều chỉnh</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmLoaiDieuChinh</legend>
+        @*
+        <div class="abc">
+            Loại tăng giảm
+        </div>
+        <div class="TangGiam">
+            @Html.DropDownListFor(model => model.idLoaiTangGiam, new SelectList(db.dmLoaiTangGiam, "id", "LoaiTangGiam"))
+            @Html.ValidationMessageFor(model => model.idLoaiTangGiam)
+        </div>
+        *@
+        <div class="editor-label">
+            Loại điều chỉnh
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LoaiDieuChinh)
+            @Html.ValidationMessageFor(model => model.LoaiDieuChinh)
+        </div>
+
+        <div class="editor-label">
+            Ghi chú
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+
+        <div class="editor-label">
+            STT
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STT)
+            @Html.ValidationMessageFor(model => model.STT)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    $("#idLoaiTangGiam").combobox();
+</script>

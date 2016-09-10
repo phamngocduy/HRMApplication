@@ -1,0 +1,59 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@model DataTable
+@{
+    var db = ViewBag.db as HRMDBEntities;
+    var row = Model.Rows.Count > 0 ? Model.Rows[0] : null;
+    var NhomNgach = ViewBag.NhomNgach as string;
+    var Ngach = ViewBag.Ngach as string;
+    var BacLuong = ViewBag.BacLuong as string;
+    var NhomNgach_id = row != null ? row[NhomNgach] as int? : null;
+    var rand = new Random().Next();
+}
+
+<div id="@rand">
+<dt>Nhóm ngạch</dt>
+<dd>@Html.DropDownList(NhomNgach, new SelectList(db.dmNhomNgachVienChuc, "id", "tenNhomNgachVienChuc", row != null ? row[NhomNgach] : null), String.Empty)</dd>
+<dt>Ngạch viên chức</dt>
+<dd>@Html.DropDownList(Ngach, new SelectList(db.dmNgachVienChuc, "id", "tenNgachVienChuc", row != null ? row[Ngach] : null), String.Empty)</dd>
+<dt>Bậc lương</dt>
+<dd>@Html.DropDownList(BacLuong, new SelectList(db.dmBangLuong.Where(bl => bl.idNhomNgach == NhomNgach_id), "bacLuong", "bacLuong", row != null ? row[BacLuong] : null), String.Empty)</dd>
+<dt>Hệ số lương</dt>
+<dd>@Html.Editor(row, Model.Columns[ViewBag.HeSoLuong as string])</dd>
+<dt>Phụ cấp</dt>
+<dd>@Html.Editor(row, Model.Columns[ViewBag.PhuCap as string])</dd>
+<dt>Số tháng giữ bậc</dt>
+<dd>@Html.Editor(row, Model.Columns[ViewBag.SoThang as string])</dd>
+</div>
+
+<script>
+    var form = $("#@rand");
+    var NhomNgach = form.find("#@NhomNgach").combobox();
+    var Ngach = form.find("#@Ngach").combobox();
+    var BacLuong = form.find("#@BacLuong").val("@(row != null ? row[BacLuong] : null)").combobox();
+    var HeSoLuong = form.find("#@(ViewBag.HeSoLuong as string)");
+    var PhuCap = form.find("#@(ViewBag.PhuCap as string)");
+    var SoThang = form.find("#@(ViewBag.SoThang as string)");
+    NhomNgach.change(function () {
+        var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/BangLuong/dsBacLuong?idNhomNgach=";
+        BacLuong.trigger("connect", [link + $(this).val(), function () {
+            HeSoLuong.val(""); PhuCap.val(""); SoThang.val("");
+        } ]);
+    });
+    Ngach.change(function () {
+        var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/BangLuong/idNhomNgach?idNgach=";
+        $.ajax(link + $(this).val()).done(function (data) {
+            NhomNgach.combobox("value", data).trigger("change");
+        });
+    });
+    BacLuong.change(function () {
+        var link = "@HttpRuntime.AppDomainAppVirtualPath/QLDanhMuc/BangLuong/";
+        $.ajax(link + "HeSoLuong?idNhomNgach=" + NhomNgach.val() + "&bacLuong=" + BacLuong.val())
+            .done(function (data) { HeSoLuong.val(data); });
+        $.ajax(link + "PhuCap?idNhomNgach=" + NhomNgach.val() + "&bacLuong=" + BacLuong.val())
+            .done(function (data) { PhuCap.val(data); });
+        $.ajax(link + "SoThang?idNhomNgach=" + NhomNgach.val() + "&bacLuong=" + BacLuong.val())
+            .done(function (data) { SoThang.val(data); });
+    });
+</script>

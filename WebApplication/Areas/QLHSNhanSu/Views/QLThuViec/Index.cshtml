@@ -1,0 +1,114 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@{
+    const string LOC = "loc", ALL = "ALL";
+    ViewBag.Title = "Index";
+    var db = ViewBag.db as HRMDBEntities;
+    var query = "select * from dsQLThuViec ";
+    if (Request.QueryString[LOC] != ALL) {
+        //query += "where ThoiGianKetThuc is not null and MaNV is not null";
+        query += "where ThoiGianKetThuc is not null and MaNV is null";
+    }
+    var dt = db.SqlQuery(query);
+    var rand = new Random().Next();
+}
+
+<p class="ui-state-highlight">
+    Danh sách nhân viên thử việc trường ĐHDL Văn Lang
+    <span style="float:right">
+        <input type="checkbox" id="@LOC"
+            @(Request.QueryString[LOC] == ALL ? "checked" : null) />
+        Hiển thị tất cả...
+    </span>
+</p>
+
+<table id="@rand" class="table table-bordered table-hover">
+<thead class="ui-widget-header">
+    <tr>
+        <th>
+            @Html.Editor4C("~/QLTTNhanSu/QLThuViec/EditP")
+        </th>
+        <th>Họ và tên</th>
+        <th>Đơn vị</th>
+        <th>Vị trí<br />công tác</th>
+        <th>Thời gian<br />bắt đầu</th>
+        <th>Thời gian<br />đến hạn</th>
+        <th><mark data-tip="Số ngày làm việc">N</mark></th>
+        <th>Ngày<br />thông báo</th>
+        <th>Ngày nhận<br />hồ sơ</th>
+        <th>Ngày lập<br />tờ trình</th>
+    </tr>
+</thead>
+<tbody class="ui-widget-content">
+@foreach (DataRow dr in dt.Rows)
+{
+    <tr>
+        <td>
+            <button class="select" style="width:16px"></button>
+            <ul style="z-index:1000">
+                <li>@Html.Link4U("~/QLTTNhanSu/QLThuViec/EditP?id=" + dr["id"], "Edit")</li>
+                <li>@Html.Link4D("~/QLTTNhanSu/QLThuViec/DeleteS?id=" + dr["id"], "Delete")</li>
+                <li>@Html.Link4U("~/QLTTNhanSu/QLThuViec/EditNOP?id=" + dr["id"], "Không hoàn thành")</li>
+                <li>@Html.Link4U("~/QLTTNhanSu/QLThuViec/EditOKP?id=" + dr["id"], "Hoàn thành thử việc")</li>
+            </ul>
+        </td>
+        <td>
+            @{
+                var span = !(dr["MaNV"] is DBNull) ? "strong"
+                    //: ((!dr["ThoiGianKetThuc"] is DBNull) ? "strike" : "span");
+                     : ((dr["ThoiGianKetThuc"] is DBNull) ? "strike" : "span");
+            }
+            @Html.Raw(String.Format("<{0}>", span))
+            @Html.Display(dr, dt.Columns["HoVaTen"])
+            @Html.Raw(String.Format("</{0}>", span))
+        </td>
+        <td>
+            <mark data-tip="@Html.Display(dr, dt.Columns["tenDonVi"])">@Html.Display(dr, dt.Columns["maDonVi"])</mark>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["tenChucDanhChuyenMon"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["ThoiGianBatDau"])
+        </td>
+        <td>
+            <b>@Html.Display(dr, dt.Columns["ThoiGianDenHan"])</b>
+        </td>
+        <td>
+            <mark data-tip="(ngày)">@Html.Display(dr, dt.Columns["SoNgayLamViec"])</mark>
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayThongBao"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayNhanHoSo"])
+        </td>
+        <td>
+            @Html.Display(dr, dt.Columns["NgayLapToTrinh"])
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+<script>
+    $(function () {
+        $("#@rand").find("th").attr("nowrap", true);
+        $("#@rand").find(".select").button({
+            text: false,
+            icons: { primary: "ui-icon-circle-triangle-s" }
+        }).click(function () {
+            var menu = $(this).next().show().position({
+                my: "left top",
+                at: "left bottom",
+                of: this
+            });
+            $(document).one("click", function () { menu.hide(); });
+            return false;
+        }).next().hide().menu();
+        $("#@LOC").change(function () {
+            location = "@Url.Action("Index", "QLThuViec")" + "?@(LOC)=" + (this.checked ? "@ALL" : "NOW");
+        });
+    });
+</script>

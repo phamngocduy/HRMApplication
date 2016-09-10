@@ -1,0 +1,136 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@using HRM.QLTTNhanSu.Services
+@model HRM.Databases.Models.nvTTThongKe
+
+@using (Html.BeginForm("Edit", "nvTTThongKe"))
+{
+    if ("nvTTThongKe".Equals(TempData["Controller"]))
+    {
+        @Html.StatusMessage(TempData["Message"])
+        @Html.ValidationSummary(TempData["ModelState"])
+    }
+    var db = new HRMDBEntities();
+<fieldset>
+    @Html.HiddenFor(model => model.NV_id)
+<table id="nvTTThongKe" style="width:100%">
+<tr>
+<td align=left>
+    <label>Phân loại CB/GV/NV</label>
+    @Html.DropDownListFor(model => model.PhanLoaiCBGVNV, new SelectList(from dm in db.dmPhanLoaiCBGVNV select new {id = dm.id, ten = dm.maPhanLoaiCBGVNV+"|"+dm.tenPhanLoaiCBGVNV}, "id", "ten", Model.PhanLoaiCBGVNV), string.Empty)
+    @Html.ValidationMessageFor(model => model.PhanLoaiCBGVNV)
+</td>
+<td align=left>
+@{
+    var months = QLTTNhanSuServices.tinhThamNienGiangDay(db, Model.NhanVien.id);
+    var years = months / 12;
+    months = months - years * 12;
+    if (months > 0)
+    {
+        <br />
+        <label>Thâm niên giảng dạy:&nbsp;</label>
+        <b>@(years > 0 ? String.Format("{0} năm {1} tháng", years, months)
+                       : String.Format("{0} tháng", months))</b>
+    }    
+}
+</td>
+</tr>
+<tr>
+<td align=left>
+    <label>Khoa giảng dạy</label>
+    @Html.ListBox("KhoaGiangDay", db.dmKhoaGiangDay.ToList().Select(dm => new SelectListItem { Text = dm.maKhoaGiangDay + "|" + dm.tenKhoaGiangDay, Value = dm.id.ToString(), Selected = Model.NhanVien.nvKhoaGiangDays.Any(nv => nv.KhoaGiangDay == dm.id) }), new { Multiple = "multiple" })
+</td>
+<td align=left>
+    <label>Ngành giảng dạy</label>
+    @Html.ListBox("NganhGiangDay", db.dmNganhGiangDay.ToList().Select(dm => new SelectListItem { Text = dm.maNganhGiangDay + "|" + dm.tenNganhGiangDay, Value = dm.id.ToString(), Selected = Model.NhanVien.nvNganhGiangDays.Any(nv => nv.NganhGiangDay == dm.id) }), new { Multiple = "multiple" })
+</td>
+</tr>
+<tr>
+<td align=left>
+    <label>Khoa giảng dạy chính</label>
+    @Html.DropDownListFor(model => model.KhoaGiangDayChinh, new SelectList(db.dmKhoaGiangDay.ToList().Select(dm => new SelectListItem { Text = dm.maKhoaGiangDay + "|" + dm.tenKhoaGiangDay, Value = dm.id.ToString() }), "Value", "Text", Model.KhoaGiangDayChinh), String.Empty)
+</td>
+<td align=left>
+    <label>Ngành giảng dạy chính</label>
+    @Html.DropDownListFor(model => model.NganhGiangDayChinh, new SelectList(db.dmNganhGiangDay.ToList().Select(dm => new SelectListItem { Text = dm.maNganhGiangDay + "|" + dm.tenNganhGiangDay, Value = dm.id.ToString() }), "Value", "Text", Model.NganhGiangDayChinh), String.Empty)
+</td>
+</tr>
+<tr><td></td><td>
+    <input type="submit" value="Cập nhật" />
+</td></tr>
+<tr style="visibility:hidden">
+<td id="Khoa"></td>
+<td id="Nganh"></td>
+</tr>
+</table>
+</fieldset>
+}
+<br />
+
+<style>
+input { width: auto }
+label { display: inline; color: gray; font-size: 1.1em }
+</style>
+
+<link rel="stylesheet" href="~/Content/chosen.css">
+<script src="~/Scripts/chosen.jquery.js" type="text/javascript"></script>
+
+<script>
+    $(function () {
+        $("#nvTTThongKe").find
+        ("input[type=text]").on("input", function () {
+            $(this).attr("size", $(this).val().length);
+        }).each(function () {
+            $(this).css("font-weight", "bold");
+            $(this).attr("size", $(this).val().length);
+        });
+
+        $("#PhanLoaiCBGVNV").children().each(function() {
+            if ($(this).text().length > 0) {
+                var text = $(this).text().split("|");
+                $(this).text(text[0]);
+                $(this).prop("title", text[1]);
+            }
+        });
+        /*
+        $("#KhoaGiangDay").children().slice(0,10).each(function() {
+            $("#Khoa").append($(this).text()).append("<br/>");
+        });
+        $("#Khoa").append("Khoa").append("<br/>");
+        $("#NganhGiangDay").children().slice(0,10).each(function() {
+            $("#Nganh").append($(this).text()).append("<br/>");
+        });
+        $("#Nganh").append("Nganh").append("<br/>");
+        */
+        $("#KhoaGiangDay,#NganhGiangDay,#KhoaGiangDayChinh,#NganhGiangDayChinh")
+            .children().each(function() {
+            if ($(this).text().length > 0) {
+                var text = $(this).text().split("|");
+                $(this).text(text[0]);
+                $(this).prop("title", text[1]);
+            }
+        });
+        $("#KhoaGiangDay,#NganhGiangDay").chosen();
+        $("#KhoaGiangDayChinh,#NganhGiangDayChinh").chosen({ allow_single_deselect: true });
+        $("[id$=chosen],.default").css("width", "auto");
+    });
+@*  $(function () {
+@using (var db = new HRMDBEntities()) {
+    var tags = new HashSet<string>();
+    @("var PhanLoaiCBGVNVTags = [")
+    db.nvTTThongKe.ToList().ForEach(tt => String.Format("{0}", tt.PhanLoaiCBGVNV).Split(',').ToList().ForEach(tg => tags.Add(tg)));
+    tags.RemoveWhere(tg => String.IsNullOrEmpty(tg) || String.IsNullOrWhiteSpace(tg));
+    foreach (var tag in tags) { @MvcHtmlString.Create(String.Format(@"""{0}"",", tag)) }
+    @("];")
+    tags.Clear();
+    @("var DonViGiangDayTags = [")
+    db.nvTTThongKe.ToList().ForEach(tt => String.Format("{0}", tt.DonViGiangDay).Split(',').ToList().ForEach(tg => tags.Add(tg)));
+    tags.RemoveWhere(tg => String.IsNullOrEmpty(tg) || String.IsNullOrWhiteSpace(tg));
+    foreach (var tag in tags) { @MvcHtmlString.Create(String.Format(@"""{0}"",", tag)) }
+    @("];")
+}
+        $("#PhanLoaiCBGVNV").multicomplete(PhanLoaiCBGVNVTags);
+        $("#DonViGiangDay").multicomplete(DonViGiangDayTags);
+    });*@
+</script>

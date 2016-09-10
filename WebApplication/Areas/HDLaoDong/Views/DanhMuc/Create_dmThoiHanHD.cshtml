@@ -1,0 +1,76 @@
+﻿@model HRM.Databases_HDLaoDong.Models.dmThoiHanHD
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@{
+    
+    var LoaiHD = new List<string>();
+    LoaiHD.Add("Hợp đồng cơ hữu");
+    LoaiHD.Add("Thử việc");
+    LoaiHD.Add("Hợp đồng dài hạn");
+    var listLoaiHD = new SelectList(LoaiHD);
+    var type = new List<string>();
+    type.Add("=");
+    type.Add(">");
+    type.Add("<");
+    type.Add("KXĐ");
+    var listType = new SelectList(type);
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>dmThoiHanHD</legend>
+        <p>
+            Loại HĐ
+            <span onchange = "loaiHDChange()">
+            @Html.DropDownListFor(model => model.loaiHopDong, listLoaiHD, new { id = "cbxLoaiHD"})
+            </span>
+        </p>
+        <p>
+            Thời hạn HĐ
+            <span onchange = "typeChange()">
+            @Html.DropDownList("Type", listType)
+            </span>
+            <input id = "SoThang" name = "Number" type="number" name="quantity" min="0" max="100" style = "width:50px" /> <span id = "Ngay" hidden = "true">Ngày</span><span id = "Thang">Tháng</span>
+        </p>
+        <p>
+            <input class="dialog" type="submit" value="Lưu" />
+        </p>
+    </fieldset>
+}
+
+
+
+<script>
+    function loaiHDChange() {
+        var elem = document.getElementById("cbxLoaiHD"),
+        selectedNode = elem.options[elem.selectedIndex];
+        if (selectedNode.value == "Thử việc") {
+            Ngay.hidden = false;
+            Thang.hidden = true;
+        } else {
+            Thang.hidden = false;
+            Ngay.hidden = true;
+        }
+    }
+    function typeChange() {
+        var elem = document.getElementById("Type"),
+        selectedNode = elem.options[elem.selectedIndex];
+        if (selectedNode.value == "KXĐ") {
+            SoThang.value = "";
+            SoThang.disabled = true;
+        } else {
+            SoThang.disabled = false;
+        }
+    }
+</script>
+<script>
+    $("#demo").combobox().parent().find("input.ui-autocomplete-input").css("width", "300px");
+    $("#Type").combobox().parent().find("input.ui-autocomplete-input").css("width", "235px");
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+</script>

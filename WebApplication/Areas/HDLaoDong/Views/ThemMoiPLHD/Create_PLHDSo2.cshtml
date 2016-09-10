@@ -1,0 +1,183 @@
+﻿@model HRM.Databases_HDLaoDong.Models.hdPhuLucHD2
+@using HRM.Databases.Models
+@using HRM.Databases_HDLaoDong.Models
+@{
+    TempData["Details"] = TempData["Details"];
+    ViewBag.Title = "Create_PLHDSo2";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+    var cauhinh = db.hdCauHinh.FirstOrDefault();
+    var HeSoLuong = (TempData["HeSoLuong"] ?? "0,0").ToString();
+    string[] Data = HeSoLuong.Split(",".ToArray());
+    if(Data.Count() <= 1){
+       // HeSoLuong = Data[0];
+    }else{
+        HeSoLuong = Data[0] + "." + Data[1];
+    }
+    
+    var MucLuongToiThieu = "";
+    string[] ttData = cauhinh.Mucluongchinh.Split(".".ToArray());
+    for (int i = 0; i < ttData.Count();i++ ){
+        MucLuongToiThieu += ttData[i];
+    }
+    var CoSoTienLuong = "";
+    string[] cstlData = cauhinh.Cosotienluong.Split(".".ToArray());
+    for (int i = 0; i < cstlData.Count(); i++)
+    {
+        CoSoTienLuong += cstlData[i];
+    }
+}
+
+<b style="margin-left:40%;font-size:large">Phụ Lục Hợp Đồng Số 2</b>
+@using (Html.BeginForm("Create_PLHDSo2", "ThemMoiPLHD", FormMethod.Post))
+{
+    <input type = "hidden" name = "Details" value = "@TempData["Details"]" /> 
+<div>
+     @try{
+    <p>@Html.ActionLink("Quay lại", TempData["Details"].ToString(), "ThemMoiHD", new { id = ViewBag.HD_id }, null)</p>
+    }
+    catch
+    { <p>@Html.ActionLink("Quay lại", "Index", "HDNguoiLaoDong")</p>}
+<p>
+Số HĐ gốc<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left:35px"></span>
+<input id = "SoHD" style = "width:225px" value = "@TempData["SoHD"]" type="text" />
+<input name = "HD_id" type="hidden" value = "@ViewBag.HD_id" />
+<span style = "margin-left:75px"></span>Ngày lập<span title="Bắt buộc nhập" style="color:Blue">(*)</span><span style="margin-left:11px"></span>
+@Html.TextBoxFor(model => model.NgaylapPL, new { id = "NgayKy", style = "width:210px" })
+</p>
+<p>
+    
+</p>
+<br />
+<b>Nội dung PL</b><hr />
+<p>
+Hệ số lương<span style="margin-left:27px"></span>
+<input id="HSL" style = "width:100px" value = "@HeSoLuong" type="text" />
+<input name="HSLuong" value = "@HeSoLuong" type="hidden" />
+Mức lương tối thiểu
+<input id="MLTT" class="money" name = "Mucluongtoithieu" value = "@cauhinh.Mucluongchinh" type="text" style = "width:100px"/> VNĐ<span style="margin-left:10px"></span>
+<span style="margin-left:5px"></span>Cơ số tiền lương<span style="margin-left:30px"></span>
+<input id="CSTL" class="money" name = "CSTienluong" value = "@cauhinh.Cosotienluong" type="text" style = "width:100px"/> VNĐ<span style="margin-left:10px"></span>
+</p>
+<p>
+Hệ số CD,TĐ<span style="margin-left:23px"></span>
+@Html.TextBoxFor(model => model.HSCDCM, new { id = "HSCDTD", style = "width:100px" })
+Hệ số nhiệm vụ<span style="margin-left:25px"></span>
+@Html.TextBoxFor(model => model.HSNhiemvu, new { id = "HSNV", style = "width:140px" })
+<span style="margin-left:10px"></span>Hệ số KLCV K1<span style="margin-left:37px"></span>
+@Html.TextBoxFor(model => model.HSKLCV1, new { id = "HSKLCVK1", style = "width:130px" })
+
+</p>
+<p>
+Hệ số SLSV K2<span style="margin-left:13px"></span>
+@Html.TextBoxFor(model => model.HSSLSV2, new { id = "HSSLSVK2", style = "width:100px" })
+Hệ số HQCV đơn vị
+@Html.TextBoxFor(model => model.HSHQCVdonvi, new { id = "HSHQCVDV", style = "width:140px" })
+<span style="margin-left:10px"></span>Hệ số HQCV cá nhân
+@Html.TextBoxFor(model => model.HSHQCVcanhan, new { id = "HSHQCVCN", style = "width:130px" })
+</p>
+<p>
+Hiệu quả CV<span style="margin-left:25px"></span>
+@Html.TextBoxFor(model => model.HQCV, new { id = "HQCV", style = "width:100px" })
+Hệ số thâm niên<span style="margin-left:19px"></span>
+@Html.TextBoxFor(model => model.HSThamnien, new { id = "HSTN", style = "width:140px" })
+</p>
+<p>
+
+Thù lao(nếu có)<span style="margin-left:8px"></span>
+<input id="TL" class="money" name = "Thulao" type="text" style = "width:200px"/> VNĐ
+<span style="margin-left:80px"></span>Thu nhập
+<input id="TN" onchange = "change()" name = "Thunhap" type="text" style = "width:200px"/> VNĐ/Tháng
+</p>
+
+<p>
+Ghi chú
+</p>
+@Html.TextAreaFor(model => model.Ghichu, new { style = "width: 802px; height: 70px" })    
+</div>
+<p style="margin-left: 75%">
+    <input id="btnInLuu" name = "PrintAndSave" type="submit" value="In&Lưu" style="width: 80px"/>
+    <input id="btnLuu" name = "Save" type="submit" value="Lưu" style="width: 80px" />
+</p>
+}
+<script>
+    $("#SoHDGoc").combobox().parent().find("input.ui-autocomplete-input").css("width", "222px");
+
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(function () {
+        $("[id=NgayKy]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            yearRange: 'c-100:c+100'
+        });
+        $("[id=NgayCoHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("[id=NgayHetHieuLuc]").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+
+<script src="~/Scripts/jquery.mask.min.js" type="text/javascript"></script>
+<script>
+    $('.money').mask('0.000.000.000', { reverse: true });
+</script>
+<script>
+    document.getElementById("TN").onblur = function () {
+        this.value = parseFloat(this.value.replace(/,/g, ""))
+
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        document.getElementById("TN").value = this.value.replace(/,/g, "")
+
+    }
+
+</script>
+
+<script type="text/javascript">
+    $("#TN").live("click", function () {
+        var HSLuong = parseFloat(document.getElementById('HSL').value);
+        var C1 = parseFloat(document.getElementById('HSCDTD').value);
+        var C2 = parseFloat(document.getElementById('HSNV').value);
+        var T = parseFloat(document.getElementById('HSTN').value);
+        var K1 = parseFloat(document.getElementById('HSKLCVK1').value);
+        var K2 = parseFloat(document.getElementById('HSSLSVK2').value);
+        var H = parseFloat(document.getElementById('HQCV').value);
+
+        var P1 = HSLuong*parseInt(@MucLuongToiThieu);
+        var P2 = parseInt(@CoSoTienLuong)*C1*C2*T;
+        var T12 = P1 + P2;
+        var P3 = T12*K1*K2;
+        if(document.getElementById('HQCV').value != ""){
+            P3 = T12*K1*K2*H;
+        }
+        var Pt = parseInt(P3/1000);
+        P3 = Pt*1000;
+
+        document.getElementById('TN').value =  parseInt(P3);
+       
+
+    });
+    $("#HQCV").live("click", function () {
+        var HQDV = parseFloat(document.getElementById('HSHQCVDV').value);
+        var HQCN = parseFloat(document.getElementById('HSHQCVCN').value);
+
+        var P = HQCN*HQDV;
+
+        document.getElementById('HQCV').value =  P;
+       
+
+    });
+</script>
+

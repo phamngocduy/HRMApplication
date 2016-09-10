@@ -1,0 +1,179 @@
+﻿@using System.Data
+@using HRM.Webpages.Helpers
+@using HRM.Databases.Models
+@using HRM.QLTTNhanSu.Models
+@model HRMDBEntities
+@{
+    ViewBag.Title = "Bieu52";
+    var table = Model.SqlQuery(@"
+    declare @moc date = getdate()
+    select nv.*, lv.*, bc.*, syll.*,
+    dmDonVi.*, dmChucDanh.*, dmChucDanhChuyenMon.*, dmNgheNghiep.*,
+    dmHocHam.*, dmTrinhDo.*, dmDanToc.*, dmGioiTinh.*,
+    isnull(year(getdate())-year(syll.NgaySinh),100) Tuoi
+    from NhanVien nv
+    left join (
+	    select *, row_number() over (partition by NV_id order by ThoiGianBatDau) stt from nvQTLamViec
+	    where ThoiGianBatDau <= @moc and (ThoiGianKetThuc >= @moc or ThoiGianKetThuc is null)) lv on lv.NV_id = nv.id
+    left join (
+	    select *, row_number() over (partition by NV_id order by NgayTN desc) stt from nvBangCap
+	    where NgayTN <= @moc and Chuyennganhchinh = 1) bc on bc.NV_id = nv.id
+    left join nvSoYeuLyLich syll on syll.NV_id = nv.id
+    left join dmDonVi on lv.DonVi_id = dmDonVi.id
+    left join dmChucDanh on lv.ChucDanh_id = dmChucDanh.id
+    left join dmChucDanhChuyenMon on lv.ChucDanhChuyenMon_id = dmChucDanhChuyenMon.id
+    left join dmNgheNghiep on lv.NgheNghiep_id = dmNgheNghiep.id
+    left join dmHocHam on syll.HocHam_id = dmHocHam.id
+    left join dmLoaiBangCap on bc.LoaiBangCap_id = dmLoaiBangCap.id
+    left join dmTrinhDo on dmLoaiBangCap.idTrinhDo = dmTrinhDo.id
+    left join dmDanToc on syll.DanToc_id = dmDanToc.id
+    left join dmGioiTinh on syll.GioiTinh_id = dmGioiTinh.id
+    where (nv.ngayNghiViec is null or nv.ngayNghiViec > @moc)
+     and (lv.stt is null or lv.stt = 1)
+     and (bc.stt is null or bc.stt = 1)
+    order by dmDonVi.id");
+    string maChucDanh = "maChucDanh", GV = "GV";
+    var GVs = table.Rows.ToArray().Where(r => r[maChucDanh].Equals(GV));
+    var CB = Model.dmDonVi.Single(dv => dv.maDonVi.Equals("CB"));
+    var CBs = GVs.Where(gv => gv["idDonViChuQuan"].Equals(CB.id));
+    int count = 1;
+}
+@helper Mark(IEnumerable<DataRow> DS) {
+    if (DS.Count() > 0) {
+        <mark title="@String.Join(", ", DS.Select(r => r["HoVaTen"] as string).ToArray())">
+            @DS.Count()
+        </mark>
+    } else { <span>0</span> }
+}
+@helper ThongKe(IEnumerable<DataRow> DS)
+    {
+    string maGioiTinh = "maGioiTinh", NU = "NU",
+        dtThieuSo = "dtThieuSo",
+        maHocHam = "maHocHam", GS = "GS", PGS = "PGS",
+        maTrinhDo = "maTrinhDo", TS = "TS", TSKH = "TSKH", THS = "Ths", CK = "CK", DH = "ĐH", CD = "CĐ";
+    var DS_N = DS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_DTIN = DS.Where(r => r[dtThieuSo].Equals(true));
+    var DS_DTIN_N = DS_DTIN.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_GS = DS.Where(r => r[maHocHam].Equals(GS));
+    var DS_GS_N = DS_GS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_PGS = DS.Where(r => r[maHocHam].Equals(PGS));
+    var DS_PGS_N = DS_PGS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_TS = DS.Where(r => r[maTrinhDo].Equals(TS) || r[maTrinhDo].Equals(TSKH));
+    var DS_TS_N = DS_TS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_THS = DS.Where(r => r[maTrinhDo].Equals(THS));
+    var DS_THS_N = DS_THS.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_CK = DS.Where(r => r[maTrinhDo].Equals(CK));
+    var DS_CK_N = DS_CK.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_DH = DS.Where(r => r[maTrinhDo].Equals(DH));
+    var DS_DH_N = DS_DH.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_CD = DS.Where(r => r[maTrinhDo].Equals(CD));
+    var DS_CD_N = DS_CD.Where(r => r[maGioiTinh].Equals(NU));
+    var DS_KHAC = DS.Where(r => !r[maTrinhDo].Equals(TS) && !r[maTrinhDo].Equals(TSKH) && !r[maTrinhDo].Equals(THS) && !r[maTrinhDo].Equals(CK) && !r[maTrinhDo].Equals(DH) && !r[maTrinhDo].Equals(CD));
+    var DS_KHAC_N = DS_KHAC.Where(r => r[maGioiTinh].Equals(NU));
+    <td>@Mark(DS)</td>
+    <td>@Mark(DS_N)</td>
+    <td>@Mark(DS_DTIN)</td>
+    <td>@Mark(DS_DTIN_N)</td>
+    <td>@Mark(DS_GS)</td>
+    <td>@Mark(DS_GS_N)</td>
+    <td>@Mark(DS_PGS)</td>
+    <td>@Mark(DS_PGS_N)</td>
+    <td>@Mark(DS_TS)</td>
+    <td>@Mark(DS_TS_N)</td>
+    <td>@Mark(DS_THS)</td>
+    <td>@Mark(DS_THS_N)</td>
+    <td>@Mark(DS_CK)</td>
+    <td>@Mark(DS_CK_N)</td>
+    <td>@Mark(DS_DH)</td>
+    <td>@Mark(DS_DH_N)</td>
+    <td>@Mark(DS_CD)</td>
+    <td>@Mark(DS_CD_N)</td>
+    <td>@Mark(DS_KHAC)</td>
+    <td>@Mark(DS_KHAC_N)</td>
+}
+
+<h2>Biểu 5.2</h2>
+
+<table border=1>
+    <tr>
+        <td rowspan=3></td>
+        <td rowspan=3>Tổng<br />số</td>
+        <td colspan=7>Trong đó</td>
+        <td colspan=12>Chia theo trình độ đào tạo</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Nữ</td>
+        <td colspan=2>Dân tộc ít người</td>
+        <td rowspan=2>Giáo<br />sư</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Phó<br />giáo<br />sư</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>TSKH<br />và Tiến<br />sĩ</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Thạc<br />sĩ</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>CK<br />Y cấp<br />I, II</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Đại<br />học</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Cao<br />đẳng</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+        <td rowspan=2>Khác</td>
+        <td rowspan=2>Tr.đó:<br />Nữ</td>
+    </tr>
+    <tr>
+        <td>Tổng<br />số</td>
+        <td>Tr.đó:<br />Nữ</td>
+    </tr>
+    <tr>
+        <td>A</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+        <td>19</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>Tổng số</td>
+        @ThongKe(GVs)
+    </tr>
+@foreach (var k in Model.dmDonVi.Where(dv => dv.Khoa_BoMon.Equals("K")))
+{
+    var Ks = GVs.Where(gv => gv["maDonVi"].Equals(k.maDonVi));
+    <tr>
+        <td>@(count++) @k.tenDonVi</td>
+        @ThongKe(Ks)
+    </tr>
+}
+    <tr>
+        <td>@(count++) @CB.tenDonVi</td>
+        @ThongKe(CBs)
+    </tr>
+@foreach (var bm in Model.dmDonVi.Where(dv => dv.Khoa_BoMon.Equals("BM")))
+{
+    var BMs = CBs.Where(gv => gv["maDonVi"].Equals(bm.maDonVi));
+    <tr>
+        <td>&nbsp;&nbsp;@bm.tenDonVi</td>
+        @ThongKe(BMs)
+    </tr>
+}
+</table>
+
+<style>
+    table td { border: 1px solid !important; padding: 0; }
+</style>

@@ -1,0 +1,75 @@
+﻿@model HRM.Databases.Models.DanhHieu
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DanhHieu</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NV_id, "NhanVien")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("NV_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.NV_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TenDanhHieu_id, "dmDanhHieu")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TenDanhHieu_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.TenDanhHieu_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NgayDatDanhHieu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NgayDatDanhHieu)
+            @Html.ValidationMessageFor(model => model.NgayDatDanhHieu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoQDCongNhan)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoQDCongNhan)
+            @Html.ValidationMessageFor(model => model.SoQDCongNhan)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NoiCap)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NoiCap)
+            @Html.ValidationMessageFor(model => model.NoiCap)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GhiChu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GhiChu)
+            @Html.ValidationMessageFor(model => model.GhiChu)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

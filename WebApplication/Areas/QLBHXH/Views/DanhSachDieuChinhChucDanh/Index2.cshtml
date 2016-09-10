@@ -1,0 +1,228 @@
+﻿@model IEnumerable<HRM.QLBHXH.Models.v_ChucDanh>
+@using HRM.Webpages.Helpers
+@{
+    ViewBag.Title = "Index";
+    string ngayBD = ViewBag.NgayBD;
+    string ngayKT = ViewBag.NgayKT;
+    string Dot = ViewBag.Dot;
+    int idmoi = ViewBag.idmoi;
+    //int Thang = ViewBag.Thang;
+}
+@Html.StatusMessage(TempData["Message"])
+
+ <div>
+             <a style="text-align: right" title="Trở lại danh sách NV BHXH" onclick="location.href='@Url.Action("index2", "NhanVienBHXH")'"><span class="ui-icon     
+ui-icon-arrowreturnthick-1-w " style="display: inline-block" /></a>
+    Đợt của tháng:<input  name="From" title="Từ ngày" id="txt1" value=@Dot  />  <input type="button" value="Lọc" id="Loc" /> 
+@*     <input type="button" value="Xác nhận" id="qt" />*@
+  <input type="button" value="Thêm điều chỉnh chức danh" id="btncreate" />
+    </div>
+<div id="create"></div>
+<div id="delete"></div>
+<table id="dieuchinhCD">
+    <thead>
+        <tr>
+              <th style="text-align: center" nowrap>
+               Mới nhất
+            </th>
+            <th style="text-align:center" nowrap>
+                Họ và tên
+            </th>
+           @* <th style="text-align:center" nowrap>
+               Ngày phát sinh
+            </th>*@
+            <th style="text-align:center" nowrap>
+                Chức vụ cũ
+            </th>
+            <th style="text-align:center" nowrap>
+               Chức vụ mới
+            </th>
+            <th style="text-align:center" nowrap>
+              Từ tháng năm
+            </th>
+            <th style="text-align:center" nowrap>
+            Đến tháng năm
+            </th>
+            <th style="text-align:center" nowrap>
+              Ghi chú
+            </th>
+            <th style="text-align:center" nowrap>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+              <td style="text-align: left" nowrap>
+                    @Html.DisplayFor(modelItem => item.MoiNhat)
+                </td>
+                <td style="text-align:center" nowrap>
+                    @Html.DisplayFor(modelItem => item.HoVaTen)
+                </td>
+ 
+                <td style="text-align:center" nowrap>
+                   
+                </td>
+                <td style="text-align:center" nowrap>
+                    @Html.DisplayFor(modelItem => item.CVMoi)
+                </td>
+                     <td style="text-align: left" nowrap>
+                 @item.TuThangNam.ToString("MM/yyyy")
+  
+                </td>
+        
+                <td style="text-align:center" nowrap>
+                    
+                </td>
+                <td style="text-align:center" nowrap>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td style="text-align:center" nowrap>
+                   <a data-val1="@item.id" title="Xóa" class='btnxoa'><span class="ui-icon ui-icon-trash"
+                        style="display: inline-block" /></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*nguon cua fix cac cot trong bang*@
+<script src="~/Scripts/datatables/FixedColumns.js"></script>
+<script>
+
+    // Script cho bảng
+    $(document).ready(function () {
+        var oTable = $('#dieuchinhCD').dataTable({
+            "bJQueryUI": true,
+            "sScrollY": "100%",
+            "sScrollX": "100%"
+            ,
+       "bSort": false,
+        "aoColumns": [{"bVisible": false },null,null,null,null,null,null,null ]
+                      ,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+
+                if (aData[0] == @idmoi) {
+                    $(nRow).css('background-color', '#FFFFCC');
+                      $(nRow).css(  'border', '1px solid #999');
+                }
+            }
+        });
+        
+        new /*$.fn.dataTable.*/FixedColumns(oTable, {
+            "iLeftColumns": 1,
+            "iRightColumns": 1
+        })
+    });
+
+
+    //hide nut dong tat ca cac the div
+    $(".button2").hide();
+    //lay create view cho vao the div create
+    $.get("../DanhSachDieuChinhChucDanh/Create").success(function (data) {
+        $('#create').html(data);
+    });
+//     $.get("../DanhSachDieuChinhChucDanh/delete").success(function (data) {
+//                $('#delete').html(data);
+//                    });
+    //chuyen div create thanh tab
+    $("#create").tabs();
+        $("#delete").tabs();
+
+    //ban nut create div create truot xuong
+    $("#btncreate").click(function () {
+        $("#create").slideToggle("medium");
+   
+  
+    });
+
+
+      $(function () {
+        $('.btnxoa').click(function () {
+            var Val1 = $(this).attr("data-val1");
+            //goi delete view len tab
+            $.get("../DanhSachDieuChinhChucDanh/delete?id=" + Val1).success(function (data) {
+                $('#delete').html(data);
+        $("#delete").slideToggle("medium");
+            });
+          
+
+     
+
+        });
+    });
+
+       
+
+
+  
+    //ban nut create div create truot xuong
+//    $("#btnxoa").click(function () {
+//        $("#delete").slideToggle("medium");
+
+//    });
+
+       //xu li nut filter
+          $("#Loc").click(function () {
+           var txtVal = $("#txt1").val();
+    
+            window.location = "@Url.Action("Index2", "DanhSachDieuChinhChucDanh")" +"?BD=" + txtVal;
+        }); 
+
+
+
+        
+    //datetime picker
+
+
+  $("#txt1").datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true
+        ,
+        dateFormat: 'MM yy',
+      
+                 onClose: function(dateText, inst) {
+      var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+      $(this).val($.datepicker.formatDate('mm/yy', new Date(year, month, 1)));
+ 
+    }
+
+});
+
+$("#txt1").focus(function () {
+  $(".ui-datepicker-calendar").hide();
+  $("#ui-datepicker-div").position({
+    my: "center top",
+    at: "center bottom",
+    of: $(this)
+  });
+});
+
+//$("#txt1").datepicker('disable');
+//  $("#txt1").ui-datepicker-calendar {
+//    display: none;
+//    };
+     
+
+
+</script>
+  <style type="text/css">
+    #create, #delete
+    {
+        display: none;
+    }
+
+        input#txt1
+    {
+        width: 100px;
+    }
+           input#txt2
+    {
+        width: 100px;
+    }
+   
+</style>

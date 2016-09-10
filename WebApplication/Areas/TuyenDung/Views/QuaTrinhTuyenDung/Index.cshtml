@@ -1,0 +1,204 @@
+﻿@model HRM.Databases_TuyenDung.Models.tdQuaTrinhTuyenDung
+@using System.Data.Objects;
+@using HRM.Databases.Models;
+@using HRM.Databases_TuyenDung.Models;
+@using HRM.Webpages.Helpers
+
+@{
+    ViewBag.Title = "Index";
+    var db = new HRMDB2Entities();
+    var db0 = new HRM.Databases.Models.HRMDB0Entities();
+}
+@Html.StatusMessage(TempData["Message"])
+<span style="font-size:large">@ViewBag.Name</span>
+
+<b style="font-size:larger;margin-left:20%">
+    Quá trình tuyển dụng
+</b>
+<br />
+<br />
+@Html.ActionLink("Quay lại","Index","TuyenDung")
+<table id="TuyenDung">
+    <thead>
+    <tr>
+        <th style="text-align:center" nowrap>
+            Ngày phỏng vấn/</br>Giảng thử
+        </th>
+        <th style="text-align:center" nowrap>
+            Đơn vị phỏng </br>vấn
+        </th>
+        <th style="text-align:center" nowrap>
+            Hình thức phỏng</br>vấn/giảng thử
+        </th>
+        <th style="text-align:center" nowrap>
+            Nhận xét
+        </th>
+        <th style="text-align:center" nowrap>
+            Ghi chú
+        </th>
+        <th style="text-align:center" nowrap></th>
+    </tr>
+    </thead>
+<tbody>
+@{var Distinct = new HashSet<int>();}
+@{var temp = db.tdQuaTrinhTuyenDung.ToList();
+  var tdqttuyendung = temp.Where(qttd => qttd.UngVien_id == ViewBag.UngVien_id);      
+}
+@foreach (var item in tdqttuyendung) {
+    if (!Distinct.Add(item.id)) { continue; }
+    using (Html.BeginForm("Edit","QuaTrinhTuyenDung"))
+    {
+        ViewData.TemplateInfo.HtmlFieldPrefix = null;
+        @Html.Hidden("id", item.id)
+        var qttdPrefix = "" + item.id;
+        if (tdqttuyendung.Count() == 0) { continue; }
+        <tr id="@item.id">
+        <td style="text-align:center" nowrap class="">
+        @if(item.tdXemVaXepLichHen.NgayPhongVan != null){
+            @item.tdXemVaXepLichHen.NgayPhongVan.Value.ToShortDateString()
+        }         
+        </td>
+        <td wrap class="">
+            @if (item.tdXemVaXepLichHen.DonViPhongVan_id != null)
+            {
+                var tenDonVi = db0.dmDonVi.Where(dv => dv.id == item.tdXemVaXepLichHen.DonViPhongVan_id).FirstOrDefault().tenDonVi;
+                @Html.Raw(tenDonVi)
+            }
+        </td>
+        <td wrap class="">
+        <span id="View">
+            @Html.DisplayFor(modelItem => item.HinhThucPhongVan)
+        </span>
+        <span id="Edit">
+            @Html.TextBoxFor(modelItem => item.HinhThucPhongVan, new { style = "width:auto; height:16px" })
+            @Html.ValidationMessageFor(modelItem => item.HinhThucPhongVan)
+        </span>
+        </td>
+        <td  wrap class="">
+        <span id="View">
+            @Html.DisplayFor(modelItem => item.NhanXet)
+        </span>
+        <span id="Edit">
+            @Html.TextBoxFor(modelItem => item.NhanXet, new { style = "width:auto; height:16px" })
+            @Html.ValidationMessageFor(modelItem => item.NhanXet)
+        </span>
+        </td>
+        <td wrap class="">
+        <span id="View">
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </span>
+        <span id="Edit">
+            @Html.TextBoxFor(modelItem => item.GhiChu, new { style = "width:auto; height:16px" })
+            @Html.ValidationMessageFor(modelItem => item.GhiChu)
+        </span>
+        </td>
+        <td style="text-align:justify" >
+                <input type="submit" style="position:absolute;left:-9999px" />
+                <a title="Sửa" id="Edit"><span class = "ui-icon ui-icon-pencil"  style="display:inline-block"></span></a>
+                <a title="Lưu" id="Save" hidden><span class = "ui-icon ui-icon-disk"  style="display:inline-block"></span></a>     
+        </td>
+        </tr>
+    }
+}
+</tbody>
+</table>
+<style>
+td { padding: 0 0 0 0 }
+input { margin: 0 0 0 0; width: auto; }
+</style>
+
+
+
+<script>
+    $().ready(function () {
+        $("body").block();
+        var table$ = $("#TuyenDung");
+        table$.find("th").each(function () {
+            $(this).addClass("ui-state-default");
+        });
+        table$.find("td").each(function () {
+            $(this).addClass("ui-widget-content");
+        });
+//        table$.find("tr").hover(function () {
+//            $(this).children("td").addClass("ui-state-hover");
+//        }, function () {
+//            $(this).children("td").removeClass("ui-state-hover");
+//        });
+        table$.find("span[id=Edit]").prop("hidden", true);
+        table$.find("input[type=datetime]").css("width", "100px").css("height","25px")
+              .css("border", "0").css("border-bottom", "1px dotted")
+              .datepicker({ changeMonth: true, changeYear: true })
+              .css("font-size", "1.1em").css("margin", "0").css("padding", "0");
+        table$.find("a[id=Edit]").on("click", function () {
+            var row = $(this).parents("tr");
+            do {
+                row.find("span[id=View]").prop("hidden", true);
+                row.find("span[id=Edit]").prop("hidden", false);
+                row = row.next("tr");
+            } while (row.length > 0)
+            $(this).prop("hidden", true).next("a").prop("hidden", false);
+            return false;
+        });
+        table$.find("a[id=Save]").on("click", function () {
+            $("body").block();
+            $(this).parents("tr").prev("input").prev("form").submit();
+            return false;
+        });
+        $("#Filter").find("input[type=datetime]").css("width", "80px")
+            .datepicker({ changeMonth: true, changeYear: true });
+
+
+
+        $("body").unblock()
+
+        $("input[type=text],input[type=number],.custom-combobox-input").css("border", "0").css("border-bottom", "1px dotted");
+
+        var nDiv = document.createElement("input");
+        nDiv.style.position = "absolute";
+        nDiv.style.top = "0px";
+        nDiv.style.left = "0px";
+        nDiv.style.width = "80px";
+        nDiv.style.margin = "0";
+        nDiv.style.padding = "0";
+        nDiv.className = "Utility";
+        document.body.appendChild(nDiv);
+        var oDiv = undefined;
+        $(nDiv).hide().on("click", function () {
+            if ($(this).val() == "Số ngày")
+                $(this).val("");
+        }).on("input", function () {
+            var days = parseInt($(this).val());
+            if (days > 0) {
+                var data = $.trim($(this).prop("base")).split('/');
+                var dd = parseInt(data[0], 10);
+                var mm = parseInt(data[1], 10);
+                var yyyy = parseInt(data[2], 10);
+                var date = new Date(yyyy, mm - 1, dd);
+                date = new Date(date.setDate(date.getDate() + days));
+                oDiv.val(date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear());
+            }
+        }).on("focusout", function () { $(this).hide(); });
+
+    });
+</script>
+<script>
+    $(".custom-combobox-input").removeClass("ui-state-default");
+    $(".custom-combobox-input").removeClass("ui-widget-content");
+    $(".custom-combobox-width").removeClass("ui-width-default");
+    $(".custom-combobox-input").removeClass("ui-corner-left");
+    $(".custom-combobox-toggle").removeClass("ui-state-default");
+    $(".custom-combobox-input").on("input", function () {
+        $(this).attr("size", $(this).val().length + 3);
+    });
+    setInterval(function () {
+        $(".custom-combobox-input").each(function () {
+            $(this).attr("size", $(this).val().length + 4);
+        });
+    }, 1000);
+    $("input[type=text]").on("input", function () {
+        $(this).attr("size", $(this).val().length + 1);
+    }).each(function () {
+        $(this).attr("size", $(this).val().length + 1);
+    });
+</script>
+

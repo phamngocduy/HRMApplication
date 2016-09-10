@@ -1,0 +1,35 @@
+﻿@using HRM.Webpages.Helpers
+@using HRM.QLDanhMuc.Models
+@model HRM.Databases.Models.TaiNguyen
+@{
+    ViewBag.Title = "Rename";
+}
+@Html.BeginDiv()
+
+<h2>Rename</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.idTaiNguyen)
+    @Html.HiddenFor(model => model.tepDinhKem)
+    @Html.HiddenFor(model => model.laThuMuc)
+
+    <input type="hidden" name="folder" value="@Model.getFolder()" />
+    <p>@Model.getFolder()</p>
+    
+    @Html.LabelFor(model => model.tenTaiNguyen)
+    @Html.EditorFor(model => model.tenTaiNguyen)
+    @Html.ValidationMessageFor(model => model.tenTaiNguyen)
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { parent = Model.idTaiNguyen })
+</div>
+
+@Html.EndDiv()
